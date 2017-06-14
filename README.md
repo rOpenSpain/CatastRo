@@ -29,7 +29,7 @@ print(references)
 
 ## Query CPMRC 
 
-It is possible, as well, the opposite. Given to the function `CPMRC` a cadastral reference, `CPMRC` returns its coordinates (X,Y) in a particular SRS moreover the direction (town, street and number)
+It is possible, as well, the opposite. Given to the function `getCOOR` a cadastral reference, `getCOOR` returns its coordinates (X,Y) in a particular SRS moreover the direction (town, street and number)
 
 ```
 direction <- getCOOR(CadastralReference,SRS = EPSG:4230)
