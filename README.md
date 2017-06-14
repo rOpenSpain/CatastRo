@@ -12,7 +12,7 @@ install_github("DelgadoPanadero/CatastRo")
 
 ## Query a coordinate
 
-The function `getRC` recives the coordinates (X,Y) and the spatial reference used. The return is the casdastral reference of the property in that point, as well as the direction (town street and number)
+The function `getRC` recives the coordinates (X,Y) and the spatial reference used. The return is the casdastral reference of the property in that point, as well as the direction (town street and number).
 
 
 ```
@@ -20,7 +20,7 @@ reference <- getRC(X,Y,SRS = EPSG:4230)
 print(reference)
 ``` 
 
-It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates (X,Y) throught the function `getRC_distance`
+It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates (X,Y) throught the function `getRC_distance`.
 
 ```
 references <- getRC_distance(X,Y,SRS = EPSG:4230)
@@ -29,7 +29,7 @@ print(references)
 
 ## Query CPMRC 
 
-It is possible, as well, the opposite. Given to the function `getCOOR` a cadastral reference, `getCOOR` returns its coordinates (X,Y) in a particular SRS moreover the direction (town, street and number)
+It is possible, as well, the opposite. Given to the function `getCOOR` a cadastral reference, `getCOOR` returns its coordinates (X,Y) in a particular SRS moreover the direction (town, street and number).
 
 ```
 direction <- getCOOR(CadastralReference,SRS = EPSG:4230)
