@@ -34,7 +34,7 @@ It is possible, as well, the opposite. Given to the function `getCOOR` a cadastr
 ```
 direction <- getCOOR(CadastralReference, SRS,  Province, Municipality)
 
-# The argument SRS could be missed, in that case, CPMRC() returns the coordinates with which was stored
+# The argument SRS could be missed, in that case, getCOOR() returns the coordinates with which was stored
 
 print(direction)
 ```
