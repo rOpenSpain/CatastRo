@@ -1,0 +1,6 @@
+import(httr)
+import(XML)
+
+export(getCOOR)
+export(getRC)
+exporte(getRC_distance)
