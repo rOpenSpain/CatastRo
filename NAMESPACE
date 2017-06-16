@@ -3,4 +3,4 @@ import(XML)
 
 export(getCOOR)
 export(getRC)
-exporte(getRC_distance)
+export(getRC_distance)
