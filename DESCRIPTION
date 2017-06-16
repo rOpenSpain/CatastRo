@@ -5,5 +5,3 @@ Version: 0.1.0
 Author: Angel Delgado
 Depends: httr, XML
 URL: https://github.com/DelgadoPanadero/CatastRo
-LazyLoad: yes
-LazyData: yes
