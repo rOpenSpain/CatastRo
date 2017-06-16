@@ -1,0 +1,6 @@
+Package: CatastRo
+Type: Package
+Title: Interface to the API Sede electrónica del catastro
+Version: 0.1.0
+Author: Angel Delgado
+URL: https://github.com/DelgadoPanadero/CatastRo
