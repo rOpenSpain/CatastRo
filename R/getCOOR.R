@@ -1,7 +1,7 @@
 library(XML)
 library(httr)
 
-getCOOR <- function(RC, SRS, Provincia = '',Municipio = ''){
+getCOOR <- function(RC, SRS= '', Provincia = '',Municipio = ''){
   
   ua <- user_agent(paste0("castastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
   url <- 'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC'
