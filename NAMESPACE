@@ -1,5 +1,5 @@
-import(httr)
-import(XML)
+import("httr")
+import("XML")
 
 export(getCOOR)
 export(getRC)
