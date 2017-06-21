@@ -15,7 +15,7 @@ getRC_distance <- function(X,Y,SRS = 'EPSG:4230'){
   else{
     pattern <- '\\d{5}.*{9}'
     string <- res$coordenadas_distancias$coordd$lpcd$pcd$ldt
-    res <- list(adress = paste(gsub(pattern = pattern,replacement = '', x = as.vector(strsplit(string, split = ' '))[[1]]),collapse = ' '),
+    res <- list(address = paste(gsub(pattern = pattern,replacement = '', x = as.vector(strsplit(string, split = ' '))[[1]]),collapse = ' '),
                 RC = grep(pattern = pattern, x = as.vector(strsplit(string, split = ' '))[[1]],value = T))
   }
   res
