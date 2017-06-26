@@ -16,7 +16,7 @@ getRC(X, Y, SRS)
 }
 
 \value{
-A string with the direction of the state.
+A list with the the direction of the state and the cadastral reference.
 }
 \references{
 \url{http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR}
