@@ -10,13 +10,13 @@ getRC(X, Y, SRS)
 %- maybe also 'usage' for other objects documented here. 
 \arguments{
   \item{X}{Coordinate X.}
-  \item{Y}{Coortinate Y}
+  \item{Y}{Coortinate Y.}
   \item{SRS}{The reference system used for the coordinates. A list of all the allowed references system is given in References.}
 
 }
 
 \value{
-A string with the direction of the state
+A string with the direction of the state.
 }
 \references{
 \url{http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR}
