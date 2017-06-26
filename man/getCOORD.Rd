@@ -11,8 +11,8 @@ getCOOR(RC, SRS, Province, Municipality)
 \arguments{
   \item{RC}{Cadastral reference of the state.}
   \item{SRS}{The reference system desired for the coordinates, if it is missed, the returned coordinates will be given in the system reference in which it was stored. A list of all the possible references system is given in References.}
-  \item{Provincia}{Province of the state. It is not case sensitive}
-  \item{Municipio}{Municipality of the state. It is not case sensitive}
+  \item{Provincia}{Province of the state. It is not case sensitive.}
+  \item{Municipio}{Municipality of the state. It is not case sensitive.}
 }
 
 \value{
