@@ -1,6 +1,1 @@
 language: R
-
-r_packages:
-    -testthat
-    
-script: test/testthat.R
