@@ -2,4 +2,4 @@ language: R
 
 
     
-script: test/testthat.R
+script: testthat.R
