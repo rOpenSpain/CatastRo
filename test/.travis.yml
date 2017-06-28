@@ -1,5 +1,2 @@
-language: R
-
-
-    
-script: testthat.R
+ language: R
+ cache: packages
