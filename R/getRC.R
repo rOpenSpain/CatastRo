@@ -1,6 +1,3 @@
-library(httr)
-library(XML)
-
 getRC <- function(X,Y,SRS = 'EPSG:4230'){
   
   ua <- user_agent(paste0("castastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
