@@ -1,6 +1,3 @@
-library(XML)
-library(httr)
-
 getCOOR <- function(RC, SRS= '', Provincia = '',Municipio = ''){
   
   ua <- user_agent(paste0("castastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
