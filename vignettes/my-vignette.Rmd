@@ -1,0 +1,75 @@
+---
+title: CatastRo Package
+author: Ángel Delgado Panadero
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+#output: pdf_document
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+R package to query [Sede electrónica del Catastro](http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx) API. 
+The API is documented [here](http://www.catastro.meh.es/ayuda/lang/castellano/servicios_web.htm).
+
+## Installation
+
+```
+library(devtools)
+install_github("DelgadoPanadero/CatastRo")
+```
+```{r, include=FALSE}
+library(devtools)
+install_github("DelgadoPanadero/CatastRo")
+library(CatastRo)
+```
+
+## Query a coordinate
+
+The function `getRC` recives the coordinates *X* and *Y* and the spatial reference used. The return is a list with the casdastral reference of the property in that point, as well as its direction (town street and number).
+
+
+```{r}
+reference <- getRC(X = -3.45624183836806, Y = 38.6196566583596,SRS = 'EPSG:4230')
+print(reference)
+``` 
+
+If the *SRS* is not given, the spatial reference by default is EPSG:4230.
+
+```{r}
+reference <- getRC(X = -3.45624183836806, Y = 38.6196566583596)
+print(reference)
+``` 
+
+It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates *X* and *Y* throught the function `getRC_distance`.
+
+```{r}
+references <- getRC_distance(X = -3.45624183836806, Y = 38.6196566583596, SRS = 'EPSG:4230')
+print(references)
+``` 
+
+## Query CPMRC 
+
+The opposite query is possible as well. Given to the function `getCOOR` a cadastral reference (*RC*), the province (*Provincia*) and the  town (*Municipio*), `getCOOR` returns its coordinates *X* and *Y* in a particular *SRS* besides the direction (town, street and number).
+
+```{r}
+direction <- getCOOR(RC = '13077A01800039', SRS = 'EPSG:4230',Provincia = 'CIUDAD REAL', Municipio = 'SANTA CRUZ DE MUDELA')
+print(direction)
+```
+
+The argument SRS could be missed, in that case, `getCOOR()` returns the coordinates with which was stored.
+
+```{r}
+direction <- getCOOR(RC = '13077A01800039', Provincia = 'CIUDAD REAL', Municipio = 'SANTA CRUZ DE MUDELA')
+print(direction)
+```
+
+Neither the *Provincia* nor *Municipio* are required to be passed to the function, unless *Muncipio* are given, in that case the  argument *Provincia* is needed. The function `getCOOR` will throw an error if this happends.
+
+```{r error=TRUE}
+direction <- getCOOR(RC = '13077A01800039',  Municipio = 'SANTA CRUZ DE MUDELA')
+direction <- getCOOR(RC = '13077A01800039')
+print(direction)
+```
