@@ -1,1 +1,4 @@
- language: R
+language: R
+ 
+install:
+  - ./travis-tool.sh install_r testthat
