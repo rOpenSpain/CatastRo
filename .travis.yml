@@ -1,4 +1,4 @@
 language: R
  
 install:
-  - ./travis-tool.sh install_r testthat
+- ./travis-tool.sh install_github hadley/testthat
