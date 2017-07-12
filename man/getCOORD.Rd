@@ -32,4 +32,4 @@ coordinates <- getCOOR('13077A01800039','EPSG:4230','CIUDAD REAL', 'SANTA CRUZ D
 print(coordinates)    
 
 # only the cadastral reference
-coordinates <- getCOOR('13077A01800039')
+coordinates <- getCOOR('9872023VH5797S')
