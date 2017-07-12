@@ -5,9 +5,9 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 #output: pdf_document
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Integrating TCGA Data}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Vignette Title}
   %\VignetteEncoding{UTF-8}
 ---
 
