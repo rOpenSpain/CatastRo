@@ -33,3 +33,4 @@ print(coordinates)
 
 # only the cadastral reference
 coordinates <- getCOOR('9872023VH5797S')
+print(coordinates) 
