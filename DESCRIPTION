@@ -7,5 +7,7 @@ Author: Angel Delgado
 Description: Access to the API Sede electronica del catastro for quering cadastral references and adresses of properties.
 Depends: httr, XML
 License: GPL-2
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
 URL: https://github.com/DelgadoPanadero/CatastRo
 LazyData: true
