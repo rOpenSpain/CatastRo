@@ -1,6 +1,6 @@
 ---
 title: CatastRo Package
-author: Ángel Delgado Panadero
+author: Angel Delgado
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
