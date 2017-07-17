@@ -1,9 +1,9 @@
-getRC_distance <- function(X,Y,SRS = 'EPSG:4230'){
+getRC_distance <- function(lat,lon,SRS = 'EPSG:4230'){
   
   ua <- user_agent(paste0("castastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
   url <- 'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR_Distancia'
   
-  query.parms <- list(Coordenada_X=X,Coordenada_Y=Y,SRS=SRS)
+  query.parms <- list(Coordenada_X=lat,Coordenada_Y=lon,SRS=SRS)
   res <- GET(url, query = query.parms, ua)
   stop_for_status(res)
   res <- xmlToList(xmlParse(res))
