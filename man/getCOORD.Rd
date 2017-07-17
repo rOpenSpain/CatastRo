@@ -5,7 +5,7 @@
 
 \description{Returns the coordinate of a state in a reference system, given the Province, Municipality and Cadastral Reference of the state.}
 \usage{
-getCOOR(RC, SRS, Province, Municipality)
+getCOOR(RC, SRS='', Province='', Municipality='')
 }
 %- maybe also 'usage' for other objects documented here. 
 \arguments{
