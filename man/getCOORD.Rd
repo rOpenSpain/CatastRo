@@ -1,7 +1,7 @@
 \name{getCOOR}
 \alias{getCOOR}
 
-\title{Interface to query Consulta_CPMRC from Sede electrónica del catastro API}
+\title{Interface to query Consulta_CPMRC from Sede electronica del catastro API}
 
 \description{Returns the coordinate of a state in a reference system, given the Province, Municipality and Cadastral Reference of the state.}
 \usage{
