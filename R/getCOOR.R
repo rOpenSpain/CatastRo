@@ -1,10 +1,10 @@
-getCOOR <- function(RC, SRS= '', Provincia = '',Municipio = ''){
+getCOOR <- function(RC, SRS= '', Province = '',Municipality = ''){
   
   ua <- user_agent(paste0("castastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
   url <- 'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC'
 
-  query.parms <- list(Provincia=Provincia,
-                      Municipio=Municipio,
+  query.parms <- list(Provincia=Province,
+                      Municipio=Municipality,
                       SRS=SRS,
                       RC=RC)
   res <- GET(url, query = query.parms, ua)
