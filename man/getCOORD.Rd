@@ -22,7 +22,7 @@ A list consisting of two  numeric values with the coordinates (X,Y) and the refe
 \url{http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC}
 }
 \author{
-Ángel Delgado Panadero.
+Angel Delgado Panadero.
 }
 
 \examples{
