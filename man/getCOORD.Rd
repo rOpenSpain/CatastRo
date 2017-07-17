@@ -16,7 +16,7 @@ getCOOR(RC, SRS, Province, Municipality)
 }
 
 \value{
-A list consisting of two  numeric values with the coordinates (X,Y) and the reference system in which they are expressed.
+A list consisting of two  numeric values with the coordinates (lat,lon) and the reference system in which they are expressed.
 }
 \references{
 \url{http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC}
