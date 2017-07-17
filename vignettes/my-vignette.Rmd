@@ -27,48 +27,48 @@ library(CatastRo)
 
 ## Query a coordinate
 
-The function `getRC` recives the coordinates *X* and *Y* and the spatial reference used. The return is a list with the casdastral reference of the property in that point, as well as its direction (town street and number).
+The function `getRC` recives the coordinates *lat* and *lon* and the spatial reference used. The return is a list with the casdastral reference of the property in that point, as well as its direction (town street and number).
 
 
 ```{r}
-reference <- getRC(X = -3.45624183836806, Y = 38.6196566583596,SRS = 'EPSG:4230')
+reference <- getRC(lat = -3.45624183836806, lon = 38.6196566583596,SRS = 'EPSG:4230')
 print(reference)
 ``` 
 
 If the *SRS* is not given, the spatial reference by default is EPSG:4230.
 
 ```{r}
-reference <- getRC(X = -3.45624183836806, Y = 38.6196566583596)
+reference <- getRC(lat = -3.45624183836806, lon = 38.6196566583596)
 print(reference)
 ``` 
 
-It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates *X* and *Y* throught the function `getRC_distance`.
+It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates *lat* and *lon* throught the function `getRC_distance`.
 
 ```{r}
-references <- getRC_distance(X = -3.45624183836806, Y = 38.6196566583596, SRS = 'EPSG:4230')
+references <- getRC_distance(lat = -3.45624183836806, lon = 38.6196566583596, SRS = 'EPSG:4230')
 print(references)
 ``` 
 
 ## Query CPMRC 
 
-The opposite query is possible as well. Given to the function `getCOOR` a cadastral reference (*RC*), the province (*Provincia*) and the  town (*Municipio*), `getCOOR` returns its coordinates *X* and *Y* in a particular *SRS* besides the direction (town, street and number).
+The opposite query is possible as well. Given to the function `getCOOR` a cadastral reference (*RC*), the province (*Province*) and the  town (*Municipality*), `getCOOR` returns its coordinates *lat* and *lon* in a particular *SRS* besides the direction (town, street and number).
 
 ```{r}
-direction <- getCOOR(RC = '13077A01800039', SRS = 'EPSG:4230',Provincia = 'CIUDAD REAL', Municipio = 'SANTA CRUZ DE MUDELA')
+direction <- getCOOR(RC = '13077A01800039', SRS = 'EPSG:4230',Province = 'CIUDAD REAL', Municipality = 'SANTA CRUZ DE MUDELA')
 print(direction)
 ```
 
 The argument SRS could be missed, in that case, `getCOOR()` returns the coordinates with which was stored.
 
 ```{r}
-direction <- getCOOR(RC = '13077A01800039', Provincia = 'CIUDAD REAL', Municipio = 'SANTA CRUZ DE MUDELA')
+direction <- getCOOR(RC = '13077A01800039', Province = 'CIUDAD REAL', Municipality = 'SANTA CRUZ DE MUDELA')
 print(direction)
 ```
 
-Neither the *Provincia* nor *Municipio* are required to be passed to the function, unless *Muncipio* are given, in that case the  argument *Provincia* is needed. The function `getCOOR` will throw an error if this happends.
+Neither the *Province* nor *Municipality* are required to be passed to the function, unless *Municipality* are given, in that case the  argument *Province* is needed. The function `getCOOR` will throw an error if this happends.
 
 ```{r error=TRUE}
-direction <- getCOOR(RC = '13077A01800039',  Municipio = 'SANTA CRUZ DE MUDELA')
+direction <- getCOOR(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDELA')
 direction <- getCOOR(RC = '13077A01800039')
 print(direction)
 ```
