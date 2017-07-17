@@ -1,7 +1,7 @@
 \name{getRC}
 \alias{getRC}
 
-\title{Interface to query Consulta_RCCOOR from Sede electrónica del catastro API}
+\title{Interface to query Consulta_RCCOOR from Sede electronica del catastro API}
 
 \description{Returns the Cadastral Reference of the state as well as the direction (municipality, street and number) given its coordinates and the reference system.}
 \usage{
