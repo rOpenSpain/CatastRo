@@ -7,7 +7,7 @@
 \usage{
 getRC(lat, lon, SRS)
 }
-%- maybe also 'usage' for other objects documented here. 
+
 \arguments{
   \item{lat}{Latitude coordinate.}
   \item{lon}{Longitude coortinate.}
