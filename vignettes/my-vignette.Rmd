@@ -7,6 +7,7 @@ vignette: >
   %\VignetteIndexEntry{CatastRo Package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::knitr}
 ---
 
 
