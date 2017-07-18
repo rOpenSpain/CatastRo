@@ -3,7 +3,7 @@
 
 \title{Interface to query Consulta_RCCOOR from Sede electronica del catastro API}
 
-\description{Returns the Cadastral Reference of the state as well as the direction (municipality, street and number) given its coordinates and the reference system.}
+\description{Returns the Cadastral Reference of the state as well as the address (municipality, street and number) given its coordinates and the reference system.}
 \usage{
 getRC(lat, lon, SRS)
 }
