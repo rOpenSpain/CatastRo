@@ -1,4 +1,4 @@
 language: R
  
-install:
-- ./travis-tool.sh install_github DelgadoPanadero/CatastRo
+script:
+   -test/testthat.R
