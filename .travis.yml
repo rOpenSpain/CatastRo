@@ -1,8 +1,8 @@
 language: R
 
 before_install:
--testthat
--catastro
+- ./travis-tool.sh install_github hadley/testthat
+- ./travis-tool.sh install_github DelgadoPanadero/CatastRo
 
 script:
 - R CMD build .
