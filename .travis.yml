@@ -3,3 +3,4 @@ language: R
 script:
 - R CMD build .
 - R CMD check *tar.gz
+- Rscript test/testthat.R
