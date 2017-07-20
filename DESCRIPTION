@@ -5,7 +5,7 @@ Version: 0.1.0
 Authors@R: person("Angel", "Delgado Panadero", email="delgadopanadero@gmail.com", role=c('cre', 'aut'))
 Author: Angel Delgado
 Description: Access to the API Sede electronica del catastro for quering cadastral references and adresses of properties.
-Depends: httr, XML, testthat
+Depends: httr, XML
 License: GPL-2
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
