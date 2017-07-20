@@ -1,8 +1,5 @@
 language: R
 
-r_github_packages:
--testthat
--CatastRo
 
 script:
 - R CMD build .
