@@ -1,9 +1,5 @@
 language: R
 
-
-install:
-- ./travis-tool.sh install_github hadley/testthat
-
 script:
 - R CMD build .
 - R CMD check *tar.gz
