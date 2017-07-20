@@ -1,5 +1,9 @@
 language: R
- 
+
+before_install:
+-testthat
+-catastro
+
 script:
 - R CMD build .
 - R CMD check *tar.gz
