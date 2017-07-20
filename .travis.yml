@@ -1,7 +1,6 @@
 language: R
 
-install:
-- ./travis-tool.sh install_github hadley/devtools
+
 - ./travis-tool.sh install_github DelgadoPanadero/CatastRo
 - ./travis-tool.sh install_github hadley/testthat
 
