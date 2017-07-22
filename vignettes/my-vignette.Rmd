@@ -25,8 +25,8 @@ library(devtools)
 install_github("DelgadoPanadero/CatastRo")
 library(CatastRo)
 ```
-
-## Query a coordinate
+## Functionalities
+### Query a coordinate
 
 The function `getRC` recives the coordinates *lat* and *lon* and the spatial reference (SRS) used to express them. The return is a list with the casdastral reference of the property in that point, as well as its address (town street and number).
 
@@ -50,7 +50,7 @@ references <- getRC_distance(lat = -3.45624183836806, lon = 38.6196566583596, SR
 print(references)
 ``` 
 
-## Query CPMRC 
+### Query CPMRC 
 
 The opposite query is possible as well. Given to the function `getCOOR` a cadastral reference (*RC*), the province (*Province*) and the  town (*Municipality*), `getCOOR` returns its coordinates *lat* and *lon* in a particular *SRS* besides the direction (town, street and number).
 
@@ -76,3 +76,5 @@ direction <- getCOOR(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDEL
 direction <- getCOOR(RC = '13077A01800039')
 print(direction)
 ```
+
+## Integrated tests
