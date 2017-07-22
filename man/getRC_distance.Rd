@@ -1,7 +1,7 @@
 \name{getRC_distance}
 \alias{getRC_distance}
 
-\title{Interface to query Consulta_RCCOOR_Distancia from Sede electronica del catastro API}
+\title{Interface to query Consulta_RCCOOR_Distancia}
 
 \description{Returns the Cadastral Reference of the state as well as the direction (municipality, street and number) given its coordinates and the reference system. In case that there is not any cadastral reference in the exact point, the function returns all the cadastral references in a square 50 meters long centered in the current point.}
 \usage{
