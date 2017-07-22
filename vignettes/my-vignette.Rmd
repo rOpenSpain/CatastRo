@@ -10,11 +10,12 @@ vignette: >
 ---
 
 
-R package to query [Sede electrónica del Catastro](http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx) API. 
-The API is documented [here](http://www.catastro.meh.es/ayuda/lang/castellano/servicios_web.htm).
+This R package is aimed to query  the information from the [Sede electrónica del Catastro](http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx) API directly through a R ide. 
+The documantation of this API can be found [here](http://www.catastro.meh.es/ayuda/lang/castellano/servicios_web.htm).
 
 ## Installation
 
+The package has been uploaded to github therefore, it can be installed using the *devtools* library.
 ```
 library(devtools)
 install_github("DelgadoPanadero/CatastRo")
