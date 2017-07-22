@@ -2,7 +2,7 @@
 title: "CatastRo Package"
 author: "Angel Delgado"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: pdf_document
 vignette: >
   %\VignetteIndexEntry{CatastRo Package}
   %\VignetteEngine{knitr::rmarkdown}
