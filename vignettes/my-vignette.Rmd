@@ -15,7 +15,7 @@ The documantation of this API can be found [here](http://www.catastro.meh.es/ayu
 
 ## Installation
 
-The package has been uploaded to github therefore, it can be installed using the *devtools* library.
+The package has been uploaded to github therefore, it can be installed using the `devtools` library.
 ```
 library(devtools)
 install_github("DelgadoPanadero/CatastRo")
@@ -28,7 +28,7 @@ library(CatastRo)
 
 ## Query a coordinate
 
-The function `getRC` recives the coordinates *lat* and *lon* and the spatial reference used. The return is a list with the casdastral reference of the property in that point, as well as its direction (town street and number).
+The function `getRC` recives the coordinates *lat* and *lon* and the spatial reference (SRS) used to express them. The return is a list with the casdastral reference of the property in that point, as well as its address (town street and number).
 
 
 ```{r}
