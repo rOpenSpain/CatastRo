@@ -51,7 +51,9 @@ print(reference)
 It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates *lat* and *lon* throught the function `getRC_distance`.
 
 ```{r}
-references <- getRC_distance(lat = -3.45624183836806, lon = 38.6196566583596, SRS = 'EPSG:4230')
+references <- getRC_distance(lat = -3.45624183836806,
+                             lon = 38.6196566583596, 
+                             SRS = 'EPSG:4230')
 print(references)
 ``` 
 
@@ -70,7 +72,9 @@ print(direction)
 The argument SRS could be missed, in that case, `getCOOR()` returns the coordinates with which was stored.
 
 ```{r}
-direction <- getCOOR(RC = '13077A01800039', Province = 'CIUDAD REAL', Municipality = 'SANTA CRUZ DE MUDELA')
+direction <- getCOOR(RC = '13077A01800039', 
+                     Province = 'CIUDAD REAL', 
+                     Municipality = 'SANTA CRUZ DE MUDELA')
 print(direction)
 ```
 
