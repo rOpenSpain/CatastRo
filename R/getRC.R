@@ -1,6 +1,6 @@
 getRC <- function(lat,lon,SRS = 'EPSG:4230'){
   
-  ua <- user_agent(paste0("castastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
+  ua <- user_agent(paste0("CatastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
   url <- 'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR'
   
   query.parms <- list(Coordenada_X=lat,Coordenada_Y=lon,SRS=SRS)
