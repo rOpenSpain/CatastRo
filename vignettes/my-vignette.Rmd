@@ -111,3 +111,11 @@ Every test check an expected value. The test, are gathered in one script for `ge
 ### TravisCI
 
 Travis-CI is a continuous integration service that builds and tests projects that are hosted on GitHub. Apart from the test about the returns of the calls to the API, that have been mentioned, TravisCI take care to prove that the package pass `R CMD check`, which make a variety of diagnostic checks on directory structure, index and control files.
+
+```
+language: R
+
+script:
+- R CMD build .
+- R CMD check *tar.gz
+```
