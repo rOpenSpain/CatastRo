@@ -24,11 +24,8 @@ The documentation of this API can be found [here](http://www.catastro.meh.es/ayu
 ## Installation
 
 The package has been uploaded to github therefore, it can be installed using the `devtools` library.
-```
-library(devtools)
-install_github("DelgadoPanadero/CatastRo")
-```
-```{r, include=FALSE}
+
+```{r, message=FALSE}
 library(devtools)
 install_github("DelgadoPanadero/CatastRo")
 library(CatastRo)
