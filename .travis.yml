@@ -8,4 +8,4 @@ script:
 - R CMD check *tar.gz
 
 before_script:
-- head -n 100 test/testthat/out/*
+- head -n 100 test/testthat
