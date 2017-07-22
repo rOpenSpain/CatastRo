@@ -55,7 +55,10 @@ print(references)
 The opposite query is possible as well. Given to the function `getCOOR` a cadastral reference (*RC*), the province (*Province*) and the  town (*Municipality*), `getCOOR` returns its coordinates *lat* and *lon* in a particular *SRS* besides the direction (town, street and number).
 
 ```{r}
-direction <- getCOOR(RC = '13077A01800039', SRS = 'EPSG:4230',Province = 'CIUDAD REAL', Municipality = 'SANTA CRUZ DE MUDELA')
+direction <- getCOOR(RC = '13077A01800039', 
+                      SRS = 'EPSG:4230',
+                      Province = 'CIUDAD REAL', 
+                      Municipality = 'SANTA CRUZ DE MUDELA')
 print(direction)
 ```
 
