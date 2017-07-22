@@ -33,7 +33,7 @@ library(devtools)
 install_github("DelgadoPanadero/CatastRo")
 library(CatastRo)
 ```
-## Functionalities
+## Functions of the package
 ### Query a coordinate
 
 The function `getRC` recives the coordinates *lat* and *lon* and the spatial reference (SRS) used to express them. The return is a list with the casdastral reference of the property in that point, as well as its address (town street and number).
