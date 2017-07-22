@@ -13,7 +13,7 @@ vignette: >
 
 This R package is aimed to query  the information from the [Sede electrónica del Catastro](http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx) API directly through a R ide. 
 
-This Api is used to retrieve the spatial coordinates of a property, moreover it is not needed to be de owner for get the information, it is simply enough to know the casdrastral reference (RC) of the property and its address (in fact, it is only completely compulsory to know the RC, however, to ensure the query and avoid mistakes in the RC, the address can be pass to the query too).
+This API is used to retrieve the spatial coordinates of a property, moreover it is not needed to be de owner for get the information, it is simply enough to know the casdrastral reference (RC) of the property and its address (in fact, it is only completely compulsory to know the RC, however, to ensure the query and avoid mistakes in the RC, the address can be pass to the query too).
 
 Secondly, the API can be used to obtain a RC of a property, for this information, the API ask for the latitude and the latitude. Furthermore, it allows to choose the spacial reference (SRS) to express the coordinates between a list of them.
 
