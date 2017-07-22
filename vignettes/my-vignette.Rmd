@@ -97,4 +97,4 @@ Testthat is a R-package made by hadley with can be found in a public repository 
 
 ### TravisCI
 
-Travis-CI is a continuous integration service that builds and tests projects that are hosted on GitHub. Apart from the test about the returns of the calls to the API, that have been mentioned, TravisCI take care to prove that the package pass `R CMD check`, which means that the package has been built correctly.
+Travis-CI is a continuous integration service that builds and tests projects that are hosted on GitHub. Apart from the test about the returns of the calls to the API, that have been mentioned, TravisCI take care to prove that the package pass `R CMD check`, which make a variety of diagnostic checks on directory structure, index and control files.
