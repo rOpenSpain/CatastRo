@@ -85,16 +85,4 @@ direction <- getCOOR(RC = '13077A01800039')
 print(direction)
 ```
 
-## Integrated tests
 
-The package has been built with integrated test. which ensures to make it automatically check after every update made. The approach of these test are focus in two differents aims: Firstly, to assert that the package pass the `R CMD build` and the `R CMD check` tests automatically. Secondly, we test that the result of the call to the API it is as we expected, if it were not the case, we would go over the script of the functions to cast them to the new structure.
-
-This action leans in two technologies contained in the package, but they are not part of it.
-
-### Testthat
-
-Testthat is a R-package made by hadley with can be found in a public repository on GitHub as well as in CRAN. Testthat works with a hierarchical structure testing the results of the functions of the package.
-
-### TravisCI
-
-Travis-CI is a continuous integration service that builds and tests projects that are hosted on GitHub. Apart from the test about the returns of the calls to the API, that have been mentioned, TravisCI take care to prove that the package pass `R CMD check`, which make a variety of diagnostic checks on directory structure, index and control files.
