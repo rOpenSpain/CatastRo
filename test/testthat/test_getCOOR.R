@@ -16,6 +16,5 @@ test_that("giving only the cadastral reference", {
 })
 
 test_that("given Municipio, Provincia is needed", {
-  result <- getCOOR(RC = '13077A01800039',SRS = 'EPSG:4230', Municipality = 'SANTA CRUZ DE MUDELA')
-  expect_that(result, throws_error())
+  expect_that(getCOOR(RC = '13077A01800039',SRS = 'EPSG:4230', Municipality = 'SANTA CRUZ DE MUDELA'), throws_error())
 })
