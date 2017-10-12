@@ -27,7 +27,7 @@ Angel Delgado Panadero.
 
 \examples{
 
-direction <- getRC_distance(-3.45624183836806, 38.6196566583596)
+direction <- getRC_distance(38.6196566583596,-3.45624183836806)
 print(direction)    
 
 }
