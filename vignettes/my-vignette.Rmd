@@ -39,22 +39,22 @@ The function `getRC()` recives the coordinates (*lat* and *lon*) and the spatial
 
 
 ```{r}
-reference <- getRC(lat = -3.45624183836806, lon = 38.6196566583596,SRS = 'EPSG:4230')
+reference <- getRC(lat = 38.6196566583596, lon =  -3.45624183836806,SRS = 'EPSG:4230')
 print(reference)
 ``` 
 
 If the *SRS* is not given, the spatial reference by default is EPSG:4230.
 
 ```{r}
-reference <- getRC(lat = -3.45624183836806, lon = 38.6196566583596)
+reference <- getRC(lat =  38.6196566583596, lon =-3.45624183836806)
 print(reference)
 ``` 
 
 It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates *lat* and *lon* throught the function `getRC_distance()`.
 
 ```{r}
-references <- getRC_distance(lat = -3.45624183836806,
-                             lon = 38.6196566583596, 
+references <- getRC_distance(lat = 38.6196566583596,
+                             lon = -3.45624183836806, 
                              SRS = 'EPSG:4230')
 print(references)
 ``` 
