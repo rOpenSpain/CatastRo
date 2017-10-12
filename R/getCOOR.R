@@ -14,8 +14,8 @@ getCOOR <- function(RC, SRS= '', Province = '',Municipality = ''){
   
   if(is.null(res$lerr$err$des)){
     
-    res <- list('coord' = as.numeric(c(res$coordenadas$coord$geo$xcen,
-                                       res$coordenadas$coord$geo$ycen)),
+    res <- list('coord' = as.numeric(c(res$coordenadas$coord$geo$ycen,
+                                       res$coordenadas$coord$geo$xcen)),
                 'SRS'=res$coordenadas$coord$geo$srs)
   }
   
