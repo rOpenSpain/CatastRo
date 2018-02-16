@@ -1,14 +1,12 @@
 Package: CatastRo
 Type: Package
-Title: Interface to the API Sede electronica del catastro
+Title: Interface to the API 'Sede Electronica del Catastro'
 Version: 0.1.0
 Authors@R: person("Angel", "Delgado Panadero", email="delgadopanadero@gmail.com", role=c('cre', 'aut'))
-Author: Angel Delgado
 Description: Access to the API Sede electronica del catastro for quering cadastral references and adresses of properties.
 Depends: httr, XML
-Remotes: hadley/testthat, DelgadoPanadero/CatastRo
 License: GPL-2
-Suggests: knitr, rmarkdown
+Suggests: testthat, knitr, rmarkdown
 VignetteBuilder: knitr
 URL: https://github.com/DelgadoPanadero/CatastRo
 LazyData: true
