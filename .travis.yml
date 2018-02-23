@@ -4,5 +4,5 @@ cache: packages
 sudo: false
 
 script:
-- R CMD build .
-- R CMD check *tar.gz
+- R CMD build.
+
