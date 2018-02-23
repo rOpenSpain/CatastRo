@@ -9,7 +9,7 @@ The API is documented [here](http://www.catastro.meh.es/ayuda/lang/castellano/se
 
 ```
 library(devtools)
-install_github("DelgadoPanadero/CatastRo")
+install_github("rOpenSpain/CatastRo")
 ```
 
 ## Query a coordinate

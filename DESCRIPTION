@@ -8,5 +8,5 @@ Depends: httr, XML
 License: GPL-2
 Suggests: testthat, knitr, rmarkdown
 VignetteBuilder: knitr
-URL: https://github.com/DelgadoPanadero/CatastRo
+URL: https://github.com/rOpenSpain/CatastRo
 LazyData: true
