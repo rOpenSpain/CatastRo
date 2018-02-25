@@ -25,11 +25,14 @@ The documentation of this API can be found [here](http://www.catastro.meh.es/ayu
 
 The package has been uploaded to github therefore, it can be installed using the `devtools` library.
 
-```{r, message=FALSE}
+```{r, message=FALSE, eval=FALSE}
 library(devtools)
 install_github("DelgadoPanadero/CatastRo")
+```
+```{r, message=FALSE}
 library(CatastRo)
 ```
+
 The CatastRo package depends on `httr` and `XLM` packages. The first one is used to get access to the API through a GET method and the second for parsing the return to the call to a list.
 
 ## Functions of the package
