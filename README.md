@@ -1,6 +1,6 @@
 # CatastRo
 
-[![Build Status](https://travis-ci.org/DelgadoPanadero/CatastRo.svg?branch=master)](https://travis-ci.org/DelgadoPanadero/CatastRo)
+[![Build Status](https://travis-ci.org/rOpenSpain/CatastRo.svg?branch=master)](https://travis-ci.org/rOpenSpain/CatastRo)
 
 R package to query [Sede electrónica del Catastro](http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx) API. 
 The API is documented [here](http://www.catastro.meh.es/ayuda/lang/castellano/servicios_web.htm).
