@@ -27,7 +27,7 @@ The package has been uploaded to github therefore, it can be installed using the
 
 ```{r, message=FALSE, eval=FALSE}
 library(devtools)
-install_github("DelgadoPanadero/CatastRo")
+install_github("rOpenSpain/CatastRo")
 ```
 ```{r, message=FALSE}
 library(CatastRo)
@@ -84,8 +84,8 @@ print(direction)
 Neither the *Province* nor *Municipality* are required to be passed to the function, unless the argument *Municipality* is not null, in that case the  argument *Province* is needed to be passed. If it is passed a value to the *Province* argument while the *Municipality* argument is null, the function `rc_coor()` will throw an error.
 
 ```{r error=TRUE}
-direction <- getCOOR(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDELA')
-direction <- getCOOR(RC = '13077A01800039')
+direction <- rc_coor(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDELA')
+direction <- rc_coor(RC = '13077A01800039')
 print(direction)
 ```
 
@@ -111,7 +111,7 @@ test_that("given Municipio, Provincia is needed", {
 })
 ```
 
-Every test check an expected value. The test, are gathered in one script for `rc_coo()`, `get_rc()` and `near_rc()` separatly. The execution of all  the tasks is made by `testthat.R` and all is contained in the directory [./tests](https://github.com/rOpenSpain/CatastRo/tree/master/tests).
+Every test check an expected value. The test, are gathered in one script for `rc_coor()`, `get_rc()` and `near_rc()` separatly. The execution of all  the tasks is made by `testthat.R` and all is contained in the directory [./tests](https://github.com/rOpenSpain/CatastRo/tree/master/tests).
 
 ### TravisCI
 
