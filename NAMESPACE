@@ -1,6 +1,6 @@
 import("httr")
 import("XML")
 
-export(getCOOR)
-export(getRC)
-export(getRC_distance)
+export(rc_coor)
+export(near_rc)
+export(get_rc)
