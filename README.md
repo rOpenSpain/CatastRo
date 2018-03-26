@@ -14,29 +14,29 @@ install_github("rOpenSpain/CatastRo")
 
 ## Query a coordinate
 
-The function `getRC` recives the coordinates (lat,lon) and the spatial reference used. The return is the casdastral reference of the property in that point, as well as the direction (town street and number).
+The function `get_rc` receives the coordinates (lat,lon) and the spatial reference used. The return is the casdastral reference of the property in that spatial point, as well as the direction (town street and number).
 
 
 ```
-reference <- getRC(lat,lon,SRS = EPSG:4230)
+reference <- get_rc(lat, lon, SRS)
 print(reference)
 ``` 
 
-It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates (lat,lon) throught the function `getRC_distance`.
+It can be requested to get all the cadastral references in a square of 50 meters side centered in the coordinates (lat,lon) throught the function `near_rc`.
 
 ```
-references <- getRC_distance(lat,lon,SRS = EPSG:4230)
+references <- near_rc(lat, lon, SRS)
 print(references)
 ``` 
 
 ## Query CPMRC 
 
-It is possible, as well, the opposite. Given to the function `getCOOR` a cadastral reference, `getCOOR` returns its coordinates (X,Y) in a particular SRS moreover the direction (town, street and number).
+It is possible, as well, the opposite. Given to the function `rc_coor` a cadastral reference, `rc_coor` returns its coordinates (lat,lon) in a particular SRS moreover the direction (town, street and number).
 
 ```
-direction <- getCOOR(CadastralReference, SRS,  Province, Municipality)
+direction <- getCOOR(Cadastral_Reference, SRS,  Province, Municipality)
 
-# The argument SRS could be missed, in that case, getCOOR() returns the coordinates with which was stored
+# The argument SRS could be missed, in that case, `rc_coor` returns the coordinates with which the catastral referenced was registered.
 
 print(direction)
 ```
