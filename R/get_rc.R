@@ -24,10 +24,10 @@ get_rc_srs <- function(lat,lon,SRS){
     RC <- paste0(res$coordenadas$coord$pc$pc1,res$coordenadas$coord$pc$pc2)
     
     
-    res <- c(address = address, RC = RC, SRS  = SRS)
+    res <- data.frame(address = address, RC = RC, SRS  = SRS,stringsAsFactors = F)
   }
   
-  else{res <- NA}
+  else{res <- data.frame(address = NA, RC = NA, SRS  = NA, stringsAsFactors = F)}
   
   return(res)
 }
@@ -47,6 +47,7 @@ get_rc <- function(lat,lon,SRS = NA){
   
   if (SRS %in% coordinates){
     res <- get_rc_srs(lat,lon,SRS)
+    res <- as.data.frame(res)
   }
   
   
@@ -54,8 +55,13 @@ get_rc <- function(lat,lon,SRS = NA){
   
   else{
     res <- lapply(coordinates, function(x){get_rc_srs(lat,lon,x)})
-    res <- data.frame(do.call(rbind,res))
+    res <- data.frame(do.call(rbind,res),stringsAsFactors = F)
     res <- res[!(is.na(res$address) & is.na(res$RC)),]
+    
+    if (nrow(res)==0){
+      res <- data.frame(address = NA, RC = NA, SRS  = NA, stringsAsFactors = F)
+    }
+
   }
   
   return(res)
