@@ -1,4 +1,4 @@
-rc_coor <- function(RC, SRS= '', Province = '',Municipality = ''){
+get_coor <- function(RC, SRS= '', Province = '',Municipality = ''){
   
   
   # PARAMETERS TO THE QUERY  
@@ -22,6 +22,14 @@ rc_coor <- function(RC, SRS= '', Province = '',Municipality = ''){
     
     res <- list('coord' = as.numeric(c(lat,lon)), 'SRS' = SRS)
   }
+  
+  
+  else if(res$lerr$err$des == "LA PROVINCIA ES OBLIGATORIA"){
+    
+    stop("LA PROVINCIA ES OBLIGATORIA")
+    
+  }
+  
   
   else{res <- NA}
   
