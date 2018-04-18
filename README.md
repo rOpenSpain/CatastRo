@@ -31,12 +31,12 @@ print(references)
 
 ## Query CPMRC 
 
-It is possible, as well, the opposite. Given to the function `rc_coor` a cadastral reference, `rc_coor` returns its coordinates (lat,lon) in a particular SRS moreover the direction (town, street and number).
+It is possible, as well, the opposite. Given to the function `get_coor` a cadastral reference, `get_coor` returns its coordinates (lat,lon) in a particular SRS moreover the direction (town, street and number).
 
 ```
-direction <- getCOOR(Cadastral_Reference, SRS,  Province, Municipality)
+direction <- get_coor(Cadastral_Reference, SRS,  Province, Municipality)
 
-# The argument SRS could be missed, in that case, `rc_coor` returns the coordinates with which the catastral referenced was registered.
+# The argument SRS could be missed, in that case, `get_coor` returns the coordinates with which the catastral referenced was registered.
 
 print(direction)
 ```
