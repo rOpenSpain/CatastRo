@@ -1,6 +1,6 @@
 import("httr")
 import("XML")
 
-export(rc_coor)
+export(get_coor)
 export(near_rc)
 export(get_rc)
