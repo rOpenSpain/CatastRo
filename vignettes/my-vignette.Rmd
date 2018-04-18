@@ -62,30 +62,30 @@ print(references)
 
 ### Query CPMRC 
 
-The opposite query is possible as well. Being given to the function `rc_coor()` a cadastral reference (*RC*), the province (*Province*) and the  town (*Municipality*), `rc_coor()` returns its coordinates *lat* and *lon* in a particular *SRS* besides the direction (town, street and number).
+The opposite query is possible as well. Being given to the function `get_coor()` a cadastral reference (*RC*), the province (*Province*) and the  town (*Municipality*), `get_coor` returns its coordinates *lat* and *lon* in a particular *SRS* besides the direction (town, street and number).
 
 ```{r}
-direction <- rc_coor(RC = '13077A01800039', 
+direction <- get_coor(RC = '13077A01800039', 
                       SRS = 'EPSG:4230',
                       Province = 'CIUDAD REAL', 
                       Municipality = 'SANTA CRUZ DE MUDELA')
 print(direction)
 ```
 
-The argument *SRS* could be missed, in that case, `rc_coor` returns the coordinates with which was stored.
+The argument *SRS* could be missed, in that case, `get_coor` returns the coordinates with which was stored.
 
 ```{r}
-direction <- rc_coor(RC = '13077A01800039', 
+direction <- get_coor(RC = '13077A01800039', 
                      Province = 'CIUDAD REAL', 
                      Municipality = 'SANTA CRUZ DE MUDELA')
 print(direction)
 ```
 
-Neither the *Province* nor *Municipality* are required to be passed to the function, unless the argument *Municipality* is not null, in that case the  argument *Province* is needed to be passed. If it is passed a value to the *Province* argument while the *Municipality* argument is null, the function `rc_coor()` will throw an error.
+Neither the *Province* nor *Municipality* are required to be passed to the function, unless the argument *Municipality* is not null, in that case the  argument *Province* is needed to be passed. If it is passed a value to the *Province* argument while the *Municipality* argument is null, the function `get_coor()` will throw an error.
 
 ```{r error=TRUE}
-direction <- rc_coor(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDELA')
-direction <- rc_coor(RC = '13077A01800039')
+direction <- get_coor(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDELA')
+direction <- get_coor(RC = '13077A01800039')
 print(direction)
 ```
 
@@ -101,17 +101,17 @@ Testthat is a R-package made by Hadley which can be found in a public repository
 
 ```
 test_that("giving only the cadastral reference", {
-  result <- rc_coor('9872023VH5797S')
+  result <- get_coor('9872023VH5797S')
   expect_that((is.numeric(result$coord) & is.character(result$SRS)), is_true())
 })
 
 test_that("given Municipio, Provincia is needed", {
-  result <- rc_coor(RC = '13077A01800039',SRS = 'EPSG:4230', Municipio = 'SANTA CRUZ DE MUDELA')
+  result <- get_coor(RC = '13077A01800039',SRS = 'EPSG:4230', Municipio = 'SANTA CRUZ DE MUDELA')
   expect_that(result, throws_error())
 })
 ```
 
-Every test check an expected value. The test, are gathered in one script for `rc_coor()`, `get_rc()` and `near_rc()` separatly. The execution of all  the tasks is made by `testthat.R` and all is contained in the directory [./tests](https://github.com/rOpenSpain/CatastRo/tree/master/tests).
+Every test check an expected value. The test, are gathered in one script for `get_coor()`, `get_rc()` and `near_rc()` separatly. The execution of all  the tasks is made by `testthat.R` and all is contained in the directory [./tests](https://github.com/rOpenSpain/CatastRo/tree/master/tests).
 
 ### TravisCI
 
