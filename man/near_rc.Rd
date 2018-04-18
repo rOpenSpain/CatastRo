@@ -5,7 +5,7 @@
 
 \description{Returns the Cadastral Reference of the state as well as the direction (municipality, street and number) given its coordinates and the reference system. In case that there is not any cadastral reference in the exact point, the function returns all the cadastral references in a square 50 meters long centered in the current point.}
 \usage{
-getRC_distance(lat, lon, SRS)
+near_rc(lat, lon, SRS)
 }
 %- maybe also 'usage' for other objects documented here. 
 \arguments{
@@ -27,7 +27,7 @@ Angel Delgado Panadero.
 
 \examples{
 
-direction <- getRC_distance(40.96002, -5.663408)
+direction <- near_rc(40.96002, -5.663408)
 print(direction)    
 
 }
