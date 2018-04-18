@@ -1,11 +1,11 @@
-\name{rc_coor}
-\alias{rc_coor}
+\name{get_coor}
+\alias{get_coor}
 
 \title{Interface to query Consulta_CPMRC}
 
 \description{Returns the coordinate of a state in a reference system, given the Province, Municipality and Cadastral Reference of the state.}
 \usage{
-rc_coor(RC, SRS='', Province='', Municipality='')
+get_coor(RC, SRS='', Province='', Municipality='')
 }
 %- maybe also 'usage' for other objects documented here. 
 \arguments{
@@ -28,9 +28,9 @@ Angel Delgado Panadero.
 \examples{
 
 # using all the arguments
-coordinates <- rc_coor('13077A01800039','EPSG:4230','CIUDAD REAL', 'SANTA CRUZ DE MUDELA')
+coordinates <- get_coor('13077A01800039','EPSG:4230','CIUDAD REAL', 'SANTA CRUZ DE MUDELA')
 print(coordinates)    
 
 # only the cadastral reference
-coordinates <- rc_coor('9872023VH5797S')
+coordinates <- get_coor('9872023VH5797S')
 print(coordinates) }
