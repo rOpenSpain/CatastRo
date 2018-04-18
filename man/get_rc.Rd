@@ -5,7 +5,7 @@
 
 \description{Returns the Cadastral Reference of the state as well as the address (municipality, street and number) being given its coordinates and the reference system. If the SRS is not passed as an argument, then the function will try a get request for each available reference system and it will return all no null responses.}
 \usage{
-getRC(lat, lon, SRS)
+get_rc(lat, lon, SRS)
 }
 %- maybe also 'usage' for other objects documented here. 
 \arguments{
@@ -27,10 +27,10 @@ Angel Delgado Panadero.
 
 \examples{
 
-direction <- getRC(38.6196566583596,-3.45624183836806, 'EPSG:4230')
+direction <- get_rc(38.6196566583596,-3.45624183836806, 'EPSG:4230')
 print(direction)    
 
 
-directions <- getRC(38.6196566583596,-3.45624183836806)
+directions <- get_rc(38.6196566583596,-3.45624183836806)
 print(directions) 
 }
