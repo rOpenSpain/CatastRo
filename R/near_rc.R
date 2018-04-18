@@ -1,4 +1,4 @@
-near_rc_srs <- function(lat,lon,SRS = 'EPSG:4230'){
+near_rc_srs <- function(lat,lon,SRS){
 
   # PARAMETERS TO THE QUERY  
   ua <- user_agent(paste0("CatastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
@@ -17,21 +17,28 @@ near_rc_srs <- function(lat,lon,SRS = 'EPSG:4230'){
   # TEXT MINING
   if(is.null(res$coordenadas_distancias$coordd$lpcd)){
     
-    res <- data.frame(address = NA, RC = NA, SRS  = NA)
+    # If the aren´t any cadastral register neither in the coordeinates nor the nearby area
     
-  }
+    res <- data.frame(address = NA, RC = NA, SRS  = NA, stringsAsFactors = F)
     
+  } 
     
   else if (!is.null(res$coordenadas_distancias$coordd$lpcd) && distancia == '0'){
+    
+    # if the coordenates are inside the space of a cadastral register
       
       address <- res$coordenadas_distancias$coordd$lpcd$pcd$ldt 
       RC <- paste0(res$coordenadas_distancias$coordd$lpcd$pcd$pc$pc1,
                    res$coordenadas_distancias$coordd$lpcd$pcd$pc$pc2)
       
+      res <- data.frame(address = address, RC = RC, SRS  = SRS, stringsAsFactors = F)
+      
     }
     
   else if (!is.null(res$coordenadas_distancias$coordd$lpcd) && distancia != '0'){
       
+    # The most general, the coordinates doesn't match any cadrastral register, but there are one or more nearby
+    
       address <- lapply(res$coordenadas_distancias$coordd$lpcd,FUN = '[[',3)
       address <- do.call(rbind,address)
       address <- as.vector(address)
@@ -39,19 +46,23 @@ near_rc_srs <- function(lat,lon,SRS = 'EPSG:4230'){
       RC <- lapply(res$coordenadas_distancias$coordd$lpcd,FUN = '[[',1)
       RC <- do.call(rbind,RC)
       RC <- as.data.frame(RC, row.names = F)
-      RC <- paste0(RC$pc1,RC$pc2)
+      RC <- as.vector(paste0(RC$pc1,RC$pc2))
+      
+      res <- data.frame(address = address, RC = RC, SRS  = SRS, stringsAsFactors = F)
 
+  }
     
+  else {
     
-    res <- data.frame(address = address, RC = RC, SRS  = SRS)
+    # This case should never happend, however, just in case...
     
-    }
-    
-    
- else{res <- data.frame(address = NA, RC = NA, SRS  = NA)}
-  
+    res <- data.frame(address = NA, RC = NA, SRS  = NA, stringsAsFactors = F)
+    }    
+
+
   return(res)
 }
+
 
 
 
@@ -74,9 +85,11 @@ near_rc <- function(lat,lon,SRS = NA){
   
   else{
     res <- lapply(coordinates, function(x){near_rc_srs(lat,lon,x)})
-    res <- data.frame(do.call(rbind,res))
+    res <- data.frame(do.call(rbind,res),stringsAsFactors = F)
     res <- res[!(is.na(res$address) & is.na(res$RC)),]
   }
   
   return(res)
 }
+
+
