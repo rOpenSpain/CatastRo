@@ -5,15 +5,21 @@ test_that("return data.frame given SRS", {
   expect_that(is.data.frame(result), is_true())
 })
 
+Sys.sleep(10)
+
 test_that("return data.frame without SRS", {
   result <- near_rc(lat = 40.963200, lon = -5.671420)
   expect_that(is.data.frame(result), is_true())
 })
 
+Sys.sleep(10)
+
 test_that("check fields without SRS", {
   result <- near_rc(lat = 40.963200, lon = -5.671420)
   expect_that((is.character(result$address) & is.character(result$RC)), is_true())
 })
+
+Sys.sleep(10)
 
 test_that("check fields given SRS", {
   result <- near_rc(lat = 40.963200,lon = -5.671420,'EPSG:4230')
@@ -25,6 +31,7 @@ test_that("if data is know return NA", {
   expect_that(nrow(result)==0, is_true())
 })
 
+Sys.sleep(10)
 
 test_that("unprecised coordinates", {
   result <- near_rc(lat = 40.963200,lon = -5.671420, SRS = "EPSG:4326")
