@@ -41,7 +41,7 @@ get_rc_srs <- function(lat,lon,SRS){
 
 
 
-get_rc <- function(lat,lon,SRS = NA){
+get_rc <- function(lat,lon,SRS = NA, sleep_time = NA){
   
   # Query for the given SRS
   
@@ -63,6 +63,10 @@ get_rc <- function(lat,lon,SRS = NA){
     }
 
   }
+  
+  # ADDING SLEEPING TIME
+  
+  if(is.numeric(sleep_time)){Sys.sleep(sleep_time)}
   
   return(res)
 }
