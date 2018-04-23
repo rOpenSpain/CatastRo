@@ -17,7 +17,7 @@ near_rc_srs <- function(lat,lon,SRS){
   # TEXT MINING
   if(is.null(res$coordenadas_distancias$coordd$lpcd)){
     
-    # If the aren´t any cadastral register neither in the coordeinates nor the nearby area
+    # If the arenÂ´t any cadastral register neither in the coordeinates nor the nearby area
     
     res <- data.frame(address = NA, RC = NA, SRS  = NA, stringsAsFactors = F)
     
@@ -72,7 +72,7 @@ near_rc_srs <- function(lat,lon,SRS){
 
 
 
-near_rc <- function(lat,lon,SRS = NA){
+near_rc <- function(lat,lon,SRS = NA, sleep_time = NA){
   
   # QUERY FOR THE SRS
   
@@ -88,6 +88,10 @@ near_rc <- function(lat,lon,SRS = NA){
     res <- data.frame(do.call(rbind,res),stringsAsFactors = F)
     res <- res[!(is.na(res$address) & is.na(res$RC)),]
   }
+  
+  # ADDING SLEEPING TIME
+  
+  if(is.numeric(sleep_time)){Sys.sleep(sleep_time)}
   
   return(res)
 }
