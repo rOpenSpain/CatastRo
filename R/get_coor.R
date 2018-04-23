@@ -1,4 +1,4 @@
-get_coor <- function(RC, SRS= '', Province = '',Municipality = ''){
+get_coor <- function(RC, SRS= '', Province = '',Municipality = '', sleep_time = NA){
   
   
   # PARAMETERS TO THE QUERY  
@@ -32,6 +32,11 @@ get_coor <- function(RC, SRS= '', Province = '',Municipality = ''){
   
   
   else{res <- NA}
+  
+  
+  # ADDING SLEEPING TIME
+  
+  if(is.numeric(sleep_time)){Sys.sleep(sleep_time)}
   
   return(res)
 }
