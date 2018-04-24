@@ -13,11 +13,11 @@ vignette: >
 
 This R package is aimed to query  the information from the [Sede electrónica del Catastro](http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx) API directly through a R ide. 
 
-This API is used to retrieve the spatial coordinates of a property, moreover it is not needed to be de owner for get the information, it is simply enough to know the casdrastral reference (RC) of the property and its address (in fact, it is only completely compulsory to know the RC, however, to ensure the query and avoid mistakes in the RC, the address can be pass to the query too).
+This API is used to retrieve the spatial coordinates of a property, moreover it is not needed to be de owner for get the information, it is simply enough to know the casdrastral reference (RC) of the property and its address (in fact, it is only completely compulsory to know the RC, however, to ensure the query and to avoid mistakes in the RC, the address can be passed to the query too).
 
-Secondly, the API can be used to obtain a RC of a property, for this information, the API ask for the latitude and the latitude. Furthermore, it allows to choose the spacial reference (SRS) to express the coordinates between a list of them.
+Secondly, the API can be used to obtain a RC of a property, for this information, the API asks for the longitude and the latitude. Furthermore, it allows to choose the spacial reference (SRS) between a list of them to express the coordinates.
 
-Finally, the API approach the issue of not know the exact point which the property has been registered. In this case, it will return all the properties located in a square 50-meters-side around the given point.
+Finally, the API approaches the issue of not knowning the exact point which the property has been registered. In this case, it will return all the properties located in a square 50-meters-side around the given point.
 
 The documentation of this API can be found [here](http://www.catastro.meh.es/ayuda/lang/castellano/servicios_web.htm).
 
@@ -27,92 +27,91 @@ The package has been uploaded to github therefore, it can be installed using the
 
 ```{r, message=FALSE, eval=FALSE}
 library(devtools)
-install_github("DelgadoPanadero/CatastRo")
+install_github("rOpenSpain/CatastRo")
 ```
 ```{r, message=FALSE}
 library(CatastRo)
 ```
 
-The CatastRo package depends on `httr` and `XLM` packages. The first one is used to get access to the API through a GET method and the second for parsing the return to the call to a list.
+The CatastRo package depends on [httr](https://github.com/r-lib/httr) and [XLM](https://github.com/omegahat/XML) packages. The first one is used to get access to the API through a GET request and the second for parsing the return of the request to a list.
 
 ## Functions of the package
 ### Query a coordinate
 
-The function `getRC()` recives the coordinates (*lat* and *lon*) and the spatial reference (SRS) used to express them. The return is a list with the casdastral reference of the property in that point, as well as its address (town street and number).
+The function `get_rc()` recieves the coordinates (*lat* and *lon*) and the spatial reference (SRS) used to express them. The return is a list with the casdastral reference of the property in that spatial point, as well as a string with its address (town street and number).
 
 
 ```{r}
-reference <- getRC(lat = 38.6196566583596, lon =  -3.45624183836806,SRS = 'EPSG:4230')
+reference <- get_rc(lat = 38.6196566583596, lon =  -3.45624183836806,SRS = 'EPSG:4230', sleep_time = 10)
 print(reference)
 ``` 
 
-If the *SRS* is not given, the spatial reference by default is EPSG:4230.
+If the *SRS* is not given to the function as an argument, it will make a request with all the availables SRSs in the API and return all the request that give a non-error response.
 
 ```{r}
-reference <- getRC(lat =  38.6196566583596, lon =-3.45624183836806)
+reference <- get_rc(lat =  38.6196566583596, lon =-3.45624183836806, sleep_time = 10)
 print(reference)
 ``` 
 
-It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates *lat* and *lon* throught the function `getRC_distance()`.
+It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates *lat* and *lon* throught the function `near_rc()`.
 
 ```{r}
-references <- getRC_distance(lat = 38.6196566583596,
-                             lon = -3.45624183836806, 
-                             SRS = 'EPSG:4230')
+references <- near_rc(lat = 40.96002, lon = -5.663408, SRS = 'EPSG:4230', sleep_time = 10)
 print(references)
 ``` 
 
 ### Query CPMRC 
 
-The opposite query is possible as well. Given to the function `getCOOR()` a cadastral reference (*RC*), the province (*Province*) and the  town (*Municipality*), `getCOOR()` returns its coordinates *lat* and *lon* in a particular *SRS* besides the direction (town, street and number).
+The opposite query is possible as well. Being given to the function `get_coor()` a cadastral reference (*RC*), the province (*Province*) and the  town (*Municipality*), `get_coor` returns its coordinates *lat* and *lon* in a particular *SRS* besides the direction (town, street and number).
 
 ```{r}
-direction <- getCOOR(RC = '13077A01800039', 
+direction <- get_coor(RC = '13077A01800039', 
                       SRS = 'EPSG:4230',
                       Province = 'CIUDAD REAL', 
-                      Municipality = 'SANTA CRUZ DE MUDELA')
+                      Municipality = 'SANTA CRUZ DE MUDELA', sleep_time = 10)
 print(direction)
 ```
 
-The argument SRS could be missed, in that case, `getCOOR()` returns the coordinates with which was stored.
+The argument *SRS* could be missed, in that case, `get_coor` returns the coordinates with which was stored.
 
 ```{r}
-direction <- getCOOR(RC = '13077A01800039', 
+direction <- get_coor(RC = '13077A01800039', 
                      Province = 'CIUDAD REAL', 
-                     Municipality = 'SANTA CRUZ DE MUDELA')
+                     Municipality = 'SANTA CRUZ DE MUDELA', sleep_time = 10)
 print(direction)
 ```
 
-Neither the *Province* nor *Municipality* are required to be passed to the function, unless *Municipality* are given, in that case the  argument *Province* is needed. The function `getCOOR()` will throw an error if this happends.
+Neither the *Province* nor *Municipality* are required to be passed to the function, unless the argument *Municipality* is not null, in that case the  argument *Province* is needed to be passed. If it is passed a value to the *Province* argument while the *Municipality* argument is null, the function `get_coor()` will throw an error.
 
 ```{r error=TRUE}
-direction <- getCOOR(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDELA')
-direction <- getCOOR(RC = '13077A01800039')
+direction <- get_coor(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDELA', sleep_time = 10)
+direction <- get_coor(RC = '13077A01800039', sleep_time = 10)
 print(direction)
 ```
 
 ## Integrated tests
 
-The package has been built with integrated test. which ensures to make it automatically check after every update made. The approach of these test are focus in two differents aims: Firstly, to assert that the package pass the `R CMD build` and the `R CMD check` tests automatically. Secondly, we test that the result of the call to the API it is as we expected, if it were not the case, we would go over the script of the functions to cast them to the new structure.
+The package has been built with integrated test. which ensures to make it automatically check after every update which is made. The approach of these test are focus in two differents aims: Firstly, to assert that the package pass the `R CMD build` and the `R CMD check` tests automatically. Secondly, we test that the result of the call to the API it is as we expected, if it were not the case, we would go over the function´s scripts to cast them to the new structure of the response of the API.
 
 This action leans in two technologies contained in the package, but they are not part of it.
 
 ### Testthat
 
-Testthat is a R-package made by hadley with can be found in a public repository on GitHub as well as in CRAN. Testthat works with a hierarchical structure testing the results of the functions of the package. The form of each our tests are, for instance:
+Testthat is a R-package made by Hadley which can be found in a public repository on GitHub as well as in CRAN. Testthat works with a hierarchical structure testing the results of the functions from the package. The form of each one of our tests are, for instance:
 
 ```
 test_that("giving only the cadastral reference", {
-  result <- getCOOR('9872023VH5797S')
+  result <- get_coor('9872023VH5797S', sleep_time = 10)
   expect_that((is.numeric(result$coord) & is.character(result$SRS)), is_true())
 })
 
 test_that("given Municipio, Provincia is needed", {
-  result <- getCOOR(RC = '13077A01800039',SRS = 'EPSG:4230', Municipio = 'SANTA CRUZ DE MUDELA')
+  result <- get_coor(RC = '13077A01800039',SRS = 'EPSG:4230', Municipio = 'SANTA CRUZ DE MUDELA', sleep_time = 10)
   expect_that(result, throws_error())
 })
 ```
-Every test check an expected value. The test, are gathered in one script for `getCOOR()`, `getRC()` and `getRC_distance()`. The execution of all  the tasks is made by `testthat.R` and all is contained in the directory /testthat.
+
+Every test check an expected value. The test, are gathered in one script for `get_coor()`, `get_rc()` and `near_rc()` separatly. The execution of all  the tasks is made by `testthat.R` and all is contained in the directory [./tests](https://github.com/rOpenSpain/CatastRo/tree/master/tests).
 
 ### TravisCI
 
@@ -121,7 +120,6 @@ Travis-CI is a continuous integration service that builds and tests projects tha
 ```
 language: R
 
-script:
-- R CMD build .
-- R CMD check *tar.gz
+cache: packages
+sudo: false
 ```
