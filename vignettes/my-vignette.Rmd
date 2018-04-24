@@ -42,21 +42,21 @@ The function `get_rc()` recieves the coordinates (*lat* and *lon*) and the spati
 
 
 ```{r}
-reference <- get_rc(lat = 38.6196566583596, lon =  -3.45624183836806,SRS = 'EPSG:4230')
+reference <- get_rc(lat = 38.6196566583596, lon =  -3.45624183836806,SRS = 'EPSG:4230', sleep_time = 10)
 print(reference)
 ``` 
 
 If the *SRS* is not given to the function as an argument, it will make a request with all the availables SRSs in the API and return all the request that give a non-error response.
 
 ```{r}
-reference <- get_rc(lat =  38.6196566583596, lon =-3.45624183836806)
+reference <- get_rc(lat =  38.6196566583596, lon =-3.45624183836806, sleep_time = 10)
 print(reference)
 ``` 
 
 It is also possible to get all the cadastral references in a square of 50 meters side centered in the coordinates *lat* and *lon* throught the function `near_rc()`.
 
 ```{r}
-references <- near_rc(lat = 40.96002, lon = -5.663408, SRS = 'EPSG:4230')
+references <- near_rc(lat = 40.96002, lon = -5.663408, SRS = 'EPSG:4230', sleep_time = 10)
 print(references)
 ``` 
 
@@ -68,7 +68,7 @@ The opposite query is possible as well. Being given to the function `get_coor()`
 direction <- get_coor(RC = '13077A01800039', 
                       SRS = 'EPSG:4230',
                       Province = 'CIUDAD REAL', 
-                      Municipality = 'SANTA CRUZ DE MUDELA')
+                      Municipality = 'SANTA CRUZ DE MUDELA', sleep_time = 10)
 print(direction)
 ```
 
@@ -77,15 +77,15 @@ The argument *SRS* could be missed, in that case, `get_coor` returns the coordin
 ```{r}
 direction <- get_coor(RC = '13077A01800039', 
                      Province = 'CIUDAD REAL', 
-                     Municipality = 'SANTA CRUZ DE MUDELA')
+                     Municipality = 'SANTA CRUZ DE MUDELA', sleep_time = 10)
 print(direction)
 ```
 
 Neither the *Province* nor *Municipality* are required to be passed to the function, unless the argument *Municipality* is not null, in that case the  argument *Province* is needed to be passed. If it is passed a value to the *Province* argument while the *Municipality* argument is null, the function `get_coor()` will throw an error.
 
 ```{r error=TRUE}
-direction <- get_coor(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDELA')
-direction <- get_coor(RC = '13077A01800039')
+direction <- get_coor(RC = '13077A01800039',  Municipality = 'SANTA CRUZ DE MUDELA', sleep_time = 10)
+direction <- get_coor(RC = '13077A01800039', sleep_time = 10)
 print(direction)
 ```
 
@@ -101,12 +101,12 @@ Testthat is a R-package made by Hadley which can be found in a public repository
 
 ```
 test_that("giving only the cadastral reference", {
-  result <- get_coor('9872023VH5797S')
+  result <- get_coor('9872023VH5797S', sleep_time = 10)
   expect_that((is.numeric(result$coord) & is.character(result$SRS)), is_true())
 })
 
 test_that("given Municipio, Provincia is needed", {
-  result <- get_coor(RC = '13077A01800039',SRS = 'EPSG:4230', Municipio = 'SANTA CRUZ DE MUDELA')
+  result <- get_coor(RC = '13077A01800039',SRS = 'EPSG:4230', Municipio = 'SANTA CRUZ DE MUDELA', sleep_time = 10)
   expect_that(result, throws_error())
 })
 ```
