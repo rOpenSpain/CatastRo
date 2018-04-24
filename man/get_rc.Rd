@@ -5,18 +5,18 @@
 
 \description{Returns the Cadastral Reference of the state as well as the address (municipality, street and number) being given its coordinates and the reference system. If the SRS is not passed as an argument, then the function will try a get request for each available reference system and it will return all no null responses.}
 \usage{
-get_rc(lat, lon, SRS)
+get_rc(lat, lon, SRS = NA, sleep_time = NA)
 }
 %- maybe also 'usage' for other objects documented here. 
 \arguments{
   \item{lat}{Latitude coordinate.}
   \item{lon}{Longitude coortinate.}
-  \item{SRS}{The reference system used for the coordinates. A list of all the allowed references system is given in References.}
-
+  \item{SRS}{The reference system used for the coordinates. There is a vector with all the allowed SRSs in the variable from the package called coordinates. If no SRS is given, the function will make a request for every possible SRS.}
+  \item{sleep_time}{System sleep time (in seconds) after the API reponse. This may be helpfull to automate an amount of request greater the allowed}
 }
 
 \value{
-A list with the the direction of the state and the cadastral reference.
+A data.frame with the the addresses of the states and the cadastral references for every SRS requested.
 }
 \references{
 \url{http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR}
