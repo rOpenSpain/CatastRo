@@ -1,4 +1,16 @@
-#'@noRd
+#'@name coordinates
+#'@aliases coordinates
+#'
+#'@description Dataframe with all the posible Spatial Reference Systems (SRS) availables
+#'to query the Catastro API.
+#'
+#'@usage coordinates
+#'
+#'@references
+#'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR_Distancia
+#'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC
+#'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR
+#'
 #'@export
 
 coordinates <- c('EPSG:4230',	

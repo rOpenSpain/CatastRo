@@ -39,8 +39,8 @@
 #' 
 #'
 #'@export
-#'@importFrom httr GET stop_for_status
-#'@importFrom XML xmlToList
+#'@import httr
+#'@import XML
 
 
 
