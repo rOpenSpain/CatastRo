@@ -1,6 +1,9 @@
+#'@noRd
+#'@export
+
 coordinates <- c('EPSG:4230',	
-                 'EPSG:4326',	
-                 'EPSG:4258',	
+                 'EPSG:4326',	#google
+                 'EPSG:4258',	#oficial europeo
                  'EPSG:32627',
                  'EPSG:32628',
                  'EPSG:32629',
@@ -12,3 +15,5 @@ coordinates <- c('EPSG:4230',
                  'EPSG:23029',
                  'EPSG:23030',
                  'EPSG:23031')
+
+coordinates <- data.frame(coordinates)

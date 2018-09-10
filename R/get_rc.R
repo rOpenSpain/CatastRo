@@ -1,72 +1,71 @@
-get_rc_srs <- function(lat,lon,SRS){
+#'@name get_rc
+#'@aliases get_rc
+#'
+#'@title Interface to query Consulta_RCCOOR
+#'
+#'@description Returns the Cadastral Reference of the state as well as the address 
+#'(municipality, street and number) being given its coordinates and the SRS.
+#'
+#'@usage get_rc(lat,lon,SRS="Google")
+#'
+#'@param lat Latitude coordinate.
+#'@param lon Longitude coortinate.
+#'@param SRS The Spatial Reference System used for the coordinates. There is a vector
+#'       with all the allowed SRSs in the variable from the package called coordinates.
+#'       
+#'       The set of the available SRS to use are available in the vector `coordinates`
+#'       from this package. A part from that, the function accept as a SRS argument
+#'       the values "Google" and "Oficial". The first uses the SRS value used by Google
+#'       maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
+#'       Europe. If no SRS is given, the function by default choose the "Google" SRS.
+#'
+#'@return A data.frame with the the addresses of the states and the cadastral references 
+#'        for every SRS requested.       
+#'@references http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR
+#'
+#'@author Ángel Delgado Panadero.
+#'
+#'@examples  
+#'direction <- get_rc(38.6196566583596,-3.45624183836806, 'EPSG:4230')
+#'print(direction)
+#'
+#'directions <- get_rc(38.6196566583596,-3.45624183836806)
+#'print(directions)  
+#'
+#'      
+#'@export
+#'@importFrom httr GET stop_for_status
+#'@importFrom XML xmlToList
+
+
+
+
+
+
+get_rc <- function(lat,lon,SRS="Google"){
   
-  # Parameters to the query 
-  ua <- user_agent(paste0("CatastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
-  url <- 'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR'
-  query.parms <- list(Coordenada_X=lon,Coordenada_Y=lat,SRS=SRS)
+  # SRS REPLACE
+  SRS <- ifelse(tolower(SRS) == "google", 'EPSG:4326', SRS)
+  SRS <- ifelse(tolower(SRS) == "oficial", 'EPSG:4258', SRS)
   
+  # REQUEST
+  res <- GET(url = 'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR',
+             query = list(Coordenada_X=lon,Coordenada_Y=lat,SRS=SRS), 
+             ua = user_agent("CatastRo (https://github.com/rOpenSpain/CatastRo)"))
   
-  
-  
-  # Query
-  res <- GET(url, query = query.parms, ua)
   stop_for_status(res)
   res <- xmlToList(xmlParse(res))
   
-  
-  
-  
-  # Text Mining
+  # TEXT MINING
   if(!is.null(res$coordenadas$coord$ldt) | !is.null(res$coordenadas$coord$ldt)){
-    
     
     address <- res$coordenadas$coord$ldt
     RC <- paste0(res$coordenadas$coord$pc$pc1,res$coordenadas$coord$pc$pc2)
-    
-    
     res <- data.frame(address = address, RC = RC, SRS  = SRS,stringsAsFactors = F)
   }
   
   else{res <- data.frame(address = NA, RC = NA, SRS  = NA, stringsAsFactors = F)}
   
-  return(res)
-}
-
-
-
-
-
-
-
-
-
-
-get_rc <- function(lat,lon,SRS = NA, sleep_time = NA){
-  
-  # Query for the given SRS
-  
-  if (SRS %in% coordinates){
-    res <- get_rc_srs(lat,lon,SRS)
-    res <- as.data.frame(res)
-  }
-  
-  
-  # Query for all the possible SRS
-  
-  else{
-    res <- lapply(coordinates, function(x){get_rc_srs(lat,lon,x)})
-    res <- data.frame(do.call(rbind,res),stringsAsFactors = F)
-    res <- res[!(is.na(res$address) & is.na(res$RC)),]
-    
-    if (nrow(res)==0){
-      res <- data.frame(address = NA, RC = NA, SRS  = NA, stringsAsFactors = F)
-    }
-
-  }
-  
-  # ADDING SLEEPING TIME
-  
-  if(is.numeric(sleep_time)){Sys.sleep(sleep_time)}
-  
+  Sys.sleep(1)
   return(res)
 }

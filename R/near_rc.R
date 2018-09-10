@@ -1,24 +1,62 @@
-near_rc_srs <- function(lat,lon,SRS){
+#'@name near_rc
+#'@aliases near_rc
+#'
+#'@title Interface to query Consulta_RCCOOR_Distancia
+#'
+#'@description Returns the Cadastral Reference of the state as well as the address 
+#'(municipality, street and number) given its coordinates and the Spatial Reference 
+#'System. In case that there is not any cadastral reference in the exact point, the
+#'function returns all the cadastral references in a square 50 meters long centered
+#'in the current point.
+#'
+#'@usage  near_rc(lat, lon, SRS = "Google")
+#'
+#'@param lat Latitude coordinate.
+#'@param lon Longitude coortinate.
+#'@param SRS The Spatial Reference System used for the coordinates. There is a vector
+#'       with all the allowed SRSs in the variable from the package called coordinates.
+#'       
+#'       The set of the available SRS to use are available in the vector `coordinates`
+#'       from this package. A part from that, the function accept as a SRS argument
+#'       the values "Google" and "Oficial". The first uses the SRS value used by Google
+#'       maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
+#'       Europe. If no SRS is given, the function by default choose the "Google" SRS.
+#'           
+#'@return A data.frame with the the addresses of the states and the cadastral references 
+#'        in the nearby area of the location given for every SRS requested.
+#'
+#'@references http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR_Distancia
+#'
+#'@author Angel Delgado Panadero.
+#'
+#'@example
+#'direction <- near_rc(40.96002, -5.663408)
+#'print(direction)    
+#'
+#'@export
+#'@importFrom httr GET stop_for_status
+#'@importFrom XML xmlToList
 
-  # PARAMETERS TO THE QUERY  
-  ua <- user_agent(paste0("CatastRo", " (https://github.com/DelgadoPanadero/CatastRo)"))
-  url <- 'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR_Distancia'
-  query.parms <- list(Coordenada_X=lon,Coordenada_Y=lat,SRS=SRS)
-  
-  
+
+near_rc <- function(lat,lon,SRS="Google"){
+
+  # SRS REPLACE
+  SRS <- ifelse(tolower(SRS) == "google", 'EPSG:4326', SRS)
+  SRS <- ifelse(tolower(SRS) == "oficial", 'EPSG:4258', SRS)
+
   # QUERY
-  res <- GET(url, query = query.parms, ua)
+  res <- GET(url = 'http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR_Distancia', 
+             query = list(Coordenada_X=lon, Coordenada_Y=lat, SRS=SRS), 
+             ua = user_agent("CatastRo (https://github.com/DelgadoPanadero/CatastRo)"))
+  
   stop_for_status(res)
   res <- xmlToList(xmlParse(res))
-  
-  
   distancia <- res$coordenadas_distancias$coordd$lpcd$pcd$dis
   
   # TEXT MINING
   if(is.null(res$coordenadas_distancias$coordd$lpcd)){
     
-    # If the arenÂ´t any cadastral register neither in the coordeinates nor the nearby area
-    
+    # If the are not any cadastral register neither in the coordeinates nor the nearby area
     res <- data.frame(address = NA, RC = NA, SRS  = NA, stringsAsFactors = F)
     
   } 
@@ -26,7 +64,6 @@ near_rc_srs <- function(lat,lon,SRS){
   else if (!is.null(res$coordenadas_distancias$coordd$lpcd) && distancia == '0'){
     
     # if the coordenates are inside the space of a cadastral register
-      
       address <- res$coordenadas_distancias$coordd$lpcd$pcd$ldt 
       RC <- paste0(res$coordenadas_distancias$coordd$lpcd$pcd$pc$pc1,
                    res$coordenadas_distancias$coordd$lpcd$pcd$pc$pc2)
@@ -37,8 +74,7 @@ near_rc_srs <- function(lat,lon,SRS){
     
   else if (!is.null(res$coordenadas_distancias$coordd$lpcd) && distancia != '0'){
       
-    # The most general, the coordinates doesn't match any cadrastral register, but there are one or more nearby
-    
+    # The most general case, the coordinates doesn't match any cadrastral register, but there are one or more nearby
       address <- lapply(res$coordenadas_distancias$coordd$lpcd,FUN = '[[',3)
       address <- do.call(rbind,address)
       address <- as.vector(address)
@@ -54,46 +90,11 @@ near_rc_srs <- function(lat,lon,SRS){
     
   else {
     
-    # This case should never happend, however, just in case...
-    
+    # If there is nothing near...
     res <- data.frame(address = NA, RC = NA, SRS  = NA, stringsAsFactors = F)
     }    
 
-
-  return(res)
-}
-
-
-
-
-  
-  
-  
-
-
-
-near_rc <- function(lat,lon,SRS = NA, sleep_time = NA){
-  
-  # QUERY FOR THE SRS
-  
-  if (SRS %in% coordinates){
-    res <- near_rc_srs(lat,lon,SRS)
-  }
-  
-  
-  # QUERY FOR ALL POSSIBLES SRS
-  
-  else{
-    res <- lapply(coordinates, function(x){near_rc_srs(lat,lon,x)})
-    res <- data.frame(do.call(rbind,res),stringsAsFactors = F)
-    res <- res[!(is.na(res$address) & is.na(res$RC)),]
-  }
-  
-  # ADDING SLEEPING TIME
-  
-  if(is.numeric(sleep_time)){Sys.sleep(sleep_time)}
+  Sys.sleep(1)
   
   return(res)
 }
-
-
