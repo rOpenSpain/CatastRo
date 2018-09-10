@@ -1,6 +1,8 @@
 #'@name coordinates
 #'@aliases coordinates
 #'
+#'@title Coordinates (SRS)
+#'
 #'@description Dataframe with all the posible Spatial Reference Systems (SRS) availables
 #'to query the Catastro API.
 #'

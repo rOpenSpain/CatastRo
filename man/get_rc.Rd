@@ -42,5 +42,5 @@ print(directions)
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR
 }
 \author{
-Ángel Delgado Panadero.
+Angel Delgado Panadero.
 }

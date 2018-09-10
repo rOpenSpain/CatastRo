@@ -23,7 +23,7 @@
 #'        for every SRS requested.       
 #'@references http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR
 #'
-#'@author Ángel Delgado Panadero.
+#'@author Angel Delgado Panadero.
 #'
 #'@examples  
 #'direction <- get_rc(38.6196566583596,-3.45624183836806, 'EPSG:4230')
@@ -34,8 +34,8 @@
 #'
 #'      
 #'@export
-#'@importFrom httr
-#'@importFrom XML
+#'@import httr
+#'@import XML
 
 
 

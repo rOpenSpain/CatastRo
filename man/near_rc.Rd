@@ -31,6 +31,11 @@ System. In case that there is not any cadastral reference in the exact point, th
 function returns all the cadastral references in a square 50 meters long centered
 in the current point.
 }
+\examples{
+direction <- near_rc(40.96002, -5.663408)
+print(direction)    
+
+}
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR_Distancia
 }

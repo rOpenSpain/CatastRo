@@ -29,13 +29,13 @@
 #'
 #'@author Angel Delgado Panadero.
 #'
-#'@example
+#'@examples
 #'direction <- near_rc(40.96002, -5.663408)
 #'print(direction)    
 #'
 #'@export
-#'@importFrom httr
-#'@importFrom XML
+#'@import httr
+#'@import XML
 
 
 near_rc <- function(lat,lon,SRS="Google"){
