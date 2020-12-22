@@ -4,7 +4,9 @@
 \name{coordinates}
 \alias{coordinates}
 \title{Coordinates (SRS)}
-\format{An object of class \code{data.frame} with 14 rows and 1 columns.}
+\format{
+An object of class \code{data.frame} with 14 rows and 1 columns.
+}
 \usage{
 coordinates
 }
