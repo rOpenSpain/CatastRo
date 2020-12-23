@@ -4,3 +4,6 @@
 ^cran-comments\.md$
 ^NEWS\.md$
 ^\.travis\.yml$
+^\.github$
+^docs$
+^_pkgdown\.yml$
