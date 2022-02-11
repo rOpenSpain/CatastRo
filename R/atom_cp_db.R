@@ -49,8 +49,9 @@
 #'      this service is updated twice a year**.
 #'
 #' @examples
-#'
+#' \donttest{
 #' catr_atom_cp_db_all()
+#' }
 catr_atom_cp_db_all <- function(cache = TRUE,
                                 update_cache = FALSE,
                                 cache_dir = NULL,

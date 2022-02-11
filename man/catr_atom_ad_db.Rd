@@ -63,8 +63,9 @@ office.
 }
 }
 \examples{
-
+\donttest{
 catr_atom_ad_db_all()
+}
 }
 \seealso{
 \href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
