@@ -21,8 +21,8 @@ catr_atom_ad(
 cadastral code. See \code{\link[=catr_atom_ad_db_all]{catr_atom_ad_db_all()}} for getting the cadastral
 codes.}
 
-\item{to}{Territorial office. It can be any type of string, the function
-would perform a search using \code{\link[base:grep]{base::grep()}}.}
+\item{to}{Optional parameter for defining the Territorial Office to which
+\code{munic} belongs. This parameter is a helper for narrowing the search.}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
 \strong{About caching} section on \code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}}.}
@@ -69,16 +69,16 @@ ggplot(s) +
 
 Other INSPIRE: 
 \code{\link{catr_atom_ad_db_all}()},
-\code{\link{catr_atom_ad_to}},
-\code{\link{catr_atom_cp_db_all}()}
+\code{\link{catr_atom_cp_db_all}()},
+\code{\link{catr_atom_cp}()}
 
 Other INSPIRE ATOM services:
 \code{\link{catr_atom_ad_db_all}()},
-\code{\link{catr_atom_ad_to}},
-\code{\link{catr_atom_cp_db_all}()}
+\code{\link{catr_atom_cp_db_all}()},
+\code{\link{catr_atom_cp}()}
 
 Other spatial: 
-\code{\link{catr_atom_ad_to}}
+\code{\link{catr_atom_cp}()}
 }
 \concept{ATOM}
 \concept{INSPIRE}

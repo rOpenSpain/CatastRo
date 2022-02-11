@@ -2,12 +2,22 @@
 % Please edit documentation in R/atom_ad_db.R
 \name{catr_atom_ad_db_all}
 \alias{catr_atom_ad_db_all}
+\alias{catr_atom_ad_to}
+\alias{catr_atom_ad_db_to}
 \title{Reference Database for ATOM Addresses}
 \source{
 \url{https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
 }
 \usage{
 catr_atom_ad_db_all(
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+)
+
+catr_atom_ad_db_to(
+  to,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
@@ -26,6 +36,9 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
+
+\item{to}{Territorial office. It can be any type of string, the function
+would perform a search using \code{\link[base:grep]{base::grep()}}.}
 }
 \value{
 A tibble with the information requested.
@@ -71,14 +84,14 @@ catr_atom_ad_db_all()
 \href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
 
 Other INSPIRE: 
-\code{\link{catr_atom_ad_to}},
 \code{\link{catr_atom_ad}()},
-\code{\link{catr_atom_cp_db_all}()}
+\code{\link{catr_atom_cp_db_all}()},
+\code{\link{catr_atom_cp}()}
 
 Other INSPIRE ATOM services:
-\code{\link{catr_atom_ad_to}},
 \code{\link{catr_atom_ad}()},
-\code{\link{catr_atom_cp_db_all}()}
+\code{\link{catr_atom_cp_db_all}()},
+\code{\link{catr_atom_cp}()}
 
 Other databases: 
 \code{\link{catr_atom_cp_db_all}()}
@@ -86,3 +99,4 @@ Other databases:
 \concept{ATOM}
 \concept{INSPIRE}
 \concept{databases}
+\keyword{internal}
