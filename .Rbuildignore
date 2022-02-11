@@ -7,3 +7,10 @@
 ^\.github$
 ^docs$
 ^_pkgdown\.yml$
+^CatastRo\.Rcheck$
+^CatastRo.*\.tar\.gz$
+^CatastRo.*\.tgz$
+^revdep$
+^codemeta\.json$
+^CITATION\.cff$
+^CRAN-SUBMISSION$

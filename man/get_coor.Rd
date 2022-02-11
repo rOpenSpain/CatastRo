@@ -11,13 +11,12 @@ get_coor(RC, SRS= 'Google', Province = '',Municipality = '')
 
 \item{SRS}{The Spatial Reference System desired for the coordinates, if it is missed, the
 returned coordinates will be given in the Spatial Reference System used by
-Googlemaps ('EPSG:4326'). 
-
-The set of the available SRS to use are available in the vector `coordinates`
-from this package. A part from that, the function accept as a SRS argument
-the values "Google" and "Oficial". The first uses the SRS value used by Google
-maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
-Europe. If no SRS is given, the function by default choose the "Google" SRS.}
+Googlemaps ('EPSG:4326').\preformatted{      The set of the available SRS to use are available in the vector `coordinates`
+      from this package. A part from that, the function accept as a SRS argument
+      the values "Google" and "Oficial". The first uses the SRS value used by Google
+      maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
+      Europe. If no SRS is given, the function by default choose the "Google" SRS.
+}}
 
 \item{Province}{A string with the Province of the state. It is not case sensitive.}
 
@@ -28,18 +27,17 @@ A list consisting on two numeric values: the coordinates (latitude, longitude) a
 the reference system in which they are expressed.
 }
 \description{
-Returns the coordinate of a state in a SRS given the Province, Municipality 
+Returns the coordinate of a state in a SRS given the Province, Municipality
 and Cadastral Reference of the state.
 }
 \examples{
 # using all the arguments
-coordinates <- get_coor('13077A01800039','EPSG:4230','CIUDAD REAL', 'SANTA CRUZ DE MUDELA')
-print(coordinates)    
-# only the cadastral reference
-coordinates <- get_coor('9872023VH5797S')
+coordinates <- get_coor("13077A01800039", "EPSG:4230", "CIUDAD REAL", "SANTA CRUZ DE MUDELA")
 print(coordinates)
-
-
+#
+# only the cadastral reference
+coordinates <- get_coor("9872023VH5797S")
+print(coordinates)
 }
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC
