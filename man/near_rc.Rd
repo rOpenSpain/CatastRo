@@ -12,28 +12,27 @@ near_rc(lat, lon, SRS = "Google")
 \item{lon}{Longitude coortinate.}
 
 \item{SRS}{The Spatial Reference System used for the coordinates. There is a vector
-with all the allowed SRSs in the variable from the package called coordinates.
-
-The set of the available SRS to use are available in the vector `coordinates`
-from this package. A part from that, the function accept as a SRS argument
-the values "Google" and "Oficial". The first uses the SRS value used by Google
-maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
-Europe. If no SRS is given, the function by default choose the "Google" SRS.}
+with all the allowed SRSs in the variable from the package called coordinates.\preformatted{  The set of the available SRS to use are available in the vector `coordinates`
+  from this package. A part from that, the function accept as a SRS argument
+  the values "Google" and "Oficial". The first uses the SRS value used by Google
+  maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
+  Europe. If no SRS is given, the function by default choose the "Google" SRS.
+}}
 }
 \value{
-A data.frame with the the addresses of the states and the cadastral references 
-       in the nearby area of the location given for every SRS requested.
+A data.frame with the the addresses of the states and the cadastral references
+in the nearby area of the location given for every SRS requested.
 }
 \description{
-Returns the Cadastral Reference of the state as well as the address 
-(municipality, street and number) given its coordinates and the Spatial Reference 
+Returns the Cadastral Reference of the state as well as the address
+(municipality, street and number) given its coordinates and the Spatial Reference
 System. In case that there is not any cadastral reference in the exact point, the
 function returns all the cadastral references in a square 50 meters long centered
 in the current point.
 }
 \examples{
 direction <- near_rc(40.96002, -5.663408)
-print(direction)    
+print(direction)
 
 }
 \references{

@@ -1,0 +1,264 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.2.1
+# See also: https://docs.ropensci.org/cffr/
+# -----------------------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "CatastRo" in publications use:'
+type: software
+license: GPL-2.0-only
+title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
+version: 0.1.0.9000
+abstract: Access to the API 'Sede Electronica Del Catastro'. Tools for quering cadastral
+  references and adresses of properties. Access public spatial data available under
+  the 'INSPIRE' directive.
+authors:
+- family-names: Delgado-Panadero
+  given-names: Angel
+  email: delgadopanadero@gmail.com
+  orcid: https://orcid.org/0000-0002-8189-9251
+- family-names: Hernangómez
+  given-names: Diego
+  email: diego.hernangomezherrero@gmail.com
+  orcid: https://orcid.org/0000-0001-8457-4658
+- family-names: Ucar
+  given-names: Iñaki
+  orcid: https://orcid.org/0000-0001-6403-5550
+preferred-citation:
+  type: manual
+  title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
+  authors:
+  - family-names: Delgado-Panadero
+    given-names: Angel
+    email: delgadopanadero@gmail.com
+    orcid: https://orcid.org/0000-0002-8189-9251
+  - family-names: Hernangómez
+    given-names: Diego
+    email: diego.hernangomezherrero@gmail.com
+    orcid: https://orcid.org/0000-0001-8457-4658
+  - family-names: Ucar
+    given-names: Iñaki
+    orcid: https://orcid.org/0000-0001-6403-5550
+  version: 0.1.0.9000
+  abstract: Access to the API 'Sede Electronica Del Catastro'. Tools for quering cadastral
+    references and adresses of properties. Access public spatial data available under
+    the 'INSPIRE' directive.
+  repository-code: https://github.com/rOpenSpain/CatastRo
+  url: https://ropenspain.github.io/CatastRo/
+  contact:
+  - family-names: Hernangómez
+    given-names: Diego
+    email: diego.hernangomezherrero@gmail.com
+    orcid: https://orcid.org/0000-0001-8457-4658
+  keywords:
+  - catastro
+  - r-package
+  - ropenspain
+  - spain
+  license: GPL-2.0-only
+  year: '2022'
+repository-code: https://github.com/rOpenSpain/CatastRo
+url: https://ropenspain.github.io/CatastRo/
+contact:
+- family-names: Hernangómez
+  given-names: Diego
+  email: diego.hernangomezherrero@gmail.com
+  orcid: https://orcid.org/0000-0001-8457-4658
+keywords:
+- catastro
+- r-package
+- ropenspain
+- spain
+references:
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  authors:
+  - name: R Core Team
+  location:
+    name: Vienna, Austria
+  year: '2022'
+  url: https://www.R-project.org/
+  institution:
+    name: R Foundation for Statistical Computing
+  version: '>= 3.6'
+- type: software
+  title: dplyr
+  abstract: 'dplyr: A Grammar of Data Manipulation'
+  notes: Imports
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: François
+    given-names: Romain
+    orcid: https://orcid.org/0000-0002-2444-4226
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Müller
+    given-names: Kirill
+    orcid: https://orcid.org/0000-0002-1416-3412
+  year: '2022'
+- type: software
+  title: httr
+  abstract: 'httr: Tools for Working with URLs and HTTP'
+  notes: Imports
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+- type: software
+  title: rappdirs
+  abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
+    and Logs'
+  notes: Imports
+  authors:
+  - family-names: Ratnakumar
+    given-names: Sridhar
+  - family-names: Mick
+    given-names: Trent
+  - family-names: Davis
+    given-names: Trevor
+  year: '2022'
+  version: '>= 0.3.0'
+- type: software
+  title: sf
+  abstract: 'sf: Simple Features for R'
+  notes: Imports
+  authors:
+  - family-names: Pebesma
+    given-names: Edzer
+    email: edzer.pebesma@uni-muenster.de
+    orcid: https://orcid.org/0000-0001-8049-7069
+  year: '2022'
+  version: '>= 1.0.0'
+- type: software
+  title: tibble
+  abstract: 'tibble: Simple Data Frames'
+  notes: Imports
+  authors:
+  - family-names: Müller
+    given-names: Kirill
+    email: krlmlr+r@mailbox.org
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+- type: software
+  title: XML
+  abstract: 'XML: Tools for Parsing and Generating XML Within R and S-Plus'
+  notes: Imports
+  authors:
+  - family-names: Temple Lang
+    given-names: Duncan
+    email: duncan@r-project.org
+    orcid: https://orcid.org/0000-0003-0159-1546
+  year: '2022'
+  url: http://www.omegahat.net/RSXML
+- type: software
+  title: xml2
+  abstract: 'xml2: Parse XML'
+  notes: Imports
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Hester
+    given-names: Jim
+  - family-names: Ooms
+    given-names: Jeroen
+  year: '2022'
+- type: software
+  title: ggplot2
+  abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  notes: Suggests
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: Chang
+    given-names: Winston
+    orcid: https://orcid.org/0000-0002-1576-2126
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Pedersen
+    given-names: Thomas Lin
+    email: thomas.pedersen@rstudio.com
+    orcid: https://orcid.org/0000-0002-5147-4711
+  - family-names: Takahashi
+    given-names: Kohske
+  - family-names: Wilke
+    given-names: Claus
+    orcid: https://orcid.org/0000-0002-7470-9261
+  - family-names: Woo
+    given-names: Kara
+    orcid: https://orcid.org/0000-0002-5125-4188
+  - family-names: Yutani
+    given-names: Hiroaki
+    orcid: https://orcid.org/0000-0002-3385-7233
+  - family-names: Dunnington
+    given-names: Dewey
+    orcid: https://orcid.org/0000-0002-9415-4582
+  year: '2022'
+- type: software
+  title: knitr
+  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  notes: Suggests
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2022'
+  url: https://yihui.org/knitr/
+- type: software
+  title: rmarkdown
+  abstract: 'rmarkdown: Dynamic Documents for R'
+  notes: Suggests
+  authors:
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@rstudio.com
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@rstudio.com
+  - family-names: Luraschi
+    given-names: Javier
+    email: javier@rstudio.com
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@rstudio.com
+  - family-names: Atkins
+    given-names: Aron
+    email: aron@rstudio.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@rstudio.com
+  - family-names: Chang
+    given-names: Winston
+    email: winston@rstudio.com
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@rstudio.com
+    orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2022'
+- type: software
+  title: testthat
+  abstract: 'testthat: Unit Testing for R'
+  notes: Suggests
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2022'
+  version: '>= 3.0.0'
