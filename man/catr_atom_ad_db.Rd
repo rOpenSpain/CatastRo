@@ -4,7 +4,7 @@
 \alias{catr_atom_ad_db_all}
 \alias{catr_atom_ad_to}
 \alias{catr_atom_ad_db_to}
-\title{Reference Database for ATOM Addresses}
+\title{INSPIRE: Reference Database for ATOM Addresses}
 \source{
 \url{https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
 }

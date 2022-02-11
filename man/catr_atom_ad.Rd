@@ -2,7 +2,7 @@
 % Please edit documentation in R/atom_ad.R
 \name{catr_atom_ad}
 \alias{catr_atom_ad}
-\title{Download all the Addresses of a Municipality}
+\title{INSPIRE: Download all the Addresses of a Municipality}
 \source{
 \url{https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
 }
