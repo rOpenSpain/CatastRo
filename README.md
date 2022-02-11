@@ -35,18 +35,21 @@ spatial reference used. The return is the cadastral reference of the
 property in that spatial point, as well as the direction (town street
 and number).
 
-\`\`\`{r. eval=FALSE} library(CatastRo)
+``` r
+library(CatastRo)
 
-reference \<- get_rc(lat, lon, SRS) print(reference)
+reference <- get_rc(lat, lon, SRS)
+print(reference)
+```
 
+It can be requested to get all the cadastral references in a square of
+50-meters side centered in the coordinates (lat,lon) throught the
+function `near_rc()`.
 
-    It can be requested to get all the cadastral references in a square of 50-meters
-    side centered in the coordinates (lat,lon) throught the function `near_rc()`.
-
-
-    ```r
-    references <- near_rc(lat, lon, SRS)
-    print(references)
+``` r
+references <- near_rc(lat, lon, SRS)
+print(references)
+```
 
 ## Query CPMRC
 

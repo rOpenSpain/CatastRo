@@ -50,7 +50,7 @@ The function `get_rc()` receives the coordinates (lat,lon) and the spatial
 reference used. The return is the cadastral reference of the property in that
 spatial point, as well as the direction (town street and number).
 
-```{r. eval=FALSE}
+```{r, eval=FALSE}
 library(CatastRo)
 
 reference <- get_rc(lat, lon, SRS)
