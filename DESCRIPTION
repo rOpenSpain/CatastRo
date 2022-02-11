@@ -1,13 +1,25 @@
-Package: CatastRo
 Type: Package
+Package: CatastRo
 Title: Interface to the API 'Sede Electronica del Catastro'
 Version: 0.1.0
-Authors@R: person("Angel", "Delgado Panadero", email="delgadopanadero@gmail.com", role=c('cre', 'aut'))
-Description: Access to the API Sede electronica del catastro for quering cadastral references and adresses of properties.
-Depends: httr, XML
+Authors@R: 
+    person(given = "Angel",
+           family = "Delgado Panadero",
+           role = c("cre", "aut"),
+           email = "delgadopanadero@gmail.com")
+Description: Access to the API Sede electronica del catastro for quering
+    cadastral references and adresses of properties.
 License: GPL-2
-Suggests: testthat, knitr, rmarkdown
-VignetteBuilder: knitr
 URL: https://github.com/rOpenSpain/CatastRo
-LazyData: true
-RoxygenNote: 6.0.1
+Depends: 
+    httr,
+    XML
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
+Encoding: UTF-8
+RoxygenNote: 7.1.1
