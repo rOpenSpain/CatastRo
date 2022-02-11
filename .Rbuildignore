@@ -14,3 +14,4 @@
 ^codemeta\.json$
 ^CITATION\.cff$
 ^CRAN-SUBMISSION$
+^pkgdown$
