@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/404.html</loc>
   </url>
   <url>
-    <loc>/articles/CatastRo.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/articles/CatastRo.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/articles/index.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/index.html</loc>
   </url>
   <url>
-    <loc>/reference/coordinates.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/get_coor.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/reference/CatastRo-package.html</loc>
   </url>
   <url>
-    <loc>/reference/get_rc.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/reference/coordinates.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/reference/get_coor.html</loc>
   </url>
   <url>
-    <loc>/reference/near_rc.html</loc>
+    <loc>https://ropenspain.github.io/CatastRo/reference/get_rc.html</loc>
+  </url>
+  <url>
+    <loc>https://ropenspain.github.io/CatastRo/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ropenspain.github.io/CatastRo/reference/near_rc.html</loc>
   </url>
 </urlset>
