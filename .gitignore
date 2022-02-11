@@ -21,3 +21,4 @@ vignettes/*.pdf
 revdep
 CRAN-SUBMISSION
 .github/pkg.lock
+docs/
