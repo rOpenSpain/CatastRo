@@ -1,0 +1,14 @@
+year <- format(Sys.time(), "%Y")
+abs <- trimws(gsub("\\s+", " ", meta$Description))
+
+bibentry(
+  "Manual",
+  header = paste0("To cite '", meta$Package, "' in publications use:"),
+  title = paste0(meta$Package, ": ", meta$Title),
+  author = c(person("Angel", "Delgado-Panadero"), person("Diego", "Hernangómez"),
+            person("Iñaki", "Ucar")),
+  year = year,
+  version = meta$Version,
+  #url = unlist(strsplit(meta$URL, ","))[1],
+  abstract = abs
+)

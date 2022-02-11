@@ -11,8 +11,8 @@ An object of class \code{data.frame} with 14 rows and 1 columns.
 coordinates
 }
 \description{
-Dataframe with all the posible Spatial Reference Systems (SRS) availables
-to query the Catastro API.
+Dataframe with all the possible Spatial Reference Systems (SRS)
+available to query the Catastro API.
 }
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR_Distancia

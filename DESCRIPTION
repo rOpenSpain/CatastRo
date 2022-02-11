@@ -3,13 +3,16 @@ Package: CatastRo
 Title: Interface to the API 'Sede Electronica Del Catastro'
 Version: 0.1.0.9000
 Authors@R: c(
-    person("Angel", "Delgado-Panadero", , "delgadopanadero@gmail.com", role = c("aut", "cre"),
+    person("Angel", "Delgado-Panadero", , "delgadopanadero@gmail.com", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-8189-9251")),
     person("Iñaki", "Ucar", role = "aut",
-           comment = c(ORCID = "0000-0001-6403-5550"))
+           comment = c(ORCID = "0000-0001-6403-5550")),
+    person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-8457-4658"))
   )
-Description: Tools for quering cadastral references and adresses of
-    properties.
+Description: Tools for downloading cadastral references and addresses of
+    properties. Access public spatial data available under the 'INSPIRE'
+    directive.
 License: GPL-2
 URL: https://ropenspain.github.io/CatastRo/,
     https://github.com/rOpenSpain/CatastRo
@@ -17,8 +20,13 @@ BugReports: https://github.com/rOpenSpain/CatastRo/issues
 Depends: 
     R (>= 3.6)
 Imports: 
+    dplyr,
     httr,
-    XML
+    rappdirs (>= 0.3.0),
+    sf (>= 1.0.0),
+    tibble,
+    XML,
+    xml2
 Suggests: 
     ggplot2,
     knitr,
@@ -29,6 +37,5 @@ VignetteBuilder:
 Config/testthat/edition: 3
 Copyright: © Dirección General del Catastro <https://www.catastro.meh.es/>
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2

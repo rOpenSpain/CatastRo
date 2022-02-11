@@ -9,22 +9,24 @@ get_coor(RC, SRS= 'Google', Province = '',Municipality = '')
 \arguments{
 \item{RC}{Cadastral reference of the state.}
 
-\item{SRS}{The Spatial Reference System desired for the coordinates, if it is missed, the
-returned coordinates will be given in the Spatial Reference System used by
-Googlemaps ('EPSG:4326').\preformatted{      The set of the available SRS to use are available in the vector `coordinates`
-      from this package. A part from that, the function accept as a SRS argument
-      the values "Google" and "Oficial". The first uses the SRS value used by Google
-      maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
-      Europe. If no SRS is given, the function by default choose the "Google" SRS.
-}}
+\item{SRS}{The Spatial Reference System desired for the coordinates, if it
+is missed, the returned coordinates will be given in the Spatial Reference
+System used by Googlemaps ('EPSG:4326'). The set of the available SRS to
+use are available in the vector \code{coordinates} from this package. Apart
+from that, the function accept as a SRS argument the values "Google" and
+"Oficial". The first uses the SRS value used by Google maps ('EPSG:4326')
+while the latter uses the official SRS ('EPSG:4258') in Europe. If no SRS
+is given, the function by default choose the "Google" SRS.}
 
-\item{Province}{A string with the Province of the state. It is not case sensitive.}
+\item{Province}{A string with the Province of the state. It is not case
+sensitive.}
 
-\item{Municipality}{A string with the Municipality of the state. It is not case sensitive.}
+\item{Municipality}{A string with the Municipality of the state. It is not
+case sensitive.}
 }
 \value{
-A list consisting on two numeric values: the coordinates (latitude, longitude) and
-the reference system in which they are expressed.
+A list consisting on two numeric values: the coordinates (latitude,
+longitude) and the reference system in which they are expressed.
 }
 \description{
 Returns the coordinate of a state in a SRS given the Province, Municipality
