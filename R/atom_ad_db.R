@@ -76,7 +76,7 @@ catr_atom_ad_db_all <- function(cache = TRUE,
 
   return(tbl)
 }
-#' @rdname catr_atom_cp
+#' @rdname catr_atom_ad_db
 #' @name catr_atom_ad_to
 #' @keywords internal
 #' @export
