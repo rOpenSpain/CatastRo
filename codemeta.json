@@ -203,7 +203,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "117.824KB",
+  "fileSize": "118.024KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -230,5 +230,6 @@
   "releaseNotes": "https://github.com/rOpenSpain/CatastRo/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/CatastRo/blob/master/README.md",
   "contIntegration": ["https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check", "https://app.codecov.io/gh/rOpenSpain/CatastRo"],
+  "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": ["r-package", "ropenspain", "catastro", "spain"]
 }
