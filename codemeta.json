@@ -25,16 +25,18 @@
     },
     {
       "@type": "Person",
-      "givenName": "Iñaki",
-      "familyName": "Ucar",
-      "@id": "https://orcid.org/0000-0001-6403-5550"
-    },
-    {
-      "@type": "Person",
       "givenName": "Diego",
       "familyName": "Hernangómez",
       "email": "diego.hernangomezherrero@gmail.com",
       "@id": "https://orcid.org/0000-0001-8457-4658"
+    }
+  ],
+  "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Iñaki",
+      "familyName": "Ucar",
+      "@id": "https://orcid.org/0000-0001-6403-5550"
     }
   ],
   "copyrightHolder": [
@@ -201,7 +203,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "99.089KB",
+  "fileSize": "99.077KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -216,11 +218,6 @@
           "@type": "Person",
           "givenName": "Diego",
           "familyName": "Hernangómez"
-        },
-        {
-          "@type": "Person",
-          "givenName": "Iñaki",
-          "familyName": "Ucar"
         }
       ],
       "name": "CatastRo: Interface to the API 'Sede Electronica Del Catastro'"

@@ -21,3 +21,6 @@ reference:
   - title: Databases and reference data
     contents:
       - has_concept("databases")
+  - title: About the package
+    contents:
+      - CatastRo-package

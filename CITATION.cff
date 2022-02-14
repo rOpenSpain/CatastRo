@@ -16,9 +16,6 @@ authors:
   given-names: Angel
   email: delgadopanadero@gmail.com
   orcid: https://orcid.org/0000-0002-8189-9251
-- family-names: Ucar
-  given-names: Iñaki
-  orcid: https://orcid.org/0000-0001-6403-5550
 - family-names: Hernangómez
   given-names: Diego
   email: diego.hernangomezherrero@gmail.com
@@ -35,9 +32,6 @@ preferred-citation:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-  - family-names: Ucar
-    given-names: Iñaki
-    orcid: https://orcid.org/0000-0001-6403-5550
   year: '2022'
   version: 0.1.0.9000
   abstract: Tools for downloading cadastral references and addresses of properties.
