@@ -335,11 +335,21 @@
 </table>
 <p>Neither the <code>province</code> nor <code>municipality</code> are required to be passed to the function, unless the argument <code>municipality</code> is not <code>NULL</code>, in that case the argument <code>province</code> is needed to be passed. If it is passed a value to the <code>province</code> argument while the <code>municipality</code> argument is <code>NULL</code>, the function <code><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc()</a></code> will throw a message and would return a tibble with no data.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc</a></span><span class="op">(</span>
   rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,
   municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span>
 <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">refcat</th>
+<th align="left">geo.srs</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">13077A01800039</td>
+<td align="left">EPSG:4326</td>
+</tr></tbody>
+</table>
 <p>When using only <code>rc</code> the result is provided as expected:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
