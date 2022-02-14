@@ -24,7 +24,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/ovcserv.html">OVCCoordenadas Web Service</a>
+    <a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas Web Service</a>
   </div>
 </li>
 <li class="nav-item">
@@ -50,7 +50,7 @@
     </div>
 
     <div class="section level2">
-      <h2 id="atom">ATOM<a class="anchor" aria-label="anchor" href="#atom"></a></h2>
+      <h2 id="atom-inspire-api">ATOM INSPIRE API<a class="anchor" aria-label="anchor" href="#atom-inspire-api"></a></h2>
       
       <p class="section-desc"></p><p>These functions return <code>sf</code> objects as provided by the INSPIRE ATOM services of the Spanish Cadastre.</p>
 
@@ -64,19 +64,19 @@
           
           <code><a href="catr_atom_ad.html">catr_atom_ad()</a></code> 
         </dt>
-        <dd>INSPIRE: Download all the Addresses of a Municipality</dd>
+        <dd>ATOM INSPIRE: Download all the Addresses of a Municipality</dd>
       </dl><dl><dt>
           
           <code><a href="catr_atom_bu.html">catr_atom_bu()</a></code> 
         </dt>
-        <dd>INSPIRE: Download all the Buildings of a Municipality</dd>
+        <dd>ATOM INSPIRE: Download all the Buildings of a Municipality</dd>
       </dl><dl><dt>
           
           <code><a href="catr_atom_cp.html">catr_atom_cp()</a></code> 
         </dt>
-        <dd>INSPIRE: Download all the Cadastral Parcels of a Municipality</dd>
+        <dd>ATOM INSPIRE: Download all the Cadastral Parcels of a Municipality</dd>
       </dl></div><div class="section level2">
-      <h2 id="ovc-services">OVC Services<a class="anchor" aria-label="anchor" href="#ovc-services"></a></h2>
+      <h2 id="ovccoordenadas-api">OVCCoordenadas API<a class="anchor" aria-label="anchor" href="#ovccoordenadas-api"></a></h2>
       
       <p class="section-desc"></p><p>These functions allows to access the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p>
 
@@ -144,6 +144,32 @@
         </dt>
         <dd>Reference SRS codes for <strong>CatastRo</strong> APIs</dd>
       </dl></div><div class="section level2">
+      <h2 id="deprecated-functions">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions"></a></h2>
+      
+      <p class="section-desc"></p><p>These functions has been deprecated. All these functions have a replacement following the new package API.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="get_rc.html">get_rc()</a></code> 
+        </dt>
+        <dd>Interface to query Consulta_RCCOOR</dd>
+      </dl><dl><dt>
+          
+          <code><a href="near_rc.html">near_rc()</a></code> 
+        </dt>
+        <dd>Interface to query Consulta_RCCOOR_Distancia</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_coor.html">get_coor()</a></code> 
+        </dt>
+        <dd>Interface to query Consulta_CPMRC</dd>
+      </dl></div><div class="section level2">
       <h2 id="about-the-package">About the package<a class="anchor" aria-label="anchor" href="#about-the-package"></a></h2>
       
       
@@ -171,7 +197,7 @@
     <div class="row">
       <div class="col-md">
         <h4 data-toc-skip>About <img src="../logo.png" alt="CatastRo Logo" height="24"> CatastRo</h4>
-        <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Angel Delgado-Panadero</a>, Diego Hernangómez.</p>
+        <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Ángel Delgado Panadero</a>, <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>.</p>
         <p>Part of the <span class="ROS-light">rOpenSpain</span> project.</p>
         <hr class="d-md-none"></div>
       <div class="col-md offset-md-4">

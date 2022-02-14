@@ -50,7 +50,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/ovcserv.html">OVCCoordenadas Web Service</a>
+    <a class="dropdown-item" href="articles/ovcservice.html">OVCCoordenadas Web Service</a>
   </div>
 </li>
 <li class="nav-item">
@@ -96,7 +96,7 @@
 <p>Alternatively, you can install the developing version of <strong>CatastRo</strong> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span>
-<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<span class="fu">install_github</span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="query-a-coordinate">Query a coordinate<a class="anchor" aria-label="anchor" href="#query-a-coordinate"></a>
@@ -127,15 +127,17 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite ‘CatastRo’ in publications use:</p>
-<p>Delgado-Panadero A, Hernangómez D (2022). <em>CatastRo: Interface to the API ‘Sede Electronica Del Catastro’</em>.</p>
+<p>Delgado Panadero Á, Hernangómez D (2022). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. doi: 10.5281/zenodo.6044091 (URL: <a href="https://doi.org/10.5281/zenodo.6044091" class="external-link uri">https://doi.org/10.5281/zenodo.6044091</a>), &lt;URL: <a href="https://ropenspain.github.io/CatastRo/" class="uri">https://ropenspain.github.io/CatastRo/</a>&gt;.</p>
 <p>A BibTeX entry for LaTeX users is:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Manual{,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {CatastRo<span class="sc">:</span> Interface to the API <span class="st">'Sede Electronica Del Catastro'</span>},</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Angel Delgado<span class="sc">-</span>Panadero and Diego Hernangómez},</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2022</span>},</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">1</span>.<span class="fl">0.9000</span>},</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools <span class="cf">for</span> downloading cadastral references and addresses of properties. Access public spatial data available under the <span class="st">'INSPIRE'</span> directive.},</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.6044091</span>},</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools <span class="cf">for</span> downloading cadastral references and addresses of properties. Access public spatial data available under the <span class="st">'INSPIRE'</span> directive.},</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
@@ -170,8 +172,9 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://github.com/DelgadoPanadero" class="external-link">Angel Delgado-Panadero</a> <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-8189-9251" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Diego Hernangómez <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8457-4658" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<a href="https://github.com/DelgadoPanadero" class="external-link">Ángel Delgado Panadero</a> <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-8189-9251" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>
+<a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8457-4658" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -209,7 +212,7 @@
     <div class="row">
       <div class="col-md">
         <h4 data-toc-skip>About <img src="logo.png" alt="CatastRo Logo" height="24"> CatastRo</h4>
-        <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Angel Delgado-Panadero</a>, Diego Hernangómez.</p>
+        <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Ángel Delgado Panadero</a>, <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>.</p>
         <p>Part of the <span class="ROS-light">rOpenSpain</span> project.</p>
         <hr class="d-md-none">
 </div>
