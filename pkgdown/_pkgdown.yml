@@ -8,12 +8,12 @@ authors:
     href: https://github.com/DelgadoPanadero
 
 reference:
-  - title: ATOM
+  - title: ATOM INSPIRE API
     desc: These functions return `sf` objects as provided by the INSPIRE ATOM
       services of the Spanish Cadastre.
     contents:
       - has_concept("ATOM")
-  - title: OVC Services
+  - title: OVCCoordenadas API
     desc: These functions allows to access the
       [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx) service.
     contents:
@@ -24,6 +24,10 @@ reference:
   - title: Databases and reference data
     contents:
       - has_concept("databases")
+  - title: Deprecated functions
+    desc: These functions has been deprecated. All these functions have a replacement following the new package API.
+    contents:
+      - has_concept("deprecated functions")
   - title: About the package
     contents:
       - CatastRo-package

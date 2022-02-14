@@ -1,4 +1,4 @@
-#' INSPIRE: Reference Database for ATOM Addresses
+#' ATOM INSPIRE: Reference Database for ATOM Addresses
 #'
 #' @description
 #'
@@ -17,10 +17,10 @@
 #'
 #' @source <https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml>
 #'
-#' @seealso [INSPIRE Services for Cadastral Cartography](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #' @family INSPIRE
 #' @family ATOM
+#' @family addresses
 #' @family databases
 #'
 #' @inheritParams catr_set_cache_dir

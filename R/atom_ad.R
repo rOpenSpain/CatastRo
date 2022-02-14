@@ -1,12 +1,14 @@
-#' INSPIRE: Download all the Addresses of a Municipality
+#' ATOM INSPIRE: Download all the Addresses of a Municipality
 #'
 #'
 #' Get the spatial data of all the addresses belonging to a single
 #' municipality using the INSPIRE ATOM service.
 #'
-#' @source <https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml>
+#' @references
+#' [API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf)
 #'
-#' @seealso [INSPIRE Services for Cadastral Cartography](https://www.catastro.minhap.es/webinspire/index.html)
+#' [INSPIRE Services for Cadastral Cartography](https://www.catastro.minhap.es/webinspire/index.html)
+#' 
 #'
 #' @family INSPIRE
 #' @family ATOM
