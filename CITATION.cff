@@ -9,11 +9,12 @@ type: software
 license: GPL-2.0-only
 title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
 version: 0.1.0.9000
+doi: 10.5281/zenodo.6044091
 abstract: Tools for downloading cadastral references and addresses of properties.
   Access public spatial data available under the 'INSPIRE' directive.
 authors:
-- family-names: Delgado-Panadero
-  given-names: Angel
+- family-names: Delgado Panadero
+  given-names: Ángel
   email: delgadopanadero@gmail.com
   orcid: https://orcid.org/0000-0002-8189-9251
 - family-names: Hernangómez
@@ -22,10 +23,10 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
   type: manual
-  title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
+  title: 'CatastRo: Interface to the API Sede Electrónica Del Catastro'
   authors:
-  - family-names: Delgado-Panadero
-    given-names: Angel
+  - family-names: Delgado Panadero
+    given-names: Ángel
     email: delgadopanadero@gmail.com
     orcid: https://orcid.org/0000-0002-8189-9251
   - family-names: Hernangómez
@@ -34,6 +35,8 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2022'
   version: 0.1.0.9000
+  url: https://ropenspain.github.io/CatastRo/
+  doi: 10.5281/zenodo.6044091
   abstract: Tools for downloading cadastral references and addresses of properties.
     Access public spatial data available under the 'INSPIRE' directive.
 repository-code: https://github.com/rOpenSpain/CatastRo

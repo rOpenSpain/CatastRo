@@ -1,5 +1,8 @@
 ---
 title: "OVCCoordenadas Web Service"
+author: 
+  - Ángel Delgado Panadero
+  - Diego Hernangómez
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{OVCCoordenadas Web Service}
@@ -33,7 +36,17 @@ properties located in a square 50-meters-side around the given point.
 The documentation of this API can be found
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-## Query a coordinate
+
+## CatastRo API
+
+The OVCCoordenadas Web Service can be reached using the following 
+functions:
+
+* `catr_ovc_rccoor()`
+* `catr_ovc_rccoor_distancia()`
+* `catr_ovc_cpmrc()`
+
+## Reverse Geocoding Cadastral References
 
 The function `catr_ovc_rccoor()` receives the coordinates (*lat* and *lon*) and
 the spatial reference system (SRS) used to express them. The return is a tibble
@@ -108,7 +121,7 @@ catr_ovc_rccoor_distancia(
 | -5.663408| 40.96002|EPSG:4230 |5877501TL7357F |AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      |37274    |5877501 |TL7357F |37          |274         |643             |1                |AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      |21.81 |
 | -5.663408| 40.96002|EPSG:4230 |5778706TL7357H |AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) |37274    |5778706 |TL7357H |37          |274         |643             |2                |AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) |23.18 |
 
-## Query CPMRC
+## Geocoding a Cadastral Reference
 
 The opposite query is possible as well. Being given to the function
 `catr_ovc_cpmrc()` a cadastral reference (`rc`), the province (`province`) and
@@ -145,6 +158,7 @@ catr_ovc_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) %>%
   knitr::kable()
+#> Error code: 11. LA PROVINCIA ES OBLIGATORIA
 ```
 
 

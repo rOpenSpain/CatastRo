@@ -48,6 +48,8 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
       mode = "wb"
     ), silent = TRUE)
 
+    # nocov start
+    # On error retry
     if (inherits(err_dwnload, "try-error")) {
       if (verbose) message("Retrying query")
       err_dwnload <- try(download.file(url, filepath,
@@ -55,9 +57,11 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
         mode = "wb"
       ), silent = TRUE)
     }
+    # nocov end
 
     # If not then message
     if (inherits(err_dwnload, "try-error")) {
+      # nocov start
       message(
         "Download failed",
         "\n\nurl \n ",
@@ -67,6 +71,7 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
         "is a bug please consider opening an issue"
       )
       stop("\nExecution halted")
+      # nocov end
     } else if (verbose) {
       message("Download succesful")
     }

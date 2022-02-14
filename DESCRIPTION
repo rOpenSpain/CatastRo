@@ -3,7 +3,7 @@ Package: CatastRo
 Title: Interface to the API 'Sede Electronica Del Catastro'
 Version: 0.1.0.9000
 Authors@R: c(
-    person("Angel", "Delgado-Panadero", , "delgadopanadero@gmail.com", role = c("aut", "cph"),
+    person("Ángel", "Delgado Panadero", , "delgadopanadero@gmail.com", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-8189-9251")),
     person("Iñaki", "Ucar", role = "ctb",
            comment = c(ORCID = "0000-0001-6403-5550")),

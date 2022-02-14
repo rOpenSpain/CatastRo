@@ -4,10 +4,11 @@ abs <- trimws(gsub("\\s+", " ", meta$Description))
 bibentry(
   "Manual",
   header = paste0("To cite '", meta$Package, "' in publications use:"),
-  title = paste0(meta$Package, ": ", meta$Title),
-  author = c(person("Angel", "Delgado-Panadero"), person("Diego", "Hernangómez")),
+  title = "{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro",
+  author = c(person("Ángel", "Delgado Panadero"), person("Diego", "Hernangómez")),
   year = year,
   version = meta$Version,
-  #url = unlist(strsplit(meta$URL, ","))[1],
+  url = unlist(strsplit(meta$URL, ","))[1],
+  doi = "10.5281/zenodo.6044091",
   abstract = abs
 )

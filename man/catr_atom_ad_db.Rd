@@ -4,7 +4,7 @@
 \alias{catr_atom_ad_db_all}
 \alias{catr_atom_ad_to}
 \alias{catr_atom_ad_db_to}
-\title{INSPIRE: Reference Database for ATOM Addresses}
+\title{ATOM INSPIRE: Reference Database for ATOM Addresses}
 \source{
 \url{https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
 }
@@ -81,9 +81,7 @@ catr_atom_ad_db_all()
 }
 }
 \seealso{
-\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
-
-Other INSPIRE: 
+INSPIRE API:
 \code{\link{catr_atom_ad}()},
 \code{\link{catr_atom_bu_db_all}()},
 \code{\link{catr_atom_bu}()},
@@ -97,6 +95,9 @@ Other INSPIRE ATOM services:
 \code{\link{catr_atom_cp_db_all}()},
 \code{\link{catr_atom_cp}()}
 
+Other addresses: 
+\code{\link{catr_atom_ad}()}
+
 Other databases: 
 \code{\link{catr_atom_bu_db_all}()},
 \code{\link{catr_atom_cp_db_all}()},
@@ -104,5 +105,6 @@ Other databases:
 }
 \concept{ATOM}
 \concept{INSPIRE}
+\concept{addresses}
 \concept{databases}
 \keyword{internal}

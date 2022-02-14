@@ -13,7 +13,7 @@
 #'
 #' @family OVCCoordenadas
 #' @family cadastral references
-#' @seealso [catr_srs_values]
+#' @seealso [catr_srs_values], vignette("ovcservice")
 #' @inheritParams catr_atom_ad
 #'
 #' @param lat Latitude to use on the query. It should be specified in the same
