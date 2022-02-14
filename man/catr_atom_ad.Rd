@@ -44,7 +44,7 @@ Get the spatial data of all the addresses belonging to a single
 municipality using the INSPIRE ATOM service.
 }
 \examples{
-\dontrun{
+\donttest{
 s <- catr_atom_ad("Melque",
   to = "Segovia"
 )

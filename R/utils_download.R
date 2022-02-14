@@ -3,6 +3,9 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
 
   # Use secure http
   api_entry <- gsub("^http:", "https:", api_entry)
+
+  # Encode
+  api_entry <- utils::URLencode(api_entry)
   url <- api_entry
 
   cache_dir <- catr_hlp_cachedir(cache_dir)

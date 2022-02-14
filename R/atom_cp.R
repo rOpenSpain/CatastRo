@@ -24,7 +24,7 @@
 #' @param what Information to load. It could be `"parcel"` for cadastral parcels
 #'   or `"zoning"` for cadastral zoning.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' s <- catr_atom_cp("Melque",
 #'   to = "Segovia",
 #'   what = "parcel"

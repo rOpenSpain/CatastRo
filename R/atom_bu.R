@@ -23,7 +23,7 @@
 #'   `"buildingpart"` for parts of a building or `"other"` for others (
 #'   swimming pools, etc.).
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' s <- catr_atom_bu("Nava de la Asuncion",
 #'   to = "Segovia",
 #'   what = "building"

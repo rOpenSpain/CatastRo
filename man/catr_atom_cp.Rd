@@ -48,7 +48,7 @@ Get the spatial data of all the cadastral parcels belonging to a single
 municipality using the INSPIRE ATOM service.
 }
 \examples{
-\dontrun{
+\donttest{
 s <- catr_atom_cp("Melque",
   to = "Segovia",
   what = "parcel"

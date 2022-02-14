@@ -49,7 +49,7 @@ Get the spatial data of all the buildings belonging to a single municipality
 using the INSPIRE ATOM service.
 }
 \examples{
-\dontrun{
+\donttest{
 s <- catr_atom_bu("Nava de la Asuncion",
   to = "Segovia",
   what = "building"

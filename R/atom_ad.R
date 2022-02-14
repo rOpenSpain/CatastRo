@@ -21,7 +21,7 @@
 #'   cadastral code. See [catr_atom_ad_db_all()] for getting the cadastral
 #'   codes.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' s <- catr_atom_ad("Melque",
 #'   to = "Segovia"
 #' )
