@@ -18,11 +18,14 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-2">
-      <ul class="navbar-nav me-auto"><li class="nav-item">
-  <a class="nav-link" href="../articles/CatastRo.html">Get started</a>
-</li>
-<li class="active nav-item">
+      <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/ovcserv.html">OVCCoordenadas Web Service</a>
+  </div>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
@@ -85,19 +88,24 @@
 
       <dl><dt>
           
-          <code><a href="get_coor.html">get_coor()</a></code> 
+          <code><a href="catr_ovc_cpmrc.html">catr_ovc_cpmrc()</a></code> 
         </dt>
-        <dd>Interface to query Consulta_CPMRC</dd>
+        <dd>OVCCoordenadas: Geocode a cadastral reference</dd>
       </dl><dl><dt>
           
-          <code><a href="get_rc.html">get_rc()</a></code> 
+          <code><a href="catr_ovc_rccoor.html">catr_ovc_rccoor()</a></code> 
         </dt>
-        <dd>Interface to query Consulta_RCCOOR</dd>
+        <dd>OVCCoordenadas: Reverse geocode a cadastral reference</dd>
       </dl><dl><dt>
           
-          <code><a href="near_rc.html">near_rc()</a></code> 
+          <code><a href="catr_ovc_rccoor_distancia.html">catr_ovc_rccoor_distancia()</a></code> 
         </dt>
-        <dd>Interface to query Consulta_RCCOOR_Distancia</dd>
+        <dd>OVCCoordenadas: Reverse geocode cadastral references on a region</dd>
+      </dl><dl><dt>
+          
+          <code><a href="catr_srs_values.html">catr_srs_values</a></code> 
+        </dt>
+        <dd>Reference SRS codes for <strong>CatastRo</strong> APIs</dd>
       </dl></div><div class="section level2">
       <h2 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h2>
       
@@ -132,9 +140,9 @@
 
       <dl><dt>
           
-          <code><a href="coordinates.html">coordinates</a></code> 
+          <code><a href="catr_srs_values.html">catr_srs_values</a></code> 
         </dt>
-        <dd>Coordinates (SRS)</dd>
+        <dd>Reference SRS codes for <strong>CatastRo</strong> APIs</dd>
       </dl></div><div class="section level2">
       <h2 id="about-the-package">About the package<a class="anchor" aria-label="anchor" href="#about-the-package"></a></h2>
       

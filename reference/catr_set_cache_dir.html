@@ -40,11 +40,14 @@ install = TRUE). This would store your cache_dir permanently.
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-2">
-      <ul class="navbar-nav me-auto"><li class="nav-item">
-  <a class="nav-link" href="../articles/CatastRo.html">Get started</a>
-</li>
-<li class="active nav-item">
+      <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/ovcserv.html">OVCCoordenadas Web Service</a>
+  </div>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="../news/index.html">Changelog</a>
@@ -134,11 +137,11 @@ corresponding file by any other method and save it on your
 <span class="r-in"><span class="co"># \dontrun{</span></span>
 <span class="r-in"><span class="fu">catr_set_cache_dir</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using a temporary cache dir. Set 'cache_dir' to a value for store permanently</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> CatastRo cache dir is: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpcPJpiK/CatastRo</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> CatastRo cache dir is: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpDW80tn/CatastRo</span>
 <span class="r-in"><span class="co"># }</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"CATASTROESP_CACHE_DIR"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpcPJpiK/CatastRo"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpDW80tn/CatastRo"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
