@@ -47,7 +47,7 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
       quiet = isFALSE(verbose),
       mode = "wb"
     ), silent = TRUE)
-    
+
     # nocov start
     # On error retry
     if (inherits(err_dwnload, "try-error")) {
