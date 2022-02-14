@@ -140,12 +140,18 @@ argument `province` is needed to be passed. If it is passed a value to the
 
 
 ```r
-direction <- catr_ovc_cpmrc(
+catr_ovc_cpmrc(
   rc = "13077A01800039",
   municipality = "SANTA CRUZ DE MUDELA"
 ) %>%
   knitr::kable()
 ```
+
+
+
+|refcat         |geo.srs   |
+|:--------------|:---------|
+|13077A01800039 |EPSG:4326 |
 
 When using only `rc` the result is provided as expected:
 

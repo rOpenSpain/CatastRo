@@ -109,7 +109,7 @@ argument `province` is needed to be passed. If it is passed a value to the
 `catr_ovc_cpmrc()` will throw a message and would return a tibble with no data.
 
 ```{r}
-direction <- catr_ovc_cpmrc(
+catr_ovc_cpmrc(
   rc = "13077A01800039",
   municipality = "SANTA CRUZ DE MUDELA"
 ) %>%
