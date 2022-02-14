@@ -58,13 +58,12 @@ catr_ovc_rccoor_distancia(
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta_RCCOOR_Distancia}
 }
 \seealso{
-\link{catr_srs_values}
+\link{catr_srs_values}, vignette("ovcservice")
 
-Other OVCCoordenadas: 
+OVCCoordenadas API:
 \code{\link{catr_ovc_cpmrc}()},
 \code{\link{catr_ovc_rccoor}()},
-\code{\link{catr_srs_values}},
-\code{\link{get_coor}()}
+\code{\link{catr_srs_values}}
 
 Other cadastral references: 
 \code{\link{catr_ovc_cpmrc}()},

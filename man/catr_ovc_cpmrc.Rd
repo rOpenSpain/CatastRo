@@ -63,13 +63,12 @@ catr_ovc_cpmrc("9872023VH5797S")
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta_CPMRC}
 }
 \seealso{
-\link{catr_srs_values}
+\link{catr_srs_values}, \code{vignette("ovcservice")}
 
-Other OVCCoordenadas: 
+OVCCoordenadas API:
 \code{\link{catr_ovc_rccoor_distancia}()},
 \code{\link{catr_ovc_rccoor}()},
-\code{\link{catr_srs_values}},
-\code{\link{get_coor}()}
+\code{\link{catr_srs_values}}
 
 Other cadastral references: 
 \code{\link{catr_ovc_rccoor_distancia}()},

@@ -22,7 +22,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Angel Delgado-Panadero \email{delgadopanadero@gmail.com} (\href{https://orcid.org/0000-0002-8189-9251}{ORCID}) [copyright holder]
+  \item Ángel Delgado Panadero \email{delgadopanadero@gmail.com} (\href{https://orcid.org/0000-0002-8189-9251}{ORCID}) [copyright holder]
 }
 
 Other contributors:

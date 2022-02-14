@@ -18,8 +18,8 @@
   "author": [
     {
       "@type": "Person",
-      "givenName": "Angel",
-      "familyName": "Delgado-Panadero",
+      "givenName": "Ángel",
+      "familyName": "Delgado Panadero",
       "email": "delgadopanadero@gmail.com",
       "@id": "https://orcid.org/0000-0002-8189-9251"
     },
@@ -42,8 +42,8 @@
   "copyrightHolder": [
     {
       "@type": "Person",
-      "givenName": "Angel",
-      "familyName": "Delgado-Panadero",
+      "givenName": "Ángel",
+      "familyName": "Delgado Panadero",
       "email": "delgadopanadero@gmail.com",
       "@id": "https://orcid.org/0000-0002-8189-9251"
     }
@@ -203,7 +203,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "118.387KB",
+  "fileSize": "117.421KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -211,8 +211,8 @@
       "author": [
         {
           "@type": "Person",
-          "givenName": "Angel",
-          "familyName": "Delgado-Panadero"
+          "givenName": "Ángel",
+          "familyName": "Delgado Panadero"
         },
         {
           "@type": "Person",

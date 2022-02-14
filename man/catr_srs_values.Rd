@@ -65,11 +65,10 @@ Other databases:
 \code{\link{catr_atom_bu_db_all}()},
 \code{\link{catr_atom_cp_db_all}()}
 
-Other OVCCoordenadas: 
+OVCCoordenadas API:
 \code{\link{catr_ovc_cpmrc}()},
 \code{\link{catr_ovc_rccoor_distancia}()},
-\code{\link{catr_ovc_rccoor}()},
-\code{\link{get_coor}()}
+\code{\link{catr_ovc_rccoor}()}
 }
 \concept{OVCCoordenadas}
 \concept{WFS}

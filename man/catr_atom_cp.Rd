@@ -2,10 +2,7 @@
 % Please edit documentation in R/atom_cp.R
 \name{catr_atom_cp}
 \alias{catr_atom_cp}
-\title{INSPIRE: Download all the Cadastral Parcels of a Municipality}
-\source{
-\url{https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
-}
+\title{ATOM INSPIRE: Download all the Cadastral Parcels of a Municipality}
 \usage{
 catr_atom_cp(
   munic,
@@ -65,10 +62,13 @@ ggplot(s) +
 }
 
 }
-\seealso{
-\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
+\references{
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf}{API Documentation}
 
-Other INSPIRE: 
+\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
+}
+\seealso{
+INSPIRE API:
 \code{\link{catr_atom_ad_db_all}()},
 \code{\link{catr_atom_ad}()},
 \code{\link{catr_atom_bu_db_all}()},
@@ -80,6 +80,9 @@ Other INSPIRE ATOM services:
 \code{\link{catr_atom_ad}()},
 \code{\link{catr_atom_bu_db_all}()},
 \code{\link{catr_atom_bu}()},
+\code{\link{catr_atom_cp_db_all}()}
+
+Other parcels: 
 \code{\link{catr_atom_cp_db_all}()}
 
 Other spatial: 

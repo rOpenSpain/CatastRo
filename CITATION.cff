@@ -12,8 +12,8 @@ version: 0.1.0.9000
 abstract: Tools for downloading cadastral references and addresses of properties.
   Access public spatial data available under the 'INSPIRE' directive.
 authors:
-- family-names: Delgado-Panadero
-  given-names: Angel
+- family-names: Delgado Panadero
+  given-names: Ángel
   email: delgadopanadero@gmail.com
   orcid: https://orcid.org/0000-0002-8189-9251
 - family-names: Hernangómez
@@ -24,8 +24,8 @@ preferred-citation:
   type: manual
   title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
   authors:
-  - family-names: Delgado-Panadero
-    given-names: Angel
+  - family-names: Delgado Panadero
+    given-names: Ángel
     email: delgadopanadero@gmail.com
     orcid: https://orcid.org/0000-0002-8189-9251
   - family-names: Hernangómez

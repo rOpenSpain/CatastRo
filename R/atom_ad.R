@@ -8,7 +8,7 @@
 #' [API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf)
 #'
 #' [INSPIRE Services for Cadastral Cartography](https://www.catastro.minhap.es/webinspire/index.html)
-#' 
+#'
 #'
 #' @family INSPIRE
 #' @family ATOM
