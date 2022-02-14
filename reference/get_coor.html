@@ -65,27 +65,35 @@ and Cadastral Reference of the state.</p>
     <dl><dt>RC</dt>
 <dd><p>Cadastral reference of the state.</p></dd>
 <dt>SRS</dt>
-<dd><p>The Spatial Reference System desired for the coordinates, if it is missed, the
-returned coordinates will be given in the Spatial Reference System used by
-Googlemaps ('EPSG:4326').</p><div class="sourceCode"><pre><code>      The set of the available SRS to use are available in the vector `coordinates`
-      from this package. A part from that, the function accept as a SRS argument
-      the values "Google" and "Oficial". The first uses the SRS value used by Google
-      maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
-      Europe. If no SRS is given, the function by default choose the "Google" SRS.
-</code></pre></div></dd>
+<dd><p>The Spatial Reference System desired for the coordinates, if it
+is missed, the returned coordinates will be given in the Spatial Reference
+System used by Googlemaps ('EPSG:4326'). The set of the available SRS to
+use are available in the vector <code>coordinates</code> from this package. Apart
+from that, the function accept as a SRS argument the values "Google" and
+"Oficial". The first uses the SRS value used by Google maps ('EPSG:4326')
+while the latter uses the official SRS ('EPSG:4258') in Europe. If no SRS
+is given, the function by default choose the "Google" SRS.</p></dd>
 <dt>Province</dt>
-<dd><p>A string with the Province of the state. It is not case sensitive.</p></dd>
+<dd><p>A string with the Province of the state. It is not case
+sensitive.</p></dd>
 <dt>Municipality</dt>
-<dd><p>A string with the Municipality of the state. It is not case sensitive.</p></dd>
+<dd><p>A string with the Municipality of the state. It is not
+case sensitive.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A list consisting on two numeric values: the coordinates (latitude, longitude) and
-the reference system in which they are expressed.</p>
+    <p>A list consisting on two numeric values: the coordinates (latitude,
+longitude) and the reference system in which they are expressed.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p>Other OVCCoordenadas: 
+<code><a href="get_rc.html">get_rc</a>()</code>,
+<code><a href="near_rc.html">near_rc</a>()</code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -126,7 +134,7 @@ the reference system in which they are expressed.</p>
     <div class="row">
       <div class="col-md">
         <h4 data-toc-skip>About <img src="../logo.png" alt="CatastRo Logo" height="24"> CatastRo</h4>
-        <p>Developed by Angel Delgado-Panadero, Iñaki Ucar.</p>
+        <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Angel Delgado-Panadero</a>, Diego Hernangómez.</p>
         <p>Part of the <span class="ROS-light">rOpenSpain</span> project.</p>
         <hr class="d-md-none"></div>
       <div class="col-md offset-md-4">

@@ -74,24 +74,32 @@ in the current point.</p>
     <dl><dt>lat</dt>
 <dd><p>Latitude coordinate.</p></dd>
 <dt>lon</dt>
-<dd><p>Longitude coortinate.</p></dd>
+<dd><p>Longitude coordinate.</p></dd>
 <dt>SRS</dt>
-<dd><p>The Spatial Reference System used for the coordinates. There is a vector
-with all the allowed SRSs in the variable from the package called coordinates.</p><div class="sourceCode"><pre><code>  The set of the available SRS to use are available in the vector `coordinates`
-  from this package. A part from that, the function accept as a SRS argument
-  the values "Google" and "Oficial". The first uses the SRS value used by Google
-  maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
-  Europe. If no SRS is given, the function by default choose the "Google" SRS.
-</code></pre></div></dd>
+<dd><p>The Spatial Reference System desired for the coordinates, if it
+is missed, the returned coordinates will be given in the Spatial Reference
+System used by Googlemaps ('EPSG:4326'). The set of the available SRS to
+use are available in the vector <code>coordinates</code> from this package. Apart
+from that, the function accept as a SRS argument the values "Google" and
+"Oficial". The first uses the SRS value used by Google maps ('EPSG:4326')
+while the latter uses the official SRS ('EPSG:4258') in Europe. If no SRS
+is given, the function by default choose the "Google" SRS.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data.frame with the the addresses of the states and the cadastral references
-in the nearby area of the location given for every SRS requested.</p>
+    <p>A data.frame with the the addresses of the states and the cadastral
+references in the nearby area of the location given for every SRS
+requested.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR_Distancia</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p>Other OVCCoordenadas: 
+<code><a href="get_coor.html">get_coor</a>()</code>,
+<code><a href="get_rc.html">get_rc</a>()</code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -104,7 +112,6 @@ in the nearby area of the location given for every SRS requested.</p>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">direction</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                         address             RC       SRS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 AY SANTO DOMINGO, DE 24 SALAMANCA (SALAMANCA) 6078401TL7367G EPSG:4326</span>
-<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -118,7 +125,7 @@ in the nearby area of the location given for every SRS requested.</p>
     <div class="row">
       <div class="col-md">
         <h4 data-toc-skip>About <img src="../logo.png" alt="CatastRo Logo" height="24"> CatastRo</h4>
-        <p>Developed by Angel Delgado-Panadero, Iñaki Ucar.</p>
+        <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Angel Delgado-Panadero</a>, Diego Hernangómez.</p>
         <p>Part of the <span class="ROS-light">rOpenSpain</span> project.</p>
         <hr class="d-md-none"></div>
       <div class="col-md offset-md-4">

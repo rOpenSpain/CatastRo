@@ -47,9 +47,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="atom">ATOM<a class="anchor" aria-label="anchor" href="#atom"></a></h2>
       
-      
+      <p class="section-desc"></p><p>These functions return <code>sf</code> objects as provided by the INSPIRE ATOM services of the Spanish Cadastre.</p>
 
       
     </div><div id="" class="section level2">
@@ -59,10 +59,31 @@
 
       <dl><dt>
           
-          <code><a href="coordinates.html">coordinates</a></code> 
+          <code><a href="catr_atom_ad.html">catr_atom_ad()</a></code> 
         </dt>
-        <dd>Coordinates (SRS)</dd>
+        <dd>INSPIRE: Download all the Addresses of a Municipality</dd>
       </dl><dl><dt>
+          
+          <code><a href="catr_atom_bu.html">catr_atom_bu()</a></code> 
+        </dt>
+        <dd>INSPIRE: Download all the Buildings of a Municipality</dd>
+      </dl><dl><dt>
+          
+          <code><a href="catr_atom_cp.html">catr_atom_cp()</a></code> 
+        </dt>
+        <dd>INSPIRE: Download all the Cadastral Parcels of a Municipality</dd>
+      </dl></div><div class="section level2">
+      <h2 id="ovc-services">OVC Services<a class="anchor" aria-label="anchor" href="#ovc-services"></a></h2>
+      
+      <p class="section-desc"></p><p>These functions allows to access the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="get_coor.html">get_coor()</a></code> 
         </dt>
@@ -77,8 +98,62 @@
           <code><a href="near_rc.html">near_rc()</a></code> 
         </dt>
         <dd>Interface to query Consulta_RCCOOR_Distancia</dd>
+      </dl></div><div class="section level2">
+      <h2 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h2>
+      
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="catr_clear_cache.html">catr_clear_cache()</a></code> 
+        </dt>
+        <dd>Clear your <strong>CatastRo</strong> cache dir</dd>
+      </dl><dl><dt>
+          
+          <code><a href="catr_set_cache_dir.html">catr_set_cache_dir()</a></code> 
+        </dt>
+        <dd>Set your <strong>CatastRo</strong> cache dir</dd>
+      </dl></div><div class="section level2">
+      <h2 id="databases-and-reference-data">Databases and reference data<a class="anchor" aria-label="anchor" href="#databases-and-reference-data"></a></h2>
+      
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="coordinates.html">coordinates</a></code> 
+        </dt>
+        <dd>Coordinates (SRS)</dd>
+      </dl></div><div class="section level2">
+      <h2 id="about-the-package">About the package<a class="anchor" aria-label="anchor" href="#about-the-package"></a></h2>
+      
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="CatastRo-package.html">CatastRo-package</a></code> 
+        </dt>
+        <dd>CatastRo: Interface to the API 'Sede Electronica Del Catastro'</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
    </div>
@@ -88,7 +163,7 @@
     <div class="row">
       <div class="col-md">
         <h4 data-toc-skip>About <img src="../logo.png" alt="CatastRo Logo" height="24"> CatastRo</h4>
-        <p>Developed by Angel Delgado-Panadero, Iñaki Ucar.</p>
+        <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Angel Delgado-Panadero</a>, Diego Hernangómez.</p>
         <p>Part of the <span class="ROS-light">rOpenSpain</span> project.</p>
         <hr class="d-md-none"></div>
       <div class="col-md offset-md-4">

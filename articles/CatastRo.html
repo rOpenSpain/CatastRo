@@ -70,12 +70,13 @@
 
 
 
-<script src="CatastRo_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main"><div class="page-header">
       <img src="" class="logo" alt=""><h1>CatastRo Package</h1>
                         <h4 data-toc-skip class="author">Angel Delgado</h4>
             
-            <h4 data-toc-skip class="date">2022-02-11</h4>
+            <h4 data-toc-skip class="date">2022-02-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/HEAD/vignettes/CatastRo.Rmd" class="external-link"><code>vignettes/CatastRo.Rmd</code></a></small>
       <div class="d-none name"><code>CatastRo.Rmd</code></div>
@@ -86,11 +87,11 @@
 <div class="section level2">
 <h2 id="introduction-to-the-api">Introduction to the API<a class="anchor" aria-label="anchor" href="#introduction-to-the-api"></a>
 </h2>
-<p>This R package is aimed to query the information from the <a href="http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a> API directly through a R ide.</p>
-<p>This API is used to retrieve the spatial coordinates of a urban property, moreover it is not needed to be the owner to get the information, actually it is enough to know the casdrastral reference (RC) of the property and its address (in fact, it is only completely compulsory to know the RC, however, to ensure a good result from the response and to avoid mistakes in the RC, the address can be passed to the query too).</p>
+<p>This R package is aimed to query the information from the <a href="http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a> API directly through a R IDE.</p>
+<p>This API is used to retrieve the spatial coordinates of a urban property, moreover it is not needed to be the owner to get the information, actually it is enough to know the cadastral reference (RC) of the property and its address (in fact, it is only completely compulsory to know the RC, however, to ensure a good result from the response and to avoid mistakes in the RC, the address can be passed to the query too).</p>
 <p>Secondly, the API can be used to obtain a RC of a urban property, for this information, the API asks for the longitude and the latitude. Furthermore, it allows to choose the spacial reference system (SRS) between a list of them to express the coordinates.</p>
-<p>Finally, the API tackles the issue of not knowning the exact point which the urban property has been registered. In this case, it will return all the properties located in a square 50-meters-side around the given point.</p>
-<p>The documentation of this API can be found <a href="http://www.catastro.meh.es/ayuda/lang/castellano/servicios_web.htm" class="external-link">here</a>.</p>
+<p>Finally, the API tackles the issue of not knowing the exact point which the urban property has been registered. In this case, it will return all the properties located in a square 50-meters-side around the given point.</p>
+<p>The documentation of this API can be found <a href="https://www.catastro.meh.es/ayuda/lang/castellano/servicios_web.htm" class="external-link">here</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -98,7 +99,7 @@
 <p>The package has been uploaded to GitHub therefore, it can be installed using the <code>devtools</code> library.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span>
-<span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span><span class="op">)</span></code></pre></div>
+<span class="fu">install_github</span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span></code></pre></div>
 <p>The CatastRo package depends on <a href="https://github.com/r-lib/httr" class="external-link">httr</a> and <a href="https://github.com/omegahat/XML" class="external-link">XLM</a> packages. The first one is used to get access to the API through a GET request and the second for parsing the return of the request to a dataframe structure.</p>
@@ -109,25 +110,25 @@
 <div class="section level3">
 <h3 id="query-a-coordinate">Query a coordinate<a class="anchor" aria-label="anchor" href="#query-a-coordinate"></a>
 </h3>
-<p>The function <code><a href="../reference/get_rc.html">get_rc()</a></code> receives the coordinates (<em>lat</em> and <em>lon</em>) and the spatial reference system (SRS) used to express them. The return is a list with the casdastral reference of the property in that spatial point, as well as a string with its address (town street and number).</p>
+<p>The function <code><a href="../reference/get_rc.html">get_rc()</a></code> receives the coordinates (<em>lat</em> and <em>lon</em>) and the spatial reference system (SRS) used to express them. The return is a list with the cadastral reference of the property in that spatial point, as well as a string with its address (town street and number).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">reference</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_rc.html">get_rc</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">38.6196566583596</span>, lon <span class="op">=</span>  <span class="op">-</span><span class="fl">3.45624183836806</span>, SRS <span class="op">=</span> <span class="st">'EPSG:4230'</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">reference</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_rc.html">get_rc</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">38.6196566583596</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>, SRS <span class="op">=</span> <span class="st">"EPSG:4230"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">reference</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##                                                                                                address</span>
 <span class="co">## 1 DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</span>
 <span class="co">##               RC       SRS</span>
 <span class="co">## 1 13077A01800039 EPSG:4230</span></code></pre>
-<p>The function accept as a SRS argument the values “Google” and “Oficial”. The first uses the SRS value used by Google maps (‘EPSG:4326’) while the latter uses the oficial SRS (‘EPSG:4258’) in Europe. If no SRS is given, the function by default choose the “Google” SRS.</p>
+<p>The function accept as a SRS argument the values “Google” and “Oficial”. The first uses the SRS value used by Google maps (‘EPSG:4326’) while the latter uses the official SRS (‘EPSG:4258’) in Europe. If no SRS is given, the function by default choose the “Google” SRS.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">reference</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_rc.html">get_rc</a></span><span class="op">(</span>lat <span class="op">=</span>  <span class="fl">38.6196566583596</span>, lon <span class="op">=</span><span class="op">-</span><span class="fl">3.45624183836806</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">reference</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_rc.html">get_rc</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">38.6196566583596</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">reference</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##                                                                                 address</span>
 <span class="co">## 1 DS DISEMINADO  Polígono 18 Parcela 11 EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</span>
 <span class="co">##               RC       SRS</span>
 <span class="co">## 1 13077A01800011 EPSG:4326</span></code></pre>
-<p>It is also possible to get all the cadastral references in a square of 50-meters’ side centered in the coordinates <em>lat</em> and <em>lon</em> throught the function <code><a href="../reference/near_rc.html">near_rc()</a></code>.</p>
+<p>It is also possible to get all the cadastral references in a square of 50-meters’ side centered in the coordinates <em>lat</em> and <em>lon</em> through the function <code><a href="../reference/near_rc.html">near_rc()</a></code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">references</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/near_rc.html">near_rc</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">40.96002</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">5.663408</span>, SRS <span class="op">=</span> <span class="st">'EPSG:4230'</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">references</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/near_rc.html">near_rc</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">40.96002</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">5.663408</span>, SRS <span class="op">=</span> <span class="st">"EPSG:4230"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">references</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##                                           address             RC       SRS</span>
 <span class="co">## 1      AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA) 5877501TL7357F EPSG:4230</span>
@@ -139,10 +140,12 @@
 </h3>
 <p>The opposite query is possible aswell. Being given to the function <code><a href="../reference/get_coor.html">get_coor()</a></code> a cadastral reference (<em>RC</em>), the province (<em>Province</em>) and the town (<em>Municipality</em>), <code>get_coor</code> returns its coordinates <em>lat</em> and <em>lon</em> in a particular <em>SRS</em> besides the address (town, street and number).</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>RC <span class="op">=</span> <span class="st">'13077A01800039'</span>, 
-                      SRS <span class="op">=</span> <span class="st">'EPSG:4230'</span>,
-                      Province <span class="op">=</span> <span class="st">'CIUDAD REAL'</span>, 
-                      Municipality <span class="op">=</span> <span class="st">'SANTA CRUZ DE MUDELA'</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>
+  RC <span class="op">=</span> <span class="st">"13077A01800039"</span>,
+  SRS <span class="op">=</span> <span class="st">"EPSG:4230"</span>,
+  Province <span class="op">=</span> <span class="st">"CIUDAD REAL"</span>,
+  Municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span>
+<span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">direction</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## $coord</span>
 <span class="co">## [1] 38.619657 -3.456242</span>
@@ -151,9 +154,11 @@
 <span class="co">## [1] "EPSG:4230"</span></code></pre>
 <p>The argument <em>SRS</em> could be missed, in that case, <code><a href="../reference/get_coor.html">get_coor()</a></code> returns the coordinates in the SRS = “Google” value too.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>RC <span class="op">=</span> <span class="st">'13077A01800039'</span>, 
-                     Province <span class="op">=</span> <span class="st">'CIUDAD REAL'</span>, 
-                     Municipality <span class="op">=</span> <span class="st">'SANTA CRUZ DE MUDELA'</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>
+  RC <span class="op">=</span> <span class="st">"13077A01800039"</span>,
+  Province <span class="op">=</span> <span class="st">"CIUDAD REAL"</span>,
+  Municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span>
+<span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">direction</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## $coord</span>
 <span class="co">## [1] 38.618431 -3.457532</span>
@@ -162,10 +167,10 @@
 <span class="co">## [1] "EPSG:4326"</span></code></pre>
 <p>Neither the <em>Province</em> nor <em>Municipality</em> are required to be passed to the function, unless the argument <em>Municipality</em> is not null, in that case the argument <em>Province</em> is needed to be passed. If it is passed a value to the <em>Province</em> argument while the <em>Municipality</em> argument is null, the function <code><a href="../reference/get_coor.html">get_coor()</a></code> will throw an error.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>RC <span class="op">=</span> <span class="st">'13077A01800039'</span>,  Municipality <span class="op">=</span> <span class="st">'SANTA CRUZ DE MUDELA'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>RC <span class="op">=</span> <span class="st">"13077A01800039"</span>, Municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## Error in get_coor(RC = "13077A01800039", Municipality = "SANTA CRUZ DE MUDELA"): LA PROVINCIA ES OBLIGATORIA</span></code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>RC <span class="op">=</span> <span class="st">'13077A01800039'</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>RC <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">direction</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## $coord</span>
 <span class="co">## [1] 38.618431 -3.457532</span>
@@ -177,7 +182,7 @@
 <div class="section level2">
 <h2 id="integrated-tests">Integrated tests<a class="anchor" aria-label="anchor" href="#integrated-tests"></a>
 </h2>
-<p>The package has been built with integrated test. which ensures to make it automatically check after every update which is made. The approach of these tests are focus in two differents aims: Firstly, to assert that the package pass the <code>R CMD build</code> and the <code>R CMD check</code> tests automatically. Secondly, we test that the result of the call to the API it is as we expected, if it were not the case, we would go over the function´s scripts to cast them to the new structure of the response of the API.</p>
+<p>The package has been built with integrated test. which ensures to make it automatically check after every update which is made. The approach of these tests are focus in two different aims: Firstly, to assert that the package pass the <code>R CMD build</code> and the <code>R CMD check</code> tests automatically. Secondly, we test that the result of the call to the API it is as we expected, if it were not the case, we would go over the function´s scripts to cast them to the new structure of the response of the API.</p>
 <p>This action leans in two technologies contained in the package, but they are not part of it.</p>
 <div class="section level3">
 <h3 id="testthat">Testthat<a class="anchor" aria-label="anchor" href="#testthat"></a>
@@ -186,7 +191,7 @@
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org" class="external-link">testthat</a></span><span class="op">)</span>
 <span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"giving only the cadastral reference"</span>, <span class="op">{</span>
-  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span><span class="st">'9872023VH5797S'</span><span class="op">)</span>
+  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span><span class="st">"9872023VH5797S"</span><span class="op">)</span>
   <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_that.html" class="external-link">expect_that</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">coord</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">is.character</a></span><span class="op">(</span><span class="va">result</span><span class="op">$</span><span class="va">SRS</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://testthat.r-lib.org/reference/oldskool.html" class="external-link">is_true</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## ── <span style="color: #BB00BB; font-weight: bold;">Warning</span><span style="font-weight: bold;"> (&lt;text&gt;:4:3): giving only the cadastral reference</span> ─────────────────────</span>
@@ -202,7 +207,7 @@
 <span class="co">## <span style="color: #555555;"> 2. </span>testthat condition(object)</span></code></pre>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"given Municipio, Provincia is needed"</span>, <span class="op">{</span>
-  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>RC <span class="op">=</span> <span class="st">'13077A01800039'</span>,SRS <span class="op">=</span> <span class="st">'EPSG:4230'</span>, Municipality <span class="op">=</span> <span class="st">'SANTA CRUZ DE MUDELA'</span><span class="op">)</span>
+  <span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_coor.html">get_coor</a></span><span class="op">(</span>RC <span class="op">=</span> <span class="st">"13077A01800039"</span>, SRS <span class="op">=</span> <span class="st">"EPSG:4230"</span>, Municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span><span class="op">)</span>
   <span class="fu"><a href="https://testthat.r-lib.org/reference/expect_that.html" class="external-link">expect_that</a></span><span class="op">(</span><span class="va">result</span>, <span class="fu"><a href="https://testthat.r-lib.org/reference/oldskool.html" class="external-link">throws_error</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## ── <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;"> (&lt;text&gt;:8:3): given Municipio, Provincia is needed</span> ─────────────────────</span>
@@ -211,7 +216,7 @@
 <span class="co">## <span style="color: #555555;"> 1. </span><span style="font-weight: bold;">CatastRo</span>::get_coor(...)</span></code></pre>
 <pre><code><span class="co">## <span style="color: #BBBB00; font-weight: bold;">Error</span><span style="font-weight: bold;">:</span></span>
 <span class="co">## <span style="color: #BBBB00;">!</span> Test failed</span></code></pre>
-<p>Every test check an expected value. The test, are gathered in one script for <code><a href="../reference/get_coor.html">get_coor()</a></code>, <code><a href="../reference/get_rc.html">get_rc()</a></code> and <code><a href="../reference/near_rc.html">near_rc()</a></code> separatly. The execution of all the tasks is made by <code>testthat.R</code> and all is contained in the directory <a href="https://github.com/rOpenSpain/CatastRo/tree/master/tests" class="external-link">./tests</a>.</p>
+<p>Every test check an expected value. The test, are gathered in one script for <code><a href="../reference/get_coor.html">get_coor()</a></code>, <code><a href="../reference/get_rc.html">get_rc()</a></code> and <code><a href="../reference/near_rc.html">near_rc()</a></code> separately. The execution of all the tasks is made by <code>testthat.R</code> and all is contained in the directory <a href="https://github.com/rOpenSpain/CatastRo/tree/master/tests" class="external-link">./tests</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="travisci">TravisCI<a class="anchor" aria-label="anchor" href="#travisci"></a>
@@ -236,7 +241,7 @@
     <div class="row">
       <div class="col-md">
         <h4 data-toc-skip>About <img src="../logo.png" alt="CatastRo Logo" height="24"> CatastRo</h4>
-        <p>Developed by Angel Delgado-Panadero, Iñaki Ucar.</p>
+        <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Angel Delgado-Panadero</a>, Diego Hernangómez.</p>
         <p>Part of the <span class="ROS-light">rOpenSpain</span> project.</p>
         <hr class="d-md-none">
 </div>
