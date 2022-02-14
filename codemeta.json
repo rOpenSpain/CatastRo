@@ -203,7 +203,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "117.421KB",
+  "fileSize": "117.701KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -220,7 +220,11 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "CatastRo: Interface to the API 'Sede Electronica Del Catastro'"
+      "name": "{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro",
+      "identifier": "10.5281/zenodo.6044091",
+      "url": "https://ropenspain.github.io/CatastRo/",
+      "@id": "https://doi.org/10.5281/zenodo.6044091",
+      "sameAs": "https://doi.org/10.5281/zenodo.6044091"
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/CatastRo/blob/master/NEWS.md",

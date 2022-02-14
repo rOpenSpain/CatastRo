@@ -86,15 +86,19 @@ print(direction)
 To cite ‘CatastRo’ in publications use:
 
 Delgado Panadero Á, Hernangómez D (2022). *CatastRo: Interface to the
-API ‘Sede Electronica Del Catastro’*.
+API Sede Electrónica Del Catastro*. doi: 10.5281/zenodo.6044091 (URL:
+<https://doi.org/10.5281/zenodo.6044091>), \<URL:
+<https://ropenspain.github.io/CatastRo/>\>.
 
 A BibTeX entry for LaTeX users is:
 
     @Manual{,
-      title = {CatastRo: Interface to the API 'Sede Electronica Del Catastro'},
+      title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       year = {2022},
       version = {0.1.0.9000},
+      url = {https://ropenspain.github.io/CatastRo/},
+      doi = {10.5281/zenodo.6044091},
       abstract = {Tools for downloading cadastral references and addresses of properties. Access public spatial data available under the 'INSPIRE' directive.},
     }
 
