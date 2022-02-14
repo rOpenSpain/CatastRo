@@ -4,8 +4,12 @@ template:
   package: rostemplate
 
 authors:
-  Angel Delgado-Panadero:
+  Ángel Delgado Panadero:
     href: https://github.com/DelgadoPanadero
+  Diego Hernangómez:
+    href: 'https://dieghernan.github.io/'
+  Iñaki Ucar:
+    href: 'https://www.enchufa2.es/'
 
 reference:
   - title: ATOM INSPIRE API

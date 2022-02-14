@@ -10,7 +10,7 @@
 #'
 #' @family OVCCoordenadas
 #' @family cadastral references
-#' @seealso [catr_srs_values]
+#' @seealso [catr_srs_values], vignette("ovcservice")
 #' @inheritParams catr_ovc_rccoor_distancia
 #'
 #' @return A tibble. See **Details**
