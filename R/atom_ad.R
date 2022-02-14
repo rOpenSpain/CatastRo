@@ -133,10 +133,12 @@ catr_atom_ad <- function(munic,
   )
   df_layers <- df_layers[!is.na(df_layers$geomtype), ]
 
+  # nocov start
   if (nrow(df_layers) == 0) {
     message("No spatial layers found.")
     return(invisible(NULL))
   }
+  # nocov end
 
   sfobj <- sf::st_read(files, quiet = !verbose, layer = df_layers$layer[1])
 
