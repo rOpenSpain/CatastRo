@@ -8,7 +8,7 @@ name: rostemplate-gh-pages
 
 jobs:
   rostemplate-gh-pages:
-    runs-on: windows-latest
+    runs-on: macos-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -22,7 +22,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: 
+          extra-packages:
             local::.
             any::pkgdown
             ropenspain/rostemplate
@@ -33,4 +33,3 @@ jobs:
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = TRUE)'
-          

@@ -18,6 +18,9 @@ reference:
       [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx) service.
     contents:
       - has_concept("OVCCoordenadas")
+  - title: Cache management
+    contents:
+      - has_concept("cache utilities")
   - title: Databases and reference data
     contents:
       - has_concept("databases")
