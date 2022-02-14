@@ -79,7 +79,9 @@ It is also possible to get all the cadastral references in a square of
 `catr_ovc_rccoor_distancia()`.
 
 ```{r}
-catr_ovc_rccoor_distancia(lat = 40.96002, lon = -5.663408, srs = "4230") ) %>%
+catr_ovc_rccoor_distancia(lat = 40.96002,
+lon = -5.663408,
+srs = "4230") %>%
   knitr::kable()
 ```
 
@@ -96,7 +98,7 @@ catr_ovc_cpmrc(
   srs = "4230",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
-) ) %>%
+  ) %>%
   knitr::kable()
 ```
 
@@ -106,15 +108,21 @@ argument `province` is needed to be passed. If it is passed a value to the
 `province` argument while the `municipality` argument is `NULL`, the function
 `catr_ovc_cpmrc()` will throw a message and would return a tibble with no data.
 
-```{r error=TRUE}
+```{r}
 direction <- catr_ovc_cpmrc(
   rc = "13077A01800039",
   municipality = "SANTA CRUZ DE MUDELA"
-) ) %>%
+) %>%
   knitr::kable()
 
+```
+
+When using only `rc` the result is provided as expected:
+
+```{r}
+
 # No warning, get the result
-catr_ovc_cpmrc(rc = "13077A01800039") ) %>%
+catr_ovc_cpmrc(rc = "13077A01800039") %>%
   knitr::kable()
 
 ```

@@ -64,6 +64,7 @@ test_that("unprecised coordinates", {
 test_that("Verbose", {
   expect_message(catr_ovc_rccoor(
     lat = 40.963200, lon = -5.671420,
-    srs = "4326"
+    srs = "4326",
+    verbose = TRUE
   ))
 })
