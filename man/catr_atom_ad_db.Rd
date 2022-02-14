@@ -85,16 +85,22 @@ catr_atom_ad_db_all()
 
 Other INSPIRE: 
 \code{\link{catr_atom_ad}()},
+\code{\link{catr_atom_bu_db_all}()},
+\code{\link{catr_atom_bu}()},
 \code{\link{catr_atom_cp_db_all}()},
 \code{\link{catr_atom_cp}()}
 
 Other INSPIRE ATOM services:
 \code{\link{catr_atom_ad}()},
+\code{\link{catr_atom_bu_db_all}()},
+\code{\link{catr_atom_bu}()},
 \code{\link{catr_atom_cp_db_all}()},
 \code{\link{catr_atom_cp}()}
 
 Other databases: 
-\code{\link{catr_atom_cp_db_all}()}
+\code{\link{catr_atom_bu_db_all}()},
+\code{\link{catr_atom_cp_db_all}()},
+\code{\link{coordinates}}
 }
 \concept{ATOM}
 \concept{INSPIRE}

@@ -19,4 +19,11 @@ http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR
 }
+\seealso{
+Other databases: 
+\code{\link{catr_atom_ad_db_all}()},
+\code{\link{catr_atom_bu_db_all}()},
+\code{\link{catr_atom_cp_db_all}()}
+}
+\concept{databases}
 \keyword{datasets}

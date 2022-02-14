@@ -8,6 +8,8 @@
 #'
 #' @usage coordinates
 #'
+#' @family databases
+#'
 #' @references
 #' http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR_Distancia
 #' http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC

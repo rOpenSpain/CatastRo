@@ -24,6 +24,8 @@
 #'
 #' @author Angel Delgado Panadero.
 #'
+#' @family OVCCoordenadas
+#'
 #' @examples
 #' direction <- near_rc(40.96002, -5.663408)
 #' print(direction)

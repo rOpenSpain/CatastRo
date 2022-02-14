@@ -30,6 +30,8 @@
 #'
 #' @author Angel Delgado Panadero.
 #'
+#' @family OVCCoordenadas
+#'
 #' @examples
 #' # using all the arguments
 #' coordinates <- get_coor("13077A01800039", "EPSG:4230", "CIUDAD REAL", "SANTA CRUZ DE MUDELA")

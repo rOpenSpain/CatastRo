@@ -44,6 +44,12 @@ print(coordinates)
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC
 }
+\seealso{
+Other OVCCoordenadas: 
+\code{\link{get_rc}()},
+\code{\link{near_rc}()}
+}
 \author{
 Angel Delgado Panadero.
 }
+\concept{OVCCoordenadas}

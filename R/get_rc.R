@@ -20,6 +20,8 @@
 #'
 #' @author Angel Delgado Panadero.
 #'
+#' @family OVCCoordenadas
+#'
 #' @examples
 #' direction <- get_rc(38.6196566583596, -3.45624183836806, "EPSG:4230")
 #' print(direction)

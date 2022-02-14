@@ -39,6 +39,12 @@ print(directions)
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR
 }
+\seealso{
+Other OVCCoordenadas: 
+\code{\link{get_coor}()},
+\code{\link{near_rc}()}
+}
 \author{
 Angel Delgado Panadero.
 }
+\concept{OVCCoordenadas}
