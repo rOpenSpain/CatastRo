@@ -2,7 +2,7 @@
 #'
 #' @family databases
 #' @family WFS
-#' @family OVC
+#' @family OVCCoordenadas
 #'
 #' @name catr_srs_values
 #'

@@ -191,18 +191,6 @@
     },
     "8": {
       "@type": "SoftwareApplication",
-      "identifier": "XML",
-      "name": "XML",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=XML"
-    },
-    "9": {
-      "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
       "provider": {
@@ -215,7 +203,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "92.526KB",
+  "fileSize": "121.539KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

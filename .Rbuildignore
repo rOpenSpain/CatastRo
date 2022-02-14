@@ -17,4 +17,4 @@
 ^CRAN-SUBMISSION$
 ^pkgdown$
 ^data-raw$
-^vignettes$
+^vignettes/ovcserv\.Rmd\.orig$

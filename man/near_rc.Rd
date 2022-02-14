@@ -26,25 +26,21 @@ references in the nearby area of the location given for every SRS
 requested.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+\strong{This function was deprecated to adapt it to the new interface. Use}
+\code{\link[=catr_ovc_rccoor_distancia]{catr_ovc_rccoor_distancia()}} instead.
+
 Returns the Cadastral Reference of the state as well as the address
 (municipality, street and number) given its coordinates and the Spatial Reference
 System. In case that there is not any cadastral reference in the exact point, the
 function returns all the cadastral references in a square 50 meters long centered
 in the current point.
 }
-\examples{
-direction <- near_rc(40.96002, -5.663408)
-print(direction)
-}
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR_Distancia
-}
-\seealso{
-Other OVCCoordenadas: 
-\code{\link{get_coor}()},
-\code{\link{get_rc}()}
 }
 \author{
 Angel Delgado Panadero.
 }
-\concept{OVCCoordenadas}
+\keyword{internal}

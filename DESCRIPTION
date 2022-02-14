@@ -26,7 +26,6 @@ Imports:
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
     tibble,
-    XML,
     xml2
 Suggests: 
     ggplot2,

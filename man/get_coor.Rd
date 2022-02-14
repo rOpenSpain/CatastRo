@@ -29,27 +29,26 @@ A list consisting on two numeric values: the coordinates (latitude,
 longitude) and the reference system in which they are expressed.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+\strong{This function was deprecated to adapt it to the new interface. Use}
+\code{\link[=catr_ovc_cpmrc]{catr_ovc_cpmrc()}} instead.
+
 Returns the coordinate of a state in a SRS given the Province, Municipality
 and Cadastral Reference of the state.
-}
-\examples{
-# using all the arguments
-coordinates <- get_coor("13077A01800039", "EPSG:4230", "CIUDAD REAL", "SANTA CRUZ DE MUDELA")
-print(coordinates)
-#
-# only the cadastral reference
-coordinates <- get_coor("9872023VH5797S")
-print(coordinates)
 }
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC
 }
 \seealso{
 Other OVCCoordenadas: 
-\code{\link{get_rc}()},
-\code{\link{near_rc}()}
+\code{\link{catr_ovc_cpmrc}()},
+\code{\link{catr_ovc_rccoor_distancia}()},
+\code{\link{catr_ovc_rccoor}()},
+\code{\link{catr_srs_values}}
 }
 \author{
 Angel Delgado Panadero.
 }
 \concept{OVCCoordenadas}
+\keyword{internal}

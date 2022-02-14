@@ -64,7 +64,13 @@ Other databases:
 \code{\link{catr_atom_ad_db_all}()},
 \code{\link{catr_atom_bu_db_all}()},
 \code{\link{catr_atom_cp_db_all}()}
+
+Other OVCCoordenadas: 
+\code{\link{catr_ovc_cpmrc}()},
+\code{\link{catr_ovc_rccoor_distancia}()},
+\code{\link{catr_ovc_rccoor}()},
+\code{\link{get_coor}()}
 }
-\concept{OVC}
+\concept{OVCCoordenadas}
 \concept{WFS}
 \concept{databases}

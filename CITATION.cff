@@ -89,6 +89,7 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
+  url: https://CRAN.R-project.org/package=httr
 - type: software
   title: lifecycle
   abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
@@ -102,6 +103,7 @@ references:
     email: hadley@rstudio.com
     orcid: https://orcid.org/0000-0003-4757-117X
   year: '2022'
+  url: https://CRAN.R-project.org/package=lifecycle
 - type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
@@ -115,6 +117,7 @@ references:
   - family-names: Davis
     given-names: Trevor
   year: '2022'
+  url: https://CRAN.R-project.org/package=rappdirs
   version: '>= 0.3.0'
 - type: software
   title: sf
@@ -126,6 +129,7 @@ references:
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2022'
+  url: https://CRAN.R-project.org/package=sf
   version: '>= 1.0.0'
 - type: software
   title: tibble
@@ -139,17 +143,7 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-- type: software
-  title: XML
-  abstract: 'XML: Tools for Parsing and Generating XML Within R and S-Plus'
-  notes: Imports
-  authors:
-  - family-names: Temple Lang
-    given-names: Duncan
-    email: duncan@r-project.org
-    orcid: https://orcid.org/0000-0003-0159-1546
-  year: '2022'
-  url: https://CRAN.R-project.org/package=XML
+  url: https://CRAN.R-project.org/package=tibble
 - type: software
   title: xml2
   abstract: 'xml2: Parse XML'
@@ -163,6 +157,7 @@ references:
   - family-names: Ooms
     given-names: Jeroen
   year: '2022'
+  url: https://CRAN.R-project.org/package=xml2
 - type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
@@ -207,7 +202,7 @@ references:
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  url: https://yihui.org/knitr/
+  url: https://CRAN.R-project.org/package=knitr
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -256,4 +251,5 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
+  url: https://CRAN.R-project.org/package=testthat
   version: '>= 3.0.0'
