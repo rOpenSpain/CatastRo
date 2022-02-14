@@ -1,0 +1,164 @@
+---
+title: "OVCCoordenadas Web Service"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{OVCCoordenadas Web Service}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+**CatastRo** allows to query the OVCCoordenadas Web Service provided on [Sede
+electrónica del
+Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
+API directly through a R IDE.
+
+This API is used to retrieve the spatial coordinates of a urban property,
+moreover it is not needed to be the owner to get the information, actually it is
+enough to know the cadastral reference (RC) of the property and its address (in
+fact, it is only completely compulsory to know the RC, however, to ensure a good
+result from the response and to avoid mistakes in the RC, the address can be
+passed to the query too).
+
+Secondly, the API can be used to obtain a RC of a urban property, for this
+information, the API asks for the longitude and the latitude. Furthermore, it
+allows to choose the spacial reference system (SRS, also known as CRS) between a
+list of them to express the coordinates.
+
+Finally, the API tackles the issue of not knowing the exact point which the
+urban property has been registered. In this case, it will return all the
+properties located in a square 50-meters-side around the given point.
+
+The documentation of this API can be found
+[here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
+
+## Query a coordinate
+
+The function `catr_ovc_rccoor()` receives the coordinates (*lat* and *lon*) and
+the spatial reference system (SRS) used to express them. The return is a tibble
+with the cadastral reference of the property in that spatial point, including
+also other information as the address (town street and number).
+
+
+```r
+result <- catr_ovc_rccoor(
+  lat = 38.6196566583596,
+  lon = -3.45624183836806, srs = "4230"
+)
+```
+
+
+|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |  geo.xcen| geo.ycen|geo.srs   |ldt                                                                                                  |
+|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|---------:|--------:|:---------|:----------------------------------------------------------------------------------------------------|
+|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 | -3.456242| 38.61966|EPSG:4230 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
+
+The function accept as a SRS argument the following values:
+
+
+```r
+data(catr_srs_values)
+
+# OVC valid codes
+library(dplyr)
+
+catr_srs_values %>%
+  filter(ovc_service == TRUE) %>%
+  select(SRS, Description) %>%
+  knitr::kable()
+```
+
+
+
+|   SRS|Description            |
+|-----:|:----------------------|
+|  4230|Geográficas en ED 50   |
+|  4258|Geográficas en ETRS89  |
+|  4326|Geográficas en WGS 80  |
+| 23029|UTM huso 29N en ED50   |
+| 23030|UTM huso 30N en ED50   |
+| 23031|UTM huso 31N en ED50   |
+| 25829|UTM huso 29N en ETRS89 |
+| 25830|UTM huso 30N en ETRS89 |
+| 25831|UTM huso 31N en ETRS89 |
+| 32627|UTM huso 27N en WGS 84 |
+| 32628|UTM huso 28N en WGS 84 |
+| 32629|UTM huso 29N en WGS 84 |
+| 32630|UTM huso 30N en WGS 84 |
+| 32631|UTM huso 31N en WGS 84 |
+
+It is also possible to get all the cadastral references in a square of
+50-meters' side centered in the coordinates *lat* and *lon* through the function
+`catr_ovc_rccoor_distancia()`.
+
+
+```r
+catr_ovc_rccoor_distancia(
+  lat = 40.96002,
+  lon = -5.663408,
+  srs = "4230"
+) %>%
+  knitr::kable()
+```
+
+
+
+|  geo.xcen| geo.ycen|geo.srs   |refcat         |address                                         |cmun_ine |pc.pc1  |pc.pc2  |dt.loine.cp |dt.loine.cm |dt.lourb.dir.cv |dt.lourb.dir.pnp |ldt                                             |dis   |
+|---------:|--------:|:---------|:--------------|:-----------------------------------------------|:--------|:-------|:-------|:-----------|:-----------|:---------------|:----------------|:-----------------------------------------------|:-----|
+| -5.663408| 40.96002|EPSG:4230 |5877501TL7357F |AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      |37274    |5877501 |TL7357F |37          |274         |643             |1                |AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      |21.81 |
+| -5.663408| 40.96002|EPSG:4230 |5778706TL7357H |AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) |37274    |5778706 |TL7357H |37          |274         |643             |2                |AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) |23.18 |
+
+## Query CPMRC
+
+The opposite query is possible as well. Being given to the function
+`catr_ovc_cpmrc()` a cadastral reference (`rc`), the province (`province`) and
+the town (`municipality`), `catr_ovc_cpmrc()` returns its coordinates *lat* and
+*lon* in a particular *SRS* besides the address (town, street and number).
+
+
+```r
+catr_ovc_cpmrc(
+  rc = "13077A01800039",
+  srs = "4230",
+  province = "CIUDAD REAL",
+  municipality = "SANTA CRUZ DE MUDELA"
+) %>%
+  knitr::kable()
+```
+
+
+
+|    xcoord|   ycoord|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |geo.xcen          |geo.ycen         |geo.srs   |ldt                                                                                                  |
+|---------:|--------:|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|:-----------------|:----------------|:---------|:----------------------------------------------------------------------------------------------------|
+| -3.456242| 38.61966|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 |-3.45624183836806 |38.6196566583596 |EPSG:4230 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
+
+Neither the `province` nor `municipality` are required to be passed to the
+function, unless the argument `municipality` is not `NULL`, in that case the
+argument `province` is needed to be passed. If it is passed a value to the
+`province` argument while the `municipality` argument is `NULL`, the function
+`catr_ovc_cpmrc()` will throw a message and would return a tibble with no data.
+
+
+```r
+direction <- catr_ovc_cpmrc(
+  rc = "13077A01800039",
+  municipality = "SANTA CRUZ DE MUDELA"
+) %>%
+  knitr::kable()
+```
+
+When using only `rc` the result is provided as expected:
+
+
+```r
+
+# No warning, get the result
+catr_ovc_cpmrc(rc = "13077A01800039") %>%
+  knitr::kable()
+```
+
+
+
+|    xcoord|   ycoord|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |geo.xcen          |geo.ycen         |geo.srs   |ldt                                                                                                  |
+|---------:|--------:|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|:-----------------|:----------------|:---------|:----------------------------------------------------------------------------------------------------|
+| -3.457532| 38.61843|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 |-3.45753233627867 |38.6184314024661 |EPSG:4326 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |

@@ -25,26 +25,21 @@ A data.frame with the the addresses of the states and the cadastral
 references for every SRS requested.
 }
 \description{
+
+
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+\strong{This function was deprecated to adapt it to the new interface. Use}
+\code{\link[=catr_ovc_rccoor]{catr_ovc_rccoor()}} instead.
+
 Returns the Cadastral Reference of the state as well as the
 address (municipality, street and number) being given its coordinates and
 the SRS.
 }
-\examples{
-direction <- get_rc(38.6196566583596, -3.45624183836806, "EPSG:4230")
-print(direction)
-
-directions <- get_rc(38.6196566583596, -3.45624183836806)
-print(directions)
-}
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR
-}
-\seealso{
-Other OVCCoordenadas: 
-\code{\link{get_coor}()},
-\code{\link{near_rc}()}
 }
 \author{
 Angel Delgado Panadero.
 }
-\concept{OVCCoordenadas}
+\keyword{internal}

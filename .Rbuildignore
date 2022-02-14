@@ -6,6 +6,7 @@
 ^\.travis\.yml$
 ^\.github$
 ^docs$
+^dev$
 ^_pkgdown\.yml$
 ^CatastRo\.Rcheck$
 ^CatastRo.*\.tar\.gz$
@@ -15,3 +16,5 @@
 ^CITATION\.cff$
 ^CRAN-SUBMISSION$
 ^pkgdown$
+^data-raw$
+^vignettes/ovcserv\.Rmd\.orig$

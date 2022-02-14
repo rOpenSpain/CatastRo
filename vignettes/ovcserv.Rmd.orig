@@ -1,0 +1,128 @@
+---
+title: "OVCCoordenadas Web Service"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{OVCCoordenadas Web Service}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.path = "./",
+  comment = "#>",
+  tidy = "styler",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+**CatastRo** allows to query the OVCCoordenadas Web Service provided on [Sede
+electrónica del
+Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
+API directly through a R IDE.
+
+This API is used to retrieve the spatial coordinates of a urban property,
+moreover it is not needed to be the owner to get the information, actually it is
+enough to know the cadastral reference (RC) of the property and its address (in
+fact, it is only completely compulsory to know the RC, however, to ensure a good
+result from the response and to avoid mistakes in the RC, the address can be
+passed to the query too).
+
+Secondly, the API can be used to obtain a RC of a urban property, for this
+information, the API asks for the longitude and the latitude. Furthermore, it
+allows to choose the spacial reference system (SRS, also known as CRS) between a
+list of them to express the coordinates.
+
+Finally, the API tackles the issue of not knowing the exact point which the
+urban property has been registered. In this case, it will return all the
+properties located in a square 50-meters-side around the given point.
+
+The documentation of this API can be found
+[here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
+
+## Query a coordinate
+
+The function `catr_ovc_rccoor()` receives the coordinates (*lat* and *lon*) and
+the spatial reference system (SRS) used to express them. The return is a tibble
+with the cadastral reference of the property in that spatial point, including
+also other information as the address (town street and number).
+
+```{r}
+result <- catr_ovc_rccoor(
+  lat = 38.6196566583596,
+  lon = -3.45624183836806, srs = "4230"
+)
+```
+
+```{r echo=FALSE}
+knitr::kable(result)
+```
+
+The function accept as a SRS argument the following values:
+
+```{r}
+data(catr_srs_values)
+
+# OVC valid codes
+library(dplyr)
+
+catr_srs_values %>%
+  filter(ovc_service == TRUE) %>%
+  select(SRS, Description) %>%
+  knitr::kable()
+```
+
+It is also possible to get all the cadastral references in a square of
+50-meters' side centered in the coordinates *lat* and *lon* through the function
+`catr_ovc_rccoor_distancia()`.
+
+```{r}
+catr_ovc_rccoor_distancia(lat = 40.96002,
+lon = -5.663408,
+srs = "4230") %>%
+  knitr::kable()
+```
+
+## Query CPMRC
+
+The opposite query is possible as well. Being given to the function
+`catr_ovc_cpmrc()` a cadastral reference (`rc`), the province (`province`) and
+the town (`municipality`), `catr_ovc_cpmrc()` returns its coordinates *lat* and
+*lon* in a particular *SRS* besides the address (town, street and number).
+
+```{r}
+catr_ovc_cpmrc(
+  rc = "13077A01800039",
+  srs = "4230",
+  province = "CIUDAD REAL",
+  municipality = "SANTA CRUZ DE MUDELA"
+  ) %>%
+  knitr::kable()
+```
+
+Neither the `province` nor `municipality` are required to be passed to the
+function, unless the argument `municipality` is not `NULL`, in that case the
+argument `province` is needed to be passed. If it is passed a value to the
+`province` argument while the `municipality` argument is `NULL`, the function
+`catr_ovc_cpmrc()` will throw a message and would return a tibble with no data.
+
+```{r}
+direction <- catr_ovc_cpmrc(
+  rc = "13077A01800039",
+  municipality = "SANTA CRUZ DE MUDELA"
+) %>%
+  knitr::kable()
+
+```
+
+When using only `rc` the result is provided as expected:
+
+```{r}
+
+# No warning, get the result
+catr_ovc_cpmrc(rc = "13077A01800039") %>%
+  knitr::kable()
+
+```

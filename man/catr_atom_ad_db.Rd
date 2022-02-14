@@ -100,7 +100,7 @@ Other INSPIRE ATOM services:
 Other databases: 
 \code{\link{catr_atom_bu_db_all}()},
 \code{\link{catr_atom_cp_db_all}()},
-\code{\link{coordinates}}
+\code{\link{catr_srs_values}}
 }
 \concept{ATOM}
 \concept{INSPIRE}

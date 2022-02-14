@@ -3,7 +3,15 @@
 #'
 #' @title Interface to query Consulta_RCCOOR
 #'
-#' @description Returns the Cadastral Reference of the state as well as the
+#' @description
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' **This function was deprecated to adapt it to the new interface. Use**
+#' [catr_ovc_rccoor()] instead.
+#'
+#' Returns the Cadastral Reference of the state as well as the
 #' address (municipality, street and number) being given its coordinates and
 #' the SRS.
 #'
@@ -20,15 +28,9 @@
 #'
 #' @author Angel Delgado Panadero.
 #'
-#' @family OVCCoordenadas
 #'
-#' @examples
-#' direction <- get_rc(38.6196566583596, -3.45624183836806, "EPSG:4230")
-#' print(direction)
-#'
-#' directions <- get_rc(38.6196566583596, -3.45624183836806)
-#' print(directions)
 #' @export
+#' @keywords internal
 
 
 
@@ -37,30 +39,5 @@
 
 
 get_rc <- function(lat, lon, SRS = "Google") {
-
-  # SRS REPLACE
-  SRS <- ifelse(tolower(SRS) == "google", "EPSG:4326", SRS)
-  SRS <- ifelse(tolower(SRS) == "oficial", "EPSG:4258", SRS)
-
-  # REQUEST
-  res <- GET(
-    url = "http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR",
-    query = list(Coordenada_X = lon, Coordenada_Y = lat, SRS = SRS),
-    ua = user_agent("CatastRo (https://github.com/rOpenSpain/CatastRo)")
-  )
-
-  stop_for_status(res)
-  res <- xmlToList(xmlParse(res))
-
-  # TEXT MINING
-  if (!is.null(res$coordenadas$coord$ldt) | !is.null(res$coordenadas$coord$ldt)) {
-    address <- res$coordenadas$coord$ldt
-    RC <- paste0(res$coordenadas$coord$pc$pc1, res$coordenadas$coord$pc$pc2)
-    res <- data.frame(address = address, RC = RC, SRS = SRS, stringsAsFactors = F)
-  } else {
-    res <- data.frame(address = NA, RC = NA, SRS = NA, stringsAsFactors = F)
-  }
-
-  Sys.sleep(1)
-  return(res)
+  lifecycle::deprecate_stop("0.2.0", "get_rc()", "catr_ovc_rccoor()")
 }
