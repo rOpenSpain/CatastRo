@@ -9,9 +9,8 @@ type: software
 license: GPL-2.0-only
 title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
 version: 0.1.0.9000
-abstract: Access to the API 'Sede Electronica Del Catastro'. Tools for quering cadastral
-  references and adresses of properties. Access public spatial data available under
-  the 'INSPIRE' directive.
+abstract: Tools for downloading cadastral references and addresses of properties.
+  Access public spatial data available under the 'INSPIRE' directive.
 authors:
 - family-names: Delgado-Panadero
   given-names: Angel
@@ -21,9 +20,6 @@ authors:
   given-names: Diego
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
-- family-names: Ucar
-  given-names: Iñaki
-  orcid: https://orcid.org/0000-0001-6403-5550
 preferred-citation:
   type: manual
   title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
@@ -36,27 +32,10 @@ preferred-citation:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-  - family-names: Ucar
-    given-names: Iñaki
-    orcid: https://orcid.org/0000-0001-6403-5550
-  version: 0.1.0.9000
-  abstract: Access to the API 'Sede Electronica Del Catastro'. Tools for quering cadastral
-    references and adresses of properties. Access public spatial data available under
-    the 'INSPIRE' directive.
-  repository-code: https://github.com/rOpenSpain/CatastRo
-  url: https://ropenspain.github.io/CatastRo/
-  contact:
-  - family-names: Hernangómez
-    given-names: Diego
-    email: diego.hernangomezherrero@gmail.com
-    orcid: https://orcid.org/0000-0001-8457-4658
-  keywords:
-  - catastro
-  - r-package
-  - ropenspain
-  - spain
-  license: GPL-2.0-only
   year: '2022'
+  version: 0.1.0.9000
+  abstract: Tools for downloading cadastral references and addresses of properties.
+    Access public spatial data available under the 'INSPIRE' directive.
 repository-code: https://github.com/rOpenSpain/CatastRo
 url: https://ropenspain.github.io/CatastRo/
 contact:
@@ -100,6 +79,7 @@ references:
     given-names: Kirill
     orcid: https://orcid.org/0000-0002-1416-3412
   year: '2022'
+  url: https://CRAN.R-project.org/package=dplyr
 - type: software
   title: httr
   abstract: 'httr: Tools for Working with URLs and HTTP'
@@ -109,6 +89,7 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
+  url: https://CRAN.R-project.org/package=httr
 - type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
@@ -122,6 +103,7 @@ references:
   - family-names: Davis
     given-names: Trevor
   year: '2022'
+  url: https://CRAN.R-project.org/package=rappdirs
   version: '>= 0.3.0'
 - type: software
   title: sf
@@ -133,6 +115,7 @@ references:
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2022'
+  url: https://CRAN.R-project.org/package=sf
   version: '>= 1.0.0'
 - type: software
   title: tibble
@@ -146,6 +129,7 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
+  url: https://CRAN.R-project.org/package=tibble
 - type: software
   title: XML
   abstract: 'XML: Tools for Parsing and Generating XML Within R and S-Plus'
@@ -156,7 +140,7 @@ references:
     email: duncan@r-project.org
     orcid: https://orcid.org/0000-0003-0159-1546
   year: '2022'
-  url: http://www.omegahat.net/RSXML
+  url: https://CRAN.R-project.org/package=XML
 - type: software
   title: xml2
   abstract: 'xml2: Parse XML'
@@ -170,6 +154,7 @@ references:
   - family-names: Ooms
     given-names: Jeroen
   year: '2022'
+  url: https://CRAN.R-project.org/package=xml2
 - type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
@@ -203,6 +188,7 @@ references:
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
+  url: https://CRAN.R-project.org/package=ggplot2
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -213,7 +199,7 @@ references:
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  url: https://yihui.org/knitr/
+  url: https://CRAN.R-project.org/package=knitr
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -252,6 +238,7 @@ references:
     email: rich@rstudio.com
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2022'
+  url: https://CRAN.R-project.org/package=rmarkdown
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
@@ -261,4 +248,5 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
+  url: https://CRAN.R-project.org/package=testthat
   version: '>= 3.0.0'

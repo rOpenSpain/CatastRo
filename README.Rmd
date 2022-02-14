@@ -22,9 +22,9 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
-[![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
-[![CRAN-results](https://cranchecks.info/badges/worst/CatastRo)](https://cran.r-project.org/web/checks/check_results_CatastRo.html)
-[![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
+<!-- [![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo) -->
+<!-- [![CRAN-results](https://cranchecks.info/badges/worst/CatastRo)](https://cran.r-project.org/web/checks/check_results_CatastRo.html) -->
+<!-- [![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo) -->
 [![r-universe](https://ropenspain.r-universe.dev/badges/CatastRo)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/CatastRo/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check)
 [![codecov](https://codecov.io/gh/rOpenSpain/CatastRo/branch/master/graph/badge.svg?token=6L01BKLL85)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
@@ -39,9 +39,23 @@ API. The API is documented
 
 ## Installation
 
-```{r eval=FALSE}
-library(devtools)
-install_github("rOpenSpain/CatastRo")
+You can install the developing version of **CatastRo** using the
+[r-universe](https://ropenspain.r-universe.dev/ui#builds):
+
+```{r, eval = FALSE}
+# Enable this universe
+options(repos = c(
+  ropenspain = "https://ropenspain.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+install.packages("CatastRo")
+```
+
+Alternatively, you can install the developing version of **CatastRo** with:
+
+```{r, eval = FALSE}
+library(remotes)
+install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 ```
 
 ## Query a coordinate
@@ -58,7 +72,7 @@ print(reference)
 ```
 
 It can be requested to get all the cadastral references in a square of 50-meters
-side centered in the coordinates (lat,lon) throught the function `near_rc()`.
+side centered in the coordinates (lat,lon) through the function `near_rc()`.
 
 ```{r, eval=FALSE}
 references <- near_rc(lat, lon, SRS)
@@ -78,3 +92,21 @@ direction <- get_coor(Cadastral_Reference, SRS, Province, Municipality)
 
 print(direction)
 ```
+
+## Citation
+
+```{r echo=FALSE, results='asis'}
+print(citation("CatastRo"), bibtex = FALSE)
+```
+
+
+A BibTeX entry for LaTeX users is:
+
+```{r echo=FALSE, comment=''}
+toBibtex(citation("CatastRo"))
+```
+
+## Contribute
+
+Check the GitHub page for [source
+code](https://github.com/ropenspain/CatastRo/).

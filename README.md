@@ -6,9 +6,9 @@
 <!-- badges: start -->
 
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
-[![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
-[![CRAN-results](https://cranchecks.info/badges/worst/CatastRo)](https://cran.r-project.org/web/checks/check_results_CatastRo.html)
-[![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
+<!-- [![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo) -->
+<!-- [![CRAN-results](https://cranchecks.info/badges/worst/CatastRo)](https://cran.r-project.org/web/checks/check_results_CatastRo.html) -->
+<!-- [![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo) -->
 [![r-universe](https://ropenspain.r-universe.dev/badges/CatastRo)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/CatastRo/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check)
 [![codecov](https://codecov.io/gh/rOpenSpain/CatastRo/branch/master/graph/badge.svg?token=6L01BKLL85)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
@@ -23,9 +23,24 @@ API. The API is documented
 
 ## Installation
 
+You can install the developing version of **CatastRo** using the
+[r-universe](https://ropenspain.r-universe.dev/ui#builds):
+
 ``` r
-library(devtools)
-install_github("rOpenSpain/CatastRo")
+# Enable this universe
+options(repos = c(
+  ropenspain = "https://ropenspain.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+install.packages("CatastRo")
+```
+
+Alternatively, you can install the developing version of **CatastRo**
+with:
+
+``` r
+library(remotes)
+install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 ```
 
 ## Query a coordinate
@@ -43,7 +58,7 @@ print(reference)
 ```
 
 It can be requested to get all the cadastral references in a square of
-50-meters side centered in the coordinates (lat,lon) throught the
+50-meters side centered in the coordinates (lat,lon) through the
 function `near_rc()`.
 
 ``` r
@@ -65,3 +80,25 @@ direction <- get_coor(Cadastral_Reference, SRS, Province, Municipality)
 
 print(direction)
 ```
+
+## Citation
+
+To cite ‘CatastRo’ in publications use:
+
+Delgado-Panadero A, Hernangómez D (2022). *CatastRo: Interface to the
+API ‘Sede Electronica Del Catastro’*.
+
+A BibTeX entry for LaTeX users is:
+
+    @Manual{,
+      title = {CatastRo: Interface to the API 'Sede Electronica Del Catastro'},
+      author = {Angel Delgado-Panadero and Diego Hernangómez},
+      year = {2022},
+      version = {0.1.0.9000},
+      abstract = {Tools for downloading cadastral references and addresses of properties. Access public spatial data available under the 'INSPIRE' directive.},
+    }
+
+## Contribute
+
+Check the GitHub page for [source
+code](https://github.com/ropenspain/CatastRo/).

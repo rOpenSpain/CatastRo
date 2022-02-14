@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "CatastRo",
-  "description": "Access to the API 'Sede Electronica Del Catastro'. Tools for quering cadastral references and adresses of properties. Access public spatial data available under the 'INSPIRE' directive.",
+  "description": "Tools for downloading cadastral references and addresses of properties. Access public spatial data available under the 'INSPIRE' directive.",
   "name": "CatastRo: Interface to the API 'Sede Electronica Del Catastro'",
   "relatedLink": "https://ropenspain.github.io/CatastRo/",
   "codeRepository": "https://github.com/rOpenSpain/CatastRo",
@@ -25,6 +25,15 @@
     },
     {
       "@type": "Person",
+      "givenName": "Diego",
+      "familyName": "Hernangómez",
+      "email": "diego.hernangomezherrero@gmail.com",
+      "@id": "https://orcid.org/0000-0001-8457-4658"
+    }
+  ],
+  "contributor": [
+    {
+      "@type": "Person",
       "givenName": "Iñaki",
       "familyName": "Ucar",
       "@id": "https://orcid.org/0000-0001-6403-5550"
@@ -33,10 +42,10 @@
   "copyrightHolder": [
     {
       "@type": "Person",
-      "givenName": "Diego",
-      "familyName": "Hernangómez",
-      "email": "diego.hernangomezherrero@gmail.com",
-      "@id": "https://orcid.org/0000-0001-8457-4658"
+      "givenName": "Angel",
+      "familyName": "Delgado-Panadero",
+      "email": "delgadopanadero@gmail.com",
+      "@id": "https://orcid.org/0000-0002-8189-9251"
     }
   ],
   "maintainer": [
@@ -194,7 +203,26 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "29.465KB",
+  "fileSize": "99.077KB",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2022",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Angel",
+          "familyName": "Delgado-Panadero"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Diego",
+          "familyName": "Hernangómez"
+        }
+      ],
+      "name": "CatastRo: Interface to the API 'Sede Electronica Del Catastro'"
+    }
+  ],
   "releaseNotes": "https://github.com/rOpenSpain/CatastRo/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/CatastRo/blob/master/README.md",
   "contIntegration": ["https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check", "https://app.codecov.io/gh/rOpenSpain/CatastRo"],

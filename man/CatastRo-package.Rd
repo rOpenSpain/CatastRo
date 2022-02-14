@@ -6,7 +6,7 @@
 \alias{CatastRo-package}
 \title{CatastRo: Interface to the API 'Sede Electronica Del Catastro'}
 \description{
-Tools for quering cadastral references and adresses of properties.
+Tools for downloading cadastral references and addresses of properties. Access public spatial data available under the 'INSPIRE' directive.
 }
 \seealso{
 Useful links:
@@ -18,11 +18,16 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Angel Delgado-Panadero \email{delgadopanadero@gmail.com} (\href{https://orcid.org/0000-0002-8189-9251}{ORCID})
+\strong{Maintainer}: Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID})
 
 Authors:
 \itemize{
-  \item Iñaki Ucar (\href{https://orcid.org/0000-0001-6403-5550}{ORCID})
+  \item Angel Delgado-Panadero \email{delgadopanadero@gmail.com} (\href{https://orcid.org/0000-0002-8189-9251}{ORCID}) [copyright holder]
+}
+
+Other contributors:
+\itemize{
+  \item Iñaki Ucar (\href{https://orcid.org/0000-0001-6403-5550}{ORCID}) [contributor]
 }
 
 }

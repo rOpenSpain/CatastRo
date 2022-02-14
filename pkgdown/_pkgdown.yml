@@ -1,0 +1,26 @@
+url: "https://ropenspain.github.io/CatastRo/"
+
+template:
+  package: rostemplate
+
+authors:
+  Angel Delgado-Panadero:
+    href: https://github.com/DelgadoPanadero
+
+reference:
+  - title: ATOM
+    desc: These functions return `sf` objects as provided by the INSPIRE ATOM
+      services of the Spanish Cadastre.
+    contents:
+      - has_concept("ATOM")
+  - title: OVC Services
+    desc: These functions allows to access the
+      [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx) service.
+    contents:
+      - has_concept("OVCCoordenadas")
+  - title: Databases and reference data
+    contents:
+      - has_concept("databases")
+  - title: About the package
+    contents:
+      - CatastRo-package

@@ -9,36 +9,42 @@ get_rc(lat,lon,SRS="Google")
 \arguments{
 \item{lat}{Latitude coordinate.}
 
-\item{lon}{Longitude coortinate.}
+\item{lon}{Longitude coordinate.}
 
-\item{SRS}{The Spatial Reference System used for the coordinates. There is a vector
-with all the allowed SRSs in the variable from the package called coordinates.\preformatted{  The set of the available SRS to use are available in the vector `coordinates`
-  from this package. A part from that, the function accept as a SRS argument
-  the values "Google" and "Oficial". The first uses the SRS value used by Google
-  maps ('EPSG:4326') while the latter uses the oficial SRS ('EPSG:4258') in
-  Europe. If no SRS is given, the function by default choose the "Google" SRS.
-}}
+\item{SRS}{The Spatial Reference System desired for the coordinates, if it
+is missed, the returned coordinates will be given in the Spatial Reference
+System used by Googlemaps ('EPSG:4326'). The set of the available SRS to
+use are available in the vector \code{coordinates} from this package. Apart
+from that, the function accept as a SRS argument the values "Google" and
+"Oficial". The first uses the SRS value used by Google maps ('EPSG:4326')
+while the latter uses the official SRS ('EPSG:4258') in Europe. If no SRS
+is given, the function by default choose the "Google" SRS.}
 }
 \value{
-A data.frame with the the addresses of the states and the cadastral references
-for every SRS requested.
+A data.frame with the the addresses of the states and the cadastral
+references for every SRS requested.
 }
 \description{
-Returns the Cadastral Reference of the state as well as the address
-(municipality, street and number) being given its coordinates and the SRS.
+Returns the Cadastral Reference of the state as well as the
+address (municipality, street and number) being given its coordinates and
+the SRS.
 }
 \examples{
-direction <- get_rc(38.6196566583596,-3.45624183836806, 'EPSG:4230')
+direction <- get_rc(38.6196566583596, -3.45624183836806, "EPSG:4230")
 print(direction)
 
-directions <- get_rc(38.6196566583596,-3.45624183836806)
+directions <- get_rc(38.6196566583596, -3.45624183836806)
 print(directions)
-
-
 }
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_RCCOOR
 }
+\seealso{
+Other OVCCoordenadas: 
+\code{\link{get_coor}()},
+\code{\link{near_rc}()}
+}
 \author{
 Angel Delgado Panadero.
 }
+\concept{OVCCoordenadas}
