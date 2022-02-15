@@ -64,7 +64,7 @@ test_that("BBOX Check projections", {
     srs = 25829
   )
 
-  expect_true(st_crs(obj) == st_crs(25829))
+  expect_true(sf::st_crs(obj) == sf::st_crs(25829))
 
   # Convert to spatial object
 
@@ -72,12 +72,12 @@ test_that("BBOX Check projections", {
   class(bbox) <- "bbox"
 
   bbox <- sf::st_as_sfc(bbox)
-  bbox <- sf::st_set_crs(bbox, st_crs(25829))
+  bbox <- sf::st_set_crs(bbox, sf::st_crs(25829))
 
   expect_s3_class(bbox, "sfc")
 
   obj2 <- catr_wfs_bu_bbox(bbox)
-  expect_true(st_crs(obj2) == st_crs(25829))
+  expect_true(sf::st_crs(obj2) == sf::st_crs(25829))
 
   # Transform object to geographic coords
   bbox2 <- sf::st_transform(obj2[1, ], 4326)
@@ -87,7 +87,7 @@ test_that("BBOX Check projections", {
   obj3 <- catr_wfs_bu_bbox(bbox2)
 
   expect_true(sf::st_is_longlat(obj3))
-  expect_true(st_crs(obj3) == st_crs(4326))
+  expect_true(sf::st_crs(obj3) == sf::st_crs(4326))
 
   # BBox with coordinates
 
@@ -96,5 +96,5 @@ test_that("BBOX Check projections", {
   obj4 <- catr_wfs_bu_bbox(vec, srs = 4326)
 
   expect_true(sf::st_is_longlat(obj4))
-  expect_true(st_crs(obj4) == st_crs(4326))
+  expect_true(sf::st_crs(obj4) == sf::st_crs(4326))
 })
