@@ -5,8 +5,12 @@
     -   `catr_atom_ad()`, `catr_atom_ad_db_all()`, `catr_atom_cp()`,
         `catr_atom_cp_db_all()`, `catr_atom_bu()`, `catr_atom_bu_db_all()`.
 
--   New interface for OVC Services. Deprecate previous functions in favor of the 
-new API:
+-   Add WFS INSPIRE capabilities:
+
+    -   `catr_wfs_bu_bbox()`,`catr_wfs_bu_rc()`.
+
+-   New interface for OVC Services. Deprecate previous functions in favor of the
+    new API:
 
     -   New SRS database on `catr_srs_values`, replaces `coordinates`.
 

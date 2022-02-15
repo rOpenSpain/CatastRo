@@ -73,7 +73,8 @@ INSPIRE API:
 \code{\link{catr_atom_ad}()},
 \code{\link{catr_atom_bu_db_all}()},
 \code{\link{catr_atom_bu}()},
-\code{\link{catr_atom_cp_db_all}()}
+\code{\link{catr_atom_cp_db_all}()},
+\code{\link{catr_wfs_bu_bbox}()}
 
 Other INSPIRE ATOM services:
 \code{\link{catr_atom_ad_db_all}()},
@@ -87,7 +88,8 @@ Other parcels:
 
 Other spatial: 
 \code{\link{catr_atom_ad}()},
-\code{\link{catr_atom_bu}()}
+\code{\link{catr_atom_bu}()},
+\code{\link{catr_wfs_bu_bbox}()}
 }
 \concept{ATOM}
 \concept{INSPIRE}
