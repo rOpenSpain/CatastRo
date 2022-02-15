@@ -62,6 +62,7 @@ elements.
 }
 
 \examples{
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # Using bbox
 building <- catr_wfs_bu_bbox(c(
@@ -85,6 +86,7 @@ ggplot(rc) +
   geom_sf() +
   labs(title = "Search using rc")
 }
+\dontshow{\}) # examplesIf}
 }
 \references{
 \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf}{API Documentation}

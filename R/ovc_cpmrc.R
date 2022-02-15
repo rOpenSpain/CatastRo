@@ -32,7 +32,7 @@
 #' * `address`: Address as it is recorded on the Cadastre.
 #' * Rest of fields: Check the API Docs on [Consulta_CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
 #'
-#' @examples
+#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
 #'
 #' # using all the arguments

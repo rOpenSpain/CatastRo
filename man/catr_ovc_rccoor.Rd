@@ -41,6 +41,7 @@ cadastral reference, including the following columns:
 }
 }
 \examples{
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 catr_ovc_rccoor(
   lat = 38.6196566583596,
@@ -48,6 +49,7 @@ catr_ovc_rccoor(
   srs = 4326
 )
 }
+\dontshow{\}) # examplesIf}
 }
 \references{
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta_RCCOOR}

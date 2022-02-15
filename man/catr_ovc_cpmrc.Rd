@@ -45,6 +45,7 @@ cadastral reference, including the following columns:
 }
 }
 \examples{
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 
 # using all the arguments
@@ -57,7 +58,7 @@ catr_ovc_cpmrc("13077A01800039",
 # only the cadastral reference
 catr_ovc_cpmrc("9872023VH5797S")
 }
-
+\dontshow{\}) # examplesIf}
 }
 \references{
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta_CPMRC}

@@ -94,7 +94,7 @@ catr_wfs_bu_bbox <- function(bbox, what = "building", srs, verbose = FALSE) {
 #'
 #' @rdname catr_wfs_bu
 #' @export
-#' @examples
+#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
 #' # Using bbox
 #' building <- catr_wfs_bu_bbox(c(

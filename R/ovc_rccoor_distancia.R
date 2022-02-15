@@ -41,7 +41,7 @@
 #'    Statistics Institute).
 #' * Rest of fields: Check the API Docs on [Consulta_RCCOOR_Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia)
 #'
-#' @examples
+#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
 #' catr_ovc_rccoor_distancia(
 #'   lat = 40.963200,
