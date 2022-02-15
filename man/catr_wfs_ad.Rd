@@ -115,7 +115,7 @@ INSPIRE API functions:
 \code{\link{catr_atom_cp}()},
 \code{\link{catr_wfs_bu_bbox}()}
 
-Other WFS: 
+Other INSPIRE WFS services:
 \code{\link{catr_srs_values}},
 \code{\link{catr_wfs_bu_bbox}()}
 
