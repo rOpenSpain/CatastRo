@@ -140,28 +140,11 @@ wfs_bbox <- function(bbox, srs) {
     result$incrs <- 3857
   } else {
     # Convert to sf
-    # Sanity check
-    if (!(is.numeric(bbox) & length(bbox) == 4)) {
-      stop("bbox should be a vector of 4 numbers.", call. = FALSE)
-    }
-
-    if (missing(srs)) stop("Please provide a srs value", call. = FALSE)
     # Validate srs
     empty <- wfs_validate_srs(srs)
 
     result$incrs <- srs
-
-    # Create template for a spatial bbox
-    template_sf <- sf::st_sfc(sf::st_point(c(0, 0)))
-    template_bbox <- sf::st_bbox(template_sf)
-
-    # Create the spatial object
-    bbox_new <- bbox
-    class(bbox_new) <- class(template_bbox)
-
-    bbox_new <- sf::st_as_sfc(bbox_new)
-    bbox_new <- sf::st_set_crs(bbox_new, srs)
-
+    bbox_new <- get_sf_from_bbox(bbox, srs)
     result$outcrs <- sf::st_crs(bbox_new)
 
     # On lonlat, project. The API does not work ?¿
@@ -178,4 +161,30 @@ wfs_bbox <- function(bbox, srs) {
   }
 
   return(result)
+}
+
+get_sf_from_bbox <- function(bbox, srs) {
+  if (inherits(bbox, "sf") | inherits(bbox, "sfc")) {
+    return(bbox)
+  }
+
+  # Sanity check
+  if (!(is.numeric(bbox) & length(bbox) == 4)) {
+    stop("bbox should be a vector of 4 numbers.", call. = FALSE)
+  }
+
+  if (missing(srs)) stop("Please provide a srs value", call. = FALSE)
+
+  # Create template for a spatial bbox
+  template_sf <- sf::st_sfc(sf::st_point(c(0, 0)))
+  template_bbox <- sf::st_bbox(template_sf)
+
+  # Create the spatial object
+  bbox_new <- bbox
+  class(bbox_new) <- class(template_bbox)
+
+  bbox_new <- sf::st_as_sfc(bbox_new)
+  bbox_new <- sf::st_set_crs(bbox_new, srs)
+
+  return(bbox_new)
 }

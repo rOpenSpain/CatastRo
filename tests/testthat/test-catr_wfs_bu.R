@@ -55,6 +55,13 @@ test_that("BU Other Check", {
   expect_s3_class(obj, "sf")
 })
 
+test_that("BBOX Check errors", {
+  expect_error(catr_wfs_bu_bbox(bbox = "1234"))
+  expect_error(catr_wfs_bu_bbox(bbox = c("1234", "a", "3", "4")))
+  expect_error(catr_wfs_bu_bbox(bbox = c(1, 2, 3)))
+  expect_error(catr_wfs_bu_bbox(bbox = c(1, 2, 3, 4)))
+})
+
 
 test_that("BBOX Check projections", {
   skip_on_cran()
@@ -66,14 +73,19 @@ test_that("BBOX Check projections", {
 
   expect_true(sf::st_crs(obj) == sf::st_crs(25829))
 
+
+  # test conversion
+  testconv <- get_sf_from_bbox(obj[1, ])
+  expect_identical(obj[1, ], testconv)
+
   # Convert to spatial object
 
-  bbox <- c(760926, 4019259, 761155, 4019366)
-  class(bbox) <- "bbox"
 
-  bbox <- sf::st_as_sfc(bbox)
-  bbox <- sf::st_set_crs(bbox, sf::st_crs(25829))
 
+  bbox <- get_sf_from_bbox(
+    c(760926, 4019259, 761155, 4019366),
+    25829
+  )
   expect_s3_class(bbox, "sfc")
 
   obj2 <- catr_wfs_bu_bbox(bbox)
