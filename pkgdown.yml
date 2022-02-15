@@ -3,7 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   ovcservice: ovcservice.html
-last_built: 2022-02-15T07:43Z
+last_built: 2022-02-15T11:50Z
 urls:
   reference: https://ropenspain.github.io/CatastRo/reference
   article: https://ropenspain.github.io/CatastRo/articles
