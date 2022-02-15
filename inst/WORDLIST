@@ -6,7 +6,6 @@ Cadastral
 Cadastre
 CatastRo’
 Catastro
-Catastro’
 Consulta
 DISEMINADO
 DOI
@@ -18,6 +17,7 @@ ESPAÑA
 ETRS
 Electrónica
 Geocode
+Geocoding
 Geográficas
 Googlemaps
 INE
@@ -50,14 +50,18 @@ cp
 cv
 del
 dir
+doi
 dt
 electrónica
 geo
 geocode
 geocoded
+github
 http
+https
 huso
 ine
+io
 ldt
 loine
 lon
@@ -69,6 +73,7 @@ pnp
 precomputed
 rOS
 refcat
+ropenspain
 srs
 tibble
 wfs
@@ -76,3 +81,5 @@ xcen
 xcoord
 ycen
 ycoord
+zenodo
+Á

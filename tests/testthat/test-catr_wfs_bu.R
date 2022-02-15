@@ -54,3 +54,47 @@ test_that("BU Other Check", {
   )
   expect_s3_class(obj, "sf")
 })
+
+
+test_that("BBOX Check projections", {
+  skip_on_cran()
+  skip_on_os("linux")
+
+  obj <- catr_wfs_bu_bbox(c(760926, 4019259, 761155, 4019366),
+    srs = 25829
+  )
+
+  expect_true(st_crs(obj) == st_crs(25829))
+
+  # Convert to spatial object
+
+  bbox <- c(760926, 4019259, 761155, 4019366)
+  class(bbox) <- "bbox"
+
+  bbox <- sf::st_as_sfc(bbox)
+  bbox <- sf::st_set_crs(bbox, st_crs(25829))
+
+  expect_s3_class(bbox, "sfc")
+
+  obj2 <- catr_wfs_bu_bbox(bbox)
+  expect_true(st_crs(obj2) == st_crs(25829))
+
+  # Transform object to geographic coords
+  bbox2 <- sf::st_transform(obj2[1, ], 4326)
+  expect_true(sf::st_is_longlat(bbox2))
+  expect_s3_class(bbox2, "sf")
+
+  obj3 <- catr_wfs_bu_bbox(bbox2)
+
+  expect_true(sf::st_is_longlat(obj3))
+  expect_true(st_crs(obj3) == st_crs(4326))
+
+  # BBox with coordinates
+
+  vec <- as.double(sf::st_bbox(obj3[1, ]))
+
+  obj4 <- catr_wfs_bu_bbox(vec, srs = 4326)
+
+  expect_true(sf::st_is_longlat(obj4))
+  expect_true(st_crs(obj4) == st_crs(4326))
+})

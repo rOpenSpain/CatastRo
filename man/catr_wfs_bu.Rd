@@ -71,8 +71,7 @@ building <- catr_wfs_bu_bbox(c(
   376600,
   4545474
 ),
-srs = 25830,
-verbose = TRUE
+srs = 25830
 )
 library(ggplot2)
 ggplot(building) +
