@@ -48,7 +48,6 @@ test_that("check fields given SRS", {
 })
 
 test_that("if data is know return NA", {
-
   skip_on_cran()
   skip_if_offline()
 
@@ -58,7 +57,6 @@ test_that("if data is know return NA", {
 
 
 test_that("unprecised coordinates", {
-
   skip_on_cran()
   skip_if_offline()
 
@@ -70,7 +68,6 @@ test_that("unprecised coordinates", {
 })
 
 test_that("Verbose", {
-
   skip_on_cran()
   skip_if_offline()
 

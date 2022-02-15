@@ -69,12 +69,13 @@ When \code{bbox} is a numeric vector, make sure that the \code{srs} matches the
 coordinate values. Additionally, when the \code{srs} correspond to a geographic
 reference system (4326, 4258), the function queries the bounding box on
 \href{https://epsg.io/3857}{EPSG:3857} - Web Mercator, to overcome
-a potential bug on the API side. The result is provided always in the SRS
-provided in \code{srs}.
+a potential bug on the API side.
 
-When \code{bbox} is a \code{sf} object, the value \code{srs} is ignored. The query is
-performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator) and the
-spatial object is projected back to the SRS of the initial object.
+When \code{bbox} is a \code{sf} object, the value \code{srs} is ignored. In this case, the
+bounding box of the \code{sf} object would be used for the query (see
+\code{\link[sf:st_bbox]{sf::st_bbox()}}). The query is performed using
+\href{https://epsg.io/3857}{EPSG:3857} (Web Mercator). The result is provided
+always in the SRS of the \code{sf} object provided as input.
 }
 \section{API Limits}{
 The API service is limited to a bounding box of 4km2 and a maximum of 5.000
