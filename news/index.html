@@ -53,16 +53,25 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="catastro-development-version">CatastRo (development version)<a class="anchor" aria-label="anchor" href="#catastro-development-version"></a></h2>
 <ul><li>
-<p>Add ATOM INSPIRE capabilities:</p>
-<ul><li>
-<code><a href="../reference/catr_atom_ad.html">catr_atom_ad()</a></code>, <code><a href="../reference/catr_atom_ad_db.html">catr_atom_ad_db_all()</a></code>, <code><a href="../reference/catr_atom_cp.html">catr_atom_cp()</a></code>, <code><a href="../reference/catr_atom_cp_db.html">catr_atom_cp_db_all()</a></code>, <code><a href="../reference/catr_atom_bu.html">catr_atom_bu()</a></code>, <code><a href="../reference/catr_atom_bu_db.html">catr_atom_bu_db_all()</a></code>.</li>
+<p>Add <strong>ATOM INSPIRE</strong> capabilities:</p>
+<ul><li>Addresses: <code><a href="../reference/catr_atom_ad.html">catr_atom_ad()</a></code>, <code><a href="../reference/catr_atom_ad_db.html">catr_atom_ad_db_all()</a></code>.</li>
+<li>Cadastral Parcels: <code><a href="../reference/catr_atom_cp.html">catr_atom_cp()</a></code>, <code><a href="../reference/catr_atom_cp_db.html">catr_atom_cp_db_all()</a></code>.</li>
+<li>Buildings: <code><a href="../reference/catr_atom_bu.html">catr_atom_bu()</a></code>, <code><a href="../reference/catr_atom_bu_db.html">catr_atom_bu_db_all()</a></code>.</li>
 </ul></li>
 <li>
-<p>New interface for OVC Services. Deprecate previous functions in favor of the new API:</p>
-<ul><li><p>New SRS database on <code>catr_srs_values</code>, replaces <code>coordinates</code>.</p></li>
-<li><p><code><a href="../reference/catr_ovc_rccoor_distancia.html">catr_ovc_rccoor_distancia()</a></code> replaces <code><a href="../reference/near_rc.html">near_rc()</a></code>.</p></li>
-<li><p><code><a href="../reference/catr_ovc_rccoor.html">catr_ovc_rccoor()</a></code> replaces <code><a href="../reference/get_rc.html">get_rc()</a></code>.</p></li>
-<li><p><code><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc()</a></code> replaces <code><a href="../reference/get_coor.html">get_coor()</a></code>.</p></li>
+<p>Add <strong>WFS INSPIRE</strong> capabilities:</p>
+<ul><li>Addresses: <code><a href="../reference/catr_wfs_ad.html">catr_wfs_ad_bbox()</a></code>, <code><a href="../reference/catr_wfs_ad.html">catr_wfs_ad_codvia()</a></code>, <code><a href="../reference/catr_wfs_ad.html">catr_wfs_ad_postalcode()</a></code>, <code><a href="../reference/catr_wfs_ad.html">catr_wfs_ad_rc()</a></code>.</li>
+<li>Buildings: <code><a href="../reference/catr_wfs_bu.html">catr_wfs_bu_bbox()</a></code>,<code><a href="../reference/catr_wfs_bu.html">catr_wfs_bu_rc()</a></code>.</li>
+</ul></li>
+<li>
+<p>New interface for <strong>OVC Services</strong>. Deprecate previous functions in favor of the new API:</p>
+<ul><li>New SRS database on <code>catr_srs_values</code>, replaces <code>coordinates</code>.</li>
+<li>
+<code><a href="../reference/catr_ovc_rccoor_distancia.html">catr_ovc_rccoor_distancia()</a></code> replaces <code><a href="../reference/near_rc.html">near_rc()</a></code>.</li>
+<li>
+<code><a href="../reference/catr_ovc_rccoor.html">catr_ovc_rccoor()</a></code> replaces <code><a href="../reference/get_rc.html">get_rc()</a></code>.</li>
+<li>
+<code><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc()</a></code> replaces <code><a href="../reference/get_coor.html">get_coor()</a></code>.</li>
 </ul></li>
 <li><p>Add precomputed vignettes.</p></li>
 </ul></div>
