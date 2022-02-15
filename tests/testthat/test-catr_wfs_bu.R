@@ -67,6 +67,10 @@ test_that("BBOX Check projections", {
   skip_on_cran()
   skip_on_os("linux")
 
+  expect_error(catr_wfs_bu_bbox(c(760926, 4019259, 761155, 4019366),
+    what = 25829
+  ))
+
   obj <- catr_wfs_bu_bbox(c(760926, 4019259, 761155, 4019366),
     srs = 25829
   )

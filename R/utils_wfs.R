@@ -46,7 +46,7 @@ wfs_api_query <- function(entry, ..., verbose = TRUE) {
 
   if (!is.null(srs)) {
     # Sanity checks
-    empty <- wfs_validate_srs(srs)
+    wfs_validate_srs(srs)
     arguments$SRSNAME <- paste0("EPSG::", srs)
   }
 
@@ -167,11 +167,12 @@ wfs_bbox <- function(bbox, srs) {
     result$incrs <- 3857
   } else {
     # Convert to sf
+    bbox_new <- get_sf_from_bbox(bbox, srs)
+
     # Validate srs
-    empty <- wfs_validate_srs(srs)
+    wfs_validate_srs(srs)
 
     result$incrs <- srs
-    bbox_new <- get_sf_from_bbox(bbox, srs)
     result$outcrs <- sf::st_crs(bbox_new)
 
     # On lonlat, project. The API does not work ?¿
