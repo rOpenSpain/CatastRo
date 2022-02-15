@@ -88,7 +88,34 @@ wfs_api_query <- function(entry, ..., verbose = TRUE) {
 wfs_results <- function(res, verbose) {
   # Check result
   if (res$is_sf) {
-    out <- try(sf::st_read(res$path, quiet = !verbose), silent = TRUE)
+
+    # Layer management
+    layers <- sf::st_layers(res$path)
+    df_layers <- tibble::tibble(
+      layer = layers$name,
+      geomtype = unlist(layers$geomtype)
+    )
+
+    if (nrow(df_layers) == 0 | !"geomtype" %in% names(df_layers)) {
+      message("No spatial layers found.")
+      unlink(res$path, force = TRUE)
+      return(invisible(NULL))
+    }
+
+    df_layers <- df_layers[!is.na(df_layers$geomtype), ]
+
+    # nocov start
+    if (nrow(df_layers) == 0) {
+      message("No spatial layers found.")
+      unlink(res$path, force = TRUE)
+      return(invisible(NULL))
+    }
+    # nocov end
+
+    out <- try(sf::st_read(res$path,
+      layer = df_layers$layer[1],
+      quiet = !verbose
+    ), silent = TRUE)
 
     # It may be an error, check
     if (inherits(out, "try-error")) {

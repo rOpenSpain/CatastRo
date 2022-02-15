@@ -87,6 +87,7 @@ INSPIRE API:
 \code{\link{catr_atom_bu}()},
 \code{\link{catr_atom_cp_db_all}()},
 \code{\link{catr_atom_cp}()},
+\code{\link{catr_wfs_ad_bbox}()},
 \code{\link{catr_wfs_bu_bbox}()}
 
 Other INSPIRE ATOM services:
@@ -97,7 +98,8 @@ Other INSPIRE ATOM services:
 \code{\link{catr_atom_cp}()}
 
 Other addresses: 
-\code{\link{catr_atom_ad}()}
+\code{\link{catr_atom_ad}()},
+\code{\link{catr_wfs_ad_bbox}()}
 
 Other databases: 
 \code{\link{catr_atom_bu_db_all}()},

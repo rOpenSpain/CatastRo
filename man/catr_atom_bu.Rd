@@ -78,6 +78,7 @@ INSPIRE API:
 \code{\link{catr_atom_bu_db_all}()},
 \code{\link{catr_atom_cp_db_all}()},
 \code{\link{catr_atom_cp}()},
+\code{\link{catr_wfs_ad_bbox}()},
 \code{\link{catr_wfs_bu_bbox}()}
 
 Other INSPIRE ATOM services:
@@ -94,6 +95,7 @@ Other buildings:
 Other spatial: 
 \code{\link{catr_atom_ad}()},
 \code{\link{catr_atom_cp}()},
+\code{\link{catr_wfs_ad_bbox}()},
 \code{\link{catr_wfs_bu_bbox}()}
 }
 \concept{ATOM}
