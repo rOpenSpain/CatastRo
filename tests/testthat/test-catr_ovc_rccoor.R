@@ -48,12 +48,20 @@ test_that("check fields given SRS", {
 })
 
 test_that("if data is know return NA", {
+
+  skip_on_cran()
+  skip_if_offline()
+
   result <- catr_ovc_rccoor(lat = 99999999, lon = -999999999)
   expect_true(ncol(result) == 3)
 })
 
 
 test_that("unprecised coordinates", {
+
+  skip_on_cran()
+  skip_if_offline()
+
   result <- catr_ovc_rccoor(
     lat = 40.963200, lon = -5.671420,
     srs = "4326"
@@ -62,6 +70,10 @@ test_that("unprecised coordinates", {
 })
 
 test_that("Verbose", {
+
+  skip_on_cran()
+  skip_if_offline()
+
   expect_message(catr_ovc_rccoor(
     lat = 40.963200, lon = -5.671420,
     srs = "4326",

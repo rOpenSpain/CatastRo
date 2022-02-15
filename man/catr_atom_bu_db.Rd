@@ -81,7 +81,7 @@ catr_atom_bu_db_all()
 }
 }
 \seealso{
-INSPIRE API:
+INSPIRE API functions:
 \code{\link{catr_atom_ad_db_all}()},
 \code{\link{catr_atom_ad}()},
 \code{\link{catr_atom_bu}()},
