@@ -53,7 +53,7 @@ catr_ovc_rccoor(
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta_RCCOOR}
 }
 \seealso{
-\link{catr_srs_values}, vignette("ovcservice")
+\link{catr_srs_values}, \code{vignette("ovcservice")}
 
 OVCCoordenadas API:
 \code{\link{catr_ovc_cpmrc}()},
