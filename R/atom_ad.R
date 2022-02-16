@@ -1,4 +1,4 @@
-#' ATOM INSPIRE: Download all the Addresses of a Municipality
+#' **ATOM INSPIRE**: Download all the Addresses of a Municipality
 #'
 #'
 #' Get the spatial data of all the addresses belonging to a single

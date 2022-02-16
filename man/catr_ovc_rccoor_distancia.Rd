@@ -2,7 +2,7 @@
 % Please edit documentation in R/ovc_rccoor_distancia.R
 \name{catr_ovc_rccoor_distancia}
 \alias{catr_ovc_rccoor_distancia}
-\title{OVCCoordenadas: Reverse geocode cadastral references on a region}
+\title{\strong{OVCCoordenadas}: Reverse geocode cadastral references on a region}
 \usage{
 catr_ovc_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 }
@@ -46,6 +46,7 @@ Statistics Institute).
 }
 }
 \examples{
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 catr_ovc_rccoor_distancia(
   lat = 40.963200,
@@ -53,6 +54,7 @@ catr_ovc_rccoor_distancia(
   srs = 4326
 )
 }
+\dontshow{\}) # examplesIf}
 }
 \references{
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta_RCCOOR_Distancia}

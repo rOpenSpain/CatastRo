@@ -17,6 +17,11 @@ reference:
       services of the Spanish Cadastre.
     contents:
       - has_concept("ATOM")
+  - title: WFS INSPIRE API
+    desc: These functions return `sf` objects as provided by the INSPIRE WFS
+      services of the Spanish Cadastre.
+    contents:
+      - has_concept("WFS")
   - title: OVCCoordenadas API
     desc: These functions allows to access the
       [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx) service.
@@ -34,7 +39,7 @@ reference:
       - get_rc
       - near_rc
       - get_coor
-      
+
   - title: About the package
     contents:
       - CatastRo-package

@@ -1,4 +1,4 @@
-#' ATOM INSPIRE: Reference Database for ATOM Cadastral Parcels
+#' **ATOM INSPIRE**: Reference Database for ATOM Cadastral Parcels
 #'
 #' @description
 #'

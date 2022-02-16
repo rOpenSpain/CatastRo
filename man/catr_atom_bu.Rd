@@ -2,7 +2,7 @@
 % Please edit documentation in R/atom_bu.R
 \name{catr_atom_bu}
 \alias{catr_atom_bu}
-\title{ATOM INSPIRE: Download all the Buildings of a Municipality}
+\title{\strong{ATOM INSPIRE}: Download all the Buildings of a Municipality}
 \usage{
 catr_atom_bu(
   munic,
@@ -72,12 +72,15 @@ ggplot(s) +
 \href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
 }
 \seealso{
-INSPIRE API:
+INSPIRE API functions:
 \code{\link{catr_atom_ad_db_all}()},
 \code{\link{catr_atom_ad}()},
 \code{\link{catr_atom_bu_db_all}()},
 \code{\link{catr_atom_cp_db_all}()},
-\code{\link{catr_atom_cp}()}
+\code{\link{catr_atom_cp}()},
+\code{\link{catr_wfs_ad_bbox}()},
+\code{\link{catr_wfs_bu_bbox}()},
+\code{\link{catr_wfs_cp_bbox}()}
 
 Other INSPIRE ATOM services:
 \code{\link{catr_atom_ad_db_all}()},
@@ -87,11 +90,15 @@ Other INSPIRE ATOM services:
 \code{\link{catr_atom_cp}()}
 
 Other buildings: 
-\code{\link{catr_atom_bu_db_all}()}
+\code{\link{catr_atom_bu_db_all}()},
+\code{\link{catr_wfs_bu_bbox}()}
 
 Other spatial: 
 \code{\link{catr_atom_ad}()},
-\code{\link{catr_atom_cp}()}
+\code{\link{catr_atom_cp}()},
+\code{\link{catr_wfs_ad_bbox}()},
+\code{\link{catr_wfs_bu_bbox}()},
+\code{\link{catr_wfs_cp_bbox}()}
 }
 \concept{ATOM}
 \concept{INSPIRE}

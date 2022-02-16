@@ -1,4 +1,4 @@
-#' OVCCoordenadas: Reverse geocode a cadastral reference
+#' **OVCCoordenadas**: Reverse geocode a cadastral reference
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service
@@ -29,7 +29,7 @@
 #' * `address`: Address as it is recorded on the Cadastre.
 #' * Rest of fields: Check the API Docs on [Consulta_RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
 #'
-#' @examples
+#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
 #' catr_ovc_rccoor(
 #'   lat = 38.6196566583596,
