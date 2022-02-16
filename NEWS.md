@@ -1,5 +1,7 @@
 # CatastRo (development version)
 
+-   Overall revamp of the package. Major changes on the API.
+
 -   Add **ATOM INSPIRE** capabilities:
 
     -   Addresses: `catr_atom_ad()`, `catr_atom_ad_db_all()`.
@@ -10,7 +12,11 @@
 
     -   Addresses: `catr_wfs_ad_bbox()`, `catr_wfs_ad_codvia()`,
         `catr_wfs_ad_postalcode()`, `catr_wfs_ad_rc()`.
+    -   Cadastral Parcels: `catr_wfs_cp_neigh_parcel()`, `catr_wfs_cp_parcel()`,
+        `catr_wfs_cp_parcel_zoning()`, `catr_wfs_cp_zoning()`.
     -   Buildings: `catr_wfs_bu_bbox()`,`catr_wfs_bu_rc()`.
+
+-   Add **WMS INSPIRE** capabilities: `catr_wms_layer()`.
 
 -   New interface for **OVC Services**. Deprecate previous functions in favor of
     the new API:

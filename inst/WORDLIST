@@ -3,6 +3,8 @@ CMD
 CPMRC
 CRS
 Cadastral
+CadastralParcel
+CadastralZoning
 Cadastre
 CatastRo’
 Catastro
@@ -31,6 +33,7 @@ Panadero
 Parcela
 Polígono
 RCCOOR
+RGBA
 Renviron
 SALAMANCA
 SRS
@@ -39,6 +42,7 @@ TIRADERO
 VH
 WFS
 WGS
+WMS
 asmx
 cadastral
 catastro
@@ -56,6 +60,7 @@ electrónica
 geo
 geocode
 geocoded
+geotagged
 github
 http
 https

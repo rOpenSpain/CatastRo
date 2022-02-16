@@ -108,6 +108,19 @@ references:
   year: '2022'
   url: https://CRAN.R-project.org/package=lifecycle
 - type: software
+  title: mapSpain
+  abstract: 'mapSpain: Administrative Boundaries of Spain'
+  notes: Imports
+  authors:
+  - family-names: Hernangómez
+    given-names: Diego
+    email: diego.hernangomezherrero@gmail.com
+    orcid: https://orcid.org/0000-0001-8457-4658
+    affiliation: rOpenSpain
+  year: '2022'
+  url: https://CRAN.R-project.org/package=mapSpain
+  version: '>= 0.5.0'
+- type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
     and Logs'
@@ -134,6 +147,17 @@ references:
   year: '2022'
   url: https://CRAN.R-project.org/package=sf
   version: '>= 1.0.0'
+- type: software
+  title: terra
+  abstract: 'terra: Spatial Data Analysis'
+  notes: Imports
+  authors:
+  - family-names: Hijmans
+    given-names: Robert J.
+    email: r.hijmans@gmail.com
+    orcid: https://orcid.org/0000-0001-5872-2872
+  year: '2022'
+  url: https://CRAN.R-project.org/package=terra
 - type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'
@@ -196,6 +220,17 @@ references:
   year: '2022'
   url: https://CRAN.R-project.org/package=ggplot2
 - type: software
+  title: ggspatial
+  abstract: 'ggspatial: Spatial Data Framework for ggplot2'
+  notes: Suggests
+  authors:
+  - family-names: Dunnington
+    given-names: Dewey
+    email: dewey@fishandwhistle.net
+    orcid: https://orcid.org/0000-0002-9415-4582
+  year: '2022'
+  url: https://CRAN.R-project.org/package=ggspatial
+- type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
@@ -206,6 +241,27 @@ references:
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
   url: https://CRAN.R-project.org/package=knitr
+- type: software
+  title: png
+  abstract: 'png: Read and write PNG images'
+  notes: Suggests
+  authors:
+  - family-names: Urbanek
+    given-names: Simon
+    email: Simon.Urbanek@r-project.org
+  year: '2022'
+  url: https://CRAN.R-project.org/package=png
+- type: software
+  title: raster
+  abstract: 'raster: Geographic Data Analysis and Modeling'
+  notes: Suggests
+  authors:
+  - family-names: Hijmans
+    given-names: Robert J.
+    email: r.hijmans@gmail.com
+    orcid: https://orcid.org/0000-0001-5872-2872
+  year: '2022'
+  url: https://CRAN.R-project.org/package=raster
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -245,6 +301,20 @@ references:
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2022'
   url: https://CRAN.R-project.org/package=rmarkdown
+- type: software
+  title: slippymath
+  abstract: 'slippymath: Slippy Map Tile Tools'
+  notes: Suggests
+  authors:
+  - family-names: McBain
+    given-names: Miles
+    email: miles.mcbain@gmail.com
+    orcid: https://orcid.org/0000-0003-2865-2548
+  - family-names: Sumner
+    given-names: Michael
+    email: mdsumner@gmail.com
+  year: '2022'
+  url: https://CRAN.R-project.org/package=slippymath
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
