@@ -23,7 +23,7 @@ reference:
     contents:
       - has_concept("WFS")
   - title: WMS INSPIRE API
-    desc: These functions return `SpatRaster` objects:
+    desc: These functions return `SpatRaster` objects.
     contents:
       - has_concept("WMS")
       - mapSpain::esp_getTiles()
