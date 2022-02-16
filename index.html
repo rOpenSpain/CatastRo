@@ -80,7 +80,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>R package to query <a href="http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">Sede Electrónica del Catastro</a> API. The API is documented <a href="https://www.catastro.meh.es/ayuda/lang/castellano/servicios_web.htm" class="external-link">here</a>.</p>
+<p><strong>CatastRo</strong> is a package that provide access to different API services of the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>. With <strong>CatastRo</strong> it is possible to download spatial objects (as buildings or cadastral parcels), maps and geocode cadastral references.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -98,29 +98,76 @@
 <span class="fu">install_github</span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="query-a-coordinate">Query a coordinate<a class="anchor" aria-label="anchor" href="#query-a-coordinate"></a>
+<h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
 </h2>
-<p>The function <code><a href="reference/get_rc.html">get_rc()</a></code> receives the coordinates (lat,lon) and the spatial reference used. The return is the cadastral reference of the property in that spatial point, as well as the direction (town street and number).</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span>
-
-<span class="va">reference</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_rc.html">get_rc</a></span><span class="op">(</span><span class="va">lat</span>, <span class="va">lon</span>, <span class="va">SRS</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">reference</span><span class="op">)</span></code></pre></div>
-<p>It can be requested to get all the cadastral references in a square of 50-meters side centered in the coordinates (lat,lon) through the function <code><a href="reference/near_rc.html">near_rc()</a></code>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">references</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/near_rc.html">near_rc</a></span><span class="op">(</span><span class="va">lat</span>, <span class="va">lon</span>, <span class="va">SRS</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">references</span><span class="op">)</span></code></pre></div>
+<p>The functions of <strong>CatastRo</strong> are organised by API endpoint. The package naming convention is <code>catr_*api*_*description*</code>.</p>
+<div class="section level3">
+<h3 id="ovccoordenadas">OVCCoordenadas<a class="anchor" aria-label="anchor" href="#ovccoordenadas"></a>
+</h3>
+<p>These functions allow to geocode and reverse geocode cadastral references using the <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p>
+<p>These functions are named <code>catr_ovc_*</code> and returns a tibble, as provided by the package <strong>tibble</strong>. See <code><a href="articles/ovcservice.html">vignette("ovcservice")</a></code>, where these functions are described.</p>
+</div>
+<div class="section level3">
+<h3 id="inspire">INSPIRE<a class="anchor" aria-label="anchor" href="#inspire"></a>
+</h3>
+<p>These functions return spatial object (on the formats provided by the <strong>sf</strong> or <strong>terra</strong> using the <a href="https://www.catastro.minhap.es/webinspire/index.html" class="external-link">Catastro INSPIRE</a> service.</p>
+<p>Note that the coverage of this service is 95% of the Spanish territory, excluding Basque Country and Navarre that have their own independent cadastral offices.</p>
+<p>There are three types of functions, each one querying a different service:</p>
+<div class="section level4">
+<h4 id="atom-service">ATOM service<a class="anchor" aria-label="anchor" href="#atom-service"></a>
+</h4>
+<p>The ATOM service allows to batch-download vector objects of different cadastral elements for a specific municipality. The result is provided as <code>sf</code> objects (See <strong>sf</strong> package).</p>
+<p>These functions are named <code>catr_atom_xxx</code> where <code>_xxx</code> can have the values;</p>
+<ul>
+<li>
+<code>_ad</code> for querying addresses.</li>
+<li>
+<code>_bu</code> for querying buildings.</li>
+<li>
+<code>_co</code> for querying cadastral parcels.</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="wfs-service">WFS service<a class="anchor" aria-label="anchor" href="#wfs-service"></a>
+</h4>
+<p>The WFS service allows to download vector objects of specific cadastral elements. The result is provided as <code>sf</code> objects (See <strong>sf</strong> package).</p>
+<p>Note that there are some limitations on the extension ans number of elementa to query. For batch-downloading the ATOM service is preferred.</p>
+<p>These functions are named <code>catr_wms_xxx</code> where <code>_xxx</code> can have the values;</p>
+<ul>
+<li>
+<code>_ad</code> for querying addresses.</li>
+<li>
+<code>_bu</code> for querying buildings.</li>
+<li>
+<code>_co</code> for querying cadastral parcels.</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="wms-service">WMS service<a class="anchor" aria-label="anchor" href="#wms-service"></a>
+</h4>
+<p>This service allows to download georeferences images of different cadastral elements. The result is a raster on the format provides by <strong>terra</strong>.</p>
+<p>There is a single function for querying this service: <code><a href="reference/catr_wms_layer.html">catr_wms_layer()</a></code>.</p>
+</div>
+<div class="section level4">
+<h4 id="terms-and-conditions-of-use">Terms and conditions of use<a class="anchor" aria-label="anchor" href="#terms-and-conditions-of-use"></a>
+</h4>
+<p>Please check the <a href="https://www.catastro.minhap.es/webinspire/documentos/Licencia.pdf" class="external-link">downloading provisions</a> of the service.</p>
+</div>
+</div>
 </div>
 <div class="section level2">
-<h2 id="query-cpmrc">Query CPMRC<a class="anchor" aria-label="anchor" href="#query-cpmrc"></a>
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>It is possible, as well, the opposite. Given to the function <code><a href="reference/get_coor.html">get_coor()</a></code> a cadastral reference, <code><a href="reference/get_coor.html">get_coor()</a></code> returns its coordinates (lat,lon) in a particular SRS moreover the direction (town, street and number).</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">direction</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_coor.html">get_coor</a></span><span class="op">(</span><span class="va">Cadastral_Reference</span>, <span class="va">SRS</span>, <span class="va">Province</span>, <span class="va">Municipality</span><span class="op">)</span>
-
-<span class="co"># The argument SRS could be missed, in that case, `get_coor()` returns the coordinates in the SRS used by Google Maps.</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">direction</span><span class="op">)</span></code></pre></div>
+<p>This script highlights some features of <strong>CatastRo</strong> :</p>
+<p>TODO</p>
+</div>
+<div class="section level2">
+<h2 id="a-note-on-caching">A note on caching<a class="anchor" aria-label="anchor" href="#a-note-on-caching"></a>
+</h2>
+<p>Some data sets and tiles may have a size larger than 50MB. You can use <strong>CatastRo</strong> to create your own local repository at a given local directory passing the following option:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/catr_set_cache_dir.html">catr_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></code></pre></div>
+<p>When this option is set, <strong>CatastRo</strong> would look for the cached file and it will load it, speeding up the process.</p>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -128,15 +175,15 @@
 <p>To cite ‘CatastRo’ in publications use:</p>
 <p>Delgado Panadero Á, Hernangómez D (2022). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. doi: 10.5281/zenodo.6044091 (URL: <a href="https://doi.org/10.5281/zenodo.6044091" class="external-link uri">https://doi.org/10.5281/zenodo.6044091</a>), &lt;URL: <a href="https://ropenspain.github.io/CatastRo/" class="uri">https://ropenspain.github.io/CatastRo/</a>&gt;.</p>
 <p>A BibTeX entry for LaTeX users is:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Manual{,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2022</span>},</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">1</span>.<span class="fl">0.9000</span>},</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.6044091</span>},</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools <span class="cf">for</span> downloading cadastral references and addresses of properties. Access public spatial data available under the <span class="st">'INSPIRE'</span> directive.},</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Manual{,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2022</span>},</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">1</span>.<span class="fl">0.9000</span>},</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.6044091</span>},</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools <span class="cf">for</span> downloading cadastral references and addresses of properties. Access public spatial data available under the <span class="st">'INSPIRE'</span> directive.},</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
