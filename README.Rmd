@@ -15,6 +15,9 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+library(CatastRo)
+
 ```
 
 # CatastRo
@@ -32,10 +35,13 @@ knitr::opts_chunk$set(
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
-R package to query [Sede Electrónica del
-Catastro](http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-API. The API is documented
-[here](https://www.catastro.meh.es/ayuda/lang/castellano/servicios_web.htm).
+**CatastRo** is a package that provide access to different API 
+services of the 
+[Spanish Cadastre](https://www.sedecatastro.gob.es/). With 
+**CatastRo** it is possible to download spatial objects (as 
+buildings or cadastral parcels), maps and geocode cadastral 
+references.
+
 
 ## Installation
 
@@ -51,47 +57,107 @@ options(repos = c(
 install.packages("CatastRo")
 ```
 
-Alternatively, you can install the developing version of **CatastRo** with:
+Alternatively, you can install the developing version of 
+**CatastRo** with:
 
 ```{r, eval = FALSE}
 library(remotes)
 install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 ```
 
-## Query a coordinate
+## Package API
 
-The function `get_rc()` receives the coordinates (lat,lon) and the spatial
-reference used. The return is the cadastral reference of the property in that
-spatial point, as well as the direction (town street and number).
+The functions of **CatastRo** are organised by API endpoint. 
+The package naming convention is `catr_*api*_*description*`.
 
-```{r, eval=FALSE}
-library(CatastRo)
+### OVCCoordenadas
 
-reference <- get_rc(lat, lon, SRS)
-print(reference)
+These functions allow to geocode and reverse geocode cadastral 
+references using the [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx) 
+service.
+
+These functions are named `catr_ovc_*` and returns a tibble, as 
+provided by the package **tibble**. See `vignette("ovcservice")`, 
+where these functions are described.
+
+### INSPIRE
+
+These functions return spatial object (on the formats provided by 
+the **sf** or **terra** using the 
+[Catastro INSPIRE](https://www.catastro.minhap.es/webinspire/index.html)
+service. 
+
+Note that the coverage of this service is 95% of the Spanish territory, 
+excluding Basque Country and Navarre that have their own independent 
+cadastral offices.
+
+There are three types of functions, each one querying a different service:
+
+#### ATOM service
+
+The ATOM service allows to batch-download vector objects of different 
+cadastral elements for a specific municipality. The result is provided 
+as `sf` objects (See **sf** package). 
+
+These functions are named `catr_atom_xxx` where `_xxx` can have the 
+values;
+
+- `_ad` for querying addresses.
+- `_bu` for querying buildings.
+- `_co` for querying cadastral parcels.
+
+
+#### WFS service
+
+The WFS service allows to download vector objects of specific 
+cadastral elements. The result is provided as `sf` objects (See 
+**sf** package).
+
+Note that there are some limitations on the extension ans number 
+of elementa to query. For batch-downloading the ATOM service is 
+preferred.
+
+These functions are named `catr_wms_xxx` where `_xxx` can have the 
+values;
+
+- `_ad` for querying addresses.
+- `_bu` for querying buildings.
+- `_co` for querying cadastral parcels.
+
+
+### WMS service
+
+This service allows to download georeferences images of different 
+cadastral elements. The result is a raster on the format provides 
+by **terra**.
+
+There is a single function for querying this service: `catr_wms_layer()`.
+
+#### Terms and conditions of use
+
+Please check the [downloading provisions](https://www.catastro.minhap.es/webinspire/documentos/Licencia.pdf) of the service.
+
+## Usage
+
+This script highlights some features of **CatastRo** :
+
+
+TODO
+
+## A note on caching
+
+Some data sets and tiles may have a size larger than 50MB. You can use
+**CatastRo** to create your own local repository at a given local
+directory passing the following option:
+
+```{r, eval = FALSE}
+catr_set_cache_dir("./path/to/location")
 ```
 
-It can be requested to get all the cadastral references in a square of 50-meters
-side centered in the coordinates (lat,lon) through the function `near_rc()`.
+When this option is set, **CatastRo** would look for the cached file and
+it will load it, speeding up the process.
 
-```{r, eval=FALSE}
-references <- near_rc(lat, lon, SRS)
-print(references)
-```
 
-## Query CPMRC
-
-It is possible, as well, the opposite. Given to the function `get_coor()` a
-cadastral reference, `get_coor()` returns its coordinates (lat,lon) in a
-particular SRS moreover the direction (town, street and number).
-
-```{r, eval=FALSE}
-direction <- get_coor(Cadastral_Reference, SRS, Province, Municipality)
-
-# The argument SRS could be missed, in that case, `get_coor()` returns the coordinates in the SRS used by Google Maps.
-
-print(direction)
-```
 
 ## Citation
 
