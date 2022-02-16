@@ -21,3 +21,10 @@ test_that("ATOM Buildings", {
     verbose = TRUE
   ), "Ignoring 'to' parameter. No results for XXX")
 })
+
+test_that("ATOM Encoding issue", {
+  skip_on_cran()
+
+  s <- catr_atom_bu("12028")
+  expect_s3_class(s, "sf")
+})
