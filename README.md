@@ -102,7 +102,7 @@ values;
 -   `_bu` for querying buildings.
 -   `_co` for querying cadastral parcels.
 
-### WMS service
+#### WMS service
 
 This service allows to download georeferences images of different
 cadastral elements. The result is a raster on the format provides by
