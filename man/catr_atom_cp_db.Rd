@@ -4,7 +4,7 @@
 \alias{catr_atom_cp_db_all}
 \alias{catr_atom_cp_to}
 \alias{catr_atom_cp_db_to}
-\title{ATOM INSPIRE: Reference Database for ATOM Cadastral Parcels}
+\title{\strong{ATOM INSPIRE}: Reference Database for ATOM Cadastral Parcels}
 \source{
 \url{https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
 }
@@ -88,7 +88,8 @@ INSPIRE API functions:
 \code{\link{catr_atom_bu}()},
 \code{\link{catr_atom_cp}()},
 \code{\link{catr_wfs_ad_bbox}()},
-\code{\link{catr_wfs_bu_bbox}()}
+\code{\link{catr_wfs_bu_bbox}()},
+\code{\link{catr_wfs_cp_bbox}()}
 
 Other INSPIRE ATOM services:
 \code{\link{catr_atom_ad_db_all}()},
@@ -98,7 +99,8 @@ Other INSPIRE ATOM services:
 \code{\link{catr_atom_cp}()}
 
 Other parcels: 
-\code{\link{catr_atom_cp}()}
+\code{\link{catr_atom_cp}()},
+\code{\link{catr_wfs_cp_bbox}()}
 
 Other databases: 
 \code{\link{catr_atom_ad_db_all}()},

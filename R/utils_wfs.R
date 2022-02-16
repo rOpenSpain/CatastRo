@@ -17,7 +17,7 @@ catr_wfs_build_url <- function(host = "http://ovc.catastro.meh.es/INSPIRE/",
 
 catr_wfs_check <- function(path) {
   # Check if it is valid
-  lines <- readLines(path, n = 5)
+  lines <- readLines(path, n = 20)
 
   if (any(grepl("<gml", lines))) {
     return(TRUE)
@@ -46,7 +46,7 @@ wfs_api_query <- function(entry, ..., verbose = TRUE) {
 
   if (!is.null(srs)) {
     # Sanity checks
-    wfs_validate_srs(srs)
+    empty <- wfs_validate_srs(srs)
     arguments$SRSNAME <- paste0("EPSG::", srs)
   }
 
@@ -167,12 +167,11 @@ wfs_bbox <- function(bbox, srs) {
     result$incrs <- 3857
   } else {
     # Convert to sf
-    bbox_new <- get_sf_from_bbox(bbox, srs)
-
     # Validate srs
-    wfs_validate_srs(srs)
+    empty <- wfs_validate_srs(srs)
 
     result$incrs <- srs
+    bbox_new <- get_sf_from_bbox(bbox, srs)
     result$outcrs <- sf::st_crs(bbox_new)
 
     # On lonlat, project. The API does not work ?¿

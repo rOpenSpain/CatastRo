@@ -1,4 +1,4 @@
-#' ATOM INSPIRE: Reference Database for ATOM Buildings
+#' **ATOM INSPIRE**: Reference Database for ATOM Buildings
 #'
 #' @description
 #'

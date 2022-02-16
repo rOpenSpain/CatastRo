@@ -5,7 +5,7 @@
 \alias{catr_wfs_ad_codvia}
 \alias{catr_wfs_ad_rc}
 \alias{catr_wfs_ad_postalcode}
-\title{WFS INSPIRE: Download Addresses}
+\title{\strong{WFS INSPIRE}: Download Addresses}
 \usage{
 catr_wfs_ad_bbox(bbox, srs, verbose = FALSE)
 
@@ -113,11 +113,13 @@ INSPIRE API functions:
 \code{\link{catr_atom_bu}()},
 \code{\link{catr_atom_cp_db_all}()},
 \code{\link{catr_atom_cp}()},
-\code{\link{catr_wfs_bu_bbox}()}
+\code{\link{catr_wfs_bu_bbox}()},
+\code{\link{catr_wfs_cp_bbox}()}
 
 Other INSPIRE WFS services:
 \code{\link{catr_srs_values}},
-\code{\link{catr_wfs_bu_bbox}()}
+\code{\link{catr_wfs_bu_bbox}()},
+\code{\link{catr_wfs_cp_bbox}()}
 
 Other addresses: 
 \code{\link{catr_atom_ad_db_all}()},
@@ -127,7 +129,8 @@ Other spatial:
 \code{\link{catr_atom_ad}()},
 \code{\link{catr_atom_bu}()},
 \code{\link{catr_atom_cp}()},
-\code{\link{catr_wfs_bu_bbox}()}
+\code{\link{catr_wfs_bu_bbox}()},
+\code{\link{catr_wfs_cp_bbox}()}
 }
 \concept{INSPIRE}
 \concept{WFS}

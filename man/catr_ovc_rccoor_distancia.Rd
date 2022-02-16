@@ -2,7 +2,7 @@
 % Please edit documentation in R/ovc_rccoor_distancia.R
 \name{catr_ovc_rccoor_distancia}
 \alias{catr_ovc_rccoor_distancia}
-\title{OVCCoordenadas: Reverse geocode cadastral references on a region}
+\title{\strong{OVCCoordenadas}: Reverse geocode cadastral references on a region}
 \usage{
 catr_ovc_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 }

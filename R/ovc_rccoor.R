@@ -1,4 +1,4 @@
-#' OVCCoordenadas: Reverse geocode a cadastral reference
+#' **OVCCoordenadas**: Reverse geocode a cadastral reference
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ovc_rccoor.R
 \name{catr_ovc_rccoor}
 \alias{catr_ovc_rccoor}
-\title{OVCCoordenadas: Reverse geocode a cadastral reference}
+\title{\strong{OVCCoordenadas}: Reverse geocode a cadastral reference}
 \usage{
 catr_ovc_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 }

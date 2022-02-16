@@ -2,7 +2,7 @@
 % Please edit documentation in R/ovc_cpmrc.R
 \name{catr_ovc_cpmrc}
 \alias{catr_ovc_cpmrc}
-\title{OVCCoordenadas: Geocode a cadastral reference}
+\title{\strong{OVCCoordenadas}: Geocode a cadastral reference}
 \usage{
 catr_ovc_cpmrc(
   rc,

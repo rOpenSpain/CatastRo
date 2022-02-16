@@ -67,7 +67,8 @@ Other databases:
 
 Other INSPIRE WFS services:
 \code{\link{catr_wfs_ad_bbox}()},
-\code{\link{catr_wfs_bu_bbox}()}
+\code{\link{catr_wfs_bu_bbox}()},
+\code{\link{catr_wfs_cp_bbox}()}
 
 OVCCoordenadas API:
 \code{\link{catr_ovc_cpmrc}()},

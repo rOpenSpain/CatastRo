@@ -1,4 +1,4 @@
-#' WFS INSPIRE: Download Buildings
+#' **WFS INSPIRE**: Download Buildings
 #'
 #' @description
 #' Get the spatial data of buildings. The WFS Service allows to perform
@@ -32,13 +32,12 @@
 #' coordinate values. Additionally, when the `srs` correspond to a geographic
 #' reference system (4326, 4258), the function queries the bounding box on
 #' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
-#' a potential bug on the API side.
+#' a potential bug on the API side. The result is provided always in the SRS
+#' provided in `srs`.
 #'
-#' When `bbox` is a `sf` object, the value `srs` is ignored. In this case, the
-#' bounding box of the `sf` object would be used for the query (see
-#' [sf::st_bbox()]). The query is performed using
-#' [EPSG:3857](https://epsg.io/3857) (Web Mercator). The result is provided
-#' always in the SRS of the `sf` object provided as input.
+#' When `bbox` is a `sf` object, the value `srs` is ignored. The query is
+#' performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator) and the
+#' spatial object is projected back to the SRS of the initial object.
 #'
 #' # API Limits
 #' The API service is limited to a bounding box of 4km2 and a maximum of 5.000
@@ -56,7 +55,7 @@ catr_wfs_bu_bbox <- function(bbox, what = "building", srs, verbose = FALSE) {
   stored_query <- switch(what,
     "building" = "BU.BUILDING",
     "buildingpart" = "BU.BUILDINGPART",
-    "other" = "BU.OTHERCONSTRUCTION&"
+    "other" = "BU.OTHERCONSTRUCTION"
   )
 
 
