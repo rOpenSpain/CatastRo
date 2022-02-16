@@ -89,7 +89,8 @@ INSPIRE API functions:
 \code{\link{catr_atom_cp}()},
 \code{\link{catr_wfs_ad_bbox}()},
 \code{\link{catr_wfs_bu_bbox}()},
-\code{\link{catr_wfs_cp_bbox}()}
+\code{\link{catr_wfs_cp_bbox}()},
+\code{\link{catr_wms_layer}()}
 
 Other INSPIRE ATOM services:
 \code{\link{catr_atom_ad}()},

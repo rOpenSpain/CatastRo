@@ -118,7 +118,8 @@ INSPIRE API functions:
 \code{\link{catr_atom_cp_db_all}()},
 \code{\link{catr_atom_cp}()},
 \code{\link{catr_wfs_ad_bbox}()},
-\code{\link{catr_wfs_bu_bbox}()}
+\code{\link{catr_wfs_bu_bbox}()},
+\code{\link{catr_wms_layer}()}
 
 Other INSPIRE WFS services:
 \code{\link{catr_srs_values}},
@@ -134,7 +135,8 @@ Other spatial:
 \code{\link{catr_atom_bu}()},
 \code{\link{catr_atom_cp}()},
 \code{\link{catr_wfs_ad_bbox}()},
-\code{\link{catr_wfs_bu_bbox}()}
+\code{\link{catr_wfs_bu_bbox}()},
+\code{\link{catr_wms_layer}()}
 }
 \concept{INSPIRE}
 \concept{WFS}
