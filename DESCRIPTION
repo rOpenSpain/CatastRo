@@ -10,9 +10,9 @@ Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8457-4658"))
   )
-Description: Tools for downloading cadastral references and addresses of
-    properties. Access public spatial data available under the 'INSPIRE'
-    directive.
+Description: Access public spatial data available under the 'INSPIRE'
+    directive. Tools for downloading references and addresses of
+    properties, as well as map images.
 License: GPL-2
 URL: https://ropenspain.github.io/CatastRo/,
     https://github.com/rOpenSpain/CatastRo

@@ -69,7 +69,7 @@ test_that("BBOX Check projections", {
 
   expect_equal(res$incrs, 3857)
 
-  expect_message(message_on_limit(res, 30))
+  expect_message(message_on_limit(res, 5))
 
 
 

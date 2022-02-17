@@ -10,8 +10,8 @@ license: GPL-2.0-only
 title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
 version: 0.1.0.9000
 doi: 10.5281/zenodo.6044091
-abstract: Tools for downloading cadastral references and addresses of properties.
-  Access public spatial data available under the 'INSPIRE' directive.
+abstract: Access public spatial data available under the 'INSPIRE' directive. Tools
+  for downloading references and addresses of properties, as well as map images.
 authors:
 - family-names: Delgado Panadero
   given-names: Ángel
@@ -37,8 +37,8 @@ preferred-citation:
   version: 0.1.0.9000
   url: https://ropenspain.github.io/CatastRo/
   doi: 10.5281/zenodo.6044091
-  abstract: Tools for downloading cadastral references and addresses of properties.
-    Access public spatial data available under the 'INSPIRE' directive.
+  abstract: Access public spatial data available under the 'INSPIRE' directive. Tools
+    for downloading references and addresses of properties, as well as map images.
 repository-code: https://github.com/rOpenSpain/CatastRo
 url: https://ropenspain.github.io/CatastRo/
 contact:
@@ -92,7 +92,6 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=httr
 - type: software
   title: lifecycle
   abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
@@ -106,7 +105,6 @@ references:
     email: hadley@rstudio.com
     orcid: https://orcid.org/0000-0003-4757-117X
   year: '2022'
-  url: https://CRAN.R-project.org/package=lifecycle
 - type: software
   title: mapSpain
   abstract: 'mapSpain: Administrative Boundaries of Spain'
@@ -118,7 +116,6 @@ references:
     orcid: https://orcid.org/0000-0001-8457-4658
     affiliation: rOpenSpain
   year: '2022'
-  url: https://CRAN.R-project.org/package=mapSpain
   version: '>= 0.5.0'
 - type: software
   title: rappdirs
@@ -133,7 +130,6 @@ references:
   - family-names: Davis
     given-names: Trevor
   year: '2022'
-  url: https://CRAN.R-project.org/package=rappdirs
   version: '>= 0.3.0'
 - type: software
   title: sf
@@ -145,7 +141,6 @@ references:
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2022'
-  url: https://CRAN.R-project.org/package=sf
   version: '>= 1.0.0'
 - type: software
   title: terra
@@ -157,7 +152,7 @@ references:
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
   year: '2022'
-  url: https://CRAN.R-project.org/package=terra
+  url: https://rspatial.org/terra/
 - type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'
@@ -170,7 +165,6 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=tibble
 - type: software
   title: xml2
   abstract: 'xml2: Parse XML'
@@ -184,7 +178,6 @@ references:
   - family-names: Ooms
     given-names: Jeroen
   year: '2022'
-  url: https://CRAN.R-project.org/package=xml2
 - type: software
   title: ggplot2
   abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
@@ -229,7 +222,6 @@ references:
     email: dewey@fishandwhistle.net
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
-  url: https://CRAN.R-project.org/package=ggspatial
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -240,7 +232,7 @@ references:
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
   year: '2022'
-  url: https://CRAN.R-project.org/package=knitr
+  url: https://yihui.org/knitr/
 - type: software
   title: png
   abstract: 'png: Read and write PNG images'
@@ -250,7 +242,7 @@ references:
     given-names: Simon
     email: Simon.Urbanek@r-project.org
   year: '2022'
-  url: https://CRAN.R-project.org/package=png
+  url: http://www.rforge.net/png/
 - type: software
   title: raster
   abstract: 'raster: Geographic Data Analysis and Modeling'
@@ -261,7 +253,7 @@ references:
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
   year: '2022'
-  url: https://CRAN.R-project.org/package=raster
+  url: https://rspatial.org/raster
 - type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
@@ -314,7 +306,7 @@ references:
     given-names: Michael
     email: mdsumner@gmail.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=slippymath
+  url: https://www.github.com/milesmcbain/slippymath
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'
@@ -324,5 +316,4 @@ references:
     given-names: Hadley
     email: hadley@rstudio.com
   year: '2022'
-  url: https://CRAN.R-project.org/package=testthat
   version: '>= 3.0.0'

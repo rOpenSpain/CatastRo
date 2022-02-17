@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CatastRo
+# CatastRo <a href="https://ropenspain.github.io/CatastRo/"><img src="man/figures/logo.png" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -16,6 +16,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
 <!-- badges: end -->
 
 **CatastRo** is a package that provide access to different API services
@@ -92,8 +93,8 @@ values;
 The WFS service allows to download vector objects of specific cadastral
 elements. The result is provided as `sf` objects (See **sf** package).
 
-Note that there are some limitations on the extension ans number of
-elementa to query. For batch-downloading the ATOM service is preferred.
+Note that there are some limitations on the extension and number of
+elements to query. For batch-downloading the ATOM service is preferred.
 
 These functions are named `catr_wms_xxx` where `_xxx` can have the
 values;
@@ -104,7 +105,7 @@ values;
 
 #### WMS service
 
-This service allows to download georeferences images of different
+This service allows to download georeferenced images of different
 cadastral elements. The result is a raster on the format provides by
 **terra**.
 
@@ -154,7 +155,7 @@ A BibTeX entry for LaTeX users is:
       version = {0.1.0.9000},
       url = {https://ropenspain.github.io/CatastRo/},
       doi = {10.5281/zenodo.6044091},
-      abstract = {Tools for downloading cadastral references and addresses of properties. Access public spatial data available under the 'INSPIRE' directive.},
+      abstract = {Access public spatial data available under the 'INSPIRE' directive. Tools for downloading references and addresses of properties, as well as map images.},
     }
 
 ## Contribute
