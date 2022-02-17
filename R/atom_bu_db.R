@@ -2,7 +2,6 @@
 #'
 #' @description
 #'
-#' **The goal of these functions is to serve as an internal helper**
 #'
 #' Create a database containing the urls provided in the INSPIRE ATOM service
 #' of the Spanish Cadastre for extracting buildings.
@@ -77,7 +76,6 @@ catr_atom_bu_db_all <- function(cache = TRUE,
 }
 #' @rdname catr_atom_bu_db
 #' @name catr_atom_bu_to
-#' @keywords internal
 #' @export
 #' @param to Territorial office. It can be any type of string, the function
 #'  would perform a search using [base::grep()].

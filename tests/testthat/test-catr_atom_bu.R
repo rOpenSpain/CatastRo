@@ -27,4 +27,10 @@ test_that("ATOM Encoding issue", {
 
   s <- catr_atom_bu("12028")
   expect_s3_class(s, "sf")
+  
+  s <- catr_atom_bu("23044")
+  expect_s3_class(s, "sf")
+  
+  s <- catr_atom_bu("03050")
+  expect_s3_class(s, "sf")
 })
