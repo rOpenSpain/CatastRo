@@ -1,3 +1,4 @@
+Bernabéu
 CIUDAD
 CMD
 CPMRC
@@ -35,9 +36,11 @@ Polígono
 RCCOOR
 RGBA
 Renviron
+Royé
 SALAMANCA
 SRS
 Sede
+SpatRaster
 TIRADERO
 VH
 WFS
@@ -45,6 +48,7 @@ WGS
 WMS
 asmx
 cadastral
+cadastre
 catastro
 catr
 cmun
@@ -56,12 +60,18 @@ del
 dir
 doi
 dt
+ec
 electrónica
+eu
+europa
 geo
 geocode
 geocoded
+geocoding
+georeferenced
 geotagged
 github
+growthurban
 http
 https
 huso
@@ -71,6 +81,7 @@ ldt
 loine
 lon
 lourb
+organisations
 ovc
 ovcservweb
 pc
@@ -80,6 +91,7 @@ rOS
 refcat
 ropenspain
 srs
+terra
 tibble
 wfs
 xcen
