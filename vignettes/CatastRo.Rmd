@@ -110,7 +110,7 @@ ggplot() +
   geom_sf(data = stadium, fill = "red", alpha = .5)
 ```
 
-<img src="./santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%" />
+<img src="santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%" />
 
 ### Thematic maps
 
@@ -160,7 +160,7 @@ ggplot(dataviz) +
   geom_sf()
 ```
 
-<img src="./minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%" />
+<img src="minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%" />
 
 The last step to recreate the data visualization is to manipulate the
 construction year, available in the column `beginning`:
@@ -221,7 +221,7 @@ ggplot(dataviz) +
   )
 ```
 
-<img src="./dataviz-1.png" title="plot of chunk dataviz" alt="plot of chunk dataviz" width="100%" />
+<img src="dataviz-1.png" title="plot of chunk dataviz" alt="plot of chunk dataviz" width="100%" />
 
 
 
