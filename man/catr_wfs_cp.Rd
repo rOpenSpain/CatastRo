@@ -82,8 +82,11 @@ performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator) and the
 spatial object is projected back to the SRS of the initial object.
 }
 \section{API Limits}{
-The API service is limited to a bounding box of 4km2 and a maximum of 5.000
-elements.
+The API service is limited to the following constrains:
+\itemize{
+\item \verb{"parcel}: Bounding box of 1km2 and a maximum of 500. elements.
+\item \code{"zoning"}: Bounding box of 25km2 and a maximum of 500 elements.
+}
 }
 
 \examples{

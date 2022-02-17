@@ -215,3 +215,31 @@ get_sf_from_bbox <- function(bbox, srs) {
 
   return(bbox_new)
 }
+
+
+message_on_limit <- function(bbox_res, limit_km2) {
+  bbox_num <- as.double(unlist(strsplit(bbox_res$bbox, ",")))
+
+  spat <- get_sf_from_bbox(bbox_num,
+    srs = bbox_res$incrs
+  )
+
+  # To EPSG:3857 for meters
+  spat <- sf::st_transform(spat, 3857)
+
+  area <- sf::st_area(spat)
+
+  # Dirty convert to km2
+  area <- as.double(area) / 1000000
+
+  if (area > limit_km2) {
+    message(
+      "Bbox area is aprox ", round(area, 1),
+      "km2. Limit of this service is ",
+      limit_km2,
+      "km2. The query may fail."
+    )
+  }
+
+  return(invisible(NULL))
+}

@@ -61,6 +61,8 @@ catr_wfs_bu_bbox <- function(bbox, what = "building", srs, verbose = FALSE) {
 
   bbox_res <- wfs_bbox(bbox, srs)
 
+  message_on_limit(bbox_res, 4)
+
 
   res <- wfs_api_query(
     entry = "wfsBU.aspx?",

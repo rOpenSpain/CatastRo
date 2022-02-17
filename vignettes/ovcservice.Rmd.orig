@@ -1,6 +1,6 @@
 ---
 title: "OVCCoordenadas Web Service"
-author: 
+author:
   - Ángel Delgado Panadero
   - Diego Hernangómez
 output: rmarkdown::html_vignette
@@ -51,7 +51,7 @@ by the package **tibble**.
 
 ## CatastRo API
 
-The OVCCoordenadas Web Service can be reached using the following 
+The OVCCoordenadas Web Service can be reached using the following
 functions:
 
 * `catr_ovc_rccoor()`
@@ -68,7 +68,8 @@ also other information as the address (town street and number).
 ```{r}
 result <- catr_ovc_rccoor(
   lat = 38.6196566583596,
-  lon = -3.45624183836806, srs = "4230"
+  lon = -3.45624183836806,
+  srs = "4230"
 )
 ```
 
@@ -95,9 +96,11 @@ It is also possible to get all the cadastral references in a square of
 `catr_ovc_rccoor_distancia()`.
 
 ```{r}
-catr_ovc_rccoor_distancia(lat = 40.96002,
-lon = -5.663408,
-srs = "4230") %>%
+catr_ovc_rccoor_distancia(
+  lat = 40.96002,
+  lon = -5.663408,
+  srs = "4230"
+) %>%
   knitr::kable()
 ```
 
@@ -114,7 +117,7 @@ catr_ovc_cpmrc(
   srs = "4230",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
-  ) %>%
+) %>%
   knitr::kable()
 ```
 
