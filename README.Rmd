@@ -140,7 +140,7 @@ This script highlights some features of **CatastRo** :
 
 library(CatastRo)
 
-catr_ovc_cpmrc(rc = "13077A01800039"
+catr_ovc_cpmrc(rc = "13077A01800039")
 
 ```
 
