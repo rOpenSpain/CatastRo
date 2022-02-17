@@ -25,12 +25,7 @@ test_that("ATOM Buildings", {
 test_that("ATOM Encoding issue", {
   skip_on_cran()
 
-  s <- catr_atom_bu("12028")
-  expect_s3_class(s, "sf")
-
-  s <- catr_atom_bu("23044")
-  expect_s3_class(s, "sf")
-
-  s <- catr_atom_bu("03050")
-  expect_s3_class(s, "sf")
+  expect_silent(catr_atom_bu("23078"))
+  expect_silent(catr_atom_bu("03050"))
+  expect_silent(catr_atom_bu("23051"))
 })

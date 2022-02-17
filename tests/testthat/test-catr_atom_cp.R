@@ -22,9 +22,7 @@ test_that("ATOM Encoding issue", {
   s <- catr_atom_cp("12028")
   expect_s3_class(s, "sf")
 
-  s <- catr_atom_cp("23044")
-  expect_s3_class(s, "sf")
-
-  s <- catr_atom_cp("03050")
-  expect_s3_class(s, "sf")
+  expect_silent(catr_atom_cp("23078"))
+  expect_silent(catr_atom_cp("03050"))
+  expect_silent(catr_atom_cp("23051"))
 })

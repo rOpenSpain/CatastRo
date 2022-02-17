@@ -141,7 +141,7 @@ catr_atom_bu <- function(munic,
   # Guess what to read
   files <- list.files(exdir, full.names = TRUE, pattern = ".gml$")
   files <- files[grepl(what, files, ignore.case = TRUE)]
-  sfobj <- sf::st_read(files[1], quiet = !verbose)
+  sfobj <- st_read_layers_encoding(files, verbose)
 
   return(sfobj)
 }
