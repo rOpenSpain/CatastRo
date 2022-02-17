@@ -62,8 +62,6 @@ this service is updated twice a year}.
 }
 }
 \description{
-\strong{The goal of these functions is to serve as an internal helper}
-
 Create a database containing the urls provided in the INSPIRE ATOM service
 of the Spanish Cadastre for extracting buildings.
 \itemize{
@@ -112,4 +110,3 @@ Other databases:
 \concept{INSPIRE}
 \concept{buildings}
 \concept{databases}
-\keyword{internal}

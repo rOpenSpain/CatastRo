@@ -125,22 +125,7 @@ catr_atom_ad <- function(munic,
   # Guess what to read
   files <- list.files(exdir, full.names = TRUE, pattern = ".gml$")[1]
 
-  # Layer management
-  layers <- sf::st_layers(files)
-  df_layers <- data.frame(
-    layer = layers$name,
-    geomtype = unlist(layers$geomtype)
-  )
-  df_layers <- df_layers[!is.na(df_layers$geomtype), ]
-
-  # nocov start
-  if (nrow(df_layers) == 0) {
-    message("No spatial layers found.")
-    return(invisible(NULL))
-  }
-  # nocov end
-
-  sfobj <- sf::st_read(files, quiet = !verbose, layer = df_layers$layer[1])
+  sfobj <- st_read_layers_encoding(files, verbose)
 
   return(sfobj)
 }
