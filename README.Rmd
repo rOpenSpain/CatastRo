@@ -141,7 +141,6 @@ This script highlights some features of **CatastRo** :
 library(CatastRo)
 
 catr_ovc_cpmrc(rc = "13077A01800039")
-
 ```
 
 ### Extract a cadastral reference from a given set of coordinates
@@ -149,7 +148,7 @@ catr_ovc_cpmrc(rc = "13077A01800039")
 ```{r}
 catr_ovc_rccoor(
   lat = 38.6196566583596,
-  lon = -3.45624183836806, 
+  lon = -3.45624183836806,
   srs = "4230"
 )
 ```
@@ -173,8 +172,6 @@ ggplot(bu) +
   scale_fill_manual(values = hcl.colors(6, "Dark 3")) +
   theme_minimal() +
   ggtitle("Nava de la Asunción, Segovia")
-
-
 ```
 
 ### Extract geometries using the WFS service
@@ -203,7 +200,6 @@ library(mapSpain)
 ggplot() +
   layer_spatraster(wms_bu) +
   geom_sf(data = wfs_bu, fill = "red", alpha = 0.6)
-
 ```
 
 ## A note on caching

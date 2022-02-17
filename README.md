@@ -48,7 +48,7 @@ install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 
 ## Package API
 
-The functions of **CatastRo** are organised by API endpoint. The package
+The functions of **CatastRo** are organized by API endpoint. The package
 naming convention is `catr_*api*_*description*`.
 
 ### OVCCoordenadas
@@ -118,11 +118,88 @@ Please check the [downloading
 provisions](https://www.catastro.minhap.es/webinspire/documentos/Licencia.pdf)
 of the service.
 
-## Usage
+## Examples
 
 This script highlights some features of **CatastRo** :
 
-TODO
+### Geocode a cadastral reference
+
+``` r
+library(CatastRo)
+
+catr_ovc_cpmrc(rc = "13077A01800039")
+#> # A tibble: 1 × 10
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
+#> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…
+```
+
+### Extract a cadastral reference from a given set of coordinates
+
+``` r
+catr_ovc_rccoor(
+  lat = 38.6196566583596,
+  lon = -3.45624183836806,
+  srs = "4230"
+)
+#> # A tibble: 1 × 8
+#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
+#> 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
+```
+
+### Extract geometries using the ATOM service
+
+``` r
+bu <- catr_atom_bu("Nava de la Asuncion", to = "Segovia")
+
+
+# Map
+library(ggplot2)
+
+ggplot(bu) +
+  geom_sf(aes(fill = currentUse), col = NA) +
+  coord_sf(
+    xlim = c(374500, 375500),
+    ylim = c(4556500, 4557500)
+  ) +
+  scale_fill_manual(values = hcl.colors(6, "Dark 3")) +
+  theme_minimal() +
+  ggtitle("Nava de la Asunción, Segovia")
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+### Extract geometries using the WFS service
+
+``` r
+wfs_bu <- catr_wfs_bu_bbox(
+  c(-5.567429, 42.598935, -5.565509, 42.600396),
+  srs = 4326
+)
+
+# Map
+ggplot(wfs_bu) +
+  geom_sf() +
+  ggtitle("Leon Cathedral, Spain")
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+
+### Extract maps using the WMS service
+
+``` r
+wms_bu <- catr_wms_layer(wfs_bu, bbox_expand = 0.2)
+
+# Map
+# Load mapSpain for using layer_spatraster
+library(mapSpain)
+ggplot() +
+  layer_spatraster(wms_bu) +
+  geom_sf(data = wfs_bu, fill = "red", alpha = 0.6)
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 ## A note on caching
 
