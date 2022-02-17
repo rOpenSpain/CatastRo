@@ -132,9 +132,8 @@ ggplot() +
 We can create also thematic maps using the information available on the spatial
 objects. We would produce a visualization of the urban growth of Valencia using
 **CatastRo**, replicating the map produced by Dominic Royé on his post
-[Visualize urban
-growthurban-growth/](https://dominicroye.github.io/en/2019/visualize-urban-growth/)
-[@roye_2019], using the **ATOM service**.
+[Visualize urban growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/), 
+using the **ATOM services**.
 
 In first place, we batch-download the buildings of the municipality:
 
