@@ -1,6 +1,6 @@
 ---
 title: "OVCCoordenadas Web Service"
-author: 
+author:
   - Ángel Delgado Panadero
   - Diego Hernangómez
 output: rmarkdown::html_vignette
@@ -42,7 +42,7 @@ by the package **tibble**.
 
 ## CatastRo API
 
-The OVCCoordenadas Web Service can be reached using the following 
+The OVCCoordenadas Web Service can be reached using the following
 functions:
 
 * `catr_ovc_rccoor()`
@@ -60,7 +60,8 @@ also other information as the address (town street and number).
 ```r
 result <- catr_ovc_rccoor(
   lat = 38.6196566583596,
-  lon = -3.45624183836806, srs = "4230"
+  lon = -3.45624183836806,
+  srs = "4230"
 )
 ```
 

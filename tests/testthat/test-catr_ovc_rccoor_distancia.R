@@ -40,6 +40,7 @@ test_that("check fields without SRS", {
 test_that("check fields given SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_os("linux")
 
   result <- catr_ovc_rccoor_distancia(lat = 40.963200, lon = -5.671420, 4230)
   expect_true((is.character(result$address) & is.character(result$refcat) &
