@@ -36,8 +36,9 @@
 #' spatial object is projected back to the SRS of the initial object.
 #'
 #' # API Limits
-#' The API service is limited to a bounding box of 4km2 and a maximum of 5.000
-#' elements.
+#' The API service is limited to the following constrains:
+#' - `"parcel`: Bounding box of 1km2 and a maximum of 500. elements.
+#' - `"zoning"`: Bounding box of 25km2 and a maximum of 500 elements.
 #'
 #' @rdname catr_wfs_cp
 #' @export
@@ -54,9 +55,15 @@ catr_wfs_cp_bbox <- function(bbox, what = "parcel", srs, verbose = FALSE) {
     "zoning" = "CP.CADASTRALZONING"
   )
 
-
   bbox_res <- wfs_bbox(bbox, srs)
 
+  # Set limits
+  lim <- switch(what,
+    "parcel" = 1,
+    "zoning" = 25
+  )
+
+  message_on_limit(bbox_res, 4)
 
   res <- wfs_api_query(
     entry = "wfsCP.aspx?",

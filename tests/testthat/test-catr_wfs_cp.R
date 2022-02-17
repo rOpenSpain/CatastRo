@@ -57,12 +57,30 @@ test_that("BBOX Check errors", {
 
 
 test_that("BBOX Check projections", {
+
+
+  # Check messages
+
+  obj <- get_sf_from_bbox(c(760926, 4019259, 761155, 4019366),
+    srs = 25829
+  )
+  obj <- sf::st_buffer(obj, 2000)
+  res <- wfs_bbox(obj)
+
+  expect_equal(res$incrs, 3857)
+
+  expect_message(message_on_limit(res, 30))
+
+
+
   skip_on_cran()
   skip_on_os("linux")
 
   obj <- catr_wfs_cp_bbox(c(760926, 4019259, 761155, 4019366),
     srs = 25829
   )
+
+
 
   expect_true(sf::st_crs(obj) == sf::st_crs(25829))
 

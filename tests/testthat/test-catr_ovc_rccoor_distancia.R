@@ -9,6 +9,7 @@ test_that("Expect error on bad SRS", {
 test_that("return tibble given SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_os("linux")
 
   result <- catr_ovc_rccoor_distancia(lat = 40.963200, lon = -5.671420, "4326")
   expect_s3_class(result, "tbl")
@@ -19,6 +20,7 @@ test_that("return tibble given SRS", {
 test_that("return tibble without SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_os("linux")
 
   result <- catr_ovc_rccoor_distancia(lat = 40.963200, lon = -5.671420)
   expect_s3_class(result, "tbl")
@@ -27,10 +29,9 @@ test_that("return tibble without SRS", {
 test_that("check fields without SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_os("linux")
 
   result <- catr_ovc_rccoor_distancia(lat = 40.963200, lon = -5.671420)
-
-
 
   expect_true((is.character(result$address) & is.character(result$refcat) &
     is.character(result$cmun_ine)))
@@ -48,6 +49,7 @@ test_that("check fields given SRS", {
 test_that("if data is known return a tibble with 3 cols", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_os("linux")
 
   expect_message(catr_ovc_rccoor_distancia(lat = 99999999, lon = -999999999))
   result <- catr_ovc_rccoor_distancia(lat = 99999999, lon = -999999999)
@@ -57,6 +59,7 @@ test_that("if data is known return a tibble with 3 cols", {
 test_that("Expect message", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_os("linux")
 
   expect_message(catr_ovc_rccoor_distancia(
     lat = 40.963200,
