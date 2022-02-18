@@ -64,7 +64,7 @@ mapSpain::esp_getTiles()."><meta property="og:image" content="https://ropenspain
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">catr_wms_layer</span><span class="op">(</span>
-  <span class="va">bbox</span>,
+  <span class="va">x</span>,
   <span class="va">srs</span>,
   what <span class="op">=</span> <span class="st">"building"</span>,
   update_cache <span class="op">=</span> <span class="cn">FALSE</span>,
@@ -77,10 +77,11 @@ mapSpain::esp_getTiles()."><meta property="og:image" content="https://ropenspain
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>bbox</dt>
-<dd><p>A numeric vector of length 4 with the coordinates that defines
-the bounding box: <code>c(xmin, ymin, xmax, ymax)</code> or a <code>sf/sfc</code> object, as
-provided by the <strong>sf</strong> package.</p></dd>
+    <dl><dt>x</dt>
+<dd><p>See <strong>Details</strong>. It could be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that defines
+the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
+<li><p>A <code>sf/sfc</code> object, as provided by the <strong>sf</strong> package.</p></li>
+</ul></dd>
 <dt>srs</dt>
 <dd><p>SRS/CRS to use on the query. To check the admitted values check
 <a href="catr_srs_values.html">catr_srs_values</a>, specifically the <code>wfs_service</code> column. See <strong>Details</strong>.</p></dd>
@@ -97,8 +98,9 @@ would store the cached files on a temporary dir (See <code><a href="https://rdrr
 <dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
 <dt>crop</dt>
-<dd><p><code>TRUE</code> if results should be cropped to the specified <code>bbox</code>
-extent, <code>FALSE</code> otherwise.</p></dd>
+<dd><p><code>TRUE</code> if results should be cropped to the specified <code>x</code> extent,
+<code>FALSE</code> otherwise. If <code>x</code> is an <code>sf</code> object with one <code>POINT</code>, crop is set
+to <code>FALSE</code>.</p></dd>
 <dt>...</dt>
 <dd><p>Arguments passed on to <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_getTiles.html" class="external-link">mapSpain::esp_getTiles</a></code></p><dl><dt><code>res</code></dt>
 <dd><p>Resolution (in pixels) of the final tile. Only valid for WMS.</p></dd>
@@ -124,8 +126,8 @@ Depends on the selected provider on <code>type</code>.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>When <code>bbox</code> is a numeric vector, make sure that the <code>srs</code> matches the
-coordinate values. When <code>bbox</code> is a <code>sf</code> object, the value <code>srs</code> is ignored.</p>
+    <p>When <code>x</code> is a numeric vector, make sure that the <code>srs</code> matches the
+coordinate values. When <code>x</code> is a <code>sf</code> object, the value <code>srs</code> is ignored.</p>
 <p>The query is performed using <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a> (Web Mercator)
 and the spatial object is projected back to the SRS of the initial object. In
 case that the tile looks deformed, try either providing <code>bbox</code> on EPSG:3857
@@ -134,8 +136,9 @@ or projecting your <code>sf</code> object to <code>sf::st_crs(3857)</code>.</p>
     <div class="section level2">
     <h2 id="layers">Layers<a class="anchor" aria-label="anchor" href="#layers"></a></h2>
     <p>The parameter <code>what</code> defines the layer to be extracted. The equivalence with
-the <a href="https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Docs</a>
-is:</p><ul><li><p>"building": BU.Building</p></li>
+the
+<a href="https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Docs</a>
+equivalence is:</p><ul><li><p>"building": BU.Building</p></li>
 <li><p>"parcel": CP..CadastralParcel</p></li>
 <li><p>"zoning": CP.CadastralZoning</p></li>
 <li><p>"address": AD.Address</p></li>
