@@ -225,7 +225,7 @@ API Sede Electrónica Del Catastro*. doi: 10.5281/zenodo.6044091 (URL:
 
 A BibTeX entry for LaTeX users is:
 
-    @Manual{,
+    @Manual{R-catastro,
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       year = {2022},

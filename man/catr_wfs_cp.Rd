@@ -8,7 +8,7 @@
 \alias{catr_wfs_cp_parcel_zoning}
 \title{\strong{WFS INSPIRE}: Download Cadastral Parcels}
 \usage{
-catr_wfs_cp_bbox(bbox, what = "parcel", srs, verbose = FALSE)
+catr_wfs_cp_bbox(x, what = "parcel", srs, verbose = FALSE)
 
 catr_wfs_cp_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
@@ -19,9 +19,12 @@ catr_wfs_cp_neigh_parcel(rc, srs = NULL, verbose = FALSE)
 catr_wfs_cp_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 }
 \arguments{
-\item{bbox}{A numeric vector of length 4 with the coordinates that defines
-the bounding box: \code{c(xmin, ymin, xmax, ymax)} or a \code{sf/sfc} object, as
-provided by the \strong{sf} package.}
+\item{x}{See \strong{Details}. It could be:
+\itemize{
+\item A numeric vector of length 4 with the coordinates that defines
+the bounding box: \code{c(xmin, ymin, xmax, ymax)}
+\item A \code{sf/sfc} object, as provided by the \strong{sf} package.
+}}
 
 \item{what}{Information to load. It could be \code{"parcel"} for cadastral parcels
 or \code{"zoning"} for cadastral zoning.}
@@ -67,17 +70,18 @@ Extract neighbor cadastral parcels of a specific cadastral reference.
 Extract cadastral parcels of a specific cadastral zone.
 }
 
-Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf}{API Docs}.
+Check the
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf}{API Docs}.
 }
 \details{
-When \code{bbox} is a numeric vector, make sure that the \code{srs} matches the
+When \code{x} is a numeric vector, make sure that the \code{srs} matches the
 coordinate values. Additionally, when the \code{srs} correspond to a geographic
 reference system (4326, 4258), the function queries the bounding box on
 \href{https://epsg.io/3857}{EPSG:3857} - Web Mercator, to overcome
 a potential bug on the API side. The result is provided always in the SRS
 provided in \code{srs}.
 
-When \code{bbox} is a \code{sf} object, the value \code{srs} is ignored. The query is
+When \code{x} is a \code{sf} object, the value \code{srs} is ignored. The query is
 performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator) and the
 spatial object is projected back to the SRS of the initial object.
 }

@@ -39,7 +39,8 @@
 #' * `address`: Address as it is recorded on the Cadastre.
 #' * `cmun_ine`: Municipality Code as registered on the INE (National
 #'    Statistics Institute).
-#' * Rest of fields: Check the API Docs on [Consulta_RCCOOR_Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia)
+#' * Rest of fields: Check the API Docs on
+#' [Consulta_RCCOOR_Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia)
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{

@@ -30,7 +30,8 @@
 #' * `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 #' * `refcat`: Cadastral Reference.
 #' * `address`: Address as it is recorded on the Cadastre.
-#' * Rest of fields: Check the API Docs on [Consulta_CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
+#' * Rest of fields: Check the API Docs on
+#' [Consulta_CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{

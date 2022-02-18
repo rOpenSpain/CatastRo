@@ -7,7 +7,7 @@
 \alias{catr_wfs_ad_postalcode}
 \title{\strong{WFS INSPIRE}: Download Addresses}
 \usage{
-catr_wfs_ad_bbox(bbox, srs, verbose = FALSE)
+catr_wfs_ad_bbox(x, srs, verbose = FALSE)
 
 catr_wfs_ad_codvia(codvia, del, mun, srs = NULL, verbose = FALSE)
 
@@ -16,9 +16,12 @@ catr_wfs_ad_rc(rc, srs = NULL, verbose = FALSE)
 catr_wfs_ad_postalcode(postalcode, srs = NULL, verbose = FALSE)
 }
 \arguments{
-\item{bbox}{A numeric vector of length 4 with the coordinates that defines
-the bounding box: \code{c(xmin, ymin, xmax, ymax)} or a \code{sf/sfc} object, as
-provided by the \strong{sf} package.}
+\item{x}{See \strong{Details}. It could be:
+\itemize{
+\item A numeric vector of length 4 with the coordinates that defines
+the bounding box: \code{c(xmin, ymin, xmax, ymax)}
+\item A \code{sf/sfc} object, as provided by the \strong{sf} package.
+}}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See \strong{Details}.}
@@ -62,16 +65,17 @@ objects of specific cadastral references
 objects of specific cadastral references
 }
 
-Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Docs}.
+Check the
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Docs}.
 }
 \details{
-When \code{bbox} is a numeric vector, make sure that the \code{srs} matches the
+When \code{x} is a numeric vector, make sure that the \code{srs} matches the
 coordinate values. Additionally, when the \code{srs} correspond to a geographic
 reference system (4326, 4258), the function queries the bounding box on
 \href{https://epsg.io/3857}{EPSG:3857} - Web Mercator, to overcome
 a potential bug on the API side.
 
-When \code{bbox} is a \code{sf} object, the value \code{srs} is ignored. In this case, the
+When \code{x} is a \code{sf} object, the value \code{srs} is ignored. In this case, the
 bounding box of the \code{sf} object would be used for the query (see
 \code{\link[sf:st_bbox]{sf::st_bbox()}}). The query is performed using
 \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator). The result is provided

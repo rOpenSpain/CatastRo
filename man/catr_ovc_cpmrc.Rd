@@ -41,7 +41,8 @@ cadastral reference, including the following columns:
 \item \code{xcoord}, \code{ycoord}: X and Y coordinates in the specified SRS.
 \item \code{refcat}: Cadastral Reference.
 \item \code{address}: Address as it is recorded on the Cadastre.
-\item Rest of fields: Check the API Docs on \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta_CPMRC}
+\item Rest of fields: Check the API Docs on
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta_CPMRC}
 }
 }
 \examples{

@@ -14,7 +14,8 @@
 #'    office.
 #'
 #'
-#' @source <https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml>
+#' @source
+#' <https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml>
 #'
 #'
 #' @family INSPIRE

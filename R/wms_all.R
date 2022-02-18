@@ -12,9 +12,6 @@
 #' @param what Layer to be extracted. Possible values are `"building"`,
 #'   `"parcel"`, `"zoning"`, `"address"`. See **Details**.
 #'
-#' @param crop `TRUE` if results should be cropped to the specified `bbox`
-#'   extent, `FALSE` otherwise.
-#'
 #' @return A `SpatRaster` is returned, with 3 (RGB) or 4 (RGBA) layers. See
 #' [terra::rast()].
 #'
@@ -35,8 +32,8 @@
 #'
 #' @details
 #'
-#' When `bbox` is a numeric vector, make sure that the `srs` matches the
-#' coordinate values. When `bbox` is a `sf` object, the value `srs` is ignored.
+#' When `x` is a numeric vector, make sure that the `srs` matches the
+#' coordinate values. When `x` is a `sf` object, the value `srs` is ignored.
 #'
 #' The query is performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator)
 #' and the spatial object is projected back to the SRS of the initial object. In
@@ -46,8 +43,9 @@
 #' # Layers
 #'
 #' The parameter `what` defines the layer to be extracted. The equivalence with
-#' the [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
-#' is:
+#' the
+#' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
+#' equivalence is:
 #' - "building": BU.Building
 #' - "parcel": CP..CadastralParcel
 #' - "zoning": CP.CadastralZoning
@@ -90,7 +88,7 @@
 #'   layer_spatraster(parcels_img) +
 #'   geom_sf(data = parcels, fill = "red", alpha = 0.5, col = "green")
 #' }
-catr_wms_layer <- function(bbox,
+catr_wms_layer <- function(x,
                            srs,
                            what = "building",
                            update_cache = FALSE,
@@ -98,7 +96,7 @@ catr_wms_layer <- function(bbox,
                            verbose = FALSE,
                            crop = FALSE,
                            ...) {
-  bbox_res <- get_sf_from_bbox(bbox, srs)
+  bbox_res <- get_sf_from_bbox(x, srs)
   cache_dir <- catr_hlp_cachedir(cache_dir)
 
   # Manage layer

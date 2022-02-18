@@ -5,14 +5,17 @@
 \alias{catr_wfs_bu_rc}
 \title{\strong{WFS INSPIRE}: Download Buildings}
 \usage{
-catr_wfs_bu_bbox(bbox, what = "building", srs, verbose = FALSE)
+catr_wfs_bu_bbox(x, what = "building", srs, verbose = FALSE)
 
 catr_wfs_bu_rc(rc, what = "building", srs = NULL, verbose = FALSE)
 }
 \arguments{
-\item{bbox}{A numeric vector of length 4 with the coordinates that defines
-the bounding box: \code{c(xmin, ymin, xmax, ymax)} or a \code{sf/sfc} object, as
-provided by the \strong{sf} package.}
+\item{x}{See \strong{Details}. It could be:
+\itemize{
+\item A numeric vector of length 4 with the coordinates that defines
+the bounding box: \code{c(xmin, ymin, xmax, ymax)}
+\item A \code{sf/sfc} object, as provided by the \strong{sf} package.
+}}
 
 \item{what}{Information to load. It could be \code{"building"} for buildings,
 \code{"buildingpart"} for parts of a building or \code{"other"} for others (
@@ -42,17 +45,18 @@ included on the bounding box provided. See \strong{Details}.
 objects of specific cadastral references.
 }
 
-Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf}{API Docs}.
+Check the
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf}{API Docs}.
 }
 \details{
-When \code{bbox} is a numeric vector, make sure that the \code{srs} matches the
+When \code{x} is a numeric vector, make sure that the \code{srs} matches the
 coordinate values. Additionally, when the \code{srs} correspond to a geographic
 reference system (4326, 4258), the function queries the bounding box on
 \href{https://epsg.io/3857}{EPSG:3857} - Web Mercator, to overcome
 a potential bug on the API side. The result is provided always in the SRS
 provided in \code{srs}.
 
-When \code{bbox} is a \code{sf} object, the value \code{srs} is ignored. The query is
+When \code{x} is a \code{sf} object, the value \code{srs} is ignored. The query is
 performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator) and the
 spatial object is projected back to the SRS of the initial object.
 }

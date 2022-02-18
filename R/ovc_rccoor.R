@@ -27,7 +27,8 @@
 #' * `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
 #' * `refcat`: Cadastral Reference.
 #' * `address`: Address as it is recorded on the Cadastre.
-#' * Rest of fields: Check the API Docs on [Consulta_RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
+#' * Rest of fields: Check the API Docs on
+#' [Consulta_RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{

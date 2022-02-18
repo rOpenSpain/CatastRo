@@ -23,13 +23,13 @@
 #'
 #' @details
 #'
-#' When `bbox` is a numeric vector, make sure that the `srs` matches the
+#' When `x` is a numeric vector, make sure that the `srs` matches the
 #' coordinate values. Additionally, when the `srs` correspond to a geographic
 #' reference system (4326, 4258), the function queries the bounding box on
 #' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
 #' a potential bug on the API side.
 #'
-#' When `bbox` is a `sf` object, the value `srs` is ignored. In this case, the
+#' When `x` is a `sf` object, the value `srs` is ignored. In this case, the
 #' bounding box of the `sf` object would be used for the query (see
 #' [sf::st_bbox()]). The query is performed using
 #' [EPSG:3857](https://epsg.io/3857) (Web Mercator). The result is provided
@@ -41,8 +41,8 @@
 #'
 #' @rdname catr_wfs_ad
 #' @export
-catr_wfs_ad_bbox <- function(bbox, srs, verbose = FALSE) {
-  bbox_res <- wfs_bbox(bbox, srs)
+catr_wfs_ad_bbox <- function(x, srs, verbose = FALSE) {
+  bbox_res <- wfs_bbox(x, srs)
 
   message_on_limit(bbox_res, 4)
 
@@ -129,7 +129,8 @@ catr_wfs_ad_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #' - By postal codes: Implemented on `catr_wfs_ad_postalcode()`. Extract
 #'   objects of specific cadastral references
 #'
-#' Check the [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf).
+#' Check the
+#' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf).
 #'
 #' @param postalcode Postal code.
 #'

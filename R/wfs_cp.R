@@ -24,14 +24,14 @@
 #'
 #' @details
 #'
-#' When `bbox` is a numeric vector, make sure that the `srs` matches the
+#' When `x` is a numeric vector, make sure that the `srs` matches the
 #' coordinate values. Additionally, when the `srs` correspond to a geographic
 #' reference system (4326, 4258), the function queries the bounding box on
 #' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
 #' a potential bug on the API side. The result is provided always in the SRS
 #' provided in `srs`.
 #'
-#' When `bbox` is a `sf` object, the value `srs` is ignored. The query is
+#' When `x` is a `sf` object, the value `srs` is ignored. The query is
 #' performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator) and the
 #' spatial object is projected back to the SRS of the initial object.
 #'
@@ -42,7 +42,7 @@
 #'
 #' @rdname catr_wfs_cp
 #' @export
-catr_wfs_cp_bbox <- function(bbox, what = "parcel", srs, verbose = FALSE) {
+catr_wfs_cp_bbox <- function(x, what = "parcel", srs, verbose = FALSE) {
   # Sanity checks
   if (!(what %in% c("parcel", "zoning"))) {
     stop("'what' should be 'parcel' or 'zoning'")
@@ -55,7 +55,7 @@ catr_wfs_cp_bbox <- function(bbox, what = "parcel", srs, verbose = FALSE) {
     "zoning" = "CP.CADASTRALZONING"
   )
 
-  bbox_res <- wfs_bbox(bbox, srs)
+  bbox_res <- wfs_bbox(x, srs)
 
   # Set limits
   lim <- switch(what,
@@ -164,7 +164,8 @@ catr_wfs_cp_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #' - Cadastral parcels by zoning: Implemented on `catr_wfs_cp_parcel_zoning()`.
 #'   Extract cadastral parcels of a specific cadastral zone.
 #'
-#' Check the [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf).
+#' Check the
+#' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf).
 #'
 #' @rdname catr_wfs_cp
 #' @export

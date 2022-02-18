@@ -42,7 +42,8 @@ cadastral reference, including the following columns:
 \item \code{address}: Address as it is recorded on the Cadastre.
 \item \code{cmun_ine}: Municipality Code as registered on the INE (National
 Statistics Institute).
-\item Rest of fields: Check the API Docs on \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta_RCCOOR_Distancia}
+\item Rest of fields: Check the API Docs on
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta_RCCOOR_Distancia}
 }
 }
 \examples{

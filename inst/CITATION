@@ -10,5 +10,6 @@ bibentry(
   version = meta$Version,
   url = unlist(strsplit(meta$URL, ","))[1],
   doi = "10.5281/zenodo.6044091",
-  abstract = abs
+  abstract = abs,
+  key = "R-catastro"
 )

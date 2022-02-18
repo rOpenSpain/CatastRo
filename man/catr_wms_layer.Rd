@@ -5,7 +5,7 @@
 \title{\strong{WMS INSPIRE}: Download map images}
 \usage{
 catr_wms_layer(
-  bbox,
+  x,
   srs,
   what = "building",
   update_cache = FALSE,
@@ -16,9 +16,12 @@ catr_wms_layer(
 )
 }
 \arguments{
-\item{bbox}{A numeric vector of length 4 with the coordinates that defines
-the bounding box: \code{c(xmin, ymin, xmax, ymax)} or a \code{sf/sfc} object, as
-provided by the \strong{sf} package.}
+\item{x}{See \strong{Details}. It could be:
+\itemize{
+\item A numeric vector of length 4 with the coordinates that defines
+the bounding box: \code{c(xmin, ymin, xmax, ymax)}
+\item A \code{sf/sfc} object, as provided by the \strong{sf} package.
+}}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See \strong{Details}.}
@@ -35,8 +38,9 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{crop}{\code{TRUE} if results should be cropped to the specified \code{bbox}
-extent, \code{FALSE} otherwise.}
+\item{crop}{\code{TRUE} if results should be cropped to the specified \code{x} extent,
+\code{FALSE} otherwise. If \code{x} is an \code{sf} object with one \code{POINT}, crop is set
+to \code{FALSE}.}
 
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles}}
@@ -58,8 +62,8 @@ Get geotagged images from the Spanish Cadastre. This function is a wrapper of
 \code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}}.
 }
 \details{
-When \code{bbox} is a numeric vector, make sure that the \code{srs} matches the
-coordinate values. When \code{bbox} is a \code{sf} object, the value \code{srs} is ignored.
+When \code{x} is a numeric vector, make sure that the \code{srs} matches the
+coordinate values. When \code{x} is a \code{sf} object, the value \code{srs} is ignored.
 
 The query is performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator)
 and the spatial object is projected back to the SRS of the initial object. In
@@ -68,8 +72,9 @@ or projecting your \code{sf} object to \code{sf::st_crs(3857)}.
 }
 \section{Layers}{
 The parameter \code{what} defines the layer to be extracted. The equivalence with
-the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
-is:
+the
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
+equivalence is:
 \itemize{
 \item "building": BU.Building
 \item "parcel": CP..CadastralParcel

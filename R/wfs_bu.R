@@ -7,9 +7,10 @@
 #'   included on the bounding box provided. See **Details**.
 #'
 #' @inheritParams catr_atom_bu
-#' @param bbox A numeric vector of length 4 with the coordinates that defines
-#'   the bounding box: `c(xmin, ymin, xmax, ymax)` or a `sf/sfc` object, as
-#'   provided by the **sf** package.
+#' @param x See **Details**. It could be:
+#'   - A numeric vector of length 4 with the coordinates that defines
+#'     the bounding box: `c(xmin, ymin, xmax, ymax)`
+#'   - A `sf/sfc` object, as provided by the **sf** package.
 #' @param srs SRS/CRS to use on the query. To check the admitted values check
 #'   [catr_srs_values], specifically the `wfs_service` column. See **Details**.
 #'
@@ -28,14 +29,14 @@
 #'
 #' @details
 #'
-#' When `bbox` is a numeric vector, make sure that the `srs` matches the
+#' When `x` is a numeric vector, make sure that the `srs` matches the
 #' coordinate values. Additionally, when the `srs` correspond to a geographic
 #' reference system (4326, 4258), the function queries the bounding box on
 #' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
 #' a potential bug on the API side. The result is provided always in the SRS
 #' provided in `srs`.
 #'
-#' When `bbox` is a `sf` object, the value `srs` is ignored. The query is
+#' When `x` is a `sf` object, the value `srs` is ignored. The query is
 #' performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator) and the
 #' spatial object is projected back to the SRS of the initial object.
 #'
@@ -45,7 +46,7 @@
 #'
 #' @rdname catr_wfs_bu
 #' @export
-catr_wfs_bu_bbox <- function(bbox, what = "building", srs, verbose = FALSE) {
+catr_wfs_bu_bbox <- function(x, what = "building", srs, verbose = FALSE) {
   # Sanity checks
   if (!(what %in% c("building", "buildingpart", "other"))) {
     stop("'what' should be 'building', 'buildingpart', 'other'")
@@ -59,7 +60,7 @@ catr_wfs_bu_bbox <- function(bbox, what = "building", srs, verbose = FALSE) {
   )
 
 
-  bbox_res <- wfs_bbox(bbox, srs)
+  bbox_res <- wfs_bbox(x, srs)
 
   message_on_limit(bbox_res, 4)
 
@@ -90,7 +91,8 @@ catr_wfs_bu_bbox <- function(bbox, what = "building", srs, verbose = FALSE) {
 #' - By cadastral reference: Implemented on `catr_wfs_bu_rc()`. Extract
 #'   objects of specific cadastral references.
 #'
-#' Check the [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf).
+#' Check the
+#' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf).
 #'
 #' @param rc The cadastral reference to be extracted.
 #'
