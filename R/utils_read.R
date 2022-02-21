@@ -16,7 +16,8 @@ st_read_layers_encoding <- function(path, verbose) {
       encoding = "ISO-8859-1"
     )
 
-    newlines <- gsub("\xd1|\xbf", "_", newlines)
+    # Thanks @santiagomota #19
+    newlines <- stringi::stri_trans_general(newlines, "latin-ascii")
     path <- tempfile(fileext = ".gml")
     writeLines(newlines, path)
 

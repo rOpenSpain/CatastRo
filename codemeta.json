@@ -240,6 +240,18 @@
     },
     "8": {
       "@type": "SoftwareApplication",
+      "identifier": "stringi",
+      "name": "stringi",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=stringi"
+    },
+    "9": {
+      "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
       "provider": {
@@ -250,7 +262,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=terra"
     },
-    "9": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -262,7 +274,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "10": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -276,7 +288,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1354.566KB",
+  "fileSize": "1354.63KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
