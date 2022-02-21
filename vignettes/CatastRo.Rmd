@@ -78,14 +78,152 @@ We would make use of the **WMS and WFS services** to get different layers in
 order to show some of the capabilities of the package:
 
 
+```r
+
+# Extract building by bounding box
+# Check https://boundingbox.klokantech.com/
+
+library(CatastRo)
+
+stadium <- catr_wfs_get_buildings_bbox(
+  c(-3.6891446916, 40.4523311971, -3.687462138, 40.4538643165),
+  srs = 4326
+)
+
+# Now extract cadastral parcels. We can use spatial objects on the query
+
+stadium_parcel <- catr_wfs_get_parcels_bbox(stadium)
+
+# Extract imagery: Labels of the parcel
+
+labs <- catr_wms_get_layer(stadium_parcel,
+  what = "parcel",
+  styles = "BoundariesOnly"
+)
+
+# Plot
+library(ggplot2)
+library(mapSpain) # For terra tiles
+
+ggplot() +
+  layer_spatraster(labs) +
+  geom_sf(data = stadium_parcel, fill = NA, col = "red", size = 2) +
+  geom_sf(data = stadium, fill = "red", alpha = .5)
+```
+
+<img src="santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%" />
+
+### Thematic maps
+
+We can create also thematic maps using the information available on the spatial
+objects. We would produce a visualization of the urban growth of Valencia using
+**CatastRo**, replicating the map produced by Dominic Royé on his post
+[Visualize urban growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/),
+using the **ATOM services**.
+
+In first place, we batch-download the buildings of the municipality:
+
+
+```r
+valencia_bu <- catr_atom_get_buildings("Valencia",
+  to = "Valencia" # We use "to" parameter to narrow the search
+)
+```
+
+We used here the to parameter to narrow the search to the province of Valencia.
+In case of doubt, the function `catr_atom_get_buildings_db_all()` provides the names and
+urls recognized by the Catastro API.
+
+Next step for creating the visualization is to limit the analysis to a circle of
+radius 2.5 km around the city center:
+
+
+```r
+library(dplyr)
+library(sf)
+library(mapSpain)
+
+# Use mapSpain for getting the coords
+
+buff <- esp_get_capimun(munic = "^València$") %>%
+  # Adjust CRS to 25830: (Buildings)
+  st_transform(st_crs(valencia_bu)) %>%
+  # Buffer
+  st_buffer(2500)
+
+
+# Cut buildings
+
+dataviz <- st_intersection(valencia_bu, buff)
+
+ggplot(dataviz) +
+  geom_sf()
+```
+
+<img src="minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%" />
+
+The last step to recreate the data visualization is to manipulate the
+construction year, available in the column `beginning`:
+
+
+```r
+
+# Extract 4 initial positions
+year <- substr(dataviz$beginning, 1, 4)
+
+# Replace all that doesn't look as a number with 0000
+year[!(year %in% 0:2500)] <- "0000"
+
+# To numeric
+year <- as.integer(year)
+
+# New column
+dataviz <- dataviz %>%
+  mutate(year = year)
+```
+
+Last step is to create groups based on the year and create the data
+visualization. We use here the function `ggplot2::cut_number()` to create 15
+different classes:
+
+
+```r
+
+dataviz <- dataviz %>%
+  mutate(year_cat = ggplot2::cut_number(year,
+    n = 15
+  ))
+
+
+ggplot(dataviz) +
+  geom_sf(aes(fill = year_cat), color = NA) +
+  scale_fill_manual(values = hcl.colors(15, "Spectral")) +
+  theme_void() +
+  labs(title = "VALÈNCIA", fill = "") +
+  theme(
+    panel.background = element_rect(fill = "black"),
+    plot.background = element_rect(fill = "black"),
+    legend.justification = .5,
+    legend.text = element_text(
+      colour = "white",
+      size = 12
+    ),
+    plot.title = element_text(
+      colour = "white", hjust = .5,
+      margin = margin(t = 30),
+      size = 30
+    ),
+    plot.caption = element_text(
+      colour = "white",
+      margin = margin(b = 20), hjust = .5
+    ),
+    plot.margin = margin(r = 40, l = 40)
+  )
+```
+
+<img src="dataviz-1.png" title="plot of chunk dataviz" alt="plot of chunk dataviz" width="100%" />
 
 
 
 
-
-
-
-
-
-
-
+## References

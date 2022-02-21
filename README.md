@@ -58,9 +58,9 @@ references using the
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
 service.
 
-These functions are named `catr_ovc_*` and returns a tibble, as provided
-by the package **tibble**. See `vignette("ovcservice")`, where these
-functions are described.
+These functions are named `catr_ovc_get_*` and returns a tibble, as
+provided by the package **tibble**. See `vignette("ovcservice")`, where
+these functions are described.
 
 ### INSPIRE
 
@@ -81,12 +81,7 @@ The ATOM service allows to batch-download vector objects of different
 cadastral elements for a specific municipality. The result is provided
 as `sf` objects (See **sf** package).
 
-These functions are named `catr_atom_xxx` where `_xxx` can have the
-values;
-
--   `_ad` for querying addresses.
--   `_bu` for querying buildings.
--   `_co` for querying cadastral parcels.
+These functions are named `catr_atom_get_xxx`.
 
 #### WFS service
 
@@ -96,12 +91,7 @@ elements. The result is provided as `sf` objects (See **sf** package).
 Note that there are some limitations on the extension and number of
 elements to query. For batch-downloading the ATOM service is preferred.
 
-These functions are named `catr_wms_xxx` where `_xxx` can have the
-values;
-
--   `_ad` for querying addresses.
--   `_bu` for querying buildings.
--   `_co` for querying cadastral parcels.
+These functions are named `catr_wms_get_xxx`.
 
 #### WMS service
 
