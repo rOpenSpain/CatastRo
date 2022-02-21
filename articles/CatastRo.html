@@ -142,16 +142,21 @@
   <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3.6891446916</span>, <span class="fl">40.4523311971</span>, <span class="op">-</span><span class="fl">3.687462138</span>, <span class="fl">40.4538643165</span><span class="op">)</span>,
   srs <span class="op">=</span> <span class="fl">4326</span>
 <span class="op">)</span>
+<span class="co">#&gt; Error in catr_hlp_dwnload(api_entry, filename, cache_dir = tempdir(), : </span>
+<span class="co">#&gt; Execution halted</span>
 
 <span class="co"># Now extract cadastral parcels. We can use spatial objects on the query</span>
 
 <span class="va">stadium_parcel</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_wfs_cp.html">catr_wfs_cp_bbox</a></span><span class="op">(</span><span class="va">stadium</span><span class="op">)</span>
+<span class="co">#&gt; Error in wfs_bbox(bbox, srs): object 'stadium' not found</span>
 
 <span class="co"># Extract imagery: Labels of the parcel</span>
 
 <span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_wms_layer.html">catr_wms_layer</a></span><span class="op">(</span><span class="va">stadium_parcel</span>,
-  what <span class="op">=</span> <span class="st">"parcel"</span>
+  what <span class="op">=</span> <span class="st">"parcel"</span>,
+  styles <span class="op">=</span> <span class="st">"BoundariesOnly"</span>
 <span class="op">)</span>
+<span class="co">#&gt; Error in get_sf_from_bbox(bbox, srs): object 'stadium_parcel' not found</span>
 
 <span class="co"># Plot</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
@@ -160,8 +165,8 @@
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/layer_spatraster.html" class="external-link">layer_spatraster</a></span><span class="op">(</span><span class="va">labs</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium_parcel</span>, fill <span class="op">=</span> <span class="cn">NA</span>, col <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium</span>, fill <span class="op">=</span> <span class="st">"red"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></code></pre></div>
-<p><img src="santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%"></p>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium</span>, fill <span class="op">=</span> <span class="st">"red"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span>
+<span class="co">#&gt; Error in layer_spatraster(labs): data object is not SpatRaster. See ?terra::rast()</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
@@ -177,11 +182,11 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span>
 
-<span class="co"># Coordinates of Ayuntamiento de Valencia</span>
+<span class="co"># Use mapSpain for getting the coords</span>
 
-<span class="va">buff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st.html" class="external-link">st_point</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.3770936916069698</span>, <span class="fl">39.47032401425384</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/sfc.html" class="external-link">st_sfc</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+<span class="va">buff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.html" class="external-link">esp_get_capimun</a></span><span class="op">(</span>munic <span class="op">=</span> <span class="st">"^València$"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Adjust CRS to 25830: (Buildings)</span>
   <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">valencia_bu</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Buffer</span>
