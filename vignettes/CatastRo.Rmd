@@ -89,16 +89,21 @@ stadium <- catr_wfs_bu_bbox(
   c(-3.6891446916, 40.4523311971, -3.687462138, 40.4538643165),
   srs = 4326
 )
+#> Error in catr_hlp_dwnload(api_entry, filename, cache_dir = tempdir(), : 
+#> Execution halted
 
 # Now extract cadastral parcels. We can use spatial objects on the query
 
 stadium_parcel <- catr_wfs_cp_bbox(stadium)
+#> Error in wfs_bbox(bbox, srs): object 'stadium' not found
 
 # Extract imagery: Labels of the parcel
 
 labs <- catr_wms_layer(stadium_parcel,
-  what = "parcel"
+  what = "parcel",
+  styles = "BoundariesOnly"
 )
+#> Error in get_sf_from_bbox(bbox, srs): object 'stadium_parcel' not found
 
 # Plot
 library(ggplot2)
@@ -108,16 +113,15 @@ ggplot() +
   layer_spatraster(labs) +
   geom_sf(data = stadium_parcel, fill = NA, col = "red", size = 2) +
   geom_sf(data = stadium, fill = "red", alpha = .5)
+#> Error in layer_spatraster(labs): data object is not SpatRaster. See ?terra::rast()
 ```
-
-<img src="./santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%" />
 
 ### Thematic maps
 
 We can create also thematic maps using the information available on the spatial
 objects. We would produce a visualization of the urban growth of Valencia using
 **CatastRo**, replicating the map produced by Dominic Royé on his post
-[Visualize urban growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/), 
+[Visualize urban growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/),
 using the **ATOM services**.
 
 In first place, we batch-download the buildings of the municipality:
@@ -140,11 +144,11 @@ radius 2.5 km around the city center:
 ```r
 library(dplyr)
 library(sf)
+library(mapSpain)
 
-# Coordinates of Ayuntamiento de Valencia
+# Use mapSpain for getting the coords
 
-buff <- st_point(c(-0.3770936916069698, 39.47032401425384)) %>%
-  st_sfc(crs = 4326) %>%
+buff <- esp_get_capimun(munic = "^València$") %>%
   # Adjust CRS to 25830: (Buildings)
   st_transform(st_crs(valencia_bu)) %>%
   # Buffer

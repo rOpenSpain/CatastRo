@@ -36,4 +36,16 @@ test_that("Check tiles", {
   obj2 <- catr_wms_layer(bbox)
 
   expect_s4_class(obj2, "SpatRaster")
+
+
+  # With styles
+  obj3 <- catr_wms_layer(c(222500, 4019500, 222700, 4019700),
+    srs = 25830,
+    what = "building",
+    styles = "ELFCadastre"
+  )
+
+
+
+  expect_s4_class(obj3, "SpatRaster")
 })

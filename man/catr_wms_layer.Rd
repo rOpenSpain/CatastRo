@@ -8,6 +8,7 @@ catr_wms_layer(
   x,
   srs,
   what = "building",
+  styles = "default",
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
@@ -28,6 +29,8 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 
 \item{what}{Layer to be extracted. Possible values are \code{"building"},
 \code{"parcel"}, \code{"zoning"}, \code{"address"}. See \strong{Details}.}
+
+\item{styles}{Style of the WMS layer. See \strong{Details}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source file.}
@@ -76,13 +79,31 @@ the
 \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
 equivalence is:
 \itemize{
-\item "building": BU.Building
-\item "parcel": CP..CadastralParcel
+\item "parcel": CP.CadastralParcel
 \item "zoning": CP.CadastralZoning
+\item "building": BU.Building
+\item "buildingpart": BU.BuildingPart
 \item "address": AD.Address
+\item "admboundary": AU.AdministrativeBoundary
+\item "admunit": AU.AdministrativeUnit
+}
 }
 
-Tiles are provided always in the default style.
+\section{Styles}{
+The WMS service provide different styles on each layer (\code{what} parameter).
+Some of the styles available are:
+\itemize{
+\item "parcel": styles : \code{"BoundariesOnly"}, \code{"ReferencePointOnly"},
+\code{"ELFCadastre"}.
+\item "zoninig": styles : \code{"BoundariesOnly"}, \code{"ELFCadastre"}.
+\item "building" and "buildingpart": \code{"ELFCadastre"}
+\item "address": \code{"Number.ELFCadastre"}
+\item "admboundary" y "admunit": \code{"ELFCadastre"}
+}
+
+Check the
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
+for more information.
 }
 
 \examples{
@@ -110,16 +131,18 @@ parcels <- catr_wfs_cp_neigh_parcel("3662303TF3136B")
 # Transform
 parcels <- sf::st_transform(parcels, 3857)
 
+# Use styles
+
 parcels_img <- catr_wms_layer(parcels,
-  what = "building",
-  transparent = FALSE,
-  bbox_expand = 0.3
+  what = "buildingpart",
+  bbox_expand = 0.3,
+  styles = "ELFCadastre"
 )
 
 
 ggplot() +
-  layer_spatraster(parcels_img) +
-  geom_sf(data = parcels, fill = "red", alpha = 0.5, col = "green")
+  geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
+  layer_spatraster(parcels_img)
 }
 \dontshow{\}) # examplesIf}
 }

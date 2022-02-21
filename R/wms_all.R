@@ -11,6 +11,7 @@
 #'
 #' @param what Layer to be extracted. Possible values are `"building"`,
 #'   `"parcel"`, `"zoning"`, `"address"`. See **Details**.
+#' @param styles Style of the WMS layer. See **Details**.
 #'
 #' @return A `SpatRaster` is returned, with 3 (RGB) or 4 (RGBA) layers. See
 #' [terra::rast()].
@@ -46,12 +47,28 @@
 #' the
 #' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
 #' equivalence is:
-#' - "building": BU.Building
-#' - "parcel": CP..CadastralParcel
+#' - "parcel": CP.CadastralParcel
 #' - "zoning": CP.CadastralZoning
+#' - "building": BU.Building
+#' - "buildingpart": BU.BuildingPart
 #' - "address": AD.Address
+#' - "admboundary": AU.AdministrativeBoundary
+#' - "admunit": AU.AdministrativeUnit
 #'
-#' Tiles are provided always in the default style.
+#' # Styles
+#'
+#' The WMS service provide different styles on each layer (`what` parameter).
+#' Some of the styles available are:
+#' - "parcel": styles : `"BoundariesOnly"`, `"ReferencePointOnly"`,
+#'   `"ELFCadastre"`.
+#' - "zoninig": styles : `"BoundariesOnly"`, `"ELFCadastre"`.
+#' - "building" and "buildingpart": `"ELFCadastre"`
+#' - "address": `"Number.ELFCadastre"`
+#' - "admboundary" y "admunit": `"ELFCadastre"`
+#'
+#' Check the
+#' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
+#' for more information.
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
@@ -77,20 +94,23 @@
 #' # Transform
 #' parcels <- sf::st_transform(parcels, 3857)
 #'
+#' # Use styles
+#'
 #' parcels_img <- catr_wms_layer(parcels,
-#'   what = "building",
-#'   transparent = FALSE,
-#'   bbox_expand = 0.3
+#'   what = "buildingpart",
+#'   bbox_expand = 0.3,
+#'   styles = "ELFCadastre"
 #' )
 #'
 #'
 #' ggplot() +
-#'   layer_spatraster(parcels_img) +
-#'   geom_sf(data = parcels, fill = "red", alpha = 0.5, col = "green")
+#'   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
+#'   layer_spatraster(parcels_img)
 #' }
 catr_wms_layer <- function(x,
                            srs,
                            what = "building",
+                           styles = "default",
                            update_cache = FALSE,
                            cache_dir = NULL,
                            verbose = FALSE,
@@ -101,7 +121,12 @@ catr_wms_layer <- function(x,
 
   # Manage layer
 
-  valid_values <- c("building", "parcel", "zoning", "address")
+  valid_values <- c(
+    "building", "parcel", "zoning", "address",
+    "buildingpart",
+    "admboundary",
+    "admunit"
+  )
 
   if (!(what %in% valid_values)) {
     stop(
@@ -112,11 +137,21 @@ catr_wms_layer <- function(x,
 
   layer <- switch(what,
     "building" = "Catastro.Building",
+    "buildingpart" = "Catastro.BuildingPart",
     "parcel" = "Catastro.CadastralParcel",
     "zoning" = "Catastro.CadastralZoning",
-    "address" = "Catastro.Address"
+    "address" = "Catastro.Address",
+    "admboundary" = "Catastro.AdministrativeBoundary",
+    "admunit" = "Catastro.AdministrativeUnit"
   )
 
+  # Manage styles
+
+  if (tolower(styles) == "default") {
+    opts <- NULL
+  } else {
+    opts <- list(styles = styles)
+  }
 
   # Query
 
@@ -126,6 +161,7 @@ catr_wms_layer <- function(x,
     update_cache = update_cache,
     cache_dir = cache_dir,
     verbose = verbose,
+    options = opts,
     ...
   )
 
