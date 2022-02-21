@@ -111,17 +111,17 @@
 </h2>
 <p>The OVCCoordenadas Web Service can be reached using the following functions:</p>
 <ul>
-<li><code><a href="../reference/catr_ovc_rccoor.html">catr_ovc_rccoor()</a></code></li>
-<li><code><a href="../reference/catr_ovc_rccoor_distancia.html">catr_ovc_rccoor_distancia()</a></code></li>
-<li><code><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc()</a></code></li>
+<li><code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code></li>
+<li><code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code></li>
+<li><code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code></li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="reverse-geocoding-cadastral-references">Reverse Geocoding Cadastral References<a class="anchor" aria-label="anchor" href="#reverse-geocoding-cadastral-references"></a>
 </h2>
-<p>The function <code><a href="../reference/catr_ovc_rccoor.html">catr_ovc_rccoor()</a></code> receives the coordinates (<em>lat</em> and <em>lon</em>) and the spatial reference system (SRS) used to express them. The return is a tibble with the cadastral reference of the property in that spatial point, including also other information as the address (town street and number).</p>
+<p>The function <code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> receives the coordinates (<em>lat</em> and <em>lon</em>) and the spatial reference system (SRS) used to express them. The return is a tibble with the cadastral reference of the property in that spatial point, including also other information as the address (town street and number).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_ovc_rccoor.html">catr_ovc_rccoor</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor</a></span><span class="op">(</span>
   lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,
   lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,
   srs <span class="op">=</span> <span class="st">"4230"</span>
@@ -233,9 +233,9 @@
 </tr>
 </tbody>
 </table>
-<p>It is also possible to get all the cadastral references in a square of 50-meters’ side centered in the coordinates <em>lat</em> and <em>lon</em> through the function <code><a href="../reference/catr_ovc_rccoor_distancia.html">catr_ovc_rccoor_distancia()</a></code>.</p>
+<p>It is also possible to get all the cadastral references in a square of 50-meters’ side centered in the coordinates <em>lat</em> and <em>lon</em> through the function <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_rccoor_distancia.html">catr_ovc_rccoor_distancia</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia</a></span><span class="op">(</span>
   lat <span class="op">=</span> <span class="fl">40.96002</span>,
   lon <span class="op">=</span> <span class="op">-</span><span class="fl">5.663408</span>,
   srs <span class="op">=</span> <span class="st">"4230"</span>
@@ -313,9 +313,9 @@
 <div class="section level2">
 <h2 id="geocoding-a-cadastral-reference">Geocoding a Cadastral Reference<a class="anchor" aria-label="anchor" href="#geocoding-a-cadastral-reference"></a>
 </h2>
-<p>The opposite query is possible as well. Being given to the function <code><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc()</a></code> a cadastral reference (<code>rc</code>), the province (<code>province</code>) and the town (<code>municipality</code>), <code><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc()</a></code> returns its coordinates <em>lat</em> and <em>lon</em> in a particular <em>SRS</em> besides the address (town, street and number).</p>
+<p>The opposite query is possible as well. Being given to the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> a cadastral reference (<code>rc</code>), the province (<code>province</code>) and the town (<code>municipality</code>), <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> returns its coordinates <em>lat</em> and <em>lon</em> in a particular <em>SRS</em> besides the address (town, street and number).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>
   rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,
   srs <span class="op">=</span> <span class="st">"4230"</span>,
   province <span class="op">=</span> <span class="st">"CIUDAD REAL"</span>,
@@ -360,9 +360,9 @@
 <td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 </tr></tbody>
 </table>
-<p>Neither the <code>province</code> nor <code>municipality</code> are required to be passed to the function, unless the argument <code>municipality</code> is not <code>NULL</code>, in that case the argument <code>province</code> is needed to be passed. If it is passed a value to the <code>province</code> argument while the <code>municipality</code> argument is <code>NULL</code>, the function <code><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc()</a></code> will throw a message and would return a tibble with no data.</p>
+<p>Neither the <code>province</code> nor <code>municipality</code> are required to be passed to the function, unless the argument <code>municipality</code> is not <code>NULL</code>, in that case the argument <code>province</code> is needed to be passed. If it is passed a value to the <code>province</code> argument while the <code>municipality</code> argument is <code>NULL</code>, the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> will throw a message and would return a tibble with no data.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>
   rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,
   municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span>
 <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
@@ -382,7 +382,7 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># No warning, get the result</span>
-<span class="fu"><a href="../reference/catr_ovc_cpmrc.html">catr_ovc_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+<span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table style="width:100%;" class="table">
 <colgroup>
