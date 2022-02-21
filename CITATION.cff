@@ -48,9 +48,15 @@ contact:
   orcid: https://orcid.org/0000-0001-8457-4658
 keywords:
 - catastro
+- gis
+- maps
+- r
 - r-package
 - ropenspain
+- rstats
 - spain
+- spatial
+- static-tiles
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
@@ -119,7 +125,7 @@ references:
     affiliation: rOpenSpain
   year: '2022'
   url: https://CRAN.R-project.org/package=mapSpain
-  version: '>= 0.5.0'
+  version: '>= 0.6.0'
 - type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
