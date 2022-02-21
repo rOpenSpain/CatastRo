@@ -3,10 +3,10 @@
 #' @description
 #' Get the spatial data of buildings. The WFS Service allows to perform
 #' two types of queries:
-#' - By bounding box: Implemented on `catr_wfs_bu_bbox()`. Extract objects
+#' - By bounding box: Implemented on `catr_wfs_get_buildings_bbox()`. Extract objects
 #'   included on the bounding box provided. See **Details**.
 #'
-#' @inheritParams catr_atom_bu
+#' @inheritParams catr_atom_get_buildings
 #' @param x See **Details**. It could be:
 #'   - A numeric vector of length 4 with the coordinates that defines
 #'     the bounding box: `c(xmin, ymin, xmax, ymax)`
@@ -44,9 +44,9 @@
 #' The API service is limited to a bounding box of 4km2 and a maximum of 5.000
 #' elements.
 #'
-#' @rdname catr_wfs_bu
+#' @rdname catr_wfs_get_buildings
 #' @export
-catr_wfs_bu_bbox <- function(x, what = "building", srs, verbose = FALSE) {
+catr_wfs_get_buildings_bbox <- function(x, what = "building", srs, verbose = FALSE) {
   # Sanity checks
   if (!(what %in% c("building", "buildingpart", "other"))) {
     stop("'what' should be 'building', 'buildingpart', 'other'")
@@ -88,7 +88,7 @@ catr_wfs_bu_bbox <- function(x, what = "building", srs, verbose = FALSE) {
 }
 
 #' @description
-#' - By cadastral reference: Implemented on `catr_wfs_bu_rc()`. Extract
+#' - By cadastral reference: Implemented on `catr_wfs_get_buildings_rc()`. Extract
 #'   objects of specific cadastral references.
 #'
 #' Check the
@@ -96,12 +96,12 @@ catr_wfs_bu_bbox <- function(x, what = "building", srs, verbose = FALSE) {
 #'
 #' @param rc The cadastral reference to be extracted.
 #'
-#' @rdname catr_wfs_bu
+#' @rdname catr_wfs_get_buildings
 #' @export
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
 #' # Using bbox
-#' building <- catr_wfs_bu_bbox(c(
+#' building <- catr_wfs_get_buildings_bbox(c(
 #'   376550,
 #'   4545424,
 #'   376600,
@@ -115,14 +115,14 @@ catr_wfs_bu_bbox <- function(x, what = "building", srs, verbose = FALSE) {
 #'   labs(title = "Search using bbox")
 #'
 #' # Using rc
-#' rc <- catr_wfs_bu_rc("6656601UL7465N")
+#' rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
 #' library(ggplot2)
 #' ggplot(rc) +
 #'   geom_sf() +
 #'   labs(title = "Search using rc")
 #' }
-catr_wfs_bu_rc <- function(rc, what = "building",
-                           srs = NULL, verbose = FALSE) {
+catr_wfs_get_buildings_rc <- function(rc, what = "building",
+                                      srs = NULL, verbose = FALSE) {
 
   # Sanity checks
   if (!(what %in% c("building", "buildingpart", "other"))) {

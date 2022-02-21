@@ -17,16 +17,16 @@
 #' @export
 #' @return A `sf` object.
 #'
-#' @inheritParams catr_atom_cp
+#' @inheritParams catr_atom_get_parcels
 #' @param munic Municipality to extract, It can be a part of a string or the
-#'   cadastral code. See [catr_atom_bu_db_all()] for getting the cadastral
+#'   cadastral code. See [catr_atom_get_buildings_db_all()] for getting the cadastral
 #'   codes.
 #' @param what Information to load. It could be `"building"` for buildings,
 #'   `"buildingpart"` for parts of a building or `"other"` for others (
 #'   swimming pools, etc.).
 #' @examples
 #' \donttest{
-#' s <- catr_atom_bu("Nava de la Asuncion",
+#' s <- catr_atom_get_buildings("Nava de la Asuncion",
 #'   to = "Segovia",
 #'   what = "building"
 #' )
@@ -44,13 +44,13 @@
 #'   )
 #' }
 #'
-catr_atom_bu <- function(munic,
-                         to = NULL,
-                         what = "building",
-                         cache = TRUE,
-                         update_cache = FALSE,
-                         cache_dir = NULL,
-                         verbose = FALSE) {
+catr_atom_get_buildings <- function(munic,
+                                    to = NULL,
+                                    what = "building",
+                                    cache = TRUE,
+                                    update_cache = FALSE,
+                                    cache_dir = NULL,
+                                    verbose = FALSE) {
 
   # Sanity checks
   if (!(what %in% c("building", "buildingpart", "other"))) {
@@ -64,7 +64,7 @@ catr_atom_bu <- function(munic,
     "other" = "other"
   )
 
-  all <- catr_atom_bu_db_all(
+  all <- catr_atom_get_buildings_db_all(
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
@@ -91,7 +91,7 @@ catr_atom_bu <- function(munic,
   if (is.na(findmunic)) {
     message(
       "No Municipality found for ", munic, " ", to,
-      ". Check available municipalities with catr_atom_bu_db_all()"
+      ". Check available municipalities with catr_atom_get_buildings_db_all()"
     )
     return(invisible(NA))
   }
@@ -104,7 +104,7 @@ catr_atom_bu <- function(munic,
     )
   }
 
-  municurls <- catr_atom_bu_db_to(as.character(m$territorial_office),
+  municurls <- catr_atom_get_buildings_db_to(as.character(m$territorial_office),
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,

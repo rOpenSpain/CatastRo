@@ -32,7 +32,7 @@ longitude) and the reference system in which they are expressed.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 \strong{This function was deprecated to adapt it to the new interface. Use}
-\code{\link[=catr_ovc_cpmrc]{catr_ovc_cpmrc()}} instead.
+\code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}} instead.
 }
 \references{
 http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx?op=Consulta_CPMRC

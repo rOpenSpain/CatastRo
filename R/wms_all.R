@@ -4,8 +4,8 @@
 #' Get geotagged images from the Spanish Cadastre. This function is a wrapper of
 #' [mapSpain::esp_getTiles()].
 #'
-#' @inheritParams catr_atom_bu
-#' @inheritParams catr_wfs_bu_bbox
+#' @inheritParams catr_atom_get_buildings
+#' @inheritParams catr_wfs_get_buildings_bbox
 #' @inheritParams mapSpain::esp_getTiles
 #' @inheritDotParams mapSpain::esp_getTiles res:mask
 #'
@@ -75,7 +75,7 @@
 #'
 #' # With a bbox
 #'
-#' pict <- catr_wms_layer(c(222500, 4019500, 223700, 4020700),
+#' pict <- catr_wms_get_layer(c(222500, 4019500, 223700, 4020700),
 #'   srs = 25830,
 #'   what = "parcel"
 #' )
@@ -89,14 +89,14 @@
 #'
 #' # With a spatial object
 #'
-#' parcels <- catr_wfs_cp_neigh_parcel("3662303TF3136B")
+#' parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B")
 #'
 #' # Transform
 #' parcels <- sf::st_transform(parcels, 3857)
 #'
 #' # Use styles
 #'
-#' parcels_img <- catr_wms_layer(parcels,
+#' parcels_img <- catr_wms_get_layer(parcels,
 #'   what = "buildingpart",
 #'   bbox_expand = 0.3,
 #'   styles = "ELFCadastre"
@@ -107,15 +107,15 @@
 #'   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
 #'   layer_spatraster(parcels_img)
 #' }
-catr_wms_layer <- function(x,
-                           srs,
-                           what = "building",
-                           styles = "default",
-                           update_cache = FALSE,
-                           cache_dir = NULL,
-                           verbose = FALSE,
-                           crop = FALSE,
-                           ...) {
+catr_wms_get_layer <- function(x,
+                               srs,
+                               what = "building",
+                               styles = "default",
+                               update_cache = FALSE,
+                               cache_dir = NULL,
+                               verbose = FALSE,
+                               crop = FALSE,
+                               ...) {
   bbox_res <- get_sf_from_bbox(x, srs)
   cache_dir <- catr_hlp_cachedir(cache_dir)
 

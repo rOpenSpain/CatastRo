@@ -61,19 +61,19 @@ catr_srs_values \%>\% filter(ovc_service == TRUE)
 }
 \seealso{
 Other databases: 
-\code{\link{catr_atom_ad_db_all}()},
-\code{\link{catr_atom_bu_db_all}()},
-\code{\link{catr_atom_cp_db_all}()}
+\code{\link{catr_atom_get_address_db_all}()},
+\code{\link{catr_atom_get_buildings_db_all}()},
+\code{\link{catr_atom_get_parcels_db_all}()}
 
 Other INSPIRE WFS services:
-\code{\link{catr_wfs_ad_bbox}()},
-\code{\link{catr_wfs_bu_bbox}()},
-\code{\link{catr_wfs_cp_bbox}()}
+\code{\link{catr_wfs_get_address_bbox}()},
+\code{\link{catr_wfs_get_buildings_bbox}()},
+\code{\link{catr_wfs_get_parcels_bbox}()}
 
 OVCCoordenadas API:
-\code{\link{catr_ovc_cpmrc}()},
-\code{\link{catr_ovc_rccoor_distancia}()},
-\code{\link{catr_ovc_rccoor}()}
+\code{\link{catr_ovc_get_cpmrc}()},
+\code{\link{catr_ovc_get_rccoor_distancia}()},
+\code{\link{catr_ovc_get_rccoor}()}
 }
 \concept{OVCCoordenadas}
 \concept{WFS}

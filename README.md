@@ -110,7 +110,7 @@ cadastral elements. The result is a raster on the format provides by
 **terra**.
 
 There is a single function for querying this service:
-`catr_wms_layer()`.
+`catr_wms_get_layer()`.
 
 #### Terms and conditions of use
 
@@ -127,7 +127,7 @@ This script highlights some features of **CatastRo** :
 ``` r
 library(CatastRo)
 
-catr_ovc_cpmrc(rc = "13077A01800039")
+catr_ovc_get_cpmrc(rc = "13077A01800039")
 #> # A tibble: 1 × 10
 #>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
 #>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
@@ -137,7 +137,7 @@ catr_ovc_cpmrc(rc = "13077A01800039")
 ### Extract a cadastral reference from a given set of coordinates
 
 ``` r
-catr_ovc_rccoor(
+catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
   srs = "4230"
@@ -151,7 +151,7 @@ catr_ovc_rccoor(
 ### Extract geometries using the ATOM service
 
 ``` r
-bu <- catr_atom_bu("Nava de la Asuncion", to = "Segovia")
+bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 
 # Map
@@ -173,13 +173,13 @@ ggplot(bu) +
 ### Extract geometries using the WFS service
 
 ``` r
-wfs_bu <- catr_wfs_bu_bbox(
+wfs_get_buildings <- catr_wfs_get_buildings_bbox(
   c(-5.567429, 42.598935, -5.565509, 42.600396),
   srs = 4326
 )
 
 # Map
-ggplot(wfs_bu) +
+ggplot(wfs_get_buildings) +
   geom_sf() +
   ggtitle("Leon Cathedral, Spain")
 ```
@@ -189,14 +189,14 @@ ggplot(wfs_bu) +
 ### Extract maps using the WMS service
 
 ``` r
-wms_bu <- catr_wms_layer(wfs_bu, bbox_expand = 0.2)
+wms_bu <- catr_wms_get_layer(wfs_get_buildings, bbox_expand = 0.2)
 
 # Map
 # Load mapSpain for using layer_spatraster
 library(mapSpain)
 ggplot() +
   layer_spatraster(wms_bu) +
-  geom_sf(data = wfs_bu, fill = "red", alpha = 0.6)
+  geom_sf(data = wfs_get_buildings, fill = "red", alpha = 0.6)
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />

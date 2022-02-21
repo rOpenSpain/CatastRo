@@ -1,5 +1,5 @@
 test_that("Check error", {
-  expect_error(catr_wms_layer(c(760926, 4019259, 761155, 4019366),
+  expect_error(catr_wms_get_layer(c(760926, 4019259, 761155, 4019366),
     srs = 25829,
     what = "aa"
   ))
@@ -9,7 +9,7 @@ test_that("Check tiles", {
   skip_on_cran()
   skip_on_os("linux")
 
-  obj <- catr_wms_layer(c(760926, 4019259, 761155, 4019366),
+  obj <- catr_wms_get_layer(c(760926, 4019259, 761155, 4019366),
     srs = 25829
   )
 
@@ -17,7 +17,7 @@ test_that("Check tiles", {
 
 
   # test crop
-  objcrop <- catr_wms_layer(c(760926, 4019259, 761155, 4019366),
+  objcrop <- catr_wms_get_layer(c(760926, 4019259, 761155, 4019366),
     srs = 25829,
     crop = TRUE
   )
@@ -33,13 +33,13 @@ test_that("Check tiles", {
   )
   expect_s3_class(bbox, "sfc")
 
-  obj2 <- catr_wms_layer(bbox)
+  obj2 <- catr_wms_get_layer(bbox)
 
   expect_s4_class(obj2, "SpatRaster")
 
 
   # With styles
-  obj3 <- catr_wms_layer(c(222500, 4019500, 222700, 4019700),
+  obj3 <- catr_wms_get_layer(c(222500, 4019500, 222700, 4019700),
     srs = 25830,
     what = "building",
     styles = "ELFCadastre"

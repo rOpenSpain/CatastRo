@@ -18,13 +18,13 @@
 #' @export
 #' @return A `sf` object.
 #'
-#' @inheritParams catr_atom_cp
+#' @inheritParams catr_atom_get_parcels
 #' @param munic Municipality to extract, It can be a part of a string or the
-#'   cadastral code. See [catr_atom_ad_db_all()] for getting the cadastral
+#'   cadastral code. See [catr_atom_get_address_db_all()] for getting the cadastral
 #'   codes.
 #' @examples
 #' \donttest{
-#' s <- catr_atom_ad("Melque",
+#' s <- catr_atom_get_address("Melque",
 #'   to = "Segovia"
 #' )
 #'
@@ -42,13 +42,13 @@
 #'   )
 #' }
 #'
-catr_atom_ad <- function(munic,
-                         to = NULL,
-                         cache = TRUE,
-                         update_cache = FALSE,
-                         cache_dir = NULL,
-                         verbose = FALSE) {
-  all <- catr_atom_ad_db_all(
+catr_atom_get_address <- function(munic,
+                                  to = NULL,
+                                  cache = TRUE,
+                                  update_cache = FALSE,
+                                  cache_dir = NULL,
+                                  verbose = FALSE) {
+  all <- catr_atom_get_address_db_all(
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
@@ -75,7 +75,7 @@ catr_atom_ad <- function(munic,
   if (is.na(findmunic)) {
     message(
       "No Municipality found for ", munic, " ", to,
-      ". Check available municipalities with catr_atom_ad_db_all()"
+      ". Check available municipalities with catr_atom_get_address_db_all()"
     )
     return(invisible(NA))
   }
@@ -88,7 +88,7 @@ catr_atom_ad <- function(munic,
     )
   }
 
-  municurls <- catr_atom_ad_db_to(as.character(m$territorial_office),
+  municurls <- catr_atom_get_address_db_to(as.character(m$territorial_office),
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,

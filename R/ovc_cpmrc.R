@@ -11,7 +11,7 @@
 #' @family OVCCoordenadas
 #' @family cadastral references
 #' @seealso [catr_srs_values], `vignette("ovcservice")`
-#' @inheritParams catr_ovc_rccoor
+#' @inheritParams catr_ovc_get_rccoor
 #'
 #' @param rc The cadastral reference to be geocoded.
 #' @param province,municipality Optional, used for narrowing the search.
@@ -37,21 +37,21 @@
 #' \donttest{
 #'
 #' # using all the arguments
-#' catr_ovc_cpmrc("13077A01800039",
+#' catr_ovc_get_cpmrc("13077A01800039",
 #'   4230,
 #'   province = "CIUDAD REAL",
 #'   municipality = "SANTA CRUZ DE MUDELA"
 #' )
 #'
 #' # only the cadastral reference
-#' catr_ovc_cpmrc("9872023VH5797S")
+#' catr_ovc_get_cpmrc("9872023VH5797S")
 #' }
 #'
-catr_ovc_cpmrc <- function(rc,
-                           srs = 4326,
-                           province = NULL,
-                           municipality = NULL,
-                           verbose = FALSE) {
+catr_ovc_get_cpmrc <- function(rc,
+                               srs = 4326,
+                               province = NULL,
+                               municipality = NULL,
+                               verbose = FALSE) {
 
 
   # Sanity checks

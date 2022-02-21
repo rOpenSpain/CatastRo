@@ -4,27 +4,32 @@
 
 -   Add **ATOM INSPIRE** capabilities:
 
-    -   Addresses: `catr_atom_ad()`, `catr_atom_ad_db_all()`.
-    -   Cadastral Parcels: `catr_atom_cp()`, `catr_atom_cp_db_all()`.
-    -   Buildings: `catr_atom_bu()`, `catr_atom_bu_db_all()`.
+    -   Addresses: `catr_atom_get_address()`, `catr_atom_get_address_db_all()`.
+    -   Cadastral Parcels: `catr_atom_get_parcels()`,
+        `catr_atom_get_parcels_db_all()`.
+    -   Buildings: `catr_atom_get_buildings()`,
+        `catr_atom_get_buildings_db_all()`.
 
 -   Add **WFS INSPIRE** capabilities:
 
-    -   Addresses: `catr_wfs_ad_bbox()`, `catr_wfs_ad_codvia()`,
-        `catr_wfs_ad_postalcode()`, `catr_wfs_ad_rc()`.
-    -   Cadastral Parcels: `catr_wfs_cp_neigh_parcel()`, `catr_wfs_cp_parcel()`,
-        `catr_wfs_cp_parcel_zoning()`, `catr_wfs_cp_zoning()`.
-    -   Buildings: `catr_wfs_bu_bbox()`,`catr_wfs_bu_rc()`.
+    -   Addresses: `catr_wfs_get_address_bbox()`,
+        `catr_wfs_get_address_codvia()`, `catr_wfs_get_address_postalcode()`,
+        `catr_wfs_get_address_rc()`.
+    -   Cadastral Parcels: `catr_wfs_get_parcels_neigh_parcel()`,
+        `catr_wfs_get_parcels_parcel()`, `catr_wfs_get_parcels_parcel_zoning()`,
+        `catr_wfs_get_parcels_zoning()`.
+    -   Buildings:
+        `catr_wfs_get_buildings_bbox()`,`catr_wfs_get_buildings_rc()`.
 
--   Add **WMS INSPIRE** capabilities: `catr_wms_layer()`.
+-   Add **WMS INSPIRE** capabilities: `catr_wms_get_layer()`.
 
 -   New interface for **OVC Services**. Deprecate previous functions in favor of
     the new API:
 
     -   New SRS database on `catr_srs_values`, replaces `coordinates`.
-    -   `catr_ovc_rccoor_distancia()` replaces `near_rc()`.
-    -   `catr_ovc_rccoor()` replaces `get_rc()`.
-    -   `catr_ovc_cpmrc()` replaces `get_coor()`.
+    -   `catr_ovc_get_rccoor_distancia()` replaces `near_rc()`.
+    -   `catr_ovc_get_rccoor()` replaces `get_rc()`.
+    -   `catr_ovc_get_cpmrc()` replaces `get_coor()`.
 
 -   Add precomputed vignettes.
 

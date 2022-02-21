@@ -75,7 +75,7 @@ the
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
 service.
 
-These functions are named `catr_ovc_*` and returns a tibble, as provided by the
+These functions are named `catr_ovc_get_*` and returns a tibble, as provided by the
 package **tibble**. See `vignette("ovcservice")`, where these functions are
 described.
 
@@ -97,11 +97,7 @@ The ATOM service allows to batch-download vector objects of different cadastral
 elements for a specific municipality. The result is provided as `sf` objects
 (See **sf** package).
 
-These functions are named `catr_atom_xxx` where `_xxx` can have the values;
-
--   `_ad` for querying addresses.
--   `_bu` for querying buildings.
--   `_co` for querying cadastral parcels.
+These functions are named `catr_atom_get_xxx`.
 
 #### WFS service
 
@@ -111,18 +107,14 @@ elements. The result is provided as `sf` objects (See **sf** package).
 Note that there are some limitations on the extension and number of elements to
 query. For batch-downloading the ATOM service is preferred.
 
-These functions are named `catr_wms_xxx` where `_xxx` can have the values;
-
--   `_ad` for querying addresses.
--   `_bu` for querying buildings.
--   `_co` for querying cadastral parcels.
+These functions are named `catr_wms_get_xxx`.
 
 #### WMS service
 
 This service allows to download georeferenced images of different cadastral
 elements. The result is a raster on the format provides by **terra**.
 
-There is a single function for querying this service: `catr_wms_layer()`.
+There is a single function for querying this service: `catr_wms_get_layer()`.
 
 #### Terms and conditions of use
 
@@ -140,13 +132,13 @@ This script highlights some features of **CatastRo** :
 
 library(CatastRo)
 
-catr_ovc_cpmrc(rc = "13077A01800039")
+catr_ovc_get_cpmrc(rc = "13077A01800039")
 ```
 
 ### Extract a cadastral reference from a given set of coordinates
 
 ```{r}
-catr_ovc_rccoor(
+catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
   srs = "4230"
@@ -157,7 +149,7 @@ catr_ovc_rccoor(
 
 ```{r}
 
-bu <- catr_atom_bu("Nava de la Asuncion", to = "Segovia")
+bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 
 # Map
@@ -177,13 +169,13 @@ ggplot(bu) +
 ### Extract geometries using the WFS service
 
 ```{r}
-wfs_bu <- catr_wfs_bu_bbox(
+wfs_get_buildings <- catr_wfs_get_buildings_bbox(
   c(-5.567429, 42.598935, -5.565509, 42.600396),
   srs = 4326
 )
 
 # Map
-ggplot(wfs_bu) +
+ggplot(wfs_get_buildings) +
   geom_sf() +
   ggtitle("Leon Cathedral, Spain")
 ```
@@ -192,14 +184,14 @@ ggplot(wfs_bu) +
 
 ```{r}
 
-wms_bu <- catr_wms_layer(wfs_bu, bbox_expand = 0.2)
+wms_bu <- catr_wms_get_layer(wfs_get_buildings, bbox_expand = 0.2)
 
 # Map
 # Load mapSpain for using layer_spatraster
 library(mapSpain)
 ggplot() +
   layer_spatraster(wms_bu) +
-  geom_sf(data = wfs_bu, fill = "red", alpha = 0.6)
+  geom_sf(data = wfs_get_buildings, fill = "red", alpha = 0.6)
 ```
 
 ## A note on caching

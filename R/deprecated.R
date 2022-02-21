@@ -7,7 +7,7 @@
 #' `r lifecycle::badge("deprecated")`
 #'
 #' **This function was deprecated to adapt it to the new interface. Use**
-#' [catr_ovc_cpmrc()] instead.
+#' [catr_ovc_get_cpmrc()] instead.
 #'
 #'
 #'
@@ -37,7 +37,7 @@
 #' @keywords internal
 #' @family deprecated functions
 get_coor <- function(RC, SRS = "Google", Province = "", Municipality = "") {
-  lifecycle::deprecate_stop("0.2.0", "get_coor()", "catr_ovc_cpmrc()")
+  lifecycle::deprecate_stop("0.2.0", "get_coor()", "catr_ovc_get_cpmrc()")
 }
 
 #' @rdname get_rc
@@ -49,7 +49,7 @@ get_coor <- function(RC, SRS = "Google", Province = "", Municipality = "") {
 #' `r lifecycle::badge("deprecated")`
 #'
 #' **This function was deprecated to adapt it to the new interface. Use**
-#' [catr_ovc_rccoor()] instead.
+#' [catr_ovc_get_rccoor()] instead.
 #'
 #'
 #'
@@ -69,7 +69,7 @@ get_coor <- function(RC, SRS = "Google", Province = "", Municipality = "") {
 #' @keywords internal
 #' @family deprecated functions
 get_rc <- function(lat, lon, SRS = "Google") {
-  lifecycle::deprecate_stop("0.2.0", "get_rc()", "catr_ovc_rccoor()")
+  lifecycle::deprecate_stop("0.2.0", "get_rc()", "catr_ovc_get_rccoor()")
 }
 
 
@@ -81,7 +81,7 @@ get_rc <- function(lat, lon, SRS = "Google") {
 #' `r lifecycle::badge("deprecated")`
 #'
 #' **This function was deprecated to adapt it to the new interface. Use**
-#' [catr_ovc_rccoor_distancia()] instead.
+#' [catr_ovc_get_rccoor_distancia()] instead.
 #'
 #'
 #' @inheritParams get_coor
@@ -102,5 +102,5 @@ get_rc <- function(lat, lon, SRS = "Google") {
 #' @keywords internal
 #' @family deprecated functions
 near_rc <- function(lat, lon, SRS = "Google") {
-  lifecycle::deprecate_stop("0.2.0", "near_rc()", "catr_ovc_rccoor_distancia()")
+  lifecycle::deprecate_stop("0.2.0", "near_rc()", "catr_ovc_get_rccoor_distancia()")
 }

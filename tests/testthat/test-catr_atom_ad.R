@@ -1,14 +1,14 @@
 test_that("ATOM Addresses", {
-  expect_message(catr_atom_ad("xyxghx"))
+  expect_message(catr_atom_get_address("xyxghx"))
 
   skip_on_cran()
 
-  s <- catr_atom_ad("Melque",
+  s <- catr_atom_get_address("Melque",
     to = "Segovia",
     verbose = TRUE
   )
   expect_s3_class(s, "sf")
-  expect_message(catr_atom_ad("Melque",
+  expect_message(catr_atom_get_address("Melque",
     to = "XXX",
     verbose = TRUE
   ), "Ignoring 'to' parameter. No results for XXX")
@@ -19,10 +19,10 @@ test_that("ATOM Addresses", {
 test_that("ATOM Encoding issue", {
   skip_on_cran()
 
-  s <- catr_atom_ad("12028")
+  s <- catr_atom_get_address("12028")
   expect_s3_class(s, "sf")
 
-  expect_silent(catr_atom_ad("23078"))
-  expect_silent(catr_atom_ad("03050"))
-  expect_silent(catr_atom_ad("23051"))
+  expect_silent(catr_atom_get_address("23078"))
+  expect_silent(catr_atom_get_address("03050"))
+  expect_silent(catr_atom_get_address("23051"))
 })

@@ -17,9 +17,9 @@
 #' @export
 #' @return A `sf` object.
 #'
-#' @inheritParams catr_atom_cp_db_all
+#' @inheritParams catr_atom_get_parcels_db_all
 #' @param munic Municipality to extract, It can be a part of a string or the
-#'   cadastral code. See [catr_atom_cp_db_all()] for getting the cadastral
+#'   cadastral code. See [catr_atom_get_parcels_db_all()] for getting the cadastral
 #'   codes.
 #' @param to Optional parameter for defining the Territorial Office to which
 #'   `munic` belongs. This parameter is a helper for narrowing the search.
@@ -27,7 +27,7 @@
 #'   or `"zoning"` for cadastral zoning.
 #' @examples
 #' \donttest{
-#' s <- catr_atom_cp("Melque",
+#' s <- catr_atom_get_parcels("Melque",
 #'   to = "Segovia",
 #'   what = "parcel"
 #' )
@@ -42,20 +42,20 @@
 #'   )
 #' }
 #'
-catr_atom_cp <- function(munic,
-                         to = NULL,
-                         what = "parcel",
-                         cache = TRUE,
-                         update_cache = FALSE,
-                         cache_dir = NULL,
-                         verbose = FALSE) {
+catr_atom_get_parcels <- function(munic,
+                                  to = NULL,
+                                  what = "parcel",
+                                  cache = TRUE,
+                                  update_cache = FALSE,
+                                  cache_dir = NULL,
+                                  verbose = FALSE) {
 
   # Sanity checks
   if (!(what %in% c("parcel", "zoning"))) {
     stop("'what' should be 'parcel' or 'zoning'")
   }
 
-  all <- catr_atom_cp_db_all(
+  all <- catr_atom_get_parcels_db_all(
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
@@ -82,7 +82,7 @@ catr_atom_cp <- function(munic,
   if (is.na(findmunic)) {
     message(
       "No Municipality found for ", munic, " ", to,
-      ". Check available municipalities with catr_atom_cp_db_all()"
+      ". Check available municipalities with catr_atom_get_parcels_db_all()"
     )
     return(invisible(NA))
   }
@@ -95,7 +95,7 @@ catr_atom_cp <- function(munic,
     )
   }
 
-  municurls <- catr_atom_cp_db_to(as.character(m$territorial_office),
+  municurls <- catr_atom_get_parcels_db_to(as.character(m$territorial_office),
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,

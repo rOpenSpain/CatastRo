@@ -14,7 +14,7 @@
 #' @family OVCCoordenadas
 #' @family cadastral references
 #' @seealso [catr_srs_values], `vignette("ovcservice")`
-#' @inheritParams catr_atom_ad
+#' @inheritParams catr_atom_get_address
 #'
 #' @param lat Latitude to use on the query. It should be specified in the same
 #'  in the CRS/SRS `specified` by `srs`.
@@ -44,13 +44,13 @@
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
-#' catr_ovc_rccoor_distancia(
+#' catr_ovc_get_rccoor_distancia(
 #'   lat = 40.963200,
 #'   lon = -5.671420,
 #'   srs = 4326
 #' )
 #' }
-catr_ovc_rccoor_distancia <- function(lat, lon, srs = 4326, verbose = FALSE) {
+catr_ovc_get_rccoor_distancia <- function(lat, lon, srs = 4326, verbose = FALSE) {
 
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values

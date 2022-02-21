@@ -1,6 +1,6 @@
-catr_wfs_build_url <- function(host = "http://ovc.catastro.meh.es/INSPIRE/",
-                               entry,
-                               params) {
+catr_wfs_get_buildingsild_url <- function(host = "http://ovc.catastro.meh.es/INSPIRE/",
+                                          entry,
+                                          params) {
 
   # Clean empty params
   params <- params[lengths(params) != 0]
@@ -52,7 +52,7 @@ wfs_api_query <- function(entry, ..., verbose = TRUE) {
 
   # Prepare URL
   # Get URl
-  api_entry <- catr_wfs_build_url(
+  api_entry <- catr_wfs_get_buildingsild_url(
     entry = entry,
     params = arguments
   )

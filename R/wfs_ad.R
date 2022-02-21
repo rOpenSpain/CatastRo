@@ -3,10 +3,10 @@
 #' @description
 #' Get the spatial data of addresses The WFS Service allows to perform
 #' several types of queries:
-#' - By bounding box: Implemented on `catr_wfs_ad_bbox()`. Extract objects
+#' - By bounding box: Implemented on `catr_wfs_get_address_bbox()`. Extract objects
 #'   included on the bounding box provided. See **Details**.
 #'
-#' @inheritParams catr_wfs_bu_bbox
+#' @inheritParams catr_wfs_get_buildings_bbox
 #'
 #' @seealso [sf::st_bbox()]
 #' @family INSPIRE
@@ -39,9 +39,9 @@
 #' The API service is limited to a bounding box of 4km2 and a maximum of 5.000
 #' elements.
 #'
-#' @rdname catr_wfs_ad
+#' @rdname catr_wfs_get_address
 #' @export
-catr_wfs_ad_bbox <- function(x, srs, verbose = FALSE) {
+catr_wfs_get_address_bbox <- function(x, srs, verbose = FALSE) {
   bbox_res <- wfs_bbox(x, srs)
 
   message_on_limit(bbox_res, 4)
@@ -68,17 +68,17 @@ catr_wfs_ad_bbox <- function(x, srs, verbose = FALSE) {
   return(out)
 }
 #' @description
-#' - By street code: Implemented on `catr_wfs_ad_codvia()`. Extract
+#' - By street code: Implemented on `catr_wfs_get_address_codvia()`. Extract
 #'   objects of specific addresses.
 #'
 #' @param codvia Cadastral street code.
 #' @param del Cadastral office code.
 #' @param mun Cadastral municipality code.
 #'
-#' @rdname catr_wfs_ad
+#' @rdname catr_wfs_get_address
 #' @export
-catr_wfs_ad_codvia <- function(codvia, del, mun, srs = NULL,
-                               verbose = FALSE) {
+catr_wfs_get_address_codvia <- function(codvia, del, mun, srs = NULL,
+                                        verbose = FALSE) {
   res <- wfs_api_query(
     entry = "wfsAD.aspx?",
     verbose = verbose,
@@ -100,14 +100,14 @@ catr_wfs_ad_codvia <- function(codvia, del, mun, srs = NULL,
 }
 
 #' @description
-#' - By cadastral reference: Implemented on `catr_wfs_ad_rc()`. Extract
+#' - By cadastral reference: Implemented on `catr_wfs_get_address_rc()`. Extract
 #'   objects of specific cadastral references
 #'
-#' @inheritParams catr_wfs_bu_rc
+#' @inheritParams catr_wfs_get_buildings_rc
 #'
-#' @rdname catr_wfs_ad
+#' @rdname catr_wfs_get_address
 #' @export
-catr_wfs_ad_rc <- function(rc, srs = NULL, verbose = FALSE) {
+catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
   res <- wfs_api_query(
     entry = "wfsAD.aspx?",
     verbose = verbose,
@@ -126,7 +126,7 @@ catr_wfs_ad_rc <- function(rc, srs = NULL, verbose = FALSE) {
   return(out)
 }
 #' @description
-#' - By postal codes: Implemented on `catr_wfs_ad_postalcode()`. Extract
+#' - By postal codes: Implemented on `catr_wfs_get_address_postalcode()`. Extract
 #'   objects of specific cadastral references
 #'
 #' Check the
@@ -134,11 +134,11 @@ catr_wfs_ad_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #'
 #' @param postalcode Postal code.
 #'
-#' @rdname catr_wfs_ad
+#' @rdname catr_wfs_get_address
 #' @export
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
-#' ad <- catr_wfs_ad_bbox(c(
+#' ad <- catr_wfs_get_address_bbox(c(
 #'   233673, 4015968, 233761, 4016008
 #' ),
 #' srs = 25830
@@ -149,7 +149,7 @@ catr_wfs_ad_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #' ggplot(ad) +
 #'   geom_sf()
 #' }
-catr_wfs_ad_postalcode <- function(postalcode, srs = NULL, verbose = FALSE) {
+catr_wfs_get_address_postalcode <- function(postalcode, srs = NULL, verbose = FALSE) {
   res <- wfs_api_query(
     entry = "wfsAD.aspx?",
     verbose = verbose,

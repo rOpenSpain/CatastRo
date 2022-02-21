@@ -102,18 +102,18 @@ order to show some of the capabilities of the package:
 
 library(CatastRo)
 
-stadium <- catr_wfs_bu_bbox(
+stadium <- catr_wfs_get_buildings_bbox(
   c(-3.6891446916, 40.4523311971, -3.687462138, 40.4538643165),
   srs = 4326
 )
 
 # Now extract cadastral parcels. We can use spatial objects on the query
 
-stadium_parcel <- catr_wfs_cp_bbox(stadium)
+stadium_parcel <- catr_wfs_get_parcels_bbox(stadium)
 
 # Extract imagery: Labels of the parcel
 
-labs <- catr_wms_layer(stadium_parcel,
+labs <- catr_wms_get_layer(stadium_parcel,
   what = "parcel",
   styles = "BoundariesOnly"
 )
@@ -139,13 +139,13 @@ using the **ATOM services**.
 In first place, we batch-download the buildings of the municipality:
 
 ```{r}
-valencia_bu <- catr_atom_bu("Valencia",
+valencia_bu <- catr_atom_get_buildings("Valencia",
   to = "Valencia" # We use "to" parameter to narrow the search
 )
 ```
 
 We used here the to parameter to narrow the search to the province of Valencia.
-In case of doubt, the function `catr_atom_bu_db_all()` provides the names and
+In case of doubt, the function `catr_atom_get_buildings_db_all()` provides the names and
 urls recognized by the Catastro API.
 
 Next step for creating the visualization is to limit the analysis to a circle of

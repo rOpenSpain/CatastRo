@@ -11,7 +11,7 @@
 #' @family OVCCoordenadas
 #' @family cadastral references
 #' @seealso [catr_srs_values], `vignette("ovcservice")`
-#' @inheritParams catr_ovc_rccoor_distancia
+#' @inheritParams catr_ovc_get_rccoor_distancia
 #'
 #' @return A tibble. See **Details**
 #'
@@ -32,13 +32,13 @@
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
-#' catr_ovc_rccoor(
+#' catr_ovc_get_rccoor(
 #'   lat = 38.6196566583596,
 #'   lon = -3.45624183836806,
 #'   srs = 4326
 #' )
 #' }
-catr_ovc_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
+catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
 
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values

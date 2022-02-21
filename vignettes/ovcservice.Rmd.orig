@@ -54,19 +54,19 @@ by the package **tibble**.
 The OVCCoordenadas Web Service can be reached using the following
 functions:
 
-* `catr_ovc_rccoor()`
-* `catr_ovc_rccoor_distancia()`
-* `catr_ovc_cpmrc()`
+* `catr_ovc_get_rccoor()`
+* `catr_ovc_get_rccoor_distancia()`
+* `catr_ovc_get_cpmrc()`
 
 ## Reverse Geocoding Cadastral References
 
-The function `catr_ovc_rccoor()` receives the coordinates (*lat* and *lon*) and
+The function `catr_ovc_get_rccoor()` receives the coordinates (*lat* and *lon*) and
 the spatial reference system (SRS) used to express them. The return is a tibble
 with the cadastral reference of the property in that spatial point, including
 also other information as the address (town street and number).
 
 ```{r}
-result <- catr_ovc_rccoor(
+result <- catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
   srs = "4230"
@@ -93,10 +93,10 @@ catr_srs_values %>%
 
 It is also possible to get all the cadastral references in a square of
 50-meters' side centered in the coordinates *lat* and *lon* through the function
-`catr_ovc_rccoor_distancia()`.
+`catr_ovc_get_rccoor_distancia()`.
 
 ```{r}
-catr_ovc_rccoor_distancia(
+catr_ovc_get_rccoor_distancia(
   lat = 40.96002,
   lon = -5.663408,
   srs = "4230"
@@ -107,12 +107,12 @@ catr_ovc_rccoor_distancia(
 ## Geocoding a Cadastral Reference
 
 The opposite query is possible as well. Being given to the function
-`catr_ovc_cpmrc()` a cadastral reference (`rc`), the province (`province`) and
-the town (`municipality`), `catr_ovc_cpmrc()` returns its coordinates *lat* and
+`catr_ovc_get_cpmrc()` a cadastral reference (`rc`), the province (`province`) and
+the town (`municipality`), `catr_ovc_get_cpmrc()` returns its coordinates *lat* and
 *lon* in a particular *SRS* besides the address (town, street and number).
 
 ```{r}
-catr_ovc_cpmrc(
+catr_ovc_get_cpmrc(
   rc = "13077A01800039",
   srs = "4230",
   province = "CIUDAD REAL",
@@ -125,10 +125,10 @@ Neither the `province` nor `municipality` are required to be passed to the
 function, unless the argument `municipality` is not `NULL`, in that case the
 argument `province` is needed to be passed. If it is passed a value to the
 `province` argument while the `municipality` argument is `NULL`, the function
-`catr_ovc_cpmrc()` will throw a message and would return a tibble with no data.
+`catr_ovc_get_cpmrc()` will throw a message and would return a tibble with no data.
 
 ```{r, message = TRUE}
-catr_ovc_cpmrc(
+catr_ovc_get_cpmrc(
   rc = "13077A01800039",
   municipality = "SANTA CRUZ DE MUDELA"
 ) %>%
@@ -141,7 +141,7 @@ When using only `rc` the result is provided as expected:
 ```{r}
 
 # No warning, get the result
-catr_ovc_cpmrc(rc = "13077A01800039") %>%
+catr_ovc_get_cpmrc(rc = "13077A01800039") %>%
   knitr::kable()
 
 ```
