@@ -89,13 +89,10 @@ stadium <- catr_wfs_bu_bbox(
   c(-3.6891446916, 40.4523311971, -3.687462138, 40.4538643165),
   srs = 4326
 )
-#> Error in catr_hlp_dwnload(api_entry, filename, cache_dir = tempdir(), : 
-#> Execution halted
 
 # Now extract cadastral parcels. We can use spatial objects on the query
 
 stadium_parcel <- catr_wfs_cp_bbox(stadium)
-#> Error in wfs_bbox(bbox, srs): object 'stadium' not found
 
 # Extract imagery: Labels of the parcel
 
@@ -103,7 +100,6 @@ labs <- catr_wms_layer(stadium_parcel,
   what = "parcel",
   styles = "BoundariesOnly"
 )
-#> Error in get_sf_from_bbox(bbox, srs): object 'stadium_parcel' not found
 
 # Plot
 library(ggplot2)
@@ -113,8 +109,9 @@ ggplot() +
   layer_spatraster(labs) +
   geom_sf(data = stadium_parcel, fill = NA, col = "red", size = 2) +
   geom_sf(data = stadium, fill = "red", alpha = .5)
-#> Error in layer_spatraster(labs): data object is not SpatRaster. See ?terra::rast()
 ```
+
+<img src="santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%" />
 
 ### Thematic maps
 
@@ -163,7 +160,7 @@ ggplot(dataviz) +
   geom_sf()
 ```
 
-<img src="./minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%" />
+<img src="minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%" />
 
 The last step to recreate the data visualization is to manipulate the
 construction year, available in the column `beginning`:
@@ -224,7 +221,7 @@ ggplot(dataviz) +
   )
 ```
 
-<img src="./dataviz-1.png" title="plot of chunk dataviz" alt="plot of chunk dataviz" width="100%" />
+<img src="dataviz-1.png" title="plot of chunk dataviz" alt="plot of chunk dataviz" width="100%" />
 
 
 
