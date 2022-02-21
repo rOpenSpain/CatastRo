@@ -112,7 +112,7 @@
 <p>Alternatively, you can install the developing version of <strong>CatastRo</strong> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span>
-<span class="fu">install_github</span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
@@ -122,7 +122,7 @@
 <h3 id="ovccoordenadas">OVCCoordenadas<a class="anchor" aria-label="anchor" href="#ovccoordenadas"></a>
 </h3>
 <p>These functions allow to geocode and reverse geocode cadastral references using the <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p>
-<p>These functions are named <code>catr_ovc_*</code> and returns a tibble, as provided by the package <strong>tibble</strong>. See <code><a href="articles/ovcservice.html">vignette("ovcservice")</a></code>, where these functions are described.</p>
+<p>These functions are named <code>catr_ovc_get_*</code> and returns a tibble, as provided by the package <strong>tibble</strong>. See <code><a href="articles/ovcservice.html">vignette("ovcservice")</a></code>, where these functions are described.</p>
 </div>
 <div class="section level3">
 <h3 id="inspire">INSPIRE<a class="anchor" aria-label="anchor" href="#inspire"></a>
@@ -134,30 +134,14 @@
 <h4 id="atom-service">ATOM service<a class="anchor" aria-label="anchor" href="#atom-service"></a>
 </h4>
 <p>The ATOM service allows to batch-download vector objects of different cadastral elements for a specific municipality. The result is provided as <code>sf</code> objects (See <strong>sf</strong> package).</p>
-<p>These functions are named <code>catr_atom_xxx</code> where <code>_xxx</code> can have the values;</p>
-<ul>
-<li>
-<code>_ad</code> for querying addresses.</li>
-<li>
-<code>_bu</code> for querying buildings.</li>
-<li>
-<code>_co</code> for querying cadastral parcels.</li>
-</ul>
+<p>These functions are named <code>catr_atom_get_xxx</code>.</p>
 </div>
 <div class="section level4">
 <h4 id="wfs-service">WFS service<a class="anchor" aria-label="anchor" href="#wfs-service"></a>
 </h4>
 <p>The WFS service allows to download vector objects of specific cadastral elements. The result is provided as <code>sf</code> objects (See <strong>sf</strong> package).</p>
 <p>Note that there are some limitations on the extension and number of elements to query. For batch-downloading the ATOM service is preferred.</p>
-<p>These functions are named <code>catr_wms_xxx</code> where <code>_xxx</code> can have the values;</p>
-<ul>
-<li>
-<code>_ad</code> for querying addresses.</li>
-<li>
-<code>_bu</code> for querying buildings.</li>
-<li>
-<code>_co</code> for querying cadastral parcels.</li>
-</ul>
+<p>These functions are named <code>catr_wms_get_xxx</code>.</p>
 </div>
 <div class="section level4">
 <h4 id="wms-service">WMS service<a class="anchor" aria-label="anchor" href="#wms-service"></a>
