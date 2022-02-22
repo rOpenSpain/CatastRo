@@ -133,32 +133,45 @@ ggplot() +
 We can create also thematic maps using the information available on the spatial
 objects. We would produce a visualization of the urban growth of Valencia using
 **CatastRo**, replicating the map produced by Dominic Royé on his post
-[Visualize urban growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/),
-using the **ATOM services**.
+[Visualize urban
+growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/), using
+the **ATOM services**.
 
-In first place, we batch-download the buildings of the municipality:
+In first place, we extract the coordinates of the city center of Valencia using
+**mapSpain**:
 
 ```{r}
-valencia_bu <- catr_atom_get_buildings("Valencia",
-  to = "Valencia" # We use "to" parameter to narrow the search
-)
-```
 
-We used here the to parameter to narrow the search to the province of Valencia.
-In case of doubt, the function `catr_atom_get_buildings_db_all()` provides the names and
-urls recognized by the Catastro API.
-
-Next step for creating the visualization is to limit the analysis to a circle of
-radius 2.5 km around the city center:
-
-```{r minimal}
 library(dplyr)
 library(sf)
 library(mapSpain)
 
 # Use mapSpain for getting the coords
 
-buff <- esp_get_capimun(munic = "^València$") %>%
+val <- esp_get_capimun(munic = "^València$")
+```
+
+Next step consists on extracting the buildings using the ATOM service. We would
+use also the function `catr_get_code_from_coords()` to identify the code of
+Valencia in the Cadastre, and we would download the buildings with
+`catr_atom_get_buildings()`.
+
+```{r }
+
+val_catr_code <- catr_get_code_from_coords(val)
+
+val_catr_code
+
+valencia_bu <- catr_atom_get_buildings(val_catr_code$catrcode)
+
+```
+
+Next step for creating the visualization is to limit the analysis to a circle of
+radius 2.5 km around the city center:
+
+```{r minimal}
+
+buff <- val %>%
   # Adjust CRS to 25830: (Buildings)
   st_transform(st_crs(valencia_bu)) %>%
   # Buffer
@@ -173,8 +186,7 @@ ggplot(dataviz) +
   geom_sf()
 ```
 
-The last step to recreate the data visualization is to manipulate the
-construction year, available in the column `beginning`:
+Let's extract now the construction year, available in the column `beginning`:
 
 ```{r}
 
@@ -227,7 +239,6 @@ ggplot(dataviz) +
     plot.margin = margin(r = 40, l = 40)
   )
 ```
-
 
 ```{r, include = FALSE}
 
