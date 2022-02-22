@@ -19,8 +19,9 @@
 #' @export
 #'
 #' @examples
-#'
+#' \donttest{
 #' catr_atom_search_munic("Mad")
+#' }
 catr_atom_search_munic <- function(munic,
                                    to = NULL,
                                    cache = TRUE,

@@ -40,8 +40,9 @@ Search for a municipality (as a string, part of string or code) and get
 the corresponding coding as per the Cadastre.
 }
 \examples{
-
+\donttest{
 catr_atom_search_munic("Mad")
+}
 }
 \seealso{
 Other INSPIRE ATOM services:
@@ -53,6 +54,7 @@ Other INSPIRE ATOM services:
 \code{\link{catr_atom_get_parcels}()}
 
 Other search: 
+\code{\link{catr_get_code_from_coords}()},
 \code{\link{catr_ovc_get_cod_munic}()},
 \code{\link{catr_ovc_get_cod_provinces}()}
 

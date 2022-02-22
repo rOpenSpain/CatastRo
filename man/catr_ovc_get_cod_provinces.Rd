@@ -35,6 +35,7 @@ OVCCoordenadas API:
 
 Other search: 
 \code{\link{catr_atom_search_munic}()},
+\code{\link{catr_get_code_from_coords}()},
 \code{\link{catr_ovc_get_cod_munic}()}
 }
 \concept{OVCCallejero}
