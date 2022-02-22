@@ -168,21 +168,33 @@
 <h3 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
 </h3>
 <p>We can create also thematic maps using the information available on the spatial objects. We would produce a visualization of the urban growth of Valencia using <strong>CatastRo</strong>, replicating the map produced by Dominic Royé on his post <a href="https://dominicroye.github.io/en/2019/visualize-urban-growth/" class="external-link">Visualize urban growth</a>, using the <strong>ATOM services</strong>.</p>
-<p>In first place, we batch-download the buildings of the municipality:</p>
+<p>In first place, we extract the coordinates of the city center of Valencia using <strong>mapSpain</strong>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">valencia_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="st">"Valencia"</span>,
-  to <span class="op">=</span> <span class="st">"Valencia"</span> <span class="co"># We use "to" parameter to narrow the search</span>
-<span class="op">)</span></code></pre></div>
-<p>We used here the to parameter to narrow the search to the province of Valencia. In case of doubt, the function <code><a href="../reference/catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all()</a></code> provides the names and urls recognized by the Catastro API.</p>
-<p>Next step for creating the visualization is to limit the analysis to a circle of radius 2.5 km around the city center:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<code class="sourceCode R">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span>
 
 <span class="co"># Use mapSpain for getting the coords</span>
 
-<span class="va">buff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.html" class="external-link">esp_get_capimun</a></span><span class="op">(</span>munic <span class="op">=</span> <span class="st">"^València$"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+<span class="va">val</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.html" class="external-link">esp_get_capimun</a></span><span class="op">(</span>munic <span class="op">=</span> <span class="st">"^València$"</span><span class="op">)</span></code></pre></div>
+<p>Next step consists on extracting the buildings using the ATOM service. We would use also the function <code><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> to identify the code of Valencia in the Cadastre, and we would download the buildings with <code><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code>.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">val_catr_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords</a></span><span class="op">(</span><span class="va">val</span><span class="op">)</span>
+
+<span class="va">val_catr_code</span>
+<span class="co">#&gt; # A tibble: 1 × 12</span>
+<span class="co">#&gt;   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt; 1 VALEN… 46      900        46900    46    250   46250   VALE… 46    900   46   </span>
+<span class="co">#&gt; # … with 1 more variable: cm &lt;chr&gt;</span>
+
+<span class="va">valencia_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">val_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></code></pre></div>
+<p>Next step for creating the visualization is to limit the analysis to a circle of radius 2.5 km around the city center:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">buff</span> <span class="op">&lt;-</span> <span class="va">val</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Adjust CRS to 25830: (Buildings)</span>
   <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">valencia_bu</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Buffer</span>
@@ -196,8 +208,8 @@
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%"></p>
-<p>The last step to recreate the data visualization is to manipulate the construction year, available in the column <code>beginning</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p>Let’s extract now the construction year, available in the column <code>beginning</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># Extract 4 initial positions</span>
 <span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substr</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">$</span><span class="va">beginning</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span>
@@ -212,7 +224,7 @@
 <span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">year</span><span class="op">)</span></code></pre></div>
 <p>Last step is to create groups based on the year and create the data visualization. We use here the function <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html" class="external-link">ggplot2::cut_number()</a></code> to create 15 different classes:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year_cat <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html" class="external-link">cut_number</a></span><span class="op">(</span><span class="va">year</span>,
