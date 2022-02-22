@@ -63,7 +63,8 @@ catr_srs_values \%>\% filter(ovc_service == TRUE)
 Other databases: 
 \code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_buildings_db_all}()},
-\code{\link{catr_atom_get_parcels_db_all}()}
+\code{\link{catr_atom_get_parcels_db_all}()},
+\code{\link{catr_atom_search_munic}()}
 
 Other INSPIRE WFS services:
 \code{\link{catr_wfs_get_address_bbox}()},

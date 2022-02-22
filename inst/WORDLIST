@@ -1,4 +1,7 @@
+AdministrativeBoundary
+AdministrativeUnit
 Bernabéu
+BuildingPart
 CIUDAD
 CMD
 CPMRC
@@ -10,6 +13,8 @@ Cadastre
 CatastRo’
 Catastro
 Consulta
+ConsultaMunicipioCodigos
+ConsultaProvincia
 DISEMINADO
 DOI
 DS
@@ -27,6 +32,7 @@ INE
 MUDELA
 ORCID
 OVC
+OVCCallejero
 OVCCoordenadas
 OVCSWLocalizacionRC
 Oficial
@@ -46,7 +52,10 @@ VH
 WFS
 WGS
 WMS
+admboundary
+admunit
 asmx
+buildingpart
 cadastral
 cadastre
 catastro
@@ -71,7 +80,6 @@ geocoding
 georeferenced
 geotagged
 github
-growthurban
 http
 https
 huso

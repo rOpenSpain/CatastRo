@@ -34,6 +34,14 @@ reference:
       [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx) service.
     contents:
       - has_concept("OVCCoordenadas")
+  - title: OVCCallejero API
+    desc: These functions allows to access the
+      [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx) service.
+    contents:
+      - has_concept("OVCCallejero")
+  - title: Search functions
+    contents:
+      - has_concept("search")
   - title: Cache management
     contents:
       - has_concept("cache utilities")

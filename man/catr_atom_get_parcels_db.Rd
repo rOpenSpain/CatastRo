@@ -95,7 +95,8 @@ Other INSPIRE ATOM services:
 \code{\link{catr_atom_get_address}()},
 \code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels}()}
+\code{\link{catr_atom_get_parcels}()},
+\code{\link{catr_atom_search_munic}()}
 
 Other parcels: 
 \code{\link{catr_atom_get_parcels}()},
@@ -104,6 +105,7 @@ Other parcels:
 Other databases: 
 \code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_buildings_db_all}()},
+\code{\link{catr_atom_search_munic}()},
 \code{\link{catr_srs_values}}
 }
 \concept{ATOM}

@@ -95,7 +95,7 @@ Some of the styles available are:
 \itemize{
 \item "parcel": styles : \code{"BoundariesOnly"}, \code{"ReferencePointOnly"},
 \code{"ELFCadastre"}.
-\item "zoninig": styles : \code{"BoundariesOnly"}, \code{"ELFCadastre"}.
+\item "zoning": styles : \code{"BoundariesOnly"}, \code{"ELFCadastre"}.
 \item "building" and "buildingpart": \code{"ELFCadastre"}
 \item "address": \code{"Number.ELFCadastre"}
 \item "admboundary" y "admunit": \code{"ELFCadastre"}
