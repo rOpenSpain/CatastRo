@@ -19,7 +19,7 @@
 #'
 #' @inheritParams catr_atom_get_parcels_db_all
 #' @param munic Municipality to extract, It can be a part of a string or the
-#'   cadastral code. See [catr_atom_get_parcels_db_all()] for getting the cadastral
+#'   cadastral code. See [catr_atom_search_munic()] for getting the cadastral
 #'   codes.
 #' @param to Optional parameter for defining the Territorial Office to which
 #'   `munic` belongs. This parameter is a helper for narrowing the search.

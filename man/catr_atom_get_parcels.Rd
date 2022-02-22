@@ -16,7 +16,7 @@ catr_atom_get_parcels(
 }
 \arguments{
 \item{munic}{Municipality to extract, It can be a part of a string or the
-cadastral code. See \code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}} for getting the cadastral
+cadastral code. See \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} for getting the cadastral
 codes.}
 
 \item{to}{Optional parameter for defining the Territorial Office to which
@@ -84,7 +84,8 @@ Other INSPIRE ATOM services:
 \code{\link{catr_atom_get_address}()},
 \code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels_db_all}()}
+\code{\link{catr_atom_get_parcels_db_all}()},
+\code{\link{catr_atom_search_munic}()}
 
 Other parcels: 
 \code{\link{catr_atom_get_parcels_db_all}()},

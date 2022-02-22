@@ -6,7 +6,6 @@
 \alias{catr_atom_get_buildings_db_to}
 \title{\strong{ATOM INSPIRE}: Reference Database for ATOM Buildings}
 \source{
-ç
 \url{https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
 }
 \usage{
@@ -96,7 +95,8 @@ Other INSPIRE ATOM services:
 \code{\link{catr_atom_get_address}()},
 \code{\link{catr_atom_get_buildings}()},
 \code{\link{catr_atom_get_parcels_db_all}()},
-\code{\link{catr_atom_get_parcels}()}
+\code{\link{catr_atom_get_parcels}()},
+\code{\link{catr_atom_search_munic}()}
 
 Other buildings: 
 \code{\link{catr_atom_get_buildings}()},
@@ -105,6 +105,7 @@ Other buildings:
 Other databases: 
 \code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_parcels_db_all}()},
+\code{\link{catr_atom_search_munic}()},
 \code{\link{catr_srs_values}}
 }
 \concept{ATOM}

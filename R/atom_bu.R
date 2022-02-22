@@ -18,9 +18,6 @@
 #' @return A `sf` object.
 #'
 #' @inheritParams catr_atom_get_parcels
-#' @param munic Municipality to extract, It can be a part of a string or the
-#'   cadastral code. See [catr_atom_get_buildings_db_all()] for getting the cadastral
-#'   codes.
 #' @param what Information to load. It could be `"building"` for buildings,
 #'   `"buildingpart"` for parts of a building or `"other"` for others (
 #'   swimming pools, etc.).

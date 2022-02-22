@@ -19,9 +19,6 @@
 #' @return A `sf` object.
 #'
 #' @inheritParams catr_atom_get_parcels
-#' @param munic Municipality to extract, It can be a part of a string or the
-#'   cadastral code. See [catr_atom_get_address_db_all()] for getting the cadastral
-#'   codes.
 #' @examples
 #' \donttest{
 #' s <- catr_atom_get_address("Melque",

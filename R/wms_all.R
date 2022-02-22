@@ -61,7 +61,7 @@
 #' Some of the styles available are:
 #' - "parcel": styles : `"BoundariesOnly"`, `"ReferencePointOnly"`,
 #'   `"ELFCadastre"`.
-#' - "zoninig": styles : `"BoundariesOnly"`, `"ELFCadastre"`.
+#' - "zoning": styles : `"BoundariesOnly"`, `"ELFCadastre"`.
 #' - "building" and "buildingpart": `"ELFCadastre"`
 #' - "address": `"Number.ELFCadastre"`
 #' - "admboundary" y "admunit": `"ELFCadastre"`
