@@ -46,6 +46,7 @@ would extract the coordinates using
 \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }
 \examples{
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # Use with coords
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
@@ -54,6 +55,7 @@ catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic_siane()}}, \code{\link[sf:geos_unary]{sf::st_centroid()}}.
