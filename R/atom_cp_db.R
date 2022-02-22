@@ -88,7 +88,11 @@ catr_atom_get_parcels_db_to <- function(to,
   all <- catr_atom_get_parcels_db_all()
   alldist <- unique(all[, c("territorial_office", "url")])
 
-  findto <- grep(to, alldist$territorial_office, ignore.case = TRUE)[1]
+  # Escape parenthesis
+  to <- gsub("\\(|\\)", "", to)
+  allto <- gsub("\\(|\\)", "", alldist$territorial_office)
+
+  findto <- grep(to, allto, ignore.case = TRUE)[1]
 
   if (is.na(findto)) {
     message("No Territorial office found for ", to)

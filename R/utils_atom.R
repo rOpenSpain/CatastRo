@@ -31,9 +31,9 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
 
 
       tbl <- tibble::tibble(
-        title = title,
-        url = url,
-        value = value,
+        title = trimws(title),
+        url = trimws(url),
+        value = trimws(value),
         date = date
       )
 
@@ -46,8 +46,8 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
       date <- as.POSIXct(unlist(feed[1]$entry$updated))
 
       tbl <- tibble::tibble(
-        title = title,
-        url = url,
+        title = trimws(title),
+        url = trimws(url),
         date = date
       )
 
