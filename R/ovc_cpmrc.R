@@ -1,4 +1,4 @@
-#' **OVCCoordenadas**: Geocode a cadastral reference
+#' OVCCoordenadas: Geocode a cadastral reference
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service

@@ -1,4 +1,4 @@
-#' **WFS INSPIRE**: Download Cadastral Parcels
+#' WFS INSPIRE: Download Cadastral Parcels
 #'
 #' @description
 #' Get the spatial data of cadastral parcels and zones. The WFS Service allows

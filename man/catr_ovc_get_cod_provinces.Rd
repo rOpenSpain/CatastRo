@@ -2,7 +2,7 @@
 % Please edit documentation in R/ovc_provinces.R
 \name{catr_ovc_get_cod_provinces}
 \alias{catr_ovc_get_cod_provinces}
-\title{\strong{OVCCallejero}: Extract a list of provinces with their codes}
+\title{OVCCallejero: Extract a list of provinces with their codes}
 \usage{
 catr_ovc_get_cod_provinces(verbose = FALSE)
 }

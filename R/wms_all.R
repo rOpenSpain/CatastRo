@@ -1,4 +1,4 @@
-#' **WMS INSPIRE**: Download map images
+#' WMS INSPIRE: Download map images
 #'
 #' @description
 #' Get geotagged images from the Spanish Cadastre. This function is a wrapper of

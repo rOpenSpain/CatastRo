@@ -8,7 +8,7 @@ message: 'To cite package "CatastRo" in publications use:'
 type: software
 license: GPL-2.0-only
 title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
-version: 0.1.0.9000
+version: 0.2.0
 doi: 10.5281/zenodo.6044091
 abstract: Access public spatial data available under the 'INSPIRE' directive. Tools
   for downloading references and addresses of properties, as well as map images.
@@ -34,7 +34,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   year: '2022'
-  version: 0.1.0.9000
+  version: 0.2.0
   url: https://ropenspain.github.io/CatastRo/
   doi: 10.5281/zenodo.6044091
   abstract: Access public spatial data available under the 'INSPIRE' directive. Tools
@@ -250,7 +250,6 @@ references:
     email: dewey@fishandwhistle.net
     orcid: https://orcid.org/0000-0002-9415-4582
   year: '2022'
-  url: https://CRAN.R-project.org/package=ggspatial
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'

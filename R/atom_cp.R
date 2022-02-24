@@ -1,4 +1,4 @@
-#' **ATOM INSPIRE**: Download all the Cadastral Parcels of a Municipality
+#' ATOM INSPIRE: Download all the Cadastral Parcels of a Municipality
 #'
 #'
 #' Get the spatial data of all the cadastral parcels belonging to a single

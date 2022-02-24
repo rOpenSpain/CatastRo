@@ -1,4 +1,4 @@
-#' **OVCCallejero**: Extract a list of provinces with their codes
+#' OVCCallejero: Extract a list of provinces with their codes
 #'
 #' @description
 #' Implementation of the OVCCallejero service

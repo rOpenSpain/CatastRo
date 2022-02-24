@@ -23,3 +23,4 @@ CRAN-SUBMISSION
 .github/pkg.lock
 docs/
 inst/doc
+cran-comments.md

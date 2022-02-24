@@ -2,7 +2,7 @@
 % Please edit documentation in R/atom_cp.R
 \name{catr_atom_get_parcels}
 \alias{catr_atom_get_parcels}
-\title{\strong{ATOM INSPIRE}: Download all the Cadastral Parcels of a Municipality}
+\title{ATOM INSPIRE: Download all the Cadastral Parcels of a Municipality}
 \usage{
 catr_atom_get_parcels(
   munic,

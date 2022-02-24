@@ -1,4 +1,4 @@
-#' **ATOM INSPIRE**: Search for municipality codes
+#' ATOM INSPIRE: Search for municipality codes
 #'
 #' @description
 #' Search for a municipality (as a string, part of string or code) and get

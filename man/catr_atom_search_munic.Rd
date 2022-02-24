@@ -2,7 +2,7 @@
 % Please edit documentation in R/atom_search.R
 \name{catr_atom_search_munic}
 \alias{catr_atom_search_munic}
-\title{\strong{ATOM INSPIRE}: Search for municipality codes}
+\title{ATOM INSPIRE: Search for municipality codes}
 \usage{
 catr_atom_search_munic(
   munic,

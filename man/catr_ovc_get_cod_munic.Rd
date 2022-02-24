@@ -2,7 +2,7 @@
 % Please edit documentation in R/ovc_munic.R
 \name{catr_ovc_get_cod_munic}
 \alias{catr_ovc_get_cod_munic}
-\title{\strong{OVCCallejero}: Extract the code of a municipality}
+\title{OVCCallejero: Extract the code of a municipality}
 \usage{
 catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 }

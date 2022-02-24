@@ -1,4 +1,4 @@
-#' **OVCCallejero**: Extract the code of a municipality
+#' OVCCallejero: Extract the code of a municipality
 #'
 #' @description
 #' Implementation of the OVCCallejero service
