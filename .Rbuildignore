@@ -18,3 +18,4 @@
 ^data-raw$
 ^vignettes/ovcservice\.Rmd\.orig$
 ^vignettes/CatastRo\.Rmd\.orig$
+^LICENSE\.md$
