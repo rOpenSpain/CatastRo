@@ -24,9 +24,9 @@ library(CatastRo)
 <!-- badges: start -->
 
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
-<!-- [![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo) -->
-<!-- [![CRAN-results](https://cranchecks.info/badges/worst/CatastRo)](https://cran.r-project.org/web/checks/check_results_CatastRo.html) -->
-<!-- [![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo) -->
+[![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
+[![CRAN-results](https://cranchecks.info/badges/worst/CatastRo)](https://cran.r-project.org/web/checks/check_results_CatastRo.html)
+[![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
 [![r-universe](https://ropenspain.r-universe.dev/badges/CatastRo)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/CatastRo/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check)
 [![codecov](https://codecov.io/gh/rOpenSpain/CatastRo/branch/master/graph/badge.svg?token=6L01BKLL85)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
@@ -43,6 +43,13 @@ possible to download spatial objects (as buildings or cadastral parcels), maps
 and geocode cadastral references.
 
 ## Installation
+
+Install **CatastRo** from
+[**CRAN**](https://CRAN.R-project.org/package=CatastRo):
+
+```{r, eval = FALSE}
+install.packages("CatastRo")
+```
 
 You can install the developing version of **CatastRo** using the
 [r-universe](https://ropenspain.r-universe.dev/ui#builds):
@@ -75,8 +82,8 @@ the
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
 service.
 
-These functions are named `catr_ovc_get_*` and returns a tibble, as provided by the
-package **tibble**. See `vignette("ovcservice")`, where these functions are
+These functions are named `catr_ovc_get_*` and returns a tibble, as provided by
+the package **tibble**. See `vignette("ovcservice")`, where these functions are
 described.
 
 ### INSPIRE
@@ -147,7 +154,7 @@ catr_ovc_get_rccoor(
 
 ### Extract geometries using the ATOM service
 
-```{r}
+```{r atom}
 
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
@@ -168,7 +175,7 @@ ggplot(bu) +
 
 ### Extract geometries using the WFS service
 
-```{r}
+```{r wfs}
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
   c(-5.567429, 42.598935, -5.565509, 42.600396),
   srs = 4326
@@ -182,7 +189,7 @@ ggplot(wfs_get_buildings) +
 
 ### Extract maps using the WMS service
 
-```{r}
+```{r wms}
 
 wms_bu <- catr_wms_get_layer(wfs_get_buildings, bbox_expand = 0.2)
 

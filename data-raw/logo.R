@@ -33,7 +33,7 @@ hex_pol <- lapply(1:7,
   st_set_crs(st_crs(top))
 
 # Get Segovia
-segovia <- catr_atom_bu("40900")
+segovia <- catr_atom_get_buildings("40900")
 
 
 finalpols <- st_intersection(segovia, hex_pol)

@@ -10,7 +10,7 @@ on:
       - main
       - master
   schedule:
-      - cron:  '30 08 1 * *'
+      - cron:  '00 07 1 * 1,4'
 
 
 

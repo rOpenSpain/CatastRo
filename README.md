@@ -6,9 +6,9 @@
 <!-- badges: start -->
 
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
-<!-- [![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo) -->
-<!-- [![CRAN-results](https://cranchecks.info/badges/worst/CatastRo)](https://cran.r-project.org/web/checks/check_results_CatastRo.html) -->
-<!-- [![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo) -->
+[![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
+[![CRAN-results](https://cranchecks.info/badges/worst/CatastRo)](https://cran.r-project.org/web/checks/check_results_CatastRo.html)
+[![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
 [![r-universe](https://ropenspain.r-universe.dev/badges/CatastRo)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/CatastRo/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check)
 [![codecov](https://codecov.io/gh/rOpenSpain/CatastRo/branch/master/graph/badge.svg?token=6L01BKLL85)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
@@ -25,6 +25,13 @@ of the [Spanish Cadastre](https://www.sedecatastro.gob.es/). With
 cadastral parcels), maps and geocode cadastral references.
 
 ## Installation
+
+Install **CatastRo** from
+[**CRAN**](https://CRAN.R-project.org/package=CatastRo):
+
+``` r
+install.packages("CatastRo")
+```
 
 You can install the developing version of **CatastRo** using the
 [r-universe](https://ropenspain.r-universe.dev/ui#builds):
@@ -158,7 +165,7 @@ ggplot(bu) +
   ggtitle("Nava de la Asunción, Segovia")
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-atom-1.png" width="100%" />
 
 ### Extract geometries using the WFS service
 
@@ -174,7 +181,7 @@ ggplot(wfs_get_buildings) +
   ggtitle("Leon Cathedral, Spain")
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-wfs-1.png" width="100%" />
 
 ### Extract maps using the WMS service
 
@@ -189,7 +196,7 @@ ggplot() +
   geom_sf(data = wfs_get_buildings, fill = "red", alpha = 0.6)
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-wms-1.png" width="100%" />
 
 ## A note on caching
 
