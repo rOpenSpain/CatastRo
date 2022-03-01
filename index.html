@@ -116,7 +116,7 @@
 <p>Alternatively, you can install the developing version of <strong>CatastRo</strong> with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span>
-<span class="fu">install_github</span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
@@ -171,10 +171,10 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span>
 
 <span class="fu"><a href="reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
+<span class="co">#&gt; # A tibble: 1 × 10</span>
 <span class="co">#&gt;   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span>
 <span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;</span>
-<span class="co">#&gt; 1  -3.46   38.6 13077A018~ DS DIS~ 13077~ 18000~ -3.4575~ 38.6184~ EPSG:4~ DS D~</span></code></pre></div>
+<span class="co">#&gt; 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="extract-a-cadastral-reference-from-a-given-set-of-coordinates">Extract a cadastral reference from a given set of coordinates<a class="anchor" aria-label="anchor" href="#extract-a-cadastral-reference-from-a-given-set-of-coordinates"></a>
@@ -185,10 +185,10 @@
   lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,
   srs <span class="op">=</span> <span class="st">"4230"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt; # A tibble: 1 × 8</span>
 <span class="co">#&gt;   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span>
 <span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;</span>
-<span class="co">#&gt; 1 13077A01800039 DS DISEMINADO  P~ 13077~ 18000~    -3.46     38.6 EPSG:4~ DS D~</span></code></pre></div>
+<span class="co">#&gt; 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="extract-geometries-using-the-atom-service">Extract geometries using the ATOM service<a class="anchor" aria-label="anchor" href="#extract-geometries-using-the-atom-service"></a>
