@@ -4,7 +4,7 @@
   "identifier": "CatastRo",
   "description": "Access public spatial data available under the 'INSPIRE' directive. Tools for downloading references and addresses of properties, as well as map images.",
   "name": "CatastRo: Interface to the API 'Sede Electronica Del Catastro'",
-  "relatedLink": "https://ropenspain.github.io/CatastRo/",
+  "relatedLink": ["https://ropenspain.github.io/CatastRo/", "https://CRAN.R-project.org/package=CatastRo"],
   "codeRepository": "https://github.com/rOpenSpain/CatastRo",
   "issueTracker": "https://github.com/rOpenSpain/CatastRo/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
@@ -15,6 +15,12 @@
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -288,7 +294,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1389.318KB",
+  "fileSize": "1510.924KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -316,5 +322,5 @@
   "readme": "https://github.com/rOpenSpain/CatastRo/blob/master/README.md",
   "contIntegration": ["https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check", "https://app.codecov.io/gh/rOpenSpain/CatastRo"],
   "developmentStatus": "https://www.repostatus.org/#active",
-  "keywords": ["r-package", "ropenspain", "catastro", "spain", "rstats", "spatial", "r", "maps", "gis", "static-tiles"]
+  "keywords": ["r-package", "ropenspain", "catastro", "spain", "rstats", "spatial", "r", "maps", "gis", "static-tiles", "cran", "cran-r"]
 }

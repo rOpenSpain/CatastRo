@@ -39,6 +39,7 @@ preferred-citation:
   doi: 10.5281/zenodo.6044091
   abstract: Access public spatial data available under the 'INSPIRE' directive. Tools
     for downloading references and addresses of properties, as well as map images.
+repository: https://CRAN.R-project.org/package=CatastRo
 repository-code: https://github.com/rOpenSpain/CatastRo
 url: https://ropenspain.github.io/CatastRo/
 contact:
@@ -48,6 +49,8 @@ contact:
   orcid: https://orcid.org/0000-0001-8457-4658
 keywords:
 - catastro
+- cran
+- cran-r
 - gis
 - maps
 - r

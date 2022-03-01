@@ -111,7 +111,7 @@ ggplot() +
   geom_sf(data = stadium, fill = "red", alpha = .5)
 ```
 
-<img src="./santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%" />
+<img src="santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%" />
 
 ### Thematic maps
 
@@ -148,10 +148,11 @@ Valencia in the Cadastre, and we would download the buildings with
 val_catr_code <- catr_get_code_from_coords(val)
 
 val_catr_code
-#> # A tibble: 1 x 12
-#>   munic    catr_to catr_munic catrcode cpro  cmun  inecode nm       cd    cmc   cp    cm   
-#>   <chr>    <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>    <chr> <chr> <chr> <chr>
-#> 1 VALENCIA 46      900        46900    46    250   46250   VALENCIA 46    900   46    250
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 VALEN… 46      900        46900    46    250   46250   VALE… 46    900   46   
+#> # … with 1 more variable: cm <chr>
 
 valencia_bu <- catr_atom_get_buildings(val_catr_code$catrcode)
 ```
@@ -177,7 +178,7 @@ ggplot(dataviz) +
   geom_sf()
 ```
 
-<img src="./minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%" />
+<img src="minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%" />
 
 Let's extract now the construction year, available in the column `beginning`:
 
@@ -237,7 +238,7 @@ ggplot(dataviz) +
   )
 ```
 
-<img src="./dataviz-1.png" title="plot of chunk dataviz" alt="plot of chunk dataviz" width="100%" />
+<img src="dataviz-1.png" title="plot of chunk dataviz" alt="plot of chunk dataviz" width="100%" />
 
 
 
