@@ -105,6 +105,7 @@ wfs_validate_srs <- function(srs) {
   valid_srs <- tibble::as_tibble(valid_srs)
   valid_srs <- valid_srs[valid_srs$wfs_service == TRUE, "SRS"]
   valid <- tibble::deframe(valid_srs)
+  valid <- as.character(valid)
 
   if (!as.character(srs) %in% valid) {
     stop(
