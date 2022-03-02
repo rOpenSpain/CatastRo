@@ -1,3 +1,7 @@
+# CatastRo (development version)
+
+-   Fix CRAN tests.
+
 # CatastRo 0.2.0
 
 **Overall revamp of the package. Major changes on the API.**
