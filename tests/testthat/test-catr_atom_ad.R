@@ -1,5 +1,7 @@
 test_that("ATOM Addresses", {
   skip_on_cran()
+  expect_message(catr_atom_get_address("xyxghx"))
+
 
   expect_message(catr_atom_get_address("xyxghx"))
 

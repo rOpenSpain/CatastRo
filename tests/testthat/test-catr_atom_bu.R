@@ -1,8 +1,9 @@
 test_that("ATOM Buildings", {
-  skip_on_cran()
 
+  skip_on_cran()
   expect_message(catr_atom_get_buildings("xyxghx"))
   expect_error(catr_atom_get_buildings("Melque", what = "aa"))
+
   s <- catr_atom_get_buildings("Melque",
     to = "Segovia",
     verbose = TRUE

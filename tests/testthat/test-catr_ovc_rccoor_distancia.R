@@ -1,4 +1,6 @@
 test_that("Expect error on bad SRS", {
+
+  skip_on_cran()
   expect_error(catr_ovc_get_rccoor_distancia(
     lat = 40.963200, lon = -5.671420,
     "abcd"
