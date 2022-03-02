@@ -38,6 +38,9 @@ test_that("giving only the cadastral reference", {
   expect_message(catr_ovc_get_cpmrc("9872023VH5797S",
     verbose = TRUE
   ))
+
+  result <- catr_ovc_get_cpmrc(rc = "13077A01800039")
+  expect_s3_class(result, "tbl")
 })
 
 
