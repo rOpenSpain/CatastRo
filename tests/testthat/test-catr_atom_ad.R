@@ -1,7 +1,7 @@
 test_that("ATOM Addresses", {
-  expect_message(catr_atom_get_address("xyxghx"))
-
   skip_on_cran()
+
+  expect_message(catr_atom_get_address("xyxghx"))
 
   s <- catr_atom_get_address("Melque",
     to = "Segovia",
