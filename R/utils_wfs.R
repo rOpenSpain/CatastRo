@@ -102,12 +102,13 @@ wfs_results <- function(res, verbose) {
 wfs_validate_srs <- function(srs) {
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values
+  valid_srs <- tibble::as_tibble(valid_srs)
   valid_srs <- valid_srs[valid_srs$wfs_service == TRUE, "SRS"]
-  valid <- as.character(valid_srs$SRS)
+  valid <- tibble::deframe(valid_srs)
 
   if (!as.character(srs) %in% valid) {
     stop(
-      "'srs' for OVC should be one of ",
+      "'srs' for WFS should be one of ",
       paste0("'", valid, "'", collapse = ", "),
       ".\n\nSee CatastRo::catr_srs_values",
       call. = FALSE

@@ -56,8 +56,9 @@ catr_ovc_get_cpmrc <- function(rc,
 
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values
+  valid_srs <- tibble::as_tibble(valid_srs)
   valid_srs <- valid_srs[valid_srs$ovc_service == TRUE, "SRS"]
-  valid <- as.character(valid_srs$SRS)
+  valid <- tibble::deframe(valid_srs)
 
   if (!as.character(srs) %in% valid) {
     stop(
