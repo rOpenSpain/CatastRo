@@ -1,4 +1,6 @@
 test_that("Expect error on bad SRS", {
+
+  skip_on_cran()
   expect_error(catr_ovc_get_cpmrc(
     rc = "s",
     srs = "abcd"

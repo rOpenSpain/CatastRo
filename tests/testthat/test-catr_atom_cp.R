@@ -1,8 +1,9 @@
 test_that("ATOM Cadastral Parcels", {
+
+  skip_on_cran()
   expect_message(catr_atom_get_parcels("xyxghx"))
   expect_error(catr_atom_get_parcels("Melque", what = "aa"))
 
-  skip_on_cran()
   s <- catr_atom_get_parcels("Melque",
     to = "Segovia",
     verbose = TRUE
