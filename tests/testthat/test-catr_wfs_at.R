@@ -5,6 +5,7 @@ test_that("AD Check error on srs", {
 test_that("Check error on bad rc", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   expect_message(catr_wfs_get_address_rc(rc = "1234"))
 })
@@ -12,6 +13,7 @@ test_that("Check error on bad rc", {
 test_that("AD Check srs", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   obj <- catr_wfs_get_address_rc(
     "3662303TF3136B",
@@ -25,6 +27,7 @@ test_that("AD Check srs", {
 test_that("AD Check verbose", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   expect_message(catr_wfs_get_address_postalcode("11009", verbose = TRUE))
 })
@@ -33,6 +36,7 @@ test_that("AD Check verbose", {
 test_that("AD Postal Code", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   obj <- catr_wfs_get_address_postalcode("11009")
   expect_true(nrow(obj) > 1)
@@ -43,12 +47,16 @@ test_that("AD Postal Code", {
 test_that("AD CODVIA", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   obj <- catr_wfs_get_address_codvia("1", 11, 39)
   expect_s3_class(obj, "sf")
 })
 
 test_that("BBOX Check errors", {
+  skip_on_cran()
+  skip_if_offline()
+
   expect_error(catr_wfs_get_address_bbox(bbox = "1234"))
   expect_error(catr_wfs_get_address_bbox(bbox = c("1234", "a", "3", "4")))
   expect_error(catr_wfs_get_address_bbox(bbox = c(1, 2, 3)))
@@ -59,6 +67,7 @@ test_that("BBOX Check errors", {
 test_that("BBOX Check projections", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   obj <- catr_wfs_get_address_bbox(c(760926, 4019259, 761155, 4019366),
     srs = 25829

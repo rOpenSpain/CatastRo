@@ -8,7 +8,7 @@ test_that("Check error", {
 test_that("Check tiles", {
   skip_on_cran()
   skip_on_os("linux")
-
+  skip_if_offline()
   obj <- catr_wms_get_layer(c(760926, 4019259, 761155, 4019366),
     srs = 25829
   )

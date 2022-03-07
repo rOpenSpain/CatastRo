@@ -1,4 +1,4 @@
-# CatastRo (development version)
+# CatastRo 0.2.1
 
 -   Fix CRAN tests.
 

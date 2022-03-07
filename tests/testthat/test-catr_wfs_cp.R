@@ -5,6 +5,7 @@ test_that("CP Check error on srs", {
 test_that("Check error on bad rc", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   expect_message(catr_wfs_get_parcels_parcel(rc = "1234"))
 })
@@ -12,6 +13,7 @@ test_that("Check error on bad rc", {
 test_that("CP Check srs", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   obj <- catr_wfs_get_parcels_parcel(
     "3662303TF3136B",
@@ -25,6 +27,7 @@ test_that("CP Check srs", {
 test_that("CP Check verbose", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   expect_message(catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", verbose = TRUE))
 })
@@ -33,6 +36,7 @@ test_that("CP Check verbose", {
 test_that("CP Zone", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   obj <- catr_wfs_get_parcels_zoning("41624TF3146S")
   expect_s3_class(obj, "sf")
@@ -42,12 +46,16 @@ test_that("CP Zone", {
 test_that("CP ZONE 2", {
   skip_on_cran()
   skip_on_os("linux")
+  skip_if_offline()
 
   obj <- catr_wfs_get_parcels_parcel_zoning("36620TF3136S")
   expect_s3_class(obj, "sf")
 })
 
 test_that("BBOX Check errors", {
+  skip_on_cran()
+  skip_if_offline()
+
   expect_error(catr_wfs_get_parcels_bbox(bbox = "1234", what = "xxx"))
   expect_error(catr_wfs_get_parcels_bbox(bbox = "1234"))
   expect_error(catr_wfs_get_parcels_bbox(bbox = c("1234", "a", "3", "4")))
@@ -57,7 +65,9 @@ test_that("BBOX Check errors", {
 
 
 test_that("BBOX Check projections", {
-
+  skip_on_cran()
+  skip_on_os("linux")
+  skip_if_offline()
 
   # Check messages
 
@@ -71,10 +81,6 @@ test_that("BBOX Check projections", {
 
   expect_message(message_on_limit(res, 5))
 
-
-
-  skip_on_cran()
-  skip_on_os("linux")
 
   obj <- catr_wfs_get_parcels_bbox(c(760926, 4019259, 761155, 4019366),
     srs = 25829

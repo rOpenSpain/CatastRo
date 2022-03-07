@@ -26,6 +26,8 @@ test_that("Test cache online", {
 
 
   skip_on_cran()
+  skip_if_offline()
+
   expect_message(catr_atom_get_parcels_db_all(verbose = TRUE))
 
   expect_true(dir.exists(testdir))

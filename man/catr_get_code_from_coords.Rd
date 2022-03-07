@@ -41,7 +41,7 @@ See also \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic_siane()}} a
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
 coordinate values.
 
-When \code{x} is a \code{sf} object, only the first value would be used. The fuction
+When \code{x} is a \code{sf} object, only the first value would be used. The function
 would extract the coordinates using
 \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }

@@ -1,6 +1,7 @@
 test_that("ATOM Buildings", {
-
   skip_on_cran()
+  skip_if_offline()
+
   expect_message(catr_atom_get_buildings("xyxghx"))
   expect_error(catr_atom_get_buildings("Melque", what = "aa"))
 
@@ -25,6 +26,7 @@ test_that("ATOM Buildings", {
 
 test_that("ATOM Encoding issue", {
   skip_on_cran()
+  skip_if_offline()
 
   expect_silent(catr_atom_get_buildings("23078"))
   expect_silent(catr_atom_get_buildings("03050"))

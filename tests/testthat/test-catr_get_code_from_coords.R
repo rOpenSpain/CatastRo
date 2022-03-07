@@ -1,5 +1,6 @@
 test_that("Check", {
   skip_on_cran()
+  skip_if_offline()
   skip_on_os("linux")
 
   # Try with coords

@@ -26,7 +26,7 @@
 #' When `x` is a numeric vector, make sure that the `srs` matches the
 #' coordinate values.
 #'
-#' When `x` is a `sf` object, only the first value would be used. The fuction
+#' When `x` is a `sf` object, only the first value would be used. The function
 #' would extract the coordinates using
 #' `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 #'

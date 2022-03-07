@@ -1,5 +1,6 @@
 test_that("Test search", {
   skip_on_cran()
+  skip_if_offline()
 
   a <- catr_atom_search_munic("Mad")
   expect_gt(nrow(a), 1)
