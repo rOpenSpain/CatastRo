@@ -42,7 +42,7 @@
     <div>
       <img src="../logo.png" alt="CatastRo-logo" id="ROS-navbar-logo"><a class="navbar-brand me-2" href="../index.html">CatastRo</a>
 
-      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0.9000</small>
+      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
     </div>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -185,11 +185,10 @@
 <span class="va">val_catr_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords</a></span><span class="op">(</span><span class="va">val</span><span class="op">)</span>
 
 <span class="va">val_catr_code</span>
-<span class="co">#&gt; # A tibble: 1 × 12</span>
-<span class="co">#&gt;   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 VALEN… 46      900        46900    46    250   46250   VALE… 46    900   46   </span>
-<span class="co">#&gt; # … with 1 more variable: cm &lt;chr&gt;</span>
+<span class="co">#&gt; # A tibble: 1 x 12</span>
+<span class="co">#&gt;   munic    catr_to catr_munic catrcode cpro  cmun  inecode nm       cd    cmc   cp    cm   </span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt; 1 VALENCIA 46      900        46900    46    250   46250   VALENCIA 46    900   46    250</span>
 
 <span class="va">valencia_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">val_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></code></pre></div>
 <p>Next step for creating the visualization is to limit the analysis to a circle of radius 2.5 km around the city center:</p>
