@@ -28,6 +28,7 @@ jobs:
 
       - name: Update docs
         run: |
+          r2readthedocs::rtd_build()
 
           r2readthedocs::r2readthedocs(".")
 
