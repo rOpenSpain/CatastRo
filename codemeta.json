@@ -183,18 +183,6 @@
     },
     "4": {
       "@type": "SoftwareApplication",
-      "identifier": "lifecycle",
-      "name": "lifecycle",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=lifecycle"
-    },
-    "5": {
-      "@type": "SoftwareApplication",
       "identifier": "mapSpain",
       "name": "mapSpain",
       "version": ">= 0.6.0",
@@ -206,7 +194,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=mapSpain"
     },
-    "6": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -219,7 +207,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "7": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -232,7 +220,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "8": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "stringi",
       "name": "stringi",
@@ -244,7 +232,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=stringi"
     },
-    "9": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
@@ -256,7 +244,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=terra"
     },
-    "10": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -268,7 +256,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "11": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -282,7 +270,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1512.567KB",
+  "fileSize": "1512.02KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

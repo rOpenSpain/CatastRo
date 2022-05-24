@@ -215,10 +215,10 @@ it will load it, speeding up the process.
 
 To cite ‘CatastRo’ in publications use:
 
-Delgado Panadero Á, Hernangómez D (2022). *CatastRo: Interface to the
-API Sede Electrónica Del Catastro*. <doi:10.5281/zenodo.6044091>
+Delgado Panadero A, Hernangomez D (2022). *CatastRo: Interface to the
+API Sede Electrónica Del Catastro*.
 <https://doi.org/10.5281/zenodo.6044091>,
-<https://ropenspain.github.io/CatastRo/>.
+<https://ropenspain.github.io/CatastRo/>
 
 A BibTeX entry for LaTeX users is:
 
@@ -229,7 +229,7 @@ A BibTeX entry for LaTeX users is:
       version = {0.2.1.9000},
       url = {https://ropenspain.github.io/CatastRo/},
       doi = {10.5281/zenodo.6044091},
-      abstract = {Access public spatial data available under the 'INSPIRE' directive. Tools for downloading references and addresses of properties, as well as map images.},
+      abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
     }
 
 ## Contribute
