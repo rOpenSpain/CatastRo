@@ -22,7 +22,6 @@ Depends:
 Imports: 
     dplyr,
     httr,
-    lifecycle,
     mapSpain (>= 0.6.0),
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
