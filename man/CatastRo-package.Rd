@@ -6,7 +6,7 @@
 \alias{CatastRo-package}
 \title{CatastRo: Interface to the API 'Sede Electronica Del Catastro'}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Access public spatial data available under the 'INSPIRE' directive. Tools for downloading references and addresses of properties, as well as map images.
 }

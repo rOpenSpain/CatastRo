@@ -103,15 +103,15 @@ labs <- catr_wms_get_layer(stadium_parcel,
 
 # Plot
 library(ggplot2)
-library(mapSpain) # For terra tiles
+library(tidyterra) # For terra tiles
 
 ggplot() +
-  layer_spatraster(labs) +
+  geom_spatraster_rgb(data = labs) +
   geom_sf(data = stadium_parcel, fill = NA, col = "red", size = 2) +
   geom_sf(data = stadium, fill = "red", alpha = .5)
 ```
 
-<img src="santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%" />
+<img src="./santbernabeu-1.png" title="plot of chunk santbernabeu" alt="plot of chunk santbernabeu" width="100%" />
 
 ### Thematic maps
 
@@ -178,7 +178,7 @@ ggplot(dataviz) +
   geom_sf()
 ```
 
-<img src="minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%" />
+<img src="./minimal-1.png" title="plot of chunk minimal" alt="plot of chunk minimal" width="100%" />
 
 Let's extract now the construction year, available in the column `beginning`:
 
@@ -238,7 +238,7 @@ ggplot(dataviz) +
   )
 ```
 
-<img src="dataviz-1.png" title="plot of chunk dataviz" alt="plot of chunk dataviz" width="100%" />
+<img src="./dataviz-1.png" title="plot of chunk dataviz" alt="plot of chunk dataviz" width="100%" />
 
 
 
