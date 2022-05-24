@@ -120,10 +120,10 @@ labs <- catr_wms_get_layer(stadium_parcel,
 
 # Plot
 library(ggplot2)
-library(mapSpain) # For terra tiles
+library(tidyterra) # For terra tiles
 
 ggplot() +
-  layer_spatraster(labs) +
+  geom_spatraster_rgb(data = labs) +
   geom_sf(data = stadium_parcel, fill = NA, col = "red", size = 2) +
   geom_sf(data = stadium, fill = "red", alpha = .5)
 ```

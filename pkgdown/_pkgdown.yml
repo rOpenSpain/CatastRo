@@ -28,7 +28,7 @@ reference:
       - has_concept("WMS")
       - mapSpain::esp_getTiles()
       - terra::plotRGB()
-      - ggspatial::layer_spatial.Raster()
+      - tidyterra::geom_spatraster_rgb()
   - title: OVCCoordenadas API
     desc: These functions allows to access the
       [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx) service.

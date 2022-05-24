@@ -1,7 +1,7 @@
 Type: Package
 Package: CatastRo
 Title: Interface to the API 'Sede Electronica Del Catastro'
-Version: 0.2.1
+Version: 0.2.1.9000
 Authors@R: c(
     person("Ángel", "Delgado Panadero", , "delgadopanadero@gmail.com", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-8189-9251")),
@@ -32,12 +32,11 @@ Imports:
     xml2
 Suggests: 
     ggplot2,
-    ggspatial,
     knitr,
     png,
-    raster,
     rmarkdown,
     slippymath,
+    tidyterra,
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
