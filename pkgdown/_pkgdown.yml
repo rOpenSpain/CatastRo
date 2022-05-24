@@ -48,12 +48,6 @@ reference:
   - title: Databases and reference data
     contents:
       - has_concept("databases")
-  - title: Deprecated functions
-    desc: These functions has been deprecated. All these functions have a replacement following the new package API.
-    contents:
-      - get_rc
-      - near_rc
-      - get_coor
 
   - title: About the package
     contents:
