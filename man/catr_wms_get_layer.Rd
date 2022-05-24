@@ -117,11 +117,12 @@ pict <- catr_wms_get_layer(c(222500, 4019500, 223700, 4020700),
   what = "parcel"
 )
 
-library(ggplot2)
 library(mapSpain)
+library(ggplot2)
+library(tidyterra)
 
 ggplot() +
-  layer_spatraster(pict)
+  geom_spatraster_rgb(data = pict)
 
 
 # With a spatial object
@@ -142,7 +143,7 @@ parcels_img <- catr_wms_get_layer(parcels,
 
 ggplot() +
   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
-  layer_spatraster(parcels_img)
+  geom_spatraster_rgb(data = parcels_img)
 }
 \dontshow{\}) # examplesIf}
 }
@@ -152,7 +153,7 @@ ggplot() +
 \href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
 }
 \seealso{
-\code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}}, \code{\link[mapSpain:layer_spatraster]{mapSpain::layer_spatraster()}},
+\code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}}, \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}},
 \code{\link[terra:plotRGB]{terra::plotRGB()}}.
 
 INSPIRE API functions:

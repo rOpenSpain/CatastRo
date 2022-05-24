@@ -1,3 +1,7 @@
+# CatastRo (development version)
+
+-   Add **tidyterra** to ‘Suggests’
+
 # CatastRo 0.2.1
 
 -   Fix CRAN tests.

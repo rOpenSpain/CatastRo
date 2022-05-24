@@ -28,7 +28,7 @@ reference:
       - has_concept("WMS")
       - mapSpain::esp_getTiles()
       - terra::plotRGB()
-      - ggspatial::layer_spatial.Raster()
+      - tidyterra::geom_spatraster_rgb()
   - title: OVCCoordenadas API
     desc: These functions allows to access the
       [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx) service.
@@ -48,12 +48,6 @@ reference:
   - title: Databases and reference data
     contents:
       - has_concept("databases")
-  - title: Deprecated functions
-    desc: These functions has been deprecated. All these functions have a replacement following the new package API.
-    contents:
-      - get_rc
-      - near_rc
-      - get_coor
 
   - title: About the package
     contents:

@@ -194,10 +194,10 @@ ggplot(wfs_get_buildings) +
 wms_bu <- catr_wms_get_layer(wfs_get_buildings, bbox_expand = 0.2)
 
 # Map
-# Load mapSpain for using layer_spatraster
-library(mapSpain)
+# Load tidyterra
+library(tidyterra)
 ggplot() +
-  layer_spatraster(wms_bu) +
+  geom_spatraster_rgb(data = wms_bu) +
   geom_sf(data = wfs_get_buildings, fill = "red", alpha = 0.6)
 ```
 

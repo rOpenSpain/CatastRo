@@ -20,7 +20,7 @@
 #' @family WMS
 #' @family spatial
 #'
-#' @seealso [mapSpain::esp_getTiles()], [mapSpain::layer_spatraster()],
+#' @seealso [mapSpain::esp_getTiles()], [tidyterra::geom_spatraster_rgb()],
 #' [terra::plotRGB()].
 #'
 #' @export
@@ -80,11 +80,12 @@
 #'   what = "parcel"
 #' )
 #'
-#' library(ggplot2)
 #' library(mapSpain)
+#' library(ggplot2)
+#' library(tidyterra)
 #'
 #' ggplot() +
-#'   layer_spatraster(pict)
+#'   geom_spatraster_rgb(data = pict)
 #'
 #'
 #' # With a spatial object
@@ -105,7 +106,7 @@
 #'
 #' ggplot() +
 #'   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
-#'   layer_spatraster(parcels_img)
+#'   geom_spatraster_rgb(data = parcels_img)
 #' }
 catr_wms_get_layer <- function(x,
                                srs,

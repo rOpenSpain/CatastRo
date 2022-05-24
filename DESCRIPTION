@@ -1,7 +1,7 @@
 Type: Package
 Package: CatastRo
 Title: Interface to the API 'Sede Electronica Del Catastro'
-Version: 0.2.1
+Version: 0.2.1.9000
 Authors@R: c(
     person("Ángel", "Delgado Panadero", , "delgadopanadero@gmail.com", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-8189-9251")),
@@ -22,7 +22,6 @@ Depends:
 Imports: 
     dplyr,
     httr,
-    lifecycle,
     mapSpain (>= 0.6.0),
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
@@ -32,13 +31,12 @@ Imports:
     xml2
 Suggests: 
     ggplot2,
-    ggspatial,
     knitr,
     png,
-    raster,
     rmarkdown,
     slippymath,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tidyterra
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
@@ -46,4 +44,4 @@ Copyright: © Dirección General del Catastro <https://www.catastro.meh.es/>
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0

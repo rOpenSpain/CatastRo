@@ -189,10 +189,10 @@ ggplot(wfs_get_buildings) +
 wms_bu <- catr_wms_get_layer(wfs_get_buildings, bbox_expand = 0.2)
 
 # Map
-# Load mapSpain for using layer_spatraster
-library(mapSpain)
+# Load tidyterra
+library(tidyterra)
 ggplot() +
-  layer_spatraster(wms_bu) +
+  geom_spatraster_rgb(data = wms_bu) +
   geom_sf(data = wfs_get_buildings, fill = "red", alpha = 0.6)
 ```
 
@@ -216,9 +216,9 @@ it will load it, speeding up the process.
 To cite ‘CatastRo’ in publications use:
 
 Delgado Panadero Á, Hernangómez D (2022). *CatastRo: Interface to the
-API Sede Electrónica Del Catastro*. doi: 10.5281/zenodo.6044091 (URL:
-<https://doi.org/10.5281/zenodo.6044091>), \<URL:
-<https://ropenspain.github.io/CatastRo/>\>.
+API Sede Electrónica Del Catastro*. <doi:10.5281/zenodo.6044091>
+<https://doi.org/10.5281/zenodo.6044091>,
+<https://ropenspain.github.io/CatastRo/>.
 
 A BibTeX entry for LaTeX users is:
 
@@ -226,7 +226,7 @@ A BibTeX entry for LaTeX users is:
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       year = {2022},
-      version = {0.2.1},
+      version = {0.2.1.9000},
       url = {https://ropenspain.github.io/CatastRo/},
       doi = {10.5281/zenodo.6044091},
       abstract = {Access public spatial data available under the 'INSPIRE' directive. Tools for downloading references and addresses of properties, as well as map images.},

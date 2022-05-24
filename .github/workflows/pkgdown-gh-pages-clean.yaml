@@ -5,7 +5,7 @@ name: Clean pkgdown manually
 
 jobs:
   pkgdown-gh-pages-manual:
-    runs-on: macos-latest
+    runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -23,11 +23,21 @@ jobs:
           extra-packages:
             local::.
             any::pkgdown
-            ropenspain/rostemplate
+            ropenscilabs/r2readthedocs
           needs: website
 
-      - name: Deploy package
+      - name: Update docs
+        run: |
+          r2readthedocs::rtd_build()
+
+          r2readthedocs::r2readthedocs(".")
+
+        shell: Rscript {0}
+
+      - name: Commit results
         run: |
           git config --local user.name "dieghernan"
           git config --local user.email "dieghernan@users.noreply.github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, clean = TRUE, run_dont_run = TRUE)'
+          git add -A
+          git commit -m 'Update docs with pkgdev' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
