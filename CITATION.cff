@@ -113,6 +113,7 @@ references:
     orcid: https://orcid.org/0000-0001-8457-4658
     affiliation: rOpenSpain
   year: '2022'
+  url: https://CRAN.R-project.org/package=mapSpain
   version: '>= 0.6.0'
 - type: software
   title: rappdirs
