@@ -4,7 +4,7 @@
 \alias{catr_clear_cache}
 \title{Clear your \strong{CatastRo} cache dir}
 \usage{
-catr_clear_cache(config = TRUE, cached_data = TRUE, verbose = FALSE)
+catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
 \item{config}{if \code{TRUE}, will delete the configuration folder of

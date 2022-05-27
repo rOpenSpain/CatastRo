@@ -129,25 +129,6 @@ catr_set_cache_dir <- function(cache_dir,
   return(invisible(cache_dir))
 }
 
-catr_clear_cache <- function(config = TRUE,
-                             cached_data = TRUE,
-                             verbose = FALSE) {
-  config_dir <- rappdirs::user_config_dir("CatastRo", "R")
-  data_dir <- catr_hlp_detect_cache_dir()
-  if (config && dir.exists(config_dir)) {
-    unlink(config_dir, recursive = TRUE, force = TRUE)
-    if (verbose) message("CatastRo cache config deleted")
-  }
-
-  if (cached_data && dir.exists(data_dir)) {
-    unlink(data_dir, recursive = TRUE, force = TRUE, expand = TRUE)
-    if (verbose) message("CatastRo cached data deleted: ", data_dir)
-  }
-
-
-  Sys.setenv(CATASTROESP_CACHE_DIR = "")
-  return(invisible())
-}
 
 #' Detect cache dir for CatastRo
 #'

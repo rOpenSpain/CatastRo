@@ -1,6 +1,8 @@
 # CatastRo 0.2.2
 
--   Add **tidyterra** to ‘Suggests’
+-   Add **tidyterra** to 'Suggests'.
+-   Fix #26: Now `catr_get_code_from_coords()` handle `sfc` objects.
+-   `catr_clear_cache()` now has `config = FALSE` ad default parameter.
 
 # CatastRo 0.2.1
 
