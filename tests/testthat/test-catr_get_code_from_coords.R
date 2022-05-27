@@ -29,4 +29,11 @@ test_that("Check", {
   s3 <- catr_get_code_from_coords(m2)
 
   expect_s3_class(s3, "tbl")
+
+  # Try with sfc
+  sfc <- sf::st_geometry(m2)
+
+  expect_s3_class(sfc, "sfc")
+  s4 <- catr_get_code_from_coords(sfc)
+  expect_s3_class(s4, "tbl")
 })
