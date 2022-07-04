@@ -102,19 +102,19 @@
 </h2>
 <p>Install <strong>CatastRo</strong> from <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><strong>CRAN</strong></a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span><span class="op">)</span></span></code></pre></div>
 <p>You can install the developing version of <strong>CatastRo</strong> using the <a href="https://ropenspain.r-universe.dev/ui#builds" class="external-link">r-universe</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Enable this universe</span>
-<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
-  ropenspain <span class="op">=</span> <span class="st">"https://ropenspain.r-universe.dev"</span>,
-  CRAN <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span>
-<span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Enable this universe</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  ropenspain <span class="op">=</span> <span class="st">"https://ropenspain.r-universe.dev"</span>,</span>
+<span>  CRAN <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, you can install the developing version of <strong>CatastRo</strong> with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span>
-<span class="fu">install_github</span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
@@ -166,76 +166,76 @@
 <h3 id="geocode-a-cadastral-reference">Geocode a cadastral reference<a class="anchor" aria-label="anchor" href="#geocode-a-cadastral-reference"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span>
-
-<span class="fu"><a href="reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 × 10</span>
-<span class="co">#&gt;   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span>
-<span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;</span>
-<span class="co">#&gt; 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 10</span></span>
+<span><span class="co">#&gt;   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="extract-a-cadastral-reference-from-a-given-set-of-coordinates">Extract a cadastral reference from a given set of coordinates<a class="anchor" aria-label="anchor" href="#extract-a-cadastral-reference-from-a-given-set-of-coordinates"></a>
 </h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor</a></span><span class="op">(</span>
-  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,
-  lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,
-  srs <span class="op">=</span> <span class="st">"4230"</span>
-<span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 × 8</span>
-<span class="co">#&gt;   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span>
-<span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;</span>
-<span class="co">#&gt; 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor</a></span><span class="op">(</span></span>
+<span>  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,</span>
+<span>  lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,</span>
+<span>  srs <span class="op">=</span> <span class="st">"4230"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 8</span></span>
+<span><span class="co">#&gt;   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="extract-geometries-using-the-atom-service">Extract geometries using the ATOM service<a class="anchor" aria-label="anchor" href="#extract-geometries-using-the-atom-service"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="st">"Nava de la Asuncion"</span>, to <span class="op">=</span> <span class="st">"Segovia"</span><span class="op">)</span>
-
-
-<span class="co"># Map</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
-
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bu</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">currentUse</span><span class="op">)</span>, col <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>
-    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">374500</span>, <span class="fl">375500</span><span class="op">)</span>,
-    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4556500</span>, <span class="fl">4557500</span><span class="op">)</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Dark 3"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Nava de la Asunción, Segovia"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="st">"Nava de la Asuncion"</span>, to <span class="op">=</span> <span class="st">"Segovia"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Map</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bu</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">currentUse</span><span class="op">)</span>, col <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span></span>
+<span>    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">374500</span>, <span class="fl">375500</span><span class="op">)</span>,</span>
+<span>    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4556500</span>, <span class="fl">4557500</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Dark 3"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Nava de la Asunción, Segovia"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-atom-1.png" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="extract-geometries-using-the-wfs-service">Extract geometries using the WFS service<a class="anchor" aria-label="anchor" href="#extract-geometries-using-the-wfs-service"></a>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">wfs_get_buildings</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5.567429</span>, <span class="fl">42.598935</span>, <span class="op">-</span><span class="fl">5.565509</span>, <span class="fl">42.600396</span><span class="op">)</span>,
-  srs <span class="op">=</span> <span class="fl">4326</span>
-<span class="op">)</span>
-
-<span class="co"># Map</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">wfs_get_buildings</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Leon Cathedral, Spain"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">wfs_get_buildings</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5.567429</span>, <span class="fl">42.598935</span>, <span class="op">-</span><span class="fl">5.565509</span>, <span class="fl">42.600396</span><span class="op">)</span>,</span>
+<span>  srs <span class="op">=</span> <span class="fl">4326</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Map</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">wfs_get_buildings</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Leon Cathedral, Spain"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-wfs-1.png" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="extract-maps-using-the-wms-service">Extract maps using the WMS service<a class="anchor" aria-label="anchor" href="#extract-maps-using-the-wms-service"></a>
 </h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">wms_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/catr_wms_get_layer.html">catr_wms_get_layer</a></span><span class="op">(</span><span class="va">wfs_get_buildings</span>, bbox_expand <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>
-
-<span class="co"># Map</span>
-<span class="co"># Load tidyterra</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wms_bu</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wfs_get_buildings</span>, fill <span class="op">=</span> <span class="st">"red"</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">wms_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/catr_wms_get_layer.html">catr_wms_get_layer</a></span><span class="op">(</span><span class="va">wfs_get_buildings</span>, bbox_expand <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Map</span></span>
+<span><span class="co"># Load tidyterra</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wms_bu</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">wfs_get_buildings</span>, fill <span class="op">=</span> <span class="st">"red"</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-wms-1.png" width="100%"></p>
 </div>
 </div>
@@ -244,7 +244,7 @@
 </h2>
 <p>Some data sets and tiles may have a size larger than 50MB. You can use <strong>CatastRo</strong> to create your own local repository at a given local directory passing the following option:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/catr_set_cache_dir.html">catr_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/catr_set_cache_dir.html">catr_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
 <p>When this option is set, <strong>CatastRo</strong> would look for the cached file and it will load it, speeding up the process.</p>
 </div>
 <div class="section level2">
@@ -358,7 +358,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.

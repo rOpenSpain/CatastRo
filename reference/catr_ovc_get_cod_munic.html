@@ -70,7 +70,7 @@ the Cadastre and as per the INE (National Statistics Institute).</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">catr_ovc_get_cod_munic</span><span class="op">(</span><span class="va">cpro</span>, cmun <span class="op">=</span> <span class="cn">NULL</span>, cmun_ine <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">catr_ovc_get_cod_munic</span><span class="op">(</span><span class="va">cpro</span>, cmun <span class="op">=</span> <span class="cn">NULL</span>, cmun_ine <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -78,19 +78,30 @@ the Cadastre and as per the INE (National Statistics Institute).</p>
     <dl><dt>cpro</dt>
 <dd><p>The code of a province, as provided by
 <code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code>.</p></dd>
+
+
 <dt>cmun</dt>
 <dd><p>Code of a municipality, as recorded on the Spanish Cadastre.</p></dd>
+
+
 <dt>cmun_ine</dt>
 <dd><p>Code of a municipality, as recorded on National Statistics
 Institute. See
 <a href="https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm" class="external-link">INE: List of municipalities</a></p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A tibble. See <strong>Details</strong></p>
+    
+
+<p>A tibble. See <strong>Details</strong></p>
+
+
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -125,28 +136,28 @@ including the INE code.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="co"># Get municipality by cadastal code</span></span>
-<span class="r-in"><span class="va">ab</span> <span class="op">&lt;-</span> <span class="fu">catr_ovc_get_cod_munic</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">900</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ab</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># Get municipality by cadastal code</span></span></span>
+<span class="r-in"><span><span class="va">ab</span> <span class="op">&lt;-</span> <span class="fu">catr_ovc_get_cod_munic</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">900</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ab</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: cm &lt;chr&gt;</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Same query using the INE code</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ab2</span> <span class="op">&lt;-</span> <span class="fu">catr_ovc_get_cod_munic</span><span class="op">(</span><span class="fl">2</span>, cmun_ine <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ab2</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Same query using the INE code</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ab2</span> <span class="op">&lt;-</span> <span class="fu">catr_ovc_get_cod_munic</span><span class="op">(</span><span class="fl">2</span>, cmun_ine <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ab2</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: cm &lt;chr&gt;</span></span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -173,7 +184,7 @@ including the INE code.</p>
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.

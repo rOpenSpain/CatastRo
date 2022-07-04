@@ -67,7 +67,7 @@ Return the cadastral reference found of a set of specific coordinates.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">catr_ovc_get_rccoor</span><span class="op">(</span><span class="va">lat</span>, <span class="va">lon</span>, srs <span class="op">=</span> <span class="fl">4326</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">catr_ovc_get_rccoor</span><span class="op">(</span><span class="va">lat</span>, <span class="va">lon</span>, srs <span class="op">=</span> <span class="fl">4326</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -75,19 +75,30 @@ Return the cadastral reference found of a set of specific coordinates.</p>
     <dl><dt>lat</dt>
 <dd><p>Latitude to use on the query. It should be specified in the same
 in the CRS/SRS <code>specified</code> by <code>srs</code>.</p></dd>
+
+
 <dt>lon</dt>
 <dd><p>Longitude to use on the query. It should be specified in the same
 in the CRS/SRS <code>specified</code> by <code>srs</code>.</p></dd>
+
+
 <dt>srs</dt>
 <dd><p>SRS/CRS to use on the query. To check the admitted values check
 <a href="catr_srs_values.html">catr_srs_values</a>, specifically the <code>ovc_service</code> column.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A tibble. See <strong>Details</strong></p>
+    
+
+<p>A tibble. See <strong>Details</strong></p>
+
+
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -118,17 +129,17 @@ cadastral reference, including the following columns:</p><ul><li><p><code>geo.xc
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="fu">catr_ovc_get_rccoor</span><span class="op">(</span></span>
-<span class="r-in">  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,</span>
-<span class="r-in">  lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,</span>
-<span class="r-in">  srs <span class="op">=</span> <span class="fl">4326</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="fu">catr_ovc_get_rccoor</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,</span></span>
+<span class="r-in"><span>  lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,</span></span>
+<span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">4326</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 8</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 13077A01800011 DS DISEMINADO  P… 13077… 18000…    -<span style="color: #BB0000;">3.46</span>     38.6 EPSG:4… DS D…</span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -155,7 +166,7 @@ cadastral reference, including the following columns:</p><ul><li><p><code>geo.xc
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.

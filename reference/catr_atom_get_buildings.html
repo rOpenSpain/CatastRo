@@ -64,15 +64,15 @@ using the INSPIRE ATOM service.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">catr_atom_get_buildings</span><span class="op">(</span>
-  <span class="va">munic</span>,
-  to <span class="op">=</span> <span class="cn">NULL</span>,
-  what <span class="op">=</span> <span class="st">"building"</span>,
-  cache <span class="op">=</span> <span class="cn">TRUE</span>,
-  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,
-  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">catr_atom_get_buildings</span><span class="op">(</span></span>
+<span>  <span class="va">munic</span>,</span>
+<span>  to <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  what <span class="op">=</span> <span class="st">"building"</span>,</span>
+<span>  cache <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -81,29 +81,44 @@ using the INSPIRE ATOM service.</p>
 <dd><p>Municipality to extract, It can be a part of a string or the
 cadastral code. See <code><a href="catr_atom_search_munic.html">catr_atom_search_munic()</a></code> for getting the cadastral
 codes.</p></dd>
+
+
 <dt>to</dt>
 <dd><p>Optional parameter for defining the Territorial Office to which
 <code>munic</code> belongs. This parameter is a helper for narrowing the search.</p></dd>
+
+
 <dt>what</dt>
 <dd><p>Information to load. It could be <code>"building"</code> for buildings,
 <code>"buildingpart"</code> for parts of a building or <code>"other"</code> for others (
 swimming pools, etc.).</p></dd>
+
+
 <dt>cache</dt>
 <dd><p>A logical whether to do caching. Default is <code>TRUE</code>. See
 <strong>About caching</strong> section on <code><a href="catr_set_cache_dir.html">catr_set_cache_dir()</a></code>.</p></dd>
+
+
 <dt>update_cache</dt>
 <dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
 When set to <code>TRUE</code> it would force a fresh download of the source file.</p></dd>
+
+
 <dt>cache_dir</dt>
 <dd><p>A path to a cache directory. On missing value the function
 would store the cached files on a temporary dir (See <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code>).</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>sf</code> object.</p>
+    
+
+<p>A <code>sf</code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -143,26 +158,26 @@ default is <code>FALSE</code>.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu">catr_atom_get_buildings</span><span class="op">(</span><span class="st">"Nava de la Asuncion"</span>,</span>
-<span class="r-in">  to <span class="op">=</span> <span class="st">"Segovia"</span>,</span>
-<span class="r-in">  what <span class="op">=</span> <span class="st">"building"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span></span>
-<span class="r-in">    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">374500</span>, <span class="fl">375500</span><span class="op">)</span>,</span>
-<span class="r-in">    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4556500</span>, <span class="fl">4557500</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Buildings"</span>,</span>
-<span class="r-in">    subtitle <span class="op">=</span> <span class="st">"Nava de la Asuncion, Segovia"</span></span>
-<span class="r-in">  <span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu">catr_atom_get_buildings</span><span class="op">(</span><span class="st">"Nava de la Asuncion"</span>,</span></span>
+<span class="r-in"><span>  to <span class="op">=</span> <span class="st">"Segovia"</span>,</span></span>
+<span class="r-in"><span>  what <span class="op">=</span> <span class="st">"building"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">374500</span>, <span class="fl">375500</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4556500</span>, <span class="fl">4557500</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Buildings"</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"Nava de la Asuncion, Segovia"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="catr_atom_get_buildings-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># }</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -189,7 +204,7 @@ default is <code>FALSE</code>.</p></dd>
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.

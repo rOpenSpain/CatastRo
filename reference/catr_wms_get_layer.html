@@ -64,17 +64,17 @@ mapSpain::esp_getTiles()."><meta property="og:image" content="https://ropenspain
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">catr_wms_get_layer</span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">srs</span>,
-  what <span class="op">=</span> <span class="st">"building"</span>,
-  styles <span class="op">=</span> <span class="st">"default"</span>,
-  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,
-  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
-  crop <span class="op">=</span> <span class="cn">FALSE</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">catr_wms_get_layer</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">srs</span>,</span>
+<span>  what <span class="op">=</span> <span class="st">"building"</span>,</span>
+<span>  styles <span class="op">=</span> <span class="st">"default"</span>,</span>
+<span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  crop <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -84,27 +84,43 @@ mapSpain::esp_getTiles()."><meta property="og:image" content="https://ropenspain
 the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
 <li><p>A <code>sf/sfc</code> object, as provided by the <strong>sf</strong> package.</p></li>
 </ul></dd>
+
+
 <dt>srs</dt>
 <dd><p>SRS/CRS to use on the query. To check the admitted values check
 <a href="catr_srs_values.html">catr_srs_values</a>, specifically the <code>wfs_service</code> column. See <strong>Details</strong>.</p></dd>
+
+
 <dt>what</dt>
 <dd><p>Layer to be extracted. Possible values are <code>"building"</code>,
 <code>"parcel"</code>, <code>"zoning"</code>, <code>"address"</code>. See <strong>Details</strong>.</p></dd>
+
+
 <dt>styles</dt>
 <dd><p>Style of the WMS layer. See <strong>Details</strong>.</p></dd>
+
+
 <dt>update_cache</dt>
 <dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
 When set to <code>TRUE</code> it would force a fresh download of the source file.</p></dd>
+
+
 <dt>cache_dir</dt>
 <dd><p>A path to a cache directory. On missing value the function
 would store the cached files on a temporary dir (See <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code>).</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
+
+
 <dt>crop</dt>
 <dd><p><code>TRUE</code> if results should be cropped to the specified <code>x</code> extent,
 <code>FALSE</code> otherwise. If <code>x</code> is an <code>sf</code> object with one <code>POINT</code>, crop is set
 to <code>FALSE</code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Arguments passed on to <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_getTiles.html" class="external-link">mapSpain::esp_getTiles</a></code></p><dl><dt><code>res</code></dt>
 <dd><p>Resolution (in pixels) of the final tile. Only valid for WMS.</p></dd>
@@ -122,10 +138,13 @@ Depends on the selected provider on <code>type</code>.</p></dd>
 
   
 </dl></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>SpatRaster</code> is returned, with 3 (RGB) or 4 (RGBA) layers. See
+    
+
+<p>A <code>SpatRaster</code> is returned, with 3 (RGB) or 4 (RGBA) layers. See
 <code><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">terra::rast()</a></code>.</p>
     </div>
     <div class="section level2">
@@ -193,45 +212,45 @@ for more information.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># With a bbox</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">pict</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">222500</span>, <span class="fl">4019500</span>, <span class="fl">223700</span>, <span class="fl">4020700</span><span class="op">)</span>,</span>
-<span class="r-in">  srs <span class="op">=</span> <span class="fl">25830</span>,</span>
-<span class="r-in">  what <span class="op">=</span> <span class="st">"parcel"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pict</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># With a bbox</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pict</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">222500</span>, <span class="fl">4019500</span>, <span class="fl">223700</span>, <span class="fl">4020700</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">25830</span>,</span></span>
+<span class="r-in"><span>  what <span class="op">=</span> <span class="st">"parcel"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pict</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="catr_wms_get_layer-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># With a spatial object</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Transform</span></span>
-<span class="r-in"><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">parcels</span>, <span class="fl">3857</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Use styles</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">parcels_img</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span><span class="va">parcels</span>,</span>
-<span class="r-in">  what <span class="op">=</span> <span class="st">"buildingpart"</span>,</span>
-<span class="r-in">  bbox_expand <span class="op">=</span> <span class="fl">0.3</span>,</span>
-<span class="r-in">  styles <span class="op">=</span> <span class="st">"ELFCadastre"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels_img</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># With a spatial object</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Transform</span></span></span>
+<span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">parcels</span>, <span class="fl">3857</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Use styles</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">parcels_img</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span><span class="va">parcels</span>,</span></span>
+<span class="r-in"><span>  what <span class="op">=</span> <span class="st">"buildingpart"</span>,</span></span>
+<span class="r-in"><span>  bbox_expand <span class="op">=</span> <span class="fl">0.3</span>,</span></span>
+<span class="r-in"><span>  styles <span class="op">=</span> <span class="st">"ELFCadastre"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels_img</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="catr_wms_get_layer-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -258,7 +277,7 @@ for more information.</p>
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.

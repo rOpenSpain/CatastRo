@@ -89,7 +89,7 @@
 
 
 <div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>OVCCoordenadas Web Service</h1>
                         <h4 data-toc-skip class="author">Ángel Delgado Panadero</h4>
                         <h4 data-toc-skip class="author">Diego Hernangómez</h4>
@@ -122,11 +122,11 @@
 </h2>
 <p>The function <code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> receives the coordinates (<em>lat</em> and <em>lon</em>) and the spatial reference system (SRS) used to express them. The return is a tibble with the cadastral reference of the property in that spatial point, including also other information as the address (town street and number).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor</a></span><span class="op">(</span>
-  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,
-  lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,
-  srs <span class="op">=</span> <span class="st">"4230"</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor</a></span><span class="op">(</span></span>
+<span>  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,</span>
+<span>  lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,</span>
+<span>  srs <span class="op">=</span> <span class="st">"4230"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="5%">
@@ -161,15 +161,15 @@
 </table>
 <p>The function accept as a SRS argument the following values:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">catr_srs_values</span><span class="op">)</span>
-
-<span class="co"># OVC valid codes</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-
-<span class="va">catr_srs_values</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ovc_service</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">SRS</span>, <span class="va">Description</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">catr_srs_values</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># OVC valid codes</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">catr_srs_values</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ovc_service</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">SRS</span>, <span class="va">Description</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">SRS</th>
@@ -236,12 +236,12 @@
 </table>
 <p>It is also possible to get all the cadastral references in a square of 50-meters’ side centered in the coordinates <em>lat</em> and <em>lon</em> through the function <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia</a></span><span class="op">(</span>
-  lat <span class="op">=</span> <span class="fl">40.96002</span>,
-  lon <span class="op">=</span> <span class="op">-</span><span class="fl">5.663408</span>,
-  srs <span class="op">=</span> <span class="st">"4230"</span>
-<span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia</a></span><span class="op">(</span></span>
+<span>  lat <span class="op">=</span> <span class="fl">40.96002</span>,</span>
+<span>  lon <span class="op">=</span> <span class="op">-</span><span class="fl">5.663408</span>,</span>
+<span>  srs <span class="op">=</span> <span class="st">"4230"</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="4%">
@@ -316,13 +316,13 @@
 </h2>
 <p>The opposite query is possible as well. Being given to the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> a cadastral reference (<code>rc</code>), the province (<code>province</code>) and the town (<code>municipality</code>), <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> returns its coordinates <em>lat</em> and <em>lon</em> in a particular <em>SRS</em> besides the address (town, street and number).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>
-  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,
-  srs <span class="op">=</span> <span class="st">"4230"</span>,
-  province <span class="op">=</span> <span class="st">"CIUDAD REAL"</span>,
-  municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span>
-<span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
+<span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>
+<span>  srs <span class="op">=</span> <span class="st">"4230"</span>,</span>
+<span>  province <span class="op">=</span> <span class="st">"CIUDAD REAL"</span>,</span>
+<span>  municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="3%">
@@ -363,12 +363,12 @@
 </table>
 <p>Neither the <code>province</code> nor <code>municipality</code> are required to be passed to the function, unless the argument <code>municipality</code> is not <code>NULL</code>, in that case the argument <code>province</code> is needed to be passed. If it is passed a value to the <code>province</code> argument while the <code>municipality</code> argument is <code>NULL</code>, the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> will throw a message and would return a tibble with no data.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>
-  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,
-  municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span>
-<span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Error code: 11. LA PROVINCIA ES OBLIGATORIA</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
+<span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>
+<span>  municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error code: 11. LA PROVINCIA ES OBLIGATORIA</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">refcat</th>
@@ -381,10 +381,10 @@
 </table>
 <p>When using only <code>rc</code> the result is provided as expected:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># No warning, get the result</span>
-<span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># No warning, get the result</span></span>
+<span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="3%">
@@ -453,7 +453,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.
