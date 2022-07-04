@@ -23,21 +23,11 @@ jobs:
           extra-packages:
             local::.
             any::pkgdown
-            ropenscilabs/r2readthedocs
+            ropenspain/rostemplate
           needs: website
 
-      - name: Update docs
+      - name: Deploy package
         run: |
-          r2readthedocs::rtd_build()
-
-          r2readthedocs::r2readthedocs(".")
-
-        shell: Rscript {0}
-
-      - name: Commit results
-        run: |
-          git config --local user.name "dieghernan"
-          git config --local user.email "dieghernan@users.noreply.github.com"
-          git add -A
-          git commit -m 'Update docs with pkgdev' || echo "No changes to commit"
-          git push origin || echo "No changes to commit"
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = TRUE)'
