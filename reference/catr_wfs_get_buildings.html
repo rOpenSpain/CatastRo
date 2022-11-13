@@ -186,13 +186,14 @@ elements.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Using bbox</span></span></span>
-<span class="r-in"><span><span class="va">building</span> <span class="op">&lt;-</span> <span class="fu">catr_wfs_get_buildings_bbox</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="fl">376550</span>,</span></span>
-<span class="r-in"><span>  <span class="fl">4545424</span>,</span></span>
-<span class="r-in"><span>  <span class="fl">376600</span>,</span></span>
-<span class="r-in"><span>  <span class="fl">4545474</span></span></span>
-<span class="r-in"><span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>srs <span class="op">=</span> <span class="fl">25830</span></span></span>
+<span class="r-in"><span><span class="va">building</span> <span class="op">&lt;-</span> <span class="fu">catr_wfs_get_buildings_bbox</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fl">376550</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">4545424</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">376600</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">4545474</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">25830</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">building</span><span class="op">)</span> <span class="op">+</span></span></span>
