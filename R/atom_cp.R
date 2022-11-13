@@ -49,7 +49,6 @@ catr_atom_get_parcels <- function(munic,
                                   update_cache = FALSE,
                                   cache_dir = NULL,
                                   verbose = FALSE) {
-
   # Sanity checks
   if (!(what %in% c("parcel", "zoning"))) {
     stop("'what' should be 'parcel' or 'zoning'")

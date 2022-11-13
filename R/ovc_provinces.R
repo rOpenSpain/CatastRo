@@ -26,8 +26,6 @@
 #' }
 #'
 catr_ovc_get_cod_provinces <- function(verbose = FALSE) {
-
-
   # Prepare query
   ##  Build url
   api_entry <- paste0(

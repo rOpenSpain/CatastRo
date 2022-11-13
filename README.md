@@ -122,13 +122,15 @@ This script highlights some features of **CatastRo** :
 ### Geocode a cadastral reference
 
 ``` r
+
 library(CatastRo)
 
 catr_ovc_get_cpmrc(rc = "13077A01800039")
 #> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
-#> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…
+#>   xcoord ycoord refcat       address pc.pc1 pc.pc2 geo.x…¹ geo.y…² geo.srs ldt  
+#>    <dbl>  <dbl> <chr>        <chr>   <chr>  <chr>  <chr>   <chr>   <chr>   <chr>
+#> 1  -3.46   38.6 13077A01800… DS DIS… 13077… 18000… -3.457… 38.618… EPSG:4… DS D…
+#> # … with abbreviated variable names ¹​geo.xcen, ²​geo.ycen
 ```
 
 ### Extract a cadastral reference from a given set of coordinates
@@ -140,14 +142,16 @@ catr_ovc_get_rccoor(
   srs = "4230"
 )
 #> # A tibble: 1 × 8
-#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
-#> 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
+#>   refcat         address             pc.pc1 pc.pc2 geo.x…¹ geo.y…² geo.srs ldt  
+#>   <chr>          <chr>               <chr>  <chr>    <dbl>   <dbl> <chr>   <chr>
+#> 1 13077A01800039 DS DISEMINADO  Pol… 13077… 18000…   -3.46    38.6 EPSG:4… DS D…
+#> # … with abbreviated variable names ¹​geo.xcen, ²​geo.ycen
 ```
 
 ### Extract geometries using the ATOM service
 
 ``` r
+
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 
@@ -186,6 +190,7 @@ ggplot(wfs_get_buildings) +
 ### Extract maps using the WMS service
 
 ``` r
+
 wms_bu <- catr_wms_get_layer(wfs_get_buildings, bbox_expand = 0.2)
 
 # Map

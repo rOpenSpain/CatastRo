@@ -89,10 +89,11 @@ elements.
 \examples{
 \dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
-ad <- catr_wfs_get_address_bbox(c(
-  233673, 4015968, 233761, 4016008
-),
-srs = 25830
+ad <- catr_wfs_get_address_bbox(
+  c(
+    233673, 4015968, 233761, 4016008
+  ),
+  srs = 25830
 )
 
 library(ggplot2)

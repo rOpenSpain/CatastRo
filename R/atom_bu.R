@@ -48,7 +48,6 @@ catr_atom_get_buildings <- function(munic,
                                     update_cache = FALSE,
                                     cache_dir = NULL,
                                     verbose = FALSE) {
-
   # Sanity checks
   if (!(what %in% c("building", "buildingpart", "other"))) {
     stop("'what' should be 'building', 'buildingpart', 'other'")

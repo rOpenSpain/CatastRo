@@ -138,10 +138,11 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #' @export
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
-#' ad <- catr_wfs_get_address_bbox(c(
-#'   233673, 4015968, 233761, 4016008
-#' ),
-#' srs = 25830
+#' ad <- catr_wfs_get_address_bbox(
+#'   c(
+#'     233673, 4015968, 233761, 4016008
+#'   ),
+#'   srs = 25830
 #' )
 #'
 #' library(ggplot2)

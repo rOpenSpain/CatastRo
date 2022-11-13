@@ -96,10 +96,11 @@ The API service is limited to the following constrains:
 \examples{
 \dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
-cp <- catr_wfs_get_parcels_bbox(c(
-  233673, 4015968, 233761, 4016008
-),
-srs = 25830
+cp <- catr_wfs_get_parcels_bbox(
+  c(
+    233673, 4015968, 233761, 4016008
+  ),
+  srs = 25830
 )
 
 library(ggplot2)

@@ -69,13 +69,14 @@ elements.
 \dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # Using bbox
-building <- catr_wfs_get_buildings_bbox(c(
-  376550,
-  4545424,
-  376600,
-  4545474
-),
-srs = 25830
+building <- catr_wfs_get_buildings_bbox(
+  c(
+    376550,
+    4545424,
+    376600,
+    4545474
+  ),
+  srs = 25830
 )
 library(ggplot2)
 ggplot(building) +

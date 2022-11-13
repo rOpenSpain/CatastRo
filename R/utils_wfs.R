@@ -1,7 +1,6 @@
 catr_wfs_get_buildingsild_url <- function(host = "http://ovc.catastro.meh.es/INSPIRE/",
                                           entry,
                                           params) {
-
   # Clean empty params
   params <- params[lengths(params) != 0]
 
@@ -122,8 +121,6 @@ wfs_bbox <- function(bbox, srs) {
 
   # Use bbox of a spatial object. The API fails on geografic coord ¿?
   if (inherits(bbox, "sf") | inherits(bbox, "sfc")) {
-
-
     # Convert to Mercator (opinionated)
     bbox_new <- sf::st_transform(bbox, 3857)
 

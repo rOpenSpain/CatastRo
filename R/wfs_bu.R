@@ -101,13 +101,14 @@ catr_wfs_get_buildings_bbox <- function(x, what = "building", srs, verbose = FAL
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
 #' # Using bbox
-#' building <- catr_wfs_get_buildings_bbox(c(
-#'   376550,
-#'   4545424,
-#'   376600,
-#'   4545474
-#' ),
-#' srs = 25830
+#' building <- catr_wfs_get_buildings_bbox(
+#'   c(
+#'     376550,
+#'     4545424,
+#'     376600,
+#'     4545474
+#'   ),
+#'   srs = 25830
 #' )
 #' library(ggplot2)
 #' ggplot(building) +
@@ -123,7 +124,6 @@ catr_wfs_get_buildings_bbox <- function(x, what = "building", srs, verbose = FAL
 #' }
 catr_wfs_get_buildings_rc <- function(rc, what = "building",
                                       srs = NULL, verbose = FALSE) {
-
   # Sanity checks
   if (!(what %in% c("building", "buildingpart", "other"))) {
     stop("'what' should be 'building', 'buildingpart', 'other'")

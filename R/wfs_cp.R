@@ -171,10 +171,11 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #' @export
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{
-#' cp <- catr_wfs_get_parcels_bbox(c(
-#'   233673, 4015968, 233761, 4016008
-#' ),
-#' srs = 25830
+#' cp <- catr_wfs_get_parcels_bbox(
+#'   c(
+#'     233673, 4015968, 233761, 4016008
+#'   ),
+#'   srs = 25830
 #' )
 #'
 #' library(ggplot2)

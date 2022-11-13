@@ -1,5 +1,4 @@
 catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
-
   # Encoding error sometimes, thanks @dr_xeo
   feed <- try(xml2::as_list(xml2::read_xml(file,
     options = "NOCDATA",

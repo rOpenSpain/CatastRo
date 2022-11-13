@@ -1,6 +1,5 @@
 catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
                              verbose, update_cache, cache) {
-
   # Use secure http
   api_entry <- gsub("^http:", "https:", api_entry)
 

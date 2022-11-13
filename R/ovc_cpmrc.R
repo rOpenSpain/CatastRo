@@ -52,8 +52,6 @@ catr_ovc_get_cpmrc <- function(rc,
                                province = NULL,
                                municipality = NULL,
                                verbose = FALSE) {
-
-
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values
   valid_srs <- tibble::as_tibble(valid_srs)
