@@ -91,8 +91,10 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>OVCCoordenadas Web Service</h1>
-                        <h4 data-toc-skip class="author">Ángel Delgado Panadero</h4>
-                        <h4 data-toc-skip class="author">Diego Hernangómez</h4>
+                        <h4 data-toc-skip class="author">Ángel Delgado
+Panadero</h4>
+                        <h4 data-toc-skip class="author">Diego
+Hernangómez</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/HEAD/vignettes/ovcservice.Rmd" class="external-link"><code>vignettes/ovcservice.Rmd</code></a></small>
@@ -101,16 +103,32 @@
 
     
     
-<p><strong>CatastRo</strong> allows to query the OVCCoordenadas Web Service provided on <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a> API directly through a R IDE.</p>
-<p>This API is used to retrieve the spatial coordinates of a urban property, moreover it is not needed to be the owner to get the information, actually it is enough to know the cadastral reference (RC) of the property and its address (in fact, it is only completely compulsory to know the RC, however, to ensure a good result from the response and to avoid mistakes in the RC, the address can be passed to the query too).</p>
-<p>Secondly, the API can be used to obtain a RC of a urban property, for this information, the API asks for the longitude and the latitude. Furthermore, it allows to choose the spacial reference system (SRS, also known as CRS) between a list of them to express the coordinates.</p>
-<p>Finally, the API tackles the issue of not knowing the exact point which the urban property has been registered. In this case, it will return all the properties located in a square 50-meters-side around the given point.</p>
+<p><strong>CatastRo</strong> allows to query the OVCCoordenadas Web
+Service provided on <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede
+electrónica del Catastro</a> API directly through a R IDE.</p>
+<p>This API is used to retrieve the spatial coordinates of a urban
+property, moreover it is not needed to be the owner to get the
+information, actually it is enough to know the cadastral reference (RC)
+of the property and its address (in fact, it is only completely
+compulsory to know the RC, however, to ensure a good result from the
+response and to avoid mistakes in the RC, the address can be passed to
+the query too).</p>
+<p>Secondly, the API can be used to obtain a RC of a urban property, for
+this information, the API asks for the longitude and the latitude.
+Furthermore, it allows to choose the spacial reference system (SRS, also
+known as CRS) between a list of them to express the coordinates.</p>
+<p>Finally, the API tackles the issue of not knowing the exact point
+which the urban property has been registered. In this case, it will
+return all the properties located in a square 50-meters-side around the
+given point.</p>
 <p>The documentation of this API can be found <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">here</a>.</p>
-<p>These functions are named <code>catr_ovc_*</code> and returns a tibble, as provided by the package <strong>tibble</strong>.</p>
+<p>These functions are named <code>catr_ovc_*</code> and returns a
+tibble, as provided by the package <strong>tibble</strong>.</p>
 <div class="section level2">
 <h2 id="catastro-api">CatastRo API<a class="anchor" aria-label="anchor" href="#catastro-api"></a>
 </h2>
-<p>The OVCCoordenadas Web Service can be reached using the following functions:</p>
+<p>The OVCCoordenadas Web Service can be reached using the following
+functions:</p>
 <ul>
 <li><code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code></li>
 <li><code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code></li>
@@ -120,7 +138,11 @@
 <div class="section level2">
 <h2 id="reverse-geocoding-cadastral-references">Reverse Geocoding Cadastral References<a class="anchor" aria-label="anchor" href="#reverse-geocoding-cadastral-references"></a>
 </h2>
-<p>The function <code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> receives the coordinates (<em>lat</em> and <em>lon</em>) and the spatial reference system (SRS) used to express them. The return is a tibble with the cadastral reference of the property in that spatial point, including also other information as the address (town street and number).</p>
+<p>The function <code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> receives the
+coordinates (<em>lat</em> and <em>lon</em>) and the spatial reference
+system (SRS) used to express them. The return is a tibble with the
+cadastral reference of the property in that spatial point, including
+also other information as the address (town street and number).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor</a></span><span class="op">(</span></span>
 <span>  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,</span>
@@ -150,13 +172,15 @@
 </tr></thead>
 <tbody><tr class="odd">
 <td align="left">13077A01800039</td>
-<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
+<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL
+TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 <td align="left">13077A0</td>
 <td align="left">1800039</td>
 <td align="right">-3.456242</td>
 <td align="right">38.61966</td>
 <td align="left">EPSG:4230</td>
-<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
+<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL
+TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 </tr></tbody>
 </table>
 <p>The function accept as a SRS argument the following values:</p>
@@ -234,7 +258,10 @@
 </tr>
 </tbody>
 </table>
-<p>It is also possible to get all the cadastral references in a square of 50-meters’ side centered in the coordinates <em>lat</em> and <em>lon</em> through the function <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code>.</p>
+<p>It is also possible to get all the cadastral references in a square
+of 50-meters’ side centered in the coordinates <em>lat</em> and
+<em>lon</em> through the function
+<code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia</a></span><span class="op">(</span></span>
 <span>  lat <span class="op">=</span> <span class="fl">40.96002</span>,</span>
@@ -314,7 +341,12 @@
 <div class="section level2">
 <h2 id="geocoding-a-cadastral-reference">Geocoding a Cadastral Reference<a class="anchor" aria-label="anchor" href="#geocoding-a-cadastral-reference"></a>
 </h2>
-<p>The opposite query is possible as well. Being given to the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> a cadastral reference (<code>rc</code>), the province (<code>province</code>) and the town (<code>municipality</code>), <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> returns its coordinates <em>lat</em> and <em>lon</em> in a particular <em>SRS</em> besides the address (town, street and number).</p>
+<p>The opposite query is possible as well. Being given to the function
+<code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> a cadastral reference
+(<code>rc</code>), the province (<code>province</code>) and the town
+(<code>municipality</code>), <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> returns
+its coordinates <em>lat</em> and <em>lon</em> in a particular
+<em>SRS</em> besides the address (town, street and number).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
 <span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>
@@ -352,16 +384,25 @@
 <td align="right">-3.456242</td>
 <td align="right">38.61966</td>
 <td align="left">13077A01800039</td>
-<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
+<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL
+TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 <td align="left">13077A0</td>
 <td align="left">1800039</td>
 <td align="left">-3.45624183836806</td>
 <td align="left">38.6196566583596</td>
 <td align="left">EPSG:4230</td>
-<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
+<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL
+TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 </tr></tbody>
 </table>
-<p>Neither the <code>province</code> nor <code>municipality</code> are required to be passed to the function, unless the argument <code>municipality</code> is not <code>NULL</code>, in that case the argument <code>province</code> is needed to be passed. If it is passed a value to the <code>province</code> argument while the <code>municipality</code> argument is <code>NULL</code>, the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> will throw a message and would return a tibble with no data.</p>
+<p>Neither the <code>province</code> nor <code>municipality</code> are
+required to be passed to the function, unless the argument
+<code>municipality</code> is not <code>NULL</code>, in that case the
+argument <code>province</code> is needed to be passed. If it is passed a
+value to the <code>province</code> argument while the
+<code>municipality</code> argument is <code>NULL</code>, the function
+<code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> will throw a message and would return
+a tibble with no data.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
 <span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>
@@ -379,7 +420,8 @@
 <td align="left">EPSG:4326</td>
 </tr></tbody>
 </table>
-<p>When using only <code>rc</code> the result is provided as expected:</p>
+<p>When using only <code>rc</code> the result is provided as
+expected:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># No warning, get the result</span></span>
@@ -414,13 +456,15 @@
 <td align="right">-3.457532</td>
 <td align="right">38.61843</td>
 <td align="left">13077A01800039</td>
-<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
+<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL
+TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 <td align="left">13077A0</td>
 <td align="left">1800039</td>
 <td align="left">-3.45753233627867</td>
 <td align="left">38.6184314024661</td>
 <td align="left">EPSG:4326</td>
-<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
+<td align="left">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL
+TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 </tr></tbody>
 </table>
 </div>
