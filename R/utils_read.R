@@ -29,7 +29,7 @@ st_read_layers_encoding <- function(path, verbose) {
     geomtype = unlist(layers$geomtype)
   )
 
-  if (nrow(df_layers) == 0 | !"geomtype" %in% names(df_layers)) {
+  if (nrow(df_layers) == 0 || !"geomtype" %in% names(df_layers)) {
     message("No spatial layers found.")
     return(invisible(NULL))
   }

@@ -61,7 +61,7 @@
 #'
 catr_ovc_get_cod_munic <- function(cpro, cmun = NULL, cmun_ine = NULL,
                                    verbose = FALSE) {
-  if (is.null(cmun) & is.null(cmun_ine)) {
+  if (is.null(cmun) && is.null(cmun_ine)) {
     stop("Please provide a value either on 'cmun' or on 'cmun_ine'.")
   }
 

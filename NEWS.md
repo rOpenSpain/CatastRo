@@ -1,3 +1,7 @@
+# CatastRo (development version)
+
+-   Housekeeping and update of documentation.
+
 # CatastRo 0.2.2
 
 -   Add **tidyterra** to 'Suggests'.

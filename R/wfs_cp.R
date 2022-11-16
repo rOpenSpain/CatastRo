@@ -3,8 +3,8 @@
 #' @description
 #' Get the spatial data of cadastral parcels and zones. The WFS Service allows
 #' to perform several types of queries:
-#' - By bounding box: Implemented on `catr_wfs_get_parcels_bbox()`. Extract objects
-#'   included on the bounding box provided. See **Details**.
+#' - By bounding box: Implemented on `catr_wfs_get_parcels_bbox()`. Extract
+#'   objects included on the bounding box provided. See **Details**.
 #'
 #' @inheritParams catr_atom_get_parcels
 #' @inheritParams catr_wfs_get_buildings_bbox
@@ -42,7 +42,8 @@
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export
-catr_wfs_get_parcels_bbox <- function(x, what = "parcel", srs, verbose = FALSE) {
+catr_wfs_get_parcels_bbox <- function(x, what = "parcel", srs,
+                                      verbose = FALSE) {
   # Sanity checks
   if (!(what %in% c("parcel", "zoning"))) {
     stop("'what' should be 'parcel' or 'zoning'")
@@ -56,12 +57,6 @@ catr_wfs_get_parcels_bbox <- function(x, what = "parcel", srs, verbose = FALSE) 
   )
 
   bbox_res <- wfs_bbox(x, srs)
-
-  # Set limits
-  lim <- switch(what,
-    "parcel" = 1,
-    "zoning" = 25
-  )
 
   message_on_limit(bbox_res, 4)
 
@@ -113,8 +108,8 @@ catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
   return(out)
 }
 #' @description
-#' - By cadastral parcel: Implemented on `catr_wfs_get_parcels_parcel()`. Extract
-#'   cadastral parcels of a specific cadastral reference.
+#' - By cadastral parcel: Implemented on `catr_wfs_get_parcels_parcel()`.
+#'   Extract cadastral parcels of a specific cadastral reference.
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export
@@ -137,8 +132,9 @@ catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
   return(out)
 }
 #' @description
-#' - Neighbor cadastral parcels: Implemented on `catr_wfs_get_parcels_neigh_parcel()`.
-#'   Extract neighbor cadastral parcels of a specific cadastral reference.
+#' - Neighbor cadastral parcels: Implemented on
+#'   `catr_wfs_get_parcels_neigh_parcel()`. Extract neighbor cadastral parcels
+#'   of a specific cadastral reference.
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export
@@ -161,8 +157,9 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
   return(out)
 }
 #' @description
-#' - Cadastral parcels by zoning: Implemented on `catr_wfs_get_parcels_parcel_zoning()`.
-#'   Extract cadastral parcels of a specific cadastral zone.
+#' - Cadastral parcels by zoning: Implemented on
+#'  `catr_wfs_get_parcels_parcel_zoning()`. Extract cadastral parcels of a
+#'  specific cadastral zone.
 #'
 #' Check the
 #' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf).
@@ -183,7 +180,8 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #' ggplot(cp) +
 #'   geom_sf()
 #' }
-catr_wfs_get_parcels_parcel_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
+catr_wfs_get_parcels_parcel_zoning <- function(cod_zona, srs = NULL,
+                                               verbose = FALSE) {
   res <- wfs_api_query(
     entry = "wfsCP.aspx?",
     verbose = verbose,

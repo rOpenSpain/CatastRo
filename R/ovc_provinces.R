@@ -55,12 +55,12 @@ catr_ovc_get_cod_provinces <- function(verbose = FALSE) {
 
 
   # Check API custom error
-  err <- content_list[["consulta_provinciero"]]
   res <- content_list[["consulta_provinciero"]][["provinciero"]]
 
   # Get a list of tibbles
   res_tibble <- lapply(res, function(x) {
     df <- tibble::as_tibble_row(unlist(x))
+    return(df)
   })
 
   # Bind all

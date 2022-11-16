@@ -46,8 +46,8 @@ A \code{sf} object.
 Get the spatial data of addresses The WFS Service allows to perform
 several types of queries:
 \itemize{
-\item By bounding box: Implemented on \code{catr_wfs_get_address_bbox()}. Extract objects
-included on the bounding box provided. See \strong{Details}.
+\item By bounding box: Implemented on \code{catr_wfs_get_address_bbox()}.
+Extract objects included on the bounding box provided. See \strong{Details}.
 }
 
 \itemize{
@@ -61,8 +61,8 @@ objects of specific cadastral references
 }
 
 \itemize{
-\item By postal codes: Implemented on \code{catr_wfs_get_address_postalcode()}. Extract
-objects of specific cadastral references
+\item By postal codes: Implemented on \code{catr_wfs_get_address_postalcode()}.
+Extract objects of specific cadastral references
 }
 
 Check the

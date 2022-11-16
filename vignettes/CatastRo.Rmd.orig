@@ -23,10 +23,6 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-# Cheat a bit to speed up process
-oldpath <- CatastRo:::catr_hlp_detect_cache_dir()
-
-CatastRo::catr_set_cache_dir("../data-raw/cache")
 
 ```
 
@@ -124,7 +120,7 @@ library(tidyterra) # For terra tiles
 
 ggplot() +
   geom_spatraster_rgb(data = labs) +
-  geom_sf(data = stadium_parcel, fill = NA, col = "red", size = 2) +
+  geom_sf(data = stadium_parcel, fill = NA, col = "red", linewidth = 2) +
   geom_sf(data = stadium, fill = "red", alpha = .5)
 ```
 
@@ -238,13 +234,6 @@ ggplot(dataviz) +
     ),
     plot.margin = margin(r = 40, l = 40)
   )
-```
-
-```{r, include = FALSE}
-
-# Restore
-CatastRo::catr_set_cache_dir(oldpath)
-
 ```
 
 ## References

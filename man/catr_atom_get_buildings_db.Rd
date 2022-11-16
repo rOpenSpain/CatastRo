@@ -43,7 +43,8 @@ would perform a search using \code{\link[base:grep]{base::grep()}}.}
 \value{
 A tibble with the information requested.
 \itemize{
-\item \code{catr_atom_get_buildings_db_all()} provides a tibble with the following fields:
+\item \code{catr_atom_get_buildings_db_all()} provides a tibble with the following
+fields:
 \itemize{
 \item \code{territorial_office}: Territorial office, corresponding to each province
 of Spain expect Basque Country and Navarre.
@@ -52,7 +53,8 @@ of Spain expect Basque Country and Navarre.
 \item \code{date}: Reference date of the data. Note that \strong{the information of
 this service is updated twice a year}.
 }
-\item \code{catr_atom_get_buildings_db_to()} provides a tibble with the following fields:
+\item \code{catr_atom_get_buildings_db_to()} provides a tibble with the following
+fields:
 \itemize{
 \item \code{munic}: Name of the municipality.
 \item \code{url}: url for downloading information of the corresponding municipality.
@@ -65,12 +67,12 @@ this service is updated twice a year}.
 Create a database containing the urls provided in the INSPIRE ATOM service
 of the Spanish Cadastre for extracting buildings.
 \itemize{
-\item \code{catr_atom_get_buildings_db_all()} provides a top-level table including information
-of all the territorial offices (except Basque Country and Navarre) listing
-the municipalities included on each office.
-\item \code{catr_atom_get_buildings_db_to()} provides a table for the specified territorial
-office including information for each of the municipalities of that
-office.
+\item \code{catr_atom_get_buildings_db_all()} provides a top-level table including
+information of all the territorial offices (except Basque Country and
+Navarre) listing the municipalities included on each office.
+\item \code{catr_atom_get_buildings_db_to()} provides a table for the specified
+territorial office including information for each of the municipalities
+of that office.
 }
 }
 \examples{

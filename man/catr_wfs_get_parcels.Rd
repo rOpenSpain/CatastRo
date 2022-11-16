@@ -46,8 +46,8 @@ A \code{sf} object.
 Get the spatial data of cadastral parcels and zones. The WFS Service allows
 to perform several types of queries:
 \itemize{
-\item By bounding box: Implemented on \code{catr_wfs_get_parcels_bbox()}. Extract objects
-included on the bounding box provided. See \strong{Details}.
+\item By bounding box: Implemented on \code{catr_wfs_get_parcels_bbox()}. Extract
+objects included on the bounding box provided. See \strong{Details}.
 }
 
 \itemize{
@@ -56,18 +56,20 @@ objects of a specific cadastral zone.
 }
 
 \itemize{
-\item By cadastral parcel: Implemented on \code{catr_wfs_get_parcels_parcel()}. Extract
-cadastral parcels of a specific cadastral reference.
+\item By cadastral parcel: Implemented on \code{catr_wfs_get_parcels_parcel()}.
+Extract cadastral parcels of a specific cadastral reference.
 }
 
 \itemize{
-\item Neighbor cadastral parcels: Implemented on \code{catr_wfs_get_parcels_neigh_parcel()}.
-Extract neighbor cadastral parcels of a specific cadastral reference.
+\item Neighbor cadastral parcels: Implemented on
+\code{catr_wfs_get_parcels_neigh_parcel()}. Extract neighbor cadastral parcels
+of a specific cadastral reference.
 }
 
 \itemize{
-\item Cadastral parcels by zoning: Implemented on \code{catr_wfs_get_parcels_parcel_zoning()}.
-Extract cadastral parcels of a specific cadastral zone.
+\item Cadastral parcels by zoning: Implemented on
+\code{catr_wfs_get_parcels_parcel_zoning()}. Extract cadastral parcels of a
+specific cadastral zone.
 }
 
 Check the

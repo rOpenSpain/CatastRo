@@ -36,13 +36,13 @@ A \code{sf} object.
 Get the spatial data of buildings. The WFS Service allows to perform
 two types of queries:
 \itemize{
-\item By bounding box: Implemented on \code{catr_wfs_get_buildings_bbox()}. Extract objects
-included on the bounding box provided. See \strong{Details}.
+\item By bounding box: Implemented on \code{catr_wfs_get_buildings_bbox()}.
+Extract objects included on the bounding box provided. See \strong{Details}.
 }
 
 \itemize{
-\item By cadastral reference: Implemented on \code{catr_wfs_get_buildings_rc()}. Extract
-objects of specific cadastral references.
+\item By cadastral reference: Implemented on \code{catr_wfs_get_buildings_rc()}.
+Extract objects of specific cadastral references.
 }
 
 Check the

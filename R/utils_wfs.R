@@ -45,7 +45,7 @@ wfs_api_query <- function(entry, ..., verbose = TRUE) {
 
   if (!is.null(srs)) {
     # Sanity checks
-    empty <- wfs_validate_srs(srs)
+    wfs_validate_srs(srs)
     arguments$SRSNAME <- paste0("EPSG::", srs)
   }
 
@@ -120,7 +120,7 @@ wfs_bbox <- function(bbox, srs) {
   result <- list()
 
   # Use bbox of a spatial object. The API fails on geografic coord ¿?
-  if (inherits(bbox, "sf") | inherits(bbox, "sfc")) {
+  if (inherits(bbox, "sf") || inherits(bbox, "sfc")) {
     # Convert to Mercator (opinionated)
     bbox_new <- sf::st_transform(bbox, 3857)
 
@@ -133,7 +133,7 @@ wfs_bbox <- function(bbox, srs) {
   } else {
     # Convert to sf
     # Validate srs
-    empty <- wfs_validate_srs(srs)
+    wfs_validate_srs(srs)
 
     result$incrs <- srs
     bbox_new <- get_sf_from_bbox(bbox, srs)
@@ -156,12 +156,12 @@ wfs_bbox <- function(bbox, srs) {
 }
 
 get_sf_from_bbox <- function(bbox, srs) {
-  if (inherits(bbox, "sf") | inherits(bbox, "sfc")) {
+  if (inherits(bbox, "sf") || inherits(bbox, "sfc")) {
     return(bbox)
   }
 
   # Sanity check
-  if (!(is.numeric(bbox) & length(bbox) == 4)) {
+  if (!(is.numeric(bbox) && length(bbox) == 4)) {
     stop("bbox should be a vector of 4 numbers.", call. = FALSE)
   }
 

@@ -3,8 +3,8 @@
 #' @description
 #' Get the spatial data of buildings. The WFS Service allows to perform
 #' two types of queries:
-#' - By bounding box: Implemented on `catr_wfs_get_buildings_bbox()`. Extract objects
-#'   included on the bounding box provided. See **Details**.
+#' - By bounding box: Implemented on `catr_wfs_get_buildings_bbox()`.
+#'   Extract objects included on the bounding box provided. See **Details**.
 #'
 #' @inheritParams catr_atom_get_buildings
 #' @param x See **Details**. It could be:
@@ -46,7 +46,8 @@
 #'
 #' @rdname catr_wfs_get_buildings
 #' @export
-catr_wfs_get_buildings_bbox <- function(x, what = "building", srs, verbose = FALSE) {
+catr_wfs_get_buildings_bbox <- function(x, what = "building", srs,
+                                        verbose = FALSE) {
   # Sanity checks
   if (!(what %in% c("building", "buildingpart", "other"))) {
     stop("'what' should be 'building', 'buildingpart', 'other'")
@@ -88,8 +89,8 @@ catr_wfs_get_buildings_bbox <- function(x, what = "building", srs, verbose = FAL
 }
 
 #' @description
-#' - By cadastral reference: Implemented on `catr_wfs_get_buildings_rc()`. Extract
-#'   objects of specific cadastral references.
+#' - By cadastral reference: Implemented on `catr_wfs_get_buildings_rc()`.
+#'   Extract objects of specific cadastral references.
 #'
 #' Check the
 #' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf).

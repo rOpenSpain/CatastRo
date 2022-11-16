@@ -41,7 +41,7 @@
 #' }
 catr_get_code_from_coords <- function(x, srs, verbose = FALSE,
                                       cache_dir = NULL, ...) {
-  if (!(inherits(x, "sf") | inherits(x, "sfc"))) {
+  if (!(inherits(x, "sf") || inherits(x, "sfc"))) {
     if (length(x) != 2) stop("Length of x should be 2")
     if (missing(srs)) stop("When providing coords, provide also the srs/crs")
 

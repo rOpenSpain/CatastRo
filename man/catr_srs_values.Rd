@@ -11,9 +11,11 @@ A tibble with 16 rows and columns:
 \item \strong{SRS}: Spatial Reference System (CRS) value, identified by the
 corresponding \href{https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset}{EPSG}
 code.
-\item \strong{Description}: Description of the SRS/EPSG code.
-\item \strong{ovc_service}: Logical. Is this code valid on OVC services?
-\item \strong{wfs_service}: Logical. Is this code valid on INSPIRE WFS services?
+\describe{
+\item{Description}{Description of the SRS/EPSG code.}
+\item{ovc_service}{Logical. Is this code valid on OVC services?}
+\item{wfs_service}{Logical. Is this code valid on INSPIRE WFS services?}
+}
 }
 }
 \description{

@@ -29,7 +29,9 @@ test_that("CP Check verbose", {
   skip_on_os("linux")
   skip_if_offline()
 
-  expect_message(catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", verbose = TRUE))
+  expect_message(catr_wfs_get_parcels_neigh_parcel("3662303TF3136B",
+    verbose = TRUE
+  ))
 })
 
 

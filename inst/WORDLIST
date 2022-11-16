@@ -27,15 +27,13 @@ Electrónica
 Geocode
 Geocoding
 Geográficas
-Googlemaps
+Hernangomez
 INE
 MUDELA
 ORCID
 OVC
 OVCCallejero
 OVCCoordenadas
-OVCSWLocalizacionRC
-Oficial
 Panadero
 Parcela
 Polígono
@@ -54,11 +52,9 @@ WGS
 WMS
 admboundary
 admunit
-asmx
 buildingpart
 cadastral
 cadastre
-catastro
 catr
 cmun
 codecov
@@ -80,7 +76,6 @@ geocoding
 georeferenced
 geotagged
 github
-http
 https
 huso
 ine
@@ -92,7 +87,6 @@ lourb
 mapSpain
 organisations
 ovc
-ovcservweb
 pc
 pnp
 precomputed
@@ -102,10 +96,10 @@ ropenspain
 srs
 terra
 tibble
+tidyterra
 wfs
 xcen
 xcoord
 ycen
 ycoord
 zenodo
-Á

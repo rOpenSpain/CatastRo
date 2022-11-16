@@ -50,7 +50,8 @@
 #'   srs = 4326
 #' )
 #' }
-catr_ovc_get_rccoor_distancia <- function(lat, lon, srs = 4326, verbose = FALSE) {
+catr_ovc_get_rccoor_distancia <- function(lat, lon, srs = 4326,
+                                          verbose = FALSE) {
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values
   valid_srs <- tibble::as_tibble(valid_srs)
