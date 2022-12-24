@@ -233,11 +233,9 @@ Valencia in the Cadastre, and we would download the buildings with
 <span></span>
 <span><span class="va">val_catr_code</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 12</span></span>
-<span><span class="co">#&gt;   munic    catr_to catr_mu…¹ catrc…² cpro  cmun  inecode nm    cd    cmc   cp   </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 VALENCIA 46      900       46900   46    250   46250   VALE… 46    900   46   </span></span>
-<span><span class="co">#&gt; # … with 1 more variable: cm &lt;chr&gt;, and abbreviated variable names ¹​catr_munic,</span></span>
-<span><span class="co">#&gt; #   ²​catrcode</span></span>
+<span><span class="co">#&gt;   munic    catr_to catr_munic catrcode cpro  cmun  inecode nm       cd    cmc   cp    cm   </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 VALENCIA 46      900        46900    46    250   46250   VALENCIA 46    900   46    250</span></span>
 <span></span>
 <span><span class="va">valencia_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">val_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span></code></pre></div>
 <p>Next step for creating the visualization is to limit the analysis to

@@ -73,6 +73,7 @@ mapSpain::esp_getTiles()."><meta property="og:image" content="https://ropenspain
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  crop <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  options <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -117,8 +118,13 @@ default is <code>FALSE</code>.</p></dd>
 
 <dt>crop</dt>
 <dd><p><code>TRUE</code> if results should be cropped to the specified <code>x</code> extent,
-<code>FALSE</code> otherwise. If <code>x</code> is an <code>sf</code> object with one <code>POINT</code>, crop is set
+<code>FALSE</code> otherwise. If <code>x</code> is an <span class="pkg">sf</span> object with one <code>POINT</code>, crop is set
 to <code>FALSE</code>.</p></dd>
+
+
+<dt>options</dt>
+<dd><p>A named list containing additional options to pass to the
+query.</p></dd>
 
 
 <dt>...</dt>
@@ -152,9 +158,10 @@ Depends on the selected provider on <code>type</code>.</p></dd>
     <p>When <code>x</code> is a numeric vector, make sure that the <code>srs</code> matches the
 coordinate values. When <code>x</code> is a <code>sf</code> object, the value <code>srs</code> is ignored.</p>
 <p>The query is performed using <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a> (Web Mercator)
-and the spatial object is projected back to the SRS of the initial object. In
-case that the tile looks deformed, try either providing <code>bbox</code> on EPSG:3857
-or projecting your <code>sf</code> object to <code>sf::st_crs(3857)</code>.</p>
+and the tile is projected back to the SRS of <code>x</code>. In
+case that the tile looks deformed, try either providing <code>x</code> or specify the
+SRS of the requested tile via the <code>srs</code> parameter, that ideally would need
+to match the SRS of <code>x</code>. See <strong>Examples</strong>.</p>
     </div>
     <div class="section level2">
     <h2 id="layers">Layers<a class="anchor" aria-label="anchor" href="#layers"></a></h2>
@@ -237,15 +244,14 @@ for more information.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># With a spatial object</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span>, srs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Transform</span></span></span>
-<span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">parcels</span>, <span class="fl">3857</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use styles</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">parcels_img</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span><span class="va">parcels</span>,</span></span>
 <span class="r-in"><span>  what <span class="op">=</span> <span class="st">"buildingpart"</span>,</span></span>
+<span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">25830</span>, <span class="co"># As parcels object</span></span></span>
 <span class="r-in"><span>  bbox_expand <span class="op">=</span> <span class="fl">0.3</span>,</span></span>
 <span class="r-in"><span>  styles <span class="op">=</span> <span class="st">"ELFCadastre"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
