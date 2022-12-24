@@ -37,9 +37,10 @@
 #' coordinate values. When `x` is a `sf` object, the value `srs` is ignored.
 #'
 #' The query is performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator)
-#' and the spatial object is projected back to the SRS of the initial object. In
-#' case that the tile looks deformed, try either providing `bbox` on EPSG:3857
-#' or projecting your `sf` object to `sf::st_crs(3857)`.
+#' and the tile is projected back to the SRS of `x`. In
+#' case that the tile looks deformed, try either providing `x` or specify the
+#' SRS of the requested tile via the `srs` parameter, that ideally would need
+#' to match the SRS of `x`. See **Examples**.
 #'
 #' # Layers
 #'
@@ -90,15 +91,14 @@
 #'
 #' # With a spatial object
 #'
-#' parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B")
+#' parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
 #'
-#' # Transform
-#' parcels <- sf::st_transform(parcels, 3857)
 #'
 #' # Use styles
 #'
 #' parcels_img <- catr_wms_get_layer(parcels,
 #'   what = "buildingpart",
+#'   srs = 25830, # As parcels object
 #'   bbox_expand = 0.3,
 #'   styles = "ELFCadastre"
 #' )
@@ -116,6 +116,7 @@ catr_wms_get_layer <- function(x,
                                cache_dir = NULL,
                                verbose = FALSE,
                                crop = FALSE,
+                               options = NULL,
                                ...) {
   bbox_res <- get_sf_from_bbox(x, srs)
   cache_dir <- catr_hlp_cachedir(cache_dir)
@@ -146,13 +147,41 @@ catr_wms_get_layer <- function(x,
     "admunit" = "Catastro.AdministrativeUnit"
   )
 
-  # Manage styles
+  # Manage styles and options
+  # Custom options
+  opts <- list(
+    styles = styles,
+    version = "1.1.0"
+  )
 
-  if (tolower(styles) == "default") {
-    opts <- NULL
-  } else {
-    opts <- list(styles = styles)
+  # Add srs
+  if (!missing(srs)) {
+    if (!any(grepl("epsg", srs, ignore.case = TRUE))) {
+      opts <- modifyList(
+        opts,
+        list(srs = paste0("EPSG:", srs))
+      )
+    }
   }
+
+  # Add to options
+  if (is.null(options)) {
+    finalopts <- opts
+  } else {
+    names(options) <- tolower(names(options))
+    finalopts <- modifyList(
+      opts,
+      options
+    )
+  }
+
+  # Check if need to change crs
+
+  if (finalopts$version >= "1.3.0") {
+    newnames <- gsub("srs", "crs", names(finalopts))
+    names(finalopts) <- newnames
+  }
+
 
   # Query
 
@@ -162,7 +191,7 @@ catr_wms_get_layer <- function(x,
     update_cache = update_cache,
     cache_dir = cache_dir,
     verbose = verbose,
-    options = opts,
+    options = finalopts,
     ...
   )
 

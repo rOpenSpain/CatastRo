@@ -22,7 +22,7 @@ Depends:
 Imports: 
     dplyr,
     httr,
-    mapSpain (>= 0.6.0),
+    mapSpain (>= 0.7.0),
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
     stringi,
@@ -45,4 +45,4 @@ Copyright: © Dirección General del Catastro <https://www.catastro.meh.es/>
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3

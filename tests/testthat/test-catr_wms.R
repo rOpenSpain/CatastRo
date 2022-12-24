@@ -42,10 +42,9 @@ test_that("Check tiles", {
   obj3 <- catr_wms_get_layer(c(222500, 4019500, 222700, 4019700),
     srs = 25830,
     what = "building",
-    styles = "ELFCadastre"
+    styles = "ELFCadastre",
+    options = list(version = "1.3.0")
   )
-
-
 
   expect_s4_class(obj3, "SpatRaster")
 })

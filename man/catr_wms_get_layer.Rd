@@ -13,6 +13,7 @@ catr_wms_get_layer(
   cache_dir = NULL,
   verbose = FALSE,
   crop = FALSE,
+  options = NULL,
   ...
 )
 }
@@ -42,8 +43,11 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 default is \code{FALSE}.}
 
 \item{crop}{\code{TRUE} if results should be cropped to the specified \code{x} extent,
-\code{FALSE} otherwise. If \code{x} is an \code{sf} object with one \code{POINT}, crop is set
+\code{FALSE} otherwise. If \code{x} is an \pkg{sf} object with one \code{POINT}, crop is set
 to \code{FALSE}.}
+
+\item{options}{A named list containing additional options to pass to the
+query.}
 
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles}}
@@ -69,9 +73,10 @@ When \code{x} is a numeric vector, make sure that the \code{srs} matches the
 coordinate values. When \code{x} is a \code{sf} object, the value \code{srs} is ignored.
 
 The query is performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator)
-and the spatial object is projected back to the SRS of the initial object. In
-case that the tile looks deformed, try either providing \code{bbox} on EPSG:3857
-or projecting your \code{sf} object to \code{sf::st_crs(3857)}.
+and the tile is projected back to the SRS of \code{x}. In
+case that the tile looks deformed, try either providing \code{x} or specify the
+SRS of the requested tile via the \code{srs} parameter, that ideally would need
+to match the SRS of \code{x}. See \strong{Examples}.
 }
 \section{Layers}{
 The parameter \code{what} defines the layer to be extracted. The equivalence with
@@ -127,15 +132,14 @@ ggplot() +
 
 # With a spatial object
 
-parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B")
+parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
 
-# Transform
-parcels <- sf::st_transform(parcels, 3857)
 
 # Use styles
 
 parcels_img <- catr_wms_get_layer(parcels,
   what = "buildingpart",
+  srs = 25830, # As parcels object
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )
