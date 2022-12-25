@@ -42,7 +42,7 @@
     <div>
       <img src="../logo.png" alt="CatastRo-logo" id="ROS-navbar-logo"><a class="navbar-brand me-2" href="../index.html">CatastRo</a>
 
-      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.2.9000</small>
+      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3</small>
     </div>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -186,11 +186,16 @@ capabilities of the package:</p>
 <span></span>
 <span><span class="va">stadium_parcel</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_bbox</a></span><span class="op">(</span><span class="va">stadium</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Project for tiles</span></span>
+<span></span>
+<span><span class="va">stadium_parcel_pr</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">stadium_parcel</span>, <span class="fl">25830</span><span class="op">)</span></span>
+<span></span>
 <span><span class="co"># Extract imagery: Labels of the parcel</span></span>
 <span></span>
-<span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer</a></span><span class="op">(</span><span class="va">stadium_parcel</span>,</span>
+<span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer</a></span><span class="op">(</span><span class="va">stadium_parcel_pr</span>,</span>
 <span>  what <span class="op">=</span> <span class="st">"parcel"</span>,</span>
-<span>  styles <span class="op">=</span> <span class="st">"BoundariesOnly"</span></span>
+<span>  styles <span class="op">=</span> <span class="st">"BoundariesOnly"</span>,</span>
+<span>  srs <span class="op">=</span> <span class="fl">25830</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Plot</span></span>
@@ -199,8 +204,9 @@ capabilities of the package:</p>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">labs</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium_parcel</span>, fill <span class="op">=</span> <span class="cn">NA</span>, col <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium</span>, fill <span class="op">=</span> <span class="st">"red"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium_parcel_pr</span>, fill <span class="op">=</span> <span class="cn">NA</span>, col <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium</span>, fill <span class="op">=</span> <span class="st">"red"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></code></pre></div>
 <p><img src="santbernabeu-1.png" alt="plot of chunk santbernabeu" width="100%"></p>
 </div>
 <div class="section level3">
