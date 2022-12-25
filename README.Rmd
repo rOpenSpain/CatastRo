@@ -191,14 +191,21 @@ ggplot(wfs_get_buildings) +
 
 ```{r wms}
 
-wms_bu <- catr_wms_get_layer(wfs_get_buildings, bbox_expand = 0.2)
+# For tiles better project
+
+wfs_get_buildings_pr <- sf::st_transform(wfs_get_buildings, 25830)
+
+wms_bu <- catr_wms_get_layer(wfs_get_buildings_pr,
+  srs = 25830,
+  bbox_expand = 0.2
+)
 
 # Map
 # Load tidyterra
 library(tidyterra)
 ggplot() +
   geom_spatraster_rgb(data = wms_bu) +
-  geom_sf(data = wfs_get_buildings, fill = "red", alpha = 0.6)
+  geom_sf(data = wfs_get_buildings_pr, fill = "red", alpha = 0.6)
 ```
 
 ## A note on caching

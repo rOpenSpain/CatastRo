@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenSpain/CatastRo",
   "issueTracker": "https://github.com/rOpenSpain/CatastRo/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
-  "version": "0.2.2.9000",
+  "version": "0.2.3",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -270,7 +270,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1569.447KB",
+  "fileSize": "1542.779KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

@@ -1,4 +1,4 @@
-# CatastRo (development version)
+# CatastRo 0.2.3
 
 -   Housekeeping and update of documentation.
 -   Adapt `catr_wms_get_layer()` to **mapSpain** (\>= 0.7.0).

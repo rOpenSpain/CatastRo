@@ -191,14 +191,21 @@ ggplot(wfs_get_buildings) +
 
 ``` r
 
-wms_bu <- catr_wms_get_layer(wfs_get_buildings, bbox_expand = 0.2)
+# For tiles better project
+
+wfs_get_buildings_pr <- sf::st_transform(wfs_get_buildings, 25830)
+
+wms_bu <- catr_wms_get_layer(wfs_get_buildings_pr,
+  srs = 25830,
+  bbox_expand = 0.2
+)
 
 # Map
 # Load tidyterra
 library(tidyterra)
 ggplot() +
   geom_spatraster_rgb(data = wms_bu) +
-  geom_sf(data = wfs_get_buildings, fill = "red", alpha = 0.6)
+  geom_sf(data = wfs_get_buildings_pr, fill = "red", alpha = 0.6)
 ```
 
 <img src="man/figures/README-wms-1.png" width="100%" />
@@ -231,7 +238,7 @@ A BibTeX entry for LaTeX users is:
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       year = {2022},
-      version = {0.2.2.9000},
+      version = {0.2.3},
       url = {https://ropenspain.github.io/CatastRo/},
       doi = {10.5281/zenodo.6044091},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},

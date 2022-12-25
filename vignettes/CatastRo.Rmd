@@ -94,11 +94,16 @@ stadium <- catr_wfs_get_buildings_bbox(
 
 stadium_parcel <- catr_wfs_get_parcels_bbox(stadium)
 
+# Project for tiles
+
+stadium_parcel_pr <- sf::st_transform(stadium_parcel, 25830)
+
 # Extract imagery: Labels of the parcel
 
-labs <- catr_wms_get_layer(stadium_parcel,
+labs <- catr_wms_get_layer(stadium_parcel_pr,
   what = "parcel",
-  styles = "BoundariesOnly"
+  styles = "BoundariesOnly",
+  srs = 25830
 )
 
 # Plot
@@ -107,8 +112,9 @@ library(tidyterra) # For terra tiles
 
 ggplot() +
   geom_spatraster_rgb(data = labs) +
-  geom_sf(data = stadium_parcel, fill = NA, col = "red", linewidth = 2) +
-  geom_sf(data = stadium, fill = "red", alpha = .5)
+  geom_sf(data = stadium_parcel_pr, fill = NA, col = "red", linewidth = 2) +
+  geom_sf(data = stadium, fill = "red", alpha = .5) +
+  coord_sf(crs = 25830)
 ```
 
 <img src="./santbernabeu-1.png" alt="plot of chunk santbernabeu" width="100%" />
