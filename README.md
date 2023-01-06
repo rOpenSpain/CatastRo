@@ -7,7 +7,7 @@
 
 [![rOS-badge](https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg)](https://ropenspain.es/)
 [![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
-[![CRAN-results](https://cranchecks.info/badges/worst/CatastRo)](https://cran.r-project.org/web/checks/check_results_CatastRo.html)
+[![CRAN-results](https://badges.cranchecks.info/worst/CatastRo.svg)](https://cran.r-project.org/web/checks/check_results_CatastRo.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
 [![r-universe](https://ropenspain.r-universe.dev/badges/CatastRo)](https://ropenspain.r-universe.dev/)
 [![R-CMD-check](https://github.com/rOpenSpain/CatastRo/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check)
@@ -227,7 +227,7 @@ it will load it, speeding up the process.
 
 To cite ‘CatastRo’ in publications use:
 
-Delgado Panadero A, Hernangomez D (2022). *CatastRo: Interface to the
+Delgado Panadero A, Hernangomez D (2023). *CatastRo: Interface to the
 API Sede Electrónica Del Catastro*.
 <https://doi.org/10.5281/zenodo.6044091>,
 <https://ropenspain.github.io/CatastRo/>
@@ -237,7 +237,7 @@ A BibTeX entry for LaTeX users is:
     @Manual{R-catastro,
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
-      year = {2022},
+      year = {2023},
       version = {0.2.3},
       url = {https://ropenspain.github.io/CatastRo/},
       doi = {10.5281/zenodo.6044091},
