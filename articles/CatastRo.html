@@ -171,8 +171,7 @@ Bernabéu Stadium</a>. We would make use of the <strong>WMS and WFS
 services</strong> to get different layers in order to show some of the
 capabilities of the package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Extract building by bounding box</span></span>
+<code class="sourceCode R"><span><span class="co"># Extract building by bounding box</span></span>
 <span><span class="co"># Check https://boundingbox.klokantech.com/</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span></span>
@@ -220,8 +219,7 @@ urban growth</a>, using the <strong>ATOM services</strong>.</p>
 <p>In first place, we extract the coordinates of the city center of
 Valencia using <strong>mapSpain</strong>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span>
 <span></span>
@@ -234,8 +232,7 @@ service. We would use also the function
 Valencia in the Cadastre, and we would download the buildings with
 <code><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">val_catr_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords</a></span><span class="op">(</span><span class="va">val</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">val_catr_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords</a></span><span class="op">(</span><span class="va">val</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">val_catr_code</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 12</span></span>
@@ -249,8 +246,7 @@ Valencia in the Cadastre, and we would download the buildings with
 <p>Next step for creating the visualization is to limit the analysis to
 a circle of radius 2.5 km around the city center:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">buff</span> <span class="op">&lt;-</span> <span class="va">val</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">buff</span> <span class="op">&lt;-</span> <span class="va">val</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="co"># Adjust CRS to 25830: (Buildings)</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">valencia_bu</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="co"># Buffer</span></span>
@@ -267,8 +263,7 @@ a circle of radius 2.5 km around the city center:</p>
 <p>Let’s extract now the construction year, available in the column
 <code>beginning</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Extract 4 initial positions</span></span>
+<code class="sourceCode R"><span><span class="co"># Extract 4 initial positions</span></span>
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substr</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">$</span><span class="va">beginning</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Replace all that doesn't look as a number with 0000</span></span>
@@ -284,8 +279,7 @@ a circle of radius 2.5 km around the city center:</p>
 visualization. We use here the function
 <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html" class="external-link">ggplot2::cut_number()</a></code> to create 15 different classes:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year_cat <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html" class="external-link">cut_number</a></span><span class="op">(</span><span class="va">year</span>,</span>
 <span>    n <span class="op">=</span> <span class="fl">15</span></span>
 <span>  <span class="op">)</span><span class="op">)</span></span>
