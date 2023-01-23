@@ -136,7 +136,6 @@ This script highlights some features of **CatastRo** :
 ### Geocode a cadastral reference
 
 ```{r}
-
 library(CatastRo)
 
 catr_ovc_get_cpmrc(rc = "13077A01800039")
@@ -155,7 +154,6 @@ catr_ovc_get_rccoor(
 ### Extract geometries using the ATOM service
 
 ```{r atom}
-
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 
@@ -190,7 +188,6 @@ ggplot(wfs_get_buildings) +
 ### Extract maps using the WMS service
 
 ```{r wms}
-
 # For tiles better project
 
 wfs_get_buildings_pr <- sf::st_transform(wfs_get_buildings, 25830)

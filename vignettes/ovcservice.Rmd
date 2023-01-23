@@ -175,7 +175,6 @@ When using only `rc` the result is provided as expected:
 
 
 ```r
-
 # No warning, get the result
 catr_ovc_get_cpmrc(rc = "13077A01800039") %>%
   knitr::kable()
