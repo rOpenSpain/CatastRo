@@ -23,3 +23,7 @@ CRAN-SUBMISSION
 inst/doc
 cran-comments.md
 .Rdata
+inst/doc
+docs/
+dev/
+vignettes/dev

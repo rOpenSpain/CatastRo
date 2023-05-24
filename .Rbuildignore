@@ -22,3 +22,5 @@
 ^pkgdown\.yaml$
 ^pkgdown\.yml$
 ^\.imgbotconfig$
+^dev$
+^vignettes/dev$

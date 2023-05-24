@@ -1,13 +1,10 @@
 ---
 title: "Get started"
 output: rmarkdown::html_vignette
-biblography: REFERENCES.bib
-nocite: '@*'
 vignette: >
   %\VignetteIndexEntry{Get started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-bibliography: references.bib
 ---
 
 ```{r, include = FALSE}
@@ -22,6 +19,10 @@ knitr::opts_chunk$set(
   dpi = 90,
   out.width = "100%"
 )
+
+if(.Platform$OS.type != "windows"){
+  options(download.file.method="curl", download.file.extra="-k -L")
+}
 
 
 ```
@@ -243,3 +244,5 @@ ggplot(dataviz) +
 ```
 
 ## References
+
+- Royé D (2019). "Visualize urban growth." <https://dominicroye.github.io/en/2019/visualize-urban-growth/>.

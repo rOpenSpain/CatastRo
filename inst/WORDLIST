@@ -63,23 +63,16 @@ cp
 cv
 del
 dir
-doi
 dt
-ec
 electrónica
-eu
-europa
 geo
 geocode
 geocoded
 geocoding
 georeferenced
 geotagged
-github
-https
 huso
 ine
-io
 ldt
 loine
 lon
@@ -92,7 +85,6 @@ pnp
 precomputed
 rOS
 refcat
-ropenspain
 srs
 terra
 tibble
@@ -102,4 +94,3 @@ xcen
 xcoord
 ycen
 ycoord
-zenodo

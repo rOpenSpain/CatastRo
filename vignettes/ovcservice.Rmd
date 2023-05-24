@@ -36,7 +36,7 @@ properties located in a square 50-meters-side around the given point.
 The documentation of this API can be found
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-These functions are named `catr_ovc_*` and returns a tibble, as provided 
+These functions are named `catr_ovc_*` and returns a tibble, as provided
 by the package **tibble**.
 
 

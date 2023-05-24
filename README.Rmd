@@ -16,6 +16,11 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
+if (.Platform$OS.type != "windows") {
+  options(download.file.method = "curl", download.file.extra = "-k -L")
+}
+
+
 library(CatastRo)
 ```
 
@@ -52,7 +57,7 @@ install.packages("CatastRo")
 ```
 
 You can install the developing version of **CatastRo** using the
-[r-universe](http://ropenspain.r-universe.dev/ui/):
+[r-universe](https://ropenspain.r-universe.dev/CatastRo):
 
 ```{r, eval = FALSE}
 # Enable this universe

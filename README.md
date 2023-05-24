@@ -34,7 +34,7 @@ install.packages("CatastRo")
 ```
 
 You can install the developing version of **CatastRo** using the
-[r-universe](http://ropenspain.r-universe.dev/ui/):
+[r-universe](https://ropenspain.r-universe.dev/CatastRo):
 
 ``` r
 # Enable this universe
