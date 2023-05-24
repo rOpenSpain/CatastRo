@@ -19,3 +19,6 @@
 ^vignettes/ovcservice\.Rmd\.orig$
 ^vignettes/CatastRo\.Rmd\.orig$
 ^LICENSE\.md$
+^pkgdown\.yaml$
+^pkgdown\.yml$
+^\.imgbotconfig$
