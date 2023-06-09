@@ -113,7 +113,10 @@ ggplot() +
   coord_sf(crs = 25830)
 ```
 
+<div class="figure">
 <img src="./santbernabeu-1.png" alt="plot of chunk santbernabeu" width="100%" />
+<p class="caption">plot of chunk santbernabeu</p>
+</div>
 
 ### Thematic maps
 
@@ -177,7 +180,10 @@ ggplot(dataviz) +
   geom_sf()
 ```
 
+<div class="figure">
 <img src="./minimal-1.png" alt="plot of chunk minimal" width="100%" />
+<p class="caption">plot of chunk minimal</p>
+</div>
 
 Let's extract now the construction year, available in the column `beginning`:
 
@@ -235,7 +241,10 @@ ggplot(dataviz) +
   )
 ```
 
+<div class="figure">
 <img src="./dataviz-1.png" alt="plot of chunk dataviz" width="100%" />
+<p class="caption">plot of chunk dataviz</p>
+</div>
 
 ## References
 
