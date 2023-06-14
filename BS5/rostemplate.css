@@ -1,39 +1,62 @@
 /* https://www.cleancss.com/css-beautify/ */
-/* Section: Syntax highlighter */
  h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
      background-color: transparent;
 }
- pre {
-     color: #505050;
+pre a {
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
 }
- pre a {
-     color: inherit;
-     font-weight: inherit
+code a {
+    text-decoration: underline;
 }
-/* Keyword */
- pre code span.kw {
-     font-weight: bold
+
+/* Section: Syntax highlighter emacs (como en la web de rOpenSpain) */
+pre {
+	display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-/* String */
- pre code span.st, pre code span.an, pre code span.ch, pre code span.cn {
-     color: #800080;
-}
- pre code span.cn {
-     font-weight: bold
-}
-/* Function */
- pre code span.fu {
-     color: #008b45;
-     font-weight: bold
-}
-/* Float */
- pre code span.fl {
-     color: #B452CD;
-}
-/* comment */
- pre code span.co {
-     color: #888888;
-}
+pre code         /* Normal         */ {color:#333}
+pre code span.al /* Alert          */ {border: 1px solid #FF0000}
+pre code span.an /* Annotation     */ {color: #008800; font-style: italic }
+pre code span.at /* Attribute      */ {color:#BB4444}
+pre code span.bn /* BaseN          */ {color:#880000}
+pre code span.bu /* BuiltIn        */ {color:#BB4444}
+pre code span.cf /* ControlFlow    */ {color:#BB4444}
+pre code span.ch /* Char           */ {color:#BB4444}
+pre code span.cn /* Constant       */ {color:#880000}
+pre code span.co /* Comment        */ {color: #008800; font-style: italic }
+pre code span.cv /* CommentVar     */ {color: #008800; font-style: italic }
+pre code span.do /* Documentation  */ {color: #008800; font-style: italic }
+pre code span.dt /* DataType       */ {color:#BB4444}
+pre code span.dv /* DecVal         */ {color:#666666}
+pre code span.er /* Error          */ {border: 1px solid #FF0000}
+pre code span.ex /* Extension      */ {color:#BB4444; font-weight: bold}
+pre code span.fl /* Float          */ {color:#666666}
+pre code span.fu /* Function       */ {color:#00A000}
+pre code span.im /* Import         */ {color:#BB4444}
+pre code span.in /* Information    */ {color: #008800; font-style: italic }
+pre code span.kw /* Keyword        */ {color: #AA22FF; font-weight: bold }
+pre code span.op /* Operator       */ {color:#666666}
+pre code span.ot /* Others         */ {color:#008000}
+pre code span.pp /* Preprocessor   */ {color:#008800}
+pre code span.re /* RegionMarker   */ {color: #008800; font-style: italic }
+pre code span.sc /* SpecialChar    */ {color:#666666}
+pre code span.ss /* SpecialString  */ {color:#008000}
+pre code span.st /* String         */ {color:#BB4444}
+pre code span.va /* Variable       */ {color:#B8860B}
+pre code span.vs /* VerbatimString */ {color:#BB4444}
+pre code span.wa /* Warning        */ {border: 1px solid #FF0000}
+
 /* Section: Navbar */
  .navbar-light .navbar-brand {
      font-weight: 300;
@@ -175,4 +198,10 @@
      margin-right: auto;
      margin-top: 0.5rem;
      font-size: 85%;
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    border-left: 5px solid #986dbd;
 }
