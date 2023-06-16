@@ -226,7 +226,7 @@ load it, speeding up the process.
 ## Citation
 
 ```{r echo=FALSE, results='asis'}
-print(citation("CatastRo"), bibtex = FALSE)
+print(citation("CatastRo"), style = "html")
 ```
 
 A BibTeX entry for LaTeX users is:
