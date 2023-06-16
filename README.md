@@ -220,12 +220,12 @@ it will load it, speeding up the process.
 
 ## Citation
 
-To cite ‘CatastRo’ in publications use:
-
-Delgado Panadero A, Hernangomez D (2023). *CatastRo: Interface to the
-API Sede Electrónica Del Catastro*.
-<https://doi.org/10.5281/zenodo.6044091>,
-<https://ropenspain.github.io/CatastRo/>
+<p>
+Delgado Panadero Á, Hernangómez D (2023). <em>CatastRo: Interface to the
+API Sede Electrónica Del Catastro</em>.
+<a href="https://doi.org/10.5281/zenodo.6044091">doi:10.5281/zenodo.6044091</a>,
+<a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
+</p>
 
 A BibTeX entry for LaTeX users is:
 
