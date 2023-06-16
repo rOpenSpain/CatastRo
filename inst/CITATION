@@ -1,7 +1,6 @@
 year <- format(Sys.time(), "%Y")
 abs <- trimws(gsub("\\s+", " ", meta$Description))
 abs <- gsub("'", "", abs)
-title <- gsub("'", "", meta$Title)
 
 bibentry(
   "Manual",
@@ -13,8 +12,5 @@ bibentry(
   url = unlist(strsplit(meta$URL, ","))[1],
   doi = "10.5281/zenodo.6044091",
   abstract = abs,
-  key = "R-catastro",
-  textVersion = paste0("Delgado Panadero A, Hernangomez D (",year,"). _CatastRo: ",
-    "Interface to the API Sede Electrónica Del Catastro_. <https://doi.org/10.5281/zenodo.6044091>, <",
-    unlist(strsplit(meta$URL, ","))[1],">")
+  key = "R-catastro"
 )
