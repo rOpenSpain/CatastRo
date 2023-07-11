@@ -239,7 +239,9 @@ Valencia in the Cadastre, and we would download the buildings with
 <span><span class="co">#&gt; 1 VALEN… 46      900        46900    46    250   46250   VALE… 46    900   46   </span></span>
 <span><span class="co">#&gt; # ℹ 1 more variable: cm &lt;chr&gt;</span></span>
 <span></span>
-<span><span class="va">valencia_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">val_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">valencia_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">val_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in catr_hlp_dwnload(api_entry, filename, cache_dir, verbose, update_cache, : </span></span>
+<span><span class="co">#&gt; Execution halted</span></span></code></pre></div>
 <p>Next step for creating the visualization is to limit the analysis to
 a circle of radius 2.5 km around the city center:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -248,34 +250,36 @@ a circle of radius 2.5 km around the city center:</p>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">valencia_bu</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="co"># Buffer</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_buffer</a></span><span class="op">(</span><span class="fl">2500</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: object 'valencia_bu' not found</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Cut buildings</span></span>
 <span></span>
 <span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_binary_ops.html" class="external-link">st_intersection</a></span><span class="op">(</span><span class="va">valencia_bu</span>, <span class="va">buff</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'valencia_bu' not found</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="minimal-1.png" alt="plot of chunk minimal" width="100%"><p class="caption">
-plot of chunk minimal
-</p>
-</div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span></code></pre></div>
 <p>Let’s extract now the construction year, available in the column
 <code>beginning</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Extract 4 initial positions</span></span>
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substr</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">$</span><span class="va">beginning</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span>
 <span></span>
 <span><span class="co"># Replace all that doesn't look as a number with 0000</span></span>
 <span><span class="va">year</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fl">0</span><span class="op">:</span><span class="fl">2500</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"0000"</span></span>
+<span><span class="co">#&gt; Error: object 'year' not found</span></span>
 <span></span>
 <span><span class="co"># To numeric</span></span>
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'year' not found</span></span>
 <span></span>
 <span><span class="co"># New column</span></span>
 <span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">year</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">year</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span></code></pre></div>
 <p>Last step is to create groups based on the year and create the data
 visualization. We use here the function
 <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html" class="external-link">ggplot2::cut_number()</a></code> to create 15 different classes:</p>
@@ -284,6 +288,7 @@ visualization. We use here the function
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year_cat <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html" class="external-link">cut_number</a></span><span class="op">(</span><span class="va">year</span>,</span>
 <span>    n <span class="op">=</span> <span class="fl">15</span></span>
 <span>  <span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span>
 <span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">)</span> <span class="op">+</span></span>
@@ -309,12 +314,8 @@ visualization. We use here the function
 <span>      margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span>b <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="fl">.5</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">40</span>, l <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="dataviz-1.png" alt="plot of chunk dataviz" width="100%"><p class="caption">
-plot of chunk dataviz
-</p>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
