@@ -24,3 +24,4 @@
 ^\.imgbotconfig$
 ^dev$
 ^vignettes/dev$
+^\.lintr$
