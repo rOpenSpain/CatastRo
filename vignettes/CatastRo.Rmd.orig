@@ -7,6 +7,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+<!-- CatastRo.Rmd is generated from CatastRo.Rmd.orig. Please edit that file -->
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -92,7 +94,7 @@ Bernabéu Stadium](https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium)
 We would make use of the **WMS and WFS services** to get different layers in
 order to show some of the capabilities of the package:
 
-```{r santbernabeu}
+```{r santbernabeu, fig.cap="Example: Santiago Bernabeu"}
 
 # Extract building by bounding box
 # Check https://boundingbox.klokantech.com/
@@ -172,7 +174,7 @@ valencia_bu <- catr_atom_get_buildings(val_catr_code$catrcode)
 Next step for creating the visualization is to limit the analysis to a circle of
 radius 2.5 km around the city center:
 
-```{r minimal}
+```{r minimal, fig.cap="Minimal cadastral map od Valencia"}
 
 buff <- val %>%
   # Adjust CRS to 25830: (Buildings)
@@ -211,7 +213,7 @@ Last step is to create groups based on the year and create the data
 visualization. We use here the function `ggplot2::cut_number()` to create 15
 different classes:
 
-```{r dataviz}
+```{r dataviz, fig.cap="Valencia: Urban growth}
 
 dataviz <- dataviz %>%
   mutate(year_cat = ggplot2::cut_number(year,
