@@ -29,7 +29,7 @@
 #' @references
 #' [API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
 #'
-#' [INSPIRE Services for Cadastral 
+#' [INSPIRE Services for Cadastral
 #' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #'
@@ -69,7 +69,7 @@
 #' - "address": `"Number.ELFCadastre"`
 #' - "admboundary" y "admunit": `"ELFCadastre"`
 #'
-#' Check the [API 
+#' Check the [API
 #' Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
 #' for more information.
 #'
@@ -79,7 +79,7 @@
 #' # With a bbox
 #'
 #' pict <- catr_wms_get_layer(
-#' c(222500, 4019500, 223700, 4020700),
+#'   c(222500, 4019500, 223700, 4020700),
 #'   srs = 25830,
 #'   what = "parcel"
 #' )

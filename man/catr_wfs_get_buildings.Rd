@@ -45,8 +45,7 @@ Extract objects included on the bounding box provided. See \strong{Details}.
 Extract objects of specific cadastral references.
 }
 
-Check the
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf}{API Docs}.
+Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf}{API Docs}.
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the

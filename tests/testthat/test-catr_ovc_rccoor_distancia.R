@@ -40,10 +40,10 @@ test_that("check fields without SRS", {
   result <- catr_ovc_get_rccoor_distancia(lat = 40.963200, lon = -5.671420)
 
   expect_true(all(
-  is.character(result$address),
-  is.character(result$refcat),
-    is.character(result$cmun_ine))
-    )
+    is.character(result$address),
+    is.character(result$refcat),
+    is.character(result$cmun_ine)
+  ))
 })
 
 test_that("check fields given SRS", {
@@ -56,10 +56,10 @@ test_that("check fields given SRS", {
     lon = -5.671420, 4230
   )
   expect_true(all(
-  is.character(result$address),
-  is.character(result$refcat),
-  is.character(result$cmun_ine))
-  )
+    is.character(result$address),
+    is.character(result$refcat),
+    is.character(result$cmun_ine)
+  ))
 })
 
 test_that("if data is known return a tibble with 3 cols", {

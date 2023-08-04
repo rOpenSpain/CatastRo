@@ -23,10 +23,10 @@
 #' @return A `sf` object.
 #'
 #' @references
-#' [API 
+#' [API
 #' Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf)
 #'
-#' [INSPIRE Services for Cadastral 
+#' [INSPIRE Services for Cadastral
 #' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #' @details

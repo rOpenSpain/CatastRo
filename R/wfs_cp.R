@@ -20,7 +20,7 @@
 #' @references
 #' [API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf)
 #'
-#' [INSPIRE Services for Cadastral 
+#' [INSPIRE Services for Cadastral
 #' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #' @details

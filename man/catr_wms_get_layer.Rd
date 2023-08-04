@@ -106,8 +106,7 @@ Some of the styles available are:
 \item "admboundary" y "admunit": \code{"ELFCadastre"}
 }
 
-Check the
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
+Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
 for more information.
 }
 
@@ -117,7 +116,8 @@ for more information.
 
 # With a bbox
 
-pict <- catr_wms_get_layer(c(222500, 4019500, 223700, 4020700),
+pict <- catr_wms_get_layer(
+  c(222500, 4019500, 223700, 4020700),
   srs = 25830,
   what = "parcel"
 )
@@ -157,7 +157,8 @@ ggplot() +
 \href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
 }
 \seealso{
-\code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}}, \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}},
+\code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}}
+\code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}},
 \code{\link[terra:plotRGB]{terra::plotRGB()}}.
 
 INSPIRE API functions:

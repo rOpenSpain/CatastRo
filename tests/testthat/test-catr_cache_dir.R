@@ -6,7 +6,8 @@ test_that("Test cache online", {
 
   # Set a temp cache dir
   expect_message(
-  catr_set_cache_dir(verbose = TRUE))
+    catr_set_cache_dir(verbose = TRUE)
+  )
   testdir <- expect_silent(catr_set_cache_dir(
     file.path(current, "testthat"),
     verbose = FALSE
@@ -14,7 +15,8 @@ test_that("Test cache online", {
 
   # Clean
   expect_silent(
-  catr_clear_cache(config = FALSE, verbose = FALSE))
+    catr_clear_cache(config = FALSE, verbose = FALSE)
+  )
   # Cache dir should be deleted now
   expect_false(dir.exists(testdir))
 
