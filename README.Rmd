@@ -62,8 +62,10 @@ You can install the developing version of **CatastRo** using the
 ```{r, eval = FALSE}
 # Install CatastRo in R:
 install.packages("CatastRo",
-  repos = c("https://ropenspain.r-universe.dev", 
-  "https://cloud.r-project.org")
+  repos = c(
+    "https://ropenspain.r-universe.dev",
+    "https://cloud.r-project.org"
+  )
 )
 ```
 
