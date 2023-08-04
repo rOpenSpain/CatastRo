@@ -213,7 +213,7 @@ Last step is to create groups based on the year and create the data
 visualization. We use here the function `ggplot2::cut_number()` to create 15
 different classes:
 
-```{r dataviz, fig.cap="Valencia: Urban growth}
+```{r dataviz, fig.cap="Valencia: Urban growth"}
 
 dataviz <- dataviz %>%
   mutate(year_cat = ggplot2::cut_number(year,
