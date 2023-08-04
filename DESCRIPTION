@@ -20,8 +20,7 @@ BugReports: https://github.com/rOpenSpain/CatastRo/issues
 Depends: 
     R (>= 3.6)
 Imports: 
-    dplyr,
-    httr,
+    dplyr, httr,
     mapSpain (>= 0.7.0),
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
@@ -41,6 +40,7 @@ VignetteBuilder:
     knitr
 Config/testthat/edition: 3
 Config/testthat/parallel: true
+Config/Needs/website: ropenspain/rostemplate
 Copyright: © Dirección General del Catastro <https://www.catastro.meh.es/>
 Encoding: UTF-8
 LazyData: true
