@@ -9,7 +9,7 @@
 [![CRAN-status](https://www.r-pkg.org/badges/version/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
 [![CRAN-results](https://badges.cranchecks.info/worst/CatastRo.svg)](https://cran.r-project.org/web/checks/check_results_CatastRo.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
-[![r-universe](https://ropenspain.r-universe.dev/badges/CatastRo)](https://ropenspain.r-universe.dev/)
+[![r-universe](https://ropenspain.r-universe.dev/badges/CatastRo)](https://ropenspain.r-universe.dev/CatastRo)
 [![R-CMD-check](https://github.com/rOpenSpain/CatastRo/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check)
 [![codecov](https://codecov.io/gh/rOpenSpain/CatastRo/branch/master/graph/badge.svg?token=6L01BKLL85)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.6044091-blue)](https://doi.org/10.5281/zenodo.6044091)
@@ -37,12 +37,13 @@ You can install the developing version of **CatastRo** using the
 [r-universe](https://ropenspain.r-universe.dev/CatastRo):
 
 ``` r
-# Enable this universe
-options(repos = c(
-  ropenspain = "https://ropenspain.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
-))
-install.packages("CatastRo")
+# Install CatastRo in R:
+install.packages("CatastRo",
+  repos = c(
+    "https://ropenspain.r-universe.dev",
+    "https://cloud.r-project.org"
+  )
+)
 ```
 
 Alternatively, you can install the developing version of **CatastRo**

@@ -1,0 +1,67 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "type": "SoftwareSourceCode",
+      "author": [
+        {
+          "id": "https://orcid.org/0000-0001-8457-4658",
+          "type": "Person",
+          "email": "diego.hernangomezherrero@gmail.com",
+          "familyName": "Hernangómez",
+          "givenName": "Diego"
+        },
+        {
+          "id": "https://orcid.org/0000-0002-8189-9251"
+        }
+      ],
+      "codeRepository": "https://github.com/rOpenSpain/CatastRo",
+      "contributor": {
+        "id": "https://orcid.org/0000-0001-6403-5550",
+        "type": "Person",
+        "familyName": "Ucar",
+        "givenName": "Iñaki"
+      },
+      "copyrightHolder": {
+        "id": "https://orcid.org/0000-0002-8189-9251",
+        "type": "Person",
+        "email": "delgadopanadero@gmail.com",
+        "familyName": "Delgado Panadero",
+        "givenName": "Ángel"
+      },
+      "description": "Access public spatial data available under the 'INSPIRE' directive. Tools for downloading references and addresses of properties, as well as map images.",
+      "license": "https://spdx.org/licenses/GPL-2.0",
+      "name": "CatastRo: Interface to the API 'Sede Electronica Del Catastro'",
+      "programmingLanguage": {
+        "type": "ComputerLanguage",
+        "name": "R",
+        "url": "https://r-project.org"
+      },
+      "provider": {
+        "id": "https://cran.r-project.org",
+        "type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "runtimePlatform": "R version 4.3.1 (2023-06-16 ucrt)",
+      "version": "0.2.3"
+    },
+    {
+      "id": "https://doi.org/10.5281/zenodo.6044091",
+      "type": "SoftwareSourceCode",
+      "author": [
+        {
+          "type": "Person",
+          "familyName": "Delgado Panadero",
+          "givenName": "Ángel"
+        },
+        {
+          "type": "Person",
+          "familyName": "Hernangómez",
+          "givenName": "Diego"
+        }
+      ],
+      "name": "{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro"
+    }
+  ]
+}

@@ -20,10 +20,9 @@
 #'
 #' @format
 #' A tibble with `r nrow(CatastRo::catr_srs_values)` rows and columns:
-#'   * **SRS**: Spatial Reference System (CRS) value, identified by the
-#'     corresponding [EPSG](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset)
-#'     code.
 #' \describe{
+#'   \item{SRS}{Spatial Reference System (CRS) value, identified by the
+#'     corresponding EPSG code.}
 #'   \item{Description}{Description of the SRS/EPSG code.}
 #'   \item{ovc_service}{Logical. Is this code valid on OVC services?}
 #'   \item{wfs_service}{Logical. Is this code valid on INSPIRE WFS services?}

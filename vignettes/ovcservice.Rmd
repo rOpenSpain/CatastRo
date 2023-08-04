@@ -10,6 +10,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+<!-- ovcservice.Rmd is generated from ovcservice.Rmd.orig. Please edit that file -->
+
 
 
 **CatastRo** allows to query the OVCCoordenadas Web Service provided on [Sede
