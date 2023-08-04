@@ -27,7 +27,7 @@ jobs:
           needs: coverage
 
       - name: Test coverage
-        run: | 
+        run: |
           covr::codecov(
             quiet = FALSE,
             clean = FALSE
