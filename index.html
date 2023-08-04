@@ -101,16 +101,17 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span><span class="op">)</span></span></code></pre></div>
 <p>You can install the developing version of <strong>CatastRo</strong> using the <a href="https://ropenspain.r-universe.dev/CatastRo" class="external-link">r-universe</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Enable this universe</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>  ropenspain <span class="op">=</span> <span class="st">"https://ropenspain.r-universe.dev"</span>,</span>
-<span>  CRAN <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span></span>
-<span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Install CatastRo in R:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span>,</span>
+<span>  repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"https://ropenspain.r-universe.dev"</span>,</span>
+<span>    <span class="st">"https://cloud.r-project.org"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, you can install the developing version of <strong>CatastRo</strong> with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
@@ -290,6 +291,12 @@ Delgado Panadero Á, Hernangómez D (2023). <em>CatastRo: Interface to the API S
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
@@ -316,7 +323,7 @@ Delgado Panadero Á, Hernangómez D (2023). <em>CatastRo: Interface to the API S
 <li><a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><img src="https://www.r-pkg.org/badges/version/CatastRo" alt="CRAN-status"></a></li>
 <li><a href="https://cran.r-project.org/web/checks/check_results_CatastRo.html" class="external-link"><img src="https://badges.cranchecks.info/worst/CatastRo.svg" alt="CRAN-results"></a></li>
 <li><a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/CatastRo" alt="Downloads"></a></li>
-<li><a href="https://ropenspain.r-universe.dev/" class="external-link"><img src="https://ropenspain.r-universe.dev/badges/CatastRo" alt="r-universe"></a></li>
+<li><a href="https://ropenspain.r-universe.dev/CatastRo" class="external-link"><img src="https://ropenspain.r-universe.dev/badges/CatastRo" alt="r-universe"></a></li>
 <li><a href="https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check" class="external-link"><img src="https://github.com/rOpenSpain/CatastRo/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://app.codecov.io/gh/rOpenSpain/CatastRo" class="external-link"><img src="https://codecov.io/gh/rOpenSpain/CatastRo/branch/master/graph/badge.svg?token=6L01BKLL85" alt="codecov"></a></li>
 <li><a href="https://doi.org/10.5281/zenodo.6044091" class="external-link"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.6044091-blue" alt="DOI"></a></li>
