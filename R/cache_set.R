@@ -148,10 +148,10 @@ catr_hlp_detect_cache_dir <- function() {
 
       # Case on empty cached path - would default
       if (any(
-        is.null(cached_path), 
+        is.null(cached_path),
         is.na(cached_path),
-        cached_path == "")) {
-        
+        cached_path == ""
+      )) {
         cache_dir <- catr_set_cache_dir(
           overwrite = TRUE,
           verbose = FALSE

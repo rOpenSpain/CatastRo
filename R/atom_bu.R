@@ -5,10 +5,10 @@
 #' using the INSPIRE ATOM service.
 #'
 #' @references
-#' [API 
+#' [API
 #' Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf)
 #'
-#' [INSPIRE Services for Cadastral 
+#' [INSPIRE Services for Cadastral
 #' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #' @family INSPIRE
@@ -76,7 +76,7 @@ catr_atom_get_buildings <- function(munic,
       all <- all[linesto, ]
     } else {
       if (verbose) {
-        message("Ignoring 'to' parameter. No results for ",to)
+        message("Ignoring 'to' parameter. No results for ", to)
       }
     }
   }
@@ -101,7 +101,7 @@ catr_atom_get_buildings <- function(munic,
   }
 
   municurls <- catr_atom_get_buildings_db_to(
-  as.character(m$territorial_office),
+    as.character(m$territorial_office),
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
@@ -112,7 +112,7 @@ catr_atom_get_buildings <- function(munic,
 
   # Download from url
   api_entry <- municurls[
-  grepl(ref, municurls$munic,ignore.case = TRUE), 
+    grepl(ref, municurls$munic, ignore.case = TRUE),
   ]$url
 
   filename <- basename(api_entry)
@@ -126,7 +126,7 @@ catr_atom_get_buildings <- function(munic,
   # To a new directory
   # Get cached dir
   cache_dir <- catr_hlp_cachedir(cache_dir)
-  exdir <- file.path(cache_dir,gsub(".zip$", "", filename))
+  exdir <- file.path(cache_dir, gsub(".zip$", "", filename))
 
   if (!dir.exists(exdir)) dir.create(exdir, recursive = TRUE)
   unzip(path, exdir = exdir, junkpaths = TRUE, overwrite = TRUE)

@@ -20,11 +20,12 @@ test_that("ATOM Buildings", {
   expect_s3_class(s, "sf")
 
   expect_message(
-  catr_atom_get_buildings("Melque",
-    to = "XXX",
-    what = "other",
-    verbose = TRUE
-  ), "Ignoring 'to' parameter. No results for XXX")
+    catr_atom_get_buildings("Melque",
+      to = "XXX",
+      what = "other",
+      verbose = TRUE
+    ), "Ignoring 'to' parameter. No results for XXX"
+  )
 })
 
 test_that("ATOM Encoding issue", {

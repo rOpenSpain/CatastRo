@@ -14,7 +14,7 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 \item{cmun_ine}{Code of a municipality, as recorded on National Statistics
 Institute. See
-\href{https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm}{INE: List of municipalities}}
+\href{https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm}{INE: List of .   municipalities}}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
