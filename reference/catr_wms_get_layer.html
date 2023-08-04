@@ -181,8 +181,7 @@ Some of the styles available are:</p><ul><li><p>"parcel": styles : <code>"Bounda
 <li><p>"building" and "buildingpart": <code>"ELFCadastre"</code></p></li>
 <li><p>"address": <code>"Number.ELFCadastre"</code></p></li>
 <li><p>"admboundary" y "admunit": <code>"ELFCadastre"</code></p></li>
-</ul><p>Check the
-<a href="https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Docs</a>
+</ul><p>Check the <a href="https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Docs</a>
 for more information.</p>
     </div>
     <div class="section level2">
@@ -192,7 +191,8 @@ for more information.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_getTiles.html" class="external-link">mapSpain::esp_getTiles()</a></code>, <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">tidyterra::geom_spatraster_rgb()</a></code>,
+    <div class="dont-index"><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_getTiles.html" class="external-link">mapSpain::esp_getTiles()</a></code>
+<code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">tidyterra::geom_spatraster_rgb()</a></code>,
 <code><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">terra::plotRGB()</a></code>.</p>
 <p>INSPIRE API functions:
 <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all</a>()</code>,
@@ -219,7 +219,8 @@ for more information.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># With a bbox</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">pict</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">222500</span>, <span class="fl">4019500</span>, <span class="fl">223700</span>, <span class="fl">4020700</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span><span class="va">pict</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">222500</span>, <span class="fl">4019500</span>, <span class="fl">223700</span>, <span class="fl">4020700</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">25830</span>,</span></span>
 <span class="r-in"><span>  what <span class="op">=</span> <span class="st">"parcel"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
