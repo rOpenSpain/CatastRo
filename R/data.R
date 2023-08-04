@@ -14,7 +14,8 @@
 #'
 #' @references
 #' * [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
-#' * [INSPIRE WFS Service](https://www.catastro.minhap.es/webinspire/index.html)
+#' * [INSPIRE WFS 
+#' Service](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #' @encoding UTF-8
 #'

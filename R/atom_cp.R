@@ -5,9 +5,11 @@
 #' municipality using the INSPIRE ATOM service.
 #'
 #' @references
-#' [API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf)
+#' [API 
+#' Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf)
 #'
-#' [INSPIRE Services for Cadastral Cartography](https://www.catastro.minhap.es/webinspire/index.html)
+#' [INSPIRE Services for Cadastral 
+#' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #' @family INSPIRE
 #' @family ATOM
