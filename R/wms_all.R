@@ -20,7 +20,8 @@
 #' @family WMS
 #' @family spatial
 #'
-#' @seealso [mapSpain::esp_getTiles()], [tidyterra::geom_spatraster_rgb()],
+#' @seealso [mapSpain::esp_getTiles()]
+#' [tidyterra::geom_spatraster_rgb()],
 #' [terra::plotRGB()].
 #'
 #' @export
@@ -28,7 +29,8 @@
 #' @references
 #' [API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
 #'
-#' [INSPIRE Services for Cadastral Cartography](https://www.catastro.minhap.es/webinspire/index.html)
+#' [INSPIRE Services for Cadastral 
+#' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #'
 #' @details
@@ -67,8 +69,8 @@
 #' - "address": `"Number.ELFCadastre"`
 #' - "admboundary" y "admunit": `"ELFCadastre"`
 #'
-#' Check the
-#' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
+#' Check the [API 
+#' Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
 #' for more information.
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
@@ -76,7 +78,8 @@
 #'
 #' # With a bbox
 #'
-#' pict <- catr_wms_get_layer(c(222500, 4019500, 223700, 4020700),
+#' pict <- catr_wms_get_layer(
+#' c(222500, 4019500, 223700, 4020700),
 #'   srs = 25830,
 #'   what = "parcel"
 #' )

@@ -10,7 +10,8 @@ test_that("ATOM Cadastral Parcels", {
     verbose = TRUE
   )
   expect_s3_class(s, "sf")
-  expect_message(catr_atom_get_parcels("Melque",
+  expect_message(
+  catr_atom_get_parcels("Melque",
     to = "XXX",
     what = "zoning",
     verbose = TRUE

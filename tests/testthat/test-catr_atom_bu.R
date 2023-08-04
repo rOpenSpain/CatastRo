@@ -10,7 +10,8 @@ test_that("ATOM Buildings", {
     verbose = TRUE
   )
   expect_s3_class(s, "sf")
-  expect_message(catr_atom_get_buildings("Melque",
+  expect_message(
+  catr_atom_get_buildings("Melque",
     to = "XXX",
     what = "buildingpart",
     verbose = TRUE
