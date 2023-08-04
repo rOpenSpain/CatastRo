@@ -74,10 +74,7 @@ catr_atom_get_buildings <- function(munic,
       all <- all[linesto, ]
     } else {
       if (verbose) {
-        message(
-          "Ignoring 'to' parameter. No results for ",
-          to
-        )
+        message("Ignoring 'to' parameter. No results for ",to)
       }
     }
   }
@@ -87,7 +84,8 @@ catr_atom_get_buildings <- function(munic,
   if (is.na(findmunic)) {
     message(
       "No Municipality found for ", munic, " ", to,
-      ". Check available municipalities with catr_atom_get_buildings_db_all()"
+      ". Check available municipalities with ",
+      "catr_atom_get_buildings_db_all()"
     )
     return(invisible(NA))
   }
@@ -100,7 +98,8 @@ catr_atom_get_buildings <- function(munic,
     )
   }
 
-  municurls <- catr_atom_get_buildings_db_to(as.character(m$territorial_office),
+  municurls <- catr_atom_get_buildings_db_to(
+  as.character(m$territorial_office),
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
@@ -110,9 +109,9 @@ catr_atom_get_buildings <- function(munic,
   ref <- unlist(strsplit(m$munic, "-"))[1]
 
   # Download from url
-  api_entry <- municurls[grepl(ref, municurls$munic,
-    ignore.case = TRUE
-  ), ]$url
+  api_entry <- municurls[
+  grepl(ref, municurls$munic,ignore.case = TRUE), 
+  ]$url
 
   filename <- basename(api_entry)
 
@@ -125,10 +124,7 @@ catr_atom_get_buildings <- function(munic,
   # To a new directory
   # Get cached dir
   cache_dir <- catr_hlp_cachedir(cache_dir)
-  exdir <- file.path(
-    cache_dir,
-    gsub(".zip$", "", filename)
-  )
+  exdir <- file.path(cache_dir,gsub(".zip$", "", filename))
 
   if (!dir.exists(exdir)) dir.create(exdir, recursive = TRUE)
   unzip(path, exdir = exdir, junkpaths = TRUE, overwrite = TRUE)

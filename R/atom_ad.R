@@ -59,10 +59,7 @@ catr_atom_get_address <- function(munic,
       all <- all[linesto, ]
     } else {
       if (verbose) {
-        message(
-          "Ignoring 'to' parameter. No results for ",
-          to
-        )
+        message("Ignoring 'to' parameter. No results for ",to)
       }
     }
   }
@@ -85,7 +82,8 @@ catr_atom_get_address <- function(munic,
     )
   }
 
-  municurls <- catr_atom_get_address_db_to(as.character(m$territorial_office),
+  municurls <- catr_atom_get_address_db_to(
+  as.character(m$territorial_office),
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
@@ -95,9 +93,9 @@ catr_atom_get_address <- function(munic,
   ref <- unlist(strsplit(m$munic, "-"))[1]
 
   # Download from url
-  api_entry <- municurls[grepl(ref, municurls$munic,
-    ignore.case = TRUE
-  ), ]$url
+  api_entry <- municurls[
+  grepl(ref, municurls$munic,ignore.case = TRUE), 
+  ]$url
 
   filename <- basename(api_entry)
 

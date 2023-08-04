@@ -94,7 +94,8 @@ catr_atom_get_parcels <- function(munic,
     )
   }
 
-  municurls <- catr_atom_get_parcels_db_to(as.character(m$territorial_office),
+  municurls <- catr_atom_get_parcels_db_to(
+  as.character(m$territorial_office),
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
@@ -104,9 +105,9 @@ catr_atom_get_parcels <- function(munic,
   ref <- unlist(strsplit(m$munic, "-"))[1]
 
   # Download from url
-  api_entry <- municurls[grepl(ref, municurls$munic,
-    ignore.case = TRUE
-  ), ]$url
+  api_entry <- municurls[
+  grepl(ref, municurls$munic, ignore.case = TRUE), 
+  ]$url
 
   filename <- basename(api_entry)
 
