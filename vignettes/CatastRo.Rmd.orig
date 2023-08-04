@@ -174,7 +174,7 @@ valencia_bu <- catr_atom_get_buildings(val_catr_code$catrcode)
 Next step for creating the visualization is to limit the analysis to a circle of
 radius 2.5 km around the city center:
 
-```{r minimal, fig.cap="Minimal cadastral map od Valencia"}
+```{r minimal, fig.cap="Minimal cadastral map of Valencia"}
 
 buff <- val %>%
   # Adjust CRS to 25830: (Buildings)

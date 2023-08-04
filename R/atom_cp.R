@@ -5,9 +5,11 @@
 #' municipality using the INSPIRE ATOM service.
 #'
 #' @references
-#' [API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf)
+#' [API
+#' Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf)
 #'
-#' [INSPIRE Services for Cadastral Cartography](https://www.catastro.minhap.es/webinspire/index.html)
+#' [INSPIRE Services for Cadastral
+#' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #' @family INSPIRE
 #' @family ATOM
@@ -94,7 +96,8 @@ catr_atom_get_parcels <- function(munic,
     )
   }
 
-  municurls <- catr_atom_get_parcels_db_to(as.character(m$territorial_office),
+  municurls <- catr_atom_get_parcels_db_to(
+    as.character(m$territorial_office),
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
@@ -104,9 +107,9 @@ catr_atom_get_parcels <- function(munic,
   ref <- unlist(strsplit(m$munic, "-"))[1]
 
   # Download from url
-  api_entry <- municurls[grepl(ref, municurls$munic,
-    ignore.case = TRUE
-  ), ]$url
+  api_entry <- municurls[
+    grepl(ref, municurls$munic, ignore.case = TRUE),
+  ]$url
 
   filename <- basename(api_entry)
 

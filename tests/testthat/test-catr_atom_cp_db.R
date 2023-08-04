@@ -14,10 +14,12 @@ test_that("Test atom cp", {
     catr_atom_get_parcels_db_to(to = "aaaana", cache_dir = tempdir()),
     "No Territorial office found for aaaana"
   )
-  expect_true(is.na(catr_atom_get_parcels_db_to(
-    to = "aaaana",
-    cache_dir = tempdir()
-  )))
+  expect_true(is.na(
+    catr_atom_get_parcels_db_to(
+      to = "aaaana",
+      cache_dir = tempdir()
+    )
+  ))
 
   expect_message(catr_atom_get_parcels_db_to(
     to = "Melilla", verbose = TRUE,

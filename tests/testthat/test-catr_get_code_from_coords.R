@@ -7,7 +7,9 @@ test_that("Check", {
 
   expect_error(catr_get_code_from_coords(c(0, 0)))
   expect_error(catr_get_code_from_coords(c(0, 0, 0)))
-  expect_message(catr_get_code_from_coords(c(0, 0), srs = 4326))
+  expect_message(
+    catr_get_code_from_coords(c(0, 0), srs = 4326)
+  )
   expect_s3_class(
     catr_get_code_from_coords(c(-16.25462, 28.46824),
       srs = 4326

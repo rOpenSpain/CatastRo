@@ -11,10 +11,12 @@ test_that("ATOM Addresses", {
     verbose = TRUE
   )
   expect_s3_class(s, "sf")
-  expect_message(catr_atom_get_address("Melque",
-    to = "XXX",
-    verbose = TRUE
-  ), "Ignoring 'to' parameter. No results for XXX")
+  expect_message(
+    catr_atom_get_address("Melque",
+      to = "XXX",
+      verbose = TRUE
+    ), "Ignoring 'to' parameter. No results for XXX"
+  )
   expect_s3_class(s, "sf")
 })
 

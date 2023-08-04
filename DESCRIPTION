@@ -1,4 +1,3 @@
-Type: Package
 Package: CatastRo
 Title: Interface to the API 'Sede Electronica Del Catastro'
 Version: 0.2.3

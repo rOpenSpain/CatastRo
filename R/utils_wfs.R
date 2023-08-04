@@ -1,6 +1,7 @@
-catr_wfs_get_buildingsild_url <- function(host = "http://ovc.catastro.meh.es/INSPIRE/",
-                                          entry,
-                                          params) {
+catr_wfs_get_buildingsild_url <- function(
+    host = "http://ovc.catastro.meh.es/INSPIRE/",
+    entry,
+    params) {
   # Clean empty params
   params <- params[lengths(params) != 0]
 
@@ -37,7 +38,9 @@ catr_wfs_check <- function(path) {
 #' object and in case of error a message to display
 #'
 #' @noRd
-wfs_api_query <- function(entry, ..., verbose = TRUE) {
+wfs_api_query <- function(
+    entry, ...,
+    verbose = TRUE) {
   arguments <- list(...)
 
   # Handle SRS. Is optional but if provided check
