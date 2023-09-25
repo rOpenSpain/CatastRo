@@ -2,7 +2,9 @@
 #'
 #'
 #' Get the spatial data of all the addresses belonging to a single
-#' municipality using the INSPIRE ATOM service.
+#' municipality using the INSPIRE ATOM service. Additionally, the function also
+#' returns the corresponding street information on the fields with the
+#' prefix `tfname_*`.
 #'
 #' @references
 #' [API
@@ -123,6 +125,35 @@ catr_atom_get_address <- function(munic,
   files <- list.files(exdir, full.names = TRUE, pattern = ".gml$")[1]
 
   sfobj <- st_read_layers_encoding(files, verbose)
+
+  # See if we can add street names
+  whatlay <- sf::st_layers(files)
+  if ("ThoroughfareName" %in% whatlay$name) {
+    if (verbose) message("Adding ThoroughfareName to Address")
+
+    str_names <- st_read_layers_encoding(files,
+      verbose = FALSE,
+      layer = "ThoroughfareName"
+    )
+
+    # Rename and prepare for left join
+    names(str_names) <- paste0("tfname_", names(str_names))
+
+    sfobj$gml_id
+
+    sfobj$tfname_gml_id <- vapply(
+      sfobj$gml_id,
+      FUN = function(x) {
+        ids <- paste0(unlist(strsplit(x, ".", fixed = TRUE))[seq(1, 6)],
+          collapse = "."
+        )
+        ids <- gsub("AD", "TN", ids)
+        ids
+      }, FUN.VALUE = character(1), USE.NAMES = FALSE
+    )
+
+    sfobj <- dplyr::left_join(sfobj, str_names, by = "tfname_gml_id")
+  }
 
   return(sfobj)
 }
