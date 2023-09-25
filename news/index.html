@@ -10,7 +10,7 @@
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../logo.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3.9000</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -51,6 +51,12 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="catastro-development-version">CatastRo (development version)<a class="anchor" aria-label="anchor" href="#catastro-development-version"></a></h2>
+<ul><li>
+<code><a href="../reference/catr_atom_get_address.html">catr_atom_get_address()</a></code> returns also the names of the streets (layer <code>"ThoroughfareName"</code> of the <code>*.gml file</code>). The new fields are named with the prefix <code>tfname_*</code>.</li>
+<li>Update documentation and tests.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="catastro-023">CatastRo 0.2.3<a class="anchor" aria-label="anchor" href="#catastro-023"></a></h2><p class="text-muted">CRAN release: 2023-01-08</p>
 <ul><li>Housekeeping and update of documentation.</li>
 <li>Adapt <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code> to <strong>mapSpain</strong> (&gt;= 0.7.0).</li>
@@ -69,21 +75,18 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="catastro-020">CatastRo 0.2.0<a class="anchor" aria-label="anchor" href="#catastro-020"></a></h2><p class="text-muted">CRAN release: 2022-02-28</p>
 <p><strong>Overall revamp of the package. Major changes on the API.</strong></p>
-<ul><li>
-<p>Add <strong>ATOM INSPIRE</strong> capabilities:</p>
+<ul><li>Add <strong>ATOM INSPIRE</strong> capabilities:
 <ul><li>Addresses: <code><a href="../reference/catr_atom_get_address.html">catr_atom_get_address()</a></code>, <code><a href="../reference/catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code>.</li>
 <li>Cadastral Parcels: <code><a href="../reference/catr_atom_get_parcels.html">catr_atom_get_parcels()</a></code>, <code><a href="../reference/catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_all()</a></code>.</li>
 <li>Buildings: <code><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code>, <code><a href="../reference/catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all()</a></code>.</li>
 </ul></li>
-<li>
-<p>Add <strong>WFS INSPIRE</strong> capabilities:</p>
+<li>Add <strong>WFS INSPIRE</strong> capabilities:
 <ul><li>Addresses: <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_bbox()</a></code>, <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_codvia()</a></code>, <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_postalcode()</a></code>, <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_rc()</a></code>.</li>
 <li>Cadastral Parcels: <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel()</a></code>, <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_parcel()</a></code>, <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_parcel_zoning()</a></code>, <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_zoning()</a></code>.</li>
 <li>Buildings: <code><a href="../reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox()</a></code>,<code><a href="../reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_rc()</a></code>.</li>
 </ul></li>
-<li><p>Add <strong>WMS INSPIRE</strong> capabilities: <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</p></li>
-<li>
-<p>New interface for <strong>OVC Services</strong>. Deprecate previous functions in favor of the new API:</p>
+<li>Add <strong>WMS INSPIRE</strong> capabilities: <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</li>
+<li>New interface for <strong>OVC Services</strong>. Deprecate previous functions in favor of the new API:
 <ul><li>New SRS database on <code>catr_srs_values</code>, replaces <code>coordinates</code>.</li>
 <li>
 <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code> replaces <code>near_rc()</code>.</li>
@@ -92,7 +95,7 @@
 <li>
 <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> replaces <code>get_coor()</code>.</li>
 </ul></li>
-<li><p>Add precomputed vignettes.</p></li>
+<li>Add precomputed vignettes.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="catastro-010">CatastRo 0.1.0<a class="anchor" aria-label="anchor" href="#catastro-010"></a></h2>
