@@ -1,4 +1,5 @@
 test_that("Test cache online", {
+  skip_on_os("windows")
   # Get current cache dir
   current <- catr_hlp_detect_cache_dir()
 
