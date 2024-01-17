@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.2 (2023-10-31)",
+  "runtimePlatform": "R version 4.3.2 (2023-10-31 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -270,7 +270,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1475.046KB",
+  "fileSize": "1483.332KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
