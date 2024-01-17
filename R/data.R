@@ -1,4 +1,4 @@
-#' @title Reference SRS codes for **CatastRo** APIs
+#' @title Reference SRS codes for \CRANpkg{CatastRo} APIs
 #'
 #' @family databases
 #' @family WFS
@@ -9,8 +9,8 @@
 #' @docType data
 #'
 #' @description
-#' A tibble including the valid SRS (also known as CRS) values that may be
-#' used on each API service.
+#' A \CRANpkg{tibble} including the valid SRS (also known as CRS) values that
+#' may be used on each API service.
 #'
 #' @references
 #' * [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
@@ -20,7 +20,7 @@
 #' @encoding UTF-8
 #'
 #' @format
-#' A tibble with `r nrow(CatastRo::catr_srs_values)` rows and columns:
+#' A \CRANpkg{tibble} with `r nrow(CatastRo::catr_srs_values)` rows and columns:
 #' \describe{
 #'   \item{SRS}{Spatial Reference System (CRS) value, identified by the
 #'     corresponding EPSG code.}

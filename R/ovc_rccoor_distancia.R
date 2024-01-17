@@ -2,14 +2,16 @@
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service
-#' [Consulta_RCCOOR_Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
+#' [Consulta RCCOOR
+#' Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
 #' Return the cadastral reference found on a set of coordinates. If no cadastral
 #' references are found, the API returns a list of
 #' the cadastral references found on an area of 50 square meters around the
 #' requested coordinates.
 #'
 #' @references
-#' [Consulta_RCCOOR_Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia)
+#' [Consulta RCCOOR
+#' Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia)
 #'
 #' @family OVCCoordenadas
 #' @family cadastral references
@@ -23,24 +25,24 @@
 #' @param srs SRS/CRS to use on the query. To check the admitted values check
 #'   [catr_srs_values], specifically the `ovc_service` column.
 #'
-#' @return A tibble. See **Details**
+#' @return A \CRANpkg{tibble}. See **Details**
 #'
 #' @export
 #'
 #' @details
 #'
-#' When the API does not provide any result, the function returns a tibble with
-#' the input parameters only.
+#' When the API does not provide any result, the function returns a
+#' \CRANpkg{tibble} with the input parameters only.
 #'
-#' On a successful query, the function returns a tibble with one row by
-#' cadastral reference, including the following columns:
+#' On a successful query, the function returns a \CRANpkg{tibble} with one row
+#' by cadastral reference, including the following columns:
 #' * `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
 #' * `refcat`: Cadastral Reference.
 #' * `address`: Address as it is recorded on the Cadastre.
 #' * `cmun_ine`: Municipality Code as registered on the INE (National
 #'    Statistics Institute).
-#' * Rest of fields: Check the API Docs on
-#' [Consulta_RCCOOR_Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia)
+#' * Rest of fields: Check the API Docs on [Consulta RCCOOR
+#' Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia)
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{

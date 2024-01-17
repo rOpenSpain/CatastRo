@@ -2,13 +2,13 @@
 % Please edit documentation in R/cache_clear.R
 \name{catr_clear_cache}
 \alias{catr_clear_cache}
-\title{Clear your \strong{CatastRo} cache dir}
+\title{Clear your \CRANpkg{CatastRo} cache dir}
 \usage{
 catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
 \item{config}{if \code{TRUE}, will delete the configuration folder of
-\strong{CatastRo}.}
+\CRANpkg{CatastRo}.}
 
 \item{cached_data}{If this is set to \code{TRUE}, it will delete your
 \code{cache_dir} and all its content.}
@@ -23,7 +23,7 @@ Invisible. This function is called for its side effects.
 \strong{Use this function with caution}. This function would clear your cached
 data and configuration, specifically:
 \itemize{
-\item Deletes the \strong{CatastRo} config directory
+\item Deletes the \CRANpkg{CatastRo} config directory
 (\code{rappdirs::user_config_dir("CatastRo", "R")}).
 \item Deletes the \code{cache_dir} directory.
 \item Deletes the values on stored on \code{Sys.getenv("CATASTROESP_CACHE_DIR")}.
@@ -31,7 +31,7 @@ data and configuration, specifically:
 }
 \details{
 This is an overkill function that is intended to reset your status
-as it you would never have installed and/or used \strong{CatastRo}.
+as it you would never have installed and/or used \CRANpkg{CatastRo}.
 }
 \examples{
 
@@ -44,6 +44,7 @@ Sys.getenv("CATASTROESP_CACHE_DIR")
 }
 \seealso{
 Other cache utilities: 
+\code{\link{catr_detect_cache_dir}()},
 \code{\link{catr_set_cache_dir}()}
 }
 \concept{cache utilities}

@@ -2,33 +2,36 @@
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service
-#' [Consulta_RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR).
+#' [Consulta
+#' RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR).
 #' Return the cadastral reference found of a set of specific coordinates.
 #'
 #' @references
-#' [Consulta_RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
+#' [Consulta
+#' RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
 #'
 #' @family OVCCoordenadas
 #' @family cadastral references
 #' @seealso [catr_srs_values], `vignette("ovcservice")`
 #' @inheritParams catr_ovc_get_rccoor_distancia
 #'
-#' @return A tibble. See **Details**
+#' @return A \CRANpkg{tibble}. See **Details**
 #'
 #' @export
 #'
 #' @details
 #'
-#' When the API does not provide any result, the function returns a tibble with
-#' the input parameters only.
+#' When the API does not provide any result, the function returns a
+#' \CRANpkg{tibble} with the input parameters only.
 #'
-#' On a successful query, the function returns a tibble with one row by
-#' cadastral reference, including the following columns:
+#' On a successful query, the function returns a \CRANpkg{tibble} with one row
+#' by cadastral reference, including the following columns:
 #' * `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
 #' * `refcat`: Cadastral Reference.
 #' * `address`: Address as it is recorded on the Cadastre.
 #' * Rest of fields: Check the API Docs on
-#' [Consulta_RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
+#' [Consulta
+#' RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{

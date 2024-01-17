@@ -2,11 +2,13 @@
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service
-#' [Consulta_CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC).
+#' [Consulta
+#' CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC).
 #' Return the coordinates for a specific cadastral reference.
 #'
 #' @references
-#' [Consulta_CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
+#' [Consulta
+#' CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
 #'
 #' @family OVCCoordenadas
 #' @family cadastral references
@@ -16,22 +18,23 @@
 #' @param rc The cadastral reference to be geocoded.
 #' @param province,municipality Optional, used for narrowing the search.
 #'
-#' @return A tibble. See **Details**
+#' @return A \CRANpkg{tibble}. See **Details**
 #'
 #' @export
 #'
 #' @details
 #'
-#' When the API does not provide any result, the function returns a tibble with
-#' the input parameters only.
+#' When the API does not provide any result, the function returns a
+#' \CRANpkg{tibble} with the input parameters only.
 #'
-#' On a successful query, the function returns a tibble with one row by
-#' cadastral reference, including the following columns:
+#' On a successful query, the function returns a \CRANpkg{tibble} with one row
+#' by cadastral reference, including the following columns:
 #' * `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 #' * `refcat`: Cadastral Reference.
 #' * `address`: Address as it is recorded on the Cadastre.
 #' * Rest of fields: Check the API Docs on
-#' [Consulta_CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
+#' [Consulta
+#' CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{

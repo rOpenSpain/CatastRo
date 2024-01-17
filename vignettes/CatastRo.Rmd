@@ -36,7 +36,7 @@ functionality is described in detail in the corresponding vignette (see
 > spatial information across Europe and assist in policy-making across
 > boundaries.
 >
-> *From <https://inspire.ec.europa.eu/about-inspire/563>*
+> *From <https://knowledge-base.inspire.ec.europa.eu/overview_en>*
 
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
 [Catastro INSPIRE](https://www.catastro.minhap.es/webinspire/index.html)) allows
@@ -159,6 +159,7 @@ val_catr_code
 #> 1 VALENCIA 46      900        46900    46    250   46250   VALENCIA 46    900   46    250
 
 valencia_bu <- catr_atom_get_buildings(val_catr_code$catrcode)
+#> Error in file(con, "r"): invalid 'description' argument
 ```
 
 Next step for creating the visualization is to limit the analysis to a circle of
@@ -171,20 +172,18 @@ buff <- val %>%
   st_transform(st_crs(valencia_bu)) %>%
   # Buffer
   st_buffer(2500)
+#> Error: object 'valencia_bu' not found
 
 
 # Cut buildings
 
 dataviz <- st_intersection(valencia_bu, buff)
+#> Error in eval(expr, envir, enclos): object 'valencia_bu' not found
 
 ggplot(dataviz) +
   geom_sf()
+#> Error in eval(expr, envir, enclos): object 'dataviz' not found
 ```
-
-<div class="figure">
-<img src="./minimal-1.png" alt="Minimal cadastral map of Valencia" width="100%" />
-<p class="caption">Minimal cadastral map of Valencia</p>
-</div>
 
 Let's extract now the construction year, available in the column `beginning`:
 
@@ -192,16 +191,20 @@ Let's extract now the construction year, available in the column `beginning`:
 ```r
 # Extract 4 initial positions
 year <- substr(dataviz$beginning, 1, 4)
+#> Error in eval(expr, envir, enclos): object 'dataviz' not found
 
 # Replace all that doesn't look as a number with 0000
 year[!(year %in% 0:2500)] <- "0000"
+#> Error: object 'year' not found
 
 # To numeric
 year <- as.integer(year)
+#> Error in eval(expr, envir, enclos): object 'year' not found
 
 # New column
 dataviz <- dataviz %>%
   mutate(year = year)
+#> Error in eval(expr, envir, enclos): object 'dataviz' not found
 ```
 
 Last step is to create groups based on the year and create the data
@@ -214,6 +217,7 @@ dataviz <- dataviz %>%
   mutate(year_cat = ggplot2::cut_number(year,
     n = 15
   ))
+#> Error in eval(expr, envir, enclos): object 'dataviz' not found
 
 
 ggplot(dataviz) +
@@ -240,12 +244,8 @@ ggplot(dataviz) +
     ),
     plot.margin = margin(r = 40, l = 40)
   )
+#> Error in eval(expr, envir, enclos): object 'dataviz' not found
 ```
-
-<div class="figure">
-<img src="./dataviz-1.png" alt="Valencia: Urban growth" width="100%" />
-<p class="caption">Valencia: Urban growth</p>
-</div>
 
 ## References
 

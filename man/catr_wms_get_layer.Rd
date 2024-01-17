@@ -22,7 +22,7 @@ catr_wms_get_layer(
 \itemize{
 \item A numeric vector of length 4 with the coordinates that defines
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}
-\item A \code{sf/sfc} object, as provided by the \strong{sf} package.
+\item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
@@ -70,7 +70,8 @@ Get geotagged images from the Spanish Cadastre. This function is a wrapper of
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
-coordinate values. When \code{x} is a \code{sf} object, the value \code{srs} is ignored.
+coordinate values. When \code{x} is a \CRANpkg{sf} object, the value \code{srs} is
+ignored.
 
 The query is performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator)
 and the tile is projected back to the SRS of \code{x}. In

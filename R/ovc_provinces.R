@@ -12,7 +12,7 @@
 #' @family search
 #'
 #'
-#' @return A tibble.
+#' @return A \CRANpkg{tibble}.
 #'
 #' @export
 #'

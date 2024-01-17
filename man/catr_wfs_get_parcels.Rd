@@ -23,7 +23,7 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 \itemize{
 \item A numeric vector of length 4 with the coordinates that defines
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}
-\item A \code{sf/sfc} object, as provided by the \strong{sf} package.
+\item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
 \item{what}{Information to load. It could be \code{"parcel"} for cadastral parcels
@@ -40,7 +40,7 @@ default is \code{FALSE}.}
 \item{rc}{The cadastral reference to be extracted.}
 }
 \value{
-A \code{sf} object.
+A \CRANpkg{sf} object.
 }
 \description{
 Get the spatial data of cadastral parcels and zones. The WFS Service allows
@@ -83,7 +83,7 @@ reference system (4326, 4258), the function queries the bounding box on
 a potential bug on the API side. The result is provided always in the SRS
 provided in \code{srs}.
 
-When \code{x} is a \code{sf} object, the value \code{srs} is ignored. The query is
+When \code{x} is a \CRANpkg{sf} object, the value \code{srs} is ignored. The query is
 performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator) and the
 spatial object is projected back to the SRS of the initial object.
 }

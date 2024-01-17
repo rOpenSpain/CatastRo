@@ -13,7 +13,7 @@
 #' @family search
 #'
 #'
-#' @return A tibble. See **Details**
+#' @return A \CRANpkg{tibble}. See **Details**
 #'
 #' @export
 #'
@@ -25,16 +25,15 @@
 #'   [catr_ovc_get_cod_provinces()].
 #' @param cmun Code of a municipality, as recorded on the Spanish Cadastre.
 #' @param cmun_ine Code of a municipality, as recorded on National Statistics
-#'   Institute. See
-#'   [INE: List of
-#' .   municipalities](https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm)
+#'   Institute. See [INE: List of
+#' municipalities](https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm)
 #'
 #' @details
 #' Parameter `cpro` is mandatory. Either `cmun` or `cmun_ine` should be
 #' provided.
 #'
-#' On a successful query, the function returns a tibble with one row including
-#' the following columns:
+#' On a successful query, the function returns a \CRANpkg{tibble} with one row
+#' including the following columns:
 #' * `munic`: Name of the municipality as per the Cadastre.
 #' * `catr_to`: Cadastral territorial office code.
 #' * `catr_munic`: Municipality code as recorded on the Cadastre.
@@ -43,7 +42,8 @@
 #' * `catr_munic`: Municipality code as per the INE.
 #' * `catrcode`: Full INE code for the municipality.
 #' * Rest of fields: Check the API Docs on
-#' [Consulta_CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
+#' [Consulta
+#' CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
 #'
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"

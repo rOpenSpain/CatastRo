@@ -39,7 +39,7 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 default is \code{FALSE}.}
 }
 \value{
-A \code{sf} object.
+A \CRANpkg{sf} object.
 }
 \description{
 Get the spatial data of all the buildings belonging to a single municipality

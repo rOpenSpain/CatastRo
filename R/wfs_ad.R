@@ -14,12 +14,14 @@
 #' @family addresses
 #' @family spatial
 #'
-#' @return A `sf` object.
+#' @return A \CRANpkg{sf} object.
 #'
 #' @references
-#' [API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf)
+#' [API
+#' Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf)
 #'
-#' [INSPIRE Services for Cadastral Cartography](https://www.catastro.minhap.es/webinspire/index.html)
+#' [INSPIRE Services for Cadastral
+#' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
 #'
 #' @details
 #'
@@ -29,11 +31,11 @@
 #' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
 #' a potential bug on the API side.
 #'
-#' When `x` is a `sf` object, the value `srs` is ignored. In this case, the
-#' bounding box of the `sf` object would be used for the query (see
+#' When `x` is a \CRANpkg{sf} object, the value `srs` is ignored. In this case,
+#' the bounding box of the \CRANpkg{sf} object would be used for the query (see
 #' [sf::st_bbox()]). The query is performed using
 #' [EPSG:3857](https://epsg.io/3857) (Web Mercator). The result is provided
-#' always in the SRS of the `sf` object provided as input.
+#' always in the SRS of the \CRANpkg{sf} object provided as input.
 #'
 #' # API Limits
 #' The API service is limited to a bounding box of 4km2 and a maximum of 5.000
@@ -129,8 +131,8 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #' - By postal codes: Implemented on `catr_wfs_get_address_postalcode()`.
 #'   Extract objects of specific cadastral references
 #'
-#' Check the
-#' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf).
+#' Check the [API
+#' Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf).
 #'
 #' @param postalcode Postal code.
 #'

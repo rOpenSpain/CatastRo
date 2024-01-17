@@ -1,4 +1,4 @@
-#' Clear your **CatastRo** cache dir
+#' Clear your \CRANpkg{CatastRo} cache dir
 #'
 #' @family cache utilities
 #'
@@ -8,20 +8,20 @@
 #' **Use this function with caution**. This function would clear your cached
 #' data and configuration, specifically:
 #'
-#' * Deletes the **CatastRo** config directory
+#' * Deletes the \CRANpkg{CatastRo} config directory
 #'   (`rappdirs::user_config_dir("CatastRo", "R")`).
 #' * Deletes the `cache_dir` directory.
 #' * Deletes the values on stored on `Sys.getenv("CATASTROESP_CACHE_DIR")`.
 #'
 #' @param config if `TRUE`, will delete the configuration folder of
-#'   **CatastRo**.
+#'   \CRANpkg{CatastRo}.
 #' @param cached_data If this is set to `TRUE`, it will delete your
 #'   `cache_dir` and all its content.
 #' @inheritParams catr_set_cache_dir
 #'
 #' @details
 #' This is an overkill function that is intended to reset your status
-#' as it you would never have installed and/or used **CatastRo**.
+#' as it you would never have installed and/or used \CRANpkg{CatastRo}.
 #'
 #' @examples
 #'

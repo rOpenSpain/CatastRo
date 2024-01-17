@@ -3,6 +3,8 @@
 -   `catr_atom_get_address()` returns also the names of the streets (layer
     `"ThoroughfareName"` of the `*.gml file`). The new fields are named with the
     prefix `tfname_*`.
+-   Add a helper function for easy detecting the `cache_dir`:
+    `catr_detect_cache_dir()`.
 -   Update documentation and tests.
 
 # CatastRo 0.2.3

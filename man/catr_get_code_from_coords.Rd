@@ -10,7 +10,7 @@ catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
 \item{x}{It could be:
 \itemize{
 \item A pair of coordinates c(x,y).
-\item A \code{sf} object. See \strong{Details}.
+\item A \CRANpkg{sf} object. See \strong{Details}.
 }}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
@@ -29,11 +29,12 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
   }}
 }
 \value{
-A tibble with the format described in \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
+A \CRANpkg{tibble} with the format described in
+\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
 }
 \description{
-This function takes as an input a pair of coordinates of a \code{sf} object
-and returns the corresponding municipality code for that coordinates.
+This function takes as an input a pair of coordinates of a \CRANpkg{sf}
+object and returns the corresponding municipality code for that coordinates.
 
 See also \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic_siane()}} and \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
 }
@@ -41,8 +42,8 @@ See also \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic_siane()}} a
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
 coordinate values.
 
-When \code{x} is a \code{sf} object, only the first value would be used. The function
-would extract the coordinates using
+When \code{x} is a \CRANpkg{sf} object, only the first value would be used. The
+function would extract the coordinates using
 \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }
 \examples{

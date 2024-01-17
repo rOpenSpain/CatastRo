@@ -35,17 +35,15 @@
 #' @export
 #'
 #' @return
-#' A tibble with the information requested.
-#' - `catr_atom_get_address_db_all()` provides a tibble with the following
-#'    fields:
+#' A \CRANpkg{tibble} with the information requested.
+#' - `catr_atom_get_address_db_all()` includes the following fields:
 #'   - `territorial_office`: Territorial office, corresponding to each province
 #'      of Spain expect Basque Country and Navarre.
 #'   - `url`: ATOM url for the corresponding territorial office.
 #'   - `munic`: Name of the municipality.
 #'   - `date`: Reference date of the data. Note that **the information of
 #'      this service is updated twice a year**.
-#' - `catr_atom_get_address_db_to()` provides a tibble with the following
-#'    fields:
+#' - `catr_atom_get_address_db_to()` includes the following fields:
 #'   - `munic`: Name of the municipality.
 #'   - `url`: url for downloading information of the corresponding municipality.
 #'   - `date`: Reference date of the data. Note that **the information of

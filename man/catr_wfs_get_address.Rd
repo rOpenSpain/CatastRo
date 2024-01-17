@@ -20,7 +20,7 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 \itemize{
 \item A numeric vector of length 4 with the coordinates that defines
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}
-\item A \code{sf/sfc} object, as provided by the \strong{sf} package.
+\item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
@@ -40,7 +40,7 @@ default is \code{FALSE}.}
 \item{postalcode}{Postal code.}
 }
 \value{
-A \code{sf} object.
+A \CRANpkg{sf} object.
 }
 \description{
 Get the spatial data of addresses The WFS Service allows to perform
@@ -65,8 +65,7 @@ objects of specific cadastral references
 Extract objects of specific cadastral references
 }
 
-Check the
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Docs}.
+Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Docs}.
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
@@ -75,11 +74,11 @@ reference system (4326, 4258), the function queries the bounding box on
 \href{https://epsg.io/3857}{EPSG:3857} - Web Mercator, to overcome
 a potential bug on the API side.
 
-When \code{x} is a \code{sf} object, the value \code{srs} is ignored. In this case, the
-bounding box of the \code{sf} object would be used for the query (see
+When \code{x} is a \CRANpkg{sf} object, the value \code{srs} is ignored. In this case,
+the bounding box of the \CRANpkg{sf} object would be used for the query (see
 \code{\link[sf:st_bbox]{sf::st_bbox()}}). The query is performed using
 \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator). The result is provided
-always in the SRS of the \code{sf} object provided as input.
+always in the SRS of the \CRANpkg{sf} object provided as input.
 }
 \section{API Limits}{
 The API service is limited to a bounding box of 4km2 and a maximum of 5.000

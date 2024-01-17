@@ -17,7 +17,7 @@
 #' @family spatial
 #'
 #' @export
-#' @return A `sf` object.
+#' @return A \CRANpkg{sf} object.
 #'
 #' @inheritParams catr_atom_get_parcels_db_all
 #' @param munic Municipality to extract, It can be a part of a string or the

@@ -222,7 +222,7 @@ it will load it, speeding up the process.
 ## Citation
 
 <p>
-Delgado Panadero Á, Hernangómez D (2023). <em>CatastRo: Interface to the
+Delgado Panadero Á, Hernangómez D (2024). <em>CatastRo: Interface to the
 API Sede Electrónica Del Catastro</em>.
 <a href="https://doi.org/10.5281/zenodo.6044091">doi:10.5281/zenodo.6044091</a>,
 <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
@@ -233,7 +233,7 @@ A BibTeX entry for LaTeX users is:
     @Manual{R-catastro,
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
-      year = {2023},
+      year = {2024},
       version = {0.2.3.9000},
       url = {https://ropenspain.github.io/CatastRo/},
       doi = {10.5281/zenodo.6044091},

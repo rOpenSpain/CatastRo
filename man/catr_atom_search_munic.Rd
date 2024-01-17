@@ -33,7 +33,7 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 default is \code{FALSE}.}
 }
 \value{
-A tibble.
+A \CRANpkg{tibble}.
 }
 \description{
 Search for a municipality (as a string, part of string or code) and get

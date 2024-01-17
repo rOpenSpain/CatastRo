@@ -13,14 +13,13 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 \item{cmun}{Code of a municipality, as recorded on the Spanish Cadastre.}
 
 \item{cmun_ine}{Code of a municipality, as recorded on National Statistics
-Institute. See
-\href{https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm}{INE: List of .   municipalities}}
+Institute. See \href{https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm}{INE: List of municipalities}}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 }
 \value{
-A tibble. See \strong{Details}
+A \CRANpkg{tibble}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCallejero service
@@ -32,8 +31,8 @@ the Cadastre and as per the INE (National Statistics Institute).
 Parameter \code{cpro} is mandatory. Either \code{cmun} or \code{cmun_ine} should be
 provided.
 
-On a successful query, the function returns a tibble with one row including
-the following columns:
+On a successful query, the function returns a \CRANpkg{tibble} with one row
+including the following columns:
 \itemize{
 \item \code{munic}: Name of the municipality as per the Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
@@ -43,7 +42,7 @@ the following columns:
 \item \code{catr_munic}: Municipality code as per the INE.
 \item \code{catrcode}: Full INE code for the municipality.
 \item Rest of fields: Check the API Docs on
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta_CPMRC}
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta CPMRC}
 }
 }
 \examples{

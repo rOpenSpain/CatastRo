@@ -2,16 +2,17 @@
 #'
 #' @description
 #'
-#' This function takes as an input a pair of coordinates of a `sf` object
-#' and returns the corresponding municipality code for that coordinates.
+#' This function takes as an input a pair of coordinates of a \CRANpkg{sf}
+#' object and returns the corresponding municipality code for that coordinates.
 #'
 #' See also [mapSpain::esp_get_munic_siane()] and [catr_ovc_get_cod_munic()].
 #'
-#' @return A tibble with the format described in [catr_ovc_get_cod_munic()].
+#' @return A \CRANpkg{tibble} with the format described in
+#' [catr_ovc_get_cod_munic()].
 #'
 #' @param x It could be:
 #'   - A pair of coordinates c(x,y).
-#'   - A `sf` object. See **Details**.
+#'   - A \CRANpkg{sf} object. See **Details**.
 #'
 #' @inheritParams catr_wfs_get_buildings_bbox
 #' @inheritParams catr_atom_get_buildings
@@ -26,8 +27,8 @@
 #' When `x` is a numeric vector, make sure that the `srs` matches the
 #' coordinate values.
 #'
-#' When `x` is a `sf` object, only the first value would be used. The function
-#' would extract the coordinates using
+#' When `x` is a \CRANpkg{sf} object, only the first value would be used. The
+#' function would extract the coordinates using
 #' `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"

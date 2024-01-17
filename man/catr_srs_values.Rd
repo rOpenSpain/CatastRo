@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{catr_srs_values}
 \alias{catr_srs_values}
-\title{Reference SRS codes for \strong{CatastRo} APIs}
+\title{Reference SRS codes for \CRANpkg{CatastRo} APIs}
 \format{
-A tibble with 16 rows and columns:
+A \CRANpkg{tibble} with 16 rows and columns:
 \describe{
 \item{SRS}{Spatial Reference System (CRS) value, identified by the
 corresponding EPSG code.}
@@ -16,8 +16,8 @@ corresponding EPSG code.}
 }
 }
 \description{
-A tibble including the valid SRS (also known as CRS) values that may be
-used on each API service.
+A \CRANpkg{tibble} including the valid SRS (also known as CRS) values that
+may be used on each API service.
 }
 \details{
 \tabular{rlll}{

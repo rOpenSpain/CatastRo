@@ -11,7 +11,7 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 default is \code{FALSE}.}
 }
 \value{
-A tibble.
+A \CRANpkg{tibble}.
 }
 \description{
 Implementation of the OVCCallejero service

@@ -41,10 +41,9 @@ default is \code{FALSE}.}
 would perform a search using \code{\link[base:grep]{base::grep()}}.}
 }
 \value{
-A tibble with the information requested.
+A \CRANpkg{tibble} with the information requested.
 \itemize{
-\item \code{catr_atom_get_buildings_db_all()} provides a tibble with the following
-fields:
+\item \code{catr_atom_get_buildings_db_all()} includes the following fields:
 \itemize{
 \item \code{territorial_office}: Territorial office, corresponding to each province
 of Spain expect Basque Country and Navarre.
@@ -53,8 +52,7 @@ of Spain expect Basque Country and Navarre.
 \item \code{date}: Reference date of the data. Note that \strong{the information of
 this service is updated twice a year}.
 }
-\item \code{catr_atom_get_buildings_db_to()} provides a tibble with the following
-fields:
+\item \code{catr_atom_get_buildings_db_to()} includes the following fields:
 \itemize{
 \item \code{munic}: Name of the municipality.
 \item \code{url}: url for downloading information of the corresponding municipality.

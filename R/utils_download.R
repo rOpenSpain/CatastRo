@@ -27,12 +27,12 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
     if (verbose) {
       message("Downloading file from ", url)
     }
-    if (verbose && update_cache) {
+    if (all(verbose, update_cache)) {
       message("\nUpdating cache")
     }
   } else if (localfile) {
     dwnload <- FALSE
-    if (verbose && isFALSE(update_cache)) {
+    if (all(verbose, isFALSE(update_cache))) {
       message("File already cached")
     }
   }
@@ -80,7 +80,7 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
   }
 
 
-  if (verbose && isTRUE(cache)) {
+  if (all(verbose, isTRUE(cache))) {
     message("Reading from local file ", filepath)
     size <- file.size(filepath)
     class(size) <- "object_size"

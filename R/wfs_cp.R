@@ -15,10 +15,11 @@
 #' @family parcels
 #' @family spatial
 #'
-#' @return A `sf` object.
+#' @return A \CRANpkg{sf} object.
 #'
 #' @references
-#' [API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf)
+#' [API
+#' Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf)
 #'
 #' [INSPIRE Services for Cadastral
 #' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
@@ -32,7 +33,7 @@
 #' a potential bug on the API side. The result is provided always in the SRS
 #' provided in `srs`.
 #'
-#' When `x` is a `sf` object, the value `srs` is ignored. The query is
+#' When `x` is a \CRANpkg{sf} object, the value `srs` is ignored. The query is
 #' performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator) and the
 #' spatial object is projected back to the SRS of the initial object.
 #'
@@ -163,7 +164,8 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #'  specific cadastral zone.
 #'
 #' Check the
-#' [API Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf).
+#' [API
+#' Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf).
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export

@@ -20,25 +20,25 @@ in the CRS/SRS \code{specified} by \code{srs}.}
 default is \code{FALSE}.}
 }
 \value{
-A tibble. See \strong{Details}
+A \CRANpkg{tibble}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCoordenadas service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta_RCCOOR}.
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta RCCOOR}.
 Return the cadastral reference found of a set of specific coordinates.
 }
 \details{
-When the API does not provide any result, the function returns a tibble with
-the input parameters only.
+When the API does not provide any result, the function returns a
+\CRANpkg{tibble} with the input parameters only.
 
-On a successful query, the function returns a tibble with one row by
-cadastral reference, including the following columns:
+On a successful query, the function returns a \CRANpkg{tibble} with one row
+by cadastral reference, including the following columns:
 \itemize{
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input parameters of the query.
 \item \code{refcat}: Cadastral Reference.
 \item \code{address}: Address as it is recorded on the Cadastre.
 \item Rest of fields: Check the API Docs on
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta_RCCOOR}
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta RCCOOR}
 }
 }
 \examples{
@@ -53,7 +53,7 @@ catr_ovc_get_rccoor(
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta_RCCOOR}
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta RCCOOR}
 }
 \seealso{
 \link{catr_srs_values}, \code{vignette("ovcservice")}
