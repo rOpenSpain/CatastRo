@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get started">
 <meta property="og:description" content="CatastRo">
@@ -121,7 +121,7 @@ European Spatial Data Infrastructure will enable the sharing of
 environmental spatial information among public sector organisations,
 facilitate public access to spatial information across Europe and assist
 in policy-making across boundaries.</p>
-<p><em>From <a href="https://inspire.ec.europa.eu/about-inspire/563" class="external-link uri">https://inspire.ec.europa.eu/about-inspire/563</a></em></p>
+<p><em>From <a href="https://knowledge-base.inspire.ec.europa.eu/overview_en" class="external-link uri">https://knowledge-base.inspire.ec.europa.eu/overview_en</a></em></p>
 </blockquote>
 <p>The implementation of the INSPIRE directive on the Spanish Cadastre
 (see <a href="https://www.catastro.minhap.es/webinspire/index.html" class="external-link">Catastro
@@ -239,7 +239,8 @@ Valencia in the Cadastre, and we would download the buildings with
 <span><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
 <span><span class="co">#&gt; 1 VALENCIA 46      900        46900    46    250   46250   VALENCIA 46    900   46    250</span></span>
 <span></span>
-<span><span class="va">valencia_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">val_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">valencia_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">val_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in file(con, "r"): invalid 'description' argument</span></span></code></pre></div>
 <p>Next step for creating the visualization is to limit the analysis to
 a circle of radius 2.5 km around the city center:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -248,34 +249,36 @@ a circle of radius 2.5 km around the city center:</p>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">valencia_bu</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="co"># Buffer</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_buffer</a></span><span class="op">(</span><span class="fl">2500</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: object 'valencia_bu' not found</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Cut buildings</span></span>
 <span></span>
 <span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_binary_ops.html" class="external-link">st_intersection</a></span><span class="op">(</span><span class="va">valencia_bu</span>, <span class="va">buff</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'valencia_bu' not found</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="minimal-1.png" alt="Minimal cadastral map of Valencia" width="100%"><p class="caption">
-Minimal cadastral map of Valencia
-</p>
-</div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span></code></pre></div>
 <p>Let’s extract now the construction year, available in the column
 <code>beginning</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Extract 4 initial positions</span></span>
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substr</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">$</span><span class="va">beginning</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span>
 <span></span>
 <span><span class="co"># Replace all that doesn't look as a number with 0000</span></span>
 <span><span class="va">year</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fl">0</span><span class="op">:</span><span class="fl">2500</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"0000"</span></span>
+<span><span class="co">#&gt; Error: object 'year' not found</span></span>
 <span></span>
 <span><span class="co"># To numeric</span></span>
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'year' not found</span></span>
 <span></span>
 <span><span class="co"># New column</span></span>
 <span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">year</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">year</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span></code></pre></div>
 <p>Last step is to create groups based on the year and create the data
 visualization. We use here the function
 <code><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html" class="external-link">ggplot2::cut_number()</a></code> to create 15 different classes:</p>
@@ -284,6 +287,7 @@ visualization. We use here the function
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year_cat <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html" class="external-link">cut_number</a></span><span class="op">(</span><span class="va">year</span>,</span>
 <span>    n <span class="op">=</span> <span class="fl">15</span></span>
 <span>  <span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span>
 <span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">)</span> <span class="op">+</span></span>
@@ -309,12 +313,8 @@ visualization. We use here the function
 <span>      margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span>b <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="fl">.5</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">40</span>, l <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="dataviz-1.png" alt="Valencia: Urban growth" width="100%"><p class="caption">
-Valencia: Urban growth
-</p>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'dataviz' not found</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
