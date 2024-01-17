@@ -27,6 +27,7 @@ if(.Platform$OS.type != "windows"){
 }
 
 
+
 ```
 
 **CatastRo** provide access to different API services of the [Spanish
@@ -136,13 +137,13 @@ ggplot() +
 ### Thematic maps
 
 We can create also thematic maps using the information available on the spatial
-objects. We would produce a visualization of the urban growth of Valencia using
+objects. We would produce a visualization of the urban growth of Granada using
 **CatastRo**, replicating the map produced by Dominic Royé on his post
 [Visualize urban
 growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/), using
 the **ATOM services**.
 
-In first place, we extract the coordinates of the city center of Valencia using
+In first place, we extract the coordinates of the city center of Granada using
 **mapSpain**:
 
 ```{r}
@@ -153,39 +154,39 @@ library(mapSpain)
 
 # Use mapSpain for getting the coords
 
-val <- esp_get_capimun(munic = "^València$")
+city <- esp_get_capimun(munic = "^Granada$")
 ```
 
 Next step consists on extracting the buildings using the ATOM service. We would
 use also the function `catr_get_code_from_coords()` to identify the code of
-Valencia in the Cadastre, and we would download the buildings with
+Granada in the Cadastre, and we would download the buildings with
 `catr_atom_get_buildings()`.
 
 ```{r }
 
-val_catr_code <- catr_get_code_from_coords(val)
+city_catr_code <- catr_get_code_from_coords(city)
 
-val_catr_code
+city_catr_code
 
-valencia_bu <- catr_atom_get_buildings(val_catr_code$catrcode)
+city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 
 ```
 
 Next step for creating the visualization is to limit the analysis to a circle of
-radius 2.5 km around the city center:
+radius 1.5 km around the city center:
 
-```{r minimal, fig.cap="Minimal cadastral map of Valencia"}
+```{r minimal, fig.cap="Minimal cadastral map of Granada"}
 
-buff <- val %>%
+buff <- city %>%
   # Adjust CRS to 25830: (Buildings)
-  st_transform(st_crs(valencia_bu)) %>%
+  st_transform(st_crs(city_bu)) %>%
   # Buffer
-  st_buffer(2500)
+  st_buffer(1500)
 
 
 # Cut buildings
 
-dataviz <- st_intersection(valencia_bu, buff)
+dataviz <- st_intersection(city_bu, buff)
 
 ggplot(dataviz) +
   geom_sf()
@@ -201,6 +202,7 @@ year <- substr(dataviz$beginning, 1, 4)
 # Replace all that doesn't look as a number with 0000
 year[!(year %in% 0:2500)] <- "0000"
 
+
 # To numeric
 year <- as.integer(year)
 
@@ -210,22 +212,24 @@ dataviz <- dataviz %>%
 ```
 
 Last step is to create groups based on the year and create the data
-visualization. We use here the function `ggplot2::cut_number()` to create 15
-different classes:
+visualization. We use here the function `cut()` to create classes for every
+decade starting in year 1900:
 
-```{r dataviz, fig.cap="Valencia: Urban growth"}
+```{r dataviz, fig.cap="Granada: Urban growth"}
 
 dataviz <- dataviz %>%
-  mutate(year_cat = ggplot2::cut_number(year,
-    n = 15
-  ))
+  mutate(year_cat = cut(year, breaks = c(0, seq(1900, 2030, by = 10)),
+                        dig.lab = 4)
+
+         )
 
 
 ggplot(dataviz) +
-  geom_sf(aes(fill = year_cat), color = NA) +
-  scale_fill_manual(values = hcl.colors(15, "Spectral")) +
+  geom_sf(aes(fill = year_cat), color = NA, na.rm = TRUE) +
+  scale_fill_manual(values = hcl.colors(15, "Spectral"),
+                    na.translate = FALSE) +
   theme_void() +
-  labs(title = "VALÈNCIA", fill = "") +
+  labs(title = "GRANADA", fill = "") +
   theme(
     panel.background = element_rect(fill = "black"),
     plot.background = element_rect(fill = "black"),
@@ -245,6 +249,8 @@ ggplot(dataviz) +
   )
 ```
 
+
 ## References
 
-- Royé D (2019). "Visualize urban growth." <https://dominicroye.github.io/en/2019/visualize-urban-growth/>.
+-   Royé D (2019). "Visualize urban growth."
+    <https://dominicroye.github.io/en/2019/visualize-urban-growth/>.

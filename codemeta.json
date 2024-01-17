@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.2 (2023-10-31 ucrt)",
+  "runtimePlatform": "R version 4.3.2 (2023-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -270,7 +270,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1483.332KB",
+  "fileSize": "206986.022KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -295,7 +295,7 @@
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/CatastRo/blob/master/NEWS.md",
-  "readme": "https://github.com/rOpenSpain/CatastRo/blob/master/README.md",
+  "readme": "https://github.com/rOpenSpain/CatastRo/blob/main/README.md",
   "contIntegration": ["https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check", "https://app.codecov.io/gh/rOpenSpain/CatastRo"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": ["r-package", "ropenspain", "catastro", "spain", "rstats", "spatial", "r", "maps", "gis", "static-tiles", "cran", "cran-r"]
