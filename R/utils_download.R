@@ -9,7 +9,7 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
 
   cache_dir <- catr_hlp_cachedir(cache_dir)
 
-  if (verbose) message("Cache dir is ", cache_dir)
+  catr_hlp_dwn_verbose(verbose, "Cache dir is ", cache_dir)
 
   # Create filepath
   filepath <- file.path(cache_dir, filename)
@@ -18,22 +18,22 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
   if (isFALSE(cache)) {
     dwnload <- FALSE
     filepath <- url
-    if (verbose) {
-      message("Try loading from ", filepath)
-    }
+
+    catr_hlp_dwn_verbose(verbose, "Try loading from ", filepath)
+
     return(filepath)
-  } else if (update_cache || isFALSE(localfile)) {
+  } else if (any(update_cache, isFALSE(localfile))) {
     dwnload <- TRUE
-    if (verbose) {
-      message("Downloading file from ", url)
-    }
-    if (all(verbose, update_cache)) {
-      message("\nUpdating cache")
+
+    catr_hlp_dwn_verbose(verbose, "Downloading file from ", url)
+
+    if (update_cache) {
+      catr_hlp_dwn_verbose(verbose, "\nUpdating cache")
     }
   } else if (localfile) {
     dwnload <- FALSE
-    if (all(verbose, isFALSE(update_cache))) {
-      message("File already cached")
+    if (isFALSE(update_cache)) {
+      catr_hlp_dwn_verbose(verbose, "File already cached")
     }
   }
 
@@ -88,4 +88,11 @@ catr_hlp_dwnload <- function(api_entry, filename, cache_dir,
   }
 
   return(filepath)
+}
+
+catr_hlp_dwn_verbose <- function(verbose = TRUE, ...) {
+  if (verbose) {
+    message(...)
+  }
+  return(invisible())
 }

@@ -1,4 +1,4 @@
-# CatastRo (development version)
+# CatastRo 0.3.0
 
 -   `catr_atom_get_address()` returns also the names of the streets (layer
     `"ThoroughfareName"` of the `*.gml file`). The new fields are named with the

@@ -28,3 +28,4 @@
 ^CODE_OF_CONDUCT\.md$
 ^CONTRIBUTING\.md$
 ^\./tests/testthat/dev$
+^Rplots\.pdf$

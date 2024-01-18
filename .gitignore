@@ -28,3 +28,4 @@ docs/
 dev/
 vignettes/dev
 ./tests/testthat/dev
+Rplots.pdf
