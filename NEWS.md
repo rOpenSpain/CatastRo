@@ -1,3 +1,7 @@
+# CatastRo (development version)
+
+-   Migrate from **httr** to **httr2** (#44).
+
 # CatastRo 0.3.0
 
 -   `catr_atom_get_address()` returns also the names of the streets (layer

@@ -78,35 +78,29 @@ catr_ovc_get_rccoor_distancia <- function(lat, lon, srs = 4326,
     "OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR_Distancia"
   )
 
-
-  ## GET
-
-  if (verbose) {
-    url <- httr::parse_url(api_entry)
-    url <- httr::modify_url(url, query = list(
-      SRS = srs,
-      Coordenada_X = lon,
-      Coordenada_Y = lat
-    ))
-
-    message("Querying url:\n\t", url)
-  }
-
-
-
-  api_res <- httr::GET(api_entry, query = list(
+  query <- list(
     SRS = srs,
     Coordenada_X = lon,
     Coordenada_Y = lat
-  ))
+  )
 
+  ## GET
+  url <- httr2::url_parse(api_entry)
+  url$query <- query
+  url <- httr2::url_build(url)
+
+  if (verbose) {
+    message("Querying url:\n\t", url)
+  }
+
+  api_res <- httr2::request(url)
+  api_res <- httr2::req_perform(api_res)
 
   # Check error on status
-  httr::stop_for_status(api_res)
-
+  httr2::resp_check_status(api_res)
 
   # Extract results
-  content <- httr::content(api_res)
+  content <- httr2::resp_body_xml(api_res)
   content_list <- xml2::as_list(content)
   res <- content_list[["consulta_coordenadas_distancias"]][["coordenadas_distancias"]][["coordd"]]
 

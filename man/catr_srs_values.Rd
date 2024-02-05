@@ -72,8 +72,8 @@ Other INSPIRE WFS services:
 
 OVCCoordenadas API:
 \code{\link{catr_ovc_get_cpmrc}()},
-\code{\link{catr_ovc_get_rccoor_distancia}()},
-\code{\link{catr_ovc_get_rccoor}()}
+\code{\link{catr_ovc_get_rccoor}()},
+\code{\link{catr_ovc_get_rccoor_distancia}()}
 }
 \concept{OVCCoordenadas}
 \concept{WFS}

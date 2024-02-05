@@ -100,12 +100,12 @@ ggplot(rc) +
 \code{\link[sf:st_bbox]{sf::st_bbox()}}
 
 INSPIRE API functions:
-\code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_address}()},
-\code{\link{catr_atom_get_buildings_db_all}()},
+\code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
+\code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_parcels}()},
+\code{\link{catr_atom_get_parcels_db_all}()},
 \code{\link{catr_wfs_get_address_bbox}()},
 \code{\link{catr_wfs_get_parcels_bbox}()},
 \code{\link{catr_wms_get_layer}()}
@@ -116,8 +116,8 @@ Other INSPIRE WFS services:
 \code{\link{catr_wfs_get_parcels_bbox}()}
 
 Other buildings: 
-\code{\link{catr_atom_get_buildings_db_all}()},
-\code{\link{catr_atom_get_buildings}()}
+\code{\link{catr_atom_get_buildings}()},
+\code{\link{catr_atom_get_buildings_db_all}()}
 
 Other spatial: 
 \code{\link{catr_atom_get_address}()},

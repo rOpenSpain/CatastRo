@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenSpain/CatastRo",
   "issueTracker": "https://github.com/rOpenSpain/CatastRo/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
-  "version": "0.3.0",
+  "version": "0.3.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -171,15 +171,16 @@
     },
     "3": {
       "@type": "SoftwareApplication",
-      "identifier": "httr",
-      "name": "httr",
+      "identifier": "httr2",
+      "name": "httr2",
+      "version": ">= 1.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=httr"
+      "sameAs": "https://CRAN.R-project.org/package=httr2"
     },
     "4": {
       "@type": "SoftwareApplication",
@@ -270,7 +271,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1138.323KB",
+  "fileSize": "865.935KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -296,7 +297,7 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/CatastRo/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/CatastRo/blob/main/README.md",
-  "contIntegration": ["https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check", "https://app.codecov.io/gh/rOpenSpain/CatastRo"],
+  "contIntegration": ["https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml", "https://app.codecov.io/gh/rOpenSpain/CatastRo"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": ["r-package", "ropenspain", "catastro", "spain", "rstats", "spatial", "r", "maps", "gis", "static-tiles", "cran", "cran-r"]
 }

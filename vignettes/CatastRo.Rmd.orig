@@ -19,9 +19,11 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   dev = "ragg_png",
-  dpi = 70,
+  dpi = 150,
   out.width = "100%"
 )
+
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 
 if(.Platform$OS.type != "windows"){
   options(download.file.method="curl", download.file.extra="-k -L")
@@ -216,7 +218,7 @@ Last step is to create groups based on the year and create the data
 visualization. We use here the function `cut()` to create classes for every
 decade starting in year 1900:
 
-```{r dataviz, fig.cap="Granada: Urban growth", fig.asp=0.75, dpi=90}
+```{r dataviz, fig.cap="Granada: Urban growth", fig.asp=0.75, dpi=90, crop=TRUE}
 
 dataviz <- dataviz %>%
   mutate(year_cat = cut(year,
