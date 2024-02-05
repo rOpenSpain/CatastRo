@@ -12,7 +12,7 @@ mapSpain::esp_getTiles()."><meta property="og:image" content="https://ropenspain
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../logo.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -114,8 +114,8 @@ default is <code>FALSE</code>.</p></dd>
 
 <dt>crop</dt>
 <dd><p><code>TRUE</code> if results should be cropped to the specified <code>x</code> extent,
-<code>FALSE</code> otherwise. If <code>x</code> is an <span class="pkg">sf</span> object with one <code>POINT</code>, crop is set
-to <code>FALSE</code>.</p></dd>
+<code>FALSE</code> otherwise. If <code>x</code> is an <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object with one <code>POINT</code>, crop
+is set to <code>FALSE</code>.</p></dd>
 
 
 <dt>options</dt>
@@ -147,7 +147,7 @@ Depends on the selected provider on <code>type</code>.</p></dd>
     
 
 <p>A <code>SpatRaster</code> is returned, with 3 (RGB) or 4 (RGBA) layers. See
-<code><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">terra::rast()</a></code>.</p>
+<code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">terra::rast()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -194,14 +194,14 @@ for more information.</p>
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_getTiles.html" class="external-link">mapSpain::esp_getTiles()</a></code>
 <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">tidyterra::geom_spatraster_rgb()</a></code>,
-<code><a href="https://rdrr.io/pkg/terra/man/plotRGB.html" class="external-link">terra::plotRGB()</a></code>.</p>
+<code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">terra::plotRGB()</a></code>.</p>
 <p>INSPIRE API functions:
-<code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all</a>()</code>,
 <code><a href="catr_atom_get_address.html">catr_atom_get_address</a>()</code>,
-<code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all</a>()</code>,
+<code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all</a>()</code>,
 <code><a href="catr_atom_get_buildings.html">catr_atom_get_buildings</a>()</code>,
-<code><a href="catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_all</a>()</code>,
+<code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all</a>()</code>,
 <code><a href="catr_atom_get_parcels.html">catr_atom_get_parcels</a>()</code>,
+<code><a href="catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_all</a>()</code>,
 <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_bbox</a>()</code>,
 <code><a href="catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox</a>()</code>,
 <code><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_bbox</a>()</code></p>
@@ -243,7 +243,7 @@ for more information.</p>
 <span class="r-in"><span><span class="co"># With a spatial object</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span>, srs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpkhLnZ0/fileb184c8d4042.gml'</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpI3oxux/file17d43d6f275c.gml'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use styles</span></span></span>
