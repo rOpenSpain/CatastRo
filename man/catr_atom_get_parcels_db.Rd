@@ -80,10 +80,10 @@ catr_atom_get_parcels_db_all()
 }
 \seealso{
 INSPIRE API functions:
-\code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_address}()},
-\code{\link{catr_atom_get_buildings_db_all}()},
+\code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_buildings}()},
+\code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_parcels}()},
 \code{\link{catr_wfs_get_address_bbox}()},
 \code{\link{catr_wfs_get_buildings_bbox}()},
@@ -91,10 +91,10 @@ INSPIRE API functions:
 \code{\link{catr_wms_get_layer}()}
 
 Other INSPIRE ATOM services:
-\code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_address}()},
-\code{\link{catr_atom_get_buildings_db_all}()},
+\code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_buildings}()},
+\code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_parcels}()},
 \code{\link{catr_atom_search_munic}()}
 

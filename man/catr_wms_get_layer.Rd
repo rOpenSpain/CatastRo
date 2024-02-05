@@ -43,8 +43,8 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 default is \code{FALSE}.}
 
 \item{crop}{\code{TRUE} if results should be cropped to the specified \code{x} extent,
-\code{FALSE} otherwise. If \code{x} is an \pkg{sf} object with one \code{POINT}, crop is set
-to \code{FALSE}.}
+\code{FALSE} otherwise. If \code{x} is an \href{https://CRAN.R-project.org/package=sf}{\pkg{sf}} object with one \code{POINT}, crop
+is set to \code{FALSE}.}
 
 \item{options}{A named list containing additional options to pass to the
 query.}
@@ -163,12 +163,12 @@ ggplot() +
 \code{\link[terra:plotRGB]{terra::plotRGB()}}.
 
 INSPIRE API functions:
-\code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_address}()},
-\code{\link{catr_atom_get_buildings_db_all}()},
+\code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
+\code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_parcels}()},
+\code{\link{catr_atom_get_parcels_db_all}()},
 \code{\link{catr_wfs_get_address_bbox}()},
 \code{\link{catr_wfs_get_buildings_bbox}()},
 \code{\link{catr_wfs_get_parcels_bbox}()}

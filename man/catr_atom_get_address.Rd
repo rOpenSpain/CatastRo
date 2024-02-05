@@ -71,10 +71,10 @@ ggplot(s) +
 \seealso{
 INSPIRE API functions:
 \code{\link{catr_atom_get_address_db_all}()},
-\code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
+\code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_parcels}()},
+\code{\link{catr_atom_get_parcels_db_all}()},
 \code{\link{catr_wfs_get_address_bbox}()},
 \code{\link{catr_wfs_get_buildings_bbox}()},
 \code{\link{catr_wfs_get_parcels_bbox}()},
@@ -82,10 +82,10 @@ INSPIRE API functions:
 
 Other INSPIRE ATOM services:
 \code{\link{catr_atom_get_address_db_all}()},
-\code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
+\code{\link{catr_atom_get_buildings_db_all}()},
 \code{\link{catr_atom_get_parcels}()},
+\code{\link{catr_atom_get_parcels_db_all}()},
 \code{\link{catr_atom_search_munic}()}
 
 Other addresses: 

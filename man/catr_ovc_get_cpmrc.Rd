@@ -68,13 +68,13 @@ catr_ovc_get_cpmrc("9872023VH5797S")
 \link{catr_srs_values}, \code{vignette("ovcservice")}
 
 OVCCoordenadas API:
-\code{\link{catr_ovc_get_rccoor_distancia}()},
 \code{\link{catr_ovc_get_rccoor}()},
+\code{\link{catr_ovc_get_rccoor_distancia}()},
 \code{\link{catr_srs_values}}
 
 Other cadastral references: 
-\code{\link{catr_ovc_get_rccoor_distancia}()},
-\code{\link{catr_ovc_get_rccoor}()}
+\code{\link{catr_ovc_get_rccoor}()},
+\code{\link{catr_ovc_get_rccoor_distancia}()}
 }
 \concept{OVCCoordenadas}
 \concept{cadastral references}

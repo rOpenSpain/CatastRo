@@ -10,8 +10,8 @@
 [![CRAN-results](https://badges.cranchecks.info/worst/CatastRo.svg)](https://cran.r-project.org/web/checks/check_results_CatastRo.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
 [![r-universe](https://ropenspain.r-universe.dev/badges/CatastRo)](https://ropenspain.r-universe.dev/CatastRo)
-[![R-CMD-check](https://github.com/rOpenSpain/CatastRo/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions?query=workflow%3AR-CMD-check)
-[![codecov](https://codecov.io/gh/rOpenSpain/CatastRo/branch/master/graph/badge.svg?token=6L01BKLL85)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
+[![R-CMD-check](https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml)
+[![codecov](https://app.codecov.io/gh/rOpenSpain/CatastRo/graph/badge.svg)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.6044091-blue)](https://doi.org/10.5281/zenodo.6044091)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
@@ -234,7 +234,7 @@ A BibTeX entry for LaTeX users is:
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       year = {2024},
-      version = {0.3.0},
+      version = {0.3.0.9000},
       url = {https://ropenspain.github.io/CatastRo/},
       doi = {10.5281/zenodo.6044091},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
