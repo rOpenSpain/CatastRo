@@ -24,13 +24,13 @@ Extract objects of specific cadastral references.
 Check the API Docs."><meta property="og:image" content="https://ropenspain.github.io/CatastRo/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@rOpenSpain"><meta name="twitter:site" content="@rOpenSpain"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rostemplate.css" rel="stylesheet"></head><body>
+<![endif]--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rostemplate.min.css" rel="stylesheet"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
   <a class="navbar-brand me-2" href="../index.html">
-    <img src="../logo.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
+    <img src="../favicon-32x32.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
@@ -99,9 +99,10 @@ the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
 
 
 <dt>what</dt>
-<dd><p>Information to load. It could be <code>"building"</code> for buildings,
-<code>"buildingpart"</code> for parts of a building or <code>"other"</code> for others (
-swimming pools, etc.).</p></dd>
+<dd><p>Information to load. It could be:</p><ul><li><p><code>"building"</code> for buildings.</p></li>
+<li><p><code>"buildingpart"</code> for parts of a building.</p></li>
+<li><p><code>"other"</code> for others elements, as swimming pools, etc.</p></li>
+</ul></dd>
 
 
 <dt>srs</dt>

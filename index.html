@@ -33,7 +33,7 @@
 <![endif]--><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
-<!-- rogtemplate style sheet --><link href="BS5/rostemplate.css" rel="stylesheet">
+<!-- rogtemplate style sheet --><link href="BS5/rostemplate.min.css" rel="stylesheet">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -41,7 +41,7 @@
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
   <a class="navbar-brand me-2" href="index.html">
-    <img src="logo.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
+    <img src="favicon-32x32.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
@@ -110,8 +110,7 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, you can install the developing version of <strong>CatastRo</strong> with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
@@ -121,13 +120,13 @@
 <h3 id="ovccoordenadas">OVCCoordenadas<a class="anchor" aria-label="anchor" href="#ovccoordenadas"></a>
 </h3>
 <p>These functions allow to geocode and reverse geocode cadastral references using the <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p>
-<p>These functions are named <code>catr_ovc_get_*</code> and returns a tibble, as provided by the package <strong>tibble</strong>. See <code><a href="articles/ovcservice.html">vignette("ovcservice")</a></code>, where these functions are described.</p>
+<p>These functions are named <code>catr_ovc_get_*</code> and returns a tibble, as provided by the package <strong>tibble</strong>. See <code><a href="articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code> where these functions are described.</p>
 </div>
 <div class="section level3">
 <h3 id="inspire">INSPIRE<a class="anchor" aria-label="anchor" href="#inspire"></a>
 </h3>
 <p>These functions return spatial object (on the formats provided by the <strong>sf</strong> or <strong>terra</strong> using the <a href="https://www.catastro.minhap.es/webinspire/index.html" class="external-link">Catastro INSPIRE</a> service.</p>
-<p>Note that the coverage of this service is 95% of the Spanish territory, excluding Basque Country and Navarre that have their own independent cadastral offices.</p>
+<p>Note that the coverage of this service is 95% of the Spanish territory, <u>excluding Basque Country and Navarre</u> that have their own independent cadastral offices.</p>
 <p>There are three types of functions, each one querying a different service:</p>
 <div class="section level4">
 <h4 id="atom-service">ATOM service<a class="anchor" aria-label="anchor" href="#atom-service"></a>
@@ -138,14 +137,13 @@
 <div class="section level4">
 <h4 id="wfs-service">WFS service<a class="anchor" aria-label="anchor" href="#wfs-service"></a>
 </h4>
-<p>The WFS service allows to download vector objects of specific cadastral elements. The result is provided as <code>sf</code> objects (See <strong>sf</strong> package).</p>
-<p>Note that there are some limitations on the extension and number of elements to query. For batch-downloading the ATOM service is preferred.</p>
+<p>The WFS service allows to download vector objects of specific cadastral elements. The result is provided as <code>sf</code> class objects (see <a href="https://r-spatial.github.io/sf/" class="external-link"><strong>sf</strong></a> package). Note that there are some limitations on the extension and number of elements to query. For batch-downloading the ATOM service is preferred.</p>
 <p>These functions are named <code>catr_wms_get_xxx</code>.</p>
 </div>
 <div class="section level4">
 <h4 id="wms-service">WMS service<a class="anchor" aria-label="anchor" href="#wms-service"></a>
 </h4>
-<p>This service allows to download georeferenced images of different cadastral elements. The result is a raster on the format provides by <strong>terra</strong>.</p>
+<p>This service allows to download georeferenced images of different cadastral elements. The result is a raster on the format provides by <a href="https://rspatial.github.io/terra/reference/terra-package.html" class="external-link"><strong>terra</strong></a>.</p>
 <p>There is a single function for querying this service: <code><a href="reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</p>
 </div>
 <div class="section level4">
@@ -258,15 +256,15 @@
 Delgado Panadero Á, Hernangómez D (2024). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. <a href="https://doi.org/10.5281/zenodo.6044091" class="external-link">doi:10.5281/zenodo.6044091</a>, <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
 </p>
 <p>A BibTeX entry for LaTeX users is:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>catastro,</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2024</span>},</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">3</span>.<span class="fl">0.9000</span>},</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.6044091</span>},</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Access public spatial data available under the INSPIRE directive. Tools <span class="cf">for</span> downloading references and addresses of properties, as well as map images.},</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>catastro,</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2024</span>},</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">3</span>.<span class="fl">0.9000</span>},</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.6044091</span>},</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Access public spatial data available under the INSPIRE directive. Tools <span class="cf">for</span> downloading references and addresses of properties, as well as map images.},</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
