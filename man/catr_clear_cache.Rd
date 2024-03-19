@@ -44,7 +44,6 @@ Sys.getenv("CATASTROESP_CACHE_DIR")
 }
 \seealso{
 Other cache utilities: 
-\code{\link{catr_detect_cache_dir}()},
 \code{\link{catr_set_cache_dir}()}
 }
 \concept{cache utilities}

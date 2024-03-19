@@ -13,13 +13,13 @@ authors:
 
 reference:
   - title: ATOM INSPIRE API
-    desc: These functions return `sf` objects as provided by the INSPIRE ATOM
-      services of the Spanish Cadastre.
+    desc: >
+      These functions return `sf` objects as provided by the INSPIRE ATOM services of the Spanish Cadastre.
     contents:
       - has_concept("ATOM")
   - title: WFS INSPIRE API
-    desc: These functions return `sf` objects as provided by the INSPIRE WFS
-      services of the Spanish Cadastre.
+    desc: >
+      These functions return `sf` objects as provided by the INSPIRE WFS services of the Spanish Cadastre.
     contents:
       - has_concept("WFS")
   - title: WMS INSPIRE API
@@ -30,13 +30,17 @@ reference:
       - terra::plotRGB()
       - tidyterra::geom_spatraster_rgb()
   - title: OVCCoordenadas API
-    desc: These functions allows to access the
-      [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx) service.
+    desc: >
+      These functions allows to access the
+      [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
+      service.
     contents:
       - has_concept("OVCCoordenadas")
   - title: OVCCallejero API
-    desc: These functions allows to access the
-      [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx) service.
+    desc: >
+      These functions allows to access the
+      [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
+      service.
     contents:
       - has_concept("OVCCallejero")
   - title: Search functions

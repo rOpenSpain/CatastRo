@@ -27,8 +27,9 @@ codes.}
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. On missing value the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+\item{cache_dir}{A path to a cache directory. On missing value (the default)
+the function would store the cached files on the
+\code{\link[base:tempfile]{tempdir}}.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
@@ -37,10 +38,9 @@ default is \code{FALSE}.}
 A \CRANpkg{sf} object.
 }
 \description{
-Get the spatial data of all the addresses belonging to a single
-municipality using the INSPIRE ATOM service. Additionally, the function also
-returns the corresponding street information on the fields with the
-prefix \verb{tfname_*}.
+Get the spatial data of all the addresses belonging to a single municipality
+using the INSPIRE ATOM service. Additionally, the function also returns the
+corresponding street information on the fields with the prefix \verb{tfname_*}.
 }
 \examples{
 \donttest{
@@ -64,9 +64,9 @@ ggplot(s) +
 
 }
 \references{
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf}{API Documentation}
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf}{API Documentation}.
 
-\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
+\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
 }
 \seealso{
 INSPIRE API functions:

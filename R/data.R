@@ -9,18 +9,28 @@
 #' @docType data
 #'
 #' @description
-#' A \CRANpkg{tibble} including the valid SRS (also known as CRS) values that
-#' may be used on each API service.
+#' A  A [`tibble`][tibble::tibble] including the valid SRS (also known as CRS)
+#' values that may be used on each API service.
 #'
 #' @references
-#' * [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("* [OVCCoordenadas](https://ovc.catastro.meh.es/",
+#' "ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)."))
+#'
+#' ```
+#'
 #' * [INSPIRE WFS
-#' Service](https://www.catastro.minhap.es/webinspire/index.html)
+#' Service](https://www.catastro.minhap.es/webinspire/index.html).
 #'
 #' @encoding UTF-8
 #'
+#' @seealso [sf::st_crs()].
+#'
 #' @format
-#' A \CRANpkg{tibble} with `r nrow(CatastRo::catr_srs_values)` rows and columns:
+#' A [`tibble`][tibble::tibble] with `r nrow(CatastRo::catr_srs_values)` rows
+#' and columns:
 #' \describe{
 #'   \item{SRS}{Spatial Reference System (CRS) value, identified by the
 #'     corresponding EPSG code.}

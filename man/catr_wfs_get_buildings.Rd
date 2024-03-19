@@ -17,9 +17,12 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
-\item{what}{Information to load. It could be \code{"building"} for buildings,
-\code{"buildingpart"} for parts of a building or \code{"other"} for others (
-swimming pools, etc.).}
+\item{what}{Information to load. It could be:
+\itemize{
+\item \code{"building"} for buildings.
+\item \code{"buildingpart"} for parts of a building.
+\item \code{"other"} for others elements, as swimming pools, etc.
+}}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See \strong{Details}.}

@@ -65,15 +65,16 @@ result <- catr_ovc_get_rccoor(
   lon = -3.45624183836806,
   srs = "4230"
 )
+#> Error in `httr2::req_perform()` at project/R/ovc_rccoor.R:85:3:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Recv failure: Connection reset by peer
 ```
 
 
-
-|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |  geo.xcen| geo.ycen|geo.srs   |ldt                                                                                                  |
-|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|---------:|--------:|:---------|:----------------------------------------------------------------------------------------------------|
-|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 | -3.456242| 38.61966|EPSG:4230 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
-
-
+```
+#> Error in eval(expr, envir, enclos): object 'result' not found
+```
 
 The function accept as a SRS argument the following values:
 
@@ -123,16 +124,11 @@ catr_ovc_get_rccoor_distancia(
   srs = "4230"
 ) %>%
   knitr::kable()
+#> Error in `httr2::req_perform()` at project/R/ovc_rccoor_distancia.R:97:3:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Recv failure: Connection reset by peer
 ```
-
-
-
-|  geo.xcen| geo.ycen|geo.srs   |refcat         |address                                         |cmun_ine |pc.pc1  |pc.pc2  |dt.loine.cp |dt.loine.cm |dt.lourb.dir.cv |dt.lourb.dir.pnp |ldt                                             |dis   |
-|---------:|--------:|:---------|:--------------|:-----------------------------------------------|:--------|:-------|:-------|:-----------|:-----------|:---------------|:----------------|:-----------------------------------------------|:-----|
-| -5.663408| 40.96002|EPSG:4230 |5877501TL7357F |AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      |37274    |5877501 |TL7357F |37          |274         |643             |1                |AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      |21.81 |
-| -5.663408| 40.96002|EPSG:4230 |5778706TL7357H |AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) |37274    |5778706 |TL7357H |37          |274         |643             |2                |AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) |23.18 |
-
-
 
 ## Geocoding a Cadastral Reference
 
@@ -150,15 +146,11 @@ catr_ovc_get_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) %>%
   knitr::kable()
+#> Error in `httr2::req_perform()` at project/R/ovc_cpmrc.R:104:3:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Recv failure: Connection reset by peer
 ```
-
-
-
-|    xcoord|   ycoord|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |geo.xcen          |geo.ycen         |geo.srs   |ldt                                                                                                  |
-|---------:|--------:|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|:-----------------|:----------------|:---------|:----------------------------------------------------------------------------------------------------|
-| -3.456242| 38.61966|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 |-3.45624183836806 |38.6196566583596 |EPSG:4230 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
-
-
 
 Neither the `province` nor `municipality` are required to be passed to the
 function, unless the argument `municipality` is not `NULL`, in that case the
@@ -173,16 +165,11 @@ catr_ovc_get_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) %>%
   knitr::kable()
-#> Error code: 11. LA PROVINCIA ES OBLIGATORIA
+#> Error in `httr2::req_perform()` at project/R/ovc_cpmrc.R:104:3:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Recv failure: Connection reset by peer
 ```
-
-
-
-|refcat         |geo.srs   |
-|:--------------|:---------|
-|13077A01800039 |EPSG:4326 |
-
-
 
 When using only `rc` the result is provided as expected:
 
@@ -191,12 +178,8 @@ When using only `rc` the result is provided as expected:
 # No warning, get the result
 catr_ovc_get_cpmrc(rc = "13077A01800039") %>%
   knitr::kable()
+#> Error in `httr2::req_perform()` at project/R/ovc_cpmrc.R:104:3:
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Recv failure: Connection reset by peer
 ```
-
-
-
-|    xcoord|   ycoord|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |geo.xcen          |geo.ycen         |geo.srs   |ldt                                                                                                  |
-|---------:|--------:|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|:-----------------|:----------------|:---------|:----------------------------------------------------------------------------------------------------|
-| -3.457532| 38.61843|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 |-3.45753233627867 |38.6184314024661 |EPSG:4326 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
-
-

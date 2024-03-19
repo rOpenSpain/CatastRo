@@ -26,14 +26,15 @@ cadastral code.}
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. On missing value the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+\item{cache_dir}{A path to a cache directory. On missing value (the default)
+the function would store the cached files on the
+\code{\link[base:tempfile]{tempdir}}.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 }
 \value{
-A \CRANpkg{tibble}.
+A \code{\link[tibble:tibble]{tibble}}.
 }
 \description{
 Search for a municipality (as a string, part of string or code) and get
