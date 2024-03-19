@@ -50,8 +50,7 @@ Alternatively, you can install the developing version of **CatastRo**
 with:
 
 ``` r
-library(remotes)
-install_github("rOpenSpain/CatastRo", dependencies = TRUE)
+remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 ```
 
 ## Package API
@@ -67,8 +66,9 @@ references using the
 service.
 
 These functions are named `catr_ovc_get_*` and returns a tibble, as
-provided by the package **tibble**. See `vignette("ovcservice")`, where
-these functions are described.
+provided by the package **tibble**. See
+`vignette("ovcservice", package = "CatastRo")` where these functions are
+described.
 
 ### INSPIRE
 
@@ -77,8 +77,8 @@ These functions return spatial object (on the formats provided by the
 INSPIRE](https://www.catastro.minhap.es/webinspire/index.html) service.
 
 Note that the coverage of this service is 95% of the Spanish territory,
-excluding Basque Country and Navarre that have their own independent
-cadastral offices.
+<u>excluding Basque Country and Navarre</u> that have their own
+independent cadastral offices.
 
 There are three types of functions, each one querying a different
 service:
@@ -94,10 +94,10 @@ These functions are named `catr_atom_get_xxx`.
 #### WFS service
 
 The WFS service allows to download vector objects of specific cadastral
-elements. The result is provided as `sf` objects (See **sf** package).
-
-Note that there are some limitations on the extension and number of
-elements to query. For batch-downloading the ATOM service is preferred.
+elements. The result is provided as `sf` class objects (see
+[**sf**](https://r-spatial.github.io/sf/) package). Note that there are
+some limitations on the extension and number of elements to query. For
+batch-downloading the ATOM service is preferred.
 
 These functions are named `catr_wms_get_xxx`.
 
@@ -105,7 +105,7 @@ These functions are named `catr_wms_get_xxx`.
 
 This service allows to download georeferenced images of different
 cadastral elements. The result is a raster on the format provides by
-**terra**.
+[**terra**](https://rspatial.github.io/terra/reference/terra-package.html).
 
 There is a single function for querying this service:
 `catr_wms_get_layer()`.
