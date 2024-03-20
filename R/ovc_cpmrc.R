@@ -166,6 +166,8 @@ ovcurl <- function(x) {
     NULL
   )
 
+  if (x == "RCCOORD") base <- gsub("https", "http", base)
+
   paste0(c(base, app), collapse = "/")
   # nocov end
 }

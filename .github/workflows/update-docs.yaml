@@ -8,6 +8,8 @@ jobs:
     runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      CURL_SSL_BACKEND: "openssl"
+
     steps:
       - uses: actions/checkout@v4
 
@@ -20,7 +22,6 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          cache-version: 2
           extra-packages: |
             local::.
             any::cli

@@ -24,7 +24,7 @@ A \code{\link[tibble:tibble]{tibble}}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCoordenadas service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
+\href{http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
 
 Return the cadastral reference found on a set of coordinates. If no cadastral
 references are found, the API returns a list of the cadastral references
@@ -57,7 +57,7 @@ catr_ovc_get_rccoor_distancia(
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
+\href{http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
 }
 \seealso{
 \link{catr_srs_values}, \code{vignette("ovcservice", package = "CatastRo")}
