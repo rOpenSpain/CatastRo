@@ -105,10 +105,10 @@ information of addresses, properties, parcels and buildings.</p>
 service allows to retrieve the coordinates of a known cadastral
 reference (geocoding). It is also possible to retrieve the cadastral
 references around a specific pair of coordinates (reverse geocoding).
-<strong>CatastRo</strong> returns the results on a tibble format (see
-<code><a href="https://tibble.tidyverse.org/articles/tibble.html" class="external-link">vignette("tibble", package = "tibble")</a></code>). This functionality
-is described in detail in the corresponding vignette (see
-<code><a href="../articles/ovcservice.html">vignette("ovcservice")</a></code>).</p>
+<strong>CatastRo</strong> returns the results on a <code>tibble</code>
+format. This functionality is described in detail in the corresponding
+vignette (see
+<code><a href="../articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code>).</p>
 </div>
 <div class="section level2">
 <h2 id="inspire-services">INSPIRE Services<a class="anchor" aria-label="anchor" href="#inspire-services"></a>
@@ -128,14 +128,16 @@ in policy-making across boundaries.</p>
 INSPIRE</a>) allows to retrieve spatial objects from the database of the
 cadastre:</p>
 <ul>
-<li><p><strong>Vector objects:</strong> Parcels, addresses, buildings,
+<li>
+<strong>Vector objects:</strong> Parcels, addresses, buildings,
 cadastral zones and more. These objects are provided by
-<strong>CatastRo</strong> as <em>sf</em> objects (see
-<code>?sf)</code>.</p></li>
-<li><p><strong>Imagery:</strong> Image layers representing the same
+<strong>CatastRo</strong> as <code>sf</code> objects as provided by the
+<strong>sf</strong> package.</li>
+<li>
+<strong>Imagery:</strong> Image layers representing the same
 information than the vector objects. These objects are provided by
-<strong>CatastRo</strong> as <em>SpatRaster</em> objects (see
-<code>?terra)</code>.</p></li>
+<strong>CatastRo</strong> as <code>SpatRaster</code> objects as provided
+by the <strong>terra</strong> package.</li>
 </ul>
 <p>Note that <strong>the coverage of this service is 95% of the Spanish
 territory</strong>, excluding Basque Country and Navarre that have their
@@ -147,7 +149,7 @@ service:</p>
 batch-download vector objects of different cadastral elements for a
 specific municipality.</p></li>
 <li><p><strong>WFS service</strong>: The WFS service allows to download
-vector objects of specific cadastral elements.Note that there are some
+vector objects of specific cadastral elements. Note that there are some
 <em>restrictions on the extension and number of elements</em> to query.
 For batch-downloading the ATOM service is preferred.</p></li>
 <li><p><strong>WMS service</strong>: This service allows to download

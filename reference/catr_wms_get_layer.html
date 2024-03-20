@@ -63,7 +63,8 @@ mapSpain::esp_getTiles()."><meta property="og:image" content="https://ropenspain
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">catr_wms_get_layer</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  <span class="va">srs</span>,</span>
-<span>  what <span class="op">=</span> <span class="st">"building"</span>,</span>
+<span>  what <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"building"</span>, <span class="st">"buildingpart"</span>, <span class="st">"parcel"</span>, <span class="st">"zoning"</span>, <span class="st">"address"</span>, <span class="st">"admboundary"</span>,</span>
+<span>    <span class="st">"admunit"</span><span class="op">)</span>,</span>
 <span>  styles <span class="op">=</span> <span class="st">"default"</span>,</span>
 <span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -89,8 +90,7 @@ the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
 
 
 <dt>what</dt>
-<dd><p>Layer to be extracted. Possible values are <code>"building"</code>,
-<code>"parcel"</code>, <code>"zoning"</code>, <code>"address"</code>. See <strong>Details</strong>.</p></dd>
+<dd><p>Layer to be extracted, see <strong>Details</strong>.</p></dd>
 
 
 <dt>styles</dt>
@@ -103,7 +103,7 @@ When set to <code>TRUE</code> it would force a fresh download of the source file
 
 
 <dt>cache_dir</dt>
-<dd><p>A path to a cache directory. On missing value (the default)
+<dd><p>A path to a cache directory. On <code>NULL</code> value (the default)
 the function would store the cached files on the
 <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></code>.</p></dd>
 
@@ -166,30 +166,30 @@ to match the SRS of <code>x</code>. See <strong>Examples</strong>.</p>
     <p>The parameter <code>what</code> defines the layer to be extracted. The equivalence with
 the
 <a href="https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Docs</a>
-equivalence is:</p><ul><li><p>"parcel": CP.CadastralParcel</p></li>
-<li><p>"zoning": CP.CadastralZoning</p></li>
-<li><p>"building": BU.Building</p></li>
-<li><p>"buildingpart": BU.BuildingPart</p></li>
-<li><p>"address": AD.Address</p></li>
-<li><p>"admboundary": AU.AdministrativeBoundary</p></li>
-<li><p>"admunit": AU.AdministrativeUnit</p></li>
+equivalence is:</p><ul><li><p><code>"parcel"</code>: CP.CadastralParcel</p></li>
+<li><p><code>"zoning"</code>: CP.CadastralZoning</p></li>
+<li><p><code>"building"</code>: BU.Building</p></li>
+<li><p><code>"buildingpart"</code>: BU.BuildingPart</p></li>
+<li><p><code>"address"</code>: AD.Address</p></li>
+<li><p><code>"admboundary"</code>: AU.AdministrativeBoundary</p></li>
+<li><p><code>"admunit"</code>: AU.AdministrativeUnit</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="styles">Styles<a class="anchor" aria-label="anchor" href="#styles"></a></h2>
     <p>The WMS service provide different styles on each layer (<code>what</code> parameter).
-Some of the styles available are:</p><ul><li><p>"parcel": styles : <code>"BoundariesOnly"</code>, <code>"ReferencePointOnly"</code>,
+Some of the styles available are:</p><ul><li><p><code>"parcel"</code>: styles : <code>"BoundariesOnly"</code>, <code>"ReferencePointOnly"</code>,
 <code>"ELFCadastre"</code>.</p></li>
-<li><p>"zoning": styles : <code>"BoundariesOnly"</code>, <code>"ELFCadastre"</code>.</p></li>
-<li><p>"building" and "buildingpart": <code>"ELFCadastre"</code></p></li>
-<li><p>"address": <code>"Number.ELFCadastre"</code></p></li>
-<li><p>"admboundary" y "admunit": <code>"ELFCadastre"</code></p></li>
+<li><p><code>"zoning"</code>: styles : <code>"BoundariesOnly"</code>, <code>"ELFCadastre"</code>.</p></li>
+<li><p><code>"building"</code>, <code>"buildingpart"</code>: <code>"ELFCadastre"</code></p></li>
+<li><p><code>"address"</code>: <code>"Number.ELFCadastre"</code></p></li>
+<li><p><code>"admboundary"</code>, <code>"admunit"</code>: <code>"ELFCadastre"</code></p></li>
 </ul><p>Check the <a href="https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Docs</a>
 for more information.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p><a href="https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Documentation</a></p>
-<p><a href="https://www.catastro.minhap.es/webinspire/index.html" class="external-link">INSPIRE Services for Cadastral Cartography</a></p>
+    <p><a href="https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Documentation</a>.</p>
+<p><a href="https://www.catastro.minhap.es/webinspire/index.html" class="external-link">INSPIRE Services for Cadastral Cartography</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -244,7 +244,7 @@ for more information.</p>
 <span class="r-in"><span><span class="co"># With a spatial object</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span>, srs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpuEoLRk/file918335f589a.gml'</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4sTrMJ/file18c01dd577b6.gml'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use styles</span></span></span>

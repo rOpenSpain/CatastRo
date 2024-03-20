@@ -59,8 +59,8 @@ the Cadastre and as per the INE (National Statistics Institute)."><meta property
 
     <div class="ref-description section level2">
     <p>Implementation of the OVCCallejero service
-<a href="http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos" class="external-link">ConsultaMunicipioCodigos</a>.
-Return the names and codes of a municipality. Returns both the codes as per
+<a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos" class="external-link">ConsultaMunicipioCodigos</a>.</p>
+<p>Return the names and codes of a municipality. Returns both the codes as per
 the Cadastre and as per the INE (National Statistics Institute).</p>
     </div>
 
@@ -94,7 +94,7 @@ default is <code>FALSE</code>.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <a href="https://CRAN.R-project.org/package=tibble" class="external-link"><span class="pkg">tibble</span></a>. See <strong>Details</strong></p>
+<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code>. See <strong>Details</strong></p>
 
 
     </div>
@@ -102,20 +102,19 @@ default is <code>FALSE</code>.</p></dd>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Parameter <code>cpro</code> is mandatory. Either <code>cmun</code> or <code>cmun_ine</code> should be
 provided.</p>
-<p>On a successful query, the function returns a <a href="https://CRAN.R-project.org/package=tibble" class="external-link"><span class="pkg">tibble</span></a> with one row
-including the following columns:</p><ul><li><p><code>munic</code>: Name of the municipality as per the Cadastre.</p></li>
+<p>On a successful query, the function returns a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code>
+with one row including the following columns:</p><ul><li><p><code>munic</code>: Name of the municipality as per the Cadastre.</p></li>
 <li><p><code>catr_to</code>: Cadastral territorial office code.</p></li>
 <li><p><code>catr_munic</code>: Municipality code as recorded on the Cadastre.</p></li>
 <li><p><code>catrcode</code>: Full Cadastral code for the municipality.</p></li>
 <li><p><code>cpro</code>: Province code as per the INE.</p></li>
 <li><p><code>catr_munic</code>: Municipality code as per the INE.</p></li>
 <li><p><code>catrcode</code>: Full INE code for the municipality.</p></li>
-<li><p>Rest of fields: Check the API Docs on
-<a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC" class="external-link">Consulta CPMRC</a></p></li>
+<li><p>Rest of fields: Check the API Docs.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p><a href="http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos" class="external-link">ConsultaMunicipioCodigos</a></p>
+    <p><a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos" class="external-link">ConsultaMunicipioCodigos</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

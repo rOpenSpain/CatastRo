@@ -57,8 +57,8 @@ Return the cadastral reference found of a set of specific coordinates."><meta pr
 
     <div class="ref-description section level2">
     <p>Implementation of the OVCCoordenadas service
-<a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR" class="external-link">Consulta RCCOOR</a>.
-Return the cadastral reference found of a set of specific coordinates.</p>
+<a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR" class="external-link">Consulta RCCOOR</a>.</p>
+<p>Return the cadastral reference found of a set of specific coordinates.</p>
     </div>
 
     <div class="section level2">
@@ -92,28 +92,27 @@ default is <code>FALSE</code>.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <a href="https://CRAN.R-project.org/package=tibble" class="external-link"><span class="pkg">tibble</span></a>. See <strong>Details</strong></p>
+<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code>. See <strong>Details</strong></p>
 
 
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>When the API does not provide any result, the function returns a
-<a href="https://CRAN.R-project.org/package=tibble" class="external-link"><span class="pkg">tibble</span></a> with the input parameters only.</p>
-<p>On a successful query, the function returns a <a href="https://CRAN.R-project.org/package=tibble" class="external-link"><span class="pkg">tibble</span></a> with one row
-by cadastral reference, including the following columns:</p><ul><li><p><code>geo.xcen</code>, <code>geo.ycen</code>, <code>geo.srs</code>: Input parameters of the query.</p></li>
+<code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with the input parameters only.</p>
+<p>On a successful query, the function returns a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with
+one row by cadastral reference, including the following columns:</p><ul><li><p><code>geo.xcen</code>, <code>geo.ycen</code>, <code>geo.srs</code>: Input parameters of the query.</p></li>
 <li><p><code>refcat</code>: Cadastral Reference.</p></li>
 <li><p><code>address</code>: Address as it is recorded on the Cadastre.</p></li>
-<li><p>Rest of fields: Check the API Docs on
-<a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR" class="external-link">Consulta RCCOOR</a></p></li>
+<li><p>Rest of fields: Check the API Docs.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p><a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR" class="external-link">Consulta RCCOOR</a></p>
+    <p><a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR" class="external-link">Consulta RCCOOR</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><a href="catr_srs_values.html">catr_srs_values</a>, <code><a href="../articles/ovcservice.html">vignette("ovcservice")</a></code></p>
+    <div class="dont-index"><p><a href="catr_srs_values.html">catr_srs_values</a>, <code><a href="../articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code></p>
 <p>OVCCoordenadas API:
 <code><a href="catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a>()</code>,
 <code><a href="catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia</a>()</code>,
