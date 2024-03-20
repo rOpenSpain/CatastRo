@@ -14,7 +14,7 @@
 #' @param munic Municipality to extract, It can be a part of a string or the
 #'   cadastral code.
 #'
-#' @return A \CRANpkg{tibble}.
+#' @return  A [`tibble`][tibble::tibble].
 #'
 #' @export
 #'

@@ -2,17 +2,18 @@
 #'
 #' @description
 #' Implementation of the OVCCallejero service
-#' [ConsultaProvincia](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia).
+#' [ConsultaProvincia](`r ovcurl("prov")`).
+#'
 #' Return a list of the provinces included on the Spanish Cadastre.
 #'
 #' @references
-#' [ConsultaProvincia](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia)
+#' [ConsultaProvincia](`r ovcurl("prov")`).
 #'
 #' @family OVCCallejero
 #' @family search
 #'
 #'
-#' @return A \CRANpkg{tibble}.
+#' @return A [`tibble`][tibble::tibble].
 #'
 #' @export
 #'

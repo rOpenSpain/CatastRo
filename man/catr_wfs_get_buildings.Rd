@@ -17,9 +17,12 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
-\item{what}{Information to load. It could be \code{"building"} for buildings,
-\code{"buildingpart"} for parts of a building or \code{"other"} for others (
-swimming pools, etc.).}
+\item{what}{Information to load. It could be:
+\itemize{
+\item \code{"building"} for buildings.
+\item \code{"buildingpart"} for parts of a building.
+\item \code{"other"} for others elements, as swimming pools, etc.
+}}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See \strong{Details}.}
@@ -44,8 +47,6 @@ Extract objects included on the bounding box provided. See \strong{Details}.
 \item By cadastral reference: Implemented on \code{catr_wfs_get_buildings_rc()}.
 Extract objects of specific cadastral references.
 }
-
-Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf}{API Docs}.
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
@@ -92,9 +93,9 @@ ggplot(rc) +
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf}{API Documentation}
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Documentation}.
 
-\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
+\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
 }
 \seealso{
 \code{\link[sf:st_bbox]{sf::st_bbox()}}

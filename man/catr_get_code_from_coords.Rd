@@ -19,8 +19,9 @@ catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{cache_dir}{A path to a cache directory. On missing value the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+\item{cache_dir}{A path to a cache directory. On \code{NULL} value (the default)
+the function would store the cached files on the
+\code{\link[base:tempfile]{tempdir}}.}
 
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic_siane}}

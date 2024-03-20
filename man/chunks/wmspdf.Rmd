@@ -1,0 +1,3 @@
+[API Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf).
+
+[INSPIRE Services for Cadastral Cartography](https://www.catastro.minhap.es/webinspire/index.html).

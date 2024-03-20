@@ -1,18 +1,14 @@
 #' ATOM INSPIRE: Download all the Addresses of a Municipality
 #'
 #'
-#' Get the spatial data of all the addresses belonging to a single
-#' municipality using the INSPIRE ATOM service. Additionally, the function also
-#' returns the corresponding street information on the fields with the
-#' prefix `tfname_*`.
+#' Get the spatial data of all the addresses belonging to a single municipality
+#' using the INSPIRE ATOM service. Additionally, the function also returns the
+#' corresponding street information on the fields with the prefix `tfname_*`.
 #'
 #' @references
-#' [API
-#' Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ATOM.pdf)
 #'
-#' [INSPIRE Services for Cadastral
-#' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
-#'
+#' ```{r child = "man/chunks/atompdf.Rmd"}
+#' ```
 #'
 #' @family INSPIRE
 #' @family ATOM

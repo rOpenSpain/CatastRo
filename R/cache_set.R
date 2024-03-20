@@ -1,13 +1,8 @@
 #' Set your \CRANpkg{CatastRo} cache dir
 #'
-#' @family cache utilities
-#' @seealso [rappdirs::user_config_dir()]
-#'
-#' @return An (invisible) character with the path to your `cache_dir`.
 #' @description
-#' This function will store your `cache_dir` path on your local machine and
-#' would load it for future sessions. Type `Sys.getenv("CATASTROESP_CACHE_DIR")`
-#' to find your cached path.
+#' [catr_set_cache_dir()] will store your `cache_dir` path on your local machine
+#' and would load it for future sessions.
 #'
 #' Alternatively, you can store the `cache_dir` manually with the following
 #' options:
@@ -17,8 +12,9 @@
 #'     `CATASTROESP_CACHE_DIR = "value_for_cache_dir"` (same behavior than
 #'     `install = TRUE`). This would store your `cache_dir` permanently.
 #'
-#' @param cache_dir A path to a cache directory. On missing value the function
-#'   would store the cached files on a temporary dir (See [base::tempdir()]).
+#' @param cache_dir A path to a cache directory. On `NULL` value (the default)
+#'   the function would store the cached files on the
+#'   [`tempdir`][base::tempdir()].
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
 #'   `CATASTROESP_CACHE_DIR` that you already have in local machine.
 #' @param install if `TRUE`, will install the key in your local machine for
@@ -27,7 +23,17 @@
 #' @param verbose Logical, displays information. Useful for debugging,
 #'   default is `FALSE`.
 #'
+#' @family cache utilities
+#' @seealso [rappdirs::user_config_dir()]
+#'
+#' @rdname catr_set_cache_dir
+#'
+#' @return
+#' [catr_set_cache_dir()] is called for its side effects, and returns an
+#' (invisible) character with the path to your `cache_dir`.
+#'
 #' @details
+#'
 #' # About caching
 #'
 #' Sometimes cached files may be corrupt. On that case, try re-downloading
@@ -44,14 +50,11 @@
 #' catr_set_cache_dir(verbose = TRUE)
 #' }
 #'
-#' Sys.getenv("CATASTROESP_CACHE_DIR")
 #' @export
-catr_set_cache_dir <- function(cache_dir,
-                               overwrite = FALSE,
-                               install = FALSE,
-                               verbose = TRUE) {
+catr_set_cache_dir <- function(cache_dir = NULL, overwrite = FALSE,
+                               install = FALSE, verbose = TRUE) {
   # Default if not provided
-  if (missing(cache_dir) || cache_dir == "") {
+  if (any(is.null(cache_dir), cache_dir == "")) {
     if (verbose) {
       message(
         "Using a temporary cache dir. ",
@@ -128,21 +131,20 @@ catr_set_cache_dir <- function(cache_dir,
 }
 
 
-#' Helper function to detect current `cache_dir`
+#' @rdname catr_set_cache_dir
+#' @name catr_detect_cache_dir
 #'
 #' @export
 #'
 #' @description
-#' Detect the path to your current `cache_dir`. See [catr_set_cache_dir()]
+#' [catr_detect_cache_dir()] detects and returns the path to your current
+#' `cache_dir`.
 #'
 #' @param ... Ignored
-#' @return The path to the `cache_dir` used in this session
+#' @return
+#' [catr_detect_cache_dir()] returns the path to the `cache_dir` used in this
+#' session
 #'
-#' @family cache utilities
-#' @seealso [catr_set_cache_dir()]
-#'
-#' @name catr_detect_cache_dir
-#' @rdname catr_detect_cache_dir
 #' @examples
 #'
 #' catr_detect_cache_dir()
@@ -182,10 +184,7 @@ catr_hlp_detect_cache_dir <- function() {
         is.na(cached_path),
         cached_path == ""
       )) {
-        cache_dir <- catr_set_cache_dir(
-          overwrite = TRUE,
-          verbose = FALSE
-        )
+        cache_dir <- catr_set_cache_dir(overwrite = TRUE, verbose = FALSE)
         return(cache_dir)
       }
 
@@ -196,10 +195,7 @@ catr_hlp_detect_cache_dir <- function() {
     } else {
       # 4. Default cache location
 
-      cache_dir <- catr_set_cache_dir(
-        overwrite = TRUE,
-        verbose = FALSE
-      )
+      cache_dir <- catr_set_cache_dir(overwrite = TRUE, verbose = FALSE)
       return(cache_dir)
     }
   } else {

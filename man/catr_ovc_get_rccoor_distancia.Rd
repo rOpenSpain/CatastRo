@@ -20,29 +20,29 @@ in the CRS/SRS \code{specified} by \code{srs}.}
 default is \code{FALSE}.}
 }
 \value{
-A \CRANpkg{tibble}. See \strong{Details}
+A \code{\link[tibble:tibble]{tibble}}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCoordenadas service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
+\href{http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
+
 Return the cadastral reference found on a set of coordinates. If no cadastral
-references are found, the API returns a list of
-the cadastral references found on an area of 50 square meters around the
-requested coordinates.
+references are found, the API returns a list of the cadastral references
+found on an area of 50 square meters around the requested coordinates.
 }
 \details{
 When the API does not provide any result, the function returns a
-\CRANpkg{tibble} with the input parameters only.
+\code{\link[tibble:tibble]{tibble}} with the input parameters only.
 
-On a successful query, the function returns a \CRANpkg{tibble} with one row
-by cadastral reference, including the following columns:
+On a successful query, the function returns a \code{\link[tibble:tibble]{tibble}} with
+one row by cadastral reference, including the following columns:
 \itemize{
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input parameters of the query.
 \item \code{refcat}: Cadastral Reference.
 \item \code{address}: Address as it is recorded on the Cadastre.
 \item \code{cmun_ine}: Municipality Code as registered on the INE (National
 Statistics Institute).
-\item Rest of fields: Check the API Docs on \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}
+\item Rest of fields: Check the API Docs.
 }
 }
 \examples{
@@ -57,10 +57,10 @@ catr_ovc_get_rccoor_distancia(
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}
+\href{http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
 }
 \seealso{
-\link{catr_srs_values}, \code{vignette("ovcservice")}
+\link{catr_srs_values}, \code{vignette("ovcservice", package = "CatastRo")}
 
 OVCCoordenadas API:
 \code{\link{catr_ovc_get_cpmrc}()},

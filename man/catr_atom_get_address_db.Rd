@@ -31,8 +31,9 @@ catr_atom_get_address_db_to(
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. On missing value the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+\item{cache_dir}{A path to a cache directory. On \code{NULL} value (the default)
+the function would store the cached files on the
+\code{\link[base:tempfile]{tempdir}}.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
@@ -41,7 +42,7 @@ default is \code{FALSE}.}
 would perform a search using \code{\link[base:grep]{base::grep()}}.}
 }
 \value{
-A \CRANpkg{tibble} with the information requested.
+A \code{\link[tibble:tibble]{tibble}} with the information requested.
 \itemize{
 \item \code{catr_atom_get_address_db_all()} includes the following fields:
 \itemize{

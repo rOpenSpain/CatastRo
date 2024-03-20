@@ -6,7 +6,8 @@
 \alias{catr_srs_values}
 \title{Reference SRS codes for \CRANpkg{CatastRo} APIs}
 \format{
-A \CRANpkg{tibble} with 16 rows and columns:
+A \code{\link[tibble:tibble]{tibble}} with 16 rows
+and columns:
 \describe{
 \item{SRS}{Spatial Reference System (CRS) value, identified by the
 corresponding EPSG code.}
@@ -16,8 +17,8 @@ corresponding EPSG code.}
 }
 }
 \description{
-A \CRANpkg{tibble} including the valid SRS (also known as CRS) values that
-may be used on each API service.
+A \code{\link[tibble:tibble]{tibble}} including the valid SRS (also known as CRS)
+values that may be used on each API service.
 }
 \details{
 \tabular{rlll}{
@@ -54,11 +55,13 @@ catr_srs_values \%>\% filter(ovc_service == TRUE)
 }
 \references{
 \itemize{
-\item \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx}{OVCCoordenadas}
-\item \href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE WFS Service}
+\item \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx}{OVCCoordenadas}.
+\item \href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE WFS Service}.
 }
 }
 \seealso{
+\code{\link[sf:st_crs]{sf::st_crs()}}.
+
 Other databases: 
 \code{\link{catr_atom_get_address_db_all}()},
 \code{\link{catr_atom_get_buildings_db_all}()},

@@ -18,11 +18,10 @@
 #' @return A \CRANpkg{sf} object.
 #'
 #' @references
-#' [API
-#' Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf)
 #'
-#' [INSPIRE Services for Cadastral
-#' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
+#' ```{r child = "man/chunks/wfspdf.Rmd"}
+#' ```
+#'
 #'
 #' @details
 #'
@@ -163,9 +162,6 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #'  `catr_wfs_get_parcels_parcel_zoning()`. Extract cadastral parcels of a
 #'  specific cadastral zone.
 #'
-#' Check the
-#' [API
-#' Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf).
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export

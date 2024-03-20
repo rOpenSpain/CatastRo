@@ -2,18 +2,22 @@
 % Please edit documentation in R/cache_set.R
 \name{catr_set_cache_dir}
 \alias{catr_set_cache_dir}
+\alias{catr_detect_cache_dir}
 \title{Set your \CRANpkg{CatastRo} cache dir}
 \usage{
 catr_set_cache_dir(
-  cache_dir,
+  cache_dir = NULL,
   overwrite = FALSE,
   install = FALSE,
   verbose = TRUE
 )
+
+catr_detect_cache_dir(...)
 }
 \arguments{
-\item{cache_dir}{A path to a cache directory. On missing value the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+\item{cache_dir}{A path to a cache directory. On \code{NULL} value (the default)
+the function would store the cached files on the
+\code{\link[base:tempfile]{tempdir}}.}
 
 \item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
 \code{CATASTROESP_CACHE_DIR} that you already have in local machine.}
@@ -24,14 +28,19 @@ this parameter is set to \code{FALSE} automatically.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
+
+\item{...}{Ignored}
 }
 \value{
-An (invisible) character with the path to your \code{cache_dir}.
+\code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}} is called for its side effects, and returns an
+(invisible) character with the path to your \code{cache_dir}.
+
+\code{\link[=catr_detect_cache_dir]{catr_detect_cache_dir()}} returns the path to the \code{cache_dir} used in this
+session
 }
 \description{
-This function will store your \code{cache_dir} path on your local machine and
-would load it for future sessions. Type \code{Sys.getenv("CATASTROESP_CACHE_DIR")}
-to find your cached path.
+\code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}} will store your \code{cache_dir} path on your local machine
+and would load it for future sessions.
 
 Alternatively, you can store the \code{cache_dir} manually with the following
 options:
@@ -42,6 +51,9 @@ run this command on each session (Similar to \code{install = FALSE}).
 \code{CATASTROESP_CACHE_DIR = "value_for_cache_dir"} (same behavior than
 \code{install = TRUE}). This would store your \code{cache_dir} permanently.
 }
+
+\code{\link[=catr_detect_cache_dir]{catr_detect_cache_dir()}} detects and returns the path to your current
+\code{cache_dir}.
 }
 \section{About caching}{
 Sometimes cached files may be corrupt. On that case, try re-downloading
@@ -59,13 +71,14 @@ corresponding file by any other method and save it on your
 catr_set_cache_dir(verbose = TRUE)
 }
 
-Sys.getenv("CATASTROESP_CACHE_DIR")
+
+catr_detect_cache_dir()
+
 }
 \seealso{
 \code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
 
 Other cache utilities: 
-\code{\link{catr_clear_cache}()},
-\code{\link{catr_detect_cache_dir}()}
+\code{\link{catr_clear_cache}()}
 }
 \concept{cache utilities}

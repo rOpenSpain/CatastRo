@@ -29,13 +29,13 @@
 #'   **About caching** section on [catr_set_cache_dir()].
 #'
 #' @param update_cache A logical whether to update cache. Default is `FALSE`.
-#'  When set to `TRUE` it would force a fresh download of the source file.
+#'   When set to `TRUE` it would force a fresh download of the source file.
 #'
 #' @rdname catr_atom_get_address_db
 #' @export
 #'
 #' @return
-#' A \CRANpkg{tibble} with the information requested.
+#' A [`tibble`][tibble::tibble] with the information requested.
 #' - `catr_atom_get_address_db_all()` includes the following fields:
 #'   - `territorial_office`: Territorial office, corresponding to each province
 #'      of Spain expect Basque Country and Navarre.
@@ -80,7 +80,7 @@ catr_atom_get_address_db_all <- function(cache = TRUE,
 #' @name catr_atom_get_address_to
 #' @export
 #' @param to Territorial office. It can be any type of string, the function
-#'  would perform a search using [base::grep()].
+#'   would perform a search using [base::grep()].
 catr_atom_get_address_db_to <- function(to,
                                         cache = TRUE,
                                         update_cache = FALSE,
