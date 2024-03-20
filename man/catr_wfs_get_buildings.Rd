@@ -47,8 +47,6 @@ Extract objects included on the bounding box provided. See \strong{Details}.
 \item By cadastral reference: Implemented on \code{catr_wfs_get_buildings_rc()}.
 Extract objects of specific cadastral references.
 }
-
-Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf}{API Docs}.
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
@@ -95,9 +93,9 @@ ggplot(rc) +
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-bu-WFS.pdf}{API Documentation}
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Documentation}.
 
-\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
+\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
 }
 \seealso{
 \code{\link[sf:st_bbox]{sf::st_bbox()}}

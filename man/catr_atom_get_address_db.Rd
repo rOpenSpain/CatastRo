@@ -31,7 +31,7 @@ catr_atom_get_address_db_to(
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. On missing value (the default)
+\item{cache_dir}{A path to a cache directory. On \code{NULL} value (the default)
 the function would store the cached files on the
 \code{\link[base:tempfile]{tempdir}}.}
 

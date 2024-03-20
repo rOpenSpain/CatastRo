@@ -7,7 +7,8 @@
 catr_wms_get_layer(
   x,
   srs,
-  what = "building",
+  what = c("building", "buildingpart", "parcel", "zoning", "address", "admboundary",
+    "admunit"),
   styles = "default",
   update_cache = FALSE,
   cache_dir = NULL,
@@ -28,15 +29,14 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See \strong{Details}.}
 
-\item{what}{Layer to be extracted. Possible values are \code{"building"},
-\code{"parcel"}, \code{"zoning"}, \code{"address"}. See \strong{Details}.}
+\item{what}{Layer to be extracted, see \strong{Details}.}
 
 \item{styles}{Style of the WMS layer. See \strong{Details}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source file.}
 
-\item{cache_dir}{A path to a cache directory. On missing value (the default)
+\item{cache_dir}{A path to a cache directory. On \code{NULL} value (the default)
 the function would store the cached files on the
 \code{\link[base:tempfile]{tempdir}}.}
 
@@ -86,13 +86,13 @@ the
 \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
 equivalence is:
 \itemize{
-\item "parcel": CP.CadastralParcel
-\item "zoning": CP.CadastralZoning
-\item "building": BU.Building
-\item "buildingpart": BU.BuildingPart
-\item "address": AD.Address
-\item "admboundary": AU.AdministrativeBoundary
-\item "admunit": AU.AdministrativeUnit
+\item \code{"parcel"}: CP.CadastralParcel
+\item \code{"zoning"}: CP.CadastralZoning
+\item \code{"building"}: BU.Building
+\item \code{"buildingpart"}: BU.BuildingPart
+\item \code{"address"}: AD.Address
+\item \code{"admboundary"}: AU.AdministrativeBoundary
+\item \code{"admunit"}: AU.AdministrativeUnit
 }
 }
 
@@ -100,12 +100,12 @@ equivalence is:
 The WMS service provide different styles on each layer (\code{what} parameter).
 Some of the styles available are:
 \itemize{
-\item "parcel": styles : \code{"BoundariesOnly"}, \code{"ReferencePointOnly"},
+\item \code{"parcel"}: styles : \code{"BoundariesOnly"}, \code{"ReferencePointOnly"},
 \code{"ELFCadastre"}.
-\item "zoning": styles : \code{"BoundariesOnly"}, \code{"ELFCadastre"}.
-\item "building" and "buildingpart": \code{"ELFCadastre"}
-\item "address": \code{"Number.ELFCadastre"}
-\item "admboundary" y "admunit": \code{"ELFCadastre"}
+\item \code{"zoning"}: styles : \code{"BoundariesOnly"}, \code{"ELFCadastre"}.
+\item \code{"building"}, \code{"buildingpart"}: \code{"ELFCadastre"}
+\item \code{"address"}: \code{"Number.ELFCadastre"}
+\item \code{"admboundary"}, \code{"admunit"}: \code{"ELFCadastre"}
 }
 
 Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
@@ -154,9 +154,9 @@ ggplot() +
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Documentation}
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Documentation}.
 
-\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
+\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
 }
 \seealso{
 \code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}}

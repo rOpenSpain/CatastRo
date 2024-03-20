@@ -71,9 +71,6 @@ of a specific cadastral reference.
 \code{catr_wfs_get_parcels_parcel_zoning()}. Extract cadastral parcels of a
 specific cadastral zone.
 }
-
-Check the
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf}{API Docs}.
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
@@ -113,9 +110,9 @@ ggplot(cp) +
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-cp-WFS.pdf}{API Documentation}
+\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Documentation}.
 
-\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}
+\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
 }
 \seealso{
 \code{\link[sf:st_bbox]{sf::st_bbox()}}

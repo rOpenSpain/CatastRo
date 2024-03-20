@@ -19,7 +19,7 @@ catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{cache_dir}{A path to a cache directory. On missing value (the default)
+\item{cache_dir}{A path to a cache directory. On \code{NULL} value (the default)
 the function would store the cached files on the
 \code{\link[base:tempfile]{tempdir}}.}
 

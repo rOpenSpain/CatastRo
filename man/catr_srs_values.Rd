@@ -17,7 +17,7 @@ corresponding EPSG code.}
 }
 }
 \description{
-A  A \code{\link[tibble:tibble]{tibble}} including the valid SRS (also known as CRS)
+A \code{\link[tibble:tibble]{tibble}} including the valid SRS (also known as CRS)
 values that may be used on each API service.
 }
 \details{

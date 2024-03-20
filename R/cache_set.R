@@ -12,7 +12,7 @@
 #'     `CATASTROESP_CACHE_DIR = "value_for_cache_dir"` (same behavior than
 #'     `install = TRUE`). This would store your `cache_dir` permanently.
 #'
-#' @param cache_dir A path to a cache directory. On missing value (the default)
+#' @param cache_dir A path to a cache directory. On `NULL` value (the default)
 #'   the function would store the cached files on the
 #'   [`tempdir`][base::tempdir()].
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
@@ -51,12 +51,10 @@
 #' }
 #'
 #' @export
-catr_set_cache_dir <- function(cache_dir,
-                               overwrite = FALSE,
-                               install = FALSE,
-                               verbose = TRUE) {
+catr_set_cache_dir <- function(cache_dir = NULL, overwrite = FALSE,
+                               install = FALSE, verbose = TRUE) {
   # Default if not provided
-  if (missing(cache_dir) || cache_dir == "") {
+  if (any(is.null(cache_dir), cache_dir == "")) {
     if (verbose) {
       message(
         "Using a temporary cache dir. ",
@@ -186,11 +184,7 @@ catr_hlp_detect_cache_dir <- function() {
         is.na(cached_path),
         cached_path == ""
       )) {
-        cache_dir <- catr_set_cache_dir(
-          cache_dir = "",
-          overwrite = TRUE,
-          verbose = FALSE
-        )
+        cache_dir <- catr_set_cache_dir(overwrite = TRUE, verbose = FALSE)
         return(cache_dir)
       }
 
@@ -201,11 +195,7 @@ catr_hlp_detect_cache_dir <- function() {
     } else {
       # 4. Default cache location
 
-      cache_dir <- catr_set_cache_dir(
-        cache_dir = "",
-        overwrite = TRUE,
-        verbose = FALSE
-      )
+      cache_dir <- catr_set_cache_dir(overwrite = TRUE, verbose = FALSE)
       return(cache_dir)
     }
   } else {

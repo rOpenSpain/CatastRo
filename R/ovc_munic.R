@@ -2,18 +2,19 @@
 #'
 #' @description
 #' Implementation of the OVCCallejero service
-#' [ConsultaMunicipioCodigos](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos).
+#' [ConsultaMunicipioCodigos](`r ovcurl("mun")`).
+#'
 #' Return the names and codes of a municipality. Returns both the codes as per
 #' the Cadastre and as per the INE (National Statistics Institute).
 #'
 #' @references
-#' [ConsultaMunicipioCodigos](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos)
+#' [ConsultaMunicipioCodigos](`r ovcurl("mun")`).
 #'
 #' @family OVCCallejero
 #' @family search
 #'
 #'
-#' @return A \CRANpkg{tibble}. See **Details**
+#' @return A [`tibble`][tibble::tibble]. See **Details**
 #'
 #' @export
 #'
@@ -32,8 +33,8 @@
 #' Parameter `cpro` is mandatory. Either `cmun` or `cmun_ine` should be
 #' provided.
 #'
-#' On a successful query, the function returns a \CRANpkg{tibble} with one row
-#' including the following columns:
+#' On a successful query, the function returns a [`tibble`][tibble::tibble]
+#' with one row including the following columns:
 #' * `munic`: Name of the municipality as per the Cadastre.
 #' * `catr_to`: Cadastral territorial office code.
 #' * `catr_munic`: Municipality code as recorded on the Cadastre.
@@ -41,9 +42,7 @@
 #' * `cpro`: Province code as per the INE.
 #' * `catr_munic`: Municipality code as per the INE.
 #' * `catrcode`: Full INE code for the municipality.
-#' * Rest of fields: Check the API Docs on
-#' [Consulta
-#' CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
+#' * Rest of fields: Check the API Docs.
 #'
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"

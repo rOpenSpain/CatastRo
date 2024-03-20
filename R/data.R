@@ -9,7 +9,7 @@
 #' @docType data
 #'
 #' @description
-#' A  A [`tibble`][tibble::tibble] including the valid SRS (also known as CRS)
+#' A [`tibble`][tibble::tibble] including the valid SRS (also known as CRS)
 #' values that may be used on each API service.
 #'
 #' @references

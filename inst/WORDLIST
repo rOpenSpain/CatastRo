@@ -47,9 +47,6 @@ VH
 WFS
 WGS
 WMS
-admboundary
-admunit
-buildingpart
 cadastral
 cadastre
 catr
@@ -68,6 +65,7 @@ geocoded
 geocoding
 georeferenced
 geotagged
+httr
 huso
 ine
 ldt

@@ -11,11 +11,12 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 default is \code{FALSE}.}
 }
 \value{
-A \CRANpkg{tibble}.
+A \code{\link[tibble:tibble]{tibble}}.
 }
 \description{
 Implementation of the OVCCallejero service
-\href{http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
+
 Return a list of the provinces included on the Spanish Cadastre.
 }
 \examples{
@@ -27,7 +28,7 @@ catr_ovc_get_cod_provinces()
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
 }
 \seealso{
 OVCCoordenadas API:

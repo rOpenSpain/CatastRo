@@ -17,11 +17,9 @@
 #' @return A \CRANpkg{sf} object.
 #'
 #' @references
-#' [API
-#' Documentation](https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf)
 #'
-#' [INSPIRE Services for Cadastral
-#' Cartography](https://www.catastro.minhap.es/webinspire/index.html)
+#' ```{r child = "man/chunks/wfspdf.Rmd"}
+#' ```
 #'
 #' @details
 #'
@@ -38,6 +36,7 @@
 #' always in the SRS of the \CRANpkg{sf} object provided as input.
 #'
 #' # API Limits
+#'
 #' The API service is limited to a bounding box of 4km2 and a maximum of 5.000
 #' elements.
 #'
@@ -131,8 +130,6 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #' - By postal codes: Implemented on `catr_wfs_get_address_postalcode()`.
 #'   Extract objects of specific cadastral references
 #'
-#' Check the [API
-#' Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf).
 #'
 #' @param postalcode Postal code.
 #'
