@@ -22,9 +22,8 @@ The
 service allows to retrieve the coordinates of a known cadastral reference
 (geocoding). It is also possible to retrieve the cadastral references around a
 specific pair of coordinates (reverse geocoding). **CatastRo** returns the
-results on a tibble format (see `vignette("tibble", package = "tibble")`). This
-functionality is described in detail in the corresponding vignette (see
-`vignette("ovcservice")`).
+results on a `tibble` format. This functionality is described in detail in the
+corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 
 ## INSPIRE Services
 
@@ -43,11 +42,11 @@ The implementation of the INSPIRE directive on the Spanish Cadastre (see
 to retrieve spatial objects from the database of the cadastre:
 
 -   **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.
-    These objects are provided by **CatastRo** as *sf* objects (see `?sf)`.
-
+    These objects are provided by **CatastRo** as `sf` objects as provided by
+    the **sf** package.
 -   **Imagery:** Image layers representing the same information than the vector
-    objects. These objects are provided by **CatastRo** as *SpatRaster* objects
-    (see `?terra)`.
+    objects. These objects are provided by **CatastRo** as `SpatRaster` objects
+    as provided by the **terra** package.
 
 Note that **the coverage of this service is 95% of the Spanish territory**,
 excluding Basque Country and Navarre that have their own independent cadastral
@@ -59,7 +58,7 @@ There are three types of functions, each one querying a different service:
     of different cadastral elements for a specific municipality.
 
 2.  **WFS service**: The WFS service allows to download vector objects of
-    specific cadastral elements.Note that there are some *restrictions on the
+    specific cadastral elements. Note that there are some *restrictions on the
     extension and number of elements* to query. For batch-downloading the ATOM
     service is preferred.
 
