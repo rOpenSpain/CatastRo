@@ -71,8 +71,8 @@ Get geotagged images from the Spanish Cadastre. This function is a wrapper of
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
-coordinate values. When \code{x} is a \CRANpkg{sf} object, the value \code{srs} is
-ignored.
+coordinate values. When \code{x} is a \code{\link[sf:sf]{sf}} object, the value
+\code{srs} is ignored.
 
 The query is performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator)
 and the tile is projected back to the SRS of \code{x}. In

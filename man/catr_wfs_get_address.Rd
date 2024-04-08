@@ -40,7 +40,7 @@ default is \code{FALSE}.}
 \item{postalcode}{Postal code.}
 }
 \value{
-A \CRANpkg{sf} object.
+A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Get the spatial data of addresses The WFS Service allows to perform
@@ -72,11 +72,11 @@ reference system (4326, 4258), the function queries the bounding box on
 \href{https://epsg.io/3857}{EPSG:3857} - Web Mercator, to overcome
 a potential bug on the API side.
 
-When \code{x} is a \CRANpkg{sf} object, the value \code{srs} is ignored. In this case,
-the bounding box of the \CRANpkg{sf} object would be used for the query (see
-\code{\link[sf:st_bbox]{sf::st_bbox()}}). The query is performed using
+When \code{x} is a \code{\link[sf:sf]{sf}} object, the value \code{srs} is ignored. In
+this case, the bounding box of the \code{\link[sf:sf]{sf}} object would be
+used for the query (see \code{\link[sf:st_bbox]{sf::st_bbox()}}). The query is performed using
 \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator). The result is provided
-always in the SRS of the \CRANpkg{sf} object provided as input.
+always in the SRS of the \code{\link[sf:sf]{sf}} object provided as input.
 }
 \section{API Limits}{
 The API service is limited to a bounding box of 4km2 and a maximum of 5.000

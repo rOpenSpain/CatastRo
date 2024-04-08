@@ -33,8 +33,8 @@
 #' @details
 #'
 #' When `x` is a numeric vector, make sure that the `srs` matches the
-#' coordinate values. When `x` is a \CRANpkg{sf} object, the value `srs` is
-#' ignored.
+#' coordinate values. When `x` is a [`sf`][sf::st_sf] object, the value
+#' `srs` is ignored.
 #'
 #' The query is performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator)
 #' and the tile is projected back to the SRS of `x`. In

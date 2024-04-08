@@ -16,7 +16,7 @@
 #' @family spatial
 #'
 #' @export
-#' @return A \CRANpkg{sf} object.
+#' @return A [`sf`][sf::st_sf] object.
 #'
 #' @inheritParams catr_atom_get_parcels
 #' @examples

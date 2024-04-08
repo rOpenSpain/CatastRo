@@ -40,7 +40,7 @@ default is \code{FALSE}.}
 \item{rc}{The cadastral reference to be extracted.}
 }
 \value{
-A \CRANpkg{sf} object.
+A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Get the spatial data of cadastral parcels and zones. The WFS Service allows
@@ -80,9 +80,9 @@ reference system (4326, 4258), the function queries the bounding box on
 a potential bug on the API side. The result is provided always in the SRS
 provided in \code{srs}.
 
-When \code{x} is a \CRANpkg{sf} object, the value \code{srs} is ignored. The query is
-performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator) and the
-spatial object is projected back to the SRS of the initial object.
+When \code{x} is a \code{\link[sf:sf]{sf}} object, the value \code{srs} is ignored. The
+query is performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator)
+and the spatial object is projected back to the SRS of the initial object.
 }
 \section{API Limits}{
 The API service is limited to the following constrains:

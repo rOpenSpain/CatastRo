@@ -20,7 +20,7 @@
 #' @family buildings
 #' @family spatial
 #'
-#' @return A \CRANpkg{sf} object.
+#' @return A [`sf`][sf::st_sf] object.
 #'
 #' @references
 #'
