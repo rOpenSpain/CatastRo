@@ -15,14 +15,14 @@ reference:
   - title: ATOM INSPIRE API
     desc: >
       These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" 
-      class="external-link">sf</a> objects as provided 
+      class="external-link"><span class="pkg">sf</span></a> objects as provided 
       by the INSPIRE ATOM services of the Spanish Cadastre.
     contents:
       - has_concept("ATOM")
   - title: WFS INSPIRE API
     desc: >
       These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
-      class="external-link">sf</a> objects as provided 
+      class="external-link"><span class="pkg">sf</span></a> objects as provided 
       by the INSPIRE WFS services of the Spanish Cadastre.
     contents:
       - has_concept("WFS")
