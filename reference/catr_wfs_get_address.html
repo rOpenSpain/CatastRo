@@ -48,7 +48,7 @@ Extract objects of specific cadastral references
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
   <a class="navbar-brand me-2" href="../index.html">
-    <img src="../favicon-32x32.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
+    <img src="../apple-touch-icon-180x180.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
@@ -157,7 +157,7 @@ default is <code>FALSE</code>.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object.</p>
+<p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -166,11 +166,11 @@ coordinate values. Additionally, when the <code>srs</code> correspond to a geogr
 reference system (4326, 4258), the function queries the bounding box on
 <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a> - Web Mercator, to overcome
 a potential bug on the API side.</p>
-<p>When <code>x</code> is a <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object, the value <code>srs</code> is ignored. In this case,
-the bounding box of the <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object would be used for the query (see
-<code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>). The query is performed using
+<p>When <code>x</code> is a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object, the value <code>srs</code> is ignored. In
+this case, the bounding box of the <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object would be
+used for the query (see <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>). The query is performed using
 <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a> (Web Mercator). The result is provided
-always in the SRS of the <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object provided as input.</p>
+always in the SRS of the <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object provided as input.</p>
     </div>
     <div class="section level2">
     <h2 id="api-limits">API Limits<a class="anchor" aria-label="anchor" href="#api-limits"></a></h2>

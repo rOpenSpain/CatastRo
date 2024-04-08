@@ -12,7 +12,7 @@ See also mapSpain::esp_get_munic_siane() and catr_ovc_get_cod_munic()."><meta pr
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
   <a class="navbar-brand me-2" href="../index.html">
-    <img src="../favicon-32x32.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
+    <img src="../apple-touch-icon-180x180.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
@@ -56,7 +56,7 @@ See also mapSpain::esp_get_munic_siane() and catr_ovc_get_cod_munic()."><meta pr
     </div>
 
     <div class="ref-description section level2">
-    <p>This function takes as an input a pair of coordinates of a <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a>
+    <p>This function takes as an input a pair of coordinates of a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code>
 object and returns the corresponding municipality code for that coordinates.</p>
 <p>See also <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html" class="external-link">mapSpain::esp_get_munic_siane()</a></code> and <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>.</p>
     </div>
@@ -70,7 +70,7 @@ object and returns the corresponding municipality code for that coordinates.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>It could be:</p><ul><li><p>A pair of coordinates c(x,y).</p></li>
-<li><p>A <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object. See <strong>Details</strong>.</p></li>
+<li><p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object. See <strong>Details</strong>.</p></li>
 </ul></dd>
 
 
@@ -102,15 +102,15 @@ the function would store the cached files on the
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <a href="https://CRAN.R-project.org/package=tibble" class="external-link"><span class="pkg">tibble</span></a> with the format described in
+<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with the format described in
 <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>When <code>x</code> is a numeric vector, make sure that the <code>srs</code> matches the
 coordinate values.</p>
-<p>When <code>x</code> is a <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object, only the first value would be used. The
-function would extract the coordinates using
+<p>When <code>x</code> is a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object, only the first value would
+be used. The function would extract the coordinates using
 <code>sf::st_centroid(x, of_largest_polygon = TRUE)</code>.</p>
     </div>
     <div class="section level2">
