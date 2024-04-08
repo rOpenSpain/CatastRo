@@ -30,7 +30,7 @@
 #' a potential bug on the API side.
 #'
 #' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. In
-#' this case, the bounding box of the [`sf`][sf::st_sf] object would be 
+#' this case, the bounding box of the [`sf`][sf::st_sf] object would be
 #' used for the query (see [sf::st_bbox()]). The query is performed using
 #' [EPSG:3857](https://epsg.io/3857) (Web Mercator). The result is provided
 #' always in the SRS of the [`sf`][sf::st_sf] object provided as input.

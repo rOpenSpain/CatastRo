@@ -2,7 +2,7 @@
 #'
 #' @description
 #'
-#' This function takes as an input a pair of coordinates of a [`sf`][sf::st_sf] 
+#' This function takes as an input a pair of coordinates of a [`sf`][sf::st_sf]
 #' object and returns the corresponding municipality code for that coordinates.
 #'
 #' See also [mapSpain::esp_get_munic_siane()] and [catr_ovc_get_cod_munic()].

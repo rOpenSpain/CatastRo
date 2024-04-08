@@ -43,7 +43,7 @@ the function would store the cached files on the
 default is \code{FALSE}.}
 }
 \value{
-A \CRANpkg{sf} object.
+A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Get the spatial data of all the buildings belonging to a single municipality

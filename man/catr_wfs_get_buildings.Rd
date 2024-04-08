@@ -33,7 +33,7 @@ default is \code{FALSE}.}
 \item{rc}{The cadastral reference to be extracted.}
 }
 \value{
-A \CRANpkg{sf} object.
+A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 Get the spatial data of buildings. The WFS Service allows to perform
