@@ -8,7 +8,6 @@ jobs:
     runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      CURL_SSL_BACKEND: "openssl"
 
     steps:
       - uses: actions/checkout@v4
@@ -35,7 +34,7 @@ jobs:
       - name: Update docs
         run: |
 
-          pkgdev::update_docs(url_update = FALSE, build_readme = FALSE, precompute = FALSE)
+          pkgdev::update_docs()
 
         shell: Rscript {0}
 

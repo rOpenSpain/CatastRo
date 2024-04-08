@@ -12,8 +12,6 @@ on:
   schedule:
       - cron:  '00 07 1 * 1,4'
 
-
-
 name: R-CMD-check
 
 jobs:
@@ -53,7 +51,6 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          cache-version: 2
           extra-packages: any::rcmdcheck
           needs: check
 
