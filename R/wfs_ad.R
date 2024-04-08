@@ -14,7 +14,7 @@
 #' @family addresses
 #' @family spatial
 #'
-#' @return A \CRANpkg{sf} object.
+#' @return A [`sf`][sf::st_sf] object.
 #'
 #' @references
 #'
@@ -29,11 +29,11 @@
 #' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
 #' a potential bug on the API side.
 #'
-#' When `x` is a \CRANpkg{sf} object, the value `srs` is ignored. In this case,
-#' the bounding box of the \CRANpkg{sf} object would be used for the query (see
-#' [sf::st_bbox()]). The query is performed using
+#' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. In
+#' this case, the bounding box of the [`sf`][sf::st_sf] object would be 
+#' used for the query (see [sf::st_bbox()]). The query is performed using
 #' [EPSG:3857](https://epsg.io/3857) (Web Mercator). The result is provided
-#' always in the SRS of the \CRANpkg{sf} object provided as input.
+#' always in the SRS of the [`sf`][sf::st_sf] object provided as input.
 #'
 #' # API Limits
 #'

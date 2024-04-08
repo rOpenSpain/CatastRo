@@ -15,7 +15,7 @@
 #' @family parcels
 #' @family spatial
 #'
-#' @return A \CRANpkg{sf} object.
+#' @return A [`sf`][sf::st_sf] object.
 #'
 #' @references
 #'
@@ -32,9 +32,9 @@
 #' a potential bug on the API side. The result is provided always in the SRS
 #' provided in `srs`.
 #'
-#' When `x` is a \CRANpkg{sf} object, the value `srs` is ignored. The query is
-#' performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator) and the
-#' spatial object is projected back to the SRS of the initial object.
+#' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. The
+#' query is performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator)
+#' and the spatial object is projected back to the SRS of the initial object.
 #'
 #' # API Limits
 #' The API service is limited to the following constrains:
