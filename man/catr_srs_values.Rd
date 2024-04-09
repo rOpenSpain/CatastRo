@@ -10,7 +10,9 @@ A \code{\link[tibble:tibble]{tibble}} with 16 rows
 and columns:
 \describe{
 \item{SRS}{Spatial Reference System (CRS) value, identified by the
-corresponding EPSG code.}
+corresponding
+\link[=https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset]{EPSG}
+code.}
 \item{Description}{Description of the SRS/EPSG code.}
 \item{ovc_service}{Logical. Is this code valid on OVC services?}
 \item{wfs_service}{Logical. Is this code valid on INSPIRE WFS services?}
@@ -18,31 +20,32 @@ corresponding EPSG code.}
 }
 \description{
 A \code{\link[tibble:tibble]{tibble}} including the valid SRS (also known as CRS)
-values that may be used on each API service.
+values that may be used on each API service. The values are provided
+as \href{https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset}{EPSG codes}.
 }
 \details{
-\tabular{rlll}{
-   SRS \tab Description \tab ovc_service \tab wfs_service \cr
-   3785 \tab Web Mercator \tab FALSE \tab TRUE \cr
-   3857 \tab Web Mercator \tab FALSE \tab TRUE \cr
-   4230 \tab Geográficas en ED 50 \tab TRUE \tab FALSE \cr
-   4258 \tab Geográficas en ETRS89 \tab TRUE \tab TRUE \cr
-   4326 \tab Geográficas en WGS 80 \tab TRUE \tab TRUE \cr
-   23029 \tab UTM huso 29N en ED50 \tab TRUE \tab FALSE \cr
-   23030 \tab UTM huso 30N en ED50 \tab TRUE \tab FALSE \cr
-   23031 \tab UTM huso 31N en ED50 \tab TRUE \tab FALSE \cr
-   25829 \tab UTM huso 29N en ETRS89 \tab TRUE \tab TRUE \cr
-   25830 \tab UTM huso 30N en ETRS89 \tab TRUE \tab TRUE \cr
-   25831 \tab UTM huso 31N en ETRS89 \tab TRUE \tab TRUE \cr
-   32627 \tab UTM huso 27N en WGS 84 \tab TRUE \tab FALSE \cr
-   32628 \tab UTM huso 28N en WGS 84 \tab TRUE \tab FALSE \cr
-   32629 \tab UTM huso 29N en WGS 84 \tab TRUE \tab FALSE \cr
-   32630 \tab UTM huso 30N en WGS 84 \tab TRUE \tab FALSE \cr
-   32631 \tab UTM huso 31N en WGS 84 \tab TRUE \tab FALSE \cr
+Table: Content of \link{catr_srs_values}\tabular{llll}{
+   \strong{SRS} \tab \strong{Description} \tab \strong{ovc_service} \tab \strong{wfs_service} \cr
+   \code{3785} \tab \verb{Web Mercator} \tab \code{FALSE} \tab \code{TRUE} \cr
+   \code{3857} \tab \verb{Web Mercator} \tab \code{FALSE} \tab \code{TRUE} \cr
+   \code{4230} \tab \verb{Geográficas en ED 50} \tab \code{TRUE} \tab \code{FALSE} \cr
+   \code{4258} \tab \verb{Geográficas en ETRS89} \tab \code{TRUE} \tab \code{TRUE} \cr
+   \code{4326} \tab \verb{Geográficas en WGS 80} \tab \code{TRUE} \tab \code{TRUE} \cr
+   \code{23029} \tab \verb{UTM huso 29N en ED50} \tab \code{TRUE} \tab \code{FALSE} \cr
+   \code{23030} \tab \verb{UTM huso 30N en ED50} \tab \code{TRUE} \tab \code{FALSE} \cr
+   \code{23031} \tab \verb{UTM huso 31N en ED50} \tab \code{TRUE} \tab \code{FALSE} \cr
+   \code{25829} \tab \verb{UTM huso 29N en ETRS89} \tab \code{TRUE} \tab \code{TRUE} \cr
+   \code{25830} \tab \verb{UTM huso 30N en ETRS89} \tab \code{TRUE} \tab \code{TRUE} \cr
+   \code{25831} \tab \verb{UTM huso 31N en ETRS89} \tab \code{TRUE} \tab \code{TRUE} \cr
+   \code{32627} \tab \verb{UTM huso 27N en WGS 84} \tab \code{TRUE} \tab \code{FALSE} \cr
+   \code{32628} \tab \verb{UTM huso 28N en WGS 84} \tab \code{TRUE} \tab \code{FALSE} \cr
+   \code{32629} \tab \verb{UTM huso 29N en WGS 84} \tab \code{TRUE} \tab \code{FALSE} \cr
+   \code{32630} \tab \verb{UTM huso 30N en WGS 84} \tab \code{TRUE} \tab \code{FALSE} \cr
+   \code{32631} \tab \verb{UTM huso 31N en WGS 84} \tab \code{TRUE} \tab \code{FALSE} \cr
 }
 }
 \examples{
-data(catr_srs_values)
+data("catr_srs_values")
 
 # OVC valid codes
 library(dplyr)
@@ -51,7 +54,18 @@ catr_srs_values \%>\% filter(ovc_service == TRUE)
 
 # WFS valid codes
 
-catr_srs_values \%>\% filter(ovc_service == TRUE)
+catr_srs_values \%>\% filter(wfs_service == TRUE)
+
+# Use with sf::st_crs()
+
+catr_srs_values \%>\%
+  filter(wfs_service == TRUE & ovc_service == TRUE) \%>\%
+  print() \%>\%
+  # First value
+  slice_head(n = 1) \%>\%
+  pull(SRS) \%>\%
+  # As crs
+  sf::st_crs(.)
 }
 \references{
 \itemize{

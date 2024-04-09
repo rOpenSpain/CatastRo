@@ -10,7 +10,6 @@ vignette: >
 <!-- CatastRo.Rmd is generated from CatastRo.Rmd.orig. Please edit that file -->
 
 ```{r, include = FALSE}
-
 knitr::opts_chunk$set(
   collapse = TRUE,
   fig.path = "./",
@@ -19,18 +18,15 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   dev = "ragg_png",
-  dpi = 150,
+  dpi = 300,
   out.width = "100%"
 )
 
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 
-if(.Platform$OS.type != "windows"){
-  options(download.file.method="curl", download.file.extra="-k -L")
+if (.Platform$OS.type != "windows") {
+  options(download.file.method = "curl", download.file.extra = "-k -L")
 }
-
-
-
 ```
 
 **CatastRo** provide access to different API services of the [Spanish
@@ -71,8 +67,12 @@ to retrieve spatial objects from the database of the cadastre:
     as provided by the **terra** package.
 
 Note that **the coverage of this service is 95% of the Spanish territory**,
-excluding Basque Country and Navarre that have their own independent cadastral
-offices.
+excluding Basque Country and Navarre[^1] that have their own independent
+cadastral offices.
+
+[^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
+    provides access to the [Cadastre of Navarre](#0), with similar
+    functionalities than **CatastRo**.
 
 There are three types of functions, each one querying a different service:
 
@@ -98,7 +98,6 @@ We would make use of the **WMS and WFS services** to get different layers in
 order to show some of the capabilities of the package:
 
 ```{r santbernabeu, fig.cap="Example: Santiago Bernabeu"}
-
 # Extract building by bounding box
 # Check https://boundingbox.klokantech.com/
 
@@ -149,7 +148,6 @@ In first place, we extract the coordinates of the city center of Granada using
 **mapSpain**:
 
 ```{r}
-
 library(dplyr)
 library(sf)
 library(mapSpain)
@@ -165,20 +163,17 @@ Granada in the Cadastre, and we would download the buildings with
 `catr_atom_get_buildings()`.
 
 ```{r }
-
 city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
-
 ```
 
 Next step for creating the visualization is to limit the analysis to a circle of
 radius 1.5 km around the city center:
 
 ```{r minimal, fig.cap="Minimal cadastral map of Granada"}
-
 buff <- city %>%
   # Adjust CRS to 25830: (Buildings)
   st_transform(st_crs(city_bu)) %>%
@@ -197,7 +192,6 @@ ggplot(dataviz) +
 Let's extract now the construction year, available in the column `beginning`:
 
 ```{r}
-
 # Extract 4 initial positions
 year <- substr(dataviz$beginning, 1, 4)
 
@@ -218,27 +212,29 @@ visualization. We use here the function `cut()` to create classes for every
 decade starting in year 1900:
 
 ```{r dataviz, fig.cap="Granada: Urban growth", fig.asp=0.75, dpi=90, crop=TRUE}
-
 dataviz <- dataviz %>%
   mutate(year_cat = cut(year,
-                        breaks = c(0, seq(1900, 2030, by = 10)),
-                        dig.lab = 4)
-
-         )
+    breaks = c(0, seq(1900, 2030, by = 10)),
+    dig.lab = 4
+  ))
 
 
 ggplot(dataviz) +
   geom_sf(aes(fill = year_cat), color = NA, na.rm = TRUE) +
-  scale_fill_manual(values = hcl.colors(15, "Spectral"),
-                    na.translate = FALSE) +
+  scale_fill_manual(
+    values = hcl.colors(15, "Spectral"),
+    na.translate = FALSE
+  ) +
   theme_void() +
   labs(title = "GRANADA", fill = "") +
   theme(
     panel.background = element_rect(fill = "black"),
     plot.background = element_rect(fill = "black"),
     legend.justification = .5,
-    legend.text = element_text(colour = "white",
-    size = 12),
+    legend.text = element_text(
+      colour = "white",
+      size = 12
+    ),
     plot.title = element_text(
       colour = "white", hjust = .5,
       margin = margin(t = 30),

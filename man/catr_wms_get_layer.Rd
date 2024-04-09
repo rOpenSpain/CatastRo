@@ -62,8 +62,8 @@ Depends on the selected provider on \code{type}.}
   }}
 }
 \value{
-A \code{SpatRaster} is returned, with 3 (RGB) or 4 (RGBA) layers. See
-\code{\link[terra:rast]{terra::rast()}}.
+A \code{\link[terra:rast]{SpatRaster}} is returned, with 3 (RGB) or 4 (RGBA) layers,
+see \code{\link[terra:RGB]{terra::RGB()}}.
 }
 \description{
 Get geotagged images from the Spanish Cadastre. This function is a wrapper of
@@ -159,9 +159,8 @@ ggplot() +
 \href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
 }
 \seealso{
-\code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}}
-\code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}},
-\code{\link[terra:plotRGB]{terra::plotRGB()}}.
+\code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}} and \code{\link[terra:RGB]{terra::RGB()}}. For plotting see
+\code{\link[terra:plotRGB]{terra::plotRGB()}} and \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}}.
 
 INSPIRE API functions:
 \code{\link{catr_atom_get_address}()},

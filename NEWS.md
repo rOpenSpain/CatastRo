@@ -1,11 +1,12 @@
 # CatastRo (development version)
 
--   Migrate from **httr** to **httr2** (#44).
+-   Migrate from **httr** to **httr2** (#44), no visible change for users.
+-   Improve documentation.
 
 # CatastRo 0.3.0
 
 -   `catr_atom_get_address()` returns also the names of the streets (layer
-    `"ThoroughfareName"` of the `*.gml file`). The new fields are named with the
+    `"ThoroughfareName"` of the `*.gml` file). The new fields are named with the
     prefix `tfname_*`.
 -   Add a helper function for easy detecting the `cache_dir`:
     `catr_detect_cache_dir()`.
@@ -19,12 +20,12 @@
 # CatastRo 0.2.2
 
 -   Add **tidyterra** to 'Suggests'.
--   Fix #26: Now `catr_get_code_from_coords()` handle `sfc` objects.
+-   Now `catr_get_code_from_coords()` handle `sfc` objects (#26).
 -   `catr_clear_cache()` now has `config = FALSE` ad default parameter.
 
 # CatastRo 0.2.1
 
--   Fix CRAN tests.
+-   Fix **CRAN** tests.
 
 # CatastRo 0.2.0
 
@@ -52,7 +53,9 @@
     -   `catr_ovc_get_rccoor_distancia()` replaces `near_rc()`.
     -   `catr_ovc_get_rccoor()` replaces `get_rc()`.
     -   `catr_ovc_get_cpmrc()` replaces `get_coor()`.
--   Add precomputed vignettes.
+-   Add
+    [pre-computed](https://ropensci.org/blog/2019/12/08/precompute-vignettes/)
+    vignettes.
 
 # CatastRo 0.1.0
 

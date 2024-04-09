@@ -10,7 +10,9 @@
 #'
 #' @description
 #' A [`tibble`][tibble::tibble] including the valid SRS (also known as CRS)
-#' values that may be used on each API service.
+#' values that may be used on each API service. The values are provided
+#' as [EPSG
+#' codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 #'
 #' @references
 #'
@@ -33,7 +35,9 @@
 #' and columns:
 #' \describe{
 #'   \item{SRS}{Spatial Reference System (CRS) value, identified by the
-#'     corresponding EPSG code.}
+#'     corresponding
+#'     [EPSG][https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset]
+#'     code.}
 #'   \item{Description}{Description of the SRS/EPSG code.}
 #'   \item{ovc_service}{Logical. Is this code valid on OVC services?}
 #'   \item{wfs_service}{Logical. Is this code valid on INSPIRE WFS services?}
@@ -43,14 +47,16 @@
 #' ```{r, echo=FALSE}
 #'
 #' tb <- CatastRo::catr_srs_values
-#'
-#' knitr::kable(tb)
-#'
+#' for(i in seq_len(ncol(tb))){
+#'   tb[,i] <- as.vector(paste0("`", tb[[i]], "`"))
+#' }
+#' nm <- paste0("**", names(tb), "**")
+#' knitr::kable(tb, col.names = nm, caption = "Content of [catr_srs_values]")
 #'
 #' ```
 #'
 #' @examples
-#' data(catr_srs_values)
+#' data("catr_srs_values")
 #'
 #' # OVC valid codes
 #' library(dplyr)
@@ -59,5 +65,16 @@
 #'
 #' # WFS valid codes
 #'
-#' catr_srs_values %>% filter(ovc_service == TRUE)
+#' catr_srs_values %>% filter(wfs_service == TRUE)
+#'
+#' # Use with sf::st_crs()
+#'
+#' catr_srs_values %>%
+#'   filter(wfs_service == TRUE & ovc_service == TRUE) %>%
+#'   print() %>%
+#'   # First value
+#'   slice_head(n = 1) %>%
+#'   pull(SRS) %>%
+#'   # As crs
+#'   sf::st_crs(.)
 NULL

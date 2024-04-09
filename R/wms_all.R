@@ -12,16 +12,17 @@
 #' @param what Layer to be extracted, see **Details**.
 #' @param styles Style of the WMS layer. See **Details**.
 #'
-#' @return A `SpatRaster` is returned, with 3 (RGB) or 4 (RGBA) layers. See
-#' [terra::rast()].
+#' @return
+#' A [`SpatRaster`][terra::rast] is returned, with 3 (RGB) or 4 (RGBA) layers,
+#' see [terra::RGB()].
 #'
 #' @family INSPIRE
 #' @family WMS
 #' @family spatial
 #'
-#' @seealso [mapSpain::esp_getTiles()]
-#' [tidyterra::geom_spatraster_rgb()],
-#' [terra::plotRGB()].
+#' @seealso
+#' [mapSpain::esp_getTiles()] and [terra::RGB()]. For plotting see
+#' [terra::plotRGB()] and [tidyterra::geom_spatraster_rgb()].
 #'
 #' @export
 #'
