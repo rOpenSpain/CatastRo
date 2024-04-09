@@ -17,14 +17,14 @@ vignette: >
 **CatastRo** allows to query the OVCCoordenadas Web Service provided on [Sede
 electrónica del
 Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
-API directly through a R IDE.
+API directly through a **R** IDE.
 
 This API is used to retrieve the spatial coordinates of a urban property,
 moreover it is not needed to be the owner to get the information, actually it is
-enough to know the cadastral reference (RC) of the property and its address (in
-fact, it is only completely compulsory to know the RC, however, to ensure a good
-result from the response and to avoid mistakes in the RC, the address can be
-passed to the query too).
+enough to know the cadastral reference (*RC*) of the property and its address
+(in fact, it is only completely compulsory to know the RC, however, to ensure a
+good result from the response and to avoid mistakes in the RC, the address can
+be passed to the query too).
 
 Secondly, the API can be used to obtain a RC of a urban property, for this
 information, the API asks for the longitude and the latitude. Furthermore, it
@@ -38,25 +38,23 @@ properties located in a square 50-meters-side around the given point.
 The documentation of this API can be found
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-These functions are named `catr_ovc_*` and returns a tibble, as provided
-by the package **tibble**.
-
+These functions are named `catr_ovc_*` and returns a `tibble`, as provided by
+the package **tibble**.
 
 ## CatastRo API
 
-The OVCCoordenadas Web Service can be reached using the following
-functions:
+The OVCCoordenadas Web Service can be reached using the following functions:
 
-* `catr_ovc_get_rccoor()`
-* `catr_ovc_get_rccoor_distancia()`
-* `catr_ovc_get_cpmrc()`
+-   `catr_ovc_get_rccoor()`
+-   `catr_ovc_get_rccoor_distancia()`
+-   `catr_ovc_get_cpmrc()`
 
 ## Reverse Geocoding Cadastral References
 
-The function `catr_ovc_get_rccoor()` receives the coordinates (*lat* and *lon*) and
-the spatial reference system (SRS) used to express them. The return is a tibble
-with the cadastral reference of the property in that spatial point, including
-also other information as the address (town street and number).
+The function `catr_ovc_get_rccoor()` receives the coordinates (`lat` and `lon`)
+and the spatial reference system (`srs`) used to express them. The return is a
+`tibble` with the cadastral reference of the property in that spatial point,
+including also other information as the address (town street and number).
 
 
 ```r
@@ -75,7 +73,7 @@ result <- catr_ovc_get_rccoor(
 
 
 
-The function accept as a SRS argument the following values:
+The function accept as a `srs` argument the following values:
 
 
 ```r
@@ -112,7 +110,7 @@ catr_srs_values %>%
 
 
 It is also possible to get all the cadastral references in a square of
-50-meters' side centered in the coordinates *lat* and *lon* through the function
+50-meters' side centered in the coordinates `lat` and `lon` through the function
 `catr_ovc_get_rccoor_distancia()`.
 
 
@@ -137,9 +135,10 @@ catr_ovc_get_rccoor_distancia(
 ## Geocoding a Cadastral Reference
 
 The opposite query is possible as well. Being given to the function
-`catr_ovc_get_cpmrc()` a cadastral reference (`rc`), the province (`province`) and
-the town (`municipality`), `catr_ovc_get_cpmrc()` returns its coordinates *lat* and
-*lon* in a particular *SRS* besides the address (town, street and number).
+`catr_ovc_get_cpmrc()` a cadastral reference (`rc`), the province (`province`)
+and the town (`municipality`), `catr_ovc_get_cpmrc()` returns its coordinates
+`lat` and `lon` in a particular `srs` besides the address (town, street and
+number).
 
 
 ```r
@@ -164,7 +163,8 @@ Neither the `province` nor `municipality` are required to be passed to the
 function, unless the argument `municipality` is not `NULL`, in that case the
 argument `province` is needed to be passed. If it is passed a value to the
 `province` argument while the `municipality` argument is `NULL`, the function
-`catr_ovc_get_cpmrc()` will throw a message and would return a tibble with no data.
+`catr_ovc_get_cpmrc()` will throw a message and would return a `tibble` with no
+data.
 
 
 ```r

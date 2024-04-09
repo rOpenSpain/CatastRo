@@ -77,7 +77,7 @@ These functions return spatial object (on the formats provided by the
 INSPIRE](https://www.catastro.minhap.es/webinspire/index.html) service.
 
 Note that the coverage of this service is 95% of the Spanish territory,
-<u>excluding Basque Country and Navarre</u> that have their own
+<u>excluding Basque Country and Navarre[^1]</u> that have their own
 independent cadastral offices.
 
 There are three types of functions, each one querying a different
@@ -244,3 +244,8 @@ A BibTeX entry for LaTeX users is:
 
 Check the GitHub page for [source
 code](https://github.com/ropenspain/CatastRo/).
+
+[^1]: The package
+    [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
+    provides access to the [Cadastre of Navarre](#0), with similar
+    functionalities than **CatastRo**.
