@@ -71,7 +71,7 @@ excluding Basque Country and Navarre[^1] that have their own independent
 cadastral offices.
 
 [^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
-    provides access to the [Cadastre of Navarre](#0), with similar
+    provides access to the Cadastre of Navarre, with similar
     functionalities than **CatastRo**.
 
 There are three types of functions, each one querying a different service:
@@ -173,7 +173,7 @@ city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 Next step for creating the visualization is to limit the analysis to a circle of
 radius 1.5 km around the city center:
 
-```{r minimal, fig.cap="Minimal cadastral map of Granada"}
+```{r minimal, fig.cap="Minimal cadastral map of Granada", dpi=150}
 buff <- city %>%
   # Adjust CRS to 25830: (Buildings)
   st_transform(st_crs(city_bu)) %>%
@@ -211,7 +211,7 @@ Last step is to create groups based on the year and create the data
 visualization. We use here the function `cut()` to create classes for every
 decade starting in year 1900:
 
-```{r dataviz, fig.cap="Granada: Urban growth", fig.asp=0.75, dpi=90, crop=TRUE}
+```{r dviz, fig.cap="Granada: Urban growth", fig.asp=0.75, crop=TRUE, dpi=150}
 dataviz <- dataviz %>%
   mutate(year_cat = cut(year,
     breaks = c(0, seq(1900, 2030, by = 10)),

@@ -252,7 +252,7 @@ ggplot(dataviz) +
 ```
 
 <div class="figure">
-<img src="./dataviz-1.png" alt="Granada: Urban growth" width="100%" />
+<img src="./dviz-1.png" alt="Granada: Urban growth" width="100%" />
 <p class="caption">Granada: Urban growth</p>
 </div>
 

@@ -10,6 +10,7 @@ Cadastral
 CadastralParcel
 CadastralZoning
 Cadastre
+CatastRoNav
 Catastro
 Consulta
 ConsultaMunicipioCodigos
@@ -41,7 +42,6 @@ Royé
 SALAMANCA
 SRS
 Sede
-SpatRaster
 TIRADERO
 VH
 WFS
@@ -70,14 +70,13 @@ huso
 ine
 ldt
 loine
-lon
 lourb
 mapSpain
 organisations
 ovc
 pc
 pnp
-precomputed
+pre
 rOS
 refcat
 srs

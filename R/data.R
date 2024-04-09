@@ -36,7 +36,7 @@
 #' \describe{
 #'   \item{SRS}{Spatial Reference System (CRS) value, identified by the
 #'     corresponding
-#'     [EPSG][https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset]
+#'     [EPSG](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset)
 #'     code.}
 #'   \item{Description}{Description of the SRS/EPSG code.}
 #'   \item{ovc_service}{Logical. Is this code valid on OVC services?}
