@@ -53,7 +53,7 @@ excluding Basque Country and Navarre[^1] that have their own independent
 cadastral offices.
 
 [^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
-    provides access to the [Cadastre of Navarre](#0), with similar
+    provides access to the Cadastre of Navarre, with similar
     functionalities than **CatastRo**.
 
 There are three types of functions, each one querying a different service:
