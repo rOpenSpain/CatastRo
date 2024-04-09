@@ -52,12 +52,13 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="catastro-development-version">CatastRo (development version)<a class="anchor" aria-label="anchor" href="#catastro-development-version"></a></h2>
-<ul><li>Migrate from <strong>httr</strong> to <strong>httr2</strong> (<a href="https://github.com/rOpenSpain/CatastRo/issues/44" class="external-link">#44</a>).</li>
+<ul><li>Migrate from <strong>httr</strong> to <strong>httr2</strong> (<a href="https://github.com/rOpenSpain/CatastRo/issues/44" class="external-link">#44</a>), no visible change for users.</li>
+<li>Improve documentation.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="catastro-030">CatastRo 0.3.0<a class="anchor" aria-label="anchor" href="#catastro-030"></a></h2><p class="text-muted">CRAN release: 2024-01-18</p>
 <ul><li>
-<code><a href="../reference/catr_atom_get_address.html">catr_atom_get_address()</a></code> returns also the names of the streets (layer <code>"ThoroughfareName"</code> of the <code>*.gml file</code>). The new fields are named with the prefix <code>tfname_*</code>.</li>
+<code><a href="../reference/catr_atom_get_address.html">catr_atom_get_address()</a></code> returns also the names of the streets (layer <code>"ThoroughfareName"</code> of the <code>*.gml</code> file). The new fields are named with the prefix <code>tfname_*</code>.</li>
 <li>Add a helper function for easy detecting the <code>cache_dir</code>: <code><a href="../reference/catr_set_cache_dir.html">catr_detect_cache_dir()</a></code>.</li>
 <li>Update documentation and tests.</li>
 </ul></div>
@@ -69,13 +70,13 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.2" id="catastro-022">CatastRo 0.2.2<a class="anchor" aria-label="anchor" href="#catastro-022"></a></h2><p class="text-muted">CRAN release: 2022-05-27</p>
 <ul><li>Add <strong>tidyterra</strong> to ‘Suggests’.</li>
-<li>Fix <a href="https://github.com/rOpenSpain/CatastRo/issues/26" class="external-link">#26</a>: Now <code><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> handle <code>sfc</code> objects.</li>
+<li>Now <code><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> handle <code>sfc</code> objects (<a href="https://github.com/rOpenSpain/CatastRo/issues/26" class="external-link">#26</a>).</li>
 <li>
 <code><a href="../reference/catr_clear_cache.html">catr_clear_cache()</a></code> now has <code>config = FALSE</code> ad default parameter.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="catastro-021">CatastRo 0.2.1<a class="anchor" aria-label="anchor" href="#catastro-021"></a></h2><p class="text-muted">CRAN release: 2022-03-08</p>
-<ul><li>Fix CRAN tests.</li>
+<ul><li>Fix <strong>CRAN</strong> tests.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="catastro-020">CatastRo 0.2.0<a class="anchor" aria-label="anchor" href="#catastro-020"></a></h2><p class="text-muted">CRAN release: 2022-02-28</p>
@@ -100,7 +101,7 @@
 <li>
 <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> replaces <code>get_coor()</code>.</li>
 </ul></li>
-<li>Add precomputed vignettes.</li>
+<li>Add <a href="https://ropensci.org/blog/2019/12/08/precompute-vignettes/" class="external-link">pre-computed</a> vignettes.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="catastro-010">CatastRo 0.1.0<a class="anchor" aria-label="anchor" href="#catastro-010"></a></h2>
