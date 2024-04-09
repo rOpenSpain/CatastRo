@@ -172,7 +172,7 @@ ggplot(bu) +
 
 ``` r
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
-  c(-5.567429, 42.598935, -5.565509, 42.600396),
+  c(-5.569, 42.598, -5.564, 42.601),
   srs = 4326
 )
 
