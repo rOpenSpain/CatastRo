@@ -5,7 +5,7 @@
 \alias{catr_wfs_get_address_codvia}
 \alias{catr_wfs_get_address_rc}
 \alias{catr_wfs_get_address_postalcode}
-\title{WFS INSPIRE: Download Addresses}
+\title{WFS INSPIRE: Download addresses}
 \usage{
 catr_wfs_get_address_bbox(x, srs, verbose = FALSE)
 

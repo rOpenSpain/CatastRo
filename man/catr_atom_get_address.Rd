@@ -2,7 +2,7 @@
 % Please edit documentation in R/atom_ad.R
 \name{catr_atom_get_address}
 \alias{catr_atom_get_address}
-\title{ATOM INSPIRE: Download all the Addresses of a Municipality}
+\title{ATOM INSPIRE: Download all the addresses of a municipality}
 \usage{
 catr_atom_get_address(
   munic,

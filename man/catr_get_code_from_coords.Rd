@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_coords.R
 \name{catr_get_code_from_coords}
 \alias{catr_get_code_from_coords}
-\title{Get the cadastral Municipality code from coordinates}
+\title{Get the cadastral municipality code from coordinates}
 \usage{
 catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
 }

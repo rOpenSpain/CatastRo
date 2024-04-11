@@ -1,4 +1,4 @@
-#' Get the cadastral Municipality code from coordinates
+#' Get the cadastral municipality code from coordinates
 #'
 #' @description
 #'

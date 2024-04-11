@@ -6,7 +6,7 @@
 \alias{catr_wfs_get_parcels_parcel}
 \alias{catr_wfs_get_parcels_neigh_parcel}
 \alias{catr_wfs_get_parcels_parcel_zoning}
-\title{WFS INSPIRE: Download Cadastral Parcels}
+\title{WFS INSPIRE: Download cadastral parcels}
 \usage{
 catr_wfs_get_parcels_bbox(x, what = "parcel", srs, verbose = FALSE)
 

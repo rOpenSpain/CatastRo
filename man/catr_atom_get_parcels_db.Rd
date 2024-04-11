@@ -4,7 +4,7 @@
 \alias{catr_atom_get_parcels_db_all}
 \alias{catr_atom_get_parcels_to}
 \alias{catr_atom_get_parcels_db_to}
-\title{ATOM INSPIRE: Reference Database for ATOM Cadastral Parcels}
+\title{ATOM INSPIRE: Reference database for ATOM cadastral parcels}
 \source{
 \url{https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
 }
@@ -64,7 +64,7 @@ this service is updated twice a year}.
 }
 \description{
 Create a database containing the urls provided in the INSPIRE ATOM service
-of the Spanish Cadastre for extracting Cadastral Parcels.
+of the Spanish Cadastre for extracting cadastral parcels.
 \itemize{
 \item \code{catr_atom_get_parcels_db_all()} provides a top-level table including
 information of all the territorial offices (except Basque Country and

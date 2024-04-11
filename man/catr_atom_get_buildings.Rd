@@ -2,7 +2,7 @@
 % Please edit documentation in R/atom_bu.R
 \name{catr_atom_get_buildings}
 \alias{catr_atom_get_buildings}
-\title{ATOM INSPIRE: Download all the Buildings of a Municipality}
+\title{ATOM INSPIRE: Download all the buildings of a municipality}
 \usage{
 catr_atom_get_buildings(
   munic,

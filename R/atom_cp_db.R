@@ -1,10 +1,10 @@
-#' ATOM INSPIRE: Reference Database for ATOM Cadastral Parcels
+#' ATOM INSPIRE: Reference database for ATOM cadastral parcels
 #'
 #' @description
 #'
 #'
 #' Create a database containing the urls provided in the INSPIRE ATOM service
-#' of the Spanish Cadastre for extracting Cadastral Parcels.
+#' of the Spanish Cadastre for extracting cadastral parcels.
 #'
 #' - `catr_atom_get_parcels_db_all()` provides a top-level table including
 #'    information of all the territorial offices (except Basque Country and

@@ -1,4 +1,4 @@
-#' WFS INSPIRE: Download Buildings
+#' WFS INSPIRE: Download buildings
 #'
 #' @description
 #' Get the spatial data of buildings. The WFS Service allows to perform

@@ -172,7 +172,7 @@ ggplot(bu) +
 
 ``` r
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
-  c(-5.567429, 42.598935, -5.565509, 42.600396),
+  c(-5.569, 42.598, -5.564, 42.601),
   srs = 4326
 )
 
@@ -234,7 +234,7 @@ A BibTeX entry for LaTeX users is:
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       year = {2024},
-      version = {0.3.0.9000},
+      version = {0.3.1},
       url = {https://ropenspain.github.io/CatastRo/},
       doi = {10.5281/zenodo.6044091},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
