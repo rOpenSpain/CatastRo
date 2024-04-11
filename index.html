@@ -5,9 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Access public spatial data available under the INSPIRE
-    directive. Tools for downloading references and addresses of
-    properties, as well as map images.">
+<meta name="description" content="Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.">
 <title>Interface to the API Sede Electronica Del Catastro • CatastRo</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -20,9 +18,7 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Interface to the API Sede Electronica Del Catastro">
-<meta property="og:description" content="Access public spatial data available under the INSPIRE
-    directive. Tools for downloading references and addresses of
-    properties, as well as map images.">
+<meta property="og:description" content="Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.">
 <meta property="og:image" content="https://ropenspain.github.io/CatastRo/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@rOpenSpain">
@@ -209,7 +205,7 @@
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wfs_get_buildings</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5.569</span>, <span class="fl">42.598</span>, <span class="op">-</span><span class="fl">5.564</span>, <span class="fl">42.601</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5.567429</span>, <span class="fl">42.598935</span>, <span class="op">-</span><span class="fl">5.565509</span>, <span class="fl">42.600396</span><span class="op">)</span>,</span>
 <span>  srs <span class="op">=</span> <span class="fl">4326</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -280,6 +276,7 @@ Delgado Panadero Á, Hernangómez D (2024). <em>CatastRo: Interface to the API S
 <li><a href="https://cloud.r-project.org/package=CatastRo" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/rOpenSpain/CatastRo/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/rOpenSpain/CatastRo/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://ropenspain.es/" class="external-link">About <img src="ROS-logo.png" alt="rOpenSpain-Logo" height="24" style="display: inline;"> rOpenSpain</a></li>
 </ul>
 </div>
 
@@ -369,7 +366,7 @@ Delgado Panadero Á, Hernangómez D (2024). <em>CatastRo: Interface to the API S
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.
