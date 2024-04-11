@@ -1,4 +1,4 @@
-#' ATOM INSPIRE: Download all the Buildings of a Municipality
+#' ATOM INSPIRE: Download all the buildings of a municipality
 #'
 #'
 #' Get the spatial data of all the buildings belonging to a single municipality

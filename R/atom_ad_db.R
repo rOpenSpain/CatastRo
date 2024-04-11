@@ -1,4 +1,4 @@
-#' ATOM INSPIRE: Reference Database for ATOM Addresses
+#' ATOM INSPIRE: Reference database for ATOM addresses
 #'
 #' @description
 #'

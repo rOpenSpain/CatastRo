@@ -1,4 +1,4 @@
-#' WFS INSPIRE: Download Addresses
+#' WFS INSPIRE: Download addresses
 #'
 #' @description
 #' Get the spatial data of addresses The WFS Service allows to perform

@@ -35,9 +35,9 @@
 #' On a successful query, the function returns a [`tibble`][tibble::tibble] with
 #' one row by cadastral reference, including the following columns:
 #' * `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
-#' * `refcat`: Cadastral Reference.
+#' * `refcat`: Cadastral reference.
 #' * `address`: Address as it is recorded on the Cadastre.
-#' * `cmun_ine`: Municipality Code as registered on the INE (National
+#' * `cmun_ine`: Municipality code as registered on the INE (National
 #'    Statistics Institute).
 #' * Rest of fields: Check the API Docs.
 #'

@@ -3,7 +3,7 @@
 \name{catr_wfs_get_buildings_bbox}
 \alias{catr_wfs_get_buildings_bbox}
 \alias{catr_wfs_get_buildings_rc}
-\title{WFS INSPIRE: Download Buildings}
+\title{WFS INSPIRE: Download buildings}
 \usage{
 catr_wfs_get_buildings_bbox(x, what = "building", srs, verbose = FALSE)
 

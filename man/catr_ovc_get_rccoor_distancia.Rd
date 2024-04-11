@@ -38,9 +38,9 @@ On a successful query, the function returns a \code{\link[tibble:tibble]{tibble}
 one row by cadastral reference, including the following columns:
 \itemize{
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input parameters of the query.
-\item \code{refcat}: Cadastral Reference.
+\item \code{refcat}: Cadastral reference.
 \item \code{address}: Address as it is recorded on the Cadastre.
-\item \code{cmun_ine}: Municipality Code as registered on the INE (National
+\item \code{cmun_ine}: Municipality code as registered on the INE (National
 Statistics Institute).
 \item Rest of fields: Check the API Docs.
 }
