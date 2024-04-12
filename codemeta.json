@@ -271,7 +271,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1839.625KB",
+  "fileSize": "1839.783KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -297,7 +297,7 @@
   ],
   "releaseNotes": "https://github.com/rOpenSpain/CatastRo/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenSpain/CatastRo/blob/main/README.md",
-  "contIntegration": ["https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml", "https://app.codecov.io/gh/rOpenSpain/CatastRo"],
+  "contIntegration": ["https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml", "https://github.com/rOpenSpain/CatastRo/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/rOpenSpain/CatastRo"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": ["r-package", "ropenspain", "catastro", "spain", "rstats", "spatial", "r", "maps", "gis", "static-tiles", "cran", "cran-r"]
 }

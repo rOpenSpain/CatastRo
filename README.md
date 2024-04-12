@@ -11,6 +11,7 @@
 [![Downloads](https://cranlogs.r-pkg.org/badges/CatastRo)](https://CRAN.R-project.org/package=CatastRo)
 [![r-universe](https://ropenspain.r-universe.dev/badges/CatastRo)](https://ropenspain.r-universe.dev/CatastRo)
 [![R-CMD-check](https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml)
+[![R-hub](https://github.com/rOpenSpain/CatastRo/actions/workflows/rhub.yaml/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions/workflows/rhub.yaml)
 [![codecov](https://codecov.io/gh/rOpenSpain/CatastRo/graph/badge.svg?token=KPPwTkZjW6)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.6044091-blue)](https://doi.org/10.5281/zenodo.6044091)
 [![Project Status: Active – The project has reached a stable, usable
