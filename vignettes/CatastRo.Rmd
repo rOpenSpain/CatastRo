@@ -80,7 +80,7 @@ We would make use of the **WMS and WFS services** to get different layers in
 order to show some of the capabilities of the package:
 
 
-```r
+``` r
 # Extract building by bounding box
 # Check https://boundingbox.klokantech.com/
 
@@ -136,7 +136,7 @@ In first place, we extract the coordinates of the city center of Granada using
 **mapSpain**:
 
 
-```r
+``` r
 library(dplyr)
 library(sf)
 library(mapSpain)
@@ -152,7 +152,7 @@ Granada in the Cadastre, and we would download the buildings with
 `catr_atom_get_buildings()`.
 
 
-```r
+``` r
 city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
@@ -161,6 +161,9 @@ city_catr_code
 #>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
 #> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
 #> # ℹ 1 more variable: cm <chr>
+```
+
+``` r
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
@@ -169,7 +172,7 @@ Next step for creating the visualization is to limit the analysis to a circle of
 radius 1.5 km around the city center:
 
 
-```r
+``` r
 buff <- city %>%
   # Adjust CRS to 25830: (Buildings)
   st_transform(st_crs(city_bu)) %>%
@@ -193,7 +196,7 @@ ggplot(dataviz) +
 Let's extract now the construction year, available in the column `beginning`:
 
 
-```r
+``` r
 # Extract 4 initial positions
 year <- substr(dataviz$beginning, 1, 4)
 
@@ -214,7 +217,7 @@ visualization. We use here the function `cut()` to create classes for every
 decade starting in year 1900:
 
 
-```r
+``` r
 dataviz <- dataviz %>%
   mutate(year_cat = cut(year,
     breaks = c(0, seq(1900, 2030, by = 10)),

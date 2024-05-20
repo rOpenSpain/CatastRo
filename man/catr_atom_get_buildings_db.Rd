@@ -6,7 +6,7 @@
 \alias{catr_atom_get_buildings_db_to}
 \title{ATOM INSPIRE: Reference database for ATOM buildings}
 \source{
-\url{https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
+\url{https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml}
 }
 \usage{
 catr_atom_get_buildings_db_all(
