@@ -15,7 +15,7 @@
 #'
 #'
 #' @source
-#' <https://www.catastro.minhap.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml>
+#' <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>
 #'
 #'
 #' @family INSPIRE
@@ -58,7 +58,7 @@ catr_atom_get_address_db_all <- function(cache = TRUE,
                                          cache_dir = NULL,
                                          verbose = FALSE) {
   api_entry <- paste0(
-    "https://www.catastro.minhafp.es/INSPIRE/",
+    "https://www.catastro.hacienda.gob.es/INSPIRE/",
     "Addresses/ES.SDGC.AD.atom.xml"
   )
 

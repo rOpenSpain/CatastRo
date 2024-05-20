@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/rOpenSpain/CatastRo",
   "issueTracker": "https://github.com/rOpenSpain/CatastRo/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
-  "version": "0.3.1",
+  "version": "0.3.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.3 (2024-02-29 ucrt)",
+  "runtimePlatform": "R version 4.4.0 (2024-04-24)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -271,7 +271,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1838.245KB",
+  "fileSize": "1831.254KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
