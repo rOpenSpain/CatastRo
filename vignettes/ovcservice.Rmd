@@ -57,7 +57,7 @@ and the spatial reference system (`srs`) used to express them. The return is a
 including also other information as the address (town street and number).
 
 
-```r
+``` r
 result <- catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
@@ -76,7 +76,7 @@ result <- catr_ovc_get_rccoor(
 The function accept as a `srs` argument the following values:
 
 
-```r
+``` r
 data(catr_srs_values)
 
 # OVC valid codes
@@ -114,7 +114,7 @@ It is also possible to get all the cadastral references in a square of
 `catr_ovc_get_rccoor_distancia()`.
 
 
-```r
+``` r
 catr_ovc_get_rccoor_distancia(
   lat = 40.96002,
   lon = -5.663408,
@@ -141,7 +141,7 @@ and the town (`municipality`), `catr_ovc_get_cpmrc()` returns its coordinates
 number).
 
 
-```r
+``` r
 catr_ovc_get_cpmrc(
   rc = "13077A01800039",
   srs = "4230",
@@ -167,7 +167,7 @@ argument `province` is needed to be passed. If it is passed a value to the
 data.
 
 
-```r
+``` r
 catr_ovc_get_cpmrc(
   rc = "13077A01800039",
   municipality = "SANTA CRUZ DE MUDELA"
@@ -187,7 +187,7 @@ catr_ovc_get_cpmrc(
 When using only `rc` the result is provided as expected:
 
 
-```r
+``` r
 # No warning, get the result
 catr_ovc_get_cpmrc(rc = "13077A01800039") %>%
   knitr::kable()
