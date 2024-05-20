@@ -39,7 +39,7 @@
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../apple-touch-icon-180x180.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1.9000</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -242,12 +242,13 @@ in the Cadastre, and we would download the buildings with
 <span><span class="co">#&gt;   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
 <span><span class="co">#&gt; 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   </span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: cm &lt;chr&gt;</span></span>
-<span></span>
+<span><span class="co">#&gt; # ℹ 1 more variable: cm &lt;chr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="va">city_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">city_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span></code></pre></div>
 <p>Next step for creating the visualization is to limit the analysis to
 a circle of radius 1.5 km around the city center:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">buff</span> <span class="op">&lt;-</span> <span class="va">city</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="co"># Adjust CRS to 25830: (Buildings)</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">city_bu</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -268,7 +269,7 @@ Minimal cadastral map of Granada
 </div>
 <p>Let’s extract now the construction year, available in the column
 <code>beginning</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Extract 4 initial positions</span></span>
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substr</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">$</span><span class="va">beginning</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span></span>
@@ -285,7 +286,7 @@ Minimal cadastral map of Granada
 <p>Last step is to create groups based on the year and create the data
 visualization. We use here the function <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> to create
 classes for every decade starting in year 1900:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year_cat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">year</span>,</span>
 <span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1900</span>, <span class="fl">2030</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span>,</span>
