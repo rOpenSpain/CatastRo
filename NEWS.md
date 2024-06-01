@@ -1,4 +1,4 @@
-# CatastRo (development version)
+# CatastRo 0.4.0
 
 -   Update entry points (#53).
 

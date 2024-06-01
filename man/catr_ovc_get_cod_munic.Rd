@@ -13,7 +13,7 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 \item{cmun}{Code of a municipality, as recorded on the Spanish Cadastre.}
 
 \item{cmun_ine}{Code of a municipality, as recorded on National Statistics
-Institute. See \href{https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm}{INE: List of municipalities}}
+Institute. See \href{https://www.ine.es/daco/daco42/codmun/codmun00i.htm}{INE: List of municipalities}}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}

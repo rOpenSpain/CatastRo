@@ -27,7 +27,7 @@
 #' @param cmun Code of a municipality, as recorded on the Spanish Cadastre.
 #' @param cmun_ine Code of a municipality, as recorded on National Statistics
 #'   Institute. See [INE: List of
-#' municipalities](https://www.ine.es/en/daco/daco42/codmun/codmunmapa_en.htm)
+#' municipalities](https://www.ine.es/daco/daco42/codmun/codmun00i.htm)
 #'
 #' @details
 #' Parameter `cpro` is mandatory. Either `cmun` or `cmun_ine` should be
