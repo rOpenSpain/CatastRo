@@ -44,8 +44,8 @@ the function would store the cached files on the
 default is \code{FALSE}.}
 
 \item{crop}{\code{TRUE} if results should be cropped to the specified \code{x} extent,
-\code{FALSE} otherwise. If \code{x} is an \href{https://CRAN.R-project.org/package=sf}{\pkg{sf}} object with one \code{POINT}, crop
-is set to \code{FALSE}.}
+\code{FALSE} otherwise. If \code{x} is an \code{\link[sf:sf]{sf}} object with one \code{POINT},
+\code{crop} is set to \code{FALSE}.}
 
 \item{options}{A named list containing additional options to pass to the
 query.}

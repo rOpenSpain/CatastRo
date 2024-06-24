@@ -9,7 +9,7 @@ type: software
 license: GPL-2.0-only
 title: 'CatastRo: Interface to the API ''Sede Electronica Del Catastro'''
 version: 0.4.0
-doi: 10.5281/zenodo.6044091
+doi: 10.32614/CRAN.package.CatastRo
 abstract: Access public spatial data available under the 'INSPIRE' directive. Tools
   for downloading references and addresses of properties, as well as map images.
 authors:
@@ -33,10 +33,10 @@ preferred-citation:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
+  doi: 10.32614/CRAN.package.CatastRo
   year: '2024'
   version: 0.4.0
   url: https://ropenspain.github.io/CatastRo/
-  doi: 10.5281/zenodo.6044091
   abstract: Access public spatial data available under the INSPIRE directive. Tools
     for downloading references and addresses of properties, as well as map images.
 repository: https://CRAN.R-project.org/package=CatastRo
