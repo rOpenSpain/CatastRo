@@ -37,7 +37,7 @@ library(CatastRo)
 [![R-CMD-check](https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml)
 [![R-hub](https://github.com/rOpenSpain/CatastRo/actions/workflows/rhub.yaml/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions/workflows/rhub.yaml)
 [![codecov](https://codecov.io/gh/rOpenSpain/CatastRo/graph/badge.svg?token=KPPwTkZjW6)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
-[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.6044091-blue)](https://doi.org/10.5281/zenodo.6044091)
+[![DOI](https://img.shields.io/badge/DOI-10.32614/CRAN.package.CatastRo-blue)](https://doi.org/10.32614/CRAN.package.CatastRo)
 [![Project Status: Active -- The project has reached a stable, usable state and
 is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)

@@ -1,16 +1,18 @@
 year <- format(Sys.time(), "%Y")
 abs <- trimws(gsub("\\s+", " ", meta$Description))
 abs <- gsub("'", "", abs)
+pkg <- meta$Package
+doi <- paste0("10.32614/CRAN.package.", pkg)
 
 bibentry(
   "Manual",
-  header = paste0("To cite '", meta$Package, "' in publications use:"),
+  header = paste0("To cite '", pkg, "' in publications use:"),
   title = "{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro",
   author = c(person("Ángel", "Delgado Panadero"), person("Diego", "Hernangómez")),
+  doi = doi,
   year = year,
   version = meta$Version,
   url = unlist(strsplit(meta$URL, ","))[1],
-  doi = "10.5281/zenodo.6044091",
   abstract = abs,
-  key = "R-catastro"
+  key = paste0("R-", pkg)
 )
