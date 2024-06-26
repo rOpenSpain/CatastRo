@@ -13,7 +13,7 @@
 [![R-CMD-check](https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml)
 [![R-hub](https://github.com/rOpenSpain/CatastRo/actions/workflows/rhub.yaml/badge.svg)](https://github.com/rOpenSpain/CatastRo/actions/workflows/rhub.yaml)
 [![codecov](https://codecov.io/gh/rOpenSpain/CatastRo/graph/badge.svg?token=KPPwTkZjW6)](https://app.codecov.io/gh/rOpenSpain/CatastRo)
-[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.6044091-blue)](https://doi.org/10.5281/zenodo.6044091)
+[![DOI](https://img.shields.io/badge/DOI-10.32614/CRAN.package.CatastRo-blue)](https://doi.org/10.32614/CRAN.package.CatastRo)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -225,19 +225,19 @@ it will load it, speeding up the process.
 <p>
 Delgado Panadero Á, Hernangómez D (2024). <em>CatastRo: Interface to the
 API Sede Electrónica Del Catastro</em>.
-<a href="https://doi.org/10.5281/zenodo.6044091">doi:10.5281/zenodo.6044091</a>,
+<a href="https://doi.org/10.32614/CRAN.package.CatastRo">doi:10.32614/CRAN.package.CatastRo</a>,
 <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
 </p>
 
 A BibTeX entry for LaTeX users is:
 
-    @Manual{R-catastro,
+    @Manual{R-CatastRo,
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
+      doi = {10.32614/CRAN.package.CatastRo},
       year = {2024},
       version = {0.4.0},
       url = {https://ropenspain.github.io/CatastRo/},
-      doi = {10.5281/zenodo.6044091},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
     }
 

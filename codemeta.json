@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.0 (2024-04-24 ucrt)",
+  "runtimePlatform": "R version 4.4.1 (2024-06-14 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -271,7 +271,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1839.652KB",
+  "fileSize": "1834.989KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -289,10 +289,10 @@
         }
       ],
       "name": "{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro",
-      "identifier": "10.5281/zenodo.6044091",
+      "identifier": "10.32614/CRAN.package.CatastRo",
       "url": "https://ropenspain.github.io/CatastRo/",
-      "@id": "https://doi.org/10.5281/zenodo.6044091",
-      "sameAs": "https://doi.org/10.5281/zenodo.6044091"
+      "@id": "https://doi.org/10.32614/CRAN.package.CatastRo",
+      "sameAs": "https://doi.org/10.32614/CRAN.package.CatastRo"
     }
   ],
   "releaseNotes": "https://github.com/rOpenSpain/CatastRo/blob/master/NEWS.md",
