@@ -1,96 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/404.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/articles/CatastRo.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/articles/ovcservice.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/CatastRo-package.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_clear_cache.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_set_cache_dir.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_srs_values.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.html</loc>
-  </url>
-  <url>
-    <loc>https://ropenspain.github.io/CatastRo/reference/index.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://ropenspain.github.io/CatastRo/404.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/articles/CatastRo.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/articles/index.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/articles/ovcservice.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/authors.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/CONTRIBUTING.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/index.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/LICENSE.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/news/index.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/CatastRo-package.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_clear_cache.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_set_cache_dir.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_srs_values.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.html</loc></url>
+<url><loc>https://ropenspain.github.io/CatastRo/reference/index.html</loc></url>
 </urlset>
+
