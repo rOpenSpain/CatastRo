@@ -161,9 +161,6 @@ city_catr_code
 #>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
 #> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
 #> # ℹ 1 more variable: cm <chr>
-```
-
-``` r
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
