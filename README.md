@@ -75,7 +75,8 @@ described.
 
 These functions return spatial object (on the formats provided by the
 **sf** or **terra** using the [Catastro
-INSPIRE](https://www.catastro.minhap.es/webinspire/index.html) service.
+INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
+service.
 
 Note that the coverage of this service is 95% of the Spanish territory,
 <u>excluding Basque Country and Navarre</u>[^1] that have their own
@@ -114,7 +115,7 @@ There is a single function for querying this service:
 #### Terms and conditions of use
 
 Please check the [downloading
-provisions](https://www.catastro.minhap.es/webinspire/documentos/Licencia.pdf)
+provisions](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf)
 of the service.
 
 ## Examples

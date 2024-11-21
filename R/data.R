@@ -24,7 +24,7 @@
 #' ```
 #'
 #' * [INSPIRE WFS
-#' Service](https://www.catastro.minhap.es/webinspire/index.html).
+#' Service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 #'
 #' @encoding UTF-8
 #'

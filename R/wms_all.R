@@ -48,7 +48,7 @@
 #' The parameter `what` defines the layer to be extracted. The equivalence with
 #' the
 #' [API
-#' Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
+#' Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
 #' equivalence is:
 #' - `"parcel"`: CP.CadastralParcel
 #' - `"zoning"`: CP.CadastralZoning
@@ -70,7 +70,7 @@
 #' - `"admboundary"`, `"admunit"`: `"ELFCadastre"`
 #'
 #' Check the [API
-#' Docs](https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf)
+#' Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
 #' for more information.
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"

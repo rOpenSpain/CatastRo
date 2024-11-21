@@ -56,7 +56,7 @@ corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 > *From <https://knowledge-base.inspire.ec.europa.eu/overview_en>*
 
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
-[Catastro INSPIRE](https://www.catastro.minhap.es/webinspire/index.html)) allows
+[Catastro INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)) allows
 to retrieve spatial objects from the database of the cadastre:
 
 -   **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.

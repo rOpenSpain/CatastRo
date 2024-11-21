@@ -70,7 +70,7 @@ catr_srs_values \%>\%
 \references{
 \itemize{
 \item \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx}{OVCCoordenadas}.
-\item \href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE WFS Service}.
+\item \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE WFS Service}.
 }
 }
 \seealso{

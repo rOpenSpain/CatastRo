@@ -101,9 +101,9 @@ ggplot(ad) +
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Documentation}.
+\href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Documentation}.
 
-\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
+\href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
 }
 \seealso{
 \code{\link[sf:st_bbox]{sf::st_bbox()}}

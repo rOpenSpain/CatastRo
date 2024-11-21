@@ -83,7 +83,7 @@ to match the SRS of \code{x}. See \strong{Examples}.
 \section{Layers}{
 The parameter \code{what} defines the layer to be extracted. The equivalence with
 the
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
+\href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
 equivalence is:
 \itemize{
 \item \code{"parcel"}: CP.CadastralParcel
@@ -108,7 +108,7 @@ Some of the styles available are:
 \item \code{"admboundary"}, \code{"admunit"}: \code{"ELFCadastre"}
 }
 
-Check the \href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
+Check the \href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
 for more information.
 }
 
@@ -154,9 +154,9 @@ ggplot() +
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://www.catastro.minhap.es/webinspire/documentos/inspire-WMS.pdf}{API Documentation}.
+\href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf}{API Documentation}.
 
-\href{https://www.catastro.minhap.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
+\href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
 }
 \seealso{
 \code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}} and \code{\link[terra:RGB]{terra::RGB()}}. For plotting see
