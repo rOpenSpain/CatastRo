@@ -168,7 +168,7 @@ ggplot(bu) +
   ggtitle("Nava de la Asunción, Segovia")
 ```
 
-<img src="man/figures/README-atom-1.png" width="100%" />
+<img src="man/figures/README-atom-1.png" alt="Extracting buildings in Nava de la Asuncion with the ATOM service" width="100%" />
 
 ### Extract geometries using the WFS service
 
@@ -184,29 +184,7 @@ ggplot(wfs_get_buildings) +
   ggtitle("Leon Cathedral, Spain")
 ```
 
-<img src="man/figures/README-wfs-1.png" width="100%" />
-
-### Extract maps using the WMS service
-
-``` r
-# For tiles better project
-
-wfs_get_buildings_pr <- sf::st_transform(wfs_get_buildings, 25830)
-
-wms_bu <- catr_wms_get_layer(wfs_get_buildings_pr,
-  srs = 25830,
-  bbox_expand = 0.2
-)
-
-# Map
-# Load tidyterra
-library(tidyterra)
-ggplot() +
-  geom_spatraster_rgb(data = wms_bu) +
-  geom_sf(data = wfs_get_buildings_pr, fill = "red", alpha = 0.6)
-```
-
-<img src="man/figures/README-wms-1.png" width="100%" />
+<img src="man/figures/README-wfs-1.png" alt="Extract Leon Cathedral with the WFS service" width="100%" />
 
 ## A note on caching
 

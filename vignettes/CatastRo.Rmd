@@ -38,8 +38,8 @@ corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 > *From <https://knowledge-base.inspire.ec.europa.eu/overview_en>*
 
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
-[Catastro INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)) allows
-to retrieve spatial objects from the database of the cadastre:
+[Catastro INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
+allows to retrieve spatial objects from the database of the cadastre:
 
 -   **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.
     These objects are provided by **CatastRo** as `sf` objects as provided by
@@ -53,8 +53,8 @@ excluding Basque Country and Navarre[^1] that have their own independent
 cadastral offices.
 
 [^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
-    provides access to the Cadastre of Navarre, with similar
-    functionalities than **CatastRo**.
+    provides access to the Cadastre of Navarre, with similar functionalities
+    than **CatastRo**.
 
 There are three types of functions, each one querying a different service:
 
@@ -157,10 +157,9 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```

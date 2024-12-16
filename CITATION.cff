@@ -124,7 +124,6 @@ references:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-    affiliation: rOpenSpain
   year: '2024'
   doi: 10.32614/CRAN.package.mapSpain
   version: '>= 0.7.0'

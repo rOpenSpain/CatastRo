@@ -165,7 +165,7 @@ catr_ovc_get_rccoor(
 
 ### Extract geometries using the ATOM service
 
-```{r atom}
+```{r atom, fig.alt="Extracting buildings in Nava de la Asuncion with the ATOM service"}
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 
@@ -185,7 +185,7 @@ ggplot(bu) +
 
 ### Extract geometries using the WFS service
 
-```{r wfs}
+```{r wfs, fig.alt="Extract Leon Cathedral with the WFS service"}
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
   c(-5.569, 42.598, -5.564, 42.601),
   srs = 4326
@@ -195,26 +195,6 @@ wfs_get_buildings <- catr_wfs_get_buildings_bbox(
 ggplot(wfs_get_buildings) +
   geom_sf() +
   ggtitle("Leon Cathedral, Spain")
-```
-
-### Extract maps using the WMS service
-
-```{r wms}
-# For tiles better project
-
-wfs_get_buildings_pr <- sf::st_transform(wfs_get_buildings, 25830)
-
-wms_bu <- catr_wms_get_layer(wfs_get_buildings_pr,
-  srs = 25830,
-  bbox_expand = 0.2
-)
-
-# Map
-# Load tidyterra
-library(tidyterra)
-ggplot() +
-  geom_spatraster_rgb(data = wms_bu) +
-  geom_sf(data = wfs_get_buildings_pr, fill = "red", alpha = 0.6)
 ```
 
 ## A note on caching
