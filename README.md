@@ -202,7 +202,7 @@ it will load it, speeding up the process.
 ## Citation
 
 <p>
-Delgado Panadero Á, Hernangómez D (2024). <em>CatastRo: Interface to the
+Delgado Panadero Á, Hernangómez D (2025). <em>CatastRo: Interface to the
 API Sede Electrónica Del Catastro</em>.
 <a href="https://doi.org/10.32614/CRAN.package.CatastRo">doi:10.32614/CRAN.package.CatastRo</a>,
 <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
@@ -214,7 +214,7 @@ A BibTeX entry for LaTeX users is:
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       doi = {10.32614/CRAN.package.CatastRo},
-      year = {2024},
+      year = {2025},
       version = {0.4.0},
       url = {https://ropenspain.github.io/CatastRo/},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},

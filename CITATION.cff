@@ -37,7 +37,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   doi: 10.32614/CRAN.package.CatastRo
-  year: '2024'
+  year: '2025'
   version: 0.4.0
   url: https://ropenspain.github.io/CatastRo/
   abstract: Access public spatial data available under the INSPIRE directive. Tools
@@ -73,7 +73,7 @@ references:
   institution:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
-  year: '2024'
+  year: '2025'
   version: '>= 3.6'
 - type: software
   title: dplyr
@@ -98,7 +98,7 @@ references:
     given-names: Davis
     email: davis@posit.co
     orcid: https://orcid.org/0000-0003-4777-038X
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.dplyr
 - type: software
   title: httr2
@@ -110,7 +110,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.httr2
   version: '>= 1.0.0'
 - type: software
@@ -124,7 +124,7 @@ references:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.mapSpain
   version: '>= 0.7.0'
 - type: software
@@ -141,7 +141,7 @@ references:
     given-names: Trent
   - family-names: Davis
     given-names: Trevor
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.rappdirs
   version: '>= 0.3.0'
 - type: software
@@ -155,7 +155,7 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.sf
   version: '>= 1.0.0'
 - type: software
@@ -174,7 +174,7 @@ references:
     given-names: others;
   - name: Inc.
   - name: others
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.stringi
 - type: software
   title: terra
@@ -187,7 +187,7 @@ references:
     given-names: Robert J.
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.terra
 - type: software
   title: tibble
@@ -203,7 +203,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.tibble
 - type: software
   title: xml2
@@ -219,7 +219,7 @@ references:
     given-names: Jim
   - family-names: Ooms
     given-names: Jeroen
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.xml2
 - type: software
   title: ggplot2
@@ -259,7 +259,7 @@ references:
     given-names: Teun
     name-particle: van den
     orcid: https://orcid.org/0000-0002-9335-7468
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.ggplot2
 - type: software
   title: knitr
@@ -272,7 +272,7 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.knitr
 - type: software
   title: png
@@ -284,7 +284,7 @@ references:
   - family-names: Urbanek
     given-names: Simon
     email: Simon.Urbanek@r-project.org
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.png
 - type: software
   title: rmarkdown
@@ -328,7 +328,7 @@ references:
     given-names: Richard
     email: rich@posit.co
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.rmarkdown
 - type: software
   title: slippymath
@@ -344,7 +344,7 @@ references:
   - family-names: Sumner
     given-names: Michael
     email: mdsumner@gmail.com
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.slippymath
 - type: software
   title: testthat
@@ -356,7 +356,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.testthat
   version: '>= 3.0.0'
 - type: software
@@ -371,6 +371,6 @@ references:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-  year: '2024'
+  year: '2025'
   doi: 10.32614/CRAN.package.tidyterra
 
