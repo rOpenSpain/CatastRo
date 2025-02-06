@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   CatastRo: CatastRo.html
   ovcservice: ovcservice.html
-last_built: 2025-02-06T15:20Z
+last_built: 2025-02-06T15:28Z
 urls:
   reference: https://ropenspain.github.io/CatastRo/reference
   article: https://ropenspain.github.io/CatastRo/articles
