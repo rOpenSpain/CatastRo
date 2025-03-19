@@ -30,3 +30,4 @@
 ^\./tests/testthat/dev$
 ^Rplots\.pdf$
 ^codecov\.yml$
+^_pkgdown\.yaml$

@@ -301,6 +301,12 @@ specification. Contributions of any kind are welcome!
 </a><br>
 <a href="https://github.com/rOpenSpain/CatastRo/issues?q=is%3Aissue+author%3Ajesbrz">jesbrz</a>
 </td>
+<td align="center">
+<a href="https://github.com/jaimecabota">
+<img src="https://avatars.githubusercontent.com/u/50590456?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/CatastRo/issues?q=is%3Aissue+author%3Ajaimecabota">jaimecabota</a>
+</td>
 </tr>
 </table>
 <!-- markdownlint-enable -->
