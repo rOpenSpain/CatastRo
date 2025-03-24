@@ -77,6 +77,29 @@ Alternatively, you can install the developing version of **CatastRo** with:
 remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 ```
 
+## Known issues
+
+The SSL certificate of the Spanish Cadastre present some issues that may cause
+an error when using **CatastRo** (specially on Mac OS, see issue
+[#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
+
+```{r,eval=FALSE}
+#> ...(more lines on error)
+#>
+#> 1: In download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb") :
+#>   URL 'https://www.catastro.minhafp.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml':
+#>   status was 'SSL peer certificate or SSH remote key was not OK'
+#>
+#> ...
+```
+
+You can try to fix it by running this line on your session right after you start
+using the package:
+
+```{r,eval=FALSE}
+options(download.file.method = "curl", download.file.extra = "-k -L")
+```
+
 ## Package API
 
 The functions of **CatastRo** are organized by API endpoint. The package naming
@@ -230,8 +253,6 @@ code](https://github.com/ropenspain/CatastRo/).
 ## Contributors
 
 
-
-
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -254,6 +275,12 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/CatastRo/commits?author=dieghernan">dieghernan</a>
+</td>
+<td align="center">
+<a href="https://github.com/ImgBotApp">
+<img src="https://avatars.githubusercontent.com/u/31427850?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/CatastRo/commits?author=ImgBotApp">ImgBotApp</a>
 </td>
 <td align="center">
 <a href="https://github.com/Enchufa2">
@@ -320,6 +347,4 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-
 

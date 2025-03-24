@@ -1,3 +1,7 @@
+# CatastRo 0.4.1
+
+-   Update documentation and urls.
+
 # CatastRo 0.4.0
 
 -   Update entry points (#53).

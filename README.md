@@ -54,6 +54,29 @@ with:
 remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 ```
 
+## Known issues
+
+The SSL certificate of the Spanish Cadastre present some issues that may
+cause an error when using **CatastRo** (specially on Mac OS, see issue
+[\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
+
+``` r
+#> ...(more lines on error)
+#>
+#> 1: In download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb") :
+#>   URL 'https://www.catastro.minhafp.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml':
+#>   status was 'SSL peer certificate or SSH remote key was not OK'
+#>
+#> ...
+```
+
+You can try to fix it by running this line on your session right after
+you start using the package:
+
+``` r
+options(download.file.method = "curl", download.file.extra = "-k -L")
+```
+
 ## Package API
 
 The functions of **CatastRo** are organized by API endpoint. The package
@@ -215,7 +238,7 @@ A BibTeX entry for LaTeX users is:
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       doi = {10.32614/CRAN.package.CatastRo},
       year = {2025},
-      version = {0.4.0},
+      version = {0.4.1},
       url = {https://ropenspain.github.io/CatastRo/},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
     }
@@ -251,6 +274,12 @@ specification. Contributions of any kind are welcome!
 <img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/CatastRo/commits?author=dieghernan">dieghernan</a>
+</td>
+<td align="center">
+<a href="https://github.com/ImgBotApp">
+<img src="https://avatars.githubusercontent.com/u/31427850?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/CatastRo/commits?author=ImgBotApp">ImgBotApp</a>
 </td>
 <td align="center">
 <a href="https://github.com/Enchufa2">
