@@ -36,7 +36,7 @@
   <a class="navbar-brand me-2" href="index.html">
     <img src="apple-touch-icon-180x180.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -94,6 +94,22 @@
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="known-issues">Known issues<a class="anchor" aria-label="anchor" href="#known-issues"></a>
+</h2>
+<p>The SSL certificate of the Spanish Cadastre present some issues that may cause an error when using <strong>CatastRo</strong> (specially on Mac OS, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>):</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#&gt; ...(more lines on error)</span></span>
+<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; 1: In download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb") :</span></span>
+<span><span class="co">#&gt;   URL 'https://www.catastro.minhafp.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml':</span></span>
+<span><span class="co">#&gt;   status was 'SSL peer certificate or SSH remote key was not OK'</span></span>
+<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; ...</span></span></code></pre></div>
+<p>You can try to fix it by running this line on your session right after you start using the package:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>download.file.method <span class="op">=</span> <span class="st">"curl"</span>, download.file.extra <span class="op">=</span> <span class="st">"-k -L"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
 </h2>
 <p>The functions of <strong>CatastRo</strong> are organized by API endpoint. The package naming convention is <code>catr_*api*_*description*</code>.</p>
@@ -141,7 +157,7 @@
 <div class="section level3">
 <h3 id="geocode-a-cadastral-reference">Geocode a cadastral reference<a class="anchor" aria-label="anchor" href="#geocode-a-cadastral-reference"></a>
 </h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span></span>
@@ -153,7 +169,7 @@
 <div class="section level3">
 <h3 id="extract-a-cadastral-reference-from-a-given-set-of-coordinates">Extract a cadastral reference from a given set of coordinates<a class="anchor" aria-label="anchor" href="#extract-a-cadastral-reference-from-a-given-set-of-coordinates"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor</a></span><span class="op">(</span></span>
 <span>  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,</span>
 <span>  lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,</span>
@@ -167,7 +183,7 @@
 <div class="section level3">
 <h3 id="extract-geometries-using-the-atom-service">Extract geometries using the ATOM service<a class="anchor" aria-label="anchor" href="#extract-geometries-using-the-atom-service"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="st">"Nava de la Asuncion"</span>, to <span class="op">=</span> <span class="st">"Segovia"</span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -188,7 +204,7 @@
 <div class="section level3">
 <h3 id="extract-geometries-using-the-wfs-service">Extract geometries using the WFS service<a class="anchor" aria-label="anchor" href="#extract-geometries-using-the-wfs-service"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wfs_get_buildings</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5.569</span>, <span class="fl">42.598</span>, <span class="op">-</span><span class="fl">5.564</span>, <span class="fl">42.601</span><span class="op">)</span>,</span>
 <span>  srs <span class="op">=</span> <span class="fl">4326</span></span>
@@ -205,7 +221,7 @@
 <h2 id="a-note-on-caching">A note on caching<a class="anchor" aria-label="anchor" href="#a-note-on-caching"></a>
 </h2>
 <p>Some data sets and tiles may have a size larger than 50MB. You can use <strong>CatastRo</strong> to create your own local repository at a given local directory passing the following option:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/catr_set_cache_dir.html">catr_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
 <p>When this option is set, <strong>CatastRo</strong> would look for the cached file and it will load it, speeding up the process.</p>
 </div>
@@ -216,15 +232,15 @@
 Delgado Panadero Á, Hernangómez D (2025). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. <a href="https://doi.org/10.32614/CRAN.package.CatastRo" class="external-link">doi:10.32614/CRAN.package.CatastRo</a>, <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
 </p>
 <p>A BibTeX entry for LaTeX users is:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>CatastRo,</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.CatastRo},</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2025</span>},</span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="fl">4.0</span>},</span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Access public spatial data available under the INSPIRE directive. Tools <span class="cf">for</span> downloading references and addresses of properties, as well as map images.},</span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>CatastRo,</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.CatastRo},</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2025</span>},</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="fl">4.1</span>},</span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Access public spatial data available under the INSPIRE directive. Tools <span class="cf">for</span> downloading references and addresses of properties, as well as map images.},</span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
@@ -247,6 +263,9 @@ Delgado Panadero Á, Hernangómez D (2025). <em>CatastRo: Interface to the API S
 </td>
 <td align="center">
 <a href="https://github.com/dieghernan" class="external-link"> <img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""></a><br><a href="https://github.com/rOpenSpain/CatastRo/commits?author=dieghernan" class="external-link">dieghernan</a>
+</td>
+<td align="center">
+<a href="https://github.com/ImgBotApp" class="external-link"> <img src="https://avatars.githubusercontent.com/u/31427850?v=4" width="100px;" class="allctb-avatar" alt=""></a><br><a href="https://github.com/rOpenSpain/CatastRo/commits?author=ImgBotApp" class="external-link">ImgBotApp</a>
 </td>
 <td align="center">
 <a href="https://github.com/Enchufa2" class="external-link"> <img src="https://avatars.githubusercontent.com/u/4542928?v=4" width="100px;" class="allctb-avatar" alt=""></a><br><a href="https://github.com/rOpenSpain/CatastRo/commits?author=Enchufa2" class="external-link">Enchufa2</a>
