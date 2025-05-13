@@ -276,12 +276,6 @@ specification. Contributions of any kind are welcome!
 <a href="https://github.com/rOpenSpain/CatastRo/commits?author=dieghernan">dieghernan</a>
 </td>
 <td align="center">
-<a href="https://github.com/ImgBotApp">
-<img src="https://avatars.githubusercontent.com/u/31427850?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenSpain/CatastRo/commits?author=ImgBotApp">ImgBotApp</a>
-</td>
-<td align="center">
 <a href="https://github.com/Enchufa2">
 <img src="https://avatars.githubusercontent.com/u/4542928?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
@@ -290,7 +284,7 @@ specification. Contributions of any kind are welcome!
 </tr>
 </table>
 
-### Issues
+### Issue Authors
 
 <table class="table allctb-table">
 <tr>
@@ -335,6 +329,25 @@ specification. Contributions of any kind are welcome!
 <img src="https://avatars.githubusercontent.com/u/50590456?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenSpain/CatastRo/issues?q=is%3Aissue+author%3Ajaimecabota">jaimecabota</a>
+</td>
+<td align="center">
+<a href="https://github.com/lcoelho2">
+<img src="https://avatars.githubusercontent.com/u/12700694?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/CatastRo/issues?q=is%3Aissue+author%3Alcoelho2">lcoelho2</a>
+</td>
+</tr>
+</table>
+
+### Issue Contributors
+
+<table class="table allctb-table">
+<tr>
+<td align="center">
+<a href="https://github.com/fgoerlich">
+<img src="https://avatars.githubusercontent.com/u/6486324?u=e04fd58f9dcc4c4e092895594eb70d7b5960b50b&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenSpain/CatastRo/issues?q=is%3Aissue+commenter%3Afgoerlich">fgoerlich</a>
 </td>
 </tr>
 </table>

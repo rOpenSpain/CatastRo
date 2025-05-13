@@ -167,13 +167,8 @@ references:
   authors:
   - family-names: Gagolewski
     given-names: Marek
+    email: marek@gagolewski.com
     orcid: https://orcid.org/0000-0003-0637-6028
-  - family-names: Tartanus
-    given-names: Bartek
-  - family-names: Unicode
-    given-names: others;
-  - name: Inc.
-  - name: others
   year: '2025'
   doi: 10.32614/CRAN.package.stringi
 - type: software
