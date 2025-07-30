@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.0 (2025-04-11 ucrt)",
+  "runtimePlatform": "R version 4.5.1 (2025-06-13 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -273,7 +273,7 @@
   },
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["catastro", "cran", "cran-r", "gis", "maps", "r", "r-package", "ropenspain", "rstats", "spain", "spatial", "static-tiles"],
-  "fileSize": "1384.757KB",
+  "fileSize": "1384.76KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -297,7 +297,7 @@
       "sameAs": "https://doi.org/10.32614/CRAN.package.CatastRo"
     }
   ],
-  "releaseNotes": "https://github.com/rOpenSpain/CatastRo/blob/master/NEWS.md",
+  "releaseNotes": "https://github.com/rOpenSpain/CatastRo/blob/main/NEWS.md",
   "readme": "https://github.com/rOpenSpain/CatastRo/blob/main/README.md",
   "contIntegration": ["https://github.com/rOpenSpain/CatastRo/actions/workflows/roscron-check-standard.yaml", "https://github.com/rOpenSpain/CatastRo/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/rOpenSpain/CatastRo"],
   "developmentStatus": "https://www.repostatus.org/#active"
