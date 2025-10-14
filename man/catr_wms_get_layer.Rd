@@ -113,7 +113,7 @@ for more information.
 }
 
 \examples{
-\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") withAutoprint(\{ # examplesIf}
 \donttest{
 
 # With a bbox

@@ -89,7 +89,6 @@ test_that("BBOX Check projections", {
   )
 
 
-
   expect_true(sf::st_crs(obj) == sf::st_crs(25829))
 
 

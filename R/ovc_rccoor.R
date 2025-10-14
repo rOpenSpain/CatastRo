@@ -92,7 +92,6 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
   err <- content_list[["consulta_coordenadas"]]
 
 
-
   if (("lerr" %in% names(err))) {
     df <- tibble::as_tibble_row(unlist(err["lerr"]))
 

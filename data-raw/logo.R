@@ -56,7 +56,6 @@ p <- ggplot(finalpols) +
   theme_void()
 
 
-
 p
 
 

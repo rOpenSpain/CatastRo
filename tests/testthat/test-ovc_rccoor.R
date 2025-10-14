@@ -9,7 +9,6 @@ test_that("Expect error on bad SRS", {
 })
 
 
-
 test_that("return data.frame given SRS", {
   skip_on_cran()
   skip_if_offline()

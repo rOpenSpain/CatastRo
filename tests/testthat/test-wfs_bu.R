@@ -94,7 +94,6 @@ test_that("BBOX Check projections", {
   # Convert to spatial object
 
 
-
   bbox <- get_sf_from_bbox(
     c(760926, 4019259, 761155, 4019366),
     25829

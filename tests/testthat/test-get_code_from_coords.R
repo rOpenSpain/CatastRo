@@ -18,7 +18,6 @@ test_that("Check", {
   )
 
 
-
   # Try with sf
 
   m <- mapSpain::esp_get_capimun(munic = "Nieva")

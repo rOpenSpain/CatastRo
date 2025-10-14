@@ -111,7 +111,6 @@ catr_ovc_get_cpmrc <- function(rc,
   err <- content_list[["consulta_coordenadas"]]
 
 
-
   if (("lerr" %in% names(err))) {
     df <- tibble::as_tibble_row(unlist(err["lerr"]))
 

@@ -84,7 +84,7 @@ elements.
 }
 
 \examples{
-\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") withAutoprint(\{ # examplesIf}
 \donttest{
 ad <- catr_wfs_get_address_bbox(
   c(

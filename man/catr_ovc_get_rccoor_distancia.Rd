@@ -46,7 +46,7 @@ Statistics Institute).
 }
 }
 \examples{
-\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") withAutoprint(\{ # examplesIf}
 \donttest{
 catr_ovc_get_rccoor_distancia(
   lat = 40.963200,

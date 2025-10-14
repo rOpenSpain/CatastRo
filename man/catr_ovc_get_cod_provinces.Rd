@@ -20,7 +20,7 @@ Implementation of the OVCCallejero service
 Return a list of the provinces included on the Spanish Cadastre.
 }
 \examples{
-\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") withAutoprint(\{ # examplesIf}
 \donttest{
 
 catr_ovc_get_cod_provinces()

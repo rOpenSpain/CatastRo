@@ -93,7 +93,7 @@ The API service is limited to the following constrains:
 }
 
 \examples{
-\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") withAutoprint(\{ # examplesIf}
 \donttest{
 cp <- catr_wfs_get_parcels_bbox(
   c(
