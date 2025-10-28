@@ -40,11 +40,20 @@
 #' prov <- mapSpain::esp_get_prov("Caceres")
 #' catr_get_code_from_coords(prov)
 #' }
-catr_get_code_from_coords <- function(x, srs, verbose = FALSE,
-                                      cache_dir = NULL, ...) {
+catr_get_code_from_coords <- function(
+  x,
+  srs,
+  verbose = FALSE,
+  cache_dir = NULL,
+  ...
+) {
   if (!(inherits(x, "sf") || inherits(x, "sfc"))) {
-    if (length(x) != 2) stop("Length of x should be 2")
-    if (missing(srs)) stop("When providing coords, provide also the srs/crs")
+    if (length(x) != 2) {
+      stop("Length of x should be 2")
+    }
+    if (missing(srs)) {
+      stop("When providing coords, provide also the srs/crs")
+    }
 
     x <- sf::st_point(x)
     x <- sf::st_sfc(x)
@@ -73,7 +82,6 @@ catr_get_code_from_coords <- function(x, srs, verbose = FALSE,
   )
   mun <- sf::st_transform(mun, sf::st_crs(x))
 
-
   aa <- sf::st_intersects(mun, x, sparse = FALSE)
 
   if (!any(as.vector(aa))) {
@@ -82,7 +90,6 @@ catr_get_code_from_coords <- function(x, srs, verbose = FALSE,
   }
 
   getcode <- mun[as.vector(aa), ]
-
 
   res <- catr_ovc_get_cod_munic(getcode$cpro, cmun_ine = getcode$cmun)
 

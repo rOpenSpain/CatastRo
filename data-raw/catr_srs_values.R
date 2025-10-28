@@ -29,8 +29,20 @@ catr_srs_values <- catr_srs_values %>% arrange((SRS))
 # Add column for OVC services
 
 ovc_codes <- c(
-  4230, 4326, 4258, 32627, 32628, 32629, 32630,
-  32631, 25829, 25830, 25831, 23029, 23030, 23031
+  4230,
+  4326,
+  4258,
+  32627,
+  32628,
+  32629,
+  32630,
+  32631,
+  25829,
+  25830,
+  25831,
+  23029,
+  23030,
+  23031
 )
 
 catr_srs_values <- catr_srs_values %>%
@@ -38,8 +50,13 @@ catr_srs_values <- catr_srs_values %>%
 
 # Add column for WFS services
 wfs_codes <- c(
-  4326, 4258, 25829, 25830, 25831,
-  3785, 3857
+  4326,
+  4258,
+  25829,
+  25830,
+  25831,
+  3785,
+  3857
 )
 
 catr_srs_values <- catr_srs_values %>%

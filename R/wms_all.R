@@ -111,19 +111,26 @@
 #'   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
 #'   geom_spatraster_rgb(data = parcels_img)
 #' }
-catr_wms_get_layer <- function(x,
-                               srs,
-                               what = c(
-                                 "building", "buildingpart", "parcel",
-                                 "zoning", "address", "admboundary", "admunit"
-                               ),
-                               styles = "default",
-                               update_cache = FALSE,
-                               cache_dir = NULL,
-                               verbose = FALSE,
-                               crop = FALSE,
-                               options = NULL,
-                               ...) {
+catr_wms_get_layer <- function(
+  x,
+  srs,
+  what = c(
+    "building",
+    "buildingpart",
+    "parcel",
+    "zoning",
+    "address",
+    "admboundary",
+    "admunit"
+  ),
+  styles = "default",
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  crop = FALSE,
+  options = NULL,
+  ...
+) {
   bbox_res <- get_sf_from_bbox(x, srs)
   cache_dir <- catr_hlp_cachedir(cache_dir)
 
@@ -176,7 +183,6 @@ catr_wms_get_layer <- function(x,
     names(finalopts) <- newnames
   }
 
-
   # Query
 
   out <- mapSpain::esp_getTiles(
@@ -188,7 +194,6 @@ catr_wms_get_layer <- function(x,
     options = finalopts,
     ...
   )
-
 
   if (crop) {
     out <- terra::crop(out, bbox_res)

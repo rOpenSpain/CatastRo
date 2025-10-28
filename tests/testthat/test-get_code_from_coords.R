@@ -11,12 +11,9 @@ test_that("Check", {
     catr_get_code_from_coords(c(0, 0), srs = 4326)
   )
   expect_s3_class(
-    catr_get_code_from_coords(c(-16.25462, 28.46824),
-      srs = 4326
-    ),
+    catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326),
     "tbl"
   )
-
 
   # Try with sf
 

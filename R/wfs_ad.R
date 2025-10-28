@@ -78,8 +78,13 @@ catr_wfs_get_address_bbox <- function(x, srs, verbose = FALSE) {
 #'
 #' @rdname catr_wfs_get_address
 #' @export
-catr_wfs_get_address_codvia <- function(codvia, del, mun, srs = NULL,
-                                        verbose = FALSE) {
+catr_wfs_get_address_codvia <- function(
+  codvia,
+  del,
+  mun,
+  srs = NULL,
+  verbose = FALSE
+) {
   res <- wfs_api_query(
     entry = "wfsAD.aspx?",
     verbose = verbose,
@@ -149,8 +154,11 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #' ggplot(ad) +
 #'   geom_sf()
 #' }
-catr_wfs_get_address_postalcode <- function(postalcode, srs = NULL,
-                                            verbose = FALSE) {
+catr_wfs_get_address_postalcode <- function(
+  postalcode,
+  srs = NULL,
+  verbose = FALSE
+) {
   res <- wfs_api_query(
     entry = "wfsAD.aspx?",
     verbose = verbose,

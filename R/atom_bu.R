@@ -42,17 +42,22 @@
 #'   )
 #' }
 #'
-catr_atom_get_buildings <- function(munic, to = NULL,
-                                    what = c(
-                                      "building", "buildingpart",
-                                      "other"
-                                    ),
-                                    cache = TRUE, update_cache = FALSE,
-                                    cache_dir = NULL, verbose = FALSE) {
+catr_atom_get_buildings <- function(
+  munic,
+  to = NULL,
+  what = c(
+    "building",
+    "buildingpart",
+    "other"
+  ),
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   # Sanity checks
 
   what <- match.arg(what)
-
 
   # Transform
   what <- switch(what,
@@ -84,7 +89,10 @@ catr_atom_get_buildings <- function(munic, to = NULL,
 
   if (is.na(findmunic)) {
     message(
-      "No Municipality found for ", munic, " ", to,
+      "No Municipality found for ",
+      munic,
+      " ",
+      to,
       ". Check available municipalities with ",
       "catr_atom_get_buildings_db_all()"
     )
@@ -95,7 +103,9 @@ catr_atom_get_buildings <- function(munic, to = NULL,
   if (verbose) {
     message(
       "Selecting ",
-      m$munic, ", ", m$territorial_office
+      m$munic,
+      ", ",
+      m$territorial_office
     )
   }
 
@@ -116,10 +126,13 @@ catr_atom_get_buildings <- function(munic, to = NULL,
 
   filename <- basename(api_entry)
 
-
   path <- catr_hlp_dwnload(
-    api_entry, filename, cache_dir,
-    verbose, update_cache, cache
+    api_entry,
+    filename,
+    cache_dir,
+    verbose,
+    update_cache,
+    cache
   )
 
   # To a new directory
@@ -127,9 +140,10 @@ catr_atom_get_buildings <- function(munic, to = NULL,
   cache_dir <- catr_hlp_cachedir(cache_dir)
   exdir <- file.path(cache_dir, gsub(".zip$", "", filename))
 
-  if (!dir.exists(exdir)) dir.create(exdir, recursive = TRUE)
+  if (!dir.exists(exdir)) {
+    dir.create(exdir, recursive = TRUE)
+  }
   unzip(path, exdir = exdir, junkpaths = TRUE, overwrite = TRUE)
-
 
   # Guess what to read
   files <- list.files(exdir, full.names = TRUE, pattern = ".gml$")

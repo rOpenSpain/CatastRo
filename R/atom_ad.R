@@ -39,12 +39,14 @@
 #'   )
 #' }
 #'
-catr_atom_get_address <- function(munic,
-                                  to = NULL,
-                                  cache = TRUE,
-                                  update_cache = FALSE,
-                                  cache_dir = NULL,
-                                  verbose = FALSE) {
+catr_atom_get_address <- function(
+  munic,
+  to = NULL,
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   all <- catr_atom_get_address_db_all(
     cache = cache,
     update_cache = update_cache,
@@ -68,7 +70,10 @@ catr_atom_get_address <- function(munic,
 
   if (is.na(findmunic)) {
     message(
-      "No Municipality found for ", munic, " ", to,
+      "No Municipality found for ",
+      munic,
+      " ",
+      to,
       ". Check available municipalities with catr_atom_get_address_db_all()"
     )
     return(invisible(NA))
@@ -78,7 +83,9 @@ catr_atom_get_address <- function(munic,
   if (verbose) {
     message(
       "Selecting ",
-      m$munic, ", ", m$territorial_office
+      m$munic,
+      ", ",
+      m$territorial_office
     )
   }
 
@@ -99,10 +106,13 @@ catr_atom_get_address <- function(munic,
 
   filename <- basename(api_entry)
 
-
   path <- catr_hlp_dwnload(
-    api_entry, filename, cache_dir,
-    verbose, update_cache, cache
+    api_entry,
+    filename,
+    cache_dir,
+    verbose,
+    update_cache,
+    cache
   )
 
   # To a new directory
@@ -113,9 +123,10 @@ catr_atom_get_address <- function(munic,
     gsub(".zip$", "", filename)
   )
 
-  if (!dir.exists(exdir)) dir.create(exdir, recursive = TRUE)
+  if (!dir.exists(exdir)) {
+    dir.create(exdir, recursive = TRUE)
+  }
   unzip(path, exdir = exdir, junkpaths = TRUE, overwrite = TRUE)
-
 
   # Guess what to read
   files <- list.files(exdir, full.names = TRUE, pattern = ".gml$")[1]
@@ -125,9 +136,12 @@ catr_atom_get_address <- function(munic,
   # See if we can add street names
   whatlay <- sf::st_layers(files)
   if ("ThoroughfareName" %in% whatlay$name) {
-    if (verbose) message("Adding ThoroughfareName to Address")
+    if (verbose) {
+      message("Adding ThoroughfareName to Address")
+    }
 
-    str_names <- st_read_layers_encoding(files,
+    str_names <- st_read_layers_encoding(
+      files,
       verbose = FALSE,
       layer = "ThoroughfareName"
     )
@@ -140,12 +154,15 @@ catr_atom_get_address <- function(munic,
     sfobj$tfname_gml_id <- vapply(
       sfobj$gml_id,
       FUN = function(x) {
-        ids <- paste0(unlist(strsplit(x, ".", fixed = TRUE))[seq(1, 6)],
+        ids <- paste0(
+          unlist(strsplit(x, ".", fixed = TRUE))[seq(1, 6)],
           collapse = "."
         )
         ids <- gsub("AD", "TN", ids)
         ids
-      }, FUN.VALUE = character(1), USE.NAMES = FALSE
+      },
+      FUN.VALUE = character(1),
+      USE.NAMES = FALSE
     )
 
     sfobj <- dplyr::left_join(sfobj, str_names, by = "tfname_gml_id")

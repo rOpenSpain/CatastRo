@@ -3,7 +3,8 @@ test_that("Expect error on bad SRS", {
   skip_if_offline()
 
   expect_error(catr_ovc_get_rccoor_distancia(
-    lat = 40.963200, lon = -5.671420,
+    lat = 40.963200,
+    lon = -5.671420,
     "abcd"
   ))
 })
@@ -16,7 +17,8 @@ test_that("return tibble given SRS", {
 
   result <- catr_ovc_get_rccoor_distancia(
     lat = 40.963200,
-    lon = -5.671420, "4326"
+    lon = -5.671420,
+    "4326"
   )
   expect_s3_class(result, "tbl")
   expect_true(is.numeric(result$geo.xcen))
@@ -53,7 +55,8 @@ test_that("check fields given SRS", {
 
   result <- catr_ovc_get_rccoor_distancia(
     lat = 40.963200,
-    lon = -5.671420, 4230
+    lon = -5.671420,
+    4230
   )
   expect_true(all(
     is.character(result$address),
@@ -82,6 +85,7 @@ test_that("Expect message", {
 
   expect_message(catr_ovc_get_rccoor_distancia(
     lat = 40.963200,
-    lon = -5.671420, verbose = TRUE
+    lon = -5.671420,
+    verbose = TRUE
   ))
 })

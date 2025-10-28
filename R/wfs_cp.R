@@ -43,13 +43,16 @@
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export
-catr_wfs_get_parcels_bbox <- function(x, what = "parcel", srs,
-                                      verbose = FALSE) {
+catr_wfs_get_parcels_bbox <- function(
+  x,
+  what = "parcel",
+  srs,
+  verbose = FALSE
+) {
   # Sanity checks
   if (!(what %in% c("parcel", "zoning"))) {
     stop("'what' should be 'parcel' or 'zoning'")
   }
-
 
   # Switch to stored queries
   stored_query <- switch(what,
@@ -179,8 +182,11 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #' ggplot(cp) +
 #'   geom_sf()
 #' }
-catr_wfs_get_parcels_parcel_zoning <- function(cod_zona, srs = NULL,
-                                               verbose = FALSE) {
+catr_wfs_get_parcels_parcel_zoning <- function(
+  cod_zona,
+  srs = NULL,
+  verbose = FALSE
+) {
   res <- wfs_api_query(
     entry = "wfsCP.aspx?",
     verbose = verbose,

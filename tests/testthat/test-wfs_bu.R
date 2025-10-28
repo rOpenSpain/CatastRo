@@ -41,9 +41,7 @@ test_that("BU Part Check", {
   skip_on_os("linux")
   skip_if_offline()
 
-  obj <- catr_wfs_get_buildings_rc("9398516VK3799G",
-    what = "buildingpart"
-  )
+  obj <- catr_wfs_get_buildings_rc("9398516VK3799G", what = "buildingpart")
   expect_true(nrow(obj) > 1)
   expect_s3_class(obj, "sf")
 })
@@ -54,9 +52,7 @@ test_that("BU Other Check", {
   skip_on_os("linux")
   skip_if_offline()
 
-  obj <- catr_wfs_get_buildings_rc("9398516VK3799G",
-    what = "other"
-  )
+  obj <- catr_wfs_get_buildings_rc("9398516VK3799G", what = "other")
   expect_s3_class(obj, "sf")
 })
 
@@ -76,23 +72,23 @@ test_that("BBOX Check projections", {
   skip_on_os("linux")
   skip_if_offline()
 
-  expect_error(catr_wfs_get_buildings_bbox(c(760926, 4019259, 761155, 4019366),
+  expect_error(catr_wfs_get_buildings_bbox(
+    c(760926, 4019259, 761155, 4019366),
     what = 25829
   ))
 
-  obj <- catr_wfs_get_buildings_bbox(c(760926, 4019259, 761155, 4019366),
+  obj <- catr_wfs_get_buildings_bbox(
+    c(760926, 4019259, 761155, 4019366),
     srs = 25829
   )
 
   expect_true(sf::st_crs(obj) == sf::st_crs(25829))
-
 
   # test conversion
   testconv <- get_sf_from_bbox(obj[1, ])
   expect_identical(obj[1, ], testconv)
 
   # Convert to spatial object
-
 
   bbox <- get_sf_from_bbox(
     c(760926, 4019259, 761155, 4019366),

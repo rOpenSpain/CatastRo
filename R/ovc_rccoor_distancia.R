@@ -49,8 +49,12 @@
 #'   srs = 4326
 #' )
 #' }
-catr_ovc_get_rccoor_distancia <- function(lat, lon, srs = 4326,
-                                          verbose = FALSE) {
+catr_ovc_get_rccoor_distancia <- function(
+  lat,
+  lon,
+  srs = 4326,
+  verbose = FALSE
+) {
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values
   valid_srs <- tibble::as_tibble(valid_srs)
@@ -100,7 +104,9 @@ catr_ovc_get_rccoor_distancia <- function(lat, lon, srs = 4326,
   content <- httr2::resp_body_xml(api_res)
   content_list <- xml2::as_list(content)
   # nolint start
-  res <- content_list[["consulta_coordenadas_distancias"]][["coordenadas_distancias"]][["coordd"]]
+  res <- content_list[["consulta_coordenadas_distancias"]][[
+    "coordenadas_distancias"
+  ]][["coordd"]]
   # nolint end
 
   # Get overall info of the query
@@ -126,7 +132,6 @@ catr_ovc_get_rccoor_distancia <- function(lat, lon, srs = 4326,
     address = rc_all$ldt,
     cmun_ine = paste0(rc_all$dt.loine.cp, rc_all$dt.loine.cm)
   )
-
 
   # Join all
 

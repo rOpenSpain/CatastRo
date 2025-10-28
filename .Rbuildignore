@@ -31,3 +31,5 @@
 ^Rplots\.pdf$
 ^codecov\.yml$
 ^_pkgdown\.yaml$
+^[.]?air[.]toml$
+^\.vscode$

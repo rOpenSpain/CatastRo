@@ -33,10 +33,7 @@ st_read_layers_encoding <- function(path, verbose, layer = NULL) {
   }
 
   out <- try(
-    sf::st_read(path,
-      layer = layer,
-      quiet = !verbose
-    ),
+    sf::st_read(path, layer = layer, quiet = !verbose),
     silent = TRUE
   )
 

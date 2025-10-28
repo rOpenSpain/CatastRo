@@ -10,22 +10,17 @@ test_that("Test search", {
 
   expect_gt(nrow(a), nrow(b))
 
-
   # Try with no result
 
   c <- catr_atom_search_munic("XXX")
   expect_true(is.na(c))
 
   expect_message(
-    catr_atom_search_munic("Melque",
-      to = "XXX",
-      verbose = TRUE
-    ), "Ignoring 'to' parameter. No results for XXX"
+    catr_atom_search_munic("Melque", to = "XXX", verbose = TRUE),
+    "Ignoring 'to' parameter. No results for XXX"
   )
 
-  d <- catr_atom_search_munic("Mel",
-    to = "XXX"
-  )
+  d <- catr_atom_search_munic("Mel", to = "XXX")
 
   expect_gt(nrow(d), 5)
 

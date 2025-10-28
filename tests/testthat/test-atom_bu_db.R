@@ -26,7 +26,8 @@ test_that("Test atom bu", {
   ))
   expect_message(
     catr_atom_get_buildings_db_to(
-      to = "Melilla", verbose = TRUE,
+      to = "Melilla",
+      verbose = TRUE,
       cache_dir = tempdir()
     )
   )

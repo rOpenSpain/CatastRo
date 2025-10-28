@@ -51,8 +51,12 @@
 #' }
 #'
 #' @export
-catr_set_cache_dir <- function(cache_dir = NULL, overwrite = FALSE,
-                               install = FALSE, verbose = TRUE) {
+catr_set_cache_dir <- function(
+  cache_dir = NULL,
+  overwrite = FALSE,
+  install = FALSE,
+  verbose = TRUE
+) {
   # Default if not provided
   if (any(is.null(cache_dir), cache_dir == "")) {
     if (verbose) {
@@ -68,7 +72,6 @@ catr_set_cache_dir <- function(cache_dir = NULL, overwrite = FALSE,
   } else {
     is_temp <- FALSE
   }
-
 
   # Validate
   stopifnot(
@@ -91,7 +94,6 @@ catr_set_cache_dir <- function(cache_dir = NULL, overwrite = FALSE,
       cache_dir
     )
   }
-
 
   # Install path on environ var.
 
@@ -179,11 +181,13 @@ catr_hlp_detect_cache_dir <- function() {
       cached_path <- readLines(cache_config)
 
       # Case on empty cached path - would default
-      if (any(
-        is.null(cached_path),
-        is.na(cached_path),
-        cached_path == ""
-      )) {
+      if (
+        any(
+          is.null(cached_path),
+          is.na(cached_path),
+          cached_path == ""
+        )
+      ) {
         cache_dir <- catr_set_cache_dir(overwrite = TRUE, verbose = FALSE)
         return(cache_dir)
       }

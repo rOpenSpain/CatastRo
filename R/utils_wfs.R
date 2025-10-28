@@ -9,7 +9,6 @@ catr_wfs_get_buildingsild_url <- function(
   # Adjust params
   q <- paste0(names(params), "=", params, collapse = "&")
 
-
   # Full url
   full_url <- paste0(host, entry, q)
 
@@ -40,7 +39,8 @@ catr_wfs_check <- function(path) {
 #'
 #' @noRd
 wfs_api_query <- function(
-  entry, ...,
+  entry,
+  ...,
   verbose = TRUE
 ) {
   arguments <- list(...)
@@ -61,14 +61,15 @@ wfs_api_query <- function(
     params = arguments
   )
 
-
   # Filename
   filename <- paste0(basename(tempfile()), ".gml")
 
   path <- catr_hlp_dwnload(
-    api_entry, filename,
+    api_entry,
+    filename,
     cache_dir = tempdir(),
-    verbose = verbose, update_cache = FALSE,
+    verbose = verbose,
+    update_cache = FALSE,
     cache = TRUE
   )
 
@@ -170,7 +171,9 @@ get_sf_from_bbox <- function(bbox, srs) {
     stop("bbox should be a vector of 4 numbers.", call. = FALSE)
   }
 
-  if (missing(srs)) stop("Please provide a srs value", call. = FALSE)
+  if (missing(srs)) {
+    stop("Please provide a srs value", call. = FALSE)
+  }
 
   # Create template for a spatial bbox
   template_sf <- sf::st_sfc(sf::st_point(c(0, 0)))
@@ -190,9 +193,7 @@ get_sf_from_bbox <- function(bbox, srs) {
 message_on_limit <- function(bbox_res, limit_km2) {
   bbox_num <- as.double(unlist(strsplit(bbox_res$bbox, ",")))
 
-  spat <- get_sf_from_bbox(bbox_num,
-    srs = bbox_res$incrs
-  )
+  spat <- get_sf_from_bbox(bbox_num, srs = bbox_res$incrs)
 
   # To EPSG:3857 for meters
   spat <- sf::st_transform(spat, 3857)
@@ -204,7 +205,8 @@ message_on_limit <- function(bbox_res, limit_km2) {
 
   if (area > limit_km2) {
     message(
-      "Bbox area is aprox ", round(area, 1),
+      "Bbox area is aprox ",
+      round(area, 1),
       "km2. Limit of this service is ",
       limit_km2,
       "km2. The query may fail."

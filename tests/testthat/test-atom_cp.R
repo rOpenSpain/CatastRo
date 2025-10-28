@@ -5,17 +5,16 @@ test_that("ATOM Cadastral Parcels", {
   expect_message(catr_atom_get_parcels("xyxghx"))
   expect_error(catr_atom_get_parcels("Melque", what = "aa"))
 
-  s <- catr_atom_get_parcels("Melque",
-    to = "Segovia",
-    verbose = TRUE
-  )
+  s <- catr_atom_get_parcels("Melque", to = "Segovia", verbose = TRUE)
   expect_s3_class(s, "sf")
   expect_message(
-    catr_atom_get_parcels("Melque",
+    catr_atom_get_parcels(
+      "Melque",
       to = "XXX",
       what = "zoning",
       verbose = TRUE
-    ), "Ignoring 'to' parameter. No results for XXX"
+    ),
+    "Ignoring 'to' parameter. No results for XXX"
   )
   expect_s3_class(s, "sf")
 })

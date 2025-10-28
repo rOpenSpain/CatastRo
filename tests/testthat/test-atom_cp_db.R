@@ -22,7 +22,8 @@ test_that("Test atom cp", {
   ))
 
   expect_message(catr_atom_get_parcels_db_to(
-    to = "Melilla", verbose = TRUE,
+    to = "Melilla",
+    verbose = TRUE,
     cache_dir = tempdir()
   ))
 

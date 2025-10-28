@@ -18,7 +18,8 @@ test_that("Test atom ad", {
     cache_dir = tempdir()
   )))
   expect_message(catr_atom_get_address_db_to(
-    to = "Melilla", verbose = TRUE,
+    to = "Melilla",
+    verbose = TRUE,
     cache_dir = tempdir()
   ))
   expect_s3_class(

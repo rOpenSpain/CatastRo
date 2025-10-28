@@ -59,8 +59,12 @@
 #' ab2
 #' }
 #'
-catr_ovc_get_cod_munic <- function(cpro, cmun = NULL, cmun_ine = NULL,
-                                   verbose = FALSE) {
+catr_ovc_get_cod_munic <- function(
+  cpro,
+  cmun = NULL,
+  cmun_ine = NULL,
+  verbose = FALSE
+) {
   if (is.null(cmun) && is.null(cmun_ine)) {
     stop("Please provide a value either on 'cmun' or on 'cmun_ine'.")
   }
@@ -88,13 +92,14 @@ catr_ovc_get_cod_munic <- function(cpro, cmun = NULL, cmun_ine = NULL,
 
   cache_dir <- tempdir()
 
-
   path <- catr_hlp_dwnload(
-    api_entry, filename, cache_dir,
+    api_entry,
+    filename,
+    cache_dir,
     verbose,
-    update_cache = FALSE, cache = TRUE
+    update_cache = FALSE,
+    cache = TRUE
   )
-
 
   # Extract results
   content <- xml2::read_xml(path)
@@ -104,10 +109,8 @@ catr_ovc_get_cod_munic <- function(cpro, cmun = NULL, cmun_ine = NULL,
 
   content_list <- xml2::as_list(content)
 
-
   # Check API custom error
   err <- content_list[[1]]
-
 
   if (("lerr" %in% names(err))) {
     df <- tibble::as_tibble_row(unlist(err["lerr"]))
@@ -126,9 +129,13 @@ catr_ovc_get_cod_munic <- function(cpro, cmun = NULL, cmun_ine = NULL,
   df <- tibble::as_tibble_row(unlist(res))
 
   # Fix names
-  newnames <- vapply(names(df), function(x) {
-    rev(unlist(strsplit(x, ".", fixed = TRUE)))[1]
-  }, FUN.VALUE = character(1))
+  newnames <- vapply(
+    names(df),
+    function(x) {
+      rev(unlist(strsplit(x, ".", fixed = TRUE)))[1]
+    },
+    FUN.VALUE = character(1)
+  )
 
   names(df) <- newnames
 
@@ -139,7 +146,6 @@ catr_ovc_get_cod_munic <- function(cpro, cmun = NULL, cmun_ine = NULL,
     catr_munic = sprintf("%03d", as.integer(df$cmc))
   )
 
-
   catcodes$catrcode <- paste0(catcodes$catr_to, catcodes$catr_munic)
   inecodes <- tibble::tibble(
     cpro = sprintf("%02d", as.integer(df$cp)),
@@ -148,9 +154,9 @@ catr_ovc_get_cod_munic <- function(cpro, cmun = NULL, cmun_ine = NULL,
 
   inecodes$inecode <- paste0(inecodes$cpro, inecodes$cmun)
 
-
   overall <- dplyr::bind_cols(
-    catcodes, inecodes,
+    catcodes,
+    inecodes,
     df
   )
 

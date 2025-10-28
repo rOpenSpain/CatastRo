@@ -46,8 +46,12 @@
 #'
 #' @rdname catr_wfs_get_buildings
 #' @export
-catr_wfs_get_buildings_bbox <- function(x, what = "building", srs,
-                                        verbose = FALSE) {
+catr_wfs_get_buildings_bbox <- function(
+  x,
+  what = "building",
+  srs,
+  verbose = FALSE
+) {
   # Sanity checks
   if (!(what %in% c("building", "buildingpart", "other"))) {
     stop("'what' should be 'building', 'buildingpart', 'other'")
@@ -60,11 +64,9 @@ catr_wfs_get_buildings_bbox <- function(x, what = "building", srs,
     "other" = "BU.OTHERCONSTRUCTION"
   )
 
-
   bbox_res <- wfs_bbox(x, srs)
 
   message_on_limit(bbox_res, 4)
-
 
   res <- wfs_api_query(
     entry = "wfsBU.aspx?",
@@ -121,8 +123,12 @@ catr_wfs_get_buildings_bbox <- function(x, what = "building", srs,
 #'   geom_sf() +
 #'   labs(title = "Search using rc")
 #' }
-catr_wfs_get_buildings_rc <- function(rc, what = "building",
-                                      srs = NULL, verbose = FALSE) {
+catr_wfs_get_buildings_rc <- function(
+  rc,
+  what = "building",
+  srs = NULL,
+  verbose = FALSE
+) {
   # Sanity checks
   if (!(what %in% c("building", "buildingpart", "other"))) {
     stop("'what' should be 'building', 'buildingpart', 'other'")
@@ -134,7 +140,6 @@ catr_wfs_get_buildings_rc <- function(rc, what = "building",
     "buildingpart" = "GetBuildingPartByParcel",
     "other" = "GetOtherBuildingByParcel"
   )
-
 
   res <- wfs_api_query(
     entry = "wfsBU.aspx?",

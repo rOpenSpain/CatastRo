@@ -47,11 +47,13 @@
 #' catr_ovc_get_cpmrc("9872023VH5797S")
 #' }
 #'
-catr_ovc_get_cpmrc <- function(rc,
-                               srs = 4326,
-                               province = NULL,
-                               municipality = NULL,
-                               verbose = FALSE) {
+catr_ovc_get_cpmrc <- function(
+  rc,
+  srs = 4326,
+  province = NULL,
+  municipality = NULL,
+  verbose = FALSE
+) {
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values
   valid_srs <- tibble::as_tibble(valid_srs)
@@ -78,8 +80,12 @@ catr_ovc_get_cpmrc <- function(rc,
 
   # Replace NAs and NULL on optional params
 
-  if (is.null(province) || is.na(province)) province <- ""
-  if (is.null(municipality) || is.na(municipality)) municipality <- ""
+  if (is.null(province) || is.na(province)) {
+    province <- ""
+  }
+  if (is.null(municipality) || is.na(municipality)) {
+    municipality <- ""
+  }
 
   query <- list(
     RC = rc,
@@ -110,7 +116,6 @@ catr_ovc_get_cpmrc <- function(rc,
   # Check API custom error
   err <- content_list[["consulta_coordenadas"]]
 
-
   if (("lerr" %in% names(err))) {
     df <- tibble::as_tibble_row(unlist(err["lerr"]))
 
@@ -129,7 +134,6 @@ catr_ovc_get_cpmrc <- function(rc,
 
   # Get info of the query
   overall <- tibble::as_tibble_row(unlist(res))
-
 
   # Extract helper info
   rc_help <- tibble::tibble(
@@ -155,7 +159,6 @@ ovcurl <- function(x) {
   # nocov start
   base <- "https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc"
 
-
   app <- switch(x,
     "CPMRC" = "ovccoordenadas.asmx?op=Consulta_CPMRC",
     "mun" = "ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos",
@@ -165,7 +168,9 @@ ovcurl <- function(x) {
     NULL
   )
 
-  if (x == "RCCOORD") base <- gsub("https", "http", base)
+  if (x == "RCCOORD") {
+    base <- gsub("https", "http", base)
+  }
 
   paste0(c(base, app), collapse = "/")
   # nocov end

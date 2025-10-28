@@ -29,7 +29,8 @@ test_that("CP Check verbose", {
   skip_on_os("linux")
   skip_if_offline()
 
-  expect_message(catr_wfs_get_parcels_neigh_parcel("3662303TF3136B",
+  expect_message(catr_wfs_get_parcels_neigh_parcel(
+    "3662303TF3136B",
     verbose = TRUE
   ))
 })
@@ -73,9 +74,7 @@ test_that("BBOX Check projections", {
 
   # Check messages
 
-  obj <- get_sf_from_bbox(c(760926, 4019259, 761155, 4019366),
-    srs = 25829
-  )
+  obj <- get_sf_from_bbox(c(760926, 4019259, 761155, 4019366), srs = 25829)
   obj <- sf::st_buffer(obj, 2000)
   res <- wfs_bbox(obj)
 
@@ -83,14 +82,12 @@ test_that("BBOX Check projections", {
 
   expect_message(message_on_limit(res, 5))
 
-
-  obj <- catr_wfs_get_parcels_bbox(c(760926, 4019259, 761155, 4019366),
+  obj <- catr_wfs_get_parcels_bbox(
+    c(760926, 4019259, 761155, 4019366),
     srs = 25829
   )
 
-
   expect_true(sf::st_crs(obj) == sf::st_crs(25829))
-
 
   # test conversion
   testconv <- get_sf_from_bbox(obj[1, ])

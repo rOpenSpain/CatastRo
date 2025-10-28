@@ -22,12 +22,14 @@
 #' \donttest{
 #' catr_atom_search_munic("Mad")
 #' }
-catr_atom_search_munic <- function(munic,
-                                   to = NULL,
-                                   cache = TRUE,
-                                   update_cache = FALSE,
-                                   cache_dir = NULL,
-                                   verbose = FALSE) {
+catr_atom_search_munic <- function(
+  munic,
+  to = NULL,
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   all <- catr_atom_get_address_db_all(
     cache = cache,
     update_cache = update_cache,
@@ -54,21 +56,26 @@ catr_atom_search_munic <- function(munic,
 
   if (length(findmunic) == 0) {
     message(
-      "No Municipality found for ", munic, " ", to,
+      "No Municipality found for ",
+      munic,
+      " ",
+      to,
       "."
     )
     return(invisible(NA))
   }
 
-
   # Get lines and cols
   res <- all[findmunic, c("territorial_office", "munic")]
 
   # Split to get code
-  catrcode <- vapply(res$munic, function(x) {
-    unlist(strsplit(x, "-"))[1]
-  }, FUN.VALUE = character(1))
-
+  catrcode <- vapply(
+    res$munic,
+    function(x) {
+      unlist(strsplit(x, "-"))[1]
+    },
+    FUN.VALUE = character(1)
+  )
 
   res$catrcode <- catrcode
 

@@ -69,12 +69,12 @@ test_that("BBOX Check projections", {
   skip_on_os("linux")
   skip_if_offline()
 
-  obj <- catr_wfs_get_address_bbox(c(760926, 4019259, 761155, 4019366),
+  obj <- catr_wfs_get_address_bbox(
+    c(760926, 4019259, 761155, 4019366),
     srs = 25829
   )
 
   expect_true(sf::st_crs(obj) == sf::st_crs(25829))
-
 
   # test conversion
   testconv <- get_sf_from_bbox(obj[1, ])

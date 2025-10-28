@@ -53,23 +53,27 @@
 #' \donttest{
 #' catr_atom_get_address_db_all()
 #' }
-catr_atom_get_address_db_all <- function(cache = TRUE,
-                                         update_cache = FALSE,
-                                         cache_dir = NULL,
-                                         verbose = FALSE) {
+catr_atom_get_address_db_all <- function(
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   api_entry <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
     "Addresses/ES.SDGC.AD.atom.xml"
   )
 
-
   filename <- basename(api_entry)
 
   path <- catr_hlp_dwnload(
-    api_entry, filename, cache_dir,
-    verbose, update_cache, cache
+    api_entry,
+    filename,
+    cache_dir,
+    verbose,
+    update_cache,
+    cache
   )
-
 
   tbl <- catr_read_atom(path, top = TRUE)
   names(tbl) <- c("territorial_office", "url", "munic", "date")
@@ -81,11 +85,13 @@ catr_atom_get_address_db_all <- function(cache = TRUE,
 #' @export
 #' @param to Territorial office. It can be any type of string, the function
 #'   would perform a search using [base::grep()].
-catr_atom_get_address_db_to <- function(to,
-                                        cache = TRUE,
-                                        update_cache = FALSE,
-                                        cache_dir = NULL,
-                                        verbose = FALSE) {
+catr_atom_get_address_db_to <- function(
+  to,
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   all <- catr_atom_get_address_db_all()
   alldist <- unique(all[, c("territorial_office", "url")])
 
@@ -112,10 +118,13 @@ catr_atom_get_address_db_to <- function(to,
   api_entry <- as.character(tb$url)
   filename <- basename(api_entry)
   path <- catr_hlp_dwnload(
-    api_entry, filename, cache_dir,
-    verbose, update_cache, cache
+    api_entry,
+    filename,
+    cache_dir,
+    verbose,
+    update_cache,
+    cache
   )
-
 
   tbl <- catr_read_atom(path, top = FALSE)
 

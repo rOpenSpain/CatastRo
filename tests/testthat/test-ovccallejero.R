@@ -23,10 +23,7 @@ test_that("Callejero munic", {
   s2 <- catr_ovc_get_cod_munic(5, cmun_ine = s$cmun)
   expect_identical(s, s2)
 
-
-  expect_message(catr_ovc_get_cod_munic(5, 1304,
-    verbose = TRUE
-  ))
+  expect_message(catr_ovc_get_cod_munic(5, 1304, verbose = TRUE))
 
   nil <- catr_ovc_get_cod_munic(5, 1304)
 

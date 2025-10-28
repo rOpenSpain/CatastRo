@@ -32,9 +32,11 @@
 #'
 #' Sys.getenv("CATASTROESP_CACHE_DIR")
 #' @export
-catr_clear_cache <- function(config = FALSE,
-                             cached_data = TRUE,
-                             verbose = FALSE) {
+catr_clear_cache <- function(
+  config = FALSE,
+  cached_data = TRUE,
+  verbose = FALSE
+) {
   config_dir <- rappdirs::user_config_dir("CatastRo", "R")
   data_dir <- catr_hlp_detect_cache_dir()
 
@@ -49,7 +51,6 @@ catr_clear_cache <- function(config = FALSE,
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) message("CatastRo cached data deleted: ", data_dir)
   }
-
 
   Sys.setenv(CATASTROESP_CACHE_DIR = "")
 

@@ -3,19 +3,13 @@ test_that("ATOM Addresses", {
   skip_if_offline()
   expect_message(catr_atom_get_address("xyxghx"))
 
-
   expect_message(catr_atom_get_address("xyxghx"))
 
-  s <- catr_atom_get_address("Melque",
-    to = "Segovia",
-    verbose = TRUE
-  )
+  s <- catr_atom_get_address("Melque", to = "Segovia", verbose = TRUE)
   expect_s3_class(s, "sf")
   expect_message(
-    catr_atom_get_address("Melque",
-      to = "XXX",
-      verbose = TRUE
-    ), "Ignoring 'to' parameter. No results for XXX"
+    catr_atom_get_address("Melque", to = "XXX", verbose = TRUE),
+    "Ignoring 'to' parameter. No results for XXX"
   )
   expect_s3_class(s, "sf")
 })

@@ -42,13 +42,15 @@
 #'   )
 #' }
 #'
-catr_atom_get_parcels <- function(munic,
-                                  to = NULL,
-                                  what = "parcel",
-                                  cache = TRUE,
-                                  update_cache = FALSE,
-                                  cache_dir = NULL,
-                                  verbose = FALSE) {
+catr_atom_get_parcels <- function(
+  munic,
+  to = NULL,
+  what = "parcel",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE
+) {
   # Sanity checks
   if (!(what %in% c("parcel", "zoning"))) {
     stop("'what' should be 'parcel' or 'zoning'")
@@ -80,7 +82,10 @@ catr_atom_get_parcels <- function(munic,
 
   if (is.na(findmunic)) {
     message(
-      "No Municipality found for ", munic, " ", to,
+      "No Municipality found for ",
+      munic,
+      " ",
+      to,
       ". Check available municipalities with catr_atom_get_parcels_db_all()"
     )
     return(invisible(NA))
@@ -90,7 +95,9 @@ catr_atom_get_parcels <- function(munic,
   if (verbose) {
     message(
       "Selecting ",
-      m$munic, ", ", m$territorial_office
+      m$munic,
+      ", ",
+      m$territorial_office
     )
   }
 
@@ -111,10 +118,13 @@ catr_atom_get_parcels <- function(munic,
 
   filename <- basename(api_entry)
 
-
   path <- catr_hlp_dwnload(
-    api_entry, filename, cache_dir,
-    verbose, update_cache, cache
+    api_entry,
+    filename,
+    cache_dir,
+    verbose,
+    update_cache,
+    cache
   )
 
   # To a new directory
@@ -125,9 +135,10 @@ catr_atom_get_parcels <- function(munic,
     gsub(".zip$", "", filename)
   )
 
-  if (!dir.exists(exdir)) dir.create(exdir, recursive = TRUE)
+  if (!dir.exists(exdir)) {
+    dir.create(exdir, recursive = TRUE)
+  }
   unzip(path, exdir = exdir, junkpaths = TRUE, overwrite = TRUE)
-
 
   # Guess what to read
   files <- list.files(exdir, full.names = TRUE, pattern = ".gml$")

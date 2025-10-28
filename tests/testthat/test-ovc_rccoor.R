@@ -3,7 +3,8 @@ test_that("Expect error on bad SRS", {
   skip_if_offline()
 
   expect_error(catr_ovc_get_rccoor(
-    lat = 40.963200, lon = -5.671420,
+    lat = 40.963200,
+    lon = -5.671420,
     "abcd"
   ))
 })
@@ -15,7 +16,8 @@ test_that("return data.frame given SRS", {
   skip_on_os("linux")
 
   result <- catr_ovc_get_rccoor(
-    lat = 38.6196566583596, lon = -3.45624183836806,
+    lat = 38.6196566583596,
+    lon = -3.45624183836806,
     srs = "4230"
   )
   expect_s3_class(result, "tbl")
@@ -47,7 +49,8 @@ test_that("check fields given SRS", {
   skip_on_os("linux")
 
   result <- catr_ovc_get_rccoor(
-    lat = 38.6196566583596, lon = -3.45624183836806,
+    lat = 38.6196566583596,
+    lon = -3.45624183836806,
     srs = "4230"
   )
   expect_true((is.character(result$address) & is.character(result$refcat)))
@@ -69,7 +72,8 @@ test_that("unprecised coordinates", {
   skip_on_os("linux")
 
   result <- catr_ovc_get_rccoor(
-    lat = 40.963200, lon = -5.671420,
+    lat = 40.963200,
+    lon = -5.671420,
     srs = "4326"
   )
   expect_true(ncol(result) == 3)
@@ -81,7 +85,8 @@ test_that("Verbose", {
   skip_on_os("linux")
 
   expect_message(catr_ovc_get_rccoor(
-    lat = 40.963200, lon = -5.671420,
+    lat = 40.963200,
+    lon = -5.671420,
     srs = "4326",
     verbose = TRUE
   ))

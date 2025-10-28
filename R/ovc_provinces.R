@@ -38,13 +38,14 @@ catr_ovc_get_cod_provinces <- function(verbose = FALSE) {
 
   cache_dir <- tempdir()
 
-
   path <- catr_hlp_dwnload(
-    api_entry, filename, cache_dir,
+    api_entry,
+    filename,
+    cache_dir,
     verbose,
-    update_cache = FALSE, cache = TRUE
+    update_cache = FALSE,
+    cache = TRUE
   )
-
 
   # Extract results
   content <- xml2::read_xml(path)
@@ -53,7 +54,6 @@ catr_ovc_get_cod_provinces <- function(verbose = FALSE) {
   unlink(file.path(cache_dir, filename), recursive = TRUE, force = TRUE)
 
   content_list <- xml2::as_list(content)
-
 
   # Check API custom error
   res <- content_list[["consulta_provinciero"]][["provinciero"]]
