@@ -88,10 +88,10 @@ Other cache utilities:
 # \dontrun{
 catr_set_cache_dir(verbose = TRUE)
 #> Using a temporary cache dir. Set 'cache_dir' to a value for store permanently
-#> CatastRo cache dir is: C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4ASZdF/CatastRo
+#> CatastRo cache dir is: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpCoiqLN/CatastRo
 # }
 
 
 catr_detect_cache_dir()
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmp4ASZdF/CatastRo"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpCoiqLN/CatastRo"
 ```

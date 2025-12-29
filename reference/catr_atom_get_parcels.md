@@ -111,6 +111,16 @@ s <- catr_atom_get_parcels("Melque",
   to = "Segovia",
   what = "parcel"
 )
+#> Warning: cannot open URL 'https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml': HTTP status was '500 Internal Server Error'
+#> Warning: cannot open URL 'https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml': HTTP status was '500 Internal Server Error'
+#> Download failed
+#> 
+#> url 
+#>  https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml not reachable.
+#> 
+#> Please try with another options. If you think this is a bug please consider opening an issue
+#> Error in catr_hlp_dwnload(api_entry, filename, cache_dir, verbose, update_cache,     cache): 
+#> Execution halted
 
 library(ggplot2)
 
@@ -120,6 +130,6 @@ ggplot(s) +
     title = "Cadastral Zoning",
     subtitle = "Melque de Cercos, Segovia"
   )
-
+#> Error: object 's' not found
 # }
 ```

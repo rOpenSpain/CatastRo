@@ -116,6 +116,16 @@ s <- catr_atom_get_buildings("Nava de la Asuncion",
   to = "Segovia",
   what = "building"
 )
+#> Warning: cannot open URL 'https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml': HTTP status was '500 Internal Server Error'
+#> Warning: cannot open URL 'https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml': HTTP status was '500 Internal Server Error'
+#> Download failed
+#> 
+#> url 
+#>  https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml not reachable.
+#> 
+#> Please try with another options. If you think this is a bug please consider opening an issue
+#> Error in catr_hlp_dwnload(api_entry, filename, cache_dir, verbose, update_cache,     cache): 
+#> Execution halted
 
 library(ggplot2)
 ggplot(s) +
@@ -128,6 +138,6 @@ ggplot(s) +
     title = "Buildings",
     subtitle = "Nava de la Asuncion, Segovia"
   )
-
+#> Error: object 's' not found
 # }
 ```
