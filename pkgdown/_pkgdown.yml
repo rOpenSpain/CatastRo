@@ -4,6 +4,10 @@ template:
   bootstrap: 5
   package: rostemplate
 
+figures:
+  dpi: 300
+  fig.retina: 2
+
 authors:
   Ángel Delgado Panadero:
     href: https://github.com/DelgadoPanadero
