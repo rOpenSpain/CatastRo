@@ -40,18 +40,18 @@ catr_ovc_get_cpmrc(
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html). See
-**Details**
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+See **Details**
 
 ## Details
 
 When the API does not provide any result, the function returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with the
-input parameters only.
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+the input parameters only.
 
 On a successful query, the function returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with one
-row by cadastral reference, including the following columns:
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+one row by cadastral reference, including the following columns:
 
 - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 

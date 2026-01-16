@@ -97,8 +97,7 @@ return all the properties located in a square 50-meters-side around the
 given point.</p>
 <p>The documentation of this API can be found <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">here</a>.</p>
 <p>These functions are named <code>catr_ovc_*</code> and return a
-<code>tibble</code>, as provided by the package
-<strong>tibble</strong>.</p>
+tibble, as provided by the package <strong>tibble</strong>.</p>
 <div class="section level2">
 <h2 id="catastro-api">CatastRo API<a class="anchor" aria-label="anchor" href="#catastro-api"></a>
 </h2>
@@ -116,9 +115,9 @@ functions:</p>
 <p>The function <code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> receives the
 coordinates (<code>lat</code> and <code>lon</code>) and the spatial
 reference system (<code>srs</code>) used to express them. It returns a
-<code>tibble</code> with the cadastral reference of the property in that
-spatial point, including other information such as the address (town,
-street, and number).</p>
+tibble with the cadastral reference of the property in that spatial
+point, including other information such as the address (town, street,
+and number).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor</a></span><span class="op">(</span></span>
 <span>  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,</span>
@@ -379,7 +378,7 @@ argument <code>province</code> must be passed. If a value is passed to
 the <code>province</code> argument while the <code>municipality</code>
 argument is <code>NULL</code>, the function
 <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> will throw a message and will return a
-<code>tibble</code> with no data.</p>
+tibble with no data.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
 <span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>

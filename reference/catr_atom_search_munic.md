@@ -52,7 +52,7 @@ catr_atom_search_munic(
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## See also
 

@@ -54,8 +54,8 @@ catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with
-the format described in
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with the format described in
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md).
 
 ## Details

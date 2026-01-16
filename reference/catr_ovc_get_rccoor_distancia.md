@@ -39,18 +39,18 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html). See
-**Details**
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+See **Details**
 
 ## Details
 
 When the API does not provide any result, the function returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with the
-input parameters only.
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+the input parameters only.
 
 On a successful query, the function returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with one
-row by cadastral reference, including the following columns:
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+one row by cadastral reference, including the following columns:
 
 - `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
 

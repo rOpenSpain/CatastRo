@@ -66,8 +66,8 @@ catr_atom_get_address_db_to(
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with
-the information requested.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with the information requested.
 
 - `catr_atom_get_address_db_all()` includes the following fields:
 

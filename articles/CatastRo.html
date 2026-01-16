@@ -83,9 +83,8 @@ addresses, properties, parcels, and buildings.</p>
 service allows retrieving the coordinates of a known cadastral reference
 (geocoding). It is also possible to retrieve the cadastral references
 around a specific pair of coordinates (reverse geocoding).
-<strong>CatastRo</strong> returns the results in a <code>tibble</code>
-format. This functionality is described in detail in the corresponding
-vignette (see
+<strong>CatastRo</strong> returns the results in a tibble format. This
+functionality is described in detail in the corresponding vignette (see
 <code><a href="../articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code>).</p>
 </div>
 <div class="section level2">
@@ -195,8 +194,8 @@ Example: Santiago Bernabeu
 <p>We can also create thematic maps using the information available on
 the spatial objects. We will produce a visualization of the urban growth
 of Granada using <strong>CatastRo</strong>, replicating the map produced
-by Dominic Royé on his post <a href="https://dominicroye.github.io/en/2019/visualize-urban-growth/" class="external-link">Visualize
-urban growth</a>, using the <strong>ATOM service</strong>.</p>
+by <a href="https://dominicroye.github.io" class="external-link">Dominic Royé</a> <span class="citation">(<a href="#ref-roye19">Royé 2019</a>)</span>, using the
+<strong>ATOM service</strong>.</p>
 <p>First, we extract the coordinates of the city center of Granada using
 <strong>mapSpain</strong>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -217,10 +216,9 @@ in the Cadastre, and we will download the buildings with
 <span></span>
 <span><span class="va">city_catr_code</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 12</span></span>
-<span><span class="co">#&gt;   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   </span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: cm &lt;chr&gt;</span></span>
+<span><span class="co">#&gt;   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87</span></span>
 <span></span>
 <span><span class="va">city_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">city_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span></code></pre></div>
 <p>The next step in creating the visualization is to limit the analysis
@@ -305,12 +303,14 @@ Granada: Urban growth
 </div>
 </div>
 </div>
-<div class="section level2">
-<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+<div class="section level2 unnumbered">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<ul>
-<li>Royé D (2019). “Visualize urban growth.” November 1, 2019. <a href="https://dominicroye.github.io/blog/visualize-urban-growth/" class="external-link uri">https://dominicroye.github.io/blog/visualize-urban-growth/</a>.</li>
-</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-roye19" class="csl-entry">
+Royé, Dominique. 2019. <em>Visualize Urban Growth</em>. <a href="https://dominicroye.github.io/blog/visualize-urban-growth/" class="external-link">https://dominicroye.github.io/blog/visualize-urban-growth/</a>.
+</div>
+</div>
 </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

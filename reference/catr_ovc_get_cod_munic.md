@@ -36,8 +36,8 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html). See
-**Details**
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+See **Details**
 
 ## Details
 
@@ -45,8 +45,8 @@ Parameter `cpro` is mandatory. Either `cmun` or `cmun_ine` should be
 provided.
 
 On a successful query, the function returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with one
-row including the following columns:
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+one row including the following columns:
 
 - `munic`: Name of the municipality as per the Cadastre.
 

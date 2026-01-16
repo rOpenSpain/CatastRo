@@ -20,7 +20,7 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## References
 

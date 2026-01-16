@@ -26,8 +26,8 @@ point.
 The documentation of this API can be found
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-These functions are named `catr_ovc_*` and return a `tibble`, as
-provided by the package **tibble**.
+These functions are named `catr_ovc_*` and return a tibble, as provided
+by the package **tibble**.
 
 ## CatastRo API
 
@@ -43,7 +43,7 @@ functions:
 The function
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
 receives the coordinates (`lat` and `lon`) and the spatial reference
-system (`srs`) used to express them. It returns a `tibble` with the
+system (`srs`) used to express them. It returns a tibble with the
 cadastral reference of the property in that spatial point, including
 other information such as the address (town, street, and number).
 
@@ -139,7 +139,7 @@ that case the argument `province` must be passed. If a value is passed
 to the `province` argument while the `municipality` argument is `NULL`,
 the function
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
-will throw a message and will return a `tibble` with no data.
+will throw a message and will return a tibble with no data.
 
 ``` r
 catr_ovc_get_cpmrc(

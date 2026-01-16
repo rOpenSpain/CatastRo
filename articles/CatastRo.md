@@ -12,8 +12,8 @@ The
 service allows retrieving the coordinates of a known cadastral reference
 (geocoding). It is also possible to retrieve the cadastral references
 around a specific pair of coordinates (reverse geocoding). **CatastRo**
-returns the results in a `tibble` format. This functionality is
-described in detail in the corresponding vignette (see
+returns the results in a tibble format. This functionality is described
+in detail in the corresponding vignette (see
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)).
 
 ## INSPIRE Services
@@ -115,10 +115,9 @@ Example: Santiago Bernabeu
 
 We can also create thematic maps using the information available on the
 spatial objects. We will produce a visualization of the urban growth of
-Granada using **CatastRo**, replicating the map produced by Dominic Royé
-on his post [Visualize urban
-growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/),
-using the **ATOM service**.
+Granada using **CatastRo**, replicating the map produced by [Dominic
+Royé](https://dominicroye.github.io) ([Royé 2019](#ref-roye19)), using
+the **ATOM service**.
 
 First, we extract the coordinates of the city center of Granada using
 **mapSpain**:
@@ -145,10 +144,9 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
@@ -243,8 +241,8 @@ Granada: Urban growth
 
 ## References
 
-- Royé D (2019). “Visualize urban growth.” November 1, 2019.
-  <https://dominicroye.github.io/blog/visualize-urban-growth/>.
+Royé, Dominique. 2019. *Visualize Urban Growth*.
+<https://dominicroye.github.io/blog/visualize-urban-growth/>.
 
 ------------------------------------------------------------------------
 
