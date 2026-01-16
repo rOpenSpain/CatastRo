@@ -145,15 +145,106 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
-#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
+#> # ℹ 1 more variable: cm <chr>
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
 
 The next step in creating the visualization is to limit the analysis to
 a circle of radius 1.5 km around the city center:
+
+``` r
+buff <- city %>%
+  # Adjust CRS to 25830: (Buildings)
+  st_transform(st_crs(city_bu)) %>%
+  # Buffer
+  st_buffer(1500)
+
+
+# Cut buildings
+
+dataviz <- st_intersection(city_bu, buff)
+
+ggplot(dataviz) +
+  geom_sf()
+```
+
+![Minimal cadastral map of Granada](minimal-1.png)
+
+Minimal cadastral map of Granada
+
+Now let’s extract the construction year, available in the column
+`beginning`:
+
+``` r
+# Extract 4 initial positions
+year <- substr(dataviz$beginning, 1, 4)
+
+# Replace all that doesn't look as a number with 0000
+year[!(year %in% 0:2500)] <- "0000"
+
+
+# To numeric
+year <- as.integer(year)
+
+# New column
+dataviz <- dataviz %>%
+  mutate(year = year)
+```
+
+The last step is to create groups based on the year and create the data
+visualization. Here we use the function
+[`cut()`](https://rdrr.io/r/base/cut.html) to create classes for every
+decade starting from year 1900:
+
+``` r
+dataviz <- dataviz %>%
+  mutate(year_cat = cut(year,
+    breaks = c(0, seq(1900, 2030, by = 10)),
+    dig.lab = 4
+  ))
+
+
+ggplot(dataviz) +
+  geom_sf(aes(fill = year_cat), color = NA, na.rm = TRUE) +
+  scale_fill_manual(
+    values = hcl.colors(15, "Spectral"),
+    na.translate = FALSE
+  ) +
+  theme_void() +
+  labs(title = "GRANADA", fill = "") +
+  theme(
+    panel.background = element_rect(fill = "black"),
+    plot.background = element_rect(fill = "black"),
+    legend.justification = .5,
+    legend.text = element_text(
+      colour = "white",
+      size = 12
+    ),
+    plot.title = element_text(
+      colour = "white", hjust = .5,
+      margin = margin(t = 30),
+      size = 30
+    ),
+    plot.caption = element_text(
+      colour = "white",
+      margin = margin(b = 20), hjust = .5
+    ),
+    plot.margin = margin(r = 40, l = 40)
+  )
+```
+
+![Granada: Urban growth](dviz-1.png)
+
+Granada: Urban growth
+
+## References
+
+- Royé D (2019). “Visualize urban growth.”
+  <https://dominicroye.github.io/en/2019/visualize-urban-growth/>.
 
 ------------------------------------------------------------------------
 

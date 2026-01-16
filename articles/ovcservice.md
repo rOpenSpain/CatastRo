@@ -1,24 +1,24 @@
 # OVCCoordenadas Web Service
 
-**CatastRo** allows to query the OVCCoordenadas Web Service provided on
+**CatastRo** allows querying the OVCCoordenadas Web Service provided on
 [Sede electrónica del
 Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 API directly through a **R** IDE.
 
-This API is used to retrieve the spatial coordinates of a urban
-property, moreover it is not needed to be the owner to get the
-information, actually it is enough to know the cadastral reference
+This API is used to retrieve the spatial coordinates of an urban
+property. Moreover, it is not necessary to be the owner to get the
+information; in fact, it is enough to know the cadastral reference
 (*RC*) of the property and its address (in fact, it is only completely
 compulsory to know the RC, however, to ensure a good result from the
 response and to avoid mistakes in the RC, the address can be passed to
 the query too).
 
-Secondly, the API can be used to obtain a RC of a urban property, for
-this information, the API asks for the longitude and the latitude.
-Furthermore, it allows to choose the spacial reference system (SRS, also
+Second, the API can be used to obtain a RC of an urban property. For
+this purpose, the API asks for the longitude and the latitude.
+Furthermore, it allows choosing the spatial reference system (SRS, also
 known as CRS) between a list of them to express the coordinates.
 
-Finally, the API tackles the issue of not knowing the exact point which
+Finally, the API tackles the issue of not knowing the exact point where
 the urban property has been registered. In this case, it will return all
 the properties located in a square 50-meters-side around the given
 point.
@@ -26,7 +26,7 @@ point.
 The documentation of this API can be found
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-These functions are named `catr_ovc_*` and returns a `tibble`, as
+These functions are named `catr_ovc_*` and return a `tibble`, as
 provided by the package **tibble**.
 
 ## CatastRo API
@@ -43,9 +43,9 @@ functions:
 The function
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
 receives the coordinates (`lat` and `lon`) and the spatial reference
-system (`srs`) used to express them. The return is a `tibble` with the
+system (`srs`) used to express them. It returns a `tibble` with the
 cadastral reference of the property in that spatial point, including
-also other information as the address (town street and number).
+other information such as the address (town, street, and number).
 
 ``` r
 result <- catr_ovc_get_rccoor(
@@ -59,7 +59,7 @@ result <- catr_ovc_get_rccoor(
 |:---------------|:----------------------------------------------------------------------------------------------------|:--------|:--------|----------:|---------:|:----------|:----------------------------------------------------------------------------------------------------|
 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.456242 | 38.61966 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
-The function accept as a `srs` argument the following values:
+The function accepts as a `srs` argument the following values:
 
 ``` r
 data(catr_srs_values)
@@ -111,7 +111,7 @@ catr_ovc_get_rccoor_distancia(
 
 ## Geocoding a Cadastral Reference
 
-The opposite query is possible as well. Being given to the function
+The opposite query is possible as well. When given to the function
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
 a cadastral reference (`rc`), the province (`province`) and the town
 (`municipality`),
@@ -133,13 +133,13 @@ catr_ovc_get_cpmrc(
 |----------:|---------:|:---------------|:----------------------------------------------------------------------------------------------------|:--------|:--------|:------------------|:-----------------|:----------|:----------------------------------------------------------------------------------------------------|
 | -3.456242 | 38.61966 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.45624183836806 | 38.6196566583596 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
-Neither the `province` nor `municipality` are required to be passed to
-the function, unless the argument `municipality` is not `NULL`, in that
-case the argument `province` is needed to be passed. If it is passed a
-value to the `province` argument while the `municipality` argument is
-`NULL`, the function
+Neither the `province` nor the `municipality` is required to be passed
+to the function, unless the argument `municipality` is not `NULL`, in
+that case the argument `province` must be passed. If a value is passed
+to the `province` argument while the `municipality` argument is `NULL`,
+the function
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
-will throw a message and would return a `tibble` with no data.
+will throw a message and will return a `tibble` with no data.
 
 ``` r
 catr_ovc_get_cpmrc(

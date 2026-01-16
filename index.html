@@ -72,14 +72,14 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><strong>CatastRo</strong> is a package that provide access to different API services of the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>. With <strong>CatastRo</strong> it is possible to download spatial objects (as buildings or cadastral parcels), maps and geocode cadastral references.</p>
+<p><strong>CatastRo</strong> is a package that provides access to different API services of the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>. With <strong>CatastRo</strong> you can download spatial objects such as buildings and cadastral parcels, maps, and geocode cadastral references.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>Install <strong>CatastRo</strong> from <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><strong>CRAN</strong></a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span><span class="op">)</span></span></code></pre></div>
-<p>You can install the developing version of <strong>CatastRo</strong> using the <a href="https://ropenspain.r-universe.dev/CatastRo" class="external-link">r-universe</a>:</p>
+<p>You can install the development version of <strong>CatastRo</strong> using the <a href="https://ropenspain.r-universe.dev/CatastRo" class="external-link">r-universe</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install CatastRo in R:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span>,</span>
@@ -88,14 +88,14 @@
 <span>    <span class="st">"https://cloud.r-project.org"</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>Alternatively, you can install the developing version of <strong>CatastRo</strong> with:</p>
+<p>Alternatively, you can install the development version of <strong>CatastRo</strong> with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenSpain/CatastRo"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="known-issues">Known issues<a class="anchor" aria-label="anchor" href="#known-issues"></a>
 </h2>
-<p>The SSL certificate of the Spanish Cadastre present some issues that may cause an error when using <strong>CatastRo</strong> (specially on Mac OS, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>):</p>
+<p>The SSL certificate of the Spanish Cadastre presents some issues that may cause an error when using <strong>CatastRo</strong> (especially on macOS, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>):</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#&gt; ...(more lines on error)</span></span>
 <span><span class="co">#&gt;</span></span>
@@ -115,31 +115,31 @@
 <div class="section level3">
 <h3 id="ovccoordenadas">OVCCoordenadas<a class="anchor" aria-label="anchor" href="#ovccoordenadas"></a>
 </h3>
-<p>These functions allow to geocode and reverse geocode cadastral references using the <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p>
-<p>These functions are named <code>catr_ovc_get_*</code> and returns a tibble, as provided by the package <strong>tibble</strong>. See <code><a href="articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code> where these functions are described.</p>
+<p>These functions allow geocoding and reverse geocoding of cadastral references using the <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p>
+<p>These functions are named <code>catr_ovc_get_*</code> and return a tibble, as provided by the package <strong>tibble</strong>. See <code><a href="articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code> where these functions are described.</p>
 </div>
 <div class="section level3">
 <h3 id="inspire">INSPIRE<a class="anchor" aria-label="anchor" href="#inspire"></a>
 </h3>
-<p>These functions return spatial object (on the formats provided by the <strong>sf</strong> or <strong>terra</strong> using the <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Catastro INSPIRE</a> service.</p>
-<p>Note that the coverage of this service is 95% of the Spanish territory, <u>excluding Basque Country and Navarre</u><a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The package &lt;a href="https://ropenspain.github.io/CatastRoNav/"&gt;&lt;strong&gt;CatastRoNav&lt;/strong&gt;&lt;/a&gt; provides access to the Cadastre of Navarre, with similar functionalities than &lt;strong&gt;CatastRo&lt;/strong&gt;.&lt;/p&gt;'><sup>1</sup></a> that have their own independent cadastral offices.</p>
+<p>These functions return spatial objects in the formats provided by the <strong>sf</strong> or <strong>terra</strong> packages using the <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Catastro INSPIRE</a> service.</p>
+<p>Note that the coverage of this service is 95% of the Spanish territory, <u>excluding the Basque Country and Navarre</u><a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The package &lt;a href="https://ropenspain.github.io/CatastRoNav/"&gt;&lt;strong&gt;CatastRoNav&lt;/strong&gt;&lt;/a&gt; provides access to the Cadastre of Navarre, with similar functionalities to &lt;strong&gt;CatastRo&lt;/strong&gt;.&lt;/p&gt;'><sup>1</sup></a> that have their own independent cadastral offices.</p>
 <p>There are three types of functions, each one querying a different service:</p>
 <div class="section level4">
 <h4 id="atom-service">ATOM service<a class="anchor" aria-label="anchor" href="#atom-service"></a>
 </h4>
-<p>The ATOM service allows to batch-download vector objects of different cadastral elements for a specific municipality. The result is provided as <code>sf</code> objects (See <strong>sf</strong> package).</p>
+<p>The ATOM service allows batch-downloading vector objects of different cadastral elements for a specific municipality. The result is provided as <code>sf</code> objects (See <strong>sf</strong> package).</p>
 <p>These functions are named <code>catr_atom_get_xxx</code>.</p>
 </div>
 <div class="section level4">
 <h4 id="wfs-service">WFS service<a class="anchor" aria-label="anchor" href="#wfs-service"></a>
 </h4>
-<p>The WFS service allows to download vector objects of specific cadastral elements. The result is provided as <code>sf</code> class objects (see <a href="https://r-spatial.github.io/sf/" class="external-link"><strong>sf</strong></a> package). Note that there are some limitations on the extension and number of elements to query. For batch-downloading the ATOM service is preferred.</p>
+<p>The WFS service allows downloading vector objects of specific cadastral elements. The result is provided as <code>sf</code> class objects (see <a href="https://r-spatial.github.io/sf/" class="external-link"><strong>sf</strong></a> package). Note that there are some limitations on the extent and number of elements to query. For batch-downloading the ATOM service is preferred.</p>
 <p>These functions are named <code>catr_wms_get_xxx</code>.</p>
 </div>
 <div class="section level4">
 <h4 id="wms-service">WMS service<a class="anchor" aria-label="anchor" href="#wms-service"></a>
 </h4>
-<p>This service allows to download georeferenced images of different cadastral elements. The result is a raster on the format provides by <a href="https://rspatial.github.io/terra/reference/terra-package.html" class="external-link"><strong>terra</strong></a>.</p>
+<p>This service allows downloading georeferenced images of different cadastral elements. The result is a raster in the format provided by <a href="https://rspatial.github.io/terra/reference/terra-package.html" class="external-link"><strong>terra</strong></a>.</p>
 <p>There is a single function for querying this service: <code><a href="reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</p>
 </div>
 <div class="section level4">
@@ -152,7 +152,7 @@
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>This script highlights some features of <strong>CatastRo</strong> :</p>
+<p>This script highlights some features of <strong>CatastRo</strong>:</p>
 <div class="section level3">
 <h3 id="geocode-a-cadastral-reference">Geocode a cadastral reference<a class="anchor" aria-label="anchor" href="#geocode-a-cadastral-reference"></a>
 </h3>
@@ -219,10 +219,10 @@
 <div class="section level2">
 <h2 id="a-note-on-caching">A note on caching<a class="anchor" aria-label="anchor" href="#a-note-on-caching"></a>
 </h2>
-<p>Some data sets and tiles may have a size larger than 50MB. You can use <strong>CatastRo</strong> to create your own local repository at a given local directory passing the following option:</p>
+<p>Some datasets and tiles may have a size larger than 50MB. You can use <strong>CatastRo</strong> to create your own local repository at a given local directory passing the following option:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/catr_set_cache_dir.html">catr_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>When this option is set, <strong>CatastRo</strong> would look for the cached file and it will load it, speeding up the process.</p>
+<p>When this option is set, <strong>CatastRo</strong> will look for the cached file and it will load it, speeding up the process.</p>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -236,7 +236,7 @@ Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API S
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.CatastRo},</span>
 <span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="fl">4.1</span>},</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">4</span>.<span class="fl">1.9000</span>},</span>
 <span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
 <span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Access public spatial data available under the INSPIRE directive. Tools <span class="cf">for</span> downloading references and addresses of properties, as well as map images.},</span>
 <span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>}</span></code></pre></div>
@@ -244,7 +244,7 @@ Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API S
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
 </h2>
-<p>Check the GitHub page for <a href="https://github.com/ropenspain/CatastRo/" class="external-link">source code</a>.</p>
+<p>Check the GitHub page for the <a href="https://github.com/ropenspain/CatastRo/" class="external-link">source code</a>.</p>
 </div>
 </div>
 
