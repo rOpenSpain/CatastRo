@@ -1,6 +1,6 @@
-# ATOM INSPIRE: Download all the buildings of a municipality
+# ATOM INSPIRE: Download all buildings of a municipality
 
-Get the spatial data of all the buildings belonging to a single
+Retrieve the spatial data of all buildings belonging to a single
 municipality using the INSPIRE ATOM service.
 
 ## Usage
@@ -21,7 +21,7 @@ catr_atom_get_buildings(
 
 - munic:
 
-  Municipality to extract, It can be a part of a string or the cadastral
+  Municipality to extract. It can be a part of a string or the cadastral
   code. See
   [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
   for getting the cadastral codes.
@@ -39,7 +39,7 @@ catr_atom_get_buildings(
 
   - `"buildingpart"` for parts of a building.
 
-  - `"other"` for others elements, as swimming pools, etc.
+  - `"other"` for other elements, such as swimming pools, etc.
 
 - cache:
 

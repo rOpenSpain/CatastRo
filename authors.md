@@ -26,7 +26,7 @@ API Sede Electrónica Del Catastro*.
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       doi = {10.32614/CRAN.package.CatastRo},
       year = {2026},
-      version = {0.4.1},
+      version = {0.4.1.9000},
       url = {https://ropenspain.github.io/CatastRo/},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
     }

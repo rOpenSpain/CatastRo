@@ -40,7 +40,7 @@ catr_wfs_get_buildings_rc(rc, what = "building", srs = NULL, verbose = FALSE)
 
   - `"buildingpart"` for parts of a building.
 
-  - `"other"` for others elements, as swimming pools, etc.
+  - `"other"` for other elements, such as swimming pools, etc.
 
 - srs:
 

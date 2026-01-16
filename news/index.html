@@ -7,7 +7,7 @@
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../apple-touch-icon.png" alt="CatastRo logo" height="40" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -34,8 +34,12 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="development version" id="catastro-development-version">CatastRo (development version)<a class="anchor" aria-label="anchor" href="#catastro-development-version"></a></h2>
+<ul><li>The minimum <strong>R</strong> version required is now 4.1.0.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.1" id="catastro-041">CatastRo 0.4.1<a class="anchor" aria-label="anchor" href="#catastro-041"></a></h2><p class="text-muted">CRAN release: 2025-03-24</p>
-<ul><li>Update documentation and urls.</li>
+<ul><li>Update documentation and URLs.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="catastro-040">CatastRo 0.4.0<a class="anchor" aria-label="anchor" href="#catastro-040"></a></h2><p class="text-muted">CRAN release: 2024-06-02</p>
@@ -43,27 +47,27 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="catastro-031">CatastRo 0.3.1<a class="anchor" aria-label="anchor" href="#catastro-031"></a></h2><p class="text-muted">CRAN release: 2024-04-12</p>
-<ul><li>Migrate from <strong>httr</strong> to <strong>httr2</strong> (<a href="https://github.com/rOpenSpain/CatastRo/issues/44" class="external-link">#44</a>), no visible change for users.</li>
+<ul><li>Migrate from <strong>httr</strong> to <strong>httr2</strong> (<a href="https://github.com/rOpenSpain/CatastRo/issues/44" class="external-link">#44</a>), with no visible change for users.</li>
 <li>Improve documentation.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="catastro-030">CatastRo 0.3.0<a class="anchor" aria-label="anchor" href="#catastro-030"></a></h2><p class="text-muted">CRAN release: 2024-01-18</p>
 <ul><li>
-<code><a href="../reference/catr_atom_get_address.html">catr_atom_get_address()</a></code> returns also the names of the streets (layer <code>"ThoroughfareName"</code> of the <code>*.gml</code> file). The new fields are named with the prefix <code>tfname_*</code>.</li>
-<li>Add a helper function for easy detecting the <code>cache_dir</code>: <code><a href="../reference/catr_set_cache_dir.html">catr_detect_cache_dir()</a></code>.</li>
+<code><a href="../reference/catr_atom_get_address.html">catr_atom_get_address()</a></code> also returns the names of the streets (layer <code>"ThoroughfareName"</code> of the <code>*.gml</code> file). The new fields are named with the prefix <code>tfname_*</code>.</li>
+<li>Add a helper function for easily detecting the <code>cache_dir</code>: <code><a href="../reference/catr_set_cache_dir.html">catr_detect_cache_dir()</a></code>.</li>
 <li>Update documentation and tests.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="catastro-023">CatastRo 0.2.3<a class="anchor" aria-label="anchor" href="#catastro-023"></a></h2><p class="text-muted">CRAN release: 2023-01-08</p>
-<ul><li>Housekeeping and update of documentation.</li>
+<ul><li>Housekeeping and updates of documentation.</li>
 <li>Adapt <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code> to <strong>mapSpain</strong> (&gt;= 0.7.0).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.2" id="catastro-022">CatastRo 0.2.2<a class="anchor" aria-label="anchor" href="#catastro-022"></a></h2><p class="text-muted">CRAN release: 2022-05-27</p>
 <ul><li>Add <strong>tidyterra</strong> to ‘Suggests’.</li>
-<li>Now <code><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> handle <code>sfc</code> objects (<a href="https://github.com/rOpenSpain/CatastRo/issues/26" class="external-link">#26</a>).</li>
+<li>Now <code><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> handles <code>sfc</code> objects (<a href="https://github.com/rOpenSpain/CatastRo/issues/26" class="external-link">#26</a>).</li>
 <li>
-<code><a href="../reference/catr_clear_cache.html">catr_clear_cache()</a></code> now has <code>config = FALSE</code> ad default parameter.</li>
+<code><a href="../reference/catr_clear_cache.html">catr_clear_cache()</a></code> now has <code>config = FALSE</code> as default parameter.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="catastro-021">CatastRo 0.2.1<a class="anchor" aria-label="anchor" href="#catastro-021"></a></h2><p class="text-muted">CRAN release: 2022-03-08</p>
@@ -71,7 +75,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="catastro-020">CatastRo 0.2.0<a class="anchor" aria-label="anchor" href="#catastro-020"></a></h2><p class="text-muted">CRAN release: 2022-02-28</p>
-<p><strong>Overall revamp of the package. Major changes on the API.</strong></p>
+<p><strong>Overall revamp of the package. Major changes to the API.</strong></p>
 <ul><li>Add <strong>ATOM INSPIRE</strong> capabilities:
 <ul><li>Addresses: <code><a href="../reference/catr_atom_get_address.html">catr_atom_get_address()</a></code>, <code><a href="../reference/catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code>.</li>
 <li>Cadastral Parcels: <code><a href="../reference/catr_atom_get_parcels.html">catr_atom_get_parcels()</a></code>, <code><a href="../reference/catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_all()</a></code>.</li>
@@ -80,11 +84,11 @@
 <li>Add <strong>WFS INSPIRE</strong> capabilities:
 <ul><li>Addresses: <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_bbox()</a></code>, <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_codvia()</a></code>, <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_postalcode()</a></code>, <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_rc()</a></code>.</li>
 <li>Cadastral Parcels: <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel()</a></code>, <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_parcel()</a></code>, <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_parcel_zoning()</a></code>, <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_zoning()</a></code>.</li>
-<li>Buildings: <code><a href="../reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox()</a></code>,<code><a href="../reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_rc()</a></code>.</li>
+<li>Buildings: <code><a href="../reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox()</a></code>, <code><a href="../reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_rc()</a></code>.</li>
 </ul></li>
 <li>Add <strong>WMS INSPIRE</strong> capabilities: <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</li>
-<li>New interface for <strong>OVC Services</strong>. Deprecate previous functions in favor of the new API:
-<ul><li>New SRS database on <code>catr_srs_values</code>, replaces <code>coordinates</code>.</li>
+<li>New interface for <strong>OVC Services</strong>. Deprecated previous functions in favor of the new API:
+<ul><li>New SRS database in <code>catr_srs_values</code>, replaces <code>coordinates</code>.</li>
 <li>
 <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code> replaces <code>near_rc()</code>.</li>
 <li>
@@ -121,11 +125,11 @@
 </footer><div id="copyright">
   <div class="container">
     <div class="row">
-      <div class="col-md text-center text-lg-start">
+      <div class="col-md text-center text-md-start">
         <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
       </div>
-      <div class="col-md offset-md-4 text-center text-lg-start">
-      <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstraptemple.com/" class="external-link">bootstraptemple.com</a>.
+      <div class="col-md offset-md-4 text-center text-md-start lh-base">
+      <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://templatesherpa.com/templates/universal-business-e-commerce" class="external-link">templatesherpa.com</a>.
       </p>
       </div>
     </div>

@@ -7,17 +7,17 @@ These functions return
 provided by the INSPIRE ATOM services of the Spanish Cadastre.
 
 - [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md)
-  : ATOM INSPIRE: Download all the addresses of a municipality
+  : ATOM INSPIRE: Download all addresses of a municipality
 - [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
   [`catr_atom_get_address_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
   : ATOM INSPIRE: Reference database for ATOM addresses
 - [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md)
-  : ATOM INSPIRE: Download all the buildings of a municipality
+  : ATOM INSPIRE: Download all buildings of a municipality
 - [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
   [`catr_atom_get_buildings_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
   : ATOM INSPIRE: Reference database for ATOM buildings
 - [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md)
-  : ATOM INSPIRE: Download all the cadastral parcels of a municipality
+  : ATOM INSPIRE: Download all cadastral parcels of a municipality
 - [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
   [`catr_atom_get_parcels_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
   : ATOM INSPIRE: Reference database for ATOM cadastral parcels
