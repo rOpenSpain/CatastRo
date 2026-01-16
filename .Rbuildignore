@@ -33,3 +33,4 @@
 ^_pkgdown\.yaml$
 ^[.]?air[.]toml$
 ^\.vscode$
+^jarl\.toml$
