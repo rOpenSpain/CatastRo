@@ -154,7 +154,7 @@ cp <- catr_wfs_get_parcels_bbox(
   ),
   srs = 25830
 )
-#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpCoiqLN/file6d04234926.gml'
+#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpQ5fsVj/filec4c167fac3.gml'
 
 library(ggplot2)
 

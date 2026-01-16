@@ -80,15 +80,19 @@ Other databases:
 ``` r
 # \donttest{
 catr_atom_search_munic("Mad")
-#> Warning: cannot open URL 'https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml': HTTP status was '500 Internal Server Error'
-#> Warning: cannot open URL 'https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml': HTTP status was '500 Internal Server Error'
-#> Download failed
-#> 
-#> url 
-#>  https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml not reachable.
-#> 
-#> Please try with another options. If you think this is a bug please consider opening an issue
-#> Error in catr_hlp_dwnload(api_entry, filename, cache_dir, verbose, update_cache,     cache): 
-#> Execution halted
+#> # A tibble: 40 × 3
+#>    territorial_office             munic                              catrcode
+#>    <chr>                          <chr>                              <chr>   
+#>  1 Territorial office 02 Albacete 02045-MADRIGUERAS                  02045   
+#>  2 Territorial office 02 Albacete 02058-PATERNA DEL MADERA           02058   
+#>  3 Territorial office 05 Avila    05114-MADRIGAL DE LAS ALTAS TORRES 05114   
+#>  4 Territorial office 09 Burgos   09178-HUMADA                       09178   
+#>  5 Territorial office 09 Burgos   09187-JARAMILLO QUEMADO            09187   
+#>  6 Territorial office 09 Burgos   09200-MADRIGAL DEL MONTE           09200   
+#>  7 Territorial office 09 Burgos   09201-MADRIGALEJO DEL MONTE        09201   
+#>  8 Territorial office 09 Burgos   09287-QUEMADA                      09287   
+#>  9 Territorial office 10 Cáceres  10114-MADRIGAL DE LA VERA          10114   
+#> 10 Territorial office 10 Cáceres  10115-MADRIGALEJO                  10115   
+#> # ℹ 30 more rows
 # }
 ```
