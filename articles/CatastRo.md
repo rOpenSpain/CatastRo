@@ -243,8 +243,8 @@ Granada: Urban growth
 
 ## References
 
-- Royé D (2019). “Visualize urban growth.”
-  <https://dominicroye.github.io/en/2019/visualize-urban-growth/>.
+- Royé D (2019). “Visualize urban growth.” November 1, 2019.
+  <https://dominicroye.github.io/blog/visualize-urban-growth/>.
 
 ------------------------------------------------------------------------
 
