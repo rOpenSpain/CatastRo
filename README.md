@@ -20,10 +20,10 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 <!-- badges: end -->
 
-**CatastRo** is a package that provide access to different API services
+**CatastRo** is a package that provides access to different API services
 of the [Spanish Cadastre](https://www.sedecatastro.gob.es/). With
-**CatastRo** it is possible to download spatial objects (as buildings or
-cadastral parcels), maps and geocode cadastral references.
+**CatastRo** you can download spatial objects such as buildings and
+cadastral parcels, maps, and geocode cadastral references.
 
 ## Installation
 
@@ -34,7 +34,7 @@ Install **CatastRo** from
 install.packages("CatastRo")
 ```
 
-You can install the developing version of **CatastRo** using the
+You can install the development version of **CatastRo** using the
 [r-universe](https://ropenspain.r-universe.dev/CatastRo):
 
 ``` r
@@ -47,7 +47,7 @@ install.packages("CatastRo",
 )
 ```
 
-Alternatively, you can install the developing version of **CatastRo**
+Alternatively, you can install the development version of **CatastRo**
 with:
 
 ``` r
@@ -56,9 +56,9 @@ remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 
 ## Known issues
 
-The SSL certificate of the Spanish Cadastre present some issues that may
-cause an error when using **CatastRo** (specially on Mac OS, see issue
-[\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
+The SSL certificate of the Spanish Cadastre presents some issues that
+may cause an error when using **CatastRo** (especially on macOS, see
+issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
 ``` r
 #> ...(more lines on error)
@@ -84,25 +84,25 @@ naming convention is `catr_*api*_*description*`.
 
 ### OVCCoordenadas
 
-These functions allow to geocode and reverse geocode cadastral
+These functions allow geocoding and reverse geocoding of cadastral
 references using the
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
 service.
 
-These functions are named `catr_ovc_get_*` and returns a tibble, as
+These functions are named `catr_ovc_get_*` and return a tibble, as
 provided by the package **tibble**. See
 `vignette("ovcservice", package = "CatastRo")` where these functions are
 described.
 
 ### INSPIRE
 
-These functions return spatial object (on the formats provided by the
-**sf** or **terra** using the [Catastro
+These functions return spatial objects in the formats provided by the
+**sf** or **terra** packages using the [Catastro
 INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
 service.
 
 Note that the coverage of this service is 95% of the Spanish territory,
-<u>excluding Basque Country and Navarre</u>[^1] that have their own
+<u>excluding the Basque Country and Navarre</u>[^1] that have their own
 independent cadastral offices.
 
 There are three types of functions, each one querying a different
@@ -110,7 +110,7 @@ service:
 
 #### ATOM service
 
-The ATOM service allows to batch-download vector objects of different
+The ATOM service allows batch-downloading vector objects of different
 cadastral elements for a specific municipality. The result is provided
 as `sf` objects (See **sf** package).
 
@@ -118,18 +118,18 @@ These functions are named `catr_atom_get_xxx`.
 
 #### WFS service
 
-The WFS service allows to download vector objects of specific cadastral
+The WFS service allows downloading vector objects of specific cadastral
 elements. The result is provided as `sf` class objects (see
 [**sf**](https://r-spatial.github.io/sf/) package). Note that there are
-some limitations on the extension and number of elements to query. For
+some limitations on the extent and number of elements to query. For
 batch-downloading the ATOM service is preferred.
 
 These functions are named `catr_wms_get_xxx`.
 
 #### WMS service
 
-This service allows to download georeferenced images of different
-cadastral elements. The result is a raster on the format provides by
+This service allows downloading georeferenced images of different
+cadastral elements. The result is a raster in the format provided by
 [**terra**](https://rspatial.github.io/terra/reference/terra-package.html).
 
 There is a single function for querying this service:
@@ -143,7 +143,7 @@ of the service.
 
 ## Examples
 
-This script highlights some features of **CatastRo** :
+This script highlights some features of **CatastRo**:
 
 ### Geocode a cadastral reference
 
@@ -211,7 +211,7 @@ ggplot(wfs_get_buildings) +
 
 ## A note on caching
 
-Some data sets and tiles may have a size larger than 50MB. You can use
+Some datasets and tiles may have a size larger than 50MB. You can use
 **CatastRo** to create your own local repository at a given local
 directory passing the following option:
 
@@ -219,7 +219,7 @@ directory passing the following option:
 catr_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **CatastRo** would look for the cached file and
+When this option is set, **CatastRo** will look for the cached file and
 it will load it, speeding up the process.
 
 ## Citation
@@ -238,17 +238,17 @@ A BibTeX entry for LaTeX users is:
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       doi = {10.32614/CRAN.package.CatastRo},
       year = {2026},
-      version = {0.4.1},
+      version = {0.4.1.9000},
       url = {https://ropenspain.github.io/CatastRo/},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
     }
 
 ## Contribute
 
-Check the GitHub page for [source
+Check the GitHub page for the [source
 code](https://github.com/ropenspain/CatastRo/).
 
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar
-    functionalities than **CatastRo**.
+    functionalities to **CatastRo**.
