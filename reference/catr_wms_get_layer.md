@@ -225,7 +225,7 @@ ggplot() +
 # With a spatial object
 
 parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
-#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpUhpHT7/file10c445e3706f.gml'
+#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpIXwTyC/file17b0611429fd.gml'
 
 
 # Use styles
