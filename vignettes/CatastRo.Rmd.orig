@@ -29,18 +29,18 @@ if (.Platform$OS.type != "windows") {
 }
 ```
 
-**CatastRo** provide access to different API services of the [Spanish
-Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo** it is possible to
-download official information of addresses, properties, parcels and buildings.
+**CatastRo** provides access to different API services of the [Spanish
+Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo** you can
+download official information on addresses, properties, parcels, and buildings.
 
 ## OVCCoordenadas Service
 
 The
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-service allows to retrieve the coordinates of a known cadastral reference
+service allows retrieving the coordinates of a known cadastral reference
 (geocoding). It is also possible to retrieve the cadastral references around a
 specific pair of coordinates (reverse geocoding). **CatastRo** returns the
-results on a `tibble` format. This functionality is described in detail in the
+results in a `tibble` format. This functionality is described in detail in the
 corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 
 ## INSPIRE Services
@@ -57,44 +57,44 @@ corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
 [Catastro INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
-allows to retrieve spatial objects from the database of the cadastre:
+allows retrieving spatial objects from the database of the cadastre:
 
 -   **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.
     These objects are provided by **CatastRo** as `sf` objects as provided by
     the **sf** package.
--   **Imagery:** Image layers representing the same information than the vector
+-   **Imagery:** Image layers representing the same information as the vector
     objects. These objects are provided by **CatastRo** as `SpatRaster` objects
     as provided by the **terra** package.
 
 Note that **the coverage of this service is 95% of the Spanish territory**,
-excluding Basque Country and Navarre[^1] that have their own independent
+excluding the Basque Country and Navarre[^1] that have their own independent
 cadastral offices.
 
 [^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar functionalities
-    than **CatastRo**.
+    to **CatastRo**.
 
 There are three types of functions, each one querying a different service:
 
-1.  **ATOM service**: The ATOM service allows to batch-download vector objects
+1.  **ATOM service**: The ATOM service allows batch-downloading vector objects
     of different cadastral elements for a specific municipality.
 
-2.  **WFS service**: The WFS service allows to download vector objects of
+2.  **WFS service**: The WFS service allows downloading vector objects of
     specific cadastral elements. Note that there are some *restrictions on the
-    extension and number of elements* to query. For batch-downloading the ATOM
+    extent and number of elements* to query. For batch-downloading the ATOM
     service is preferred.
 
-3.  **WMS service**: This service allows to download georeferenced images of
+3.  **WMS service**: This service allows downloading georeferenced images of
     different cadastral elements.
 
 ## Examples
 
 ### Working with layers
 
-On this example we would demonstrate some of the main capabilities of the
+In this example, we will demonstrate some of the main capabilities of the
 package by recreating a cadastral map of the surroundings of the [Santiago
 Bernabéu Stadium](https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium).
-We would make use of the **WMS and WFS services** to get different layers in
+We will make use of the **WMS and WFS services** to get different layers in
 order to show some of the capabilities of the package:
 
 ```{r santbernabeu, fig.cap="Example: Santiago Bernabeu"}
@@ -137,14 +137,14 @@ ggplot() +
 
 ### Thematic maps
 
-We can create also thematic maps using the information available on the spatial
-objects. We would produce a visualization of the urban growth of Granada using
+We can also create thematic maps using the information available on the spatial
+objects. We will produce a visualization of the urban growth of Granada using
 **CatastRo**, replicating the map produced by Dominic Royé on his post
 [Visualize urban
 growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/), using
-the **ATOM services**.
+the **ATOM service**.
 
-In first place, we extract the coordinates of the city center of Granada using
+First, we extract the coordinates of the city center of Granada using
 **mapSpain**:
 
 ```{r}
@@ -157,9 +157,9 @@ library(mapSpain)
 city <- esp_get_capimun(munic = "^Granada$")
 ```
 
-Next step consists on extracting the buildings using the ATOM service. We would
-use also the function `catr_get_code_from_coords()` to identify the code of
-Granada in the Cadastre, and we would download the buildings with
+The next step consists of extracting the buildings using the ATOM service. We will
+also use the function `catr_get_code_from_coords()` to identify the code of
+Granada in the Cadastre, and we will download the buildings with
 `catr_atom_get_buildings()`.
 
 ```{r }
@@ -170,7 +170,7 @@ city_catr_code
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
 
-Next step for creating the visualization is to limit the analysis to a circle of
+The next step in creating the visualization is to limit the analysis to a circle of
 radius 1.5 km around the city center:
 
 ```{r minimal, fig.cap="Minimal cadastral map of Granada", dpi=150}
@@ -189,7 +189,7 @@ ggplot(dataviz) +
   geom_sf()
 ```
 
-Let's extract now the construction year, available in the column `beginning`:
+Now let's extract the construction year, available in the column `beginning`:
 
 ```{r}
 # Extract 4 initial positions
@@ -207,9 +207,9 @@ dataviz <- dataviz %>%
   mutate(year = year)
 ```
 
-Last step is to create groups based on the year and create the data
-visualization. We use here the function `cut()` to create classes for every
-decade starting in year 1900:
+The last step is to create groups based on the year and create the data
+visualization. Here we use the function `cut()` to create classes for every
+decade starting from year 1900:
 
 ```{r dviz, fig.cap="Granada: Urban growth", fig.asp=0.75, crop=TRUE, dpi=150}
 dataviz <- dataviz %>%

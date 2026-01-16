@@ -21,7 +21,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \itemize{
 \item \code{"building"} for buildings.
 \item \code{"buildingpart"} for parts of a building.
-\item \code{"other"} for others elements, as swimming pools, etc.
+\item \code{"other"} for other elements, such as swimming pools, etc.
 }}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check

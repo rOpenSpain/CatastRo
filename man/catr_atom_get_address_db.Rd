@@ -2,7 +2,6 @@
 % Please edit documentation in R/atom_ad_db.R
 \name{catr_atom_get_address_db_all}
 \alias{catr_atom_get_address_db_all}
-\alias{catr_atom_get_address_to}
 \alias{catr_atom_get_address_db_to}
 \title{ATOM INSPIRE: Reference database for ATOM addresses}
 \source{
@@ -47,24 +46,24 @@ A \code{\link[tibble:tibble]{tibble}} with the information requested.
 \item \code{catr_atom_get_address_db_all()} includes the following fields:
 \itemize{
 \item \code{territorial_office}: Territorial office, corresponding to each province
-of Spain expect Basque Country and Navarre.
-\item \code{url}: ATOM url for the corresponding territorial office.
+of Spain except the Basque Country and Navarre.
+\item \code{url}: ATOM URL for the corresponding territorial office.
 \item \code{munic}: Name of the municipality.
-\item \code{date}: Reference date of the data. Note that \strong{the information of
+\item \code{date}: Reference date of the data. Note that \strong{the information from
 this service is updated twice a year}.
 }
 \item \code{catr_atom_get_address_db_to()} includes the following fields:
 \itemize{
 \item \code{munic}: Name of the municipality.
-\item \code{url}: url for downloading information of the corresponding municipality.
-\item \code{date}: Reference date of the data. Note that \strong{the information of
+\item \code{url}: URL for downloading information of the corresponding municipality.
+\item \code{date}: Reference date of the data. Note that \strong{the information from
 this service is updated twice a year}.
 }
 }
 }
 \description{
-Create a database containing the urls provided in the INSPIRE ATOM service
-of the Spanish Cadastre for extracting Addresses.
+Create a database containing the URLs provided in the INSPIRE ATOM service
+of the Spanish Cadastre for extracting addresses.
 \itemize{
 \item \code{catr_atom_get_address_db_all()} provides a top-level table including
 information of all the territorial offices (except Basque Country and

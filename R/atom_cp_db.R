@@ -2,8 +2,7 @@
 #'
 #' @description
 #'
-#'
-#' Create a database containing the urls provided in the INSPIRE ATOM service
+#' Create a database containing the URLs provided in the INSPIRE ATOM service
 #' of the Spanish Cadastre for extracting cadastral parcels.
 #'
 #' - `catr_atom_get_parcels_db_all()` provides a top-level table including
@@ -25,6 +24,9 @@
 #' @inheritParams catr_atom_get_address_db_all
 #' @inheritParams catr_set_cache_dir
 #'
+#' @param to Territorial office. It can be any type of string, the function
+#'   would perform a search using [base::grep()].
+#'
 #' @rdname catr_atom_get_parcels_db
 #' @export
 #'
@@ -32,15 +34,15 @@
 #' A [`tibble`][tibble::tibble] with the information requested.
 #' - `catr_atom_get_parcels_db_all()` includes the following fields:
 #'   - `territorial_office`: Territorial office, corresponding to each province
-#'      of Spain expect Basque Country and Navarre.
-#'   - `url`: ATOM url for the corresponding territorial office.
+#'      of Spain except the Basque Country and Navarre.
+#'   - `url`: ATOM URL for the corresponding territorial office.
 #'   - `munic`: Name of the municipality.
-#'   - `date`: Reference date of the data. Note that **the information of
+#'   - `date`: Reference date of the data. Note that **the information from
 #'      this service is updated twice a year**.
 #' - `catr_atom_get_parcels_db_to()` includes the following fields:
 #'   - `munic`: Name of the municipality.
-#'   - `url`: url for downloading information of the corresponding municipality.
-#'   - `date`: Reference date of the data. Note that **the information of
+#'   - `url`: URL for downloading information of the corresponding municipality.
+#'   - `date`: Reference date of the data. Note that **the information from
 #'      this service is updated twice a year**.
 #'
 #' @examples
@@ -75,7 +77,6 @@ catr_atom_get_parcels_db_all <- function(
   return(tbl)
 }
 #' @rdname catr_atom_get_parcels_db
-#' @name catr_atom_get_parcels_to
 #' @export
 catr_atom_get_parcels_db_to <- function(
   to,

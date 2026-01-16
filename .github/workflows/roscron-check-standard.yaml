@@ -1,45 +1,49 @@
-# For help debugging build failures open an issue on the RStudio community with the 'github-actions' tag.
-# https://community.rstudio.com/new-topic?category=Package%20development&tags=github-actions
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+#
+# NOTE: This workflow is overkill for most R packages and
+# check-standard.yaml is likely a better choice.
+# usethis::use_github_action("check-standard") will install it.
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [main, master]
   pull_request:
-    branches:
-      - main
-      - master
+    branches: [main, master]
   schedule:
-      - cron:  '00 07 1 * 1,4'
+    - cron: "00 07 * * 1,4"
+  repository_dispatch:
+    types: [trigger-check-workflow]
+  workflow_dispatch:
 
 name: R-CMD-check
+permissions:
+  contents: read
+
+# This will cancel running jobs once a new run is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
-
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: 'devel'}
-          - {os: windows-latest, r: 'release'}
-          - {os: windows-latest, r: 'oldrel'}
-          #- {os: macOS-latest, r: 'devel'}
-          #- {os: macOS-latest, r: 'release'}
-          #- {os: macOS-latest, r: 'oldrel'}
-          - {os: ubuntu-latest, r: 'release'}
-          #- {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
-          - {os: ubuntu-latest, r: 'oldrel'}
-
-
+          - { os: windows-latest, r: "devel" }
+          - { os: windows-latest, r: "release" }
+          - { os: macOS-latest, r: "release" }
+          - { os: ubuntu-latest, r: "release" }
+          - { os: ubuntu-latest, r: "devel" }
+          - { os: ubuntu-latest, r: "oldrel" }
+          - { os: ubuntu-latest, r: "4.1.0" }
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -55,4 +59,3 @@ jobs:
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
-

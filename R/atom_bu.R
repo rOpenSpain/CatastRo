@@ -1,7 +1,6 @@
-#' ATOM INSPIRE: Download all the buildings of a municipality
+#' ATOM INSPIRE: Download all buildings of a municipality
 #'
-#'
-#' Get the spatial data of all the buildings belonging to a single municipality
+#' Retrieve the spatial data of all buildings belonging to a single municipality
 #' using the INSPIRE ATOM service.
 #'
 #' @references
@@ -21,7 +20,7 @@
 #' @param what Information to load. It could be:
 #'   - `"building"` for buildings.
 #'   - `"buildingpart"` for parts of a building.
-#'   - `"other"` for others elements, as swimming pools, etc.
+#'   - `"other"` for other elements, such as swimming pools, etc.
 #' @examples
 #' \donttest{
 #' s <- catr_atom_get_buildings("Nava de la Asuncion",

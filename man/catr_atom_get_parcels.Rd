@@ -2,7 +2,7 @@
 % Please edit documentation in R/atom_cp.R
 \name{catr_atom_get_parcels}
 \alias{catr_atom_get_parcels}
-\title{ATOM INSPIRE: Download all the cadastral parcels of a municipality}
+\title{ATOM INSPIRE: Download all cadastral parcels of a municipality}
 \usage{
 catr_atom_get_parcels(
   munic,
@@ -15,7 +15,7 @@ catr_atom_get_parcels(
 )
 }
 \arguments{
-\item{munic}{Municipality to extract, It can be a part of a string or the
+\item{munic}{Municipality to extract. It can be a part of a string or the
 cadastral code. See \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} for getting the cadastral
 codes.}
 
@@ -42,7 +42,7 @@ default is \code{FALSE}.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Get the spatial data of all the cadastral parcels belonging to a single
+Retrieve the spatial data of all cadastral parcels belonging to a single
 municipality using the INSPIRE ATOM service.
 }
 \examples{
@@ -57,7 +57,7 @@ library(ggplot2)
 ggplot(s) +
   geom_sf() +
   labs(
-    title = "Cadastral Zoning",
+    title = "Cadastral Parcels",
     subtitle = "Melque de Cercos, Segovia"
   )
 }

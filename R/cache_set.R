@@ -108,7 +108,7 @@ catr_set_cache_dir <- function(
 
     catastroesp_file <- file.path(config_dir, "CATASTROESP_CACHE_DIR")
 
-    if (!file.exists(catastroesp_file) || overwrite == TRUE) {
+    if (!file.exists(catastroesp_file) || overwrite) {
       # Create file if it doesn't exist
       writeLines(cache_dir, con = catastroesp_file)
     } else {

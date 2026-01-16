@@ -2,7 +2,7 @@
 % Please edit documentation in R/atom_ad.R
 \name{catr_atom_get_address}
 \alias{catr_atom_get_address}
-\title{ATOM INSPIRE: Download all the addresses of a municipality}
+\title{ATOM INSPIRE: Download all addresses of a municipality}
 \usage{
 catr_atom_get_address(
   munic,
@@ -14,7 +14,7 @@ catr_atom_get_address(
 )
 }
 \arguments{
-\item{munic}{Municipality to extract, It can be a part of a string or the
+\item{munic}{Municipality to extract. It can be a part of a string or the
 cadastral code. See \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} for getting the cadastral
 codes.}
 
@@ -38,9 +38,9 @@ default is \code{FALSE}.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Get the spatial data of all the addresses belonging to a single municipality
-using the INSPIRE ATOM service. Additionally, the function also returns the
-corresponding street information on the fields with the prefix \verb{tfname_*}.
+Retrieve the spatial data of all addresses belonging to a single municipality
+using the INSPIRE ATOM service. The function also returns corresponding
+street information in fields prefixed with \verb{tfname_*}.
 }
 \examples{
 \donttest{

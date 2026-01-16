@@ -179,7 +179,7 @@ catr_wms_get_layer <- function(
   # Check if need to change crs
 
   if (finalopts$version >= "1.3.0") {
-    newnames <- gsub("srs", "crs", names(finalopts))
+    newnames <- gsub("srs", "crs", names(finalopts), fixed = TRUE)
     names(finalopts) <- newnames
   }
 

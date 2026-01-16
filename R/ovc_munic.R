@@ -84,7 +84,7 @@ catr_ovc_get_cod_munic <- function(
   )
 
   q <- paste0(names(parms), "=", parms, collapse = "&")
-  q <- gsub("NULL", "", q)
+  q <- gsub("NULL", "", q, fixed = TRUE)
 
   api_entry <- paste0(api_entry, q)
 

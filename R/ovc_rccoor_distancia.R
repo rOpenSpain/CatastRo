@@ -58,7 +58,7 @@ catr_ovc_get_rccoor_distancia <- function(
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values
   valid_srs <- tibble::as_tibble(valid_srs)
-  valid_srs <- valid_srs[valid_srs$ovc_service == TRUE, "SRS"]
+  valid_srs <- valid_srs[valid_srs$ovc_service, "SRS"]
   valid <- tibble::deframe(valid_srs)
   valid <- as.character(valid)
 

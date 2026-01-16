@@ -1,24 +1,30 @@
 name: CRAN Status Monitor
+permissions:
+  contents: read
+  issues: write
+
+# This will cancel running jobs once a new run is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 10 * * 1,3,5'
+    - cron: "0 10 * * 1,3,5"
 
 jobs:
   check:
     runs-on: ubuntu-latest
-    permissions: write-all
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Check
         uses: dieghernan/cran-status-check@v2
         with:
           fail-on-error: "true"
           create-issue: "false"
-

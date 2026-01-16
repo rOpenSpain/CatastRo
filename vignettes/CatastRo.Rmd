@@ -11,18 +11,18 @@ vignette: >
 
 
 
-**CatastRo** provide access to different API services of the [Spanish
-Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo** it is possible to
-download official information of addresses, properties, parcels and buildings.
+**CatastRo** provides access to different API services of the [Spanish
+Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo** you can
+download official information on addresses, properties, parcels, and buildings.
 
 ## OVCCoordenadas Service
 
 The
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-service allows to retrieve the coordinates of a known cadastral reference
+service allows retrieving the coordinates of a known cadastral reference
 (geocoding). It is also possible to retrieve the cadastral references around a
 specific pair of coordinates (reverse geocoding). **CatastRo** returns the
-results on a `tibble` format. This functionality is described in detail in the
+results in a `tibble` format. This functionality is described in detail in the
 corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 
 ## INSPIRE Services
@@ -39,44 +39,44 @@ corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
 [Catastro INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
-allows to retrieve spatial objects from the database of the cadastre:
+allows retrieving spatial objects from the database of the cadastre:
 
 -   **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.
     These objects are provided by **CatastRo** as `sf` objects as provided by
     the **sf** package.
--   **Imagery:** Image layers representing the same information than the vector
+-   **Imagery:** Image layers representing the same information as the vector
     objects. These objects are provided by **CatastRo** as `SpatRaster` objects
     as provided by the **terra** package.
 
 Note that **the coverage of this service is 95% of the Spanish territory**,
-excluding Basque Country and Navarre[^1] that have their own independent
+excluding the Basque Country and Navarre[^1] that have their own independent
 cadastral offices.
 
 [^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar functionalities
-    than **CatastRo**.
+    to **CatastRo**.
 
 There are three types of functions, each one querying a different service:
 
-1.  **ATOM service**: The ATOM service allows to batch-download vector objects
+1.  **ATOM service**: The ATOM service allows batch-downloading vector objects
     of different cadastral elements for a specific municipality.
 
-2.  **WFS service**: The WFS service allows to download vector objects of
+2.  **WFS service**: The WFS service allows downloading vector objects of
     specific cadastral elements. Note that there are some *restrictions on the
-    extension and number of elements* to query. For batch-downloading the ATOM
+    extent and number of elements* to query. For batch-downloading the ATOM
     service is preferred.
 
-3.  **WMS service**: This service allows to download georeferenced images of
+3.  **WMS service**: This service allows downloading georeferenced images of
     different cadastral elements.
 
 ## Examples
 
 ### Working with layers
 
-On this example we would demonstrate some of the main capabilities of the
+In this example, we will demonstrate some of the main capabilities of the
 package by recreating a cadastral map of the surroundings of the [Santiago
 Bernabéu Stadium](https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium).
-We would make use of the **WMS and WFS services** to get different layers in
+We will make use of the **WMS and WFS services** to get different layers in
 order to show some of the capabilities of the package:
 
 
@@ -125,14 +125,14 @@ ggplot() +
 
 ### Thematic maps
 
-We can create also thematic maps using the information available on the spatial
-objects. We would produce a visualization of the urban growth of Granada using
+We can also create thematic maps using the information available on the spatial
+objects. We will produce a visualization of the urban growth of Granada using
 **CatastRo**, replicating the map produced by Dominic Royé on his post
 [Visualize urban
 growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/), using
-the **ATOM services**.
+the **ATOM service**.
 
-In first place, we extract the coordinates of the city center of Granada using
+First, we extract the coordinates of the city center of Granada using
 **mapSpain**:
 
 
@@ -146,9 +146,9 @@ library(mapSpain)
 city <- esp_get_capimun(munic = "^Granada$")
 ```
 
-Next step consists on extracting the buildings using the ATOM service. We would
-use also the function `catr_get_code_from_coords()` to identify the code of
-Granada in the Cadastre, and we would download the buildings with
+The next step consists of extracting the buildings using the ATOM service. We will
+also use the function `catr_get_code_from_coords()` to identify the code of
+Granada in the Cadastre, and we will download the buildings with
 `catr_atom_get_buildings()`.
 
 
@@ -157,106 +157,19 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
 
-Next step for creating the visualization is to limit the analysis to a circle of
+The next step in creating the visualization is to limit the analysis to a circle of
 radius 1.5 km around the city center:
 
 
-``` r
-buff <- city %>%
-  # Adjust CRS to 25830: (Buildings)
-  st_transform(st_crs(city_bu)) %>%
-  # Buffer
-  st_buffer(1500)
 
 
-# Cut buildings
-
-dataviz <- st_intersection(city_bu, buff)
-
-ggplot(dataviz) +
-  geom_sf()
-```
-
-<div class="figure">
-<img src="./minimal-1.png" alt="Minimal cadastral map of Granada" width="100%" />
-<p class="caption">Minimal cadastral map of Granada</p>
-</div>
-
-Let's extract now the construction year, available in the column `beginning`:
 
 
-``` r
-# Extract 4 initial positions
-year <- substr(dataviz$beginning, 1, 4)
 
-# Replace all that doesn't look as a number with 0000
-year[!(year %in% 0:2500)] <- "0000"
-
-
-# To numeric
-year <- as.integer(year)
-
-# New column
-dataviz <- dataviz %>%
-  mutate(year = year)
-```
-
-Last step is to create groups based on the year and create the data
-visualization. We use here the function `cut()` to create classes for every
-decade starting in year 1900:
-
-
-``` r
-dataviz <- dataviz %>%
-  mutate(year_cat = cut(year,
-    breaks = c(0, seq(1900, 2030, by = 10)),
-    dig.lab = 4
-  ))
-
-
-ggplot(dataviz) +
-  geom_sf(aes(fill = year_cat), color = NA, na.rm = TRUE) +
-  scale_fill_manual(
-    values = hcl.colors(15, "Spectral"),
-    na.translate = FALSE
-  ) +
-  theme_void() +
-  labs(title = "GRANADA", fill = "") +
-  theme(
-    panel.background = element_rect(fill = "black"),
-    plot.background = element_rect(fill = "black"),
-    legend.justification = .5,
-    legend.text = element_text(
-      colour = "white",
-      size = 12
-    ),
-    plot.title = element_text(
-      colour = "white", hjust = .5,
-      margin = margin(t = 30),
-      size = 30
-    ),
-    plot.caption = element_text(
-      colour = "white",
-      margin = margin(b = 20), hjust = .5
-    ),
-    plot.margin = margin(r = 40, l = 40)
-  )
-```
-
-<div class="figure">
-<img src="./dviz-1.png" alt="Granada: Urban growth" width="100%" />
-<p class="caption">Granada: Urban growth</p>
-</div>
-
-## References
-
--   Royé D (2019). "Visualize urban growth."
-    <https://dominicroye.github.io/en/2019/visualize-urban-growth/>.

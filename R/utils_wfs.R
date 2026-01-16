@@ -19,7 +19,7 @@ catr_wfs_check <- function(path) {
   # Check if it is valid
   lines <- readLines(path, n = 20)
 
-  if (any(grepl("<gml", lines))) {
+  if (any(grepl("<gml", lines, fixed = TRUE))) {
     return(TRUE)
   } else {
     return(FALSE)
@@ -108,7 +108,7 @@ wfs_validate_srs <- function(srs) {
   # Sanity checks
   valid_srs <- CatastRo::catr_srs_values
   valid_srs <- tibble::as_tibble(valid_srs)
-  valid_srs <- valid_srs[valid_srs$wfs_service == TRUE, "SRS"]
+  valid_srs <- valid_srs[valid_srs$wfs_service, "SRS"]
   valid <- tibble::deframe(valid_srs)
   valid <- as.character(valid)
 

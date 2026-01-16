@@ -2,7 +2,7 @@
 % Please edit documentation in R/atom_bu.R
 \name{catr_atom_get_buildings}
 \alias{catr_atom_get_buildings}
-\title{ATOM INSPIRE: Download all the buildings of a municipality}
+\title{ATOM INSPIRE: Download all buildings of a municipality}
 \usage{
 catr_atom_get_buildings(
   munic,
@@ -15,7 +15,7 @@ catr_atom_get_buildings(
 )
 }
 \arguments{
-\item{munic}{Municipality to extract, It can be a part of a string or the
+\item{munic}{Municipality to extract. It can be a part of a string or the
 cadastral code. See \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} for getting the cadastral
 codes.}
 
@@ -26,7 +26,7 @@ codes.}
 \itemize{
 \item \code{"building"} for buildings.
 \item \code{"buildingpart"} for parts of a building.
-\item \code{"other"} for others elements, as swimming pools, etc.
+\item \code{"other"} for other elements, such as swimming pools, etc.
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -46,7 +46,7 @@ default is \code{FALSE}.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Get the spatial data of all the buildings belonging to a single municipality
+Retrieve the spatial data of all buildings belonging to a single municipality
 using the INSPIRE ATOM service.
 }
 \examples{

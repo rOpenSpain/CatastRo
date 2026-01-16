@@ -1,9 +1,8 @@
-#' ATOM INSPIRE: Download all the addresses of a municipality
+#' ATOM INSPIRE: Download all addresses of a municipality
 #'
-#'
-#' Get the spatial data of all the addresses belonging to a single municipality
-#' using the INSPIRE ATOM service. Additionally, the function also returns the
-#' corresponding street information on the fields with the prefix `tfname_*`.
+#' Retrieve the spatial data of all addresses belonging to a single municipality
+#' using the INSPIRE ATOM service. The function also returns corresponding
+#' street information in fields prefixed with `tfname_*`.
 #'
 #' @references
 #'
@@ -158,7 +157,7 @@ catr_atom_get_address <- function(
           unlist(strsplit(x, ".", fixed = TRUE))[seq(1, 6)],
           collapse = "."
         )
-        ids <- gsub("AD", "TN", ids)
+        ids <- gsub("AD", "TN", ids, fixed = TRUE)
         ids
       },
       FUN.VALUE = character(1),
