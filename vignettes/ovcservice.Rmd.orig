@@ -33,16 +33,16 @@ Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordena
 API directly through a **R** IDE.
 
 This API is used to retrieve the spatial coordinates of an urban property.
-Moreover, it is not necessary to be the owner to get the information; in fact, it is
-enough to know the cadastral reference (*RC*) of the property and its address
-(in fact, it is only completely compulsory to know the RC, however, to ensure a
-good result from the response and to avoid mistakes in the RC, the address can
-be passed to the query too).
+Moreover, it is not necessary to be the owner to get the information; in fact,
+it is enough to know the cadastral reference (*RC*) of the property and its
+address (in fact, it is only completely compulsory to know the RC, however, to
+ensure a good result from the response and to avoid mistakes in the RC, the
+address can be passed to the query too).
 
 Second, the API can be used to obtain a RC of an urban property. For this
-purpose, the API asks for the longitude and the latitude. Furthermore, it
-allows choosing the spatial reference system (SRS, also known as CRS) between a
-list of them to express the coordinates.
+purpose, the API asks for the longitude and the latitude. Furthermore, it allows
+choosing the spatial reference system (SRS, also known as CRS) between a list of
+them to express the coordinates.
 
 Finally, the API tackles the issue of not knowing the exact point where the
 urban property has been registered. In this case, it will return all the
@@ -51,8 +51,8 @@ properties located in a square 50-meters-side around the given point.
 The documentation of this API can be found
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-These functions are named `catr_ovc_*` and return a `tibble`, as provided by
-the package **tibble**.
+These functions are named `catr_ovc_*` and return a tibble, as provided by the
+package **tibble**.
 
 ## CatastRo API
 
@@ -66,7 +66,7 @@ The OVCCoordenadas Web Service can be reached using the following functions:
 
 The function `catr_ovc_get_rccoor()` receives the coordinates (`lat` and `lon`)
 and the spatial reference system (`srs`) used to express them. It returns a
-`tibble` with the cadastral reference of the property in that spatial point,
+tibble with the cadastral reference of the property in that spatial point,
 including other information such as the address (town, street, and number).
 
 ```{r}
@@ -128,9 +128,9 @@ catr_ovc_get_cpmrc(
 
 Neither the `province` nor the `municipality` is required to be passed to the
 function, unless the argument `municipality` is not `NULL`, in that case the
-argument `province` must be passed. If a value is passed to the
-`province` argument while the `municipality` argument is `NULL`, the function
-`catr_ovc_get_cpmrc()` will throw a message and will return a `tibble` with no
+argument `province` must be passed. If a value is passed to the `province`
+argument while the `municipality` argument is `NULL`, the function
+`catr_ovc_get_cpmrc()` will throw a message and will return a tibble with no
 data.
 
 ```{r, message = TRUE}

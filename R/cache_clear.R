@@ -55,5 +55,5 @@ catr_clear_cache <- function(
   Sys.setenv(CATASTROESP_CACHE_DIR = "")
 
   # Reset cache dir
-  return(invisible())
+  invisible()
 }

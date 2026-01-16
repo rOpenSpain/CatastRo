@@ -5,6 +5,8 @@ vignette: >
   %\VignetteIndexEntry{Get started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: REFERENCES.bib
+link-citations: yes
 ---
 
 <!-- CatastRo.Rmd is generated from CatastRo.Rmd.orig. Please edit that file -->
@@ -12,8 +14,8 @@ vignette: >
 
 
 **CatastRo** provides access to different API services of the [Spanish
-Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo** you can
-download official information on addresses, properties, parcels, and buildings.
+Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo** you can download
+official information on addresses, properties, parcels, and buildings.
 
 ## OVCCoordenadas Service
 
@@ -22,7 +24,7 @@ The
 service allows retrieving the coordinates of a known cadastral reference
 (geocoding). It is also possible to retrieve the cadastral references around a
 specific pair of coordinates (reverse geocoding). **CatastRo** returns the
-results in a `tibble` format. This functionality is described in detail in the
+results in a tibble format. This functionality is described in detail in the
 corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 
 ## INSPIRE Services
@@ -53,8 +55,8 @@ excluding the Basque Country and Navarre[^1] that have their own independent
 cadastral offices.
 
 [^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
-    provides access to the Cadastre of Navarre, with similar functionalities
-    to **CatastRo**.
+    provides access to the Cadastre of Navarre, with similar functionalities to
+    **CatastRo**.
 
 There are three types of functions, each one querying a different service:
 
@@ -127,10 +129,8 @@ ggplot() +
 
 We can also create thematic maps using the information available on the spatial
 objects. We will produce a visualization of the urban growth of Granada using
-**CatastRo**, replicating the map produced by Dominic Royé on his post
-[Visualize urban
-growth](https://dominicroye.github.io/en/2019/visualize-urban-growth/), using
-the **ATOM service**.
+**CatastRo**, replicating the map produced by [Dominic
+Royé](https://dominicroye.github.io) [@roye19], using the **ATOM service**.
 
 First, we extract the coordinates of the city center of Granada using
 **mapSpain**:
@@ -146,8 +146,8 @@ library(mapSpain)
 city <- esp_get_capimun(munic = "^Granada$")
 ```
 
-The next step consists of extracting the buildings using the ATOM service. We will
-also use the function `catr_get_code_from_coords()` to identify the code of
+The next step consists of extracting the buildings using the ATOM service. We
+will also use the function `catr_get_code_from_coords()` to identify the code of
 Granada in the Cadastre, and we will download the buildings with
 `catr_atom_get_buildings()`.
 
@@ -157,16 +157,15 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
 
-The next step in creating the visualization is to limit the analysis to a circle of
-radius 1.5 km around the city center:
+The next step in creating the visualization is to limit the analysis to a circle
+of radius 1.5 km around the city center:
 
 
 ``` r
@@ -257,6 +256,3 @@ ggplot(dataviz) +
 </div>
 
 ## References
-
--   Royé D (2019). "Visualize urban growth." November 1, 2019.
-    <https://dominicroye.github.io/blog/visualize-urban-growth/>.

@@ -6,7 +6,7 @@
 \alias{catr_srs_values}
 \title{Reference SRS codes for \CRANpkg{CatastRo} APIs}
 \format{
-A \code{\link[tibble:tibble]{tibble}} with 16 rows
+A \link[tibble:tbl_df-class]{tibble} with 16 rows
 and columns:
 \describe{
 \item{SRS}{Spatial Reference System (CRS) value, identified by the
@@ -19,7 +19,7 @@ code.}
 }
 }
 \description{
-A \code{\link[tibble:tibble]{tibble}} including the valid SRS (also known as CRS)
+A \link[tibble:tbl_df-class]{tibble} including the valid SRS (also known as CRS)
 values that may be used on each API service. The values are provided
 as \href{https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset}{EPSG codes}.
 }

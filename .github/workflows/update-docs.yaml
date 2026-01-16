@@ -46,7 +46,7 @@ jobs:
       - name: Update docs
         run: |
 
-          pkgdev::update_docs(url_update = FALSE)
+          pkgdev::update_docs()
 
         shell: Rscript {0}
 

@@ -14,7 +14,14 @@
 #'
 #'
 #' @source
-#' <https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml>
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#' cat(paste0(
+#'    "<https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/",
+#'      "ES.SDGC.CP.atom.xml>")
+#'      )
+#'
+#' ```
 #'
 #' @family INSPIRE
 #' @family ATOM
@@ -31,7 +38,7 @@
 #' @export
 #'
 #' @return
-#' A [`tibble`][tibble::tibble] with the information requested.
+#' A [tibble][tibble::tbl_df] with the information requested.
 #' - `catr_atom_get_parcels_db_all()` includes the following fields:
 #'   - `territorial_office`: Territorial office, corresponding to each province
 #'      of Spain except the Basque Country and Navarre.
@@ -74,7 +81,7 @@ catr_atom_get_parcels_db_all <- function(
   tbl <- catr_read_atom(path, top = TRUE)
   names(tbl) <- c("territorial_office", "url", "munic", "date")
 
-  return(tbl)
+  tbl
 }
 #' @rdname catr_atom_get_parcels_db
 #' @export
@@ -123,5 +130,5 @@ catr_atom_get_parcels_db_to <- function(
 
   names(tbl) <- c("munic", "url", "date")
 
-  return(tbl)
+  tbl
 }

@@ -14,7 +14,7 @@
 #' @param munic Municipality to extract, It can be a part of a string or the
 #'   cadastral code.
 #'
-#' @return  A [`tibble`][tibble::tibble].
+#' @return  A [tibble][tibble::tbl_df].
 #'
 #' @export
 #'
@@ -79,5 +79,5 @@ catr_atom_search_munic <- function(
 
   res$catrcode <- catrcode
 
-  return(res)
+  res
 }

@@ -167,5 +167,5 @@ catr_atom_get_address <- function(
     sfobj <- dplyr::left_join(sfobj, str_names, by = "tfname_gml_id")
   }
 
-  return(sfobj)
+  sfobj
 }

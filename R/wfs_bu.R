@@ -87,7 +87,7 @@ catr_wfs_get_buildings_bbox <- function(
     # Transform back to the desired srs
     out <- sf::st_transform(out, bbox_res$outcrs)
   }
-  return(out)
+  out
 }
 
 #' @description
@@ -155,5 +155,5 @@ catr_wfs_get_buildings_rc <- function(
   )
 
   out <- wfs_results(res, verbose)
-  return(out)
+  out
 }

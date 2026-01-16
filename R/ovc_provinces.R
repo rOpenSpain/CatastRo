@@ -13,7 +13,7 @@
 #' @family search
 #'
 #'
-#' @return A [`tibble`][tibble::tibble].
+#' @return A [tibble][tibble::tbl_df].
 #'
 #' @export
 #'
@@ -61,11 +61,11 @@ catr_ovc_get_cod_provinces <- function(verbose = FALSE) {
   # Get a list of tibbles
   res_tibble <- lapply(res, function(x) {
     df <- tibble::as_tibble_row(unlist(x))
-    return(df)
+    df
   })
 
   # Bind all
   overall <- dplyr::bind_rows(res_tibble)
 
-  return(overall)
+  overall
 }

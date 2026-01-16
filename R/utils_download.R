@@ -88,12 +88,12 @@ catr_hlp_dwnload <- function(
     message(format(size, units = "auto"))
   }
 
-  return(filepath)
+  filepath
 }
 
 catr_hlp_dwn_verbose <- function(verbose = TRUE, ...) {
   if (verbose) {
     message(...)
   }
-  return(invisible())
+  invisible()
 }

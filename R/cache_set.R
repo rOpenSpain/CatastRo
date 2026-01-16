@@ -129,7 +129,7 @@ catr_set_cache_dir <- function(
   }
 
   Sys.setenv(CATASTROESP_CACHE_DIR = cache_dir)
-  return(invisible(cache_dir))
+  invisible(cache_dir)
 }
 
 
@@ -194,16 +194,16 @@ catr_hlp_detect_cache_dir <- function() {
 
       # 3. Return from cached path
       Sys.setenv(CATASTROESP_CACHE_DIR = cached_path)
-      return(cached_path)
+      cached_path
       # nocov end
     } else {
       # 4. Default cache location
 
       cache_dir <- catr_set_cache_dir(overwrite = TRUE, verbose = FALSE)
-      return(cache_dir)
+      cache_dir
     }
   } else {
-    return(getvar)
+    getvar
   }
 }
 
@@ -222,5 +222,5 @@ catr_hlp_cachedir <- function(cache_dir = NULL) {
   if (isFALSE(dir.exists(cache_dir))) {
     dir.create(cache_dir, recursive = TRUE)
   }
-  return(cache_dir)
+  cache_dir
 }

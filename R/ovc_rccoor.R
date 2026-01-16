@@ -14,16 +14,16 @@
 #' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
 #' @inheritParams catr_ovc_get_rccoor_distancia
 #'
-#' @return A [`tibble`][tibble::tibble]. See **Details**
+#' @return A [tibble][tibble::tbl_df]. See **Details**
 #'
 #' @export
 #'
 #' @details
 #'
 #' When the API does not provide any result, the function returns a
-#' [`tibble`][tibble::tibble] with the input parameters only.
+#' [tibble][tibble::tbl_df] with the input parameters only.
 #'
-#' On a successful query, the function returns a [`tibble`][tibble::tibble] with
+#' On a successful query, the function returns a [tibble][tibble::tbl_df] with
 #' one row by cadastral reference, including the following columns:
 #' * `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
 #' * `refcat`: Cadastral Reference.
@@ -128,5 +128,5 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
   out["geo.xcen"] <- as.numeric(out[["geo.xcen"]])
   out["geo.ycen"] <- as.numeric(out[["geo.ycen"]])
 
-  return(out)
+  out
 }

@@ -34,7 +34,7 @@ the function would store the cached files on the
 default is \code{FALSE}.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}}.
+A \link[tibble:tbl_df-class]{tibble}.
 }
 \description{
 Search for a municipality (as a string, part of string or code) and get

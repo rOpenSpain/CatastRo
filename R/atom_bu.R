@@ -149,5 +149,5 @@ catr_atom_get_buildings <- function(
   files <- files[grepl(what, files, ignore.case = TRUE)]
   sfobj <- st_read_layers_encoding(files, verbose)
 
-  return(sfobj)
+  sfobj
 }

@@ -12,7 +12,7 @@ catr_wfs_get_buildingsild_url <- function(
   # Full url
   full_url <- paste0(host, entry, q)
 
-  return(full_url)
+  full_url
 }
 
 catr_wfs_check <- function(path) {
@@ -20,9 +20,9 @@ catr_wfs_check <- function(path) {
   lines <- readLines(path, n = 20)
 
   if (any(grepl("<gml", lines, fixed = TRUE))) {
-    return(TRUE)
+    TRUE
   } else {
-    return(FALSE)
+    FALSE
   }
 }
 
@@ -88,7 +88,7 @@ wfs_api_query <- function(
 
     outlist$m <- m
   }
-  return(outlist)
+  outlist
 }
 wfs_results <- function(res, verbose) {
   # Check result
@@ -96,11 +96,11 @@ wfs_results <- function(res, verbose) {
     out <- st_read_layers_encoding(res$path, verbose)
 
     unlink(res$path, force = TRUE)
-    return(out)
+    out
   } else {
     message("Malformed query: ", res$m)
     unlink(res$path, force = TRUE)
-    return(invisible(NULL))
+    invisible(NULL)
   }
 }
 
@@ -158,7 +158,7 @@ wfs_bbox <- function(bbox, srs) {
     result$bbox <- paste0(values, collapse = ",")
   }
 
-  return(result)
+  result
 }
 
 get_sf_from_bbox <- function(bbox, srs) {
@@ -186,7 +186,7 @@ get_sf_from_bbox <- function(bbox, srs) {
   bbox_new <- sf::st_as_sfc(bbox_new)
   bbox_new <- sf::st_set_crs(bbox_new, srs)
 
-  return(bbox_new)
+  bbox_new
 }
 
 
@@ -213,5 +213,5 @@ message_on_limit <- function(bbox_res, limit_km2) {
     )
   }
 
-  return(invisible(NULL))
+  invisible(NULL)
 }

@@ -66,7 +66,7 @@ catr_wfs_get_address_bbox <- function(x, srs, verbose = FALSE) {
     # Transform back to the desired srs
     out <- sf::st_transform(out, bbox_res$outcrs)
   }
-  return(out)
+  out
 }
 #' @description
 #' - By street code: Implemented on `catr_wfs_get_address_codvia()`. Extract
@@ -102,7 +102,7 @@ catr_wfs_get_address_codvia <- function(
 
   out <- wfs_results(res, verbose)
 
-  return(out)
+  out
 }
 
 #' @description
@@ -129,7 +129,7 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 
   out <- wfs_results(res, verbose)
 
-  return(out)
+  out
 }
 #' @description
 #' - By postal codes: Implemented on `catr_wfs_get_address_postalcode()`.
@@ -174,5 +174,5 @@ catr_wfs_get_address_postalcode <- function(
 
   out <- wfs_results(res, verbose)
 
-  return(out)
+  out
 }

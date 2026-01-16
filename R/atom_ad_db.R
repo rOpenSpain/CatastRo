@@ -37,7 +37,7 @@
 #' @export
 #'
 #' @return
-#' A [`tibble`][tibble::tibble] with the information requested.
+#' A [tibble][tibble::tbl_df] with the information requested.
 #' - `catr_atom_get_address_db_all()` includes the following fields:
 #'   - `territorial_office`: Territorial office, corresponding to each province
 #'      of Spain except the Basque Country and Navarre.
@@ -80,7 +80,7 @@ catr_atom_get_address_db_all <- function(
   tbl <- catr_read_atom(path, top = TRUE)
   names(tbl) <- c("territorial_office", "url", "munic", "date")
 
-  return(tbl)
+  tbl
 }
 #' @rdname catr_atom_get_address_db
 #' @export
@@ -129,5 +129,5 @@ catr_atom_get_address_db_to <- function(
 
   names(tbl) <- c("munic", "url", "date")
 
-  return(tbl)
+  tbl
 }

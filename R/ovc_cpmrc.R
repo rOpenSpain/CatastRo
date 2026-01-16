@@ -17,16 +17,16 @@
 #' @param rc The cadastral reference to be geocoded.
 #' @param province,municipality Optional, used for narrowing the search.
 #'
-#' @return A [`tibble`][tibble::tibble]. See **Details**
+#' @return A [tibble][tibble::tbl_df]. See **Details**
 #'
 #' @export
 #'
 #' @details
 #'
 #' When the API does not provide any result, the function returns a
-#' [`tibble`][tibble::tibble] with the input parameters only.
+#' [tibble][tibble::tbl_df] with the input parameters only.
 #'
-#' On a successful query, the function returns a [`tibble`][tibble::tibble]
+#' On a successful query, the function returns a [tibble][tibble::tbl_df]
 #' with one row by cadastral reference, including the following columns:
 #' * `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 #' * `refcat`: Cadastral Reference.
@@ -150,7 +150,7 @@ catr_ovc_get_cpmrc <- function(
     overall
   )
 
-  return(out)
+  out
 }
 
 

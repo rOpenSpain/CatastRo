@@ -47,8 +47,14 @@
 #'
 #' The parameter `what` defines the layer to be extracted. The equivalence with
 #' the
-#' [API
-#' Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#' cat(paste0(
+#'    " [API Docs](https://www.catastro.hacienda.gob.es/",
+#'      "webinspire/documentos/inspire-WMS.pdf) ")
+#'      )
+#'
+#' ```
 #' equivalence is:
 #' - `"parcel"`: CP.CadastralParcel
 #' - `"zoning"`: CP.CadastralZoning
@@ -69,8 +75,14 @@
 #' - `"address"`: `"Number.ELFCadastre"`
 #' - `"admboundary"`, `"admunit"`: `"ELFCadastre"`
 #'
-#' Check the [API
-#' Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
+#' Check the
+#' ```{r, echo=FALSE, results='asis'}
+#' cat(paste0(
+#'    " [API Docs](https://www.catastro.hacienda.gob.es/",
+#'      "webinspire/documentos/inspire-WMS.pdf) ")
+#'      )
+#'
+#' ```
 #' for more information.
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
@@ -199,5 +211,5 @@ catr_wms_get_layer <- function(
     out <- terra::crop(out, bbox_res)
   }
 
-  return(out)
+  out
 }

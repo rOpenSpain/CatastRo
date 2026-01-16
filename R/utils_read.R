@@ -43,5 +43,5 @@ st_read_layers_encoding <- function(path, verbose, layer = NULL) {
     return(invisible(NULL))
   }
 
-  return(out)
+  out
 }

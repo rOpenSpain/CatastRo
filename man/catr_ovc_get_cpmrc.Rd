@@ -24,7 +24,7 @@ catr_ovc_get_cpmrc(
 default is \code{FALSE}.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}}. See \strong{Details}
+A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCoordenadas service
@@ -34,9 +34,9 @@ Return the coordinates for a specific cadastral reference.
 }
 \details{
 When the API does not provide any result, the function returns a
-\code{\link[tibble:tibble]{tibble}} with the input parameters only.
+\link[tibble:tbl_df-class]{tibble} with the input parameters only.
 
-On a successful query, the function returns a \code{\link[tibble:tibble]{tibble}}
+On a successful query, the function returns a \link[tibble:tbl_df-class]{tibble}
 with one row by cadastral reference, including the following columns:
 \itemize{
 \item \code{xcoord}, \code{ycoord}: X and Y coordinates in the specified SRS.

@@ -83,7 +83,7 @@ catr_wfs_get_parcels_bbox <- function(
     # Transform back to the desired srs
     out <- sf::st_transform(out, bbox_res$outcrs)
   }
-  return(out)
+  out
 }
 #' @description
 #' - By zoning: Implemented on `catr_wfs_get_parcels_zoning()`. Extract
@@ -109,7 +109,7 @@ catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
 
   out <- wfs_results(res, verbose)
 
-  return(out)
+  out
 }
 #' @description
 #' - By cadastral parcel: Implemented on `catr_wfs_get_parcels_parcel()`.
@@ -133,7 +133,7 @@ catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 
   out <- wfs_results(res, verbose)
 
-  return(out)
+  out
 }
 #' @description
 #' - Neighbor cadastral parcels: Implemented on
@@ -158,7 +158,7 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 
   out <- wfs_results(res, verbose)
 
-  return(out)
+  out
 }
 #' @description
 #' - Cadastral parcels by zoning: Implemented on
@@ -201,5 +201,5 @@ catr_wfs_get_parcels_parcel_zoning <- function(
   )
   out <- wfs_results(res, verbose)
 
-  return(out)
+  out
 }

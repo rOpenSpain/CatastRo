@@ -19,7 +19,7 @@ Institute. See \href{https://www.ine.es/daco/daco42/codmun/codmun00i.htm}{INE: L
 default is \code{FALSE}.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}}. See \strong{Details}
+A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCallejero service
@@ -32,7 +32,7 @@ the Cadastre and as per the INE (National Statistics Institute).
 Parameter \code{cpro} is mandatory. Either \code{cmun} or \code{cmun_ine} should be
 provided.
 
-On a successful query, the function returns a \code{\link[tibble:tibble]{tibble}}
+On a successful query, the function returns a \link[tibble:tbl_df-class]{tibble}
 with one row including the following columns:
 \itemize{
 \item \code{munic}: Name of the municipality as per the Cadastre.

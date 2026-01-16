@@ -41,7 +41,7 @@ default is \code{FALSE}.}
 would perform a search using \code{\link[base:grep]{base::grep()}}.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} with the information requested.
+A \link[tibble:tbl_df-class]{tibble} with the information requested.
 \itemize{
 \item \code{catr_atom_get_parcels_db_all()} includes the following fields:
 \itemize{

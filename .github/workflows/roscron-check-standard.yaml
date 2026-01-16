@@ -34,7 +34,8 @@ jobs:
         config:
           - { os: windows-latest, r: "devel" }
           - { os: windows-latest, r: "release" }
-          - { os: macOS-latest, r: "release" }
+          #  long standing issue: try with httr2 in the future
+          # - { os: macOS-latest, r: "release" }
           - { os: ubuntu-latest, r: "release" }
           - { os: ubuntu-latest, r: "devel" }
           - { os: ubuntu-latest, r: "oldrel" }

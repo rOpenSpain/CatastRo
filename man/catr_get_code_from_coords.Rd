@@ -30,7 +30,7 @@ the function would store the cached files on the
   }}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}} with the format described in
+A \link[tibble:tbl_df-class]{tibble} with the format described in
 \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
 }
 \description{

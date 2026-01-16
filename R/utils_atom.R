@@ -37,7 +37,7 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
         date = date
       )
 
-      return(tbl)
+      tbl
     })
   } else {
     tbl_all <- lapply(feed, function(x) {
@@ -51,11 +51,11 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
         date = date
       )
 
-      return(tbl)
+      tbl
     })
   }
 
   tbl_all <- dplyr::bind_rows(tbl_all)
 
-  return(tbl_all)
+  tbl_all
 }

@@ -20,7 +20,7 @@ in the CRS/SRS \code{specified} by \code{srs}.}
 default is \code{FALSE}.}
 }
 \value{
-A \code{\link[tibble:tibble]{tibble}}. See \strong{Details}
+A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCoordenadas service
@@ -32,9 +32,9 @@ found on an area of 50 square meters around the requested coordinates.
 }
 \details{
 When the API does not provide any result, the function returns a
-\code{\link[tibble:tibble]{tibble}} with the input parameters only.
+\link[tibble:tbl_df-class]{tibble} with the input parameters only.
 
-On a successful query, the function returns a \code{\link[tibble:tibble]{tibble}} with
+On a successful query, the function returns a \link[tibble:tbl_df-class]{tibble} with
 one row by cadastral reference, including the following columns:
 \itemize{
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input parameters of the query.

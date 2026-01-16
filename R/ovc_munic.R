@@ -14,7 +14,7 @@
 #' @family search
 #'
 #'
-#' @return A [`tibble`][tibble::tibble]. See **Details**
+#' @return A [tibble][tibble::tbl_df]. See **Details**
 #'
 #' @export
 #'
@@ -33,7 +33,7 @@
 #' Parameter `cpro` is mandatory. Either `cmun` or `cmun_ine` should be
 #' provided.
 #'
-#' On a successful query, the function returns a [`tibble`][tibble::tibble]
+#' On a successful query, the function returns a [tibble][tibble::tbl_df]
 #' with one row including the following columns:
 #' * `munic`: Name of the municipality as per the Cadastre.
 #' * `catr_to`: Cadastral territorial office code.
@@ -160,5 +160,5 @@ catr_ovc_get_cod_munic <- function(
     df
   )
 
-  return(overall)
+  overall
 }

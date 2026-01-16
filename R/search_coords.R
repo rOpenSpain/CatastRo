@@ -7,7 +7,7 @@
 #'
 #' See also [mapSpain::esp_get_munic_siane()] and [catr_ovc_get_cod_munic()].
 #'
-#' @return A [`tibble`][tibble::tibble] with the format described in
+#' @return A [tibble][tibble::tbl_df] with the format described in
 #' [catr_ovc_get_cod_munic()].
 #'
 #' @param x It could be:
@@ -93,5 +93,5 @@ catr_get_code_from_coords <- function(
 
   res <- catr_ovc_get_cod_munic(getcode$cpro, cmun_ine = getcode$cmun)
 
-  return(res)
+  res
 }

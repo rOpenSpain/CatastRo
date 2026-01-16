@@ -9,7 +9,7 @@
 #' @docType data
 #'
 #' @description
-#' A [`tibble`][tibble::tibble] including the valid SRS (also known as CRS)
+#' A [tibble][tibble::tbl_df] including the valid SRS (also known as CRS)
 #' values that may be used on each API service. The values are provided
 #' as [EPSG
 #' codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
@@ -31,7 +31,7 @@
 #' @seealso [sf::st_crs()].
 #'
 #' @format
-#' A [`tibble`][tibble::tibble] with `r nrow(CatastRo::catr_srs_values)` rows
+#' A [tibble][tibble::tbl_df] with `r nrow(CatastRo::catr_srs_values)` rows
 #' and columns:
 #' \describe{
 #'   \item{SRS}{Spatial Reference System (CRS) value, identified by the
