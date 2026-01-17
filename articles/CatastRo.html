@@ -216,9 +216,10 @@ in the Cadastre, and we will download the buildings with
 <span></span>
 <span><span class="va">city_catr_code</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 12</span></span>
-<span><span class="co">#&gt;   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87</span></span>
+<span><span class="co">#&gt;   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   </span></span>
+<span><span class="co">#&gt; # ℹ 1 more variable: cm &lt;chr&gt;</span></span>
 <span></span>
 <span><span class="va">city_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">city_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span></code></pre></div>
 <p>The next step in creating the visualization is to limit the analysis
