@@ -28,6 +28,7 @@ jobs:
           extra-packages: |
             local::.
             any::rcmdcheck
+            dieghernan/pkgdev
             ropenspain/rostemplate
           needs: website
 
