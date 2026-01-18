@@ -301,7 +301,8 @@ objects.
 - [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
   : WMS INSPIRE: Download map images
 
-- [`esp_getTiles()`](https://ropenspain.github.io/mapSpain/reference/esp_getTiles.html)
+- [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
+  [`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
   : Get static tiles from public administrations of Spain (from
   mapSpain)
 

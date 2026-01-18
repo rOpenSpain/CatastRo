@@ -2,7 +2,7 @@
 
 Get geotagged images from the Spanish Cadastre. This function is a
 wrapper of
-[`mapSpain::esp_getTiles()`](https://ropenspain.github.io/mapSpain/reference/esp_getTiles.html).
+[`mapSpain::esp_getTiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html).
 
 ## Usage
 
@@ -78,7 +78,7 @@ catr_wms_get_layer(
 - ...:
 
   Arguments passed on to
-  [`mapSpain::esp_getTiles`](https://ropenspain.github.io/mapSpain/reference/esp_getTiles.html)
+  [`mapSpain::esp_getTiles`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
 
   `res`
 
@@ -168,7 +168,7 @@ Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-[`mapSpain::esp_getTiles()`](https://ropenspain.github.io/mapSpain/reference/esp_getTiles.html)
+[`mapSpain::esp_getTiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
 and
 [`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html).
 For plotting see
@@ -225,7 +225,7 @@ ggplot() +
 # With a spatial object
 
 parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
-#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpIFi8pY/file18941962b03.gml'
+#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpaOtYCG/file22ac34bb104.gml'
 
 
 # Use styles
