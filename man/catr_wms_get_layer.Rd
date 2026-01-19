@@ -43,22 +43,22 @@ the function would store the cached files on the
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{crop}{\code{TRUE} if results should be cropped to the specified \code{x} extent,
-\code{FALSE} otherwise. If \code{x} is an \code{\link[sf:sf]{sf}} object with one \code{POINT},
-\code{crop} is set to \code{FALSE}.}
+\item{crop}{logical. If \code{TRUE}, the results will be cropped to the specified
+\code{x} extent. If \code{x} is an \code{\link[sf:sf]{sf}} object with one \code{POINT},
+\code{crop} is set to \code{FALSE}. See \code{\link[terra:crop]{terra::crop()}}.}
 
 \item{options}{A named list containing additional options to pass to the
 query.}
 
 \item{...}{
-  Arguments passed on to \code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles}}
+  Arguments passed on to \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_getTiles}}
   \describe{
-    \item{\code{res}}{Resolution (in pixels) of the final tile. Only valid for WMS.}
-    \item{\code{bbox_expand}}{A numeric value that indicates the expansion percentage
-of the bounding box of \code{x}.}
-    \item{\code{transparent}}{Logical. Provides transparent background, if supported.
-Depends on the selected provider on \code{type}.}
-    \item{\code{mask}}{\code{TRUE} if the result should be masked to \code{x}.}
+    \item{\code{res}}{character string or number. Only valid for WMS providers.
+Resolution (in pixels) of the final tile.}
+    \item{\code{bbox_expand}}{number. Expansion percentage of the bounding box of \code{x}.}
+    \item{\code{transparent}}{logical. Provides transparent background, if supported.}
+    \item{\code{mask}}{logical. \code{TRUE} if the result should be masked to \code{x}. See
+\code{\link[terra:mask]{terra::mask()}}.}
   }}
 }
 \value{
@@ -67,7 +67,7 @@ see \code{\link[terra:RGB]{terra::RGB()}}.
 }
 \description{
 Get geotagged images from the Spanish Cadastre. This function is a wrapper of
-\code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}}.
+\code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_getTiles()}}.
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
@@ -159,7 +159,7 @@ ggplot() +
 \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
 }
 \seealso{
-\code{\link[mapSpain:esp_getTiles]{mapSpain::esp_getTiles()}} and \code{\link[terra:RGB]{terra::RGB()}}. For plotting see
+\code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_getTiles()}} and \code{\link[terra:RGB]{terra::RGB()}}. For plotting see
 \code{\link[terra:plotRGB]{terra::plotRGB()}} and \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}}.
 
 INSPIRE API functions:

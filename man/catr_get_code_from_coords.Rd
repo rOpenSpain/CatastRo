@@ -24,9 +24,11 @@ the function would store the cached files on the
 \code{\link[base:tempfile]{tempdir}}.}
 
 \item{...}{
-  Arguments passed on to \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic_siane}}
+  Arguments passed on to \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane}}
   \describe{
-    \item{\code{year}}{Release year. See \strong{Details} for years available.}
+    \item{\code{year}}{character string or number. Release year, it must be in
+formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
+information starts as of 2005.}
   }}
 }
 \value{
@@ -37,7 +39,7 @@ A \link[tibble:tbl_df-class]{tibble} with the format described in
 This function takes as an input a pair of coordinates of a \code{\link[sf:sf]{sf}}
 object and returns the corresponding municipality code for that coordinates.
 
-See also \code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic_siane()}} and \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
+See also \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}} and \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
@@ -60,7 +62,7 @@ catr_get_code_from_coords(prov)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[mapSpain:esp_get_munic]{mapSpain::esp_get_munic_siane()}}, \code{\link[sf:geos_unary]{sf::st_centroid()}}.
+\code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}}, \code{\link[sf:geos_unary]{sf::st_centroid()}}.
 
 Other search: 
 \code{\link{catr_atom_search_munic}()},
