@@ -66,10 +66,11 @@ catr_wms_get_layer(
 
 - crop:
 
-  `TRUE` if results should be cropped to the specified `x` extent,
-  `FALSE` otherwise. If `x` is an
+  logical. If `TRUE`, the results will be cropped to the specified `x`
+  extent. If `x` is an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-  one `POINT`, `crop` is set to `FALSE`.
+  one `POINT`, `crop` is set to `FALSE`. See
+  [`terra::crop()`](https://rspatial.github.io/terra/reference/crop.html).
 
 - options:
 
@@ -82,21 +83,21 @@ catr_wms_get_layer(
 
   `res`
 
-  :   Resolution (in pixels) of the final tile. Only valid for WMS.
+  :   character string or number. Only valid for WMS providers.
+      Resolution (in pixels) of the final tile.
 
   `bbox_expand`
 
-  :   A numeric value that indicates the expansion percentage of the
-      bounding box of `x`.
+  :   number. Expansion percentage of the bounding box of `x`.
 
   `transparent`
 
-  :   Logical. Provides transparent background, if supported. Depends on
-      the selected provider on `type`.
+  :   logical. Provides transparent background, if supported.
 
   `mask`
 
-  :   `TRUE` if the result should be masked to `x`.
+  :   logical. `TRUE` if the result should be masked to `x`. See
+      [`terra::mask()`](https://rspatial.github.io/terra/reference/mask.html).
 
 ## Value
 
@@ -225,7 +226,7 @@ ggplot() +
 # With a spatial object
 
 parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
-#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4IPXkm/file1b702e544caa.gml'
+#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpIREOew/file17846396c81.gml'
 
 
 # Use styles

@@ -41,7 +41,7 @@ See also mapSpain::esp_get_munic_siane() and catr_ovc_get_cod_munic()."><meta pr
     <div class="ref-description section level2">
     <p>This function takes as an input a pair of coordinates of a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code>
 object and returns the corresponding municipality code for that coordinates.</p>
-<p>See also <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html" class="external-link">mapSpain::esp_get_munic_siane()</a></code> and <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>.</p>
+<p>See also <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html" class="external-link">mapSpain::esp_get_munic_siane()</a></code> and <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>.</p>
     </div>
 
     <div class="section level2">
@@ -76,8 +76,10 @@ the function would store the cached files on the
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Arguments passed on to <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html" class="external-link">mapSpain::esp_get_munic_siane</a></code></p><dl><dt><code>year</code></dt>
-<dd><p>Release year. See <strong>Details</strong> for years available.</p></dd>
+<dd><p>Arguments passed on to <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html" class="external-link">mapSpain::esp_get_munic_siane</a></code></p><dl><dt><code>year</code></dt>
+<dd><p>character string or number. Release year, it must be in
+formats <code>YYYY</code> (assuming end of year) or <code>YYYY-MM-DD</code>. Historical
+information starts as of 2005.</p></dd>
 
 
 </dl></dd>
@@ -98,7 +100,7 @@ be used. The function would extract the coordinates using
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html" class="external-link">mapSpain::esp_get_munic_siane()</a></code>, <code><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">sf::st_centroid()</a></code>.</p>
+    <div class="dont-index"><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html" class="external-link">mapSpain::esp_get_munic_siane()</a></code>, <code><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">sf::st_centroid()</a></code>.</p>
 <p>Other search:
 <code><a href="catr_atom_search_munic.html">catr_atom_search_munic()</a></code>,
 <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>,

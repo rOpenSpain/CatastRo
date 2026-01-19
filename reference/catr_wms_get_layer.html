@@ -99,9 +99,9 @@ default is <code>FALSE</code>.</p></dd>
 
 
 <dt id="arg-crop">crop<a class="anchor" aria-label="anchor" href="#arg-crop"></a></dt>
-<dd><p><code>TRUE</code> if results should be cropped to the specified <code>x</code> extent,
-<code>FALSE</code> otherwise. If <code>x</code> is an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object with one <code>POINT</code>,
-<code>crop</code> is set to <code>FALSE</code>.</p></dd>
+<dd><p>logical. If <code>TRUE</code>, the results will be cropped to the specified
+<code>x</code> extent. If <code>x</code> is an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object with one <code>POINT</code>,
+<code>crop</code> is set to <code>FALSE</code>. See <code><a href="https://rspatial.github.io/terra/reference/crop.html" class="external-link">terra::crop()</a></code>.</p></dd>
 
 
 <dt id="arg-options">options<a class="anchor" aria-label="anchor" href="#arg-options"></a></dt>
@@ -111,18 +111,18 @@ query.</p></dd>
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Arguments passed on to <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html" class="external-link">mapSpain::esp_getTiles</a></code></p><dl><dt><code>res</code></dt>
-<dd><p>Resolution (in pixels) of the final tile. Only valid for WMS.</p></dd>
+<dd><p>character string or number. Only valid for WMS providers.
+Resolution (in pixels) of the final tile.</p></dd>
 
     <dt><code>bbox_expand</code></dt>
-<dd><p>A numeric value that indicates the expansion percentage
-of the bounding box of <code>x</code>.</p></dd>
+<dd><p>number. Expansion percentage of the bounding box of <code>x</code>.</p></dd>
 
     <dt><code>transparent</code></dt>
-<dd><p>Logical. Provides transparent background, if supported.
-Depends on the selected provider on <code>type</code>.</p></dd>
+<dd><p>logical. Provides transparent background, if supported.</p></dd>
 
     <dt><code>mask</code></dt>
-<dd><p><code>TRUE</code> if the result should be masked to <code>x</code>.</p></dd>
+<dd><p>logical. <code>TRUE</code> if the result should be masked to <code>x</code>. See
+<code><a href="https://rspatial.github.io/terra/reference/mask.html" class="external-link">terra::mask()</a></code>.</p></dd>
 
 
 </dl></dd>
@@ -226,7 +226,7 @@ for more information.</p>
 <span class="r-in"><span><span class="co"># With a spatial object</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span>, srs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4IPXkm/file1b702e544caa.gml'</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpIREOew/file17846396c81.gml'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use styles</span></span></span>

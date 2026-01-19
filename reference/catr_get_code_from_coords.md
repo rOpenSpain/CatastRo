@@ -5,7 +5,7 @@ This function takes as an input a pair of coordinates of a
 returns the corresponding municipality code for that coordinates.
 
 See also
-[`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html)
+[`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
 and
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md).
 
@@ -46,11 +46,13 @@ catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
 - ...:
 
   Arguments passed on to
-  [`mapSpain::esp_get_munic_siane`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html)
+  [`mapSpain::esp_get_munic_siane`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
 
   `year`
 
-  :   Release year. See **Details** for years available.
+  :   character string or number. Release year, it must be in formats
+      `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
+      information starts as of 2005.
 
 ## Value
 
@@ -69,7 +71,7 @@ the coordinates using `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 
 ## See also
 
-[`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html),
+[`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html),
 [`sf::st_centroid()`](https://r-spatial.github.io/sf/reference/geos_unary.html).
 
 Other search:
