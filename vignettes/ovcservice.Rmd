@@ -21,7 +21,7 @@ API directly through a **R** IDE.
 
 This API is used to retrieve the spatial coordinates of an urban property.
 Moreover, it is not necessary to be the owner to get the information; in fact,
-it is enough to know the cadastral reference (*RC*) of the property and its
+it is enough to know the cadastral reference (_RC_) of the property and its
 address (in fact, it is only completely compulsory to know the RC, however, to
 ensure a good result from the response and to avoid mistakes in the RC, the
 address can be passed to the query too).
@@ -45,9 +45,9 @@ package **tibble**.
 
 The OVCCoordenadas Web Service can be reached using the following functions:
 
--   `catr_ovc_get_rccoor()`
--   `catr_ovc_get_rccoor_distancia()`
--   `catr_ovc_get_cpmrc()`
+- `catr_ovc_get_rccoor()`
+- `catr_ovc_get_rccoor_distancia()`
+- `catr_ovc_get_cpmrc()`
 
 ## Reverse Geocoding Cadastral References
 

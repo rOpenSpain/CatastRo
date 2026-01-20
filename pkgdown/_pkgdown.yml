@@ -1,4 +1,4 @@
-url: "https://ropenspain.github.io/CatastRo/"
+url: https://ropenspain.github.io/CatastRo/
 
 template:
   bootstrap: 5
@@ -17,53 +17,56 @@ authors:
     href: "https://www.enchufa2.es/"
 
 reference:
-  - title: ATOM INSPIRE API
-    desc: >
-      These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
-      class="external-link"><span class="pkg">sf</span></a> objects as provided
-      by the INSPIRE ATOM services of the Spanish Cadastre.
-    contents:
-      - has_concept("ATOM")
-  - title: WFS INSPIRE API
-    desc: >
-      These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
-      class="external-link"><span class="pkg">sf</span></a> objects as provided
-      by the INSPIRE WFS services of the Spanish Cadastre.
-    contents:
-      - has_concept("WFS")
-  - title: WMS INSPIRE API
-    desc: >
-      These functions return <code><a href="https://rspatial.github.io/terra/reference/rast.html"
-      class="external-link">SpatRaster</a></code> objects.
-    contents:
-      - has_concept("WMS")
-      - mapSpain::esp_getTiles()
-      - terra::plotRGB()
-      - tidyterra::geom_spatraster_rgb()
-  - title: OVCCoordenadas API
-    desc: >
-      These functions allows to access the
-      [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
-      service.
-    contents:
-      - has_concept("OVCCoordenadas")
-  - title: OVCCallejero API
-    desc: >
-      These functions allows to access the
-      [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
-      service.
-    contents:
-      - has_concept("OVCCallejero")
-  - title: Search functions
-    contents:
-      - has_concept("search")
-  - title: Cache management
-    contents:
-      - has_concept("cache utilities")
-  - title: Databases and reference data
-    contents:
-      - has_concept("databases")
+- title: ATOM INSPIRE API
+  desc: >
+    These functions return <a
+    href="https://r-spatial.github.io/sf/reference/sf.html"
+    class="external-link"><span class="pkg">sf</span></a> objects as provided by
+    the INSPIRE ATOM services of the Spanish Cadastre.
+  contents:
+  - has_concept("ATOM")
+- title: WFS INSPIRE API
+  desc: >
+    These functions return <a
+    href="https://r-spatial.github.io/sf/reference/sf.html"
+    class="external-link"><span class="pkg">sf</span></a> objects as provided by
+    the INSPIRE WFS services of the Spanish Cadastre.
+  contents:
+  - has_concept("WFS")
+- title: WMS INSPIRE API
+  desc: >
+    These functions return <code><a
+    href="https://rspatial.github.io/terra/reference/rast.html"
+    class="external-link">SpatRaster</a></code> objects.
+  contents:
+  - has_concept("WMS")
+  - mapSpain::esp_getTiles()
+  - terra::plotRGB()
+  - tidyterra::geom_spatraster_rgb()
+- title: OVCCoordenadas API
+  desc: >
+    These functions allows to access the
+    [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
+    service.
+  contents:
+  - has_concept("OVCCoordenadas")
+- title: OVCCallejero API
+  desc: >
+    These functions allows to access the
+    [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
+    service.
+  contents:
+  - has_concept("OVCCallejero")
+- title: Search functions
+  contents:
+  - has_concept("search")
+- title: Cache management
+  contents:
+  - has_concept("cache utilities")
+- title: Databases and reference data
+  contents:
+  - has_concept("databases")
 
-  - title: About the package
-    contents:
-      - CatastRo-package
+- title: About the package
+  contents:
+  - CatastRo-package
