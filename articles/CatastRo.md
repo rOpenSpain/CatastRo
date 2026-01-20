@@ -90,7 +90,8 @@ stadium_parcel_pr <- sf::st_transform(stadium_parcel, 25830)
 
 # Extract imagery: Labels of the parcel
 
-labs <- catr_wms_get_layer(stadium_parcel_pr,
+labs <- catr_wms_get_layer(
+  stadium_parcel_pr,
   what = "parcel",
   styles = "BoundariesOnly",
   srs = 25830
@@ -144,10 +145,9 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
@@ -201,10 +201,9 @@ decade starting from year 1900:
 
 ``` r
 dataviz <- dataviz %>%
-  mutate(year_cat = cut(year,
-    breaks = c(0, seq(1900, 2030, by = 10)),
-    dig.lab = 4
-  ))
+  mutate(
+    year_cat = cut(year, breaks = c(0, seq(1900, 2030, by = 10)), dig.lab = 4)
+  )
 
 
 ggplot(dataviz) +
@@ -224,13 +223,15 @@ ggplot(dataviz) +
       size = 12
     ),
     plot.title = element_text(
-      colour = "white", hjust = .5,
+      colour = "white",
+      hjust = .5,
       margin = margin(t = 30),
       size = 30
     ),
     plot.caption = element_text(
       colour = "white",
-      margin = margin(b = 20), hjust = .5
+      margin = margin(b = 20),
+      hjust = .5
     ),
     plot.margin = margin(r = 40, l = 40)
   )
