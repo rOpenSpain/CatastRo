@@ -20,6 +20,7 @@ Depends:
     R (>= 3.6)
 Imports: 
     dplyr,
+    jsonlite,
     httr2 (>= 1.0.0),
     mapSpain (>= 0.7.0),
     rappdirs (>= 0.3.0),

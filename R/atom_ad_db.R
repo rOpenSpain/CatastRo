@@ -68,14 +68,11 @@ catr_atom_get_address_db_all <- function(
 
   filename <- basename(api_entry)
 
-  path <- catr_hlp_dwnload(
-    api_entry,
-    filename,
-    cache_dir,
-    verbose,
-    update_cache,
-    cache
+  path <- download_url(api_entry, filename, cache_dir,
+    subdir = "atom_db",
+    update_cache = update_cache, verbose = verbose
   )
+
 
   tbl <- catr_read_atom(path, top = TRUE)
   names(tbl) <- c("territorial_office", "url", "munic", "date")
@@ -101,28 +98,31 @@ catr_atom_get_address_db_to <- function(
   findto <- grep(to, allto, ignore.case = TRUE)[1]
 
   if (is.na(findto)) {
-    message("No Territorial office found for ", to)
+    make_msg(
+      "warning", verbose,
+      paste0("No Territorial office found for {.val ", to, "}.")
+    )
     return(invisible(NA))
   }
 
   tb <- alldist[findto, ]
-
-  if (verbose) {
-    message(
-      "Extracting information for ",
-      tb$territorial_office
+  make_msg(
+    "success", verbose,
+    paste0(
+      "Extracting information for {.val ",
+      tb$territorial_office, "}."
     )
-  }
+  )
 
   api_entry <- as.character(tb$url)
   filename <- basename(api_entry)
-  path <- catr_hlp_dwnload(
+  path <- download_url(
     api_entry,
     filename,
     cache_dir,
-    verbose,
+    "atom_db",
     update_cache,
-    cache
+    verbose
   )
 
   tbl <- catr_read_atom(path, top = FALSE)
