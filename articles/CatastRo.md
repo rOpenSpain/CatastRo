@@ -145,9 +145,10 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm
-#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
+#> # ℹ 1 more variable: cm <chr>
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
