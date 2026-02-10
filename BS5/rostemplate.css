@@ -65,6 +65,16 @@ main img {
 	letter-spacing: 0.04em;
 }
 
+#navbar .dropdown-header {
+	font-size: var(--bs-body-font-size);
+	border-bottom: var(--bs-border-width) var(--bs-border-style)
+		var(--bs-border-color) !important;
+	margin-left: var(--bs-dropdown-item-padding-x);
+	margin-right: var(--bs-dropdown-item-padding-x);
+	padding-left: 0;
+	padding-right: 0;
+}
+
 /* Spacing and borders */
 .navbar small {
 	font-size: 0.75rem;
@@ -80,8 +90,6 @@ main img {
 #navbar .dropdown-menu .dropdown-item {
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
-	border-bottom: var(--bs-border-width) var(--bs-border-style)
-		var(--bs-border-color) !important;
 }
 
 #navbar .nav-item .nav-link {
@@ -216,6 +224,11 @@ main img {
 
 .nav-pills .nav-link.active:hover {
 	color: var(--bs-link-color);
+}
+
+/* --- Dividers in menu --- */
+.navbar-nav .nav-item.dropdown ul li:first-child hr {
+	display: none;
 }
 
 /* --- Search ---*/

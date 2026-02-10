@@ -145,7 +145,7 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm
 #>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
 #> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
