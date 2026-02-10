@@ -1,5 +1,6 @@
 ---
 title: "OVCCoordenadas Web Service"
+description: Retrieve spatial coordinates of urban properties.
 author:
   - Ángel Delgado Panadero
   - Diego Hernangómez
@@ -198,5 +199,3 @@ catr_ovc_get_cpmrc(rc = "13077A01800039") %>%
 |    xcoord|   ycoord|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |geo.xcen          |geo.ycen         |geo.srs   |ldt                                                                                                  |
 |---------:|--------:|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|:-----------------|:----------------|:---------|:----------------------------------------------------------------------------------------------------|
 | -3.457532| 38.61843|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 |-3.45753233627867 |38.6184314024661 |EPSG:4326 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
-
-

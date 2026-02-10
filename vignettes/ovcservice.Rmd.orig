@@ -1,5 +1,6 @@
 ---
 title: "OVCCoordenadas Web Service"
+description: Retrieve spatial coordinates of urban properties.
 author:
   - Ángel Delgado Panadero
   - Diego Hernangómez
