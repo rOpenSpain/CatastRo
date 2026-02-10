@@ -36,3 +36,7 @@
 ^jarl\.toml$
 /.quarto/
 [.]quarto_ipynb$
+^vignettes/\.quarto$
+^vignettes/articles/\.quarto$
+^vignettes/articles/*_files$
+^vignettes/articles$

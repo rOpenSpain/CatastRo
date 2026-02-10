@@ -225,7 +225,6 @@ it will load it, speeding up the process.
 ## Citation
 
 <p>
-
 Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the
 API Sede Electrónica Del Catastro</em>.
 <a href="https://doi.org/10.32614/CRAN.package.CatastRo">doi:10.32614/CRAN.package.CatastRo</a>,

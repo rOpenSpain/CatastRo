@@ -46,7 +46,7 @@ ovc_codes <- c(
 )
 
 catr_srs_values <- catr_srs_values %>%
-  mutate(ovc_service = if_else(SRS %in% ovc_codes, TRUE, FALSE))
+  mutate(ovc_service = SRS %in% ovc_codes)
 
 # Add column for WFS services
 wfs_codes <- c(
@@ -60,7 +60,7 @@ wfs_codes <- c(
 )
 
 catr_srs_values <- catr_srs_values %>%
-  mutate(wfs_service = if_else(SRS %in% wfs_codes, TRUE, FALSE))
+  mutate(wfs_service = SRS %in% wfs_codes)
 
 catr_srs_values
 usethis::use_data(catr_srs_values, overwrite = TRUE)
