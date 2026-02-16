@@ -199,6 +199,7 @@ Other spatial:
 ## Examples
 
 ``` r
+if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 
 # With a bbox
@@ -212,21 +213,14 @@ pict <- catr_wms_get_layer(
 library(mapSpain)
 library(ggplot2)
 library(tidyterra)
-#> 
-#> Attaching package: 'tidyterra'
-#> The following object is masked from 'package:stats':
-#> 
-#>     filter
 
 ggplot() +
   geom_spatraster_rgb(data = pict)
 
 
-
 # With a spatial object
 
 parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
-#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEzLWpT/file1410b762503.gml'
 
 
 # Use styles
@@ -242,6 +236,6 @@ parcels_img <- catr_wms_get_layer(parcels,
 ggplot() +
   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
   geom_spatraster_rgb(data = parcels_img)
-
 # }
+}
 ```

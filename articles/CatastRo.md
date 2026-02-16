@@ -5,7 +5,7 @@ Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo** you can
 download official information on addresses, properties, parcels, and
 buildings.
 
-## OVCCoordenadas Service
+## OVCCoordenadas service
 
 The
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
@@ -16,7 +16,7 @@ returns the results in a tibble format. This functionality is described
 in detail in the corresponding vignette (see
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)).
 
-## INSPIRE Services
+## INSPIRE services
 
 > The INSPIRE Directive aims to create a European Union spatial data
 > infrastructure for the purposes of EU environmental policies and
@@ -25,8 +25,6 @@ in detail in the corresponding vignette (see
 > environmental spatial information among public sector organisations,
 > facilitate public access to spatial information across Europe and
 > assist in policy-making across boundaries.
->
-> *From <https://knowledge-base.inspire.ec.europa.eu/overview_en>*
 
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
 [Catastro
@@ -108,9 +106,9 @@ ggplot() +
   coord_sf(crs = 25830)
 ```
 
-![Example: Santiago Bernabeu](santbernabeu-1.png)
+![Figure 1: Example - Santiago Bernabeu](./santbernabeu-1.png)
 
-Example: Santiago Bernabeu
+Figure 1: Example - Santiago Bernabeu
 
 ### Thematic maps
 
@@ -145,10 +143,9 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
@@ -157,9 +154,9 @@ The next step in creating the visualization is to limit the analysis to
 a circle of radius 1.5 km around the city center:
 
 ``` r
-buff <- city %>%
+buff <- city |>
   # Adjust CRS to 25830: (Buildings)
-  st_transform(st_crs(city_bu)) %>%
+  st_transform(st_crs(city_bu)) |>
   # Buffer
   st_buffer(1500)
 
@@ -172,9 +169,9 @@ ggplot(dataviz) +
   geom_sf()
 ```
 
-![Minimal cadastral map of Granada](minimal-1.png)
+![Figure 2: Minimal cadastral map of Granada](./minimal-1.png)
 
-Minimal cadastral map of Granada
+Figure 2: Minimal cadastral map of Granada
 
 Now let’s extract the construction year, available in the column
 `beginning`:
@@ -191,7 +188,7 @@ year[!(year %in% 0:2500)] <- "0000"
 year <- as.integer(year)
 
 # New column
-dataviz <- dataviz %>%
+dataviz <- dataviz |>
   mutate(year = year)
 ```
 
@@ -201,7 +198,7 @@ visualization. Here we use the function
 decade starting from year 1900:
 
 ``` r
-dataviz <- dataviz %>%
+dataviz <- dataviz |>
   mutate(
     year_cat = cut(year, breaks = c(0, seq(1900, 2030, by = 10)), dig.lab = 4)
   )
@@ -238,9 +235,9 @@ ggplot(dataviz) +
   )
 ```
 
-![Granada: Urban growth](dviz-1.png)
+![Figure 2: Granada - Urban growth](./dviz-1.png)
 
-Granada: Urban growth
+Figure 2: Granada - Urban growth
 
 ## References
 

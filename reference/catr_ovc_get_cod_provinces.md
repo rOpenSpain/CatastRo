@@ -20,7 +20,7 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html).
 
 ## References
 
@@ -39,22 +39,10 @@ Other search:
 ## Examples
 
 ``` r
+if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 
 catr_ovc_get_cod_provinces()
-#> # A tibble: 48 × 2
-#>    cpine np       
-#>    <chr> <chr>    
-#>  1 15    A CORUÑA 
-#>  2 03    ALACANT  
-#>  3 02    ALBACETE 
-#>  4 04    ALMERIA  
-#>  5 33    ASTURIAS 
-#>  6 05    AVILA    
-#>  7 06    BADAJOZ  
-#>  8 08    BARCELONA
-#>  9 09    BURGOS   
-#> 10 10    CACERES  
-#> # ℹ 38 more rows
 # }
+}
 ```

@@ -36,8 +36,8 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html). See
+**Details**
 
 ## Details
 
@@ -45,8 +45,8 @@ Parameter `cpro` is mandatory. Either `cmun` or `cmun_ine` should be
 provided.
 
 On a successful query, the function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row including the following columns:
+[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with one
+row including the following columns:
 
 - `munic`: Name of the municipality as per the Cadastre.
 
@@ -84,26 +84,18 @@ Other search:
 ## Examples
 
 ``` r
+if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 # Get municipality by cadastal code
 ab <- catr_ovc_get_cod_munic(2, 900)
 
 ab
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
-#> # ℹ 1 more variable: cm <chr>
 
 # Same query using the INE code
 
 ab2 <- catr_ovc_get_cod_munic(2, cmun_ine = 3)
 
 ab2
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
-#> # ℹ 1 more variable: cm <chr>
 # }
+}
 ```

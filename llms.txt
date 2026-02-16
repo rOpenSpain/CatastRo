@@ -14,26 +14,6 @@ Install **CatastRo** from
 install.packages("CatastRo")
 ```
 
-You can install the development version of **CatastRo** using the
-[r-universe](https://ropenspain.r-universe.dev/CatastRo):
-
-``` r
-# Install CatastRo in R:
-install.packages("CatastRo",
-  repos = c(
-    "https://ropenspain.r-universe.dev",
-    "https://cloud.r-project.org"
-  )
-)
-```
-
-Alternatively, you can install the development version of **CatastRo**
-with:
-
-``` r
-remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
-```
-
 ## Known issues
 
 The SSL certificate of the Spanish Cadastre presents some issues that
@@ -219,7 +199,7 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {0.4.1.9000},
+  version = {0.4.1},
   url = {https://ropenspain.github.io/CatastRo/},
   abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
 }
@@ -246,17 +226,17 @@ These functions return
 provided by the INSPIRE ATOM services of the Spanish Cadastre.
 
 - [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md)
-  : ATOM INSPIRE: Download all addresses of a municipality
+  : ATOM INSPIRE: Download all the addresses of a municipality
 - [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
   [`catr_atom_get_address_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
   : ATOM INSPIRE: Reference database for ATOM addresses
 - [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md)
-  : ATOM INSPIRE: Download all buildings of a municipality
+  : ATOM INSPIRE: Download all the buildings of a municipality
 - [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
   [`catr_atom_get_buildings_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
   : ATOM INSPIRE: Reference database for ATOM buildings
 - [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md)
-  : ATOM INSPIRE: Download all cadastral parcels of a municipality
+  : ATOM INSPIRE: Download all the cadastral parcels of a municipality
 - [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
   [`catr_atom_get_parcels_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
   : ATOM INSPIRE: Reference database for ATOM cadastral parcels

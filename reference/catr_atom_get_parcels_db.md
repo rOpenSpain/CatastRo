@@ -1,6 +1,6 @@
 # ATOM INSPIRE: Reference database for ATOM cadastral parcels
 
-Create a database containing the URLs provided in the INSPIRE ATOM
+Create a database containing the urls provided in the INSPIRE ATOM
 service of the Spanish Cadastre for extracting cadastral parcels.
 
 - `catr_atom_get_parcels_db_all()` provides a top-level table including
@@ -66,29 +66,29 @@ catr_atom_get_parcels_db_to(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with the information requested.
+A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with
+the information requested.
 
 - `catr_atom_get_parcels_db_all()` includes the following fields:
 
   - `territorial_office`: Territorial office, corresponding to each
-    province of Spain except the Basque Country and Navarre.
+    province of Spain expect Basque Country and Navarre.
 
-  - `url`: ATOM URL for the corresponding territorial office.
+  - `url`: ATOM url for the corresponding territorial office.
 
   - `munic`: Name of the municipality.
 
-  - `date`: Reference date of the data. Note that **the information from
+  - `date`: Reference date of the data. Note that **the information of
     this service is updated twice a year**.
 
 - `catr_atom_get_parcels_db_to()` includes the following fields:
 
   - `munic`: Name of the municipality.
 
-  - `url`: URL for downloading information of the corresponding
+  - `url`: url for downloading information of the corresponding
     municipality.
 
-  - `date`: Reference date of the data. Note that **the information from
+  - `date`: Reference date of the data. Note that **the information of
     this service is updated twice a year**.
 
 ## See also

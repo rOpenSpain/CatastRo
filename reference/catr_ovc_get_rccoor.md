@@ -36,18 +36,18 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html). See
+**Details**
 
 ## Details
 
 When the API does not provide any result, the function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-the input parameters only.
+[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with the
+input parameters only.
 
 On a successful query, the function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row by cadastral reference, including the following columns:
+[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with one
+row by cadastral reference, including the following columns:
 
 - `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
 
@@ -79,15 +79,13 @@ Other cadastral references:
 ## Examples
 
 ``` r
+if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
   srs = 4326
 )
-#> # A tibble: 1 × 8
-#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
-#> 1 13077A01800011 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
 # }
+}
 ```

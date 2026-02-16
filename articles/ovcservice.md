@@ -38,7 +38,7 @@ functions:
 - [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
 - [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
 
-## Reverse Geocoding Cadastral References
+## Reverse geocoding cadastral references
 
 The function
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
@@ -48,11 +48,15 @@ cadastral reference of the property in that spatial point, including
 other information such as the address (town, street, and number).
 
 ``` r
+library(CatastRo)
+
 result <- catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
   srs = "4230"
 )
+
+knitr::kable(result)
 ```
 
 | refcat         | address                                                                                             | pc.pc1  | pc.pc2  |  geo.xcen | geo.ycen | geo.srs   | ldt                                                                                                 |
@@ -67,9 +71,9 @@ data(catr_srs_values)
 # OVC valid codes
 library(dplyr)
 
-catr_srs_values %>%
-  filter(ovc_service == TRUE) %>%
-  select(SRS, Description) %>%
+catr_srs_values |>
+  filter(ovc_service == TRUE) |>
+  select(SRS, Description) |>
   knitr::kable()
 ```
 
@@ -100,7 +104,7 @@ catr_ovc_get_rccoor_distancia(
   lat = 40.96002,
   lon = -5.663408,
   srs = "4230"
-) %>%
+) |>
   knitr::kable()
 ```
 
@@ -109,7 +113,7 @@ catr_ovc_get_rccoor_distancia(
 | -5.663408 | 40.96002 | EPSG:4230 | 5877501TL7357F | AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      | 37274    | 5877501 | TL7357F | 37          | 274         | 643             | 1                | AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      | 21.81 |
 | -5.663408 | 40.96002 | EPSG:4230 | 5778706TL7357H | AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) | 37274    | 5778706 | TL7357H | 37          | 274         | 643             | 2                | AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) | 23.18 |
 
-## Geocoding a Cadastral Reference
+## Geocoding a cadastral reference
 
 The opposite query is possible as well. When given to the function
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
@@ -125,7 +129,7 @@ catr_ovc_get_cpmrc(
   srs = "4230",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
-) %>%
+) |>
   knitr::kable()
 ```
 
@@ -145,7 +149,7 @@ will throw a message and will return a tibble with no data.
 catr_ovc_get_cpmrc(
   rc = "13077A01800039",
   municipality = "SANTA CRUZ DE MUDELA"
-) %>%
+) |>
   knitr::kable()
 #> Error code: 11. LA PROVINCIA ES OBLIGATORIA
 ```
@@ -158,7 +162,7 @@ When using only `rc` the result is provided as expected:
 
 ``` r
 # No warning, get the result
-catr_ovc_get_cpmrc(rc = "13077A01800039") %>%
+catr_ovc_get_cpmrc(rc = "13077A01800039") |>
   knitr::kable()
 ```
 

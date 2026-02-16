@@ -40,7 +40,7 @@ catr_wfs_get_buildings_rc(rc, what = "building", srs = NULL, verbose = FALSE)
 
   - `"buildingpart"` for parts of a building.
 
-  - `"other"` for other elements, such as swimming pools, etc.
+  - `"other"` for others elements, as swimming pools, etc.
 
 - srs:
 
@@ -123,6 +123,7 @@ Other spatial:
 ## Examples
 
 ``` r
+if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 # Using bbox
 building <- catr_wfs_get_buildings_bbox(
@@ -139,13 +140,12 @@ ggplot(building) +
   geom_sf() +
   labs(title = "Search using bbox")
 
-
 # Using rc
 rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
 library(ggplot2)
 ggplot(rc) +
   geom_sf() +
   labs(title = "Search using rc")
-
 # }
+}
 ```

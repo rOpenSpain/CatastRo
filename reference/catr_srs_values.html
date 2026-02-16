@@ -11,7 +11,7 @@ as EPSG codes."><meta property="og:image" content="https://ropenspain.github.io/
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,12 +43,12 @@ as EPSG codes."><meta property="og:image" content="https://ropenspain.github.io/
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Reference SRS codes for <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> APIs</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/main/R/data.R" class="external-link"><code>R/data.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/release/R/data.R" class="external-link"><code>R/data.R</code></a></small>
       <div class="d-none name"><code>catr_srs_values.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
-    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> including the valid SRS (also known as CRS)
+    <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> including the valid SRS (also known as CRS)
 values that may be used on each API service. The values are provided
 as <a href="https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset" class="external-link">EPSG codes</a>.</p>
     </div>
@@ -56,7 +56,7 @@ as <a href="https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset" class
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with 16 rows
+    <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with 16 rows
 and columns:</p><dl><dt>SRS</dt>
 <dd><p>Spatial Reference System (CRS) value, identified by the
 corresponding
@@ -108,11 +108,11 @@ code.</p></dd>
 <span class="r-in"><span><span class="co"># OVC valid codes</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'dplyr'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from 'package:stats':</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘dplyr’</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:stats’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     filter, lag</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from 'package:base':</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:base’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
 <span class="r-in"><span></span></span>
@@ -183,7 +183,6 @@ code.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         MEMBER["European Terrestrial Reference Frame 2000"],</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         MEMBER["European Terrestrial Reference Frame 2005"],</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         MEMBER["European Terrestrial Reference Frame 2014"],</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         MEMBER["European Terrestrial Reference Frame 2020"],</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         ELLIPSOID["GRS 1980",6378137,298.257222101,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             LENGTHUNIT["metre",1]],</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         ENSEMBLEACCURACY[0.1]],</span>
@@ -198,8 +197,8 @@ code.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             ANGLEUNIT["degree",0.0174532925199433]],</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     USAGE[</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         SCOPE["Spatial referencing."],</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         AREA["Europe - onshore and offshore: Albania; Andorra; Austria; Belgium; Bosnia and Herzegovina; Bulgaria; Croatia; Czechia; Denmark; Estonia; Faroe Islands; Finland; France; Germany; Gibraltar; Greece; Hungary; Ireland; Italy; Kosovo; Latvia; Liechtenstein; Lithuania; Luxembourg; Malta; Moldova; Monaco; Montenegro; Netherlands; North Macedonia; Norway including Svalbard and Jan Mayen; Poland; Portugal - mainland; Romania; San Marino; Serbia; Slovakia; Slovenia; Spain - mainland and Balearic islands; Sweden; Switzerland; United Kingdom (UK) including Channel Islands and Isle of Man; Vatican City State."],</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         BBOX[33.26,-16.1,84.73,38.01]],</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         AREA["Europe - onshore and offshore: Albania; Andorra; Austria; Belgium; Bosnia and Herzegovina; Bulgaria; Croatia; Cyprus; Czechia; Denmark; Estonia; Faroe Islands; Finland; France; Germany; Gibraltar; Greece; Hungary; Ireland; Italy; Kosovo; Latvia; Liechtenstein; Lithuania; Luxembourg; Malta; Moldova; Monaco; Montenegro; Netherlands; North Macedonia; Norway including Svalbard and Jan Mayen; Poland; Portugal; Romania; San Marino; Serbia; Slovakia; Slovenia; Spain; Sweden; Switzerland; United Kingdom (UK) including Channel Islands and Isle of Man; Vatican City State."],</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         BBOX[32.88,-16.1,84.73,40.18]],</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     ID["EPSG",4258]]</span>
 </code></pre></div>
     </div>

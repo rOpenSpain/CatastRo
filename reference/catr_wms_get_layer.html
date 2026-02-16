@@ -9,7 +9,7 @@ mapSpain::esp_getTiles()."><meta property="og:image" content="https://ropenspain
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@ mapSpain::esp_getTiles()."><meta property="og:image" content="https://ropenspain
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>WMS INSPIRE: Download map images</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/main/R/wms_all.R" class="external-link"><code>R/wms_all.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/release/R/wms_all.R" class="external-link"><code>R/wms_all.R</code></a></small>
       <div class="d-none name"><code>catr_wms_get_layer.Rd</code></div>
     </div>
 
@@ -208,7 +208,8 @@ for more information.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># tolower(Sys.info()[["sysname"]]) != "linux"</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># With a bbox</span></span></span>
 <span class="r-in"><span></span></span>
@@ -221,21 +222,14 @@ for more information.</p>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: 'tidyterra'</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from 'package:stats':</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     filter</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pict</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="catr_wms_get_layer-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># With a spatial object</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span>, srs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEzLWpT/file1410b762503.gml'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use styles</span></span></span>
@@ -251,8 +245,8 @@ for more information.</p>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels_img</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="catr_wms_get_layer-2.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

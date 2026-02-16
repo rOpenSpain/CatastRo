@@ -11,7 +11,7 @@ Return the cadastral reference found of a set of specific coordinates."><meta pr
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@ Return the cadastral reference found of a set of specific coordinates."><meta pr
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>OVCCoordenadas: Reverse geocode a cadastral reference</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/main/R/ovc_rccoor.R" class="external-link"><code>R/ovc_rccoor.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/release/R/ovc_rccoor.R" class="external-link"><code>R/ovc_rccoor.R</code></a></small>
       <div class="d-none name"><code>catr_ovc_get_rccoor.Rd</code></div>
     </div>
 
@@ -84,13 +84,13 @@ default is <code>FALSE</code>.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>. See <strong>Details</strong></p>
+    <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code>. See <strong>Details</strong></p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>When the API does not provide any result, the function returns a
-<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with the input parameters only.</p>
-<p>On a successful query, the function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with
+<code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with the input parameters only.</p>
+<p>On a successful query, the function returns a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with
 one row by cadastral reference, including the following columns:</p><ul><li><p><code>geo.xcen</code>, <code>geo.ycen</code>, <code>geo.srs</code>: Input parameters of the query.</p></li>
 <li><p><code>refcat</code>: Cadastral Reference.</p></li>
 <li><p><code>address</code>: Address as it is recorded on the Cadastre.</p></li>
@@ -114,17 +114,15 @@ one row by cadastral reference, including the following columns:</p><ul><li><p><
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># tolower(Sys.info()[["sysname"]]) != "linux"</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="fu">catr_ovc_get_rccoor</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  lat <span class="op">=</span> <span class="fl">38.6196566583596</span>,</span></span>
 <span class="r-in"><span>  lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,</span></span>
 <span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">4326</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 13077A01800011 DS DISEMINADO  P… 13077… 18000…    -<span style="color: #BB0000;">3.46</span>     38.6 EPSG:4… DS D…</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

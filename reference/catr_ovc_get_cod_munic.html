@@ -13,7 +13,7 @@ the Cadastre and as per the INE (National Statistics Institute)."><meta property
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@ the Cadastre and as per the INE (National Statistics Institute)."><meta property
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>OVCCallejero: Extract the code of a municipality</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/main/R/ovc_munic.R" class="external-link"><code>R/ovc_munic.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/release/R/ovc_munic.R" class="external-link"><code>R/ovc_munic.R</code></a></small>
       <div class="d-none name"><code>catr_ovc_get_cod_munic.Rd</code></div>
     </div>
 
@@ -86,13 +86,13 @@ default is <code>FALSE</code>.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>. See <strong>Details</strong></p>
+    <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code>. See <strong>Details</strong></p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Parameter <code>cpro</code> is mandatory. Either <code>cmun</code> or <code>cmun_ine</code> should be
 provided.</p>
-<p>On a successful query, the function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>
+<p>On a successful query, the function returns a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code>
 with one row including the following columns:</p><ul><li><p><code>munic</code>: Name of the municipality as per the Cadastre.</p></li>
 <li><p><code>catr_to</code>: Cadastral territorial office code.</p></li>
 <li><p><code>catr_munic</code>: Municipality code as recorded on the Cadastre.</p></li>
@@ -120,28 +120,20 @@ including the INE code.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># tolower(Sys.info()[["sysname"]]) != "linux"</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Get municipality by cadastal code</span></span></span>
 <span class="r-in"><span><span class="va">ab</span> <span class="op">&lt;-</span> <span class="fu">catr_ovc_get_cod_munic</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">900</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">ab</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: cm &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Same query using the INE code</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">ab2</span> <span class="op">&lt;-</span> <span class="fu">catr_ovc_get_cod_munic</span><span class="op">(</span><span class="fl">2</span>, cmun_ine <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">ab2</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: cm &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

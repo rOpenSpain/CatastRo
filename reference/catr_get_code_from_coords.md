@@ -56,8 +56,8 @@ catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with the format described in
+A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with
+the format described in
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md).
 
 ## Details
@@ -82,22 +82,14 @@ Other search:
 ## Examples
 
 ``` r
+if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 # Use with coords
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 SANTA… 38      900        38900    38    038   38038   SANT… 38    900   38   
-#> # ℹ 1 more variable: cm <chr>
 
 # Use with sf
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 MONROY 10      128        10128    10    125   10125   MONR… 10    128   10   
-#> # ℹ 1 more variable: cm <chr>
 # }
+}
 ```

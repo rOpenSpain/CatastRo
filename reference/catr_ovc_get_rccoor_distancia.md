@@ -39,18 +39,18 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html). See
+**Details**
 
 ## Details
 
 When the API does not provide any result, the function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-the input parameters only.
+[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with the
+input parameters only.
 
 On a successful query, the function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row by cadastral reference, including the following columns:
+[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with one
+row by cadastral reference, including the following columns:
 
 - `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
 
@@ -85,23 +85,13 @@ Other cadastral references:
 ## Examples
 
 ``` r
+if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 catr_ovc_get_rccoor_distancia(
   lat = 40.963200,
   lon = -5.671420,
   srs = 4326
 )
-#> # A tibble: 7 × 14
-#>   geo.xcen geo.ycen geo.srs   refcat  address cmun_ine pc.pc1 pc.pc2 dt.loine.cp
-#>      <dbl>    <dbl> <chr>     <chr>   <chr>   <chr>    <chr>  <chr>  <chr>      
-#> 1    -5.67     41.0 EPSG:4326 528380… CL SAN… 37274    52838… TL735… 37         
-#> 2    -5.67     41.0 EPSG:4326 528383… CT SAN… 37274    52838… TL735… 37         
-#> 3    -5.67     41.0 EPSG:4326 528341… CL SAN… 37274    52834… TL735… 37         
-#> 4    -5.67     41.0 EPSG:4326 538380… CT SAN… 37274    53838… TL735… 37         
-#> 5    -5.67     41.0 EPSG:4326 538480… CL GAR… 37274    53848… TL735… 37         
-#> 6    -5.67     41.0 EPSG:4326 538380… CL ENC… 37274    53838… TL735… 37         
-#> 7    -5.67     41.0 EPSG:4326 528383… CL SAN… 37274    52838… TL735… 37         
-#> # ℹ 5 more variables: dt.loine.cm <chr>, dt.lourb.dir.cv <chr>,
-#> #   dt.lourb.dir.pnp <chr>, ldt <chr>, dis <chr>
 # }
+}
 ```

@@ -147,6 +147,7 @@ Other spatial:
 ## Examples
 
 ``` r
+if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 cp <- catr_wfs_get_parcels_bbox(
   c(
@@ -154,12 +155,11 @@ cp <- catr_wfs_get_parcels_bbox(
   ),
   srs = 25830
 )
-#> Warning: incomplete final line found on 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEzLWpT/file14105d9219e.gml'
 
 library(ggplot2)
 
 ggplot(cp) +
   geom_sf()
-
 # }
+}
 ```

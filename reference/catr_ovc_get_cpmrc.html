@@ -11,7 +11,7 @@ Return the coordinates for a specific cadastral reference."><meta property="og:i
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@ Return the coordinates for a specific cadastral reference."><meta property="og:i
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>OVCCoordenadas: Geocode a cadastral reference</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/main/R/ovc_cpmrc.R" class="external-link"><code>R/ovc_cpmrc.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/release/R/ovc_cpmrc.R" class="external-link"><code>R/ovc_cpmrc.R</code></a></small>
       <div class="d-none name"><code>catr_ovc_get_cpmrc.Rd</code></div>
     </div>
 
@@ -88,13 +88,13 @@ default is <code>FALSE</code>.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>. See <strong>Details</strong></p>
+    <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code>. See <strong>Details</strong></p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>When the API does not provide any result, the function returns a
-<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with the input parameters only.</p>
-<p>On a successful query, the function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>
+<code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with the input parameters only.</p>
+<p>On a successful query, the function returns a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code>
 with one row by cadastral reference, including the following columns:</p><ul><li><p><code>xcoord</code>, <code>ycoord</code>: X and Y coordinates in the specified SRS.</p></li>
 <li><p><code>refcat</code>: Cadastral Reference.</p></li>
 <li><p><code>address</code>: Address as it is recorded on the Cadastre.</p></li>
@@ -118,7 +118,8 @@ with one row by cadastral reference, including the following columns:</p><ul><li
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># tolower(Sys.info()[["sysname"]]) != "linux"</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># using all the arguments</span></span></span>
 <span class="r-in"><span><span class="fu">catr_ovc_get_cpmrc</span><span class="op">(</span><span class="st">"13077A01800039"</span>,</span></span>
@@ -126,18 +127,11 @@ with one row by cadastral reference, including the following columns:</p><ul><li
 <span class="r-in"><span>  province <span class="op">=</span> <span class="st">"CIUDAD REAL"</span>,</span></span>
 <span class="r-in"><span>  municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>  -<span style="color: #BB0000;">3.46</span>   38.6 13077A018… DS DIS… 13077… 18000… -3.4562… 38.6196… EPSG:4… DS D…</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># only the cadastral reference</span></span></span>
 <span class="r-in"><span><span class="fu">catr_ovc_get_cpmrc</span><span class="op">(</span><span class="st">"9872023VH5797S"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>  -<span style="color: #BB0000;">3.46</span>   38.6 9872023VH… CL GLO… 98720… VH579… -3.4632… 38.6401… EPSG:4… CL G…</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

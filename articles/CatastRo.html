@@ -16,9 +16,9 @@
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get started">
-<meta name="description" content="Brief introduction to CatastRo package.">
-<meta property="og:description" content="Brief introduction to CatastRo package.">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="CatastRo_files/libs/quarto-html/popper.min.js"></script><script src="CatastRo_files/libs/quarto-html/tippy.umd.min.js"></script><link href="CatastRo_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="CatastRo_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get started">
 <meta property="og:image" content="https://ropenspain.github.io/CatastRo/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@rOpenSpain">
@@ -33,7 +33,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="../articles/CatastRo.html">Get started</a></li>
+<li class="active nav-item"><a class="nav-link" href="../articles/CatastRo.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
@@ -70,97 +70,50 @@
 
 
   </div>
-</nav><div class="container template-article">
-    
-
-
-
-<div class="row">
+</nav><div class="container template-quarto">
+    <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get started</h1>
-            
-      
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/main/vignettes/CatastRo.Rmd" class="external-link"><code>vignettes/CatastRo.Rmd</code></a></small>
-      <div class="d-none name"><code>CatastRo.Rmd</code></div>
+
+
+
+
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/release/vignettes/CatastRo.qmd" class="external-link"><code>vignettes/CatastRo.qmd</code></a></small>
+      <div class="d-none name"><code></code></div>
     </div>
 
-    
-    
-<!-- CatastRo.Rmd is generated from CatastRo.Rmd.orig. Please edit that file -->
-<p><strong>CatastRo</strong> provides access to different API services
-of the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>.
-With <strong>CatastRo</strong> you can download official information on
-addresses, properties, parcels, and buildings.</p>
-<div class="section level2">
-<h2 id="ovccoordenadas-service">OVCCoordenadas Service<a class="anchor" aria-label="anchor" href="#ovccoordenadas-service"></a>
+
+
+
+
+
+    <!-- CatastRo.qmd is generated from CatastRo.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> provides access to different API services of the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>. With <strong>CatastRo</strong> you can download official information on addresses, properties, parcels, and buildings.</p>
+<section class="level2"><h2 id="ovccoordenadas-service">OVCCoordenadas service<a class="anchor" aria-label="anchor" href="#ovccoordenadas-service"></a>
 </h2>
-<p>The <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a>
-service allows retrieving the coordinates of a known cadastral reference
-(geocoding). It is also possible to retrieve the cadastral references
-around a specific pair of coordinates (reverse geocoding).
-<strong>CatastRo</strong> returns the results in a tibble format. This
-functionality is described in detail in the corresponding vignette (see
-<code><a href="../articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code>).</p>
-</div>
-<div class="section level2">
-<h2 id="inspire-services">INSPIRE Services<a class="anchor" aria-label="anchor" href="#inspire-services"></a>
+<p>The <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> service allows retrieving the coordinates of a known cadastral reference (geocoding). It is also possible to retrieve the cadastral references around a specific pair of coordinates (reverse geocoding). <strong>CatastRo</strong> returns the results in a tibble format. This functionality is described in detail in the corresponding vignette (see <code><a href="../articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code>).</p>
+</section><section class="level2"><h2 id="inspire-services">INSPIRE services<a class="anchor" aria-label="anchor" href="#inspire-services"></a>
 </h2>
 <blockquote>
-<p>The INSPIRE Directive aims to create a European Union spatial data
-infrastructure for the purposes of EU environmental policies and
-policies or activities which may have an impact on the environment. This
-European Spatial Data Infrastructure will enable the sharing of
-environmental spatial information among public sector organisations,
-facilitate public access to spatial information across Europe and assist
-in policy-making across boundaries.</p>
-<p><em>From <a href="https://knowledge-base.inspire.ec.europa.eu/overview_en" class="external-link uri">https://knowledge-base.inspire.ec.europa.eu/overview_en</a></em></p>
+<p>The INSPIRE Directive aims to create a European Union spatial data infrastructure for the purposes of EU environmental policies and policies or activities which may have an impact on the environment. This European Spatial Data Infrastructure will enable the sharing of environmental spatial information among public sector organisations, facilitate public access to spatial information across Europe and assist in policy-making across boundaries.</p>
 </blockquote>
-<p>The implementation of the INSPIRE directive on the Spanish Cadastre
-(see <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Catastro
-INSPIRE</a>) allows retrieving spatial objects from the database of the
-cadastre:</p>
+<p>The implementation of the INSPIRE directive on the Spanish Cadastre (see <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Catastro INSPIRE</a>) allows retrieving spatial objects from the database of the cadastre:</p>
 <ul>
 <li>
-<strong>Vector objects:</strong> Parcels, addresses, buildings,
-cadastral zones and more. These objects are provided by
-<strong>CatastRo</strong> as <code>sf</code> objects as provided by the
-<strong>sf</strong> package.</li>
+<strong>Vector objects:</strong> Parcels, addresses, buildings, cadastral zones and more. These objects are provided by <strong>CatastRo</strong> as <code>sf</code> objects as provided by the <strong>sf</strong> package.</li>
 <li>
-<strong>Imagery:</strong> Image layers representing the same
-information as the vector objects. These objects are provided by
-<strong>CatastRo</strong> as <code>SpatRaster</code> objects as provided
-by the <strong>terra</strong> package.</li>
+<strong>Imagery:</strong> Image layers representing the same information as the vector objects. These objects are provided by <strong>CatastRo</strong> as <code>SpatRaster</code> objects as provided by the <strong>terra</strong> package.</li>
 </ul>
-<p>Note that <strong>the coverage of this service is 95% of the Spanish
-territory</strong>, excluding the Basque Country and Navarre<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The package &lt;a href="https://ropenspain.github.io/CatastRoNav/"&gt;&lt;strong&gt;CatastRoNav&lt;/strong&gt;&lt;/a&gt;
-provides access to the Cadastre of Navarre, with similar functionalities
-to &lt;strong&gt;CatastRo&lt;/strong&gt;.&lt;/p&gt;'><sup>1</sup></a> that have
-their own independent cadastral offices.</p>
-<p>There are three types of functions, each one querying a different
-service:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>ATOM service</strong>: The ATOM service allows
-batch-downloading vector objects of different cadastral elements for a
-specific municipality.</p></li>
-<li><p><strong>WFS service</strong>: The WFS service allows downloading
-vector objects of specific cadastral elements. Note that there are some
-<em>restrictions on the extent and number of elements</em> to query. For
-batch-downloading the ATOM service is preferred.</p></li>
-<li><p><strong>WMS service</strong>: This service allows downloading
-georeferenced images of different cadastral elements.</p></li>
-</ol>
-</div>
-<div class="section level2">
-<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+<p>Note that <strong>the coverage of this service is 95% of the Spanish territory</strong>, excluding the Basque Country and Navarre<a class="footnote-ref" role="doc-noteref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The package &lt;a href="https://ropenspain.github.io/CatastRoNav/"&gt;&lt;strong&gt;CatastRoNav&lt;/strong&gt;&lt;/a&gt; provides access to the Cadastre of Navarre, with similar functionalities to &lt;strong&gt;CatastRo&lt;/strong&gt;.&lt;/p&gt;'><sup>1</sup></a> that have their own independent cadastral offices.</p>
+<p>There are three types of functions, each one querying a different service:</p>
+<ol type="1">
+<li><p><strong>ATOM service</strong>: The ATOM service allows batch-downloading vector objects of different cadastral elements for a specific municipality.</p></li>
+<li><p><strong>WFS service</strong>: The WFS service allows downloading vector objects of specific cadastral elements. Note that there are some <em>restrictions on the extent and number of elements</em> to query. For batch-downloading the ATOM service is preferred.</p></li>
+<li><p><strong>WMS service</strong>: This service allows downloading georeferenced images of different cadastral elements.</p></li>
+</ol></section><section class="level2"><h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<div class="section level3">
-<h3 id="working-with-layers">Working with layers<a class="anchor" aria-label="anchor" href="#working-with-layers"></a>
+<section class="level3"><h3 id="working-with-layers">Working with layers<a class="anchor" aria-label="anchor" href="#working-with-layers"></a>
 </h3>
-<p>In this example, we will demonstrate some of the main capabilities of
-the package by recreating a cadastral map of the surroundings of the <a href="https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium" class="external-link">Santiago
-Bernabéu Stadium</a>. We will make use of the <strong>WMS and WFS
-services</strong> to get different layers in order to show some of the
-capabilities of the package:</p>
+<p>In this example, we will demonstrate some of the main capabilities of the package by recreating a cadastral map of the surroundings of the <a href="https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium" class="external-link">Santiago Bernabéu Stadium</a>. We will make use of the <strong>WMS and WFS services</strong> to get different layers in order to show some of the capabilities of the package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Extract building by bounding box</span></span>
 <span><span class="co"># Check https://boundingbox.klokantech.com/</span></span>
@@ -199,21 +152,14 @@ capabilities of the package:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium</span>, fill <span class="op">=</span> <span class="st">"red"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="santbernabeu-1.png" alt="Example: Santiago Bernabeu" width="100%"><p class="caption">
-Example: Santiago Bernabeu
+<img src="./santbernabeu-1.png" alt="Figure 1: Example - Santiago Bernabeu" width="100%"><p class="caption">
+Figure 1: Example - Santiago Bernabeu
 </p>
 </div>
-</div>
-<div class="section level3">
-<h3 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
+</section><section class="level3"><h3 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
 </h3>
-<p>We can also create thematic maps using the information available on
-the spatial objects. We will produce a visualization of the urban growth
-of Granada using <strong>CatastRo</strong>, replicating the map produced
-by <a href="https://dominicroye.github.io" class="external-link">Dominic Royé</a> <span class="citation">(<a href="#ref-roye19">Royé 2019</a>)</span>, using the
-<strong>ATOM service</strong>.</p>
-<p>First, we extract the coordinates of the city center of Granada using
-<strong>mapSpain</strong>:</p>
+<p>We can also create thematic maps using the information available on the spatial objects. We will produce a visualization of the urban growth of Granada using <strong>CatastRo</strong>, replicating the map produced by <a href="https://dominicroye.github.io" class="external-link">Dominic Royé</a> <span class="citation" data-cites="roye19">(<a href="#ref-roye19" role="doc-biblioref">Royé 2019</a>)</span>, using the <strong>ATOM service</strong>.</p>
+<p>First, we extract the coordinates of the city center of Granada using <strong>mapSpain</strong>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
@@ -222,28 +168,22 @@ by <a href="https://dominicroye.github.io" class="external-link">Dominic Royé</
 <span><span class="co"># Use mapSpain for getting the coords</span></span>
 <span></span>
 <span><span class="va">city</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_capimun.html" class="external-link">esp_get_capimun</a></span><span class="op">(</span>munic <span class="op">=</span> <span class="st">"^Granada$"</span><span class="op">)</span></span></code></pre></div>
-<p>The next step consists of extracting the buildings using the ATOM
-service. We will also use the function
-<code><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> to identify the code of Granada
-in the Cadastre, and we will download the buildings with
-<code><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code>.</p>
+<p>The next step consists of extracting the buildings using the ATOM service. We will also use the function <code><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> to identify the code of Granada in the Cadastre, and we will download the buildings with <code><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">city_catr_code</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">city_catr_code</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 12</span></span>
-<span><span class="co">#&gt;   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   </span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: cm &lt;chr&gt;</span></span>
+<span><span class="co">#&gt;   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87</span></span>
 <span></span>
 <span><span class="va">city_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">city_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span></code></pre></div>
-<p>The next step in creating the visualization is to limit the analysis
-to a circle of radius 1.5 km around the city center:</p>
+<p>The next step in creating the visualization is to limit the analysis to a circle of radius 1.5 km around the city center:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">buff</span> <span class="op">&lt;-</span> <span class="va">city</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">buff</span> <span class="op">&lt;-</span> <span class="va">city</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Adjust CRS to 25830: (Buildings)</span></span>
-<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">city_bu</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">city_bu</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Buffer</span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">st_buffer</a></span><span class="op">(</span><span class="fl">1500</span><span class="op">)</span></span>
 <span></span>
@@ -255,12 +195,11 @@ to a circle of radius 1.5 km around the city center:</p>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="minimal-1.png" alt="Minimal cadastral map of Granada" width="100%"><p class="caption">
-Minimal cadastral map of Granada
+<img src="./minimal-1.png" alt="Figure 2: Minimal cadastral map of Granada" width="100%"><p class="caption">
+Figure 2: Minimal cadastral map of Granada
 </p>
 </div>
-<p>Now let’s extract the construction year, available in the column
-<code>beginning</code>:</p>
+<p>Now let’s extract the construction year, available in the column <code>beginning</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Extract 4 initial positions</span></span>
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substr</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">$</span><span class="va">beginning</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
@@ -273,13 +212,11 @@ Minimal cadastral map of Granada
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># New column</span></span>
-<span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">year</span><span class="op">)</span></span></code></pre></div>
-<p>The last step is to create groups based on the year and create the
-data visualization. Here we use the function <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> to
-create classes for every decade starting from year 1900:</p>
+<p>The last step is to create groups based on the year and create the data visualization. Here we use the function <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> to create classes for every decade starting from year 1900:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">dataviz</span> <span class="op">&lt;-</span> <span class="va">dataviz</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    year_cat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">year</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1900</span>, <span class="fl">2030</span>, by <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span>, dig.lab <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
@@ -315,26 +252,103 @@ create classes for every decade starting from year 1900:</p>
 <span>    plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">40</span>, l <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="dviz-1.png" alt="Granada: Urban growth" width="100%"><p class="caption">
-Granada: Urban growth
+<img src="./dviz-1.png" alt="Figure 2: Granada - Urban growth" width="100%"><p class="caption">
+Figure 2: Granada - Urban growth
 </p>
 </div>
-</div>
-</div>
-<div class="section level2 unnumbered">
-<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</section></section><section class="level2 unnumbered"><h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-roye19" class="csl-entry">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-roye19" class="csl-entry" role="listitem">
 Royé, Dominique. 2019. <em>Visualize Urban Growth</em>. <a href="https://dominicroye.github.io/blog/visualize-urban-growth/" class="external-link">https://dominicroye.github.io/blog/visualize-urban-growth/</a>.
 </div>
 </div>
-</div>
-
-  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+</section><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
+    }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
-
 
   </div>
 

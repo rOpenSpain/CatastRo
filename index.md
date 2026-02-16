@@ -14,26 +14,6 @@ Install **CatastRo** from
 install.packages("CatastRo")
 ```
 
-You can install the development version of **CatastRo** using the
-[r-universe](https://ropenspain.r-universe.dev/CatastRo):
-
-``` r
-# Install CatastRo in R:
-install.packages("CatastRo",
-  repos = c(
-    "https://ropenspain.r-universe.dev",
-    "https://cloud.r-project.org"
-  )
-)
-```
-
-Alternatively, you can install the development version of **CatastRo**
-with:
-
-``` r
-remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
-```
-
 ## Known issues
 
 The SSL certificate of the Spanish Cadastre presents some issues that
@@ -219,7 +199,7 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {0.4.1.9000},
+  version = {0.4.1},
   url = {https://ropenspain.github.io/CatastRo/},
   abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
 }

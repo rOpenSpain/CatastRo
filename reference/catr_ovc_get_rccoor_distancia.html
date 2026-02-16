@@ -15,7 +15,7 @@ found on an area of 50 square meters around the requested coordinates."><meta pr
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@ found on an area of 50 square meters around the requested coordinates."><meta pr
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>OVCCoordenadas: Reverse geocode cadastral references on a region</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/main/R/ovc_rccoor_distancia.R" class="external-link"><code>R/ovc_rccoor_distancia.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/release/R/ovc_rccoor_distancia.R" class="external-link"><code>R/ovc_rccoor_distancia.R</code></a></small>
       <div class="d-none name"><code>catr_ovc_get_rccoor_distancia.Rd</code></div>
     </div>
 
@@ -90,13 +90,13 @@ default is <code>FALSE</code>.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>. See <strong>Details</strong></p>
+    <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code>. See <strong>Details</strong></p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>When the API does not provide any result, the function returns a
-<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with the input parameters only.</p>
-<p>On a successful query, the function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with
+<code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with the input parameters only.</p>
+<p>On a successful query, the function returns a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with
 one row by cadastral reference, including the following columns:</p><ul><li><p><code>geo.xcen</code>, <code>geo.ycen</code>, <code>geo.srs</code>: Input parameters of the query.</p></li>
 <li><p><code>refcat</code>: Cadastral reference.</p></li>
 <li><p><code>address</code>: Address as it is recorded on the Cadastre.</p></li>
@@ -122,25 +122,15 @@ Statistics Institute).</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># tolower(Sys.info()[["sysname"]]) != "linux"</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="fu">catr_ovc_get_rccoor_distancia</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  lat <span class="op">=</span> <span class="fl">40.963200</span>,</span></span>
 <span class="r-in"><span>  lon <span class="op">=</span> <span class="op">-</span><span class="fl">5.671420</span>,</span></span>
 <span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">4326</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   geo.xcen geo.ycen geo.srs   refcat  address cmun_ine pc.pc1 pc.pc2 dt.loine.cp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>    -<span style="color: #BB0000;">5.67</span>     41.0 EPSG:4326 528380… CL SAN… 37274    52838… TL735… 37         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>    -<span style="color: #BB0000;">5.67</span>     41.0 EPSG:4326 528383… CT SAN… 37274    52838… TL735… 37         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>    -<span style="color: #BB0000;">5.67</span>     41.0 EPSG:4326 528341… CL SAN… 37274    52834… TL735… 37         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>    -<span style="color: #BB0000;">5.67</span>     41.0 EPSG:4326 538380… CT SAN… 37274    53838… TL735… 37         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>    -<span style="color: #BB0000;">5.67</span>     41.0 EPSG:4326 538480… CL GAR… 37274    53848… TL735… 37         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>    -<span style="color: #BB0000;">5.67</span>     41.0 EPSG:4326 538380… CL ENC… 37274    53838… TL735… 37         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>    -<span style="color: #BB0000;">5.67</span>     41.0 EPSG:4326 528383… CL SAN… 37274    52838… TL735… 37         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5 more variables: dt.loine.cm &lt;chr&gt;, dt.lourb.dir.cv &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   dt.lourb.dir.pnp &lt;chr&gt;, ldt &lt;chr&gt;, dis &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
