@@ -12,7 +12,6 @@
 #'    territorial office including information for each of the municipalities
 #'    of that office.
 #'
-#'
 #' @source
 #'
 #' ```{r, echo=FALSE, results='asis'}

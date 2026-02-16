@@ -6,7 +6,6 @@ test_that("Expect error on bad SRS", {
   ))
 })
 
-
 test_that("giving all the arguments", {
   skip_on_cran()
   skip_if_offline()

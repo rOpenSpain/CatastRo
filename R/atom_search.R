@@ -4,7 +4,6 @@
 #' Search for a municipality (as a string, part of string or code) and get
 #' the corresponding coding as per the Cadastre.
 #'
-#'
 #' @family ATOM
 #' @family search
 #' @family databases
@@ -14,7 +13,7 @@
 #' @param munic Municipality to extract, It can be a part of a string or the
 #'   cadastral code.
 #'
-#' @return  A [tibble][tibble::tbl_df].
+#' @return A [tibble][tibble::tbl_df].
 #'
 #' @export
 #'

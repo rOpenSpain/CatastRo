@@ -24,7 +24,7 @@ catr_srs_values <- tribble(
   3857, "Web Mercator"
 )
 
-catr_srs_values <- catr_srs_values %>% arrange((SRS))
+catr_srs_values <- catr_srs_values |> arrange((SRS))
 
 # Add column for OVC services
 
@@ -45,7 +45,7 @@ ovc_codes <- c(
   23031
 )
 
-catr_srs_values <- catr_srs_values %>%
+catr_srs_values <- catr_srs_values |>
   mutate(ovc_service = SRS %in% ovc_codes)
 
 # Add column for WFS services
@@ -59,7 +59,7 @@ wfs_codes <- c(
   3857
 )
 
-catr_srs_values <- catr_srs_values %>%
+catr_srs_values <- catr_srs_values |>
   mutate(wfs_service = SRS %in% wfs_codes)
 
 catr_srs_values

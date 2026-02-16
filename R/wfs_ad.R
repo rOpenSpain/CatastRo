@@ -135,7 +135,6 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #' - By postal codes: Implemented on `catr_wfs_get_address_postalcode()`.
 #'   Extract objects of specific cadastral references
 #'
-#'
 #' @param postalcode Postal code.
 #'
 #' @rdname catr_wfs_get_address

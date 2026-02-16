@@ -35,7 +35,6 @@ test_that("BU Check verbose", {
   expect_message(catr_wfs_get_buildings_rc("3662303TF3136B", verbose = TRUE))
 })
 
-
 test_that("BU Part Check", {
   skip_on_cran()
   skip_on_os("linux")

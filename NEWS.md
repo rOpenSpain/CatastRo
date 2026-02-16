@@ -1,6 +1,7 @@
 # CatastRo (development version)
 
 - The minimum **R** version required is now 4.1.0.
+- Migrate vignettes to Quarto.
 
 # CatastRo 0.4.1
 

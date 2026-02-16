@@ -94,7 +94,6 @@ catr_wfs_get_buildings_bbox <- function(
 #' - By cadastral reference: Implemented on `catr_wfs_get_buildings_rc()`.
 #'   Extract objects of specific cadastral references.
 #'
-#'
 #' @param rc The cadastral reference to be extracted.
 #'
 #' @rdname catr_wfs_get_buildings

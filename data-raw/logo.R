@@ -6,8 +6,8 @@ library(dplyr)
 
 # Coord Plaza del Azoguejo: To Point
 
-top <- st_point(c(-4.118115, 40.9478688)) %>%
-  st_sfc(crs = 4326) %>%
+top <- st_point(c(-4.118115, 40.9478688)) |>
+  st_sfc(crs = 4326) |>
   st_transform(st_crs(25830))
 
 # Create spatial hexagon
@@ -24,22 +24,20 @@ hex_pol <- lapply(
   hex,
   center = st_coordinates(top), # Center coords
   size = 500 # Side lenght (meters)
-) %>%
+) |>
   # Convert to spatial polygon
-  unlist() %>%
-  matrix(ncol = 2, byrow = TRUE) %>%
-  list() %>%
-  st_polygon() %>%
-  st_sfc() %>%
+  unlist() |>
+  matrix(ncol = 2, byrow = TRUE) |>
+  list() |>
+  st_polygon() |>
+  st_sfc() |>
   st_set_crs(st_crs(top))
 
 # Get Segovia
 segovia <- catr_atom_get_buildings("40900")
 
-
 finalpols <- st_intersection(segovia, hex_pol)
 plot(finalpols$geometry)
-
 
 library(ggplot2)
 

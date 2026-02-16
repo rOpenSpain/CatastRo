@@ -131,11 +131,9 @@ library(tidyterra)
 ggplot() +
   geom_spatraster_rgb(data = pict)
 
-
 # With a spatial object
 
 parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
-
 
 # Use styles
 
@@ -145,7 +143,6 @@ parcels_img <- catr_wms_get_layer(parcels,
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )
-
 
 ggplot() +
   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +

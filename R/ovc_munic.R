@@ -13,7 +13,6 @@
 #' @family OVCCallejero
 #' @family search
 #'
-#'
 #' @return A [tibble][tibble::tbl_df]. See **Details**
 #'
 #' @export
@@ -43,7 +42,6 @@
 #' * `catr_munic`: Municipality code as per the INE.
 #' * `catrcode`: Full INE code for the municipality.
 #' * Rest of fields: Check the API Docs.
-#'
 #'
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
 #' \donttest{

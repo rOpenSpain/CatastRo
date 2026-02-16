@@ -14,7 +14,6 @@ test_that("ATOM Addresses", {
   expect_s3_class(s, "sf")
 })
 
-
 test_that("ATOM Encoding issue", {
   skip_on_cran()
   skip_if_offline()

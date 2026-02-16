@@ -12,12 +12,9 @@
 #' @family OVCCallejero
 #' @family search
 #'
-#'
 #' @return A [tibble][tibble::tbl_df].
 #'
 #' @export
-#'
-#'
 #'
 #' @inheritParams catr_ovc_get_cpmrc
 #' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"

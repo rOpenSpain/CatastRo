@@ -4,14 +4,14 @@ description: Retrieve spatial coordinates of urban properties.
 author:
   - Ángel Delgado Panadero
   - Diego Hernangómez
-output: rmarkdown::html_vignette
+tbl-cap-location: bottom
 vignette: >
   %\VignetteIndexEntry{OVCCoordenadas Web Service}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
 
-<!-- ovcservice.Rmd is generated from ovcservice.Rmd.orig. Please edit that file -->
+<!-- ovcservice.qmd is generated from ovcservice.qmd.orig. Please edit that file -->
 
 ```{r}
 #| include: false
@@ -36,7 +36,7 @@ API directly through a **R** IDE.
 
 This API is used to retrieve the spatial coordinates of an urban property.
 Moreover, it is not necessary to be the owner to get the information; in fact,
-it is enough to know the cadastral reference (_RC_) of the property and its
+it is enough to know the cadastral reference (*RC*) of the property and its
 address (in fact, it is only completely compulsory to know the RC, however, to
 ensure a good result from the response and to avoid mistakes in the RC, the
 address can be passed to the query too).
@@ -60,11 +60,11 @@ package **tibble**.
 
 The OVCCoordenadas Web Service can be reached using the following functions:
 
-- `catr_ovc_get_rccoor()`
-- `catr_ovc_get_rccoor_distancia()`
-- `catr_ovc_get_cpmrc()`
+-   `catr_ovc_get_rccoor()`
+-   `catr_ovc_get_rccoor_distancia()`
+-   `catr_ovc_get_cpmrc()`
 
-## Reverse Geocoding Cadastral References
+## Reverse geocoding cadastral references
 
 The function `catr_ovc_get_rccoor()` receives the coordinates (`lat` and `lon`)
 and the spatial reference system (`srs`) used to express them. It returns a
@@ -72,15 +72,14 @@ tibble with the cadastral reference of the property in that spatial point,
 including other information such as the address (town, street, and number).
 
 ```{r}
+library(CatastRo)
+
 result <- catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
   srs = "4230"
 )
-```
 
-```{r}
-#| echo: false
 knitr::kable(result)
 ```
 
@@ -92,9 +91,9 @@ data(catr_srs_values)
 # OVC valid codes
 library(dplyr)
 
-catr_srs_values %>%
-  filter(ovc_service == TRUE) %>%
-  select(SRS, Description) %>%
+catr_srs_values |>
+  filter(ovc_service == TRUE) |>
+  select(SRS, Description) |>
   knitr::kable()
 ```
 
@@ -107,11 +106,11 @@ catr_ovc_get_rccoor_distancia(
   lat = 40.96002,
   lon = -5.663408,
   srs = "4230"
-) %>%
+) |>
   knitr::kable()
 ```
 
-## Geocoding a Cadastral Reference
+## Geocoding a cadastral reference
 
 The opposite query is possible as well. When given to the function
 `catr_ovc_get_cpmrc()` a cadastral reference (`rc`), the province (`province`)
@@ -125,7 +124,7 @@ catr_ovc_get_cpmrc(
   srs = "4230",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
-) %>%
+) |>
   knitr::kable()
 ```
 
@@ -141,7 +140,7 @@ data.
 catr_ovc_get_cpmrc(
   rc = "13077A01800039",
   municipality = "SANTA CRUZ DE MUDELA"
-) %>%
+) |>
   knitr::kable()
 ```
 
@@ -149,6 +148,6 @@ When using only `rc` the result is provided as expected:
 
 ```{r}
 # No warning, get the result
-catr_ovc_get_cpmrc(rc = "13077A01800039") %>%
+catr_ovc_get_cpmrc(rc = "13077A01800039") |>
   knitr::kable()
 ```

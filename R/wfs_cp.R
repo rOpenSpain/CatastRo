@@ -22,7 +22,6 @@
 #' ```{r child = "man/chunks/wfspdf.Rmd"}
 #' ```
 #'
-#'
 #' @details
 #'
 #' When `x` is a numeric vector, make sure that the `srs` matches the
@@ -164,7 +163,6 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #' - Cadastral parcels by zoning: Implemented on
 #'  `catr_wfs_get_parcels_parcel_zoning()`. Extract cadastral parcels of a
 #'  specific cadastral zone.
-#'
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export

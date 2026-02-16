@@ -35,7 +35,6 @@ test_that("CP Check verbose", {
   ))
 })
 
-
 test_that("CP Zone", {
   skip_on_cran()
   skip_on_os("linux")

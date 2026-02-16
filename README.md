@@ -1,7 +1,8 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CatastRo <a href="https://ropenspain.github.io/CatastRo/"><img src="man/figures/logo.png" align="right" height="139"/></a>
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+# CatastRo <a href="https://ropenspain.github.io/CatastRo/"><img src="man/figures/logo.png" alt="CatastRo website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -26,6 +27,8 @@ cadastral parcels, maps, and geocode cadastral references.
 
 ## Installation
 
+<div class="pkgdown-release">
+
 Install **CatastRo** from
 [**CRAN**](https://CRAN.R-project.org/package=CatastRo):
 
@@ -33,12 +36,20 @@ Install **CatastRo** from
 install.packages("CatastRo")
 ```
 
-You can install the development version of **CatastRo** using the
+</div>
+
+<div class="pkgdown-devel">
+
+Check the docs of the developing version
+in <https://ropenspain.github.io/CatastRo/dev/>.
+
+You can install the developing version of **CatastRo** using the
 [r-universe](https://ropenspain.r-universe.dev/CatastRo):
 
 ``` r
 # Install CatastRo in R:
-install.packages("CatastRo",
+install.packages(
+  "CatastRo",
   repos = c(
     "https://ropenspain.r-universe.dev",
     "https://cloud.r-project.org"
@@ -52,6 +63,8 @@ with:
 ``` r
 remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 ```
+
+</div>
 
 ## Known issues
 
@@ -190,7 +203,8 @@ ggplot(bu) +
   ggtitle("Nava de la Asunción, Segovia")
 ```
 
-<img src="man/figures/README-atom-1.png" alt="Extracting buildings in Nava de la Asuncion with the ATOM service" width="100%" />
+<img src="man/figures/README-atom-1.png" style="width:100.0%"
+alt="Extracting buildings in Nava de la Asuncion with the ATOM service" />
 
 ### Extract geometries using the WFS service
 
@@ -206,7 +220,8 @@ ggplot(wfs_get_buildings) +
   ggtitle("Leon Cathedral, Spain")
 ```
 
-<img src="man/figures/README-wfs-1.png" alt="Extract Leon Cathedral with the WFS service" width="100%" />
+<img src="man/figures/README-wfs-1.png" style="width:100.0%"
+alt="Extract Leon Cathedral with the WFS service" />
 
 ## A note on caching
 
@@ -224,6 +239,7 @@ it will load it, speeding up the process.
 ## Citation
 
 <p>
+
 Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the
 API Sede Electrónica Del Catastro</em>.
 <a href="https://doi.org/10.32614/CRAN.package.CatastRo">doi:10.32614/CRAN.package.CatastRo</a>,

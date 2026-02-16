@@ -32,7 +32,6 @@ test_that("AD Check verbose", {
   expect_message(catr_wfs_get_address_postalcode("11009", verbose = TRUE))
 })
 
-
 test_that("AD Postal Code", {
   skip_on_cran()
   skip_on_os("linux")

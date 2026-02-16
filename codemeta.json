@@ -102,15 +102,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "rmarkdown",
-      "name": "rmarkdown",
+      "identifier": "quarto",
+      "name": "quarto",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+      "sameAs": "https://CRAN.R-project.org/package=quarto"
     },
     {
       "@type": "SoftwareApplication",
@@ -155,7 +155,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 3.6"
+      "version": ">= 4.1.0"
     },
     "2": {
       "@type": "SoftwareApplication",
@@ -273,7 +273,7 @@
   },
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["catastro", "cran", "cran-r", "gis", "maps", "r", "r-package", "ropenspain", "rstats", "spain", "spatial", "static-tiles"],
-  "fileSize": "1356.75KB",
+  "fileSize": "1044.851KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

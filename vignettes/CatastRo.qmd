@@ -1,16 +1,15 @@
 ---
 title: "Get started"
 description: Brief introduction to CatastRo package.
-output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get started}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 bibliography: REFERENCES.bib
 link-citations: true
 ---
 
-<!-- CatastRo.Rmd is generated from CatastRo.Rmd.orig. Please edit that file -->
+<!-- CatastRo.qmd is generated from CatastRo.qmd.orig. Please edit that file -->
 
 
 
@@ -18,7 +17,7 @@ link-citations: true
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo** you can download
 official information on addresses, properties, parcels, and buildings.
 
-## OVCCoordenadas Service
+## OVCCoordenadas service
 
 The
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
@@ -28,7 +27,7 @@ specific pair of coordinates (reverse geocoding). **CatastRo** returns the
 results in a tibble format. This functionality is described in detail in the
 corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 
-## INSPIRE Services
+## INSPIRE services
 
 > The INSPIRE Directive aims to create a European Union spatial data
 > infrastructure for the purposes of EU environmental policies and policies or
@@ -37,23 +36,25 @@ corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 > information among public sector organisations, facilitate public access to
 > spatial information across Europe and assist in policy-making across
 > boundaries.
->
-> _From <https://knowledge-base.inspire.ec.europa.eu/overview_en>_
 
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
 [Catastro INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
 allows retrieving spatial objects from the database of the cadastre:
 
-- **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.
-  These objects are provided by **CatastRo** as `sf` objects as provided by
-  the **sf** package.
-- **Imagery:** Image layers representing the same information as the vector
-  objects. These objects are provided by **CatastRo** as `SpatRaster` objects
-  as provided by the **terra** package.
+-   **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.
+    These objects are provided by **CatastRo** as `sf` objects as provided by
+    the **sf** package.
+-   **Imagery:** Image layers representing the same information as the vector
+    objects. These objects are provided by **CatastRo** as `SpatRaster` objects
+    as provided by the **terra** package.
 
 Note that **the coverage of this service is 95% of the Spanish territory**,
 excluding the Basque Country and Navarre[^1] that have their own independent
 cadastral offices.
+
+[^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
+    provides access to the Cadastre of Navarre, with similar functionalities to
+    **CatastRo**.
 
 There are three types of functions, each one querying a different service:
 
@@ -61,8 +62,8 @@ There are three types of functions, each one querying a different service:
     of different cadastral elements for a specific municipality.
 
 2.  **WFS service**: The WFS service allows downloading vector objects of
-    specific cadastral elements. Note that there are some _restrictions on the
-    extent and number of elements_ to query. For batch-downloading the ATOM
+    specific cadastral elements. Note that there are some *restrictions on the
+    extent and number of elements* to query. For batch-downloading the ATOM
     service is preferred.
 
 3.  **WMS service**: This service allows downloading georeferenced images of
@@ -119,8 +120,8 @@ ggplot() +
 ```
 
 <div class="figure">
-<img src="./santbernabeu-1.png" alt="Example: Santiago Bernabeu" width="100%" />
-<p class="caption">Example: Santiago Bernabeu</p>
+<img src="./santbernabeu-1.png" alt="Figure 1: Example - Santiago Bernabeu" width="100%" />
+<p class="caption">Figure 1: Example - Santiago Bernabeu</p>
 </div>
 
 ### Thematic maps
@@ -155,10 +156,9 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
@@ -168,9 +168,9 @@ of radius 1.5 km around the city center:
 
 
 ``` r
-buff <- city %>%
+buff <- city |>
   # Adjust CRS to 25830: (Buildings)
-  st_transform(st_crs(city_bu)) %>%
+  st_transform(st_crs(city_bu)) |>
   # Buffer
   st_buffer(1500)
 
@@ -184,8 +184,8 @@ ggplot(dataviz) +
 ```
 
 <div class="figure">
-<img src="./minimal-1.png" alt="Minimal cadastral map of Granada" width="100%" />
-<p class="caption">Minimal cadastral map of Granada</p>
+<img src="./minimal-1.png" alt="Figure 2: Minimal cadastral map of Granada" width="100%" />
+<p class="caption">Figure 2: Minimal cadastral map of Granada</p>
 </div>
 
 Now let's extract the construction year, available in the column `beginning`:
@@ -203,7 +203,7 @@ year[!(year %in% 0:2500)] <- "0000"
 year <- as.integer(year)
 
 # New column
-dataviz <- dataviz %>%
+dataviz <- dataviz |>
   mutate(year = year)
 ```
 
@@ -213,7 +213,7 @@ decade starting from year 1900:
 
 
 ``` r
-dataviz <- dataviz %>%
+dataviz <- dataviz |>
   mutate(
     year_cat = cut(year, breaks = c(0, seq(1900, 2030, by = 10)), dig.lab = 4)
   )
@@ -251,13 +251,8 @@ ggplot(dataviz) +
 ```
 
 <div class="figure">
-<img src="./dviz-1.png" alt="Granada: Urban growth" width="100%" />
-<p class="caption">Granada: Urban growth</p>
+<img src="./dviz-1.png" alt="Figure 2: Granada - Urban growth" width="100%" />
+<p class="caption">Figure 2: Granada - Urban growth</p>
 </div>
 
 ## References
-
-[^1]:
-    The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
-    provides access to the Cadastre of Navarre, with similar functionalities to
-    **CatastRo**.

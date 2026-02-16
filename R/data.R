@@ -61,20 +61,20 @@
 #' # OVC valid codes
 #' library(dplyr)
 #'
-#' catr_srs_values %>% filter(ovc_service == TRUE)
+#' catr_srs_values |> filter(ovc_service == TRUE)
 #'
 #' # WFS valid codes
 #'
-#' catr_srs_values %>% filter(wfs_service == TRUE)
+#' catr_srs_values |> filter(wfs_service == TRUE)
 #'
 #' # Use with sf::st_crs()
 #'
-#' catr_srs_values %>%
-#'   filter(wfs_service == TRUE & ovc_service == TRUE) %>%
-#'   print() %>%
+#' catr_srs_values |>
+#'   filter(wfs_service == TRUE & ovc_service == TRUE) |>
+#'   print() |>
 #'   # First value
-#'   slice_head(n = 1) %>%
-#'   pull(SRS) %>%
+#'   slice_head(n = 1) |>
+#'   pull(SRS) |>
 #'   # As crs
 #'   sf::st_crs(.)
 NULL
