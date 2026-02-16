@@ -29,9 +29,23 @@ jobs:
         extra-packages: |
           local::.
           any::rcmdcheck
-          dieghernan/pkgdev
           ropenspain/rostemplate
-        needs: website
+          dieghernan/pkgdev
+
+    - name: Install optipng
+      run: |
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          sudo apt-get update
+          sudo apt-get install optipng
+        elif [ "$RUNNER_OS" == "Windows" ]; then
+          choco install optipng
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          brew install optipng
+        else
+          echo "$RUNNER_OS not supported"
+          exit 1
+        fi
+      shell: bash
 
     - name: Run jarl
       uses: etiennebacher/setup-jarl@v0.1.0
@@ -61,9 +75,3 @@ jobs:
         git push origin || echo "No changes to commit"
 
     - uses: r-lib/actions/check-r-package@v2
-
-    - name: Deploy package
-      run: |
-        git config --local user.name "github-actions[bot]"
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        Rscript -e 'pkgdown::deploy_to_branch(new_process = TRUE, run_dont_run = TRUE, lazy = TRUE)'
