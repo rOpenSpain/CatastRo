@@ -4,7 +4,8 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   message = FALSE,
@@ -53,14 +54,16 @@ geocode cadastral references.
 Install **CatastRo** from
 [**CRAN**](https://CRAN.R-project.org/package=CatastRo):
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 install.packages("CatastRo")
 ```
 
 You can install the development version of **CatastRo** using the
 [r-universe](https://ropenspain.r-universe.dev/CatastRo):
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 # Install CatastRo in R:
 install.packages("CatastRo",
   repos = c(
@@ -72,7 +75,8 @@ install.packages("CatastRo",
 
 Alternatively, you can install the development version of **CatastRo** with:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
 ```
 
@@ -82,7 +86,8 @@ The SSL certificate of the Spanish Cadastre presents some issues that may cause
 an error when using **CatastRo** (especially on macOS, see issue
 [#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
-```{r,eval=FALSE}
+```{r}
+#| eval: false
 #> ...(more lines on error)
 #>
 #> 1: In download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb") :
@@ -95,7 +100,8 @@ an error when using **CatastRo** (especially on macOS, see issue
 You can try to fix it by running this line on your session right after you start
 using the package:
 
-```{r,eval=FALSE}
+```{r}
+#| eval: false
 options(download.file.method = "curl", download.file.extra = "-k -L")
 ```
 
@@ -183,7 +189,9 @@ catr_ovc_get_rccoor(
 
 ### Extract geometries using the ATOM service
 
-```{r atom, fig.alt="Extracting buildings in Nava de la Asuncion with the ATOM service"}
+```{r}
+#| label: atom
+#| fig-alt: Extracting buildings in Nava de la Asuncion with the ATOM service
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 
@@ -203,7 +211,9 @@ ggplot(bu) +
 
 ### Extract geometries using the WFS service
 
-```{r wfs, fig.alt="Extract Leon Cathedral with the WFS service"}
+```{r}
+#| label: wfs
+#| fig-alt: Extract Leon Cathedral with the WFS service
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
   c(-5.569, 42.598, -5.564, 42.601),
   srs = 4326
@@ -221,7 +231,8 @@ Some datasets and tiles may have a size larger than 50MB. You can use
 **CatastRo** to create your own local repository at a given local directory
 passing the following option:
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 catr_set_cache_dir("./path/to/location")
 ```
 
@@ -230,13 +241,17 @@ load it, speeding up the process.
 
 ## Citation
 
-```{r echo=FALSE, results='asis'}
+```{r}
+#| echo: false
+#| results: asis
 print(citation("CatastRo"), style = "html")
 ```
 
 A BibTeX entry for LaTeX users is:
 
-```{r echo=FALSE, comment=''}
+```{r}
+#| echo: false
+#| comment: ''
 toBibtex(citation("CatastRo"))
 ```
 

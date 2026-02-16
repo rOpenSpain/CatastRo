@@ -13,7 +13,8 @@ vignette: >
 
 <!-- ovcservice.Rmd is generated from ovcservice.Rmd.orig. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   fig.path = "./",
@@ -78,7 +79,8 @@ result <- catr_ovc_get_rccoor(
 )
 ```
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 knitr::kable(result)
 ```
 
@@ -134,7 +136,8 @@ argument while the `municipality` argument is `NULL`, the function
 `catr_ovc_get_cpmrc()` will throw a message and will return a tibble with no
 data.
 
-```{r, message = TRUE}
+```{r}
+#| message: true
 catr_ovc_get_cpmrc(
   rc = "13077A01800039",
   municipality = "SANTA CRUZ DE MUDELA"
