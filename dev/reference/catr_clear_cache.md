@@ -54,7 +54,7 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 catr_clear_cache(verbose = TRUE)
-#> CatastRo cached data deleted: /tmp/RtmpF5ttb5/CatastRo
+#> CatastRo cached data deleted: /tmp/RtmpAkvy1x/CatastRo
 # }
 
 Sys.getenv("CATASTROESP_CACHE_DIR")
