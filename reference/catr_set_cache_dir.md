@@ -88,10 +88,10 @@ Other cache utilities:
 # \dontrun{
 catr_set_cache_dir(verbose = TRUE)
 #> Using a temporary cache dir. Set 'cache_dir' to a value for store permanently
-#> CatastRo cache dir is: /tmp/RtmpGpNsqr/CatastRo
+#> CatastRo cache dir is: /tmp/RtmpeGnbI9/CatastRo
 # }
 
 
 catr_detect_cache_dir()
-#> [1] "/tmp/RtmpGpNsqr/CatastRo"
+#> [1] "/tmp/RtmpeGnbI9/CatastRo"
 ```
