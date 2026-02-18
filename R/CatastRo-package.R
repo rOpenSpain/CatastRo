@@ -3,5 +3,5 @@
 
 ## usethis namespace: start
 ## usethis namespace: end
-#' @importFrom utils download.file unzip modifyList
+#' @importFrom utils download.file unzip modifyList object.size
 NULL

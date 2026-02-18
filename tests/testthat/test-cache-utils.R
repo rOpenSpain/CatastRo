@@ -18,7 +18,7 @@ test_that("Test cache", {
   expect_false(dir.exists(testdir))
 
   # Reset just for testing all cases
-  testdir <- file.path(tempdir(), "catr", "testthat")
+  testdir <- file.path(tempdir(), "catastro", "testthat")
   expect_message(catr_set_cache_dir(testdir))
 
   expect_true(dir.exists(testdir))
@@ -111,7 +111,7 @@ test_that("Mock migration", {
   # Delete now cache files
   old <- rappdirs::user_config_dir("CatastRo", "R")
   new <- tools::R_user_dir("CatastRo", "config")
-  fname <- "catastroesp_cache_dir"
+  fname <- "CATASTROESP_CACHE_DIR"
 
   old_fname <- file.path(old, fname)
   new_fname <- file.path(new, fname)

@@ -129,11 +129,11 @@ catr_set_cache_dir <- function(
       dir.create(config_dir, recursive = TRUE)
     }
 
-    catrastro_file <- file.path(config_dir, "CATASTROESP_CACHE_DIR")
+    catastroesp_file <- file.path(config_dir, "CATASTROESP_CACHE_DIR")
 
-    if (!file.exists(catrastro_file) || overwrite) {
+    if (!file.exists(catastroesp_file) || overwrite) {
       # Create file if it doesn't exist
-      writeLines(cache_dir, con = catrastro_file)
+      writeLines(cache_dir, con = catastroesp_file)
     } else {
       cli::cli_abort(
         c(
@@ -277,7 +277,7 @@ detect_cache_dir_muted <- function() {
     # Not set - tries to retrieve from cache
     cache_config <- file.path(
       tools::R_user_dir("CatastRo", "config"),
-      "catastroesp_cache_dir"
+      "CATASTROESP_CACHE_DIR"
     )
 
     # nocov start
