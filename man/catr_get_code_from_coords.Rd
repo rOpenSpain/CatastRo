@@ -16,12 +16,10 @@ catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See \strong{Details}.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{cache_dir}{A path to a cache directory. On \code{NULL} value (the default)
-the function would store the cached files on the
-\code{\link[base:tempfile]{tempdir}}.}
+\item{cache_dir}{A path to a cache directory. On \code{NULL} the function
+would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
 
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane}}

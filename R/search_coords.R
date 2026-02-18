@@ -72,7 +72,7 @@ catr_get_code_from_coords <- function(
   x <- sf::st_centroid(x, of_largest_polygon = TRUE)
 
   # Get munic
-  cache_dir <- catr_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   mun <- mapSpain::esp_get_munic_siane(
     cache_dir = cache_dir,

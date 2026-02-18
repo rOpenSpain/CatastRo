@@ -20,8 +20,7 @@ catr_ovc_get_cpmrc(
 
 \item{province, municipality}{Optional, used for narrowing the search.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
 A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}

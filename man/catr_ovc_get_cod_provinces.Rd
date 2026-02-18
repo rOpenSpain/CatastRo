@@ -7,8 +7,7 @@
 catr_ovc_get_cod_provinces(verbose = FALSE)
 }
 \arguments{
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
 A \link[tibble:tbl_df-class]{tibble}.

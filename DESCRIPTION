@@ -19,6 +19,7 @@ BugReports: https://github.com/rOpenSpain/CatastRo/issues
 Depends: 
     R (>= 4.1.0)
 Imports: 
+    cli,
     dplyr,
     httr2 (>= 1.0.0),
     mapSpain (>= 0.7.0),

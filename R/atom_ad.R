@@ -116,7 +116,7 @@ catr_atom_get_address <- function(
 
   # To a new directory
   # Get cached dir
-  cache_dir <- catr_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
   exdir <- file.path(
     cache_dir,
     gsub(".zip$", "", filename)

@@ -15,8 +15,7 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 \item{cmun_ine}{Code of a municipality, as recorded on National Statistics
 Institute. See \href{https://www.ine.es/daco/daco42/codmun/codmun00i.htm}{INE: List of municipalities}}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
 A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}

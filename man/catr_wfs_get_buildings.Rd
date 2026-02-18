@@ -27,8 +27,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See \strong{Details}.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{rc}{The cadastral reference to be extracted.}
 }

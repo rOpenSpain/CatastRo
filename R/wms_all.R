@@ -141,13 +141,14 @@ catr_wms_get_layer <- function(
   ...
 ) {
   bbox_res <- get_sf_from_bbox(x, srs)
-  cache_dir <- catr_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   # Manage layer
 
   what <- match.arg(what)
 
-  layer <- switch(what,
+  layer <- switch(
+    what,
     "building" = "Catastro.Building",
     "buildingpart" = "Catastro.BuildingPart",
     "parcel" = "Catastro.CadastralParcel",

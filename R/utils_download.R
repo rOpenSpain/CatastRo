@@ -13,7 +13,7 @@ catr_hlp_dwnload <- function(
   api_entry <- utils::URLencode(api_entry)
   url <- api_entry
 
-  cache_dir <- catr_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   catr_hlp_dwn_verbose(verbose, "Cache dir is ", cache_dir)
 

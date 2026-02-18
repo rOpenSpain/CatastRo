@@ -58,7 +58,8 @@ catr_wfs_get_buildings_bbox <- function(
   }
 
   # Switch to stored queries
-  stored_query <- switch(what,
+  stored_query <- switch(
+    what,
     "building" = "BU.BUILDING",
     "buildingpart" = "BU.BUILDINGPART",
     "other" = "BU.OTHERCONSTRUCTION"
@@ -134,7 +135,8 @@ catr_wfs_get_buildings_rc <- function(
   }
 
   # Switch to stored queries
-  stored_query <- switch(what,
+  stored_query <- switch(
+    what,
     "building" = "GetBuildingByParcel",
     "buildingpart" = "GetBuildingPartByParcel",
     "other" = "GetOtherBuildingByParcel"

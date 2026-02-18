@@ -16,8 +16,7 @@ in the CRS/SRS \code{specified} by \code{srs}.}
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
 A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}

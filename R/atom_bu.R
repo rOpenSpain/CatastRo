@@ -59,7 +59,8 @@ catr_atom_get_buildings <- function(
   what <- match.arg(what)
 
   # Transform
-  what <- switch(what,
+  what <- switch(
+    what,
     "building" = "building.gml",
     "buildingpart" = "buildingpart.gml",
     "other" = "other"
@@ -136,7 +137,7 @@ catr_atom_get_buildings <- function(
 
   # To a new directory
   # Get cached dir
-  cache_dir <- catr_hlp_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
   exdir <- file.path(cache_dir, gsub(".zip$", "", filename))
 
   if (!dir.exists(exdir)) {
