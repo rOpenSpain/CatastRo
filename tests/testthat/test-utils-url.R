@@ -5,7 +5,7 @@ test_that("SSL verifier (#40)", {
 
   # This is a check to see if setup.R work. Expected to fail if not
   # called with test_local(), etc.
-  expect_equal(getOption("catastro_ssl_verify", 1), 0)
+  expect_equal(getOption("catastro_ssl_verify", 1L), 0L)
 })
 
 
