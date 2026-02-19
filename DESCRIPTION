@@ -43,7 +43,7 @@ VignetteBuilder:
 Config/Needs/website: ropenspain/rostemplate, devtools, sessioninfo,
     remotes, sfheaders, rapidjsonr, jsonify, geometries
 Config/testthat/edition: 3
-Config/testthat/parallel: true
+Config/testthat/parallel: false
 Copyright: © Dirección General del Catastro <https://www.catastro.meh.es/>
 Encoding: UTF-8
 LazyData: true
