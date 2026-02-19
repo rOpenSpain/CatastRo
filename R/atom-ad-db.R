@@ -98,10 +98,7 @@ catr_atom_get_address_db_to <- function(
   to <- gsub("\\(|\\)", "", to)
   allto <- gsub("\\(|\\)", "", alldist$territorial_office)
 
-  # Clean for fuzzy match
-  clean_to <- trimws(gsub("territorial|office", "", allto, ignore.case = TRUE))
-
-  to_loc <- ensure_null(agrep(to, clean_to, ignore.case = TRUE))
+  to_loc <- ensure_null(agrep(to, allto, ignore.case = TRUE))
   if (is.null(to_loc)) {
     cli::cli_alert_warning(
       "No Territorial Office found with pattern {.str {to}}."
