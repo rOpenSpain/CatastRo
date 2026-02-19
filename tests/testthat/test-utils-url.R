@@ -21,6 +21,7 @@ test_that("SSL verifier (#40)", {
   unlink(file.path(tempdir(), "fixme"), force = TRUE, recursive = TRUE)
 
   expect_false(getOption("catastro_ssl_verify"))
+  unlink(file.path(tempdir(), "fixme"))
 })
 
 
@@ -34,7 +35,7 @@ test_that("Test offline", {
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
     "Addresses/ES.SDGC.AD.atom.xml"
   )
-  cdir <- file.path(tempdir(), "testthat_ex")
+  cdir <- file.path(tempdir(), "testthat_ex3")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
@@ -113,7 +114,7 @@ test_that("Caching tests", {
     "Addresses/ES.SDGC.AD.atom.xml"
   )
 
-  cdir <- file.path(tempdir(), "testthat_ex")
+  cdir <- file.path(tempdir(), "testthat_ex4")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
@@ -162,7 +163,7 @@ test_that("Caching errors", {
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
     "fakefile.txt"
   )
-  cdir <- file.path(tempdir(), "testthat_ex")
+  cdir <- file.path(tempdir(), "testthat_ex5")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }

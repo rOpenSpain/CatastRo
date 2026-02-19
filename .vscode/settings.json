@@ -1,25 +1,25 @@
 {
-    "[github-actions-workflow]": {
-        "editor.defaultFormatter": "kennylong.kubernetes-yaml-formatter"
-    },
-    "[quarto]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "quarto.quarto"
-    },
-    "[r]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "Posit.air-vscode"
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "kennylong.kubernetes-yaml-formatter"
-    },
-    "better-yaml.directives": false,
-    "better-yaml.flowCollectionPadding": false,
-    "better-yaml.lineWidth": 80,
-    "files.eol": "\n",
-    "positron.r.pipe": "|>",
-    "positron.r.useNativePipe": true,
-    "yaml.completion": true,
-    "yaml.format.printWidth": 80,
-    "yaml.validate": true
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "kennylong.kubernetes-yaml-formatter"
+  },
+  "[quarto]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "quarto.quarto"
+  },
+  "[r]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Posit.air-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "kennylong.kubernetes-yaml-formatter"
+  },
+  "better-yaml.directives": false,
+  "better-yaml.flowCollectionPadding": false,
+  "better-yaml.lineWidth": 80,
+  "files.eol": "\n",
+  "positron.r.pipe": "|>",
+  "positron.r.useNativePipe": true,
+  "yaml.completion": true,
+  "yaml.format.printWidth": 80,
+  "yaml.validate": true
 }

@@ -92,6 +92,11 @@ catr_atom_get_address_db_to <- function(
   verbose = FALSE
 ) {
   all <- catr_atom_get_address_db_all()
+
+  if (is.null(all)) {
+    return(NULL)
+  }
+
   alldist <- unique(all[, c("territorial_office", "url")])
 
   # Escape parenthesis
@@ -134,11 +139,9 @@ catr_atom_get_address_db_to <- function(
     verbose = verbose
   )
 
-  # nocov start
   if (is.null(file_local)) {
     return(NULL)
   }
-  # nocov end
 
   tbl <- catr_read_atom(file_local, top = FALSE)
 

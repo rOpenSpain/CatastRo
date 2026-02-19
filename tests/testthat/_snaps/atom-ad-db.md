@@ -1,4 +1,4 @@
-# Test offline
+# Test offline db_all
 
     Code
       fend <- catr_atom_get_address_db_all(cache_dir = cdir)
@@ -6,7 +6,7 @@
       x Offline
       > Returning "NULL"
 
----
+# Test offline db_to
 
     Code
       fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
@@ -14,7 +14,7 @@
       x Offline
       > Returning "NULL"
 
-# Test 404
+# Test 404 all
 
     Code
       fend <- catr_atom_get_address_db_all(cache_dir = cdir)
@@ -23,7 +23,7 @@
       ! If you think this is a bug please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
       > Returning "NULL"
 
----
+# Test 404 to
 
     Code
       fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
