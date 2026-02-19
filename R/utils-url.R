@@ -6,7 +6,6 @@
 #' @param subdir character string. The subdirectory inside the cache directory.
 #' @param update_cache logical. Whether to update the cached file.
 #' @param verbose logical. Whether to print messages.
-#' @param ssl_verifypeer Logical. Should SSL verification be enabled?
 #'
 #' @return The local file path of the downloaded file.
 #'
@@ -17,19 +16,8 @@ download_url <- function(
   cache_dir = NULL,
   subdir = "fixme",
   update_cache = FALSE,
-  verbose = TRUE,
-  ssl_verifypeer = getOption("catastro_ssl_verify", TRUE)
+  verbose = TRUE
 ) {
-
-# Set Global Options for Mac
-if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
-  # CatastRo < 1.0.0
-  options(download.file.method = "curl", download.file.extra = "-k -L")
-
-  # CatastRo >= 1.0.0
-  options("catastro_ssl_verify" = FALSE)
-}
-  
   cache_dir <- create_cache_dir(cache_dir)
   cache_dir <- create_cache_dir(file.path(cache_dir, subdir))
 
@@ -63,9 +51,10 @@ if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
     FALSE
   })
 
-
-    req <- httr2::req_options(req, ssl_verifypeer = 0)
-  
+  req <- httr2::req_options(
+    req,
+    ssl_verifypeer = getOption("catastro_ssl_verify", 1L)
+  )
 
   req <- httr2::req_timeout(req, getOption("catastro_timeout", 300))
   req <- httr2::req_retry(req, max_tries = 3)
@@ -138,27 +127,14 @@ if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
 #'
 #' @param url character string. The URL to download.
 #' @param verbose logical. Whether to print messages.
-#' @param ssl_verifypeer Logical. Should SSL verification be enabled?
 #'
 #' @return The response object from httr2.
 #'
 #' @noRd
 get_request_body <- function(
   url,
-  verbose = TRUE,
-  ssl_verifypeer = getOption("catastro_ssl_verify", TRUE)
+  verbose = TRUE
 ) {
-
-# Set Global Options for Mac
-
-if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
-  # CatastRo < 1.0.0
-  options(download.file.method = "curl", download.file.extra = "-k -L")
-
-  # CatastRo >= 1.0.0
-  options("catastro_ssl_verify" = FALSE)
-}
-  
   msg <- paste0("GET {.url ", url, "}.")
   make_msg("info", verbose, msg)
 
@@ -167,9 +143,10 @@ if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
     FALSE
   })
 
-
-    req <- httr2::req_options(req, ssl_verifypeer = 0)
-  
+  req <- httr2::req_options(
+    req,
+    ssl_verifypeer = getOption("catastro_ssl_verify", 1L)
+  )
 
   req <- httr2::req_timeout(req, getOption("catastro_timeout", 300))
   req <- httr2::req_retry(req, max_tries = 3)

@@ -3,26 +3,9 @@ test_that("SSL verifier (#40)", {
   skip_if_offline()
   skip_if_not_installed("withr")
 
-  url <- paste0(
-    "https://www.catastro.hacienda.gob.es/INSPIRE/",
-    "Addresses/ES.SDGC.AD.atom.xml"
-  )
-
-  withr::local_options(list(
-    catastro_ssl_verify = FALSE
-  ))
-  expect_no_error(
-    b <- get_request_body(url)
-  )
-
-  expect_no_error(
-    b <- download_url(url, cache_dir = tempdir(), subdir = "fixme")
-  )
-
-  unlink(file.path(tempdir(), "fixme"), force = TRUE, recursive = TRUE)
-
-  expect_false(getOption("catastro_ssl_verify"))
-  unlink(file.path(tempdir(), "fixme"))
+  # This is a check to see if setup.R work. Expected to fail if not
+  # called with test_local(), etc.
+  expect_equal(getOption("catastro_ssl_verify", 1), 0)
 })
 
 

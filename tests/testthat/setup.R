@@ -1,9 +1,6 @@
-# Set Global Options for Mac
+# Testing only
 
-if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
-  # CatastRo < 1.0.0
-  options(download.file.method = "curl", download.file.extra = "-k -L")
-
-  # CatastRo >= 1.0.0
-  options("catastro_ssl_verify" = FALSE)
-}
+withr::local_options(
+  catastro_ssl_verify = 0,
+  .local_envir = teardown_env()
+)
