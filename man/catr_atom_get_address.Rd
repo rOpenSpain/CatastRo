@@ -7,7 +7,7 @@
 catr_atom_get_address(
   munic,
   to = NULL,
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
@@ -21,8 +21,8 @@ codes.}
 \item{to}{Optional parameter for defining the Territorial Office to which
 \code{munic} belongs. This parameter is a helper for narrowing the search.}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section on \code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}}.}
+\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer
+supported; this function will always cache results.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default is
 \code{FALSE}. When set to \code{TRUE} it would force a new download.}

@@ -91,7 +91,7 @@ catr_atom_get_address_db_to <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  all <- catr_atom_get_address_db_all()
+  all <- catr_atom_get_address_db_all(cache_dir = cache_dir)
 
   if (is.null(all)) {
     return(NULL)
