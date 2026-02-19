@@ -1,7 +1,6 @@
 test_that("ATOM Addresses", {
   skip_on_cran()
   skip_if_offline()
-  skip_on_os("mac")
 
   cdir <- file.path(tempdir(), "test_ad")
   unlink(cdir, force = TRUE, recursive = TRUE)
@@ -43,7 +42,6 @@ test_that("ATOM Addresses", {
 test_that("ATOM Encoding issue", {
   skip_on_cran()
   skip_if_offline()
-  skip_on_os("mac")
 
   cdir <- file.path(tempdir(), "test_ad2")
   unlink(cdir, force = TRUE, recursive = TRUE)
