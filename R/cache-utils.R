@@ -8,7 +8,7 @@
 #' @description
 #' This function will store your `cache_dir` path on your local machine and
 #' would load it for future sessions. Type `Sys.getenv("CATASTROESP_CACHE_DIR")`
-#'to find your cached path or use [catr_detect_cache_dir()].
+#' to find your cached path or use [catr_detect_cache_dir()].
 #'
 #' @param cache_dir A path to a cache directory. On `NULL` the function
 #'   would store the cached files on a temporary dir (See [base::tempdir()]).

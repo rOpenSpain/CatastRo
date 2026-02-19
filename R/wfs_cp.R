@@ -54,8 +54,7 @@ catr_wfs_get_parcels_bbox <- function(
   }
 
   # Switch to stored queries
-  stored_query <- switch(
-    what,
+  stored_query <- switch(what,
     "parcel" = "CP.CADASTRALPARCEL",
     "zoning" = "CP.CADASTRALZONING"
   )
