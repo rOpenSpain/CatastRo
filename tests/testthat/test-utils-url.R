@@ -70,8 +70,9 @@ test_that("Test 404", {
 
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
-    "Addresses/ES.SDGC.AD.atom.xml"
+    "CadastralParcels/ES.SDGC.CP.atom.xml"
   )
+
   expect_message(
     s <- download_url(
       url,
@@ -208,7 +209,7 @@ test_that("No connection body", {
 
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
-    "Addresses/ES.SDGC.AD.atom.xml"
+    "buildings/ES.SDGC.BU.atom.xml"
   )
 
   expect_snapshot(
