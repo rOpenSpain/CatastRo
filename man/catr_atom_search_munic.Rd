@@ -20,11 +20,11 @@ cadastral code.}
 \item{to}{Optional parameter for defining the Territorial Office to which
 \code{munic} belongs. This parameter is a helper for narrowing the search.}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
-\strong{About caching} section on \code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}}.}
+\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\strong{Caching strategies} section on \code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}}.}
 
-\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source file.}
+\item{update_cache}{logical. Should the cached file be refreshed? Default is
+\code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{A path to a cache directory. On \code{NULL} the function
 would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}

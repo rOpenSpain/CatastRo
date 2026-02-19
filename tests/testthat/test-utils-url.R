@@ -1,5 +1,6 @@
 test_that("SSL verifier (#40)", {
   skip_on_cran()
+  skip_if_not_installed("withr")
 
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
@@ -103,7 +104,6 @@ test_that("Test 404", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 })
-
 
 test_that("Caching tests", {
   skip_on_cran()

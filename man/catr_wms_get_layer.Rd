@@ -33,8 +33,8 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 
 \item{styles}{Style of the WMS layer. See \strong{Details}.}
 
-\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source file.}
+\item{update_cache}{logical. Should the cached file be refreshed? Default is
+\code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{A path to a cache directory. On \code{NULL} the function
 would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}

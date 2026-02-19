@@ -36,7 +36,8 @@ Suggests:
     quarto,
     slippymath,
     testthat (>= 3.0.0),
-    tidyterra
+    tidyterra,
+    withr
 VignetteBuilder: 
     quarto
 Config/Needs/website: ropenspain/rostemplate, devtools, sessioninfo,

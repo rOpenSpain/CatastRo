@@ -91,3 +91,19 @@
       Error:
       ! `year` should be "20", not "1" or "2".
 
+# Not empty
+
+    Code
+      a_fun()
+    Condition
+      Error in `a_fun()`:
+      ! `a` can't be missing.
+
+---
+
+    Code
+      a_fun(a = 1)
+    Condition
+      Error in `a_fun()`:
+      ! `b` can't be missing.
+
