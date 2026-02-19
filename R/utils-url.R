@@ -20,6 +20,16 @@ download_url <- function(
   verbose = TRUE,
   ssl_verifypeer = getOption("catastro_ssl_verify", TRUE)
 ) {
+
+# Set Global Options for Mac
+if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
+  # CatastRo < 1.0.0
+  options(download.file.method = "curl", download.file.extra = "-k -L")
+
+  # CatastRo >= 1.0.0
+  options("catastro_ssl_verify" = FALSE)
+}
+  
   cache_dir <- create_cache_dir(cache_dir)
   cache_dir <- create_cache_dir(file.path(cache_dir, subdir))
 
@@ -138,6 +148,17 @@ get_request_body <- function(
   verbose = TRUE,
   ssl_verifypeer = getOption("catastro_ssl_verify", TRUE)
 ) {
+
+# Set Global Options for Mac
+
+if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
+  # CatastRo < 1.0.0
+  options(download.file.method = "curl", download.file.extra = "-k -L")
+
+  # CatastRo >= 1.0.0
+  options("catastro_ssl_verify" = FALSE)
+}
+  
   msg <- paste0("GET {.url ", url, "}.")
   make_msg("info", verbose, msg)
 
