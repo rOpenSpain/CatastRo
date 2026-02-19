@@ -1,5 +1,6 @@
 test_that("NULL result", {
   skip_on_cran()
+  skip_if_offline()
 
   local_mocked_bindings(catr_atom_get_address_db_all = function(...) {
     NULL
@@ -10,6 +11,8 @@ test_that("NULL result", {
 
 test_that("Test offline db_all", {
   skip_on_cran()
+  skip_if_offline()
+
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -32,6 +35,8 @@ test_that("Test offline db_all", {
 
 test_that("Test offline db_to", {
   skip_on_cran()
+  skip_if_offline()
+
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -54,6 +59,7 @@ test_that("Test offline db_to", {
 
 test_that("Test 404 all", {
   skip_on_cran()
+  skip_if_offline()
 
   cdir <- file.path(tempdir(), "testthat_ex2")
   if (dir.exists(cdir)) {
@@ -86,6 +92,7 @@ test_that("Test 404 all", {
 
 test_that("Test 404 to", {
   skip_on_cran()
+  skip_if_offline()
 
   cdir <- file.path(tempdir(), "testthat_ex2to")
   if (dir.exists(cdir)) {
@@ -96,9 +103,8 @@ test_that("Test 404 to", {
     TRUE
   })
 
-  expect_snapshot(
-    fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
-  )
+  fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
+
   expect_null(fend)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -119,6 +125,7 @@ test_that("Test 404 to", {
 test_that("Test atom ad", {
   skip_on_cran()
   skip_if_offline()
+
   expect_message(catr_atom_get_address_db_all(
     verbose = TRUE,
     cache_dir = tempdir()

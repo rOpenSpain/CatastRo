@@ -1,5 +1,6 @@
 test_that("SSL verifier (#40)", {
   skip_on_cran()
+  skip_if_offline()
   skip_if_not_installed("withr")
 
   url <- paste0(
@@ -27,6 +28,7 @@ test_that("SSL verifier (#40)", {
 
 test_that("Test offline", {
   skip_on_cran()
+  skip_if_offline()
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -60,6 +62,7 @@ test_that("Test offline", {
 
 test_that("Test 404", {
   skip_on_cran()
+  skip_if_offline()
 
   cdir <- file.path(tempdir(), "testthat_ex")
   if (dir.exists(cdir)) {
@@ -108,6 +111,7 @@ test_that("Test 404", {
 
 test_that("Caching tests", {
   skip_on_cran()
+  skip_if_offline()
 
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
@@ -158,6 +162,7 @@ test_that("Caching tests", {
 
 test_that("Caching errors", {
   skip_on_cran()
+  skip_if_offline()
 
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
@@ -204,6 +209,8 @@ test_that("Caching errors", {
 
 test_that("No connection body", {
   skip_on_cran()
+  skip_if_offline()
+
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -225,6 +232,7 @@ test_that("No connection body", {
 
 test_that("Error body", {
   skip_on_cran()
+  skip_if_offline()
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -246,6 +254,7 @@ test_that("Error body", {
 
 test_that("Tests body", {
   skip_on_cran()
+  skip_if_offline()
 
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
