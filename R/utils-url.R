@@ -63,9 +63,9 @@ if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
     FALSE
   })
 
-  if (!ssl_verifypeer) {
+
     req <- httr2::req_options(req, ssl_verifypeer = 0)
-  }
+  
 
   req <- httr2::req_timeout(req, getOption("catastro_timeout", 300))
   req <- httr2::req_retry(req, max_tries = 3)
@@ -167,9 +167,9 @@ if ("mac" %in% tolower(Sys.info()[["sysname"]])) {
     FALSE
   })
 
-  if (!ssl_verifypeer) {
+
     req <- httr2::req_options(req, ssl_verifypeer = 0)
-  }
+  
 
   req <- httr2::req_timeout(req, getOption("catastro_timeout", 300))
   req <- httr2::req_retry(req, max_tries = 3)
