@@ -1,3 +1,59 @@
+test_that("Test offline", {
+  skip_on_cran()
+  skip_if_offline()
+
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
+
+  cdir <- file.path(tempdir(), "testthat_ex1")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+  expect_snapshot(
+    fend <- catr_atom_get_address("Madrid", cache_dir = cdir)
+  )
+  expect_null(fend)
+
+  local_mocked_bindings(is_online_fun = function(...) {
+    httr2::is_online()
+  })
+  expect_identical(is_online_fun(), httr2::is_online())
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})
+
+test_that("Test 404 all", {
+  skip_on_cran()
+  skip_if_offline()
+
+  cdir <- file.path(tempdir(), "testthat_ex2")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
+
+  expect_snapshot(
+    fend <- catr_atom_get_address("MELQUE", to = "Segovia", cache_dir = cdir)
+  )
+  expect_null(fend)
+
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
+  unlink(cdir, recursive = TRUE, force = TRUE)
+  # Otherwise work
+  expect_silent(
+    fend <- catr_atom_get_address("MELQUE", to = "Segovia", cache_dir = cdir)
+  )
+  expect_gt(nrow(fend), 20)
+
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+})
 test_that("ATOM Addresses", {
   skip_on_cran()
   skip_if_offline()
