@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @inheritParams catr_ovc_get_cpmrc
-#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
+#' @examplesIf run_example()
 #' \donttest{
 #'
 #' catr_ovc_get_cod_provinces()
@@ -31,28 +31,15 @@ catr_ovc_get_cod_provinces <- function(verbose = FALSE) {
     "/ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaProvincia?"
   )
 
-  filename <- basename(tempfile(fileext = ".xml"))
-
-  cache_dir <- tempdir()
-
-  path <- catr_hlp_dwnload(
-    api_entry,
-    filename,
-    cache_dir,
-    verbose,
-    update_cache = FALSE,
-    cache = TRUE
-  )
-
   # Extract results
-  content <- xml2::read_xml(path)
+  resp <- get_request_body(api_entry, verbose = verbose)
 
-  # Remove tempfile
-  unlink(file.path(cache_dir, filename), recursive = TRUE, force = TRUE)
+  if (is.null(resp)) {
+    return(NULL)
+  }
 
-  content_list <- xml2::as_list(content)
+  content_list <- xml2::as_list(httr2::resp_body_xml(resp))
 
-  # Check API custom error
   res <- content_list[["consulta_provinciero"]][["provinciero"]]
 
   # Get a list of tibbles

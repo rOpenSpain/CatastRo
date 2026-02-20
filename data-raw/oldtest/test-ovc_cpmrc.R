@@ -9,7 +9,6 @@ test_that("Expect error on bad SRS", {
 test_that("giving all the arguments", {
   skip_on_cran()
   skip_if_offline()
-  skip_on_os("linux")
 
   result <- catr_ovc_get_cpmrc(
     "13077A01800039",
@@ -25,7 +24,6 @@ test_that("giving all the arguments", {
 test_that("giving cadastral reference and SRS", {
   skip_on_cran()
   skip_if_offline()
-  skip_on_os("linux")
 
   result <- catr_ovc_get_cpmrc("9872023VH5797S", "4230")
   expect_true((is.numeric(result$xcoord) & is.numeric(result$ycoord)))
@@ -35,7 +33,6 @@ test_that("giving cadastral reference and SRS", {
 test_that("giving only the cadastral reference", {
   skip_on_cran()
   skip_if_offline()
-  skip_on_os("linux")
 
   expect_message(catr_ovc_get_cpmrc("9872023VH5797S", verbose = TRUE))
 
@@ -47,7 +44,6 @@ test_that("giving only the cadastral reference", {
 test_that("given Municipio, Provincia is needed", {
   skip_on_cran()
   skip_if_offline()
-  skip_on_os("linux")
 
   nnn <- catr_ovc_get_cpmrc(
     rc = "13077A01800039",

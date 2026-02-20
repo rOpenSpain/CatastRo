@@ -5,7 +5,7 @@ test_that("BU Check error on srs", {
 
 test_that("Check error on bad rc", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   expect_message(catr_wfs_get_buildings_rc(rc = "1234"))
@@ -15,7 +15,7 @@ test_that("Check error on bad rc", {
 
 test_that("BU Check srs", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   obj <- catr_wfs_get_buildings_rc(
@@ -29,7 +29,7 @@ test_that("BU Check srs", {
 
 test_that("BU Check verbose", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   expect_message(catr_wfs_get_buildings_rc("3662303TF3136B", verbose = TRUE))
@@ -37,7 +37,7 @@ test_that("BU Check verbose", {
 
 test_that("BU Part Check", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   obj <- catr_wfs_get_buildings_rc("9398516VK3799G", what = "buildingpart")
@@ -48,7 +48,7 @@ test_that("BU Part Check", {
 
 test_that("BU Other Check", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   obj <- catr_wfs_get_buildings_rc("9398516VK3799G", what = "other")
@@ -68,7 +68,7 @@ test_that("BBOX Check errors", {
 
 test_that("BBOX Check projections", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   expect_error(catr_wfs_get_buildings_bbox(

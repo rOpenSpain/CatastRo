@@ -42,7 +42,7 @@
 #'    Statistics Institute).
 #' * Rest of fields: Check the API Docs.
 #'
-#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
+#' @examplesIf run_example()
 #' \donttest{
 #' catr_ovc_get_rccoor_distancia(
 #'   lat = 40.963200,
@@ -57,53 +57,39 @@ catr_ovc_get_rccoor_distancia <- function(
   verbose = FALSE
 ) {
   # Sanity checks
+  lat <- validate_non_empty_arg(lat)
+  lon <- validate_non_empty_arg(lon)
+
   valid_srs <- CatastRo::catr_srs_values
-  valid_srs <- tibble::as_tibble(valid_srs)
-  valid_srs <- valid_srs[valid_srs$ovc_service, "SRS"]
-  valid <- tibble::deframe(valid_srs)
-  valid <- as.character(valid)
+  valid <- as.character(valid_srs[valid_srs$ovc_service, ]$SRS)
 
-  if (!as.character(srs) %in% valid) {
-    stop(
-      "'srs' for OVC should be one of ",
-      paste0("'", valid, "'", collapse = ", "),
-      ".\n\nSee CatastRo::catr_srs_values"
-    )
-  }
-
+  srs <- match_arg_pretty(srs, valid)
   srs <- paste0("EPSG:", srs)
 
   # Prepare query
   ##  Build url
   api_entry <- paste0(
     "http://ovc.catastro.meh.es/ovcservweb/",
-    "OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR_Distancia"
+    "OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR_Distancia?",
+    "SRS=&Coordenada_X=&Coordenada_Y="
   )
 
-  query <- list(
+  api_entry <- httr2::url_modify_query(
+    api_entry,
     SRS = srs,
     Coordenada_X = lon,
     Coordenada_Y = lat
   )
 
-  ## GET
-  url <- httr2::url_parse(api_entry)
-  url$query <- query
-  url <- httr2::url_build(url)
+  # Extract results
+  resp <- get_request_body(api_entry, verbose = verbose)
 
-  if (verbose) {
-    message("Querying url:\n\t", url)
+  if (is.null(resp)) {
+    return(NULL)
   }
 
-  api_res <- httr2::request(url)
-  api_res <- httr2::req_perform(api_res)
+  content_list <- xml2::as_list(httr2::resp_body_xml(resp))
 
-  # Check error on status
-  httr2::resp_check_status(api_res)
-
-  # Extract results
-  content <- httr2::resp_body_xml(api_res)
-  content_list <- xml2::as_list(content)
   # nolint start
   res <- content_list[["consulta_coordenadas_distancias"]][[
     "coordenadas_distancias"
@@ -118,7 +104,7 @@ catr_ovc_get_rccoor_distancia <- function(
   rc <- res[["lpcd"]]
 
   if (is.null(rc)) {
-    message("Query does not produce results")
+    cli::cli_alert_warning("Query does not produce results.")
     return(overall)
   }
 

@@ -43,16 +43,16 @@
 #' * `catrcode`: Full INE code for the municipality.
 #' * Rest of fields: Check the API Docs.
 #'
-#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
+#' @examplesIf run_example()
 #' \donttest{
 #' # Get municipality by cadastal code
-#' ab <- catr_ovc_get_cod_munic(2, 900)
+#' ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
 #'
 #' ab
 #'
 #' # Same query using the INE code
 #'
-#' ab2 <- catr_ovc_get_cod_munic(2, cmun_ine = 3)
+#' ab2 <- catr_ovc_get_cod_munic(cpro = 2, cmun_ine = 3)
 #'
 #' ab2
 #' }
@@ -63,49 +63,42 @@ catr_ovc_get_cod_munic <- function(
   cmun_ine = NULL,
   verbose = FALSE
 ) {
-  if (is.null(cmun) && is.null(cmun_ine)) {
-    stop("Please provide a value either on 'cmun' or on 'cmun_ine'.")
+  cpro <- validate_non_empty_arg(cpro)
+  cmun <- ensure_null(cmun)
+  cmun_ine <- ensure_null(cmun_ine)
+
+  munis <- c(cmun, cmun_ine)
+
+  if (is.null(munis)) {
+    my_arg <- c("cmun", "cmun_ine") # nolint
+    cli::cli_abort(
+      "Please provide a non-{.val NULL} value either on {.or {.arg {my_arg}}}."
+    )
   }
 
   # Prepare query
   ##  Build url
   api_entry <- paste0(
     "http://ovc.catastro.meh.es/ovcservweb/",
-    "/ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaMunicipioCodigos?"
+    "/ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaMunicipioCodigos?",
+    "/CodigoProvincia=&CodigoMunicipio=&CodigoMunicipioIne="
   )
 
-  # Prepare params
-  parms <- list(
-    "CodigoProvincia" = cpro,
-    "CodigoMunicipio" = cmun,
-    "CodigoMunicipioIne" = cmun_ine
-  )
-
-  q <- paste0(names(parms), "=", parms, collapse = "&")
-  q <- gsub("NULL", "", q, fixed = TRUE)
-
-  api_entry <- paste0(api_entry, q)
-
-  filename <- basename(tempfile(fileext = ".xml"))
-
-  cache_dir <- tempdir()
-
-  path <- catr_hlp_dwnload(
+  api_entry <- httr2::url_modify_query(
     api_entry,
-    filename,
-    cache_dir,
-    verbose,
-    update_cache = FALSE,
-    cache = TRUE
+    CodigoProvincia = cpro,
+    CodigoMunicipio = ifelse(is.null(cmun), "", cmun),
+    CodigoMunicipioIne = ifelse(is.null(cmun_ine), "", cmun_ine)
   )
 
   # Extract results
-  content <- xml2::read_xml(path)
+  resp <- get_request_body(api_entry, verbose = verbose)
 
-  # Remove tempfile
-  unlink(file.path(cache_dir, filename), recursive = TRUE, force = TRUE)
+  if (is.null(resp)) {
+    return(NULL)
+  }
 
-  content_list <- xml2::as_list(content)
+  content_list <- xml2::as_list(httr2::resp_body_xml(resp))
 
   # Check API custom error
   err <- content_list[[1]]

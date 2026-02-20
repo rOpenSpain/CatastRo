@@ -74,19 +74,13 @@ catr_ovc_get_cpmrc <- function(
   # Replace NAs and NULL on optional params
   province <- ensure_null(province)
   municipality <- ensure_null(municipality)
-  if (is.null(province)) {
-    province <- ""
-  }
-  if (is.null(municipality)) {
-    municipality <- ""
-  }
 
   api_entry <- httr2::url_modify_query(
     api_entry,
     RC = rc,
     SRS = srs,
-    Provincia = province,
-    Municipio = municipality
+    Provincia = ifelse(is.null(province), "", province),
+    Municipio = ifelse(is.null(municipality), "", municipality)
   )
 
   # Extract results

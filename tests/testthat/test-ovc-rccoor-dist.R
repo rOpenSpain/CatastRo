@@ -1,3 +1,48 @@
+test_that("Test offline", {
+  skip_on_cran()
+  skip_if_offline()
+
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
+
+  expect_snapshot(
+    fend <- catr_ovc_get_rccoor_distancia(
+      lat = 40.963200,
+      lon = -5.671420,
+      srs = 4326
+    )
+  )
+  expect_null(fend)
+
+  local_mocked_bindings(is_online_fun = function(...) {
+    httr2::is_online()
+  })
+  expect_identical(is_online_fun(), httr2::is_online())
+})
+
+test_that("Test 404 all", {
+  skip_on_cran()
+  skip_if_offline()
+
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
+
+  expect_snapshot(
+    fend <- catr_ovc_get_rccoor_distancia(
+      lat = 40.963200,
+      lon = -5.671420,
+      srs = 4326
+    )
+  )
+  expect_null(fend)
+
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
+})
+
 test_that("Expect error on bad SRS", {
   skip_on_cran()
   skip_if_offline()

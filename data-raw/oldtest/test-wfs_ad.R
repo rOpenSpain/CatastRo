@@ -4,7 +4,7 @@ test_that("AD Check error on srs", {
 
 test_that("Check error on bad rc", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   expect_message(catr_wfs_get_address_rc(rc = "1234"))
@@ -12,7 +12,7 @@ test_that("Check error on bad rc", {
 
 test_that("AD Check srs", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   obj <- catr_wfs_get_address_rc(
@@ -26,7 +26,7 @@ test_that("AD Check srs", {
 
 test_that("AD Check verbose", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   expect_message(catr_wfs_get_address_postalcode("11009", verbose = TRUE))
@@ -34,7 +34,7 @@ test_that("AD Check verbose", {
 
 test_that("AD Postal Code", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   obj <- catr_wfs_get_address_postalcode("11009")
@@ -45,7 +45,7 @@ test_that("AD Postal Code", {
 
 test_that("AD CODVIA", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   obj <- catr_wfs_get_address_codvia("1", 11, 39)
@@ -65,7 +65,7 @@ test_that("BBOX Check errors", {
 
 test_that("BBOX Check projections", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   obj <- catr_wfs_get_address_bbox(

@@ -1,6 +1,6 @@
 test_that("Callejero provinces", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   s <- catr_ovc_get_cod_provinces()
@@ -11,7 +11,7 @@ test_that("Callejero provinces", {
 
 test_that("Callejero munic", {
   skip_on_cran()
-  skip_on_os("linux")
+
   skip_if_offline()
 
   expect_error(catr_ovc_get_cod_munic())
