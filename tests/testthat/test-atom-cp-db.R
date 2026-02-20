@@ -1,12 +1,11 @@
 test_that("NULL result", {
   skip_on_cran()
   skip_if_offline()
-
-  local_mocked_bindings(catr_atom_get_buildings_db_all = function(...) {
+  local_mocked_bindings(catr_atom_get_parcels_db_all = function(...) {
     NULL
   })
 
-  expect_null(catr_atom_get_buildings_db_to("Madrid"))
+  expect_null(catr_atom_get_parcels_db_to("Madrid"))
 })
 
 test_that("Test offline db_all", {
@@ -22,7 +21,7 @@ test_that("Test offline db_all", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
   expect_snapshot(
-    fend <- catr_atom_get_buildings_db_all(cache_dir = cdir)
+    fend <- catr_atom_get_parcels_db_all(cache_dir = cdir)
   )
   expect_null(fend)
 
@@ -46,7 +45,7 @@ test_that("Test offline db_to", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
   expect_snapshot(
-    fend <- catr_atom_get_buildings_db_to("Madrid", cache_dir = cdir)
+    fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)
   )
   expect_null(fend)
 
@@ -71,7 +70,7 @@ test_that("Test 404 all", {
   })
 
   expect_snapshot(
-    fend <- catr_atom_get_buildings_db_all(cache_dir = cdir)
+    fend <- catr_atom_get_parcels_db_all(cache_dir = cdir)
   )
   expect_null(fend)
 
@@ -81,7 +80,7 @@ test_that("Test 404 all", {
   unlink(cdir, recursive = TRUE, force = TRUE)
   # Otherwise work
   expect_silent(
-    fend <- catr_atom_get_buildings_db_all(cache_dir = cdir)
+    fend <- catr_atom_get_parcels_db_all(cache_dir = cdir)
   )
   expect_gt(nrow(fend), 20)
 
@@ -103,17 +102,20 @@ test_that("Test 404 to", {
     TRUE
   })
 
-  fend <- catr_atom_get_buildings_db_to("Madrid", cache_dir = cdir)
+  fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)
 
   expect_null(fend)
 
   local_mocked_bindings(is_404 = function(...) {
     FALSE
   })
+
+  # Now it should throw another
+
   unlink(cdir, recursive = TRUE, force = TRUE)
   # Otherwise work
   expect_silent(
-    fend <- catr_atom_get_buildings_db_to("Madrid", cache_dir = cdir)
+    fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)
   )
   expect_gt(nrow(fend), 100)
 
@@ -122,16 +124,16 @@ test_that("Test 404 to", {
   }
 })
 
-test_that("Test atom bu", {
+test_that("Test atom cp", {
   skip_on_cran()
   skip_if_offline()
 
-  expect_message(catr_atom_get_buildings_db_all(
+  expect_message(catr_atom_get_parcels_db_all(
     verbose = TRUE,
     cache_dir = tempdir()
   ))
   expect_snapshot(
-    no_res <- catr_atom_get_buildings_db_to(
+    no_res <- catr_atom_get_parcels_db_to(
       to = "aaaana",
       cache_dir = tempdir()
     )
@@ -139,7 +141,7 @@ test_that("Test atom bu", {
   expect_null(no_res)
 
   expect_silent(
-    nmel <- catr_atom_get_buildings_db_to(
+    nmel <- catr_atom_get_parcels_db_to(
       to = "Melilla",
       cache_dir = tempdir()
     )
@@ -149,14 +151,14 @@ test_that("Test atom bu", {
 
   # Several patterns
   expect_snapshot(
-    several <- catr_atom_get_buildings_db_to(
+    several <- catr_atom_get_parcels_db_to(
       to = "lencia",
       cache_dir = tempdir()
     )
   )
 
   expect_silent(
-    pal <- catr_atom_get_buildings_db_to(
+    pal <- catr_atom_get_parcels_db_to(
       to = "Palencia",
       cache_dir = tempdir()
     )
@@ -166,7 +168,7 @@ test_that("Test atom bu", {
 
   # full name
   expect_silent(
-    val <- catr_atom_get_buildings_db_to(
+    val <- catr_atom_get_parcels_db_to(
       to = "valencia",
       cache_dir = tempdir()
     )
@@ -184,7 +186,7 @@ test_that("Deprecations", {
   }
 
   expect_snapshot(
-    fend <- catr_atom_get_buildings_db_to(
+    fend <- catr_atom_get_parcels_db_to(
       to = "Madrid",
       cache = FALSE,
       cache_dir = cdir
@@ -192,7 +194,7 @@ test_that("Deprecations", {
   )
 
   expect_snapshot(
-    fend <- catr_atom_get_buildings_db_all(cache_dir = cdir, cache = FALSE)
+    fend <- catr_atom_get_parcels_db_all(cache_dir = cdir, cache = FALSE)
   )
 
   if (dir.exists(cdir)) {
@@ -209,14 +211,14 @@ test_that("Test 404 to bis", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  all <- catr_atom_get_buildings_db_all(cache_dir = cdir)
+  all <- catr_atom_get_parcels_db_all(cache_dir = cdir)
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
 
   expect_snapshot(
-    fend <- catr_atom_get_buildings_db_to("Madrid", cache_dir = cdir)
+    fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)
   )
   expect_null(fend)
   local_mocked_bindings(is_404 = function(...) {

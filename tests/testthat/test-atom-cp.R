@@ -11,7 +11,7 @@ test_that("Test offline", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
   expect_snapshot(
-    fend <- catr_atom_get_buildings("LABAJOS", cache_dir = cdir)
+    fend <- catr_atom_get_parcels("LABAJOS", cache_dir = cdir)
   )
   expect_null(fend)
 
@@ -36,7 +36,7 @@ test_that("Test 404 all", {
   })
 
   expect_snapshot(
-    fend <- catr_atom_get_buildings("MELQUE", to = "Segovia", cache_dir = cdir)
+    fend <- catr_atom_get_parcels("MELQUE", to = "Segovia", cache_dir = cdir)
   )
   expect_null(fend)
 
@@ -46,7 +46,7 @@ test_that("Test 404 all", {
   unlink(cdir, recursive = TRUE, force = TRUE)
   # Otherwise work
   expect_silent(
-    fend <- catr_atom_get_buildings("MELQUE", to = "Segovia", cache_dir = cdir)
+    fend <- catr_atom_get_parcels("MELQUE", to = "Segovia", cache_dir = cdir)
   )
   expect_gt(nrow(fend), 20)
 
@@ -54,16 +54,16 @@ test_that("Test 404 all", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 })
-test_that("ATOM Buildings", {
+test_that("ATOM parcels", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "test_bu")
+  cdir <- file.path(tempdir(), "test_cp")
   unlink(cdir, force = TRUE, recursive = TRUE)
-  expect_snapshot(catr_atom_get_buildings("xyxghx", cache_dir = cdir))
+  expect_snapshot(catr_atom_get_parcels("xyxghx", cache_dir = cdir))
 
   expect_message(
-    s <- catr_atom_get_buildings(
+    s <- catr_atom_get_parcels(
       "Nava",
       to = "Segovia",
       verbose = TRUE,
@@ -73,7 +73,7 @@ test_that("ATOM Buildings", {
 
   # Deprecations
   expect_snapshot(
-    s <- catr_atom_get_buildings(
+    s <- catr_atom_get_parcels(
       "Melque",
       to = "Segovia",
       cache = FALSE,
@@ -83,7 +83,7 @@ test_that("ATOM Buildings", {
 
   expect_s3_class(s, "sf")
   expect_message(
-    catr_atom_get_buildings(
+    catr_atom_get_parcels(
       "Melque",
       to = "XXX",
       verbose = TRUE,
@@ -94,32 +94,23 @@ test_that("ATOM Buildings", {
   expect_s3_class(s, "sf")
 
   # Check other options
-  me_bu <- catr_atom_get_buildings(
+  me_cp <- catr_atom_get_parcels(
     "Melque",
     to = "Segovia",
     cache_dir = cdir
   )
 
-  me_bupart <- catr_atom_get_buildings(
+  me_cpzone <- catr_atom_get_parcels(
     "Melque",
     to = "Segovia",
-    what = "buildingpart",
+    what = "zoning",
     cache_dir = cdir
   )
 
-  me_other <- catr_atom_get_buildings(
-    "Melque",
-    to = "Segovia",
-    what = "other",
-    cache_dir = cdir
-  )
+  expect_s3_class(me_cp, "sf")
+  expect_s3_class(me_cpzone, "sf")
 
-  expect_s3_class(me_bu, "sf")
-  expect_s3_class(me_bupart, "sf")
-  expect_s3_class(me_other, "sf")
-
-  expect_gt(nrow(me_bupart), nrow(me_bu))
-  expect_gt(nrow(me_bu), nrow(me_other))
+  expect_gt(nrow(me_cp), nrow(me_cpzone))
 
   unlink(cdir, force = TRUE, recursive = TRUE)
 })
@@ -128,12 +119,12 @@ test_that("ATOM Encoding issue", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "test_bu2")
+  cdir <- file.path(tempdir(), "test_cp2")
   unlink(cdir, force = TRUE, recursive = TRUE)
 
-  expect_silent(catr_atom_get_buildings("23078", cache_dir = cdir))
-  expect_silent(catr_atom_get_buildings("03050", cache_dir = cdir))
-  expect_silent(catr_atom_get_buildings("23051", cache_dir = cdir))
+  expect_silent(catr_atom_get_parcels("23078", cache_dir = cdir))
+  expect_silent(catr_atom_get_parcels("03050", cache_dir = cdir))
+  expect_silent(catr_atom_get_parcels("23051", cache_dir = cdir))
   unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
@@ -146,15 +137,15 @@ test_that("Test 404 single", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  all <- catr_atom_get_buildings_db_all(cache_dir = cdir)
-  all <- catr_atom_get_buildings_db_to("Segovia", cache_dir = cdir)
+  all <- catr_atom_get_parcels_db_all(cache_dir = cdir)
+  all <- catr_atom_get_parcels_db_to("Segovia", cache_dir = cdir)
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
 
   expect_snapshot(
-    fend <- catr_atom_get_buildings(
+    fend <- catr_atom_get_parcels(
       "Melque",
       to = "Segovia",
       cache_dir = cdir

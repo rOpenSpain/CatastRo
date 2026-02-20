@@ -57,28 +57,37 @@
 #' catr_atom_get_parcels_db_all()
 #' }
 catr_atom_get_parcels_db_all <- function(
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
 ) {
+  if (lifecycle::is_present(cache)) {
+    lifecycle::deprecate_warn(
+      when = "1.0.0",
+      what = "CatastRo::catr_atom_get_parcels_db_all(cache)",
+      details = "Results are always cached."
+    )
+  }
+
   api_entry <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
     "CadastralParcels/ES.SDGC.CP.atom.xml"
   )
 
-  filename <- basename(api_entry)
-
-  path <- catr_hlp_dwnload(
-    api_entry,
-    filename,
-    cache_dir,
-    verbose,
-    update_cache,
-    cache
+  file_local <- download_url(
+    url = api_entry,
+    cache_dir = cache_dir,
+    subdir = "databases",
+    update_cache = update_cache,
+    verbose = verbose
   )
 
-  tbl <- catr_read_atom(path, top = TRUE)
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  tbl <- catr_read_atom(file_local, top = TRUE)
   names(tbl) <- c("territorial_office", "url", "munic", "date")
 
   tbl
@@ -87,46 +96,80 @@ catr_atom_get_parcels_db_all <- function(
 #' @export
 catr_atom_get_parcels_db_to <- function(
   to,
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  all <- catr_atom_get_parcels_db_all()
+  if (lifecycle::is_present(cache)) {
+    lifecycle::deprecate_warn(
+      when = "1.0.0",
+      what = "CatastRo::catr_atom_get_parcels_db_to(cache)",
+      details = "Results are always cached."
+    )
+  }
+
+  all <- catr_atom_get_parcels_db_all(cache_dir = cache_dir)
+
+  if (is.null(all)) {
+    return(NULL)
+  }
+
   alldist <- unique(all[, c("territorial_office", "url")])
 
   # Escape parentheses
   to <- gsub("\\(|\\)", "", to)
   allto <- gsub("\\(|\\)", "", alldist$territorial_office)
 
-  findto <- grep(to, allto, ignore.case = TRUE)[1]
-
-  if (is.na(findto)) {
-    message("No Territorial office found for ", to)
-    return(invisible(NA))
-  }
-
-  tb <- alldist[findto, ]
-
-  if (verbose) {
-    message(
-      "Extracting information for ",
-      tb$territorial_office
+  to_loc <- ensure_null(grep(to, allto, ignore.case = TRUE))
+  if (is.null(to_loc)) {
+    cli::cli_alert_warning(
+      "No Territorial Office found with pattern {.str {to}}."
     )
+    return(NULL)
   }
 
-  api_entry <- as.character(tb$url)
-  filename <- basename(api_entry)
-  path <- catr_hlp_dwnload(
-    api_entry,
-    filename,
-    cache_dir,
+  # Check with distances
+  with_d <- data.frame(
+    to = alldist$territorial_office,
+    dist = as.vector(adist(to, alldist$territorial_office))
+  )
+  with_d <- with_d[to_loc, ]
+  with_d <- with_d[order(with_d$dist), ]
+
+  tb <- with_d$to
+
+  if (length(tb) > 1) {
+    cli::cli_alert_info(
+      "Found {length(tb)} Territorial offices with pattern {.str {to}}."
+    )
+
+    cli::cli_alert_success("Selecting {.str {tb[1]}}.")
+    cli::cli_alert_danger("Discarding {.str {tb[-1]}}.")
+    tb <- tb[1]
+  }
+
+  make_msg(
+    "info",
     verbose,
-    update_cache,
-    cache
+    paste0("Extracting information for {.str ", tb, "}.")
   )
 
-  tbl <- catr_read_atom(path, top = FALSE)
+  api_entry <- as.character(alldist[alldist$territorial_office == tb, "url"])
+
+  file_local <- download_url(
+    url = api_entry,
+    cache_dir = cache_dir,
+    subdir = "databases",
+    update_cache = update_cache,
+    verbose = verbose
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  tbl <- catr_read_atom(file_local, top = FALSE)
 
   names(tbl) <- c("munic", "url", "date")
 

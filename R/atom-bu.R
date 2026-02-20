@@ -77,7 +77,7 @@ catr_atom_get_buildings <- function(
   munic <- validate_non_empty_arg(munic)
   to <- ensure_null(to)
 
-  all <- catr_atom_get_address_db_all(
+  all <- catr_atom_get_buildings_db_all(
     update_cache = update_cache,
     cache_dir = cache_dir,
     verbose = FALSE
@@ -119,7 +119,14 @@ catr_atom_get_buildings <- function(
     return(NULL)
   }
 
-  tb <- all[to_loc, ]
+  # Check with distances
+  with_d <- data.frame(
+    munic = all$munic,
+    territorial_office = all$territorial_office,
+    dist = as.vector(adist(munic, all$munic))
+  )
+  with_d <- with_d[to_loc, ]
+  tb <- with_d[order(with_d$dist), ]
 
   if (nrow(tb) > 1) {
     cli::cli_alert_info(

@@ -199,3 +199,28 @@ test_that("Deprecations", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 })
+
+test_that("Test 404 to bis", {
+  skip_on_cran()
+  skip_if_offline()
+
+  cdir <- file.path(tempdir(), "testthat_ex2to2")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  all <- catr_atom_get_address_db_all(cache_dir = cdir)
+
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
+
+  expect_snapshot(
+    fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
+  )
+  expect_null(fend)
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})

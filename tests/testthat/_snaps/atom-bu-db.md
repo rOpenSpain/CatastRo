@@ -57,3 +57,12 @@
       The `cache` argument of `catr_atom_get_buildings_db_all()` is deprecated as of CatastRo 1.0.0.
       i Results are always cached.
 
+# Test 404 to bis
+
+    Code
+      fend <- catr_atom_get_buildings_db_to("Madrid", cache_dir = cdir)
+    Message
+      x Error 404 (Not Found): <http://www.catastro.hacienda.gob.es/INSPIRE/buildings/28/ES.SDGC.bu.atom_28.xml>.
+      ! If you think this is a bug please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
+      > Returning "NULL"
+

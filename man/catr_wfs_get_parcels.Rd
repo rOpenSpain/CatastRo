@@ -26,8 +26,9 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
-\item{what}{Information to load. It could be \code{"parcel"} for cadastral parcels
-or \code{"zoning"} for cadastral zoning.}
+\item{what}{Information to load. It could be:
+-\code{"parcel"} for cadastral parcels.
+-\code{"zoning"} for cadastral zoning.}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See \strong{Details}.}
