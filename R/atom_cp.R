@@ -24,7 +24,7 @@
 #'   `munic` belongs. This parameter is a helper for narrowing the search.
 #' @param what Information to load. It could be `"parcel"` for cadastral parcels
 #'   or `"zoning"` for cadastral zoning.
-#' @examples
+#' @examplesIf run_example
 #' \donttest{
 #' s <- catr_atom_get_parcels("Melque",
 #'   to = "Segovia",

@@ -164,3 +164,28 @@ test_that("Test atom ad", {
 
   expect_identical(several, pal)
 })
+test_that("Deprecations", {
+  skip_on_cran()
+  skip_if_offline()
+
+  cdir <- file.path(tempdir(), "testthat_ex2to")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_snapshot(
+    fend <- catr_atom_get_address_db_to(
+      to = "Madrid",
+      cache = FALSE,
+      cache_dir = cdir
+    )
+  )
+
+  expect_snapshot(
+    fend <- catr_atom_get_address_db_all(cache_dir = cdir, cache = FALSE)
+  )
+
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+})

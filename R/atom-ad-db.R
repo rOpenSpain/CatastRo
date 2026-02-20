@@ -22,8 +22,8 @@
 #'
 #' @inheritParams catr_set_cache_dir
 #'
-#' @param cache logical. Whether to do caching. Default is `TRUE`. See
-#'   **Caching strategies** section on [catr_set_cache_dir()].
+#' @param cache `r lifecycle::badge("deprecated")` `cache` is no longer
+#'   supported; this function will always cache results.
 #'
 #' @param update_cache logical. Should the cached file be refreshed? Default is
 #'   `FALSE`. When set to `TRUE` it would force a new download.
@@ -50,16 +50,24 @@
 #'     * `date`: Reference date of the data. Note that the information from
 #'          this service is updated twice a year.
 #'
-#' @examples
+#' @examplesIf run_example
 #' \donttest{
 #' catr_atom_get_address_db_all()
 #' }
 catr_atom_get_address_db_all <- function(
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
 ) {
+  if (lifecycle::is_present(cache)) {
+    lifecycle::deprecate_warn(
+      when = "1.0.0",
+      what = "CatastRo::catr_atom_get_address_db_all(cache)",
+      details = "Results are always cached."
+    )
+  }
+
   api_entry <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
     "Addresses/ES.SDGC.AD.atom.xml"
@@ -86,11 +94,19 @@ catr_atom_get_address_db_all <- function(
 #' @export
 catr_atom_get_address_db_to <- function(
   to,
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
 ) {
+  if (lifecycle::is_present(cache)) {
+    lifecycle::deprecate_warn(
+      when = "1.0.0",
+      what = "CatastRo::catr_atom_get_address_db_to(cache)",
+      details = "Results are always cached."
+    )
+  }
+
   all <- catr_atom_get_address_db_all(cache_dir = cache_dir)
 
   if (is.null(all)) {

@@ -9,7 +9,7 @@
 }
 \usage{
 catr_atom_get_address_db_all(
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
@@ -17,15 +17,15 @@ catr_atom_get_address_db_all(
 
 catr_atom_get_address_db_to(
   to,
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
 )
 }
 \arguments{
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section on \code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}}.}
+\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer
+supported; this function will always cache results.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default is
 \code{FALSE}. When set to \code{TRUE} it would force a new download.}
@@ -73,9 +73,11 @@ of that office.
 }
 }
 \examples{
+\dontshow{if (run_example) withAutoprint(\{ # examplesIf}
 \donttest{
 catr_atom_get_address_db_all()
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 INSPIRE API functions:

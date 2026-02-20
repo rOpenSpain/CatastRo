@@ -44,7 +44,7 @@
 #'   - `date`: Reference date of the data. Note that **the information from
 #'      this service is updated twice a year**.
 #'
-#' @examples
+#' @examplesIf run_example
 #' \donttest{
 #' catr_atom_get_buildings_db_all()
 #' }

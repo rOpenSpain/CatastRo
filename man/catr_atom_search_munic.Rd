@@ -20,8 +20,8 @@ cadastral code.}
 \item{to}{Optional parameter for defining the Territorial Office to which
 \code{munic} belongs. This parameter is a helper for narrowing the search.}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section on \code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}}.}
+\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer
+supported; this function will always cache results.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default is
 \code{FALSE}. When set to \code{TRUE} it would force a new download.}
@@ -39,9 +39,11 @@ Search for a municipality (as a string, part of string or code) and get
 the corresponding coding as per the Cadastre.
 }
 \examples{
+\dontshow{if (run_example) withAutoprint(\{ # examplesIf}
 \donttest{
 catr_atom_search_munic("Mad")
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other INSPIRE ATOM services:

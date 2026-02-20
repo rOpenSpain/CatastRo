@@ -39,3 +39,21 @@
       v Selecting "Territorial office 34 Palencia".
       x Discarding "Territorial office 46 Valencia".
 
+# Deprecations
+
+    Code
+      fend <- catr_atom_get_address_db_to(to = "Madrid", cache = FALSE, cache_dir = cdir)
+    Condition
+      Warning:
+      The `cache` argument of `catr_atom_get_address_db_to()` is deprecated as of CatastRo 1.0.0.
+      i Results are always cached.
+
+---
+
+    Code
+      fend <- catr_atom_get_address_db_all(cache_dir = cdir, cache = FALSE)
+    Condition
+      Warning:
+      The `cache` argument of `catr_atom_get_address_db_all()` is deprecated as of CatastRo 1.0.0.
+      i Results are always cached.
+

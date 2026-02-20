@@ -21,7 +21,8 @@
 #'   - `"building"` for buildings.
 #'   - `"buildingpart"` for parts of a building.
 #'   - `"other"` for other elements, such as swimming pools, etc.
-#' @examples
+#'
+#' @examplesIf run_example
 #' \donttest{
 #' s <- catr_atom_get_buildings("Nava de la Asuncion",
 #'   to = "Segovia",
@@ -59,7 +60,8 @@ catr_atom_get_buildings <- function(
   what <- match.arg(what)
 
   # Transform
-  what <- switch(what,
+  what <- switch(
+    what,
     "building" = "building.gml",
     "buildingpart" = "buildingpart.gml",
     "other" = "other"

@@ -16,4 +16,7 @@
       Warning:
       The `cache` argument of `catr_atom_get_address()` is deprecated as of CatastRo 1.0.0.
       i Results are always cached.
+      Warning:
+      The `cache` argument of `catr_atom_get_address_db_to()` is deprecated as of CatastRo 1.0.0.
+      i Results are always cached.
 

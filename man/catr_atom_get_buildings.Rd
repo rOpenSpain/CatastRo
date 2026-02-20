@@ -29,8 +29,8 @@ codes.}
 \item \code{"other"} for other elements, such as swimming pools, etc.
 }}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section on \code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}}.}
+\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer
+supported; this function will always cache results.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default is
 \code{FALSE}. When set to \code{TRUE} it would force a new download.}
@@ -48,6 +48,7 @@ Retrieve the spatial data of all buildings belonging to a single municipality
 using the INSPIRE ATOM service.
 }
 \examples{
+\dontshow{if (run_example) withAutoprint(\{ # examplesIf}
 \donttest{
 s <- catr_atom_get_buildings("Nava de la Asuncion",
   to = "Segovia",
@@ -66,7 +67,7 @@ ggplot(s) +
     subtitle = "Nava de la Asuncion, Segovia"
   )
 }
-
+\dontshow{\}) # examplesIf}
 }
 \references{
 \href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ATOM.pdf}{API Documentation}.
