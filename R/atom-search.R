@@ -87,7 +87,7 @@ catr_atom_search_munic <- function(
 
   # Split to get code
 
-  res$catrcode <- catrcode <- vapply(
+  res$catrcode <- vapply(
     res$munic,
     function(x) {
       unlist(strsplit(x, "-"))[1]

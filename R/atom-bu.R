@@ -67,8 +67,7 @@ catr_atom_get_buildings <- function(
   what <- match_arg_pretty(what)
 
   # Transform
-  what <- switch(
-    what,
+  what <- switch(what,
     "building" = "building.gml",
     "buildingpart" = "buildingpart.gml",
     "other" = "other"

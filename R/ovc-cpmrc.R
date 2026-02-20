@@ -33,7 +33,7 @@
 #' * `address`: Address as it is recorded on the Cadastre.
 #' * Rest of fields: Check the API Docs.
 #'
-#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
+#' @examplesIf run_example()
 #' \donttest{
 #'
 #' # using all the arguments
@@ -55,63 +55,48 @@ catr_ovc_get_cpmrc <- function(
   verbose = FALSE
 ) {
   # Sanity checks
+  rc <- validate_non_empty_arg(rc)
+
   valid_srs <- CatastRo::catr_srs_values
-  valid_srs <- tibble::as_tibble(valid_srs)
-  valid_srs <- valid_srs[valid_srs$ovc_service, "SRS"]
-  valid <- tibble::deframe(valid_srs)
-  valid <- as.character(valid)
+  valid <- as.character(valid_srs[valid_srs$ovc_service, ]$SRS)
 
-  if (!as.character(srs) %in% valid) {
-    stop(
-      "'srs' for OVC should be one of ",
-      paste0("'", valid, "'", collapse = ", "),
-      ".\n\nSee CatastRo::catr_srs_values"
-    )
-  }
-
+  srs <- match_arg_pretty(srs, valid)
   srs <- paste0("EPSG:", srs)
 
   # Prepare query
   ##  Build url
   api_entry <- paste0(
     "http://ovc.catastro.meh.es/ovcservweb/",
-    "OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC"
+    "OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?",
+    "Provincia=&Municipio=&SRS=&RC="
   )
 
   # Replace NAs and NULL on optional params
-
-  if (is.null(province) || is.na(province)) {
+  province <- ensure_null(province)
+  municipality <- ensure_null(municipality)
+  if (is.null(province)) {
     province <- ""
   }
-  if (is.null(municipality) || is.na(municipality)) {
+  if (is.null(municipality)) {
     municipality <- ""
   }
 
-  query <- list(
+  api_entry <- httr2::url_modify_query(
+    api_entry,
     RC = rc,
     SRS = srs,
     Provincia = province,
     Municipio = municipality
   )
 
-  ## GET
-  url <- httr2::url_parse(api_entry)
-  url$query <- query
-  url <- httr2::url_build(url)
+  # Extract results
+  resp <- get_request_body(api_entry, verbose = verbose)
 
-  if (verbose) {
-    message("Querying url:\n\t", url)
+  if (is.null(resp)) {
+    return(NULL)
   }
 
-  api_res <- httr2::request(url)
-  api_res <- httr2::req_perform(api_res)
-
-  # Check error on status
-  httr2::resp_check_status(api_res)
-
-  # Extract results
-  content <- httr2::resp_body_xml(api_res)
-  content_list <- xml2::as_list(content)
+  content_list <- xml2::as_list(httr2::resp_body_xml(resp))
 
   # Check API custom error
   err <- content_list[["consulta_coordenadas"]]
@@ -151,26 +136,4 @@ catr_ovc_get_cpmrc <- function(
   )
 
   out
-}
-
-# Helper
-ovcurl <- function(x) {
-  # nocov start
-  base <- "https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc"
-
-  app <- switch(x,
-    "CPMRC" = "ovccoordenadas.asmx?op=Consulta_CPMRC",
-    "mun" = "ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos",
-    "prov" = "ovccallejerocodigos.asmx?op=ConsultaProvincia",
-    "RCCOORD" = "ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia",
-    "RCCOOR" = "ovccoordenadas.asmx?op=Consulta_RCCOOR",
-    NULL
-  )
-
-  if (x == "RCCOORD") {
-    base <- gsub("https", "http", base, fixed = TRUE)
-  }
-
-  paste0(c(base, app), collapse = "/")
-  # nocov end
 }
