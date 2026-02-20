@@ -39,7 +39,7 @@ concurrency:
 jobs:
   lintr:
     name: Run lintr scanning
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     if: >
       github.event_name != 'workflow_run' ||
       github.event.workflow_run.conclusion == 'success'
