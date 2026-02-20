@@ -14,6 +14,7 @@ test_that("On mac", {
 test_that("On CRAN", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_os("mac")
 
   # Imagine we are in CRAN
   env_orig <- Sys.getenv("NOT_CRAN")
