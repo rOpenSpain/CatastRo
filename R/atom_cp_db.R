@@ -51,7 +51,7 @@
 #'   - `date`: Reference date of the data. Note that **the information from
 #'      this service is updated twice a year**.
 #'
-#' @examplesIf run_example
+#' @examplesIf run_example()
 #' \donttest{
 #' catr_atom_get_parcels_db_all()
 #' }

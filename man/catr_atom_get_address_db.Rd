@@ -35,8 +35,8 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{to}{character. Territorial office. Internally uses \code{\link[base:agrep]{base::agrep()}} for
-fuzzy matching.}
+\item{to}{character. Territorial office. Internally uses \code{\link[base:grep]{base::grep()}} for
+matching.}
 }
 \value{
 A \link[tibble:tbl_df-class]{tibble} with the information requested.
@@ -73,7 +73,7 @@ of that office.
 }
 }
 \examples{
-\dontshow{if (run_example) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
 catr_atom_get_address_db_all()
 }

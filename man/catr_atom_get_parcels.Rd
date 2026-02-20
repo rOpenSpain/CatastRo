@@ -44,7 +44,7 @@ Retrieve the spatial data of all cadastral parcels belonging to a single
 municipality using the INSPIRE ATOM service.
 }
 \examples{
-\dontshow{if (run_example) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
 s <- catr_atom_get_parcels("Melque",
   to = "Segovia",

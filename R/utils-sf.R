@@ -1,7 +1,6 @@
 #' Read geospatial file into sf object with optional query
 #'
 #' @param file_local Local file path or URL to the geospatial file.
-#' @param q Optional SQL query string to filter the data during reading.
 #' @param hint Hint for zipped files
 #' @param ... Additional arguments passed to `sf::read_sf()`.
 #'
@@ -10,14 +9,13 @@
 #' @noRd
 read_geo_file_sf <- function(
   file_local,
-  q = NULL,
   hint = basename(file_local),
   layer_hint = NULL,
   ...
 ) {
   # Warn if file size is huge and no query
 
-  if (all(!grepl("^http", file_local), file.exists(file_local), is.null(q))) {
+  if (all(!grepl("^http", file_local), file.exists(file_local))) {
     fsize <- file.size(file_local)
     fsize_unit <- fsize
     class(fsize_unit) <- class(object.size("a"))

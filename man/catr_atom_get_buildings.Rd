@@ -48,7 +48,7 @@ Retrieve the spatial data of all buildings belonging to a single municipality
 using the INSPIRE ATOM service.
 }
 \examples{
-\dontshow{if (run_example) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
 s <- catr_atom_get_buildings("Nava de la Asuncion",
   to = "Segovia",

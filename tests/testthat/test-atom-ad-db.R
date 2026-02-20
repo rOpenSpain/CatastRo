@@ -157,13 +157,23 @@ test_that("Test atom ad", {
 
   expect_silent(
     pal <- catr_atom_get_address_db_to(
-      to = "$Palencia",
+      to = "Palencia",
       cache_dir = tempdir()
     )
   )
 
   expect_identical(several, pal)
+
+  # full name
+  expect_silent(
+    val <- catr_atom_get_address_db_to(
+      to = "valencia",
+      cache_dir = tempdir()
+    )
+  )
+  expect_false(pal$munic[1] == val$munic[1])
 })
+
 test_that("Deprecations", {
   skip_on_cran()
   skip_if_offline()

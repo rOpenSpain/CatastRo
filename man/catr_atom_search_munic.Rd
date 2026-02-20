@@ -39,7 +39,7 @@ Search for a municipality (as a string, part of string or code) and get
 the corresponding coding as per the Cadastre.
 }
 \examples{
-\dontshow{if (run_example) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
 catr_atom_search_munic("Mad")
 }

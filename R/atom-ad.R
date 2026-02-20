@@ -20,7 +20,7 @@
 #' @return A [`sf`][sf::st_sf] object.
 #'
 #' @inheritParams catr_atom_get_parcels
-#' @examplesIf run_example
+#' @examplesIf run_example()
 #' \donttest{
 #' s <- catr_atom_get_address("Melque",
 #'   to = "Segovia"

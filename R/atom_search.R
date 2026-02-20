@@ -17,7 +17,7 @@
 #'
 #' @export
 #'
-#' @examplesIf run_example
+#' @examplesIf run_example()
 #' \donttest{
 #' catr_atom_search_munic("Mad")
 #' }

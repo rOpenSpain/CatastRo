@@ -72,7 +72,7 @@ of that office.
 }
 }
 \examples{
-\dontshow{if (run_example) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
 catr_atom_get_buildings_db_all()
 }

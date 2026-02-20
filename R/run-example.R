@@ -42,5 +42,5 @@ on_cran <- function() {
 #' @return logical
 #' @noRd
 on_mac <- function() {
-  "mac" %in% tolower(Sys.info()[["sysname"]])
+  "mac" == tolower(Sys.info()[["sysname"]])
 }

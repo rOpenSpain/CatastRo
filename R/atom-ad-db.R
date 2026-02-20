@@ -28,8 +28,8 @@
 #' @param update_cache logical. Should the cached file be refreshed? Default is
 #'   `FALSE`. When set to `TRUE` it would force a new download.
 #'
-#' @param to character. Territorial office. Internally uses [base::agrep()] for
-#'   fuzzy matching.
+#' @param to character. Territorial office. Internally uses [base::grep()] for
+#'   matching.
 #'
 #' @rdname catr_atom_get_address_db
 #' @export
@@ -50,7 +50,7 @@
 #'     * `date`: Reference date of the data. Note that the information from
 #'          this service is updated twice a year.
 #'
-#' @examplesIf run_example
+#' @examplesIf run_example()
 #' \donttest{
 #' catr_atom_get_address_db_all()
 #' }
@@ -119,7 +119,7 @@ catr_atom_get_address_db_to <- function(
   to <- gsub("\\(|\\)", "", to)
   allto <- gsub("\\(|\\)", "", alldist$territorial_office)
 
-  to_loc <- ensure_null(agrep(to, allto, ignore.case = TRUE))
+  to_loc <- ensure_null(grep(to, allto, ignore.case = TRUE))
   if (is.null(to_loc)) {
     cli::cli_alert_warning(
       "No Territorial Office found with pattern {.str {to}}."
@@ -127,7 +127,15 @@ catr_atom_get_address_db_to <- function(
     return(NULL)
   }
 
-  tb <- allto[to_loc]
+  # Check with distances
+  with_d <- data.frame(
+    to = alldist$territorial_office,
+    dist = as.vector(adist(to, alldist$territorial_office))
+  )
+  with_d <- with_d[to_loc, ]
+  with_d <- with_d[order(with_d$dist), ]
+
+  tb <- with_d$to
 
   if (length(tb) > 1) {
     cli::cli_alert_info(
