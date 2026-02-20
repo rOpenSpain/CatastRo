@@ -189,7 +189,6 @@ get_sf_from_bbox <- function(bbox, srs) {
   bbox_new
 }
 
-
 message_on_limit <- function(bbox_res, limit_km2) {
   bbox_num <- as.double(unlist(strsplit(bbox_res$bbox, ",")))
 

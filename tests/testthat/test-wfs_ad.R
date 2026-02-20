@@ -42,7 +42,6 @@ test_that("AD Postal Code", {
   expect_s3_class(obj, "sf")
 })
 
-
 test_that("AD CODVIA", {
   skip_on_cran()
 

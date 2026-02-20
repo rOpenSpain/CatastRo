@@ -45,7 +45,6 @@ test_that("BU Part Check", {
   expect_s3_class(obj, "sf")
 })
 
-
 test_that("BU Other Check", {
   skip_on_cran()
 

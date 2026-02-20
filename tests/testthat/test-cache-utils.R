@@ -98,7 +98,6 @@ test_that("Mock restart", {
   Sys.setenv("CATASTROESP_CACHE_DIR" = getvar)
 })
 
-
 test_that("Mock migration", {
   skip_on_cran()
 

@@ -42,17 +42,26 @@
 #' }
 catr_get_code_from_coords <- function(
   x,
-  srs,
+  srs = NULL,
   verbose = FALSE,
   cache_dir = NULL,
   ...
 ) {
+  x <- validate_non_empty_arg(x)
+
   if (!(inherits(x, "sf") || inherits(x, "sfc"))) {
     if (length(x) != 2) {
-      stop("Length of x should be 2")
+      cli::cli_abort(
+        "Length of {.arg x} should be {.val {2L}}, not {.val {length(x)}}."
+      )
     }
-    if (missing(srs)) {
-      stop("When providing coords, provide also the srs/crs")
+    if (is.null(srs)) {
+      cli::cli_abort(
+        paste0(
+          "You should provide also the {.arg srs} argument when x is ",
+          "{.obj_type_friendly {x}}."
+        )
+      )
     }
 
     x <- sf::st_point(x)
@@ -65,7 +74,9 @@ catr_get_code_from_coords <- function(
   x <- sf::st_geometry(x)
 
   if (length(x) > 1) {
-    message("Selecting the first geometry")
+    cli::cli_alert_info(
+      "Selecting the first geometry (you provided {.val {length(x)}})."
+    )
   }
 
   x <- sf::st_transform(x[1], 3857)
@@ -80,18 +91,19 @@ catr_get_code_from_coords <- function(
     moveCAN = FALSE,
     ...
   )
+  if (is.null(mun)) {
+    return(NULL)
+  }
   mun <- sf::st_transform(mun, sf::st_crs(x))
 
   aa <- sf::st_intersects(mun, x, sparse = FALSE)
 
   if (!any(as.vector(aa))) {
-    message("Coordinates not found")
+    cli::cli_alert_warning("Coordinates not found")
     return(NULL)
   }
 
   getcode <- mun[as.vector(aa), ]
 
-  res <- catr_ovc_get_cod_munic(getcode$cpro, cmun_ine = getcode$cmun)
-
-  res
+  catr_ovc_get_cod_munic(getcode$cpro, cmun_ine = getcode$cmun)
 }

@@ -41,7 +41,6 @@ plot(finalpols$geometry)
 
 library(ggplot2)
 
-
 p <- ggplot(finalpols) +
   geom_sf(
     aes(fill = currentUse),
@@ -55,15 +54,12 @@ p <- ggplot(finalpols) +
   ) +
   theme_void()
 
-
 p
-
 
 library(hexSticker)
 
 cols <- hcl.colors(7, "Mint")
 text <- colorspace::darken(cols[1], 0.8)
-
 
 sysfonts::font_add(
   "noto",

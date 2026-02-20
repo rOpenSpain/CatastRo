@@ -182,9 +182,7 @@ buff <- city |>
   # Buffer
   st_buffer(1500)
 
-
 # Cut buildings
-
 dataviz <- st_intersection(city_bu, buff)
 
 ggplot(dataviz) +

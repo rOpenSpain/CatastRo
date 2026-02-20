@@ -65,7 +65,6 @@ test_that("BBOX Check errors", {
   expect_error(catr_wfs_get_parcels_bbox(bbox = c(1, 2, 3, 4)))
 })
 
-
 test_that("BBOX Check projections", {
   skip_on_cran()
 
