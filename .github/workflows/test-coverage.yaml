@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   test-coverage:
-    runs-on: linux-latest
+    runs-on: windows-latest
     if: >
       github.event_name != 'workflow_run' ||
       github.event.workflow_run.conclusion == 'success'
