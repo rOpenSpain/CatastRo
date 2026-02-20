@@ -46,7 +46,7 @@ Get the spatial data of cadastral parcels and zones. The WFS Service allows
 to perform several types of queries:
 \itemize{
 \item By bounding box: Implemented on \code{catr_wfs_get_parcels_bbox()}. Extract
-objects included on the bounding box provided. See \strong{Details}.
+objects included in the bounding box provided. See \strong{Details}.
 }
 
 \itemize{
@@ -73,10 +73,10 @@ specific cadastral zone.
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
-coordinate values. Additionally, when the \code{srs} correspond to a geographic
+coordinate values. Additionally, when the \code{srs} corresponds to a geographic
 reference system (4326, 4258), the function queries the bounding box on
 \href{https://epsg.io/3857}{EPSG:3857} - Web Mercator, to overcome
-a potential bug on the API side. The result is provided always in the SRS
+a potential bug on the API side. The result is always provided in the SRS
 provided in \code{srs}.
 
 When \code{x} is a \code{\link[sf:sf]{sf}} object, the value \code{srs} is ignored. The
@@ -84,9 +84,9 @@ query is performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator)
 and the spatial object is projected back to the SRS of the initial object.
 }
 \section{API Limits}{
-The API service is limited to the following constrains:
+The API service is limited to the following constraints:
 \itemize{
-\item \verb{"parcel}: Bounding box of 1km2 and a maximum of 500. elements.
+\item \verb{"parcel}: Bounding box of 1km2 and a maximum of 500 elements.
 \item \code{"zoning"}: Bounding box of 25km2 and a maximum of 500 elements.
 }
 }

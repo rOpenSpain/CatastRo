@@ -16,7 +16,7 @@ A \link[tibble:tbl_df-class]{tibble}.
 Implementation of the OVCCallejero service
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
 
-Return a list of the provinces included on the Spanish Cadastre.
+Returns a list of the provinces included in the Spanish Cadastre.
 }
 \examples{
 \dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") withAutoprint(\{ # examplesIf}

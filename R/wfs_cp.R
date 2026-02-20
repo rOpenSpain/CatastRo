@@ -4,7 +4,7 @@
 #' Get the spatial data of cadastral parcels and zones. The WFS Service allows
 #' to perform several types of queries:
 #' - By bounding box: Implemented on `catr_wfs_get_parcels_bbox()`. Extract
-#'   objects included on the bounding box provided. See **Details**.
+#'   objects included in the bounding box provided. See **Details**.
 #'
 #' @inheritParams catr_atom_get_parcels
 #' @inheritParams catr_wfs_get_buildings_bbox
@@ -25,10 +25,10 @@
 #' @details
 #'
 #' When `x` is a numeric vector, make sure that the `srs` matches the
-#' coordinate values. Additionally, when the `srs` correspond to a geographic
+#' coordinate values. Additionally, when the `srs` corresponds to a geographic
 #' reference system (4326, 4258), the function queries the bounding box on
 #' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
-#' a potential bug on the API side. The result is provided always in the SRS
+#' a potential bug on the API side. The result is always provided in the SRS
 #' provided in `srs`.
 #'
 #' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. The
@@ -36,8 +36,8 @@
 #' and the spatial object is projected back to the SRS of the initial object.
 #'
 #' # API Limits
-#' The API service is limited to the following constrains:
-#' - `"parcel`: Bounding box of 1km2 and a maximum of 500. elements.
+#' The API service is limited to the following constraints:
+#' - `"parcel`: Bounding box of 1km2 and a maximum of 500 elements.
 #' - `"zoning"`: Bounding box of 25km2 and a maximum of 500 elements.
 #'
 #' @rdname catr_wfs_get_parcels

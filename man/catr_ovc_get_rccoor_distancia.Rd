@@ -25,9 +25,10 @@ A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}
 Implementation of the OVCCoordenadas service
 \href{http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
 
-Return the cadastral reference found on a set of coordinates. If no cadastral
-references are found, the API returns a list of the cadastral references
-found on an area of 50 square meters around the requested coordinates.
+Returns the cadastral reference found for a set of coordinates. If no
+cadastral references are found, the API returns a list of the cadastral
+references found in an area of 50 square meters around the requested
+coordinates.
 }
 \details{
 When the API does not provide any result, the function returns a

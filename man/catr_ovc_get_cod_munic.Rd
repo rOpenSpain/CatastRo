@@ -24,7 +24,7 @@ A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}
 Implementation of the OVCCallejero service
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos}{ConsultaMunicipioCodigos}.
 
-Return the names and codes of a municipality. Returns both the codes as per
+Returns the names and codes of a municipality. Returns both the codes as per
 the Cadastre and as per the INE (National Statistics Institute).
 }
 \details{

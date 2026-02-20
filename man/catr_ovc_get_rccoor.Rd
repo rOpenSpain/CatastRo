@@ -25,7 +25,7 @@ A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}
 Implementation of the OVCCoordenadas service
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta RCCOOR}.
 
-Return the cadastral reference found of a set of specific coordinates.
+Returns the cadastral reference found for a set of specific coordinates.
 }
 \details{
 When the API does not provide any result, the function returns a

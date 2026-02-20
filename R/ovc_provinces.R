@@ -4,7 +4,7 @@
 #' Implementation of the OVCCallejero service
 #' [ConsultaProvincia](`r ovcurl("prov")`).
 #'
-#' Return a list of the provinces included on the Spanish Cadastre.
+#' Returns a list of the provinces included in the Spanish Cadastre.
 #'
 #' @references
 #' [ConsultaProvincia](`r ovcurl("prov")`).

@@ -50,29 +50,43 @@ catr_atom_get_buildings <- function(
     "buildingpart",
     "other"
   ),
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  # Sanity checks
+  if (lifecycle::is_present(cache)) {
+    lifecycle::deprecate_warn(
+      when = "1.0.0",
+      what = "CatastRo::catr_atom_get_buildings(cache)",
+      details = "Results are always cached."
+    )
+  }
 
-  what <- match.arg(what)
+  # Sanity checks
+  what <- match_arg_pretty(what)
 
   # Transform
-  what <- switch(what,
+  what <- switch(
+    what,
     "building" = "building.gml",
     "buildingpart" = "buildingpart.gml",
     "other" = "other"
   )
 
-  all <- catr_atom_get_buildings_db_all(
-    cache = cache,
+  munic <- validate_non_empty_arg(munic)
+  to <- ensure_null(to)
+
+  all <- catr_atom_get_address_db_all(
     update_cache = update_cache,
     cache_dir = cache_dir,
     verbose = FALSE
   )
-  if (all(!is.null(to), !is.na(to))) {
+  if (is.null(all)) {
+    return(NULL)
+  }
+
+  if (!is.null(to)) {
     linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
 
     # Ignore if no result
@@ -80,75 +94,79 @@ catr_atom_get_buildings <- function(
       all <- all[linesto, ]
     } else {
       if (verbose) {
-        message("Ignoring 'to' parameter. No results for ", to)
+        cli::cli_alert_warning(
+          paste0(
+            "Ignoring {.arg to} argument. No results ",
+            "found with pattern {.str {munic}} in {.str {to}}."
+          )
+        )
       }
     }
   }
 
-  findmunic <- grep(munic, all$munic, ignore.case = TRUE)[1]
+  to_loc <- ensure_null(grep(munic, all$munic, ignore.case = TRUE))
 
-  if (is.na(findmunic)) {
-    message(
-      "No Municipality found for ",
-      munic,
-      " ",
-      to,
-      ". Check available municipalities with ",
-      "catr_atom_get_buildings_db_all()"
+  if (is.null(to_loc)) {
+    cli::cli_alert_warning(
+      "No municipality found with pattern {.str {munic}}."
     )
-    return(invisible(NA))
+    cli::cli_alert_info(
+      paste0(
+        "Check available municipalities with ",
+        "{.fn CatastRo::catr_atom_get_address_db_all}."
+      )
+    )
+    return(NULL)
   }
-  m <- all[findmunic, ]
 
-  if (verbose) {
-    message(
-      "Selecting ",
-      m$munic,
-      ", ",
-      m$territorial_office
+  tb <- all[to_loc, ]
+
+  if (nrow(tb) > 1) {
+    cli::cli_alert_info(
+      "Found {nrow(tb)} municipalities with pattern {.str {munic}}."
     )
+
+    cli::cli_alert_success("Selecting {.str {tb[1,]$munic}}.")
+    cli::cli_alert_danger("Discarding {.str {tb[-1,]$munic}}.")
+    tb <- tb[1, ]
   }
+
+  make_msg(
+    "info",
+    verbose,
+    paste0("Extracting information for {.str ", tb$munic, "}.")
+  )
 
   municurls <- catr_atom_get_buildings_db_to(
-    as.character(m$territorial_office),
+    as.character(tb$territorial_office),
     cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
     verbose = FALSE
   )
   # Get munic code from reference
-  ref <- unlist(strsplit(m$munic, "-"))[1]
+  ref <- unlist(strsplit(tb$munic, "-"))[1]
 
   # Download from url
   api_entry <- municurls[
     grepl(ref, municurls$munic, ignore.case = TRUE),
   ]$url
 
-  filename <- basename(api_entry)
+  api_entry <- URLencode(api_entry)
 
-  path <- catr_hlp_dwnload(
-    api_entry,
-    filename,
-    cache_dir,
-    verbose,
-    update_cache,
-    cache
+  file_local <- download_url(
+    url = api_entry,
+    cache_dir = cache_dir,
+    subdir = "atom_bu",
+    update_cache = update_cache,
+    verbose = verbose
   )
 
-  # To a new directory
-  # Get cached dir
-  cache_dir <- create_cache_dir(cache_dir)
-  exdir <- file.path(cache_dir, gsub(".zip$", "", filename))
-
-  if (!dir.exists(exdir)) {
-    dir.create(exdir, recursive = TRUE)
+  if (is.null(file_local)) {
+    return(NULL)
   }
-  unzip(path, exdir = exdir, junkpaths = TRUE, overwrite = TRUE)
 
-  # Guess what to read
-  files <- list.files(exdir, full.names = TRUE, pattern = ".gml$")
-  files <- files[grepl(what, files, ignore.case = TRUE)]
-  sfobj <- st_read_layers_encoding(files, verbose)
+  sfobj <- read_geo_file_sf(file_local, hint = what)
 
   sfobj
 }

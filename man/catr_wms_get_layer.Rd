@@ -95,7 +95,7 @@ equivalence is:
 }
 
 \section{Styles}{
-The WMS service provide different styles on each layer (\code{what} parameter).
+The WMS service provides different styles on each layer (\code{what} parameter).
 Some of the styles available are:
 \itemize{
 \item \code{"parcel"}: styles : \code{"BoundariesOnly"}, \code{"ReferencePointOnly"},

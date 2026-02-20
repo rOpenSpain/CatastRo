@@ -73,10 +73,10 @@ be kept across \strong{R} sessions.
 corresponding function.
 }
 
-Sometimes cached files may be corrupt. On that case, try re-downloading
+Sometimes cached files may be corrupt. In that case, try re-downloading
 the data setting \code{update_cache = TRUE} in the corresponding function.
 
-If you experience any problem on download, try to download the
+If you experience any problem with downloading, try to download the
 corresponding file by any other method and save it on your
 \code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query
 and \code{\link[=catr_detect_cache_dir]{catr_detect_cache_dir()}} to identify your cached path.

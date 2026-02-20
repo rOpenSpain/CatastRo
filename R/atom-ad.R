@@ -139,7 +139,7 @@ catr_atom_get_address <- function(
   file_local <- download_url(
     url = api_entry,
     cache_dir = cache_dir,
-    subdir = "databases",
+    subdir = "atom_ad",
     update_cache = update_cache,
     verbose = verbose
   )

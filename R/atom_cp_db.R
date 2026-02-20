@@ -5,12 +5,12 @@
 #' Create a database containing the URLs provided in the INSPIRE ATOM service
 #' of the Spanish Cadastre for extracting cadastral parcels.
 #'
-#' - `catr_atom_get_parcels_db_all()` provides a top-level table including
-#'    information of all the territorial offices (except Basque Country and
-#'    Navarre) listing the municipalities included on each office.
-#' - `catr_atom_get_parcels_db_to()` provides a table for the specified
-#'    territorial office including information for each of the municipalities
-#'    of that office.
+#'  - `catr_atom_get_parcels_db_all()` provides a top-level table including
+#'     information on all the territorial offices (except Basque Country and
+#'     Navarre) listing the municipalities included in each office.
+#'  - `catr_atom_get_parcels_db_to()` provides a table for the specified
+#'     territorial office including information for each of the municipalities
+#'     of that office.
 #'
 #' @source
 #'
@@ -38,18 +38,19 @@
 #'
 #' @return
 #' A [tibble][tibble::tbl_df] with the information requested.
-#' - `catr_atom_get_parcels_db_all()` includes the following fields:
-#'   - `territorial_office`: Territorial office, corresponding to each province
-#'      of Spain except the Basque Country and Navarre.
-#'   - `url`: ATOM URL for the corresponding territorial office.
-#'   - `munic`: Name of the municipality.
-#'   - `date`: Reference date of the data. Note that **the information from
-#'      this service is updated twice a year**.
-#' - `catr_atom_get_parcels_db_to()` includes the following fields:
-#'   - `munic`: Name of the municipality.
-#'   - `url`: URL for downloading information of the corresponding municipality.
-#'   - `date`: Reference date of the data. Note that **the information from
-#'      this service is updated twice a year**.
+#'  - `catr_atom_get_parcels_db_all()` includes the following fields:
+#'    - `territorial_office`: Territorial office, corresponding to each province
+#'       of Spain except the Basque Country and Navarre.
+#'    - `url`: ATOM URL for the corresponding territorial office.
+#'    - `munic`: Name of the municipality.
+#'    - `date`: Reference date of the data. Note that the information from
+#'       this service is updated twice a year.
+#'  - `catr_atom_get_parcels_db_to()` includes the following fields:
+#'    - `munic`: Name of the municipality.
+#'    - `url`: URL for downloading information of the corresponding
+#'       municipality.
+#'    - `date`: Reference date of the data. Note that **the information from
+#'       this service is updated twice a year**.
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -94,7 +95,7 @@ catr_atom_get_parcels_db_to <- function(
   all <- catr_atom_get_parcels_db_all()
   alldist <- unique(all[, c("territorial_office", "url")])
 
-  # Escape parenthesis
+  # Escape parentheses
   to <- gsub("\\(|\\)", "", to)
   allto <- gsub("\\(|\\)", "", alldist$territorial_office)
 

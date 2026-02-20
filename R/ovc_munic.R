@@ -4,7 +4,7 @@
 #' Implementation of the OVCCallejero service
 #' [ConsultaMunicipioCodigos](`r ovcurl("mun")`).
 #'
-#' Return the names and codes of a municipality. Returns both the codes as per
+#' Returns the names and codes of a municipality. Returns both the codes as per
 #' the Cadastre and as per the INE (National Statistics Institute).
 #'
 #' @references

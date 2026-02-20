@@ -1,10 +1,10 @@
 #' WFS INSPIRE: Download addresses
 #'
 #' @description
-#' Get the spatial data of addresses The WFS Service allows to perform
+#' Get the spatial data of addresses. The WFS Service allows performing
 #' several types of queries:
 #' - By bounding box: Implemented on `catr_wfs_get_address_bbox()`.
-#'   Extract objects included on the bounding box provided. See **Details**.
+#'   Extract objects included in the bounding box provided. See **Details**.
 #'
 #' @inheritParams catr_wfs_get_buildings_bbox
 #'
@@ -24,7 +24,7 @@
 #' @details
 #'
 #' When `x` is a numeric vector, make sure that the `srs` matches the
-#' coordinate values. Additionally, when the `srs` correspond to a geographic
+#' coordinate values. Additionally, when the `srs` corresponds to a geographic
 #' reference system (4326, 4258), the function queries the bounding box on
 #' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
 #' a potential bug on the API side.
@@ -32,8 +32,8 @@
 #' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. In
 #' this case, the bounding box of the [`sf`][sf::st_sf] object would be
 #' used for the query (see [sf::st_bbox()]). The query is performed using
-#' [EPSG:3857](https://epsg.io/3857) (Web Mercator). The result is provided
-#' always in the SRS of the [`sf`][sf::st_sf] object provided as input.
+#' [EPSG:3857](https://epsg.io/3857) (Web Mercator). The result is always
+#' provided in the SRS of the [`sf`][sf::st_sf] object provided as input.
 #'
 #' # API Limits
 #'
@@ -107,7 +107,7 @@ catr_wfs_get_address_codvia <- function(
 
 #' @description
 #' - By cadastral reference: Implemented on `catr_wfs_get_address_rc()`. Extract
-#'   objects of specific cadastral references
+#'   objects of specific cadastral references.
 #'
 #' @inheritParams catr_wfs_get_buildings_rc
 #'
@@ -133,7 +133,7 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 }
 #' @description
 #' - By postal codes: Implemented on `catr_wfs_get_address_postalcode()`.
-#'   Extract objects of specific cadastral references
+#'   Extract objects of specific postal codes
 #'
 #' @param postalcode Postal code.
 #'

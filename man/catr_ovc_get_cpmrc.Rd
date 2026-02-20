@@ -29,14 +29,14 @@ A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}
 Implementation of the OVCCoordenadas service
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta CPMRC}.
 
-Return the coordinates for a specific cadastral reference.
+Returns the coordinates for a specific cadastral reference.
 }
 \details{
 When the API does not provide any result, the function returns a
 \link[tibble:tbl_df-class]{tibble} with the input parameters only.
 
 On a successful query, the function returns a \link[tibble:tbl_df-class]{tibble}
-with one row by cadastral reference, including the following columns:
+with one row per cadastral reference, including the following columns:
 \itemize{
 \item \code{xcoord}, \code{ycoord}: X and Y coordinates in the specified SRS.
 \item \code{refcat}: Cadastral Reference.

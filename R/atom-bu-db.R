@@ -1,60 +1,52 @@
-#' ATOM INSPIRE: Reference database for ATOM addresses
+#' ATOM INSPIRE: Reference database for ATOM buildings
 #'
 #' @description
 #'
 #' Create a database containing the URLs provided in the INSPIRE ATOM service
-#' of the Spanish Cadastre for extracting addresses.
+#' of the Spanish Cadastre for extracting buildings.
 #'
-#' - `catr_atom_get_address_db_all()` provides a top-level table including
-#'    information on all the territorial offices (except Basque Country and
-#'    Navarre) listing the municipalities included in each office.
-#' - `catr_atom_get_address_db_to()` provides a table for the specified
-#'    territorial office including information for each of the municipalities
-#'    of that office.
+#'  - `catr_atom_get_buildings_db_all()` provides a top-level table including
+#'     information on all the territorial offices (except Basque Country and
+#'     Navarre) listing the municipalities included in each office.
+#'  - `catr_atom_get_buildings_db_to()` provides a table for the specified
+#'     territorial office including information for each of the municipalities
+#'     of that office.
 #'
 #' @source
-#' <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>
+#' <https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml>
 #'
 #' @family INSPIRE
 #' @family ATOM
-#' @family addresses
+#' @family buildings
 #' @family databases
 #'
+#' @inheritParams catr_atom_get_address_db_all
 #' @inheritParams catr_set_cache_dir
 #'
-#' @param cache `r lifecycle::badge("deprecated")` `cache` is no longer
-#'   supported; this function will always cache results.
-#'
-#' @param update_cache logical. Should the cached file be refreshed? Default is
-#'   `FALSE`. When set to `TRUE` it would force a new download.
-#'
-#' @param to character. Territorial office. Internally uses [base::grep()] for
-#'   matching.
-#'
-#' @rdname catr_atom_get_address_db
+#' @rdname catr_atom_get_buildings_db
 #' @export
 #'
 #' @return
 #' A [tibble][tibble::tbl_df] with the information requested.
-#'   - `catr_atom_get_address_db_all()` includes the following fields:
-#'     - `territorial_office`: Territorial office, corresponding to each
-#'          province of Spain except the Basque Country and Navarre.
-#'     - `url`: ATOM URL for the corresponding territorial office.
-#'     - `munic`: Name of the municipality.
-#'     - `date`: Reference date of the data. Note that the information from
-#'          this service is updated twice a year.
-#'   - `catr_atom_get_address_db_to()` includes the following fields:
-#'     - `munic`: Name of the municipality.
-#'     - `url`: URL for downloading information of the corresponding
-#'          municipality.
-#'     - `date`: Reference date of the data. Note that the information from
-#'          this service is updated twice a year.
+#'  - `catr_atom_get_buildings_db_all()` includes the following fields:
+#'    - `territorial_office`: Territorial office, corresponding to each province
+#'       of Spain except the Basque Country and Navarre.
+#'    - `url`: ATOM URL for the corresponding territorial office.
+#'    - `munic`: Name of the municipality.
+#'    - `date`: Reference date of the data. Note that the information from
+#'       this service is updated twice a year.
+#'  - `catr_atom_get_buildings_db_to()` includes the following fields:
+#'    - `munic`: Name of the municipality.
+#'    - `url`: URL for downloading information of the corresponding
+#'       municipality.
+#'    - `date`: Reference date of the data. Note that **the information from
+#'       this service is updated twice a year**.
 #'
 #' @examplesIf run_example()
 #' \donttest{
-#' catr_atom_get_address_db_all()
+#' catr_atom_get_buildings_db_all()
 #' }
-catr_atom_get_address_db_all <- function(
+catr_atom_get_buildings_db_all <- function(
   cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
@@ -63,14 +55,14 @@ catr_atom_get_address_db_all <- function(
   if (lifecycle::is_present(cache)) {
     lifecycle::deprecate_warn(
       when = "1.0.0",
-      what = "CatastRo::catr_atom_get_address_db_all(cache)",
+      what = "CatastRo::catr_atom_get_buildings_db_all(cache)",
       details = "Results are always cached."
     )
   }
 
   api_entry <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
-    "Addresses/ES.SDGC.AD.atom.xml"
+    "buildings/ES.SDGC.BU.atom.xml"
   )
 
   file_local <- download_url(
@@ -90,9 +82,9 @@ catr_atom_get_address_db_all <- function(
 
   tbl
 }
-#' @rdname catr_atom_get_address_db
+#' @rdname catr_atom_get_buildings_db
 #' @export
-catr_atom_get_address_db_to <- function(
+catr_atom_get_buildings_db_to <- function(
   to,
   cache = deprecated(),
   update_cache = FALSE,
@@ -102,12 +94,12 @@ catr_atom_get_address_db_to <- function(
   if (lifecycle::is_present(cache)) {
     lifecycle::deprecate_warn(
       when = "1.0.0",
-      what = "CatastRo::catr_atom_get_address_db_to(cache)",
+      what = "CatastRo::catr_atom_get_buildings_db_to(cache)",
       details = "Results are always cached."
     )
   }
 
-  all <- catr_atom_get_address_db_all(cache_dir = cache_dir)
+  all <- catr_atom_get_buildings_db_all(cache_dir = cache_dir)
 
   if (is.null(all)) {
     return(NULL)

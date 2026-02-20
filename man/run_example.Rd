@@ -13,7 +13,7 @@ logical \code{TRUE} or \code{FALSE}
 Internal function to decide whether the example should run or not
 }
 \details{
-On CRAN or in mac results on \code{FALSE}
+On CRAN or on macOS, results in \code{FALSE}
 }
 \examples{
 run_example()

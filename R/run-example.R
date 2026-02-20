@@ -5,7 +5,7 @@
 #' @return logical `TRUE` or `FALSE`
 #'
 #' @details
-#' On CRAN or in mac results on `FALSE`
+#' On CRAN or on macOS, results in `FALSE`
 #'
 #' @keywords internal
 #' @export

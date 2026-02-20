@@ -66,7 +66,7 @@
 #'
 #' # Styles
 #'
-#' The WMS service provide different styles on each layer (`what` parameter).
+#' The WMS service provides different styles on each layer (`what` parameter).
 #' Some of the styles available are:
 #' - `"parcel"`: styles : `"BoundariesOnly"`, `"ReferencePointOnly"`,
 #'   `"ELFCadastre"`.

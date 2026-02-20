@@ -47,10 +47,10 @@
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function.
 #'
-#' Sometimes cached files may be corrupt. On that case, try re-downloading
+#' Sometimes cached files may be corrupt. In that case, try re-downloading
 #' the data setting `update_cache = TRUE` in the corresponding function.
 #'
-#'  If you experience any problem on download, try to download the
+#'  If you experience any problem with downloading, try to download the
 #'  corresponding file by any other method and save it on your
 #'  `cache_dir`. Use the option `verbose = TRUE` for debugging the API query
 #'  and [catr_detect_cache_dir()] to identify your cached path.
@@ -180,13 +180,13 @@ catr_detect_cache_dir <- function() {
 #' @return Invisible. This function is called for its side effects.
 #'
 #' @description
-#' **Use this function with caution**. This function would clear your cached
+#' **Use this function with caution**. This function will clear your cached
 #' data and configuration, specifically:
 #'
 #' * Deletes the \CRANpkg{CatastRo} config directory
 #'   (`tools::R_user_dir("CatastRo", "config")`).
 #' * Deletes the `cache_dir` directory.
-#' * Deletes the values on stored on `Sys.getenv("CATASTROESP_CACHE_DIR")`.
+#' * Deletes the values stored on `Sys.getenv("CATASTROESP_CACHE_DIR")`.
 #'
 #' @param config if `TRUE`, will delete the configuration folder of
 #'   \CRANpkg{CatastRo}.

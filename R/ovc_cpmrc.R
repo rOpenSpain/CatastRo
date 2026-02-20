@@ -4,7 +4,7 @@
 #' Implementation of the OVCCoordenadas service
 #' [Consulta CPMRC](`r ovcurl("CPMRC")`).
 #'
-#' Return the coordinates for a specific cadastral reference.
+#' Returns the coordinates for a specific cadastral reference.
 #'
 #' @references
 #' [Consulta CPMRC](`r ovcurl("CPMRC")`).
@@ -27,7 +27,7 @@
 #' [tibble][tibble::tbl_df] with the input parameters only.
 #'
 #' On a successful query, the function returns a [tibble][tibble::tbl_df]
-#' with one row by cadastral reference, including the following columns:
+#' with one row per cadastral reference, including the following columns:
 #' * `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 #' * `refcat`: Cadastral Reference.
 #' * `address`: Address as it is recorded on the Cadastre.

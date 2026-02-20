@@ -42,11 +42,11 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Get the spatial data of addresses The WFS Service allows to perform
+Get the spatial data of addresses. The WFS Service allows performing
 several types of queries:
 \itemize{
 \item By bounding box: Implemented on \code{catr_wfs_get_address_bbox()}.
-Extract objects included on the bounding box provided. See \strong{Details}.
+Extract objects included in the bounding box provided. See \strong{Details}.
 }
 
 \itemize{
@@ -56,17 +56,17 @@ objects of specific addresses.
 
 \itemize{
 \item By cadastral reference: Implemented on \code{catr_wfs_get_address_rc()}. Extract
-objects of specific cadastral references
+objects of specific cadastral references.
 }
 
 \itemize{
 \item By postal codes: Implemented on \code{catr_wfs_get_address_postalcode()}.
-Extract objects of specific cadastral references
+Extract objects of specific postal codes
 }
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
-coordinate values. Additionally, when the \code{srs} correspond to a geographic
+coordinate values. Additionally, when the \code{srs} corresponds to a geographic
 reference system (4326, 4258), the function queries the bounding box on
 \href{https://epsg.io/3857}{EPSG:3857} - Web Mercator, to overcome
 a potential bug on the API side.
@@ -74,8 +74,8 @@ a potential bug on the API side.
 When \code{x} is a \code{\link[sf:sf]{sf}} object, the value \code{srs} is ignored. In
 this case, the bounding box of the \code{\link[sf:sf]{sf}} object would be
 used for the query (see \code{\link[sf:st_bbox]{sf::st_bbox()}}). The query is performed using
-\href{https://epsg.io/3857}{EPSG:3857} (Web Mercator). The result is provided
-always in the SRS of the \code{\link[sf:sf]{sf}} object provided as input.
+\href{https://epsg.io/3857}{EPSG:3857} (Web Mercator). The result is always
+provided in the SRS of the \code{\link[sf:sf]{sf}} object provided as input.
 }
 \section{API Limits}{
 The API service is limited to a bounding box of 4km2 and a maximum of 5.000

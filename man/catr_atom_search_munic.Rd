@@ -35,8 +35,8 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 A \link[tibble:tbl_df-class]{tibble}.
 }
 \description{
-Search for a municipality (as a string, part of string or code) and get
-the corresponding coding as per the Cadastre.
+Search for a municipality (as a string, part of a string, or code) and get
+the corresponding code as per the Cadastre.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}

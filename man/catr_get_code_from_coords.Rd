@@ -34,8 +34,8 @@ A \link[tibble:tbl_df-class]{tibble} with the format described in
 \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
 }
 \description{
-This function takes as an input a pair of coordinates of a \code{\link[sf:sf]{sf}}
-object and returns the corresponding municipality code for that coordinates.
+This function takes as input a pair of coordinates of a \code{\link[sf:sf]{sf}}
+object and returns the corresponding municipality code for those coordinates.
 
 See also \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}} and \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
 }

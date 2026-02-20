@@ -35,11 +35,11 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Get the spatial data of buildings. The WFS Service allows to perform
+Get the spatial data of buildings. The WFS Service allows performing
 two types of queries:
 \itemize{
 \item By bounding box: Implemented on \code{catr_wfs_get_buildings_bbox()}.
-Extract objects included on the bounding box provided. See \strong{Details}.
+Extract objects included in the bounding box provided. See \strong{Details}.
 }
 
 \itemize{
@@ -49,10 +49,10 @@ Extract objects of specific cadastral references.
 }
 \details{
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
-coordinate values. Additionally, when the \code{srs} correspond to a geographic
+coordinate values. Additionally, when the \code{srs} corresponds to a geographic
 reference system (4326, 4258), the function queries the bounding box on
 \href{https://epsg.io/3857}{EPSG:3857} - Web Mercator, to overcome
-a potential bug on the API side. The result is provided always in the SRS
+a potential bug on the API side. The result is always provided in the SRS
 provided in \code{srs}.
 
 When \code{x} is a \CRANpkg{sf} object, the value \code{srs} is ignored. The query is

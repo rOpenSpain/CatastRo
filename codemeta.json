@@ -208,6 +208,18 @@
     },
     "5": {
       "@type": "SoftwareApplication",
+      "identifier": "lifecycle",
+      "name": "lifecycle",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lifecycle"
+    },
+    "6": {
+      "@type": "SoftwareApplication",
       "identifier": "mapSpain",
       "name": "mapSpain",
       "version": ">= 0.7.0",
@@ -219,7 +231,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=mapSpain"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -232,7 +244,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "7": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -245,7 +257,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "8": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "stringi",
       "name": "stringi",
@@ -257,7 +269,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=stringi"
     },
-    "9": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "terra",
       "name": "terra",
@@ -269,7 +281,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=terra"
     },
-    "10": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -281,7 +293,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "11": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -297,7 +309,7 @@
   },
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["catastro", "cran", "cran-r", "gis", "maps", "r", "r-package", "ropenspain", "rstats", "spain", "spatial", "static-tiles"],
-  "fileSize": "1059.361KB",
+  "fileSize": "1075.539KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

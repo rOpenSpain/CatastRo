@@ -22,7 +22,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 **CatastRo** is a package that provides access to different API services
 of the [Spanish Cadastre](https://www.sedecatastro.gob.es/). With
-**CatastRo** you can download spatial objects such as buildings and
+**CatastRo**, you can download spatial objects such as buildings,
 cadastral parcels, maps, and geocode cadastral references.
 
 ## Installation
@@ -91,7 +91,7 @@ options(download.file.method = "curl", download.file.extra = "-k -L")
 
 ## Package API
 
-The functions of **CatastRo** are organized by API endpoint. The package
+The functions of **CatastRo** are organised by API endpoint. The package
 naming convention is `catr_*api*_*description*`.
 
 ### OVCCoordenadas
@@ -131,27 +131,28 @@ These functions are named `catr_atom_get_xxx`.
 #### WFS service
 
 The WFS service allows downloading vector objects of specific cadastral
-elements. The result is provided as `sf` class objects (see
+elements. The results are provided as `sf` class objects (see the
 [**sf**](https://r-spatial.github.io/sf/) package). Note that there are
 some limitations on the extent and number of elements to query. For
-batch-downloading the ATOM service is preferred.
+batch downloading the ATOM service is preferred.
 
-These functions are named `catr_wms_get_xxx`.
+These functions are named `catr_wfs_get_xxx`.
 
 #### WMS service
 
 This service allows downloading georeferenced images of different
-cadastral elements. The result is a raster in the format provided by
-[**terra**](https://rspatial.github.io/terra/reference/terra-package.html).
+cadastral elements. The results are provided as rasters in the format
+provided by the
+[**terra**](https://rspatial.github.io/terra/reference/terra-package.html)
+package.
 
 There is a single function for querying this service:
 `catr_wms_get_layer()`.
 
 #### Terms and conditions of use
 
-Please check the [downloading
-provisions](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf)
-of the service.
+Please check the service’s [downloading
+provisions](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf).
 
 ## Examples
 
@@ -234,7 +235,7 @@ catr_set_cache_dir("./path/to/location")
 ```
 
 When this option is set, **CatastRo** will look for the cached file and
-it will load it, speeding up the process.
+load it, speeding up the process.
 
 ## Citation
 

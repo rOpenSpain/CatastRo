@@ -35,8 +35,8 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{to}{Territorial office. It can be any type of string, the function
-would perform a search using \code{\link[base:grep]{base::grep()}}.}
+\item{to}{character. Territorial office. Internally uses \code{\link[base:grep]{base::grep()}} for
+matching.}
 }
 \value{
 A \link[tibble:tbl_df-class]{tibble} with the information requested.
@@ -47,13 +47,14 @@ A \link[tibble:tbl_df-class]{tibble} with the information requested.
 of Spain except the Basque Country and Navarre.
 \item \code{url}: ATOM URL for the corresponding territorial office.
 \item \code{munic}: Name of the municipality.
-\item \code{date}: Reference date of the data. Note that \strong{the information from
-this service is updated twice a year}.
+\item \code{date}: Reference date of the data. Note that the information from
+this service is updated twice a year.
 }
 \item \code{catr_atom_get_buildings_db_to()} includes the following fields:
 \itemize{
 \item \code{munic}: Name of the municipality.
-\item \code{url}: URL for downloading information of the corresponding municipality.
+\item \code{url}: URL for downloading information of the corresponding
+municipality.
 \item \code{date}: Reference date of the data. Note that \strong{the information from
 this service is updated twice a year}.
 }
@@ -64,8 +65,8 @@ Create a database containing the URLs provided in the INSPIRE ATOM service
 of the Spanish Cadastre for extracting buildings.
 \itemize{
 \item \code{catr_atom_get_buildings_db_all()} provides a top-level table including
-information of all the territorial offices (except Basque Country and
-Navarre) listing the municipalities included on each office.
+information on all the territorial offices (except Basque Country and
+Navarre) listing the municipalities included in each office.
 \item \code{catr_atom_get_buildings_db_to()} provides a table for the specified
 territorial office including information for each of the municipalities
 of that office.
