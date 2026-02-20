@@ -23,7 +23,7 @@ Imports:
     dplyr,
     httr2 (>= 1.0.0),
     lifecycle,
-    mapSpain (>= 0.7.0),
+    mapSpain (>= 1.0.0),
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
     stringi,

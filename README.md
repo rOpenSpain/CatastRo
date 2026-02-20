@@ -189,7 +189,6 @@ catr_ovc_get_rccoor(
 ``` r
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
-
 # Map
 library(ggplot2)
 

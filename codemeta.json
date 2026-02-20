@@ -222,7 +222,7 @@
       "@type": "SoftwareApplication",
       "identifier": "mapSpain",
       "name": "mapSpain",
-      "version": ">= 0.7.0",
+      "version": ">= 1.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -309,7 +309,7 @@
   },
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["catastro", "cran", "cran-r", "gis", "maps", "r", "r-package", "ropenspain", "rstats", "spain", "spatial", "static-tiles"],
-  "fileSize": "1075.539KB",
+  "fileSize": "1132.122KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

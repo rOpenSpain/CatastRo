@@ -2,12 +2,12 @@
 #'
 #' @description
 #' Get geotagged images from the Spanish Cadastre. This function is a wrapper of
-#' [mapSpain::esp_getTiles()].
+#' [mapSpain::esp_get_tiles()].
 #'
 #' @inheritParams catr_atom_get_buildings
 #' @inheritParams catr_wfs_get_buildings_bbox
-#' @inheritParams mapSpain::esp_getTiles
-#' @inheritDotParams mapSpain::esp_getTiles res:mask
+#' @inheritParams mapSpain::esp_get_tiles
+#' @inheritDotParams mapSpain::esp_get_tiles res:mask
 #'
 #' @param what Layer to be extracted, see **Details**.
 #' @param styles Style of the WMS layer. See **Details**.
@@ -21,7 +21,7 @@
 #' @family spatial
 #'
 #' @seealso
-#' [mapSpain::esp_getTiles()] and [terra::RGB()]. For plotting see
+#' [mapSpain::esp_get_tiles()] and [terra::RGB()]. For plotting see
 #' [terra::plotRGB()] and [tidyterra::geom_spatraster_rgb()].
 #'
 #' @export
@@ -194,7 +194,7 @@ catr_wms_get_layer <- function(
 
   # Query
 
-  out <- mapSpain::esp_getTiles(
+  out <- mapSpain::esp_get_tiles(
     x = bbox_res,
     type = layer,
     update_cache = update_cache,
