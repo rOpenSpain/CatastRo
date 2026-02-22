@@ -22,7 +22,7 @@ test_that("Test offline", {
 
   expect_snapshot(
     fend <- catr_get_code_from_coords(
-      mapSpain::esp_get_prov("Caceres"),
+      mapSpain::esp_get_prov_siane("Caceres"),
       cache_dir = cdir
     )
   )
@@ -60,7 +60,7 @@ test_that("Test 404 all", {
 
   expect_snapshot(
     fend <- catr_get_code_from_coords(
-      mapSpain::esp_get_prov("Caceres"),
+      mapSpain::esp_get_prov_siane("Caceres"),
       cache_dir = cdir
     )
   )
@@ -122,9 +122,8 @@ test_that("Check", {
   )
 
   # Try with sf
-  m <- mapSpain::esp_get_ccaa(
+  m <- mapSpain::esp_get_ccaa_siane(
     ccaa = c("Asturias", "La Rioja"),
-    resolution = 60,
     cache_dir = cdir
   )
 
@@ -132,7 +131,10 @@ test_that("Check", {
   expect_silent(catr_get_code_from_coords(m[1, ]))
 
   # Try polis
-  m2 <- mapSpain::esp_get_ccaa("Murcia", cache_dir = cdir, resolution = 60, )
+  m2 <- mapSpain::esp_get_ccaa_siane(
+    "Murcia",
+    cache_dir = cdir
+  )
   s3 <- catr_get_code_from_coords(m2, cache_dir = cdir)
 
   expect_s3_class(s3, "tbl")

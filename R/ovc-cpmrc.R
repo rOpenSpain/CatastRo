@@ -98,7 +98,9 @@ catr_ovc_get_cpmrc <- function(
   if (("lerr" %in% names(err))) {
     df <- tibble::as_tibble_row(unlist(err["lerr"]))
 
-    message("Error code: ", df[1, 1], ". ", df[1, 2])
+    cli::cli_alert_danger(
+      paste0("Error code: ", df[1, 1], ". ", df[1, 2])
+    )
 
     empty <- tibble::tibble(
       r = rc,

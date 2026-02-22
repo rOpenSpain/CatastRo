@@ -120,3 +120,37 @@ sanitize_sf <- function(data_sf) {
 
   data_sf
 }
+
+
+get_sf_from_bbox <- function(bbox, srs = NULL) {
+  if (inherits(bbox, "sf") || inherits(bbox, "sfc")) {
+    return(bbox)
+  }
+
+  # Sanity check
+  if (!(is.numeric(bbox) && length(bbox) == 4)) {
+    cli::cli_abort(
+      "{.arg bbox} have length {.val {4L}}, not {.val {length(bbox)}}."
+    )
+  }
+
+  srs <- ensure_null(srs)
+  if (is.null(srs)) {
+    cli::cli_abort(
+      "Please provide a valid non-empty value for {.arg srs}."
+    )
+  }
+
+  # Create template for a spatial bbox
+  template_sf <- sf::st_sfc(sf::st_point(c(0, 0)))
+  template_bbox <- sf::st_bbox(template_sf)
+
+  # Create the spatial object
+  bbox_new <- bbox
+  class(bbox_new) <- class(template_bbox)
+
+  bbox_new <- sf::st_as_sfc(bbox_new)
+  bbox_new <- sf::st_set_crs(bbox_new, srs)
+
+  bbox_new
+}

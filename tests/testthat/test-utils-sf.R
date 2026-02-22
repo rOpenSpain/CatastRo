@@ -65,3 +65,18 @@ test_that("Read shp address", {
   unlink(cdir, recursive = TRUE, force = TRUE)
   expect_false(dir.exists(cdir))
 })
+
+
+test_that("get_sf_from_bbox", {
+  a <- get_sf_from_bbox(c(1, 2, 3, 4), srs = 3857)
+  b <- get_sf_from_bbox(a)
+
+  expect_identical(a, b)
+
+  c <- sf::st_sf(x = 1, geometry = b)
+  cc <- get_sf_from_bbox(c)
+  expect_identical(c, cc)
+
+  expect_snapshot(error = TRUE, get_sf_from_bbox(c(1, 2)))
+  expect_snapshot(error = TRUE, get_sf_from_bbox(c(1, 2, 1, 2)))
+})

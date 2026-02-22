@@ -44,14 +44,15 @@
 #' @export
 catr_wfs_get_parcels_bbox <- function(
   x,
-  what = "parcel",
-  srs,
+  what = c("parcel", "zoning"),
+  srs = NULL,
   verbose = FALSE
 ) {
   # Sanity checks
-  if (!(what %in% c("parcel", "zoning"))) {
-    stop("'what' should be 'parcel' or 'zoning'")
-  }
+  # Sanity checks
+  x <- validate_non_empty_arg(x)
+  srs <- ensure_null(srs)
+  what <- match_arg_pretty(what)
 
   # Switch to stored queries
   stored_query <- switch(what,
@@ -59,30 +60,44 @@ catr_wfs_get_parcels_bbox <- function(
     "zoning" = "CP.CADASTRALZONING"
   )
 
-  bbox_res <- wfs_bbox(x, srs)
-
-  message_on_limit(bbox_res, 4)
-
-  res <- wfs_api_query(
-    entry = "wfsCP.aspx?",
-    verbose = verbose,
-    # WFS service
-    service = "wfs",
-    version = "2.0.0",
-    request = "getfeature",
-    typenames = stored_query,
-    # Stored query
-    bbox = bbox_res$bbox,
-    SRSNAME = bbox_res$incrs
+  limit <- switch(what,
+    "parcel" = 1,
+    "zoning" = 25
   )
 
-  out <- wfs_results(res, verbose)
+  bbox_res <- wfs_get_bbox(
+    x = x,
+    srs = srs,
+    srs_dest = 25830,
+    limit_km2 = limit
+  )
 
-  if (!is.null(out)) {
-    # Transform back to the desired srs
-    out <- sf::st_transform(out, bbox_res$outcrs)
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsCP.aspx",
+    verbose = verbose,
+    query = list(
+      # WFS service
+      service = "wfs",
+      version = "2.0.0",
+      request = "getfeature",
+      typenames = stored_query,
+      # Stored query
+      bbox = paste0(bbox_res, collapse = ","),
+      SRSNAME = 25830
+    )
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
   }
-  out
+
+  # Transform back to the desired srs
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
+  if (is.null(srs)) {
+    srs <- sf::st_crs(x)
+  }
+  out <- sf::st_transform(out, srs)
 }
 #' @description
 #' - By zoning: Implemented on `catr_wfs_get_parcels_zoning()`. Extract
@@ -93,21 +108,38 @@ catr_wfs_get_parcels_bbox <- function(
 #' @rdname catr_wfs_get_parcels
 #' @export
 catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
-  res <- wfs_api_query(
-    entry = "wfsCP.aspx?",
-    verbose = verbose,
+  # Sanity checks
+  cod_zona <- validate_non_empty_arg(cod_zona)
+  srs <- ensure_null(srs)
+  # Fake call to validate srs
+  if (!is.null(srs)) {
+    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
+  }
+
+  q <- list(
     # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "GetZoning",
     # Stored query
-    cod_zona = cod_zona,
-    SRSNAME = srs
+    cod_zona = cod_zona
   )
 
-  out <- wfs_results(res, verbose)
+  q$SRSNAME <- srs
 
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsCP.aspx",
+    verbose = verbose,
+    query = q
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
   out
 }
 #' @description
@@ -117,21 +149,38 @@ catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
 #' @rdname catr_wfs_get_parcels
 #' @export
 catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
-  res <- wfs_api_query(
-    entry = "wfsCP.aspx?",
-    verbose = verbose,
+  # Sanity checks
+  rc <- validate_non_empty_arg(rc)
+  srs <- ensure_null(srs)
+  # Fake call to validate srs
+  if (!is.null(srs)) {
+    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
+  }
+
+  q <- list(
     # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "GetParcel",
     # Stored query
-    refcat = rc,
-    SRSNAME = srs
+    refcat = rc
   )
 
-  out <- wfs_results(res, verbose)
+  q$SRSNAME <- srs
 
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsCP.aspx",
+    verbose = verbose,
+    query = q
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
   out
 }
 #' @description
@@ -142,21 +191,38 @@ catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #' @rdname catr_wfs_get_parcels
 #' @export
 catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
-  res <- wfs_api_query(
-    entry = "wfsCP.aspx?",
-    verbose = verbose,
+  # Sanity checks
+  rc <- validate_non_empty_arg(rc)
+  srs <- ensure_null(srs)
+  # Fake call to validate srs
+  if (!is.null(srs)) {
+    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
+  }
+
+  q <- list(
     # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "GetNeighbourParcel",
     # Stored query
-    refcat = rc,
-    SRSNAME = srs
+    refcat = rc
   )
 
-  out <- wfs_results(res, verbose)
+  q$SRSNAME <- srs
 
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsCP.aspx",
+    verbose = verbose,
+    query = q
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
   out
 }
 #' @description
@@ -185,19 +251,37 @@ catr_wfs_get_parcels_parcel_zoning <- function(
   srs = NULL,
   verbose = FALSE
 ) {
-  res <- wfs_api_query(
-    entry = "wfsCP.aspx?",
-    verbose = verbose,
+  # Sanity checks
+  cod_zona <- validate_non_empty_arg(cod_zona)
+  srs <- ensure_null(srs)
+  # Fake call to validate srs
+  if (!is.null(srs)) {
+    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
+  }
+
+  q <- list(
     # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "GetParcelsByZoning",
     # Stored query
-    cod_zona = cod_zona,
-    SRSNAME = srs
+    cod_zona = cod_zona
   )
-  out <- wfs_results(res, verbose)
 
+  q$SRSNAME <- srs
+
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsCP.aspx",
+    verbose = verbose,
+    query = q
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
   out
 }

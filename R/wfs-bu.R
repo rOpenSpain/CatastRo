@@ -48,14 +48,14 @@
 #' @export
 catr_wfs_get_buildings_bbox <- function(
   x,
-  what = "building",
-  srs,
+  what = c("building", "buildingpart", "other"),
+  srs = NULL,
   verbose = FALSE
 ) {
   # Sanity checks
-  if (!(what %in% c("building", "buildingpart", "other"))) {
-    stop("'what' should be 'building', 'buildingpart', 'other'")
-  }
+  x <- validate_non_empty_arg(x)
+  srs <- ensure_null(srs)
+  what <- match_arg_pretty(what)
 
   # Switch to stored queries
   stored_query <- switch(what,
@@ -64,30 +64,34 @@ catr_wfs_get_buildings_bbox <- function(
     "other" = "BU.OTHERCONSTRUCTION"
   )
 
-  bbox_res <- wfs_bbox(x, srs)
+  bbox_res <- wfs_get_bbox(x = x, srs = srs, srs_dest = 25830, limit_km2 = 4)
 
-  message_on_limit(bbox_res, 4)
-
-  res <- wfs_api_query(
-    entry = "wfsBU.aspx?",
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsBU.aspx",
     verbose = verbose,
-    # WFS service
-    service = "wfs",
-    version = "2.0.0",
-    request = "getfeature",
-    typenames = stored_query,
-    # Stored query
-    bbox = bbox_res$bbox,
-    SRSNAME = bbox_res$incrs
+    query = list(
+      # WFS service
+      service = "wfs",
+      version = "2.0.0",
+      request = "getfeature",
+      typenames = stored_query,
+      # Stored query
+      bbox = paste0(bbox_res, collapse = ","),
+      SRSNAME = 25830
+    )
   )
 
-  out <- wfs_results(res, verbose)
-
-  if (!is.null(out)) {
-    # Transform back to the desired srs
-    out <- sf::st_transform(out, bbox_res$outcrs)
+  if (is.null(file_local)) {
+    return(NULL)
   }
-  out
+
+  # Transform back to the desired srs
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
+  if (is.null(srs)) {
+    srs <- sf::st_crs(x)
+  }
+  out <- sf::st_transform(out, srs)
 }
 
 #' @description
@@ -124,13 +128,17 @@ catr_wfs_get_buildings_bbox <- function(
 #' }
 catr_wfs_get_buildings_rc <- function(
   rc,
-  what = "building",
+  what = c("building", "buildingpart", "other"),
   srs = NULL,
   verbose = FALSE
 ) {
   # Sanity checks
-  if (!(what %in% c("building", "buildingpart", "other"))) {
-    stop("'what' should be 'building', 'buildingpart', 'other'")
+  rc <- validate_non_empty_arg(rc)
+  srs <- ensure_null(srs)
+  what <- match_arg_pretty(what)
+  # Fake call to validate srs
+  if (!is.null(srs)) {
+    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
   }
 
   # Switch to stored queries
@@ -140,19 +148,28 @@ catr_wfs_get_buildings_rc <- function(
     "other" = "GetOtherBuildingByParcel"
   )
 
-  res <- wfs_api_query(
-    entry = "wfsBU.aspx?",
-    verbose = verbose,
+  q <- list(
     # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = stored_query,
     # Stored query
-    REFCAT = rc,
-    SRSNAME = srs
+    REFCAT = rc
+  )
+  q$SRSNAME <- srs
+
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsBU.aspx",
+    verbose = verbose,
+    query = q
   )
 
-  out <- wfs_results(res, verbose)
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
   out
 }
