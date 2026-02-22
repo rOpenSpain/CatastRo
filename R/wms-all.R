@@ -122,7 +122,7 @@
 #' }
 catr_wms_get_layer <- function(
   x,
-  srs,
+  srs = NULL,
   what = c(
     "building",
     "buildingpart",
@@ -140,12 +140,13 @@ catr_wms_get_layer <- function(
   options = NULL,
   ...
 ) {
+  x <- ensure_null(x)
   bbox_res <- get_sf_from_bbox(x, srs)
   cache_dir <- create_cache_dir(cache_dir)
 
   # Manage layer
 
-  what <- match.arg(what)
+  what <- match_arg_pretty(what)
 
   layer <- switch(what,
     "building" = "Catastro.Building",
@@ -165,7 +166,7 @@ catr_wms_get_layer <- function(
   )
 
   # Add srs
-  if (!missing(srs)) {
+  if (!is.null(srs)) {
     if (!any(grepl("epsg", srs, ignore.case = TRUE))) {
       opts <- modifyList(
         opts,

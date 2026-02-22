@@ -37,7 +37,8 @@
     Message
       i Found 2 Territorial offices with pattern "lencia".
       v Selecting "Territorial office 34 Palencia".
-      x Discarding "Territorial office 46 Valencia".
+      x Discarding:
+        "Territorial office 46 Valencia"
 
 # Deprecations
 

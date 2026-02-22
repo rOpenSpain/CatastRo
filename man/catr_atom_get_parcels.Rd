@@ -78,7 +78,8 @@ INSPIRE API functions:
 \code{\link{catr_wfs_get_address_bbox}()},
 \code{\link{catr_wfs_get_buildings_bbox}()},
 \code{\link{catr_wfs_get_parcels_bbox}()},
-\code{\link{catr_wms_get_layer}()}
+\code{\link{catr_wms_get_layer}()},
+\code{\link{inspire_wfs_get}()}
 
 Other INSPIRE ATOM services:
 \code{\link{catr_atom_get_address}()},

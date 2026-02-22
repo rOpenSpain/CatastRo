@@ -16,6 +16,13 @@ test_that("wfs_get_bbox", {
   buf <- sf::st_as_sfc(buf)
   buf <- sf::st_set_crs(buf, 3857)
   expect_snapshot(wfs_get_bbox(buf, limit_km2 = 1))
+
+  # Check transformation to another srs
+  geobox <- c(1, 1, 2, 1)
+  another <- wfs_get_bbox(geobox, srs = 4326, srs_dest = 25830)
+  merc <- wfs_get_bbox(geobox, srs = 4326, srs_dest = 3857)
+
+  expect_false(any(another == merc))
 })
 test_that("Test offline", {
   skip_on_cran()

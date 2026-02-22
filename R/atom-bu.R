@@ -133,7 +133,12 @@ catr_atom_get_buildings <- function(
     )
 
     cli::cli_alert_success("Selecting {.str {tb[1,]$munic}}.")
-    cli::cli_alert_danger("Discarding {.str {tb[-1,]$munic}}.")
+    cli::cli_alert_danger("Discarding:")
+    bullets <- tb[-1, ]$munic
+    bullets <- paste0("{.str ", bullets, "}")
+    names(bullets) <- rep(" ", length(bullets))
+    cli::cli_bullets(bullets)
+
     tb <- tb[1, ]
   }
 

@@ -44,7 +44,7 @@ read_geo_file_sf <- function(
     layers <- layers[grepl(layer_hint, layers$name, ignore.case = TRUE), ]
   }
 
-  data_sf <- sf::read_sf(file_local, layer = layers$name[1])
+  data_sf <- sf::read_sf(file_local, layer = layers$name[1], quiet = TRUE)
 
   data_sf <- sanitize_sf(data_sf)
 

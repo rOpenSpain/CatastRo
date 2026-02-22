@@ -1,3 +1,50 @@
+#' Client tool for WFS INSPIRE services
+#'
+#' @family INSPIRE
+#' @family WFS
+#'
+#' @param scheme Identifies the protocol to be used to access the resource on
+#'   the Internet.
+#' @param hostname Identifies the host that holds the resource.
+#' @param path Identifies the specific resource in the host that the web client
+#'   wants to access.
+#' @param query A named list with the name and value of the parameters to query.
+#' @inheritParams catr_wfs_get_address_bbox
+#'
+#' @return
+#' A character string with the path of the resulting file in the [tempfile()]
+#' folder.
+#'
+#' @details
+#' This function is used internally in all the WFS calls. We expose it to make
+#' it available to another users and/or developers for accessing other
+#' cadastral or INSPIRE resources. See **Examples**.
+#'
+#' @export
+#' @rdname inspire_wfs_get
+#' @examplesIf run_example()
+#' # Accessing the Cadastre of Navarra
+#' # Try also https://ropenspain.github.io/CatastRoNav/
+#'
+#' file_local <- inspire_wfs_get(
+#'   hostname = "inspire.navarra.es",
+#'   path = "services/BU/wfs",
+#'   query = list(
+#'     service = "WFS",
+#'     request = "getfeature",
+#'     typenames = "BU:Building",
+#'     bbox = "609800,4740100,611000,4741300",
+#'     SRSNAME = "EPSG:25830"
+#'   )
+#' )
+#'
+#' if (!is.null(file_local)) {
+#'   pamp <- sf::read_sf(file_local)
+#'
+#'   library(ggplot2)
+#'   ggplot(pamp) +
+#'     geom_sf()
+#' }
 inspire_wfs_get <- function(
   scheme = "https",
   hostname = "ovc.catastro.meh.es",
@@ -37,23 +84,20 @@ inspire_wfs_get <- function(
   # SRS should be checked
   if ("srsname" %in% names(query)) {
     srs <- query$srsname
-    query$srsname <- ifelse(grepl("^EPS", srs), srs, paste0("EPSG::", srs))
+    query$srsname <- ifelse(grepl("^EPS", srs), srs, paste0("EPSG:", srs))
   }
 
   # We don't use httr2 since some needed values (::, ,) are masked
   q <- paste0(names(query), "=", query, collapse = "&")
 
   # Build url
-  url <- paste0(
-    trimws(scheme),
-    "://",
-    trimws(hostname),
-    "/",
-    trimws(path),
-    "?",
-    q
-  )
+  url <- paste0(trimws(hostname), "/", trimws(path), "?", q)
 
+  # Clean double slashes and ?? just in case
+  url <- gsub("//", "/", url, fixed = TRUE)
+  url <- gsub("??", "?", url, fixed = TRUE)
+
+  url <- paste0(trimws(scheme), "://", url)
   # Create id from md5sum
   tmpfile <- tempfile(fileext = "txt")
   writeLines(url, tmpfile)
@@ -74,7 +118,7 @@ inspire_wfs_get <- function(
   }
 
   # Check results
-  top20lines <- readLines(file_local, n = 20)
+  top20lines <- readLines(file_local, n = 20, warn = FALSE)
 
   if (!any(grepl("<Exception", top20lines))) {
     return(file_local)
@@ -84,7 +128,7 @@ inspire_wfs_get <- function(
   xml_file <- gsub("gml$", "xml", file_local)
   file.copy(file_local, xml_file)
 
-  err <- xml2::read_xml(xml_file)
+  err <- xml2::read_xml(xml_file, encoding = "UTF-8")
   msg <- unlist(xml2::as_list(err)["ExceptionReport"], use.names = FALSE)
 
   cli::cli_alert_danger(
@@ -108,11 +152,12 @@ inspire_wfs_get <- function(
 #' Also warn if beyond the API limits.
 #'
 #' @param x sf or double vector of length 4.
-#' @param srs SRS of the bbox, not needed if x is sf
+#' @param srs SRS of the bbox, not needed if x is sf.
+#' @param srs_dest Destination srs.
 #' @param limit_km2 API limit
 #'
 #' @noRd
-wfs_get_bbox <- function(x, srs = NULL, limit_km2 = 4) {
+wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
   if (!(inherits(x, "sf") || inherits(x, "sfc"))) {
     if (length(x) != 4) {
       cli::cli_abort(
@@ -127,6 +172,9 @@ wfs_get_bbox <- function(x, srs = NULL, limit_km2 = 4) {
         )
       )
     }
+    valid_srs <- CatastRo::catr_srs_values
+    valid <- as.character(valid_srs[valid_srs$ovc_service, ]$SRS)
+    srs <- as.numeric(match_arg_pretty(srs, valid))
 
     sfobj <- x
     class(sfobj) <- "bbox"
@@ -136,11 +184,11 @@ wfs_get_bbox <- function(x, srs = NULL, limit_km2 = 4) {
     sfobj <- x
   }
 
-  # Issue with API: Does not work with all the CRS. For safety we use 3857
-  sfobj <- sf::st_transform(sfobj, 3857)
+  sfobj <- sf::st_transform(sfobj, srs_dest)
 
-  # API limits
-  area <- sf::st_area(sfobj)
+  # API limits (using 3857)
+  obj_for_area <- sf::st_transform(sfobj, 3857)
+  area <- sf::st_area(obj_for_area)
   # Dirty convert to km2
   area <- round(as.double(area) / 1000000, 1)
 

@@ -23,17 +23,18 @@
 #'
 #' @details
 #'
+#' # Bounding box
 #' When `x` is a numeric vector, make sure that the `srs` matches the
-#' coordinate values. Additionally, when the `srs` corresponds to a geographic
-#' reference system (4326, 4258), the function queries the bounding box on
-#' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
+#' coordinate values. Additionally, the function queries the bounding box on
+#' [EPSG:25830](https://epsg.io/25830) - ETRS89 / UTM zone 30N, to overcome
 #' a potential bug on the API side.
 #'
 #' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. In
 #' this case, the bounding box of the [`sf`][sf::st_sf] object would be
-#' used for the query (see [sf::st_bbox()]). The query is performed using
-#' [EPSG:3857](https://epsg.io/3857) (Web Mercator). The result is always
-#' provided in the SRS of the [`sf`][sf::st_sf] object provided as input.
+#' used for the query (see [sf::st_bbox()]).
+#'
+#' The result is always provided in the SRS of the [`sf`][sf::st_sf] object
+#' provided as input.
 #'
 #' # API Limits
 #'
@@ -42,30 +43,40 @@
 #'
 #' @rdname catr_wfs_get_address
 #' @export
-catr_wfs_get_address_bbox <- function(x, srs, verbose = FALSE) {
-  bbox_res <- wfs_bbox(x, srs)
+catr_wfs_get_address_bbox <- function(x, srs = NULL, verbose = FALSE) {
+  # Sanity checks
+  x <- validate_non_empty_arg(x)
+  srs <- ensure_null(srs)
 
-  message_on_limit(bbox_res, 4)
+  bbox_res <- wfs_get_bbox(x = x, srs = srs, srs_dest = 25830, limit_km2 = 4)
 
-  res <- wfs_api_query(
-    entry = "wfsAD.aspx?",
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsAD.aspx",
     verbose = verbose,
-    # WFS service
-    service = "wfs",
-    version = "2.0.0",
-    request = "getfeature",
-    typenames = "AD.ADDRESS",
-    # Stored query
-    bbox = bbox_res$bbox,
-    SRSNAME = bbox_res$incrs
+    query = list(
+      # WFS service
+      service = "wfs",
+      version = "2.0.0",
+      request = "getfeature",
+      typenames = "AD.ADDRESS",
+      # Stored query
+      bbox = paste0(bbox_res, collapse = ","),
+      SRSNAME = 25830
+    )
   )
 
-  out <- wfs_results(res, verbose)
-
-  if (!is.null(out)) {
-    # Transform back to the desired srs
-    out <- sf::st_transform(out, bbox_res$outcrs)
+  if (is.null(file_local)) {
+    return(NULL)
   }
+
+  # Transform back to the desired srs
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
+  if (is.null(srs)) {
+    srs <- sf::st_crs(x)
+  }
+  out <- sf::st_transform(out, srs)
+
   out
 }
 #' @description
@@ -85,9 +96,16 @@ catr_wfs_get_address_codvia <- function(
   srs = NULL,
   verbose = FALSE
 ) {
-  res <- wfs_api_query(
-    entry = "wfsAD.aspx?",
-    verbose = verbose,
+  codvia <- validate_non_empty_arg(codvia)
+  del <- validate_non_empty_arg(del)
+  mun <- validate_non_empty_arg(mun)
+  srs <- ensure_null(srs)
+  # Fake call to validate srs
+  if (!is.null(srs)) {
+    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
+  }
+
+  q <- list(
     # WFS service
     service = "wfs",
     version = "2.0.0",
@@ -96,12 +114,23 @@ catr_wfs_get_address_codvia <- function(
     # Stored query
     codvia = codvia,
     del = del,
-    mun = mun,
-    SRSNAME = srs
+    mun = mun
   )
 
-  out <- wfs_results(res, verbose)
+  q$SRSNAME <- srs
 
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsAD.aspx",
+    verbose = verbose,
+    query = q
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
   out
 }
 
@@ -114,21 +143,37 @@ catr_wfs_get_address_codvia <- function(
 #' @rdname catr_wfs_get_address
 #' @export
 catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
-  res <- wfs_api_query(
-    entry = "wfsAD.aspx?",
-    verbose = verbose,
+  rc <- validate_non_empty_arg(rc)
+  srs <- ensure_null(srs)
+  # Fake call to validate srs
+  if (!is.null(srs)) {
+    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
+  }
+
+  q <- list(
     # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "GetadByRefcat",
     # Stored query
-    REFCAT = rc,
-    SRSNAME = srs
+    REFCAT = rc
   )
 
-  out <- wfs_results(res, verbose)
+  q$SRSNAME <- srs
 
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsAD.aspx",
+    verbose = verbose,
+    query = q
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
   out
 }
 #' @description
@@ -158,20 +203,36 @@ catr_wfs_get_address_postalcode <- function(
   srs = NULL,
   verbose = FALSE
 ) {
-  res <- wfs_api_query(
-    entry = "wfsAD.aspx?",
-    verbose = verbose,
+  postalcode <- validate_non_empty_arg(postalcode)
+  srs <- ensure_null(srs)
+  # Fake call to validate srs
+  if (!is.null(srs)) {
+    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
+  }
+
+  q <- list(
     # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "getadbypostalcode",
     # Stored query
-    postalcode = postalcode,
-    SRSNAME = srs
+    postalcode = postalcode
   )
 
-  out <- wfs_results(res, verbose)
+  q$SRSNAME <- srs
 
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsAD.aspx",
+    verbose = verbose,
+    query = q
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
   out
 }

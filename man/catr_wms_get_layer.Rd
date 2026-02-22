@@ -6,7 +6,7 @@
 \usage{
 catr_wms_get_layer(
   x,
-  srs,
+  srs = NULL,
   what = c("building", "buildingpart", "parcel", "zoning", "address", "admboundary",
     "admunit"),
   styles = "default",
@@ -166,7 +166,8 @@ INSPIRE API functions:
 \code{\link{catr_atom_get_parcels_db_all}()},
 \code{\link{catr_wfs_get_address_bbox}()},
 \code{\link{catr_wfs_get_buildings_bbox}()},
-\code{\link{catr_wfs_get_parcels_bbox}()}
+\code{\link{catr_wfs_get_parcels_bbox}()},
+\code{\link{inspire_wfs_get}()}
 
 Other spatial: 
 \code{\link{catr_atom_get_address}()},

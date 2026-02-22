@@ -126,12 +126,14 @@ INSPIRE API functions:
 \code{\link{catr_atom_get_parcels_db_all}()},
 \code{\link{catr_wfs_get_address_bbox}()},
 \code{\link{catr_wfs_get_buildings_bbox}()},
-\code{\link{catr_wms_get_layer}()}
+\code{\link{catr_wms_get_layer}()},
+\code{\link{inspire_wfs_get}()}
 
 Other INSPIRE WFS services:
 \code{\link{catr_srs_values}},
 \code{\link{catr_wfs_get_address_bbox}()},
-\code{\link{catr_wfs_get_buildings_bbox}()}
+\code{\link{catr_wfs_get_buildings_bbox}()},
+\code{\link{inspire_wfs_get}()}
 
 Other parcels: 
 \code{\link{catr_atom_get_parcels}()},
