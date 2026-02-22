@@ -30,7 +30,7 @@
 #' * `address`: Address as it is recorded on the Cadastre.
 #' * Rest of fields: Check the API Docs.
 #'
-#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
+#' @examplesIf run_example()
 #' \donttest{
 #' catr_ovc_get_rccoor(
 #'   lat = 38.6196566583596,

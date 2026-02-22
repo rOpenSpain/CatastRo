@@ -232,7 +232,7 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export
-#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
+#' @examplesIf run_example()
 #' \donttest{
 #' cp <- catr_wfs_get_parcels_bbox(
 #'   c(

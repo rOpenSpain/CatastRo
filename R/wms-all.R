@@ -85,7 +85,7 @@
 #' ```
 #' for more information.
 #'
-#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
+#' @examplesIf run_example()
 #' \donttest{
 #'
 #' # With a bbox

@@ -111,7 +111,7 @@ for more information.
 }
 
 \examples{
-\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
 
 # With a bbox

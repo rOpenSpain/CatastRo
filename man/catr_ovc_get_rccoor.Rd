@@ -41,7 +41,7 @@ one row by cadastral reference, including the following columns:
 }
 }
 \examples{
-\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
 catr_ovc_get_rccoor(
   lat = 38.6196566583596,

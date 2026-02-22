@@ -31,7 +31,7 @@
 #' be used. The function would extract the coordinates using
 #' `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 #'
-#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
+#' @examplesIf run_example()
 #' \donttest{
 #' # Use with coords
 #' catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)

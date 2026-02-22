@@ -184,7 +184,7 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #'
 #' @rdname catr_wfs_get_address
 #' @export
-#' @examplesIf tolower(Sys.info()[["sysname"]]) != "linux"
+#' @examplesIf run_example()
 #' \donttest{
 #' ad <- catr_wfs_get_address_bbox(
 #'   c(

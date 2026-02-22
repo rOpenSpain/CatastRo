@@ -54,7 +54,7 @@ be used. The function would extract the coordinates using
 \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }
 \examples{
-\dontshow{if (tolower(Sys.info()[["sysname"]]) != "linux") withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
 # Use with coords
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
