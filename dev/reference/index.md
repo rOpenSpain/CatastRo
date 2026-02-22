@@ -53,6 +53,9 @@ provided by the INSPIRE WFS services of the Spanish Cadastre.
   [`catr_wfs_get_parcels_parcel_zoning()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
   : WFS INSPIRE: Download cadastral parcels
 
+- [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
+  : Client tool for WFS INSPIRE services
+
 ## WMS INSPIRE API
 
 These functions return

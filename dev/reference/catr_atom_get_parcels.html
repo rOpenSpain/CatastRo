@@ -41,7 +41,7 @@ municipality using the INSPIRE ATOM service."><meta property="og:image" content=
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>ATOM INSPIRE: Download all cadastral parcels of a municipality</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/main/R/atom_cp.R" class="external-link"><code>R/atom_cp.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/CatastRo/blob/main/R/atom-cp.R" class="external-link"><code>R/atom-cp.R</code></a></small>
       <div class="d-none name"><code>catr_atom_get_parcels.Rd</code></div>
     </div>
 
@@ -55,8 +55,8 @@ municipality using the INSPIRE ATOM service.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">catr_atom_get_parcels</span><span class="op">(</span></span>
 <span>  <span class="va">munic</span>,</span>
 <span>  to <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  what <span class="op">=</span> <span class="st">"parcel"</span>,</span>
-<span>  cache <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  what <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"parcel"</span>, <span class="st">"zoning"</span><span class="op">)</span>,</span>
+<span>  cache <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
@@ -79,29 +79,28 @@ codes.</p></dd>
 
 
 <dt id="arg-what">what<a class="anchor" aria-label="anchor" href="#arg-what"></a></dt>
-<dd><p>Information to load. It could be <code>"parcel"</code> for cadastral parcels
-or <code>"zoning"</code> for cadastral zoning.</p></dd>
+<dd><p>Information to load. It could be:
+-<code>"parcel"</code> for cadastral parcels.
+-<code>"zoning"</code> for cadastral zoning.</p></dd>
 
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
-<dd><p>A logical whether to do caching. Default is <code>TRUE</code>. See
-<strong>About caching</strong> section on <code><a href="catr_set_cache_dir.html">catr_set_cache_dir()</a></code>.</p></dd>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> <code>cache</code> is no longer
+supported; this function will always cache results.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
-When set to <code>TRUE</code> it would force a fresh download of the source file.</p></dd>
+<dd><p>logical. Should the cached file be refreshed? Default is
+<code>FALSE</code>. When set to <code>TRUE</code> it would force a new download.</p></dd>
 
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
-<dd><p>A path to a cache directory. On <code>NULL</code> value (the default)
-the function would store the cached files on the
-<code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></code>.</p></dd>
+<dd><p>A path to a cache directory. On <code>NULL</code> the function
+would store the cached files on a temporary dir (See <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code>).</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical, displays information. Useful for debugging,
-default is <code>FALSE</code>.</p></dd>
+<dd><p>logical. If <code>TRUE</code> displays informational messages.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -124,7 +123,8 @@ default is <code>FALSE</code>.</p></dd>
 <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_bbox()</a></code>,
 <code><a href="catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox()</a></code>,
 <code><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_bbox()</a></code>,
-<code><a href="catr_wms_get_layer.html">catr_wms_get_layer()</a></code></p>
+<code><a href="catr_wms_get_layer.html">catr_wms_get_layer()</a></code>,
+<code><a href="inspire_wfs_get.html">inspire_wfs_get()</a></code></p>
 <p>Other INSPIRE ATOM services:
 <code><a href="catr_atom_get_address.html">catr_atom_get_address()</a></code>,
 <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code>,
@@ -162,7 +162,6 @@ default is <code>FALSE</code>.</p></dd>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="catr_atom_get_parcels-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
-<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

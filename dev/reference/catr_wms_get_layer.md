@@ -2,14 +2,14 @@
 
 Get geotagged images from the Spanish Cadastre. This function is a
 wrapper of
-[`mapSpain::esp_getTiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html).
+[`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html).
 
 ## Usage
 
 ``` r
 catr_wms_get_layer(
   x,
-  srs,
+  srs = NULL,
   what = c("building", "buildingpart", "parcel", "zoning", "address", "admboundary",
     "admunit"),
   styles = "default",
@@ -50,19 +50,18 @@ catr_wms_get_layer(
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source file.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` value (the default) the
-  function would store the cached files on the
-  [`tempdir`](https://rdrr.io/r/base/tempfile.html).
+  A path to a cache directory. On `NULL` the function would store the
+  cached files on a temporary dir (See
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - crop:
 
@@ -79,7 +78,7 @@ catr_wms_get_layer(
 - ...:
 
   Arguments passed on to
-  [`mapSpain::esp_getTiles`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
+  [`mapSpain::esp_get_tiles`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
 
   `res`
 
@@ -141,7 +140,7 @@ equivalence is:
 
 ## Styles
 
-The WMS service provide different styles on each layer (`what`
+The WMS service provides different styles on each layer (`what`
 parameter). Some of the styles available are:
 
 - `"parcel"`: styles : `"BoundariesOnly"`, `"ReferencePointOnly"`,
@@ -169,7 +168,7 @@ Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-[`mapSpain::esp_getTiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
+[`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
 and
 [`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html).
 For plotting see
@@ -186,7 +185,8 @@ INSPIRE API functions:
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels_db.md),
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
+[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
+[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
 Other spatial:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),

@@ -3,7 +3,7 @@
 Implementation of the OVCCoordenadas service [Consulta
 RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR).
 
-Return the cadastral reference found of a set of specific coordinates.
+Returns the cadastral reference found for a set of specific coordinates.
 
 ## Usage
 
@@ -31,8 +31,7 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 

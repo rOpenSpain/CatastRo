@@ -1,7 +1,7 @@
 # Get started
 
 **CatastRo** provides access to different API services of the [Spanish
-Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo** you can
+Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
 download official information on addresses, properties, parcels, and
 buildings.
 
@@ -40,20 +40,20 @@ allows retrieving spatial objects from the database of the cadastre:
   vector objects. These objects are provided by **CatastRo** as
   `SpatRaster` objects as provided by the **terra** package.
 
-Note that **the coverage of this service is 95% of the Spanish
-territory**, excluding the Basque Country and Navarre[¹](#fn1) that have
-their own independent cadastral offices.
+Note that the coverage of this service is 95% of the Spanish territory,
+excluding the Basque Country and Navarre[¹](#fn1), which have their own
+independent cadastral offices.
 
 There are three types of functions, each one querying a different
 service:
 
-1.  **ATOM service**: The ATOM service allows batch-downloading vector
+1.  **ATOM service**: The ATOM service allows batch downloading vector
     objects of different cadastral elements for a specific municipality.
 
 2.  **WFS service**: The WFS service allows downloading vector objects
     of specific cadastral elements. Note that there are some
     *restrictions on the extent and number of elements* to query. For
-    batch-downloading the ATOM service is preferred.
+    batch downloading the ATOM service is preferred.
 
 3.  **WMS service**: This service allows downloading georeferenced
     images of different cadastral elements.
@@ -66,8 +66,8 @@ In this example, we will demonstrate some of the main capabilities of
 the package by recreating a cadastral map of the surroundings of the
 [Santiago Bernabéu
 Stadium](https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium).
-We will make use of the **WMS and WFS services** to get different layers
-in order to show some of the capabilities of the package:
+We will use the **WMS and WFS services** to get different layers, in
+order order to show some of the capabilities of the package:
 
 ``` r
 # Extract building by bounding box
@@ -133,11 +133,11 @@ library(mapSpain)
 city <- esp_get_capimun(munic = "^Granada$")
 ```
 
-The next step consists of extracting the buildings using the ATOM
-service. We will also use the function
+The next step is to extract the buildings using the ATOM service. We
+will also use the function
 [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_get_code_from_coords.md)
-to identify the code of Granada in the Cadastre, and we will download
-the buildings with
+to identify Granada’s code in the Cadastre and download the buildings
+with
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md).
 
 ``` r
@@ -145,16 +145,15 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
 
 The next step in creating the visualization is to limit the analysis to
-a circle of radius 1.5 km around the city center:
+a circle with a radius of 1.5 km around the city center:
 
 ``` r
 buff <- city |>
@@ -163,9 +162,7 @@ buff <- city |>
   # Buffer
   st_buffer(1500)
 
-
 # Cut buildings
-
 dataviz <- st_intersection(city_bu, buff)
 
 ggplot(dataviz) +

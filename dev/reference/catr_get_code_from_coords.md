@@ -1,8 +1,8 @@
 # Get the cadastral municipality code from coordinates
 
-This function takes as an input a pair of coordinates of a
+This function takes as input a pair of coordinates of a
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object and
-returns the corresponding municipality code for that coordinates.
+returns the corresponding municipality code for those coordinates.
 
 See also
 [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
@@ -12,7 +12,13 @@ and
 ## Usage
 
 ``` r
-catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
+catr_get_code_from_coords(
+  x,
+  srs = NULL,
+  verbose = FALSE,
+  cache_dir = NULL,
+  ...
+)
 ```
 
 ## Arguments
@@ -34,14 +40,13 @@ catr_get_code_from_coords(x, srs, verbose = FALSE, cache_dir = NULL, ...)
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` value (the default) the
-  function would store the cached files on the
-  [`tempdir`](https://rdrr.io/r/base/tempfile.html).
+  A path to a cache directory. On `NULL` the function would store the
+  cached files on a temporary dir (See
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - ...:
 

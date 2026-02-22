@@ -1,10 +1,10 @@
 # WFS INSPIRE: Download buildings
 
-Get the spatial data of buildings. The WFS Service allows to perform two
+Get the spatial data of buildings. The WFS Service allows performing two
 types of queries:
 
 - By bounding box: Implemented on `catr_wfs_get_buildings_bbox()`.
-  Extract objects included on the bounding box provided. See
+  Extract objects included in the bounding box provided. See
   **Details**.
 
 &nbsp;
@@ -15,9 +15,19 @@ types of queries:
 ## Usage
 
 ``` r
-catr_wfs_get_buildings_bbox(x, what = "building", srs, verbose = FALSE)
+catr_wfs_get_buildings_bbox(
+  x,
+  what = c("building", "buildingpart", "other"),
+  srs = NULL,
+  verbose = FALSE
+)
 
-catr_wfs_get_buildings_rc(rc, what = "building", srs = NULL, verbose = FALSE)
+catr_wfs_get_buildings_rc(
+  rc,
+  what = c("building", "buildingpart", "other"),
+  srs = NULL,
+  verbose = FALSE
+)
 ```
 
 ## Arguments
@@ -50,8 +60,7 @@ catr_wfs_get_buildings_rc(rc, what = "building", srs = NULL, verbose = FALSE)
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - rc:
 
@@ -64,10 +73,10 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 ## Details
 
 When `x` is a numeric vector, make sure that the `srs` matches the
-coordinate values. Additionally, when the `srs` correspond to a
+coordinate values. Additionally, when the `srs` corresponds to a
 geographic reference system (4326, 4258), the function queries the
 bounding box on [EPSG:3857](https://epsg.io/3857) - Web Mercator, to
-overcome a potential bug on the API side. The result is provided always
+overcome a potential bug on the API side. The result is always provided
 in the SRS provided in `srs`.
 
 When `x` is a [sf](https://CRAN.R-project.org/package=sf) object, the
@@ -101,12 +110,14 @@ INSPIRE API functions:
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels_db.md),
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
 [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
-[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
+[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md),
+[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
 Other INSPIRE WFS services:
 [`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
+[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
+[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
 Other buildings:
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
