@@ -6,7 +6,7 @@
 #' of the Spanish Cadastre for extracting addresses.
 #'
 #' - `catr_atom_get_address_db_all()` provides a top-level table including
-#'    information on all the territorial offices (except Basque Country and
+#'     information on all the territorial offices (except the Basque Country and
 #'    Navarre) listing the municipalities included in each office.
 #' - `catr_atom_get_address_db_to()` provides a table for the specified
 #'    territorial office including information for each of the municipalities
@@ -41,8 +41,8 @@
 #'          province of Spain except the Basque Country and Navarre.
 #'     - `url`: ATOM URL for the corresponding territorial office.
 #'     - `munic`: Name of the municipality.
-#'     - `date`: Reference date of the data. Note that the information from
-#'          this service is updated twice a year.
+#'     - `date`: Reference date of the data. Note that **the information from
+#'           this service is updated twice a year**.
 #'   - `catr_atom_get_address_db_to()` includes the following fields:
 #'     - `munic`: Name of the municipality.
 #'     - `url`: URL for downloading information of the corresponding
@@ -115,7 +115,7 @@ catr_atom_get_address_db_to <- function(
 
   alldist <- unique(all[, c("territorial_office", "url")])
 
-  # Escape parentheses
+  # Escape parentheses in territorial office names for matching
   to <- gsub("\\(|\\)", "", to)
   allto <- gsub("\\(|\\)", "", alldist$territorial_office)
 
@@ -127,7 +127,7 @@ catr_atom_get_address_db_to <- function(
     return(NULL)
   }
 
-  # Check with distances
+  # Compute string distances for territorial office matching
   with_d <- data.frame(
     to = alldist$territorial_office,
     dist = as.vector(adist(to, alldist$territorial_office))

@@ -49,7 +49,6 @@ catr_wfs_get_parcels_bbox <- function(
   verbose = FALSE
 ) {
   # Sanity checks
-  # Sanity checks
   x <- validate_non_empty_arg(x)
   srs <- ensure_null(srs)
   what <- match_arg_pretty(what)

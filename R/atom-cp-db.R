@@ -6,7 +6,7 @@
 #' of the Spanish Cadastre for extracting cadastral parcels.
 #'
 #'  - `catr_atom_get_parcels_db_all()` provides a top-level table including
-#'     information on all the territorial offices (except Basque Country and
+#'      information on all the territorial offices (except the Basque Country and
 #'     Navarre) listing the municipalities included in each office.
 #'  - `catr_atom_get_parcels_db_to()` provides a table for the specified
 #'     territorial office including information for each of the municipalities
@@ -117,7 +117,7 @@ catr_atom_get_parcels_db_to <- function(
 
   alldist <- unique(all[, c("territorial_office", "url")])
 
-  # Escape parentheses
+  # Escape parentheses in territorial office names for matching
   to <- gsub("\\(|\\)", "", to)
   allto <- gsub("\\(|\\)", "", alldist$territorial_office)
 
@@ -129,7 +129,7 @@ catr_atom_get_parcels_db_to <- function(
     return(NULL)
   }
 
-  # Check with distances
+  # Compute string distances for territorial office matching
   with_d <- data.frame(
     to = alldist$territorial_office,
     dist = as.vector(adist(to, alldist$territorial_office))

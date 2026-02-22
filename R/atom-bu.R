@@ -88,7 +88,7 @@ catr_atom_get_buildings <- function(
   if (!is.null(to)) {
     linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
 
-    # Ignore if no result
+    # Filter by territorial office if matches found
     if (length(linesto) > 1) {
       all <- all[linesto, ]
     } else {
@@ -118,7 +118,7 @@ catr_atom_get_buildings <- function(
     return(NULL)
   }
 
-  # Check with distances
+  # Compute string distances for municipality matching
   with_d <- data.frame(
     munic = all$munic,
     territorial_office = all$territorial_office,
@@ -155,10 +155,10 @@ catr_atom_get_buildings <- function(
     cache_dir = cache_dir,
     verbose = FALSE
   )
-  # Get munic code from reference
+  # Extract municipality code from reference string
   ref <- unlist(strsplit(tb$munic, "-"))[1]
 
-  # Download from url
+  # Prepare download URL for municipality data
   api_entry <- municurls[
     grepl(ref, municurls$munic, ignore.case = TRUE),
   ]$url

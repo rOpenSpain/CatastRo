@@ -65,7 +65,7 @@ Create a database containing the URLs provided in the INSPIRE ATOM service
 of the Spanish Cadastre for extracting buildings.
 \itemize{
 \item \code{catr_atom_get_buildings_db_all()} provides a top-level table including
-information on all the territorial offices (except Basque Country and
+information on all the territorial offices (except the Basque Country and
 Navarre) listing the municipalities included in each office.
 \item \code{catr_atom_get_buildings_db_to()} provides a table for the specified
 territorial office including information for each of the municipalities

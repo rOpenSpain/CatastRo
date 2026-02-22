@@ -79,7 +79,7 @@ provided as input.
 }
 
 \section{API Limits}{
-The API service is limited to a bounding box of 4km2 and a maximum of 5.000
+The API service is limited to a bounding box of 4km2 and a maximum of 5,000
 elements.
 }
 

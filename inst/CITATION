@@ -8,7 +8,10 @@ bibentry(
   "Manual",
   header = paste0("To cite '", pkg, "' in publications use:"),
   title = "{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro",
-  author = c(person("Ángel", "Delgado Panadero"), person("Diego", "Hernangómez")),
+  author = c(
+    person("Ángel", "Delgado Panadero"),
+    person("Diego", "Hernangómez")
+  ),
   doi = doi,
   year = year,
   version = meta$Version,

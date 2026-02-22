@@ -6,7 +6,7 @@
 #' @param verbose logical. Whether to print the message or not.
 #' @param ... Character strings to be combined into the message.
 #'
-#' @returns
+#' @return
 #' Invisibly returns `NULL`. Prints messages to the console if `verbose` is
 #' `TRUE`.
 #'
@@ -41,7 +41,7 @@ make_msg <- function(type = "generic", verbose, ...) {
 #' @param arg The argument to match.
 #' @param choices The possible choices for the argument.
 #'
-#' @returns
+#' @return
 #' The matched argument.
 #'
 #' @noRd

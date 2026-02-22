@@ -70,7 +70,7 @@ performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator) and the
 spatial object is projected back to the SRS of the initial object.
 }
 \section{API Limits}{
-The API service is limited to a bounding box of 4km2 and a maximum of 5.000
+The API service is limited to a bounding box of 4km2 and a maximum of 5,000
 elements.
 }
 

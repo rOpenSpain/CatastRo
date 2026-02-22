@@ -174,7 +174,7 @@ catr_ovc_get_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) |>
   knitr::kable()
-#> Error code: 11. LA PROVINCIA ES OBLIGATORIA
+#> ✖ Error code: 11. LA PROVINCIA ES OBLIGATORIA
 ```
 
 
