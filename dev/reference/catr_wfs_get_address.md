@@ -146,7 +146,6 @@ Other spatial:
 ## Examples
 
 ``` r
-if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 ad <- catr_wfs_get_address_bbox(
   c(
@@ -159,6 +158,6 @@ library(ggplot2)
 
 ggplot(ad) +
   geom_sf()
+
 # }
-}
 ```

@@ -153,7 +153,6 @@ Other spatial:
 ## Examples
 
 ``` r
-if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 cp <- catr_wfs_get_parcels_bbox(
   c(
@@ -166,6 +165,6 @@ library(ggplot2)
 
 ggplot(cp) +
   geom_sf()
+
 # }
-}
 ```

@@ -199,7 +199,6 @@ Other spatial:
 ## Examples
 
 ``` r
-if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 
 # With a bbox
@@ -213,9 +212,15 @@ pict <- catr_wms_get_layer(
 library(mapSpain)
 library(ggplot2)
 library(tidyterra)
+#> 
+#> Attaching package: ‘tidyterra’
+#> The following object is masked from ‘package:stats’:
+#> 
+#>     filter
 
 ggplot() +
   geom_spatraster_rgb(data = pict)
+
 
 # With a spatial object
 
@@ -233,6 +238,6 @@ parcels_img <- catr_wms_get_layer(parcels,
 ggplot() +
   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
   geom_spatraster_rgb(data = parcels_img)
+
 # }
-}
 ```
