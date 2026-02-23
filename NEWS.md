@@ -1,4 +1,4 @@
-# CatastRo (development version)
+# CatastRo 1.0.0
 
 This major release introduces a full overhaul of the codebase and test suite.
 All requests now use **httr2**, and cached files are reorganized into
