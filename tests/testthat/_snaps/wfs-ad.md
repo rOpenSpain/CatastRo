@@ -21,7 +21,7 @@
       obj <- catr_wfs_get_address_rc("3662303TF")
     Message
       x The query <https://ovc.catastro.meh.es/INSPIRE/wfsAD.aspx?service=wfs&version=2.0.0&request=getfeature&storedquerie_id=GetadByRefcat&refcat=3662303TF> didn't provide results:
-      Invalid length of REFCAT argument
+      Invalid length of REFCAT parameter
 
 ---
 

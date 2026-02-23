@@ -26,7 +26,6 @@ knitr::opts_chunk$set(
 )
 
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
-
 ```
 
 **CatastRo** provides access to different API services of the [Spanish
@@ -129,7 +128,10 @@ library(tidyterra) # For terra tiles
 
 ggplot() +
   geom_spatraster_rgb(data = labs) +
-  geom_sf(data = stadium_parcel_pr, fill = NA, col = "red", linewidth = 2) +
+  geom_sf(
+    data = stadium_parcel_pr,
+    fill = NA, col = "red", linewidth = 2
+  ) +
   geom_sf(data = stadium, fill = "red", alpha = .5) +
   coord_sf(crs = 25830)
 ```
@@ -256,3 +258,4 @@ ggplot(dataviz) +
 [^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar functionalities to
     **CatastRo**.
+

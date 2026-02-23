@@ -23,7 +23,6 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE
 )
-
 ```
 
 **CatastRo** allows querying the OVCCoordenadas Web Service provided by the

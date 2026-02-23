@@ -34,10 +34,20 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item{what, styles}{Layer and style of the WMS layer to be downloaded. See
 \strong{Layers and styles}.}
 
+\item{update_cache}{logical. Should the cached file be refreshed? Default is
+\code{FALSE}. When set to \code{TRUE} it would force a new download.}
+
 \item{cache_dir}{A path to a cache directory. On \code{NULL} the function
 would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
+
+\item{crop}{logical. If \code{TRUE}, the results will be cropped to the specified
+\code{x} extent. If \code{x} is an \code{\link[sf:sf]{sf}} object with one \code{POINT},
+\code{crop} is set to \code{FALSE}. See \code{\link[terra:crop]{terra::crop()}}.}
+
+\item{options}{A named list containing additional options to pass to the
+query.}
 
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles}}

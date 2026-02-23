@@ -11,7 +11,8 @@
 #' @export
 #'
 #' @inheritParams catr_wfs_get_address_bbox
-#' @inheritParams catr_set_cache_dir
+#' @inheritParams catr_atom_get_address_db_all
+#' @inheritParams mapSpain::esp_get_tiles
 #' @inheritDotParams mapSpain::esp_get_tiles res:mask
 #'
 #' @param what,styles Layer and style of the WMS layer to be downloaded. See
@@ -141,8 +142,7 @@ catr_wms_get_layer <- function(
 
   what <- match_arg_pretty(what)
 
-  layer <- switch(
-    what,
+  layer <- switch(what,
     "building" = "Catastro.Building",
     "buildingpart" = "Catastro.BuildingPart",
     "parcel" = "Catastro.CadastralParcel",
