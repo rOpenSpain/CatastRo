@@ -1,27 +1,24 @@
 # OVCCoordenadas Web Service
 
-**CatastRo** allows querying the OVCCoordenadas Web Service provided on
-[Sede electrónica del
+**CatastRo** allows querying the OVCCoordenadas Web Service provided by
+the [Sede electrónica del
 Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
-API directly through a **R** IDE.
+API directly through an **R** IDE.
 
 This API is used to retrieve the spatial coordinates of an urban
-property. Moreover, it is not necessary to be the owner to get the
-information; in fact, it is enough to know the cadastral reference
-(*RC*) of the property and its address (in fact, it is only completely
-compulsory to know the RC, however, to ensure a good result from the
-response and to avoid mistakes in the RC, the address can be passed to
-the query too).
+property. It is not necessary to be the owner to get the information;
+you only need to know the cadastral reference (*RC*) of the property.
+Although the RC is the only compulsory argument, providing the address
+can improve results and help avoid errors in the RC.
 
-Second, the API can be used to obtain a RC of an urban property. For
-this purpose, the API asks for the longitude and the latitude.
-Furthermore, it allows choosing the spatial reference system (SRS, also
-known as CRS) between a list of them to express the coordinates.
+Additionally, the API can be used to obtain the RC of an urban property.
+For this, the API requires the longitude and latitude. It also allows
+you to choose the spatial reference system (SRS, also known as CRS) from
+a list to express the coordinates.
 
-Finally, the API tackles the issue of not knowing the exact point where
-the urban property has been registered. In this case, it will return all
-the properties located in a square 50-meters-side around the given
-point.
+Finally, the API addresses cases where the exact location of the
+registered urban property is unknown. In such cases, it returns all
+properties located within a 50-meter square around the given point.
 
 The documentation of this API can be found
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
@@ -31,7 +28,7 @@ by the package **tibble**.
 
 ## CatastRo API
 
-The OVCCoordenadas Web Service can be reached using the following
+The OVCCoordenadas Web Service can be accessed using the following
 functions:
 
 - [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
@@ -42,10 +39,10 @@ functions:
 
 The function
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
-receives the coordinates (`lat` and `lon`) and the spatial reference
-system (`srs`) used to express them. It returns a tibble with the
-cadastral reference of the property in that spatial point, including
-other information such as the address (town, street, and number).
+takes the coordinates (`lat` and `lon`) and the spatial reference system
+(`srs`) used to express them. It returns a tibble with the cadastral
+reference of the property at that spatial point, including other
+information such as the address (town, street, and number).
 
 ``` r
 library(CatastRo)
@@ -94,9 +91,8 @@ catr_srs_values |>
 | 32630 | UTM huso 30N en WGS 84 |
 | 32631 | UTM huso 31N en WGS 84 |
 
-It is also possible to get all the cadastral references in a square of
-50-meters’ side centered in the coordinates `lat` and `lon` through the
-function
+It is also possible to get all cadastral references within a 50-meter
+square centered on the coordinates `lat` and `lon` using the function
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md).
 
 ``` r
@@ -115,13 +111,12 @@ catr_ovc_get_rccoor_distancia(
 
 ## Geocoding a cadastral reference
 
-The opposite query is possible as well. When given to the function
+The opposite query is also possible. When provided with a cadastral
+reference (`rc`), province (`province`), and municipality
+(`municipality`), the function
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
-a cadastral reference (`rc`), the province (`province`) and the town
-(`municipality`),
-[`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
-returns its coordinates `lat` and `lon` in a particular `srs` besides
-the address (town, street and number).
+returns the coordinates (`lat` and `lon`) in a specified `srs`, along
+with the address (town, street, and number).
 
 ``` r
 catr_ovc_get_cpmrc(
@@ -137,13 +132,12 @@ catr_ovc_get_cpmrc(
 |----------:|---------:|:---------------|:----------------------------------------------------------------------------------------------------|:--------|:--------|:------------------|:-----------------|:----------|:----------------------------------------------------------------------------------------------------|
 | -3.456242 | 38.61966 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.45624183836806 | 38.6196566583596 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
-Neither the `province` nor the `municipality` is required to be passed
-to the function, unless the argument `municipality` is not `NULL`, in
-that case the argument `province` must be passed. If a value is passed
-to the `province` argument while the `municipality` argument is `NULL`,
-the function
+The `province` and `municipality` arguments are optional, but if
+`municipality` is provided, `province` must also be provided. If a value
+is passed to the `province` argument while `municipality` is `NULL`, the
+function
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
-will throw a message and will return a tibble with no data.
+will display a message and return an empty tibble.
 
 ``` r
 catr_ovc_get_cpmrc(
@@ -151,7 +145,7 @@ catr_ovc_get_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) |>
   knitr::kable()
-#> Error code: 11. LA PROVINCIA ES OBLIGATORIA
+#> ✖ Error code: 11. LA PROVINCIA ES OBLIGATORIA
 ```
 
 | refcat         | geo.srs   |

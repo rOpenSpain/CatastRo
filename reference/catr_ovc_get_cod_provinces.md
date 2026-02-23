@@ -3,7 +3,7 @@
 Implementation of the OVCCallejero service
 [ConsultaProvincia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia).
 
-Return a list of the provinces included on the Spanish Cadastre.
+Returns a list of the provinces included in the Spanish Cadastre.
 
 ## Usage
 
@@ -15,12 +15,11 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## References
 
@@ -39,10 +38,21 @@ Other search:
 ## Examples
 
 ``` r
-if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
-
 catr_ovc_get_cod_provinces()
+#> # A tibble: 48 × 2
+#>    cpine np       
+#>    <chr> <chr>    
+#>  1 15    A CORUÑA 
+#>  2 03    ALACANT  
+#>  3 02    ALBACETE 
+#>  4 04    ALMERIA  
+#>  5 33    ASTURIAS 
+#>  6 05    AVILA    
+#>  7 06    BADAJOZ  
+#>  8 08    BARCELONA
+#>  9 09    BURGOS   
+#> 10 10    CACERES  
+#> # ℹ 38 more rows
 # }
-}
 ```

@@ -1,6 +1,6 @@
-# ATOM INSPIRE: Download all the buildings of a municipality
+# ATOM INSPIRE: Download all buildings of a municipality
 
-Get the spatial data of all the buildings belonging to a single
+Retrieve the spatial data of all buildings belonging to a single
 municipality using the INSPIRE ATOM service.
 
 ## Usage
@@ -10,7 +10,7 @@ catr_atom_get_buildings(
   munic,
   to = NULL,
   what = c("building", "buildingpart", "other"),
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE
@@ -21,47 +21,45 @@ catr_atom_get_buildings(
 
 - munic:
 
-  Municipality to extract, It can be a part of a string or the cadastral
+  Municipality to extract. It can be a part of a string or the cadastral
   code. See
   [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
   for getting the cadastral codes.
 
 - to:
 
-  Optional parameter for defining the Territorial Office to which
-  `munic` belongs. This parameter is a helper for narrowing the search.
+  Optional argument for defining the territorial office to which `munic`
+  belongs. This argument is a helper for narrowing the search.
 
 - what:
 
-  Information to load. It could be:
+  Information to load. It can be:
 
   - `"building"` for buildings.
 
   - `"buildingpart"` for parts of a building.
 
-  - `"other"` for others elements, as swimming pools, etc.
+  - `"other"` for other elements, such as swimming pools, etc.
 
 - cache:
 
-  A logical whether to do caching. Default is `TRUE`. See **About
-  caching** section on
-  [`catr_set_cache_dir()`](https://ropenspain.github.io/CatastRo/reference/catr_set_cache_dir.md).
+  **\[deprecated\]** `cache` is no longer supported; this function will
+  always cache results.
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source file.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` value (the default) the
-  function would store the cached files on the
-  [`tempdir`](https://rdrr.io/r/base/tempfile.html).
+  A path to a cache directory. On `NULL` the function would store the
+  cached files on a temporary dir (See
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -86,7 +84,8 @@ INSPIRE API functions:
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
 [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md),
-[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
+[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md),
+[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
 
 Other INSPIRE ATOM services:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
@@ -112,10 +111,7 @@ Other spatial:
 
 ``` r
 # \donttest{
-s <- catr_atom_get_buildings("Nava de la Asuncion",
-  to = "Segovia",
-  what = "building"
-)
+s <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 library(ggplot2)
 ggplot(s) +

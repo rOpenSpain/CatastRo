@@ -3,7 +3,7 @@
 Implementation of the OVCCoordenadas service [Consulta
 CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC).
 
-Return the coordinates for a specific cadastral reference.
+Returns the coordinates for a specific cadastral reference.
 
 ## Usage
 
@@ -35,23 +35,22 @@ catr_ovc_get_cpmrc(
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html). See
-**Details**
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+See **Details**
 
 ## Details
 
 When the API does not provide any result, the function returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with the
-input parameters only.
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+the input arguments only.
 
 On a successful query, the function returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with one
-row by cadastral reference, including the following columns:
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+one row per cadastral reference, including the following columns:
 
 - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 
@@ -83,7 +82,6 @@ Other cadastral references:
 ## Examples
 
 ``` r
-if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 
 # using all the arguments
@@ -92,9 +90,16 @@ catr_ovc_get_cpmrc("13077A01800039",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
 )
+#> # A tibble: 1 × 10
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
+#> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4562… 38.6196… EPSG:4… DS D…
 
 # only the cadastral reference
 catr_ovc_get_cpmrc("9872023VH5797S")
+#> # A tibble: 1 × 10
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
+#> 1  -3.46   38.6 9872023VH… CL GLO… 98720… VH579… -3.4632… 38.6401… EPSG:4… CL G…
 # }
-}
 ```

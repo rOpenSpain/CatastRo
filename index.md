@@ -2,7 +2,7 @@
 
 **CatastRo** is a package that provides access to different API services
 of the [Spanish Cadastre](https://www.sedecatastro.gob.es/). With
-**CatastRo** you can download spatial objects such as buildings and
+**CatastRo**, you can download spatial objects such as buildings,
 cadastral parcels, maps, and geocode cadastral references.
 
 ## Installation
@@ -14,32 +14,34 @@ Install **CatastRo** from
 install.packages("CatastRo")
 ```
 
-## Known issues
+## SSL issues
 
 The SSL certificate of the Spanish Cadastre presents some issues that
 may cause an error when using **CatastRo** (especially on macOS, see
 issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
+In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
+your session right after you start using the package: \`
+
 ``` r
-#> ...(more lines on error)
-#>
-#> 1: In download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb") :
-#>   URL 'https://www.catastro.minhafp.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml':
-#>   status was 'SSL peer certificate or SSH remote key was not OK'
-#>
-#> ...
+# Disable SSL verification
+options(catastro_ssl_verify = 0)
 ```
 
-You can try to fix it by running this line on your session right after
-you start using the package:
+If you wish to make this setup persistent, write the same code in your
+[`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
 ``` r
-options(download.file.method = "curl", download.file.extra = "-k -L")
+# Open your .Rprofile with
+usethis::edit_r_profile()
+
+# And write on that file:
+options(catastro_ssl_verify = 0)
 ```
 
 ## Package API
 
-The functions of **CatastRo** are organized by API endpoint. The package
+The functions of **CatastRo** are organised by API endpoint. The package
 naming convention is `catr_*api*_*description*`.
 
 ### OVCCoordenadas
@@ -62,7 +64,7 @@ INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
 service.
 
 Note that the coverage of this service is 95% of the Spanish territory,
-*excluding the Basque Country and Navarre*[¹](#fn1) that have their own
+excluding the Basque Country and Navarre[¹](#fn1), which have their own
 independent cadastral offices.
 
 There are three types of functions, each one querying a different
@@ -79,27 +81,28 @@ These functions are named `catr_atom_get_xxx`.
 #### WFS service
 
 The WFS service allows downloading vector objects of specific cadastral
-elements. The result is provided as `sf` class objects (see
+elements. The results are provided as `sf` class objects (see the
 [**sf**](https://r-spatial.github.io/sf/) package). Note that there are
 some limitations on the extent and number of elements to query. For
-batch-downloading the ATOM service is preferred.
+batch downloading the ATOM service is preferred.
 
-These functions are named `catr_wms_get_xxx`.
+These functions are named `catr_wfs_get_xxx`.
 
 #### WMS service
 
 This service allows downloading georeferenced images of different
-cadastral elements. The result is a raster in the format provided by
-[**terra**](https://rspatial.github.io/terra/reference/terra-package.html).
+cadastral elements. The results are provided as rasters in the format
+provided by the
+[**terra**](https://rspatial.github.io/terra/reference/terra-package.html)
+package.
 
 There is a single function for querying this service:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md).
 
 #### Terms and conditions of use
 
-Please check the [downloading
-provisions](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf)
-of the service.
+Please check the service’s [downloading
+provisions](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf).
 
 ## Examples
 
@@ -136,7 +139,6 @@ catr_ovc_get_rccoor(
 ``` r
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
-
 # Map
 library(ggplot2)
 
@@ -148,7 +150,7 @@ ggplot(bu) +
   ) +
   scale_fill_manual(values = hcl.colors(6, "Dark 3")) +
   theme_minimal() +
-  ggtitle("Nava de la Asunción, Segovia")
+  labs(title = "Nava de la Asunción, Segovia")
 ```
 
 ![Extracting buildings in Nava de la Asuncion with the ATOM
@@ -158,17 +160,17 @@ service](reference/figures/README-atom-1.png)
 
 ``` r
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
-  c(-5.569, 42.598, -5.564, 42.601),
+  c(-4.134, 40.952, -4.131, 40.953),
   srs = 4326
 )
 
 # Map
 ggplot(wfs_get_buildings) +
   geom_sf() +
-  ggtitle("Leon Cathedral, Spain")
+  labs(title = "Alcázar of Segovia, Segovia, Spain")
 ```
 
-![Extract Leon Cathedral with the WFS
+![Extract Alcázar of Segovia with the WFS
 service](reference/figures/README-wfs-1.png)
 
 ## A note on caching
@@ -182,7 +184,7 @@ catr_set_cache_dir("./path/to/location")
 ```
 
 When this option is set, **CatastRo** will look for the cached file and
-it will load it, speeding up the process.
+load it, speeding up the process.
 
 ## Citation
 
@@ -199,7 +201,7 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {0.4.1},
+  version = {1.0.0},
   url = {https://ropenspain.github.io/CatastRo/},
   abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
 }

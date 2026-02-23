@@ -3,7 +3,7 @@
 Implementation of the OVCCoordenadas service [Consulta
 RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR).
 
-Return the cadastral reference found of a set of specific coordinates.
+Returns the cadastral reference found for a set of specific coordinates.
 
 ## Usage
 
@@ -15,13 +15,13 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude to use on the query. It should be specified in the same in
-  the CRS/SRS `specified` by `srs`.
+  Latitude to use on the query. It should be specified in the CRS/SRS
+  defined in `srs`.
 
 - lon:
 
-  Longitude to use on the query. It should be specified in the same in
-  the CRS/SRS `specified` by `srs`.
+  Longitude to use on the query. It should be specified in the CRS/SRS
+  defined in `srs`.
 
 - srs:
 
@@ -31,25 +31,24 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
-A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html). See
-**Details**
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+See **Details**
 
 ## Details
 
 When the API does not provide any result, the function returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with the
-input parameters only.
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+the input arguments only.
 
 On a successful query, the function returns a
-[`tibble`](https://tibble.tidyverse.org/reference/tibble.html) with one
-row by cadastral reference, including the following columns:
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+one row by cadastral reference, including the following columns:
 
-- `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
+- `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 
 - `refcat`: Cadastral Reference.
 
@@ -79,13 +78,15 @@ Other cadastral references:
 ## Examples
 
 ``` r
-if (FALSE) { # tolower(Sys.info()[["sysname"]]) != "linux"
 # \donttest{
 catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
   srs = 4326
 )
+#> # A tibble: 1 × 8
+#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
+#> 1 13077A01800011 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
 # }
-}
 ```
