@@ -4,48 +4,42 @@
 #' Get geotagged images from the Spanish Cadastre. This function is a wrapper of
 #' [mapSpain::esp_get_tiles()].
 #'
-#' @inheritParams catr_atom_get_buildings
-#' @inheritParams catr_wfs_get_buildings_bbox
-#' @inheritParams mapSpain::esp_get_tiles
+#' @encoding UTF-8
+#' @family INSPIRE
+#' @family WMS
+#' @family spatial
+#' @export
+#'
+#' @inheritParams catr_wfs_get_address_bbox
+#' @inheritParams catr_set_cache_dir
 #' @inheritDotParams mapSpain::esp_get_tiles res:mask
 #'
-#' @param what Layer to be extracted, see **Details**.
-#' @param styles Style of the WMS layer. See **Details**.
+#' @param what,styles Layer and style of the WMS layer to be downloaded. See
+#'   **Layers and styles**.
 #'
 #' @return
 #' A [`SpatRaster`][terra::rast] is returned, with 3 (RGB) or 4 (RGBA) layers,
 #' see [terra::RGB()].
 #'
-#' @family INSPIRE
-#' @family WMS
-#' @family spatial
-#'
 #' @seealso
 #' [mapSpain::esp_get_tiles()] and [terra::RGB()]. For plotting see
 #' [terra::plotRGB()] and [tidyterra::geom_spatraster_rgb()].
 #'
-#' @export
-#'
-#' @references
-#'
-#' ```{r child = "man/chunks/wmspdf.Rmd"}
-#' ```
-#'
-#' @details
-#'
+#' @section Bounding box:
 #' When `x` is a numeric vector, make sure that the `srs` matches the
 #' coordinate values. When `x` is a [`sf`][sf::st_sf] object, the value
 #' `srs` is ignored.
 #'
 #' The query is performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator)
-#' and the tile is projected back to the SRS of `x`. In
-#' case that the tile looks deformed, try either providing `x` or specify the
-#' SRS of the requested tile via the `srs` parameter, that ideally would need
-#' to match the SRS of `x`. See **Examples**.
+#' and the tile is projected back to the SRS of `x`. In case that the tile
+#' looks deformed, try either providing `x` or specify the SRS of the requested
+#' tile via the `srs` argument, that (ideally) would need to match the SRS of
+#' `x`. See **Examples**.
 #'
-#' # Layers
+#' @section Layers and styles:
 #'
-#' The parameter `what` defines the layer to be extracted. The equivalence with
+#' ## Layers
+#' The argument `what` defines the layer to be extracted. The equivalence with
 #' the
 #'
 #' ```{r, echo=FALSE, results='asis'}
@@ -55,7 +49,7 @@
 #'      )
 #'
 #' ```
-#' equivalence is:
+#' reference is:
 #' - `"parcel"`: CP.CadastralParcel
 #' - `"zoning"`: CP.CadastralZoning
 #' - `"building"`: BU.Building
@@ -64,9 +58,8 @@
 #' - `"admboundary"`: AU.AdministrativeBoundary
 #' - `"admunit"`: AU.AdministrativeUnit
 #'
-#' # Styles
-#'
-#' The WMS service provides different styles on each layer (`what` parameter).
+#' ## Styles
+#' The WMS service provides different styles on each layer (`what` argument).
 #' Some of the styles available are:
 #' - `"parcel"`: styles : `"BoundariesOnly"`, `"ReferencePointOnly"`,
 #'   `"ELFCadastre"`.
@@ -148,7 +141,8 @@ catr_wms_get_layer <- function(
 
   what <- match_arg_pretty(what)
 
-  layer <- switch(what,
+  layer <- switch(
+    what,
     "building" = "Catastro.Building",
     "buildingpart" = "Catastro.BuildingPart",
     "parcel" = "Catastro.CadastralParcel",

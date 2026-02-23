@@ -4,44 +4,26 @@
 #' Get the spatial data of cadastral parcels and zones. The WFS Service allows
 #' to perform several types of queries:
 #' - By bounding box: Implemented on `catr_wfs_get_parcels_bbox()`. Extract
-#'   objects included in the bounding box provided. See **Details**.
+#'   objects included in the bounding box provided. See **Bounding box**.
 #'
-#' @inheritParams catr_atom_get_parcels
-#' @inheritParams catr_wfs_get_buildings_bbox
-#'
-#' @seealso [sf::st_bbox()]
+#' @encoding UTF-8
 #' @family INSPIRE
 #' @family WFS
 #' @family parcels
 #' @family spatial
-#'
-#' @return A [`sf`][sf::st_sf] object.
-#'
-#' @references
-#'
-#' ```{r child = "man/chunks/wfspdf.Rmd"}
-#' ```
-#'
-#' @details
-#'
-#' When `x` is a numeric vector, make sure that the `srs` matches the
-#' coordinate values. Additionally, when the `srs` corresponds to a geographic
-#' reference system (4326, 4258), the function queries the bounding box on
-#' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
-#' a potential bug on the API side. The result is always provided in the SRS
-#' provided in `srs`.
-#'
-#' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. The
-#' query is performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator)
-#' and the spatial object is projected back to the SRS of the initial object.
-#'
-#' # API Limits
-#' The API service is limited to the following constraints:
-#' - `"parcel`: Bounding box of 1km2 and a maximum of 500 elements.
-#' - `"zoning"`: Bounding box of 25km2 and a maximum of 500 elements.
+#' @export
 #'
 #' @rdname catr_wfs_get_parcels
-#' @export
+#'
+#' @inheritParams catr_wfs_get_address_bbox
+#' @inheritParams catr_atom_get_parcels
+#' @inherit catr_wfs_get_address_bbox return references
+#' @inheritSection catr_wfs_get_address_bbox Bounding box
+#'
+#' @section API Limits:
+#' The API service is limited to the following constraints:
+#' - `"parcel`: Bounding box of 1km2 and a maximum of 5,000 elements.
+#' - `"zoning"`: Bounding box of 25km2 and a maximum of 5,000 elements.
 catr_wfs_get_parcels_bbox <- function(
   x,
   what = c("parcel", "zoning"),

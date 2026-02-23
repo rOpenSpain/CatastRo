@@ -21,11 +21,11 @@
 #'
 #' @details
 #' When the API does not provide any result, the function returns a
-#' [tibble][tibble::tbl_df] with the input parameters only.
+#' [tibble][tibble::tbl_df] with the input arguments only.
 #'
 #' On a successful query, the function returns a [tibble][tibble::tbl_df] with
 #' one row by cadastral reference, including the following columns:
-#' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
+#' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 #' - `refcat`: Cadastral Reference.
 #' - `address`: Address as it is recorded on the Cadastre.
 #' - Rest of fields: Check the API Docs.

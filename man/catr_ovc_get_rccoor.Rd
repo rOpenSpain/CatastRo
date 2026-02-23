@@ -30,12 +30,12 @@ Returns the cadastral reference found for a set of specific coordinates.
 }
 \details{
 When the API does not provide any result, the function returns a
-\link[tibble:tbl_df-class]{tibble} with the input parameters only.
+\link[tibble:tbl_df-class]{tibble} with the input arguments only.
 
 On a successful query, the function returns a \link[tibble:tbl_df-class]{tibble} with
 one row by cadastral reference, including the following columns:
 \itemize{
-\item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input parameters of the query.
+\item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input arguments of the query.
 \item \code{refcat}: Cadastral Reference.
 \item \code{address}: Address as it is recorded on the Cadastre.
 \item Rest of fields: Check the API Docs.

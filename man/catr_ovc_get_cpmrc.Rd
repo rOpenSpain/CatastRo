@@ -34,7 +34,7 @@ Returns the coordinates for a specific cadastral reference.
 }
 \details{
 When the API does not provide any result, the function returns a
-\link[tibble:tbl_df-class]{tibble} with the input parameters only.
+\link[tibble:tbl_df-class]{tibble} with the input arguments only.
 
 On a successful query, the function returns a \link[tibble:tbl_df-class]{tibble}
 with one row per cadastral reference, including the following columns:

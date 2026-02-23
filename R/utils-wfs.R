@@ -1,15 +1,19 @@
 #' Client tool for WFS INSPIRE services
 #'
+#' @encoding UTF-8
 #' @family INSPIRE
 #' @family WFS
+#' @export
+#' @inheritParams catr_set_cache_dir
+#'
+#' @rdname inspire_wfs_get
 #'
 #' @param scheme Identifies the protocol to be used to access the resource on
 #'   the Internet.
 #' @param hostname Identifies the host that holds the resource.
 #' @param path Identifies the specific resource in the host that the web client
 #'   wants to access.
-#' @param query A named list with the name and value of the parameters to query.
-#' @inheritParams catr_wfs_get_address_bbox
+#' @param query A named list with the name and value of the arguments to query.
 #'
 #' @return
 #' A character string with the path of the resulting file in the [tempfile()]
@@ -20,8 +24,6 @@
 #' it available to another users and/or developers for accessing other
 #' cadastral or INSPIRE resources. See **Examples**.
 #'
-#' @export
-#' @rdname inspire_wfs_get
 #' @examplesIf run_example()
 #' # Accessing the Cadastre of Navarra
 #' # Try also https://ropenspain.github.io/CatastRoNav/

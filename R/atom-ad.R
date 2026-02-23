@@ -28,8 +28,8 @@
 #' @param munic Municipality to extract. It can be a part of a string or the
 #'   cadastral code. See [catr_atom_search_munic()] for getting the cadastral
 #'   codes.
-#' @param to Optional parameter for defining the Territorial Office to which
-#'   `munic` belongs. This parameter is a helper for narrowing the search.
+#' @param to Optional argument for defining the Territorial Office to which
+#'   `munic` belongs. This argument is a helper for narrowing the search.
 #' @param cache `r lifecycle::badge("deprecated")` `cache` is no longer
 #'   supported; this function will always cache results.
 #'

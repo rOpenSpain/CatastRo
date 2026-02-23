@@ -26,7 +26,7 @@
 #'
 #' @details
 #' When the API does not provide any result, the function returns a
-#' [tibble][tibble::tbl_df] with the input parameters only.
+#' [tibble][tibble::tbl_df] with the input arguments only.
 #'
 #' On a successful query, the function returns a [tibble][tibble::tbl_df]
 #' with one row per cadastral reference, including the following columns:

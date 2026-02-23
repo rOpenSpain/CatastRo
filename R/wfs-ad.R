@@ -4,26 +4,47 @@
 #' Get the spatial data of addresses. The WFS Service allows performing
 #' several types of queries:
 #' - By bounding box: Implemented on `catr_wfs_get_address_bbox()`.
-#'   Extract objects included in the bounding box provided. See **Details**.
+#'   Extract objects included in the bounding box provided. See
+#'   **Bounding box**.
 #'
-#' @inheritParams catr_wfs_get_buildings_bbox
-#'
-#' @seealso [sf::st_bbox()]
+#' @encoding UTF-8
 #' @family INSPIRE
 #' @family WFS
 #' @family addresses
 #' @family spatial
+#' @export
+#'
+#' @rdname catr_wfs_get_address
+#' @inheritParams catr_set_cache_dir
+#'
+#' @references
+#' ```{r, echo=FALSE, comment="", results="asis"}
+#' paste0("[API Documentation](https://www.catastro.hacienda.gob.es/",
+#'        "webinspire/documentos/inspire-ad-WFS.pdf).") |>
+#'   cat()
+#' cat("\n\n")
+#' paste0("[INSPIRE Services for Cadastral Cartography](https://www.",
+#'        "catastro.hacienda.gob.es/webinspire/index.html).") |>
+#'   cat()
+#'
+#' ```
 #'
 #' @return A [`sf`][sf::st_sf] object.
 #'
-#' @references
+#' @param x See **Bounding box**. It could be:
+#'   - A numeric vector of length 4 with the coordinates that defines
+#'     the bounding box: `c(xmin, ymin, xmax, ymax)`
+#'   - A `sf/sfc` object, as provided by the \CRANpkg{sf} package.
+#' @param srs SRS/CRS to use on the query. To check the admitted values check
+#'   [catr_srs_values], specifically the `wfs_service` column. See
+#'   **Bounding box**.
+#' @param rc The cadastral reference to be extracted.
 #'
-#' ```{r child = "man/chunks/wfspdf.Rmd"}
-#' ```
+#' @section API Limits:
+#' The API service is limited to a bounding box of 4km2 and a maximum of 5,000
+#' elements.
 #'
-#' @details
-#'
-#' # Bounding box
+#' @section Bounding box:
 #' When `x` is a numeric vector, make sure that the `srs` matches the
 #' coordinate values. Additionally, the function queries the bounding box on
 #' [EPSG:25830](https://epsg.io/25830) - ETRS89 / UTM zone 30N, to overcome
@@ -35,14 +56,6 @@
 #'
 #' The result is always provided in the SRS of the [`sf`][sf::st_sf] object
 #' provided as input.
-#'
-#' # API Limits
-#'
-#' The API service is limited to a bounding box of 4km2 and a maximum of 5,000
-#' elements.
-#'
-#' @rdname catr_wfs_get_address
-#' @export
 catr_wfs_get_address_bbox <- function(x, srs = NULL, verbose = FALSE) {
   # Sanity checks
   x <- validate_non_empty_arg(x)
@@ -137,8 +150,6 @@ catr_wfs_get_address_codvia <- function(
 #' @description
 #' - By cadastral reference: Implemented on `catr_wfs_get_address_rc()`. Extract
 #'   objects of specific cadastral references.
-#'
-#' @inheritParams catr_wfs_get_buildings_rc
 #'
 #' @rdname catr_wfs_get_address
 #' @export

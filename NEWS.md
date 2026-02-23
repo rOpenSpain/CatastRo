@@ -1,6 +1,6 @@
 # CatastRo (development version)
 
--   The minimum **R** version required is now 4.1.0.
+-   The minimum **R** version required is now **4.1.0**.
 -   Migrate vignettes to Quarto.
 
 # CatastRo 0.4.1
@@ -34,7 +34,7 @@
 
 -   Add **tidyterra** to 'Suggests'.
 -   Now `catr_get_code_from_coords()` handles `sfc` objects (#26).
--   `catr_clear_cache()` now has `config = FALSE` as default parameter.
+-   `catr_clear_cache()` now has `config = FALSE` as default argument.
 
 # CatastRo 0.2.1
 
@@ -62,7 +62,7 @@
 -   Add **WMS INSPIRE** capabilities: `catr_wms_get_layer()`.
 -   New interface for **OVC Services**. Deprecated previous functions in favor
     of the new API:
-    -   New SRS database in `catr_srs_values`, replaces `coordinates`.
+    -   New SRS database in `?catr_srs_values`, replaces `coordinates`.
     -   `catr_ovc_get_rccoor_distancia()` replaces `near_rc()`.
     -   `catr_ovc_get_rccoor()` replaces `get_rc()`.
     -   `catr_ovc_get_cpmrc()` replaces `get_coor()`.

@@ -4,48 +4,23 @@
 #' Get the spatial data of buildings. The WFS Service allows performing
 #' two types of queries:
 #' - By bounding box: Implemented on `catr_wfs_get_buildings_bbox()`.
-#'   Extract objects included in the bounding box provided. See **Details**.
+#'   Extract objects included in the bounding box provided. See
+#'   **Bounding box**.
 #'
-#' @inheritParams catr_atom_get_buildings
-#' @param x See **Details**. It could be:
-#'   - A numeric vector of length 4 with the coordinates that defines
-#'     the bounding box: `c(xmin, ymin, xmax, ymax)`
-#'   - A `sf/sfc` object, as provided by the \CRANpkg{sf} package.
-#' @param srs SRS/CRS to use on the query. To check the admitted values check
-#'   [catr_srs_values], specifically the `wfs_service` column. See **Details**.
-#'
-#' @seealso [sf::st_bbox()]
+#' @encoding UTF-8
 #' @family INSPIRE
 #' @family WFS
 #' @family buildings
 #' @family spatial
-#'
-#' @return A [`sf`][sf::st_sf] object.
-#'
-#' @references
-#'
-#' ```{r child = "man/chunks/wfspdf.Rmd"}
-#' ```
-#'
-#' @details
-#'
-#' When `x` is a numeric vector, make sure that the `srs` matches the
-#' coordinate values. Additionally, when the `srs` corresponds to a geographic
-#' reference system (4326, 4258), the function queries the bounding box on
-#' [EPSG:3857](https://epsg.io/3857) - Web Mercator, to overcome
-#' a potential bug on the API side. The result is always provided in the SRS
-#' provided in `srs`.
-#'
-#' When `x` is a \CRANpkg{sf} object, the value `srs` is ignored. The query is
-#' performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator) and the
-#' spatial object is projected back to the SRS of the initial object.
-#'
-#' # API Limits
-#' The API service is limited to a bounding box of 4km2 and a maximum of 5,000
-#' elements.
+#' @export
 #'
 #' @rdname catr_wfs_get_buildings
-#' @export
+#'
+#' @inheritParams catr_wfs_get_address_bbox
+#' @inheritParams catr_atom_get_buildings
+#' @inherit catr_wfs_get_address_bbox return references
+#' @inheritSection catr_wfs_get_address_bbox API Limits
+#' @inheritSection catr_wfs_get_address_bbox Bounding box
 catr_wfs_get_buildings_bbox <- function(
   x,
   what = c("building", "buildingpart", "other"),
@@ -98,9 +73,8 @@ catr_wfs_get_buildings_bbox <- function(
 #' - By cadastral reference: Implemented on `catr_wfs_get_buildings_rc()`.
 #'   Extract objects of specific cadastral references.
 #'
-#' @param rc The cadastral reference to be extracted.
-#'
 #' @rdname catr_wfs_get_buildings
+#'
 #' @export
 #' @examplesIf run_example()
 #' \donttest{
