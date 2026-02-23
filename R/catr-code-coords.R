@@ -1,35 +1,31 @@
 #' Get the cadastral municipality code from coordinates
 #'
 #' @description
-#'
 #' This function takes as input a pair of coordinates of a [`sf`][sf::st_sf]
-#' object and returns the corresponding municipality code for those coordinates.
+#' object and returns the corresponding municipality code for those coordinates
+#' using [catr_ovc_get_cod_munic()].
 #'
-#' See also [mapSpain::esp_get_munic_siane()] and [catr_ovc_get_cod_munic()].
 #'
-#' @return A [tibble][tibble::tbl_df] with the format described in
-#' [catr_ovc_get_cod_munic()].
+#' @encoding UTF-8
+#' @family search
+#' @inheritParams catr_ovc_get_cod_munic
+#' @inheritParams catr_ovc_get_cpmrc
+#' @inheritParams catr_set_cache_dir
+#' @inheritDotParams mapSpain::esp_get_munic_siane year resolution region munic
+#' @export
+#' @inherit catr_ovc_get_cod_munic return details
+#' @inherit catr_ovc_get_cpmrc seealso
+#'
+#' @seealso
+#' [mapSpain::esp_get_munic_siane()], [catr_ovc_get_cod_munic()],
+#' [sf::st_centroid()].
 #'
 #' @param x It could be:
-#'   - A pair of coordinates c(x,y).
-#'   - A [`sf`][sf::st_sf] object. See **Details**.
-#'
-#' @inheritParams catr_wfs_get_buildings_bbox
-#' @inheritParams catr_atom_get_buildings
-#' @inheritDotParams mapSpain::esp_get_munic_siane year
-#'
-#' @export
-#'
-#' @family search
-#' @seealso [mapSpain::esp_get_munic_siane()], [sf::st_centroid()].
-#' @details
-#'
-#' When `x` is a numeric vector, make sure that the `srs` matches the
-#' coordinate values.
-#'
-#' When `x` is a [`sf`][sf::st_sf] object, only the first value would
-#' be used. The function would extract the coordinates using
-#' `sf::st_centroid(x, of_largest_polygon = TRUE)`.
+#'   - A pair of coordinates `c(x,y)`. In this case the `srs` of the coordinates
+#'     should be provided.
+#'   - A [`sf`][sf::st_sf] object. If the object has several geometries only the
+#'     first value would be used. The function would extract the coordinates
+#'     using `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -89,6 +85,7 @@ catr_get_code_from_coords <- function(
     cache_dir = cache_dir,
     verbose = verbose,
     moveCAN = FALSE,
+    rawcols = FALSE,
     ...
   )
   if (is.null(mun)) {

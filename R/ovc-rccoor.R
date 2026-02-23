@@ -6,29 +6,29 @@
 #'
 #' Returns the cadastral reference found for a set of specific coordinates.
 #'
+#' @encoding UTF-8
+#' @family OVCCoordenadas
+#' @family cadastral references
+#' @inheritParams catr_ovc_get_rccoor_distancia
+#' @export
+#' @inherit catr_ovc_get_rccoor_distancia return
+#'
 #' @references
 #' [Consulta RCCOOR](`r ovcurl("RCCOOR")`).
 #'
-#' @family OVCCoordenadas
-#' @family cadastral references
 #' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
 #' @inheritParams catr_ovc_get_rccoor_distancia
 #'
-#' @return A [tibble][tibble::tbl_df]. See **Details**
-#'
-#' @export
-#'
 #' @details
-#'
 #' When the API does not provide any result, the function returns a
 #' [tibble][tibble::tbl_df] with the input parameters only.
 #'
 #' On a successful query, the function returns a [tibble][tibble::tbl_df] with
 #' one row by cadastral reference, including the following columns:
-#' * `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
-#' * `refcat`: Cadastral Reference.
-#' * `address`: Address as it is recorded on the Cadastre.
-#' * Rest of fields: Check the API Docs.
+#' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
+#' - `refcat`: Cadastral Reference.
+#' - `address`: Address as it is recorded on the Cadastre.
+#' - Rest of fields: Check the API Docs.
 #'
 #' @examplesIf run_example()
 #' \donttest{

@@ -1,36 +1,25 @@
 #' ATOM INSPIRE: Download all cadastral parcels of a municipality
 #'
+#' @description
 #' Retrieve the spatial data of all cadastral parcels belonging to a single
 #' municipality using the INSPIRE ATOM service.
 #'
-#' @references
-#'
-#' ```{r child = "man/chunks/atompdf.Rmd"}
-#' ```
-#'
+#' @encoding UTF-8
 #' @family INSPIRE
 #' @family ATOM
 #' @family parcels
 #' @family spatial
-#'
+#' @inheritParams catr_atom_get_address
 #' @export
-#' @return A [`sf`][sf::st_sf] object.
 #'
-#' @inheritParams catr_atom_get_parcels_db_all
-#' @param munic Municipality to extract. It can be a part of a string or the
-#'   cadastral code. See [catr_atom_search_munic()] for getting the cadastral
-#'   codes.
-#' @param to Optional parameter for defining the Territorial Office to which
-#'   `munic` belongs. This parameter is a helper for narrowing the search.
+#' @inherit catr_atom_get_address references return
 #' @param what Information to load. It could be:
 #'   -`"parcel"` for cadastral parcels.
 #'   -`"zoning"` for cadastral zoning.
+#'
 #' @examplesIf run_example()
 #' \donttest{
-#' s <- catr_atom_get_parcels("Melque",
-#'   to = "Segovia",
-#'   what = "parcel"
-#' )
+#' s <- catr_atom_get_parcels("Melque", to = "Segovia", what = "parcel")
 #'
 #' library(ggplot2)
 #'

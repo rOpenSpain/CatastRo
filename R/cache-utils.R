@@ -66,7 +66,7 @@
 #'
 #' @examples
 #'
-#' # Don't run this! It would modify your current state
+#' # Caution! It would modify your current state
 #' \dontrun{
 #' my_cache <- catr_detect_cache_dir()
 #'

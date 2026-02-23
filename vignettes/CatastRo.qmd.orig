@@ -27,9 +27,6 @@ knitr::opts_chunk$set(
 
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 
-if (.Platform$OS.type != "windows") {
-  options(download.file.method = "curl", download.file.extra = "-k -L")
-}
 ```
 
 **CatastRo** provides access to different API services of the [Spanish

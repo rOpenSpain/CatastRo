@@ -16,14 +16,6 @@ knitr:
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
-```{r}
-#| include: false
-
-if (.Platform$OS.type != "windows") {
-  options(download.file.method = "curl", download.file.extra = "-k -L")
-}
-```
-
 # CatastRo <a href="https://ropenspain.github.io/CatastRo/"><img src="man/figures/logo.png" alt="CatastRo website" align="right" height="139"/></a>
 
 <!-- badges: start -->
@@ -82,7 +74,7 @@ Alternatively, you can install the development version of **CatastRo** with:
 
 ```{r}
 #| eval: false
-remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
+pak::pak("rOpenSpain/CatastRo")
 ```
 :::
 
@@ -92,23 +84,25 @@ The SSL certificate of the Spanish Cadastre presents some issues that may cause
 an error when using **CatastRo** (especially on macOS, see issue
 [#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
-```{r}
-#| eval: false
-#> ...(more lines on error)
-#>
-#> 1: In download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb") :
-#>   URL 'https://www.catastro.minhafp.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml':
-#>   status was 'SSL peer certificate or SSH remote key was not OK'
-#>
-#> ...
-```
-
 You can try to fix it by running this line on your session right after you start
 using the package:
 
 ```{r}
 #| eval: false
-options(download.file.method = "curl", download.file.extra = "-k -L")
+# Disable SSL verification
+options(catastro_ssl_verify = 0)
+```
+
+If you wish to make this setup persistent write the same code in your
+[`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
+
+```{r}
+#| eval: false
+# Open your .Rprofile with
+usethis::edit_r_profile()
+
+# And write on that file:
+options(catastro_ssl_verify = 0)
 ```
 
 ## Package API

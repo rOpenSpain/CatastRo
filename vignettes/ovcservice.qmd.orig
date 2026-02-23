@@ -24,9 +24,6 @@ knitr::opts_chunk$set(
   message = FALSE
 )
 
-if (.Platform$OS.type != "windows") {
-  options(download.file.method = "curl", download.file.extra = "-k -L")
-}
 ```
 
 **CatastRo** allows querying the OVCCoordenadas Web Service provided by the

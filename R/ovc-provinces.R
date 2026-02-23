@@ -6,20 +6,19 @@
 #'
 #' Returns a list of the provinces included in the Spanish Cadastre.
 #'
+#' @encoding UTF-8
+#' @family OVCCallejero
+#' @family search
+#' @inheritParams catr_ovc_get_cpmrc
+#' @export
+#'
 #' @references
 #' [ConsultaProvincia](`r ovcurl("prov")`).
 #'
-#' @family OVCCallejero
-#' @family search
-#'
 #' @return A [tibble][tibble::tbl_df].
 #'
-#' @export
-#'
-#' @inheritParams catr_ovc_get_cpmrc
 #' @examplesIf run_example()
 #' \donttest{
-#'
 #' catr_ovc_get_cod_provinces()
 #' }
 #'

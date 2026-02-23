@@ -2,8 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom utils download.file unzip modifyList object.size URLencode
-#' @importFrom utils adist
 #' @importFrom lifecycle deprecated
+#' @importFrom utils unzip modifyList object.size URLencode adist
 ## usethis namespace: end
 NULL

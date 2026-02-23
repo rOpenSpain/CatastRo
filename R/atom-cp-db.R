@@ -1,56 +1,33 @@
 #' ATOM INSPIRE: Reference database for ATOM cadastral parcels
 #'
 #' @description
-#'
 #' Create a database containing the URLs provided in the INSPIRE ATOM service
 #' of the Spanish Cadastre for extracting cadastral parcels.
-#'
 #'  - `catr_atom_get_parcels_db_all()` provides a top-level table including
-#'      information on all the territorial offices (except the Basque Country and
-#'     Navarre) listing the municipalities included in each office.
+#'    information on all the territorial offices (except the Basque Country and
+#'    Navarre) listing the municipalities included in each office.
 #'  - `catr_atom_get_parcels_db_to()` provides a table for the specified
-#'     territorial office including information for each of the municipalities
-#'     of that office.
+#'    territorial office including information for each of the municipalities
+#'    of that office.
+#'
+#' @encoding UTF-8
+#' @family INSPIRE
+#' @family ATOM
+#' @family parcels
+#' @family databases
+#' @inheritParams catr_atom_get_address_db_all
+#' @inherit catr_atom_get_address_db_all return
+#' @export
+#'
+#' @rdname catr_atom_get_parcels_db
 #'
 #' @source
-#'
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(
 #'    "<https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/",
 #'      "ES.SDGC.CP.atom.xml>")
 #'      )
-#'
 #' ```
-#'
-#' @family INSPIRE
-#' @family ATOM
-#' @family parcels
-#' @family databases
-#'
-#' @inheritParams catr_atom_get_address_db_all
-#' @inheritParams catr_set_cache_dir
-#'
-#' @param to Territorial office. It can be any type of string, the function
-#'   would perform a search using [base::grep()].
-#'
-#' @rdname catr_atom_get_parcels_db
-#' @export
-#'
-#' @return
-#' A [tibble][tibble::tbl_df] with the information requested.
-#'  - `catr_atom_get_parcels_db_all()` includes the following fields:
-#'    - `territorial_office`: Territorial office, corresponding to each province
-#'       of Spain except the Basque Country and Navarre.
-#'    - `url`: ATOM URL for the corresponding territorial office.
-#'    - `munic`: Name of the municipality.
-#'    - `date`: Reference date of the data. Note that the information from
-#'       this service is updated twice a year.
-#'  - `catr_atom_get_parcels_db_to()` includes the following fields:
-#'    - `munic`: Name of the municipality.
-#'    - `url`: URL for downloading information of the corresponding
-#'       municipality.
-#'    - `date`: Reference date of the data. Note that **the information from
-#'       this service is updated twice a year**.
 #'
 #' @examplesIf run_example()
 #' \donttest{

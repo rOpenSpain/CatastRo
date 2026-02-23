@@ -13,7 +13,7 @@
       obj <- catr_wfs_get_address_codvia("1", 110, 390, srs = 9999)
     Condition
       Error:
-      ! `srs` should be one of "4326", "4258", "25829", "25830", "25831", "3785", "3857", "3035", "3041", "3042", "3043", "32627" or "32628", not "9999".
+      ! `srs` should be one of "3785", "3857", "4258", "4326", "25829", "25830" or "25831", not "9999".
 
 # AD RC
 
@@ -29,7 +29,7 @@
       obj <- catr_wfs_get_address_rc("3662303TF", srs = 9999)
     Condition
       Error:
-      ! `srs` should be one of "4326", "4258", "25829", "25830", "25831", "3785", "3857", "3035", "3041", "3042", "3043", "32627" or "32628", not "9999".
+      ! `srs` should be one of "3785", "3857", "4258", "4326", "25829", "25830" or "25831", not "9999".
 
 # AD Postal Code
 
@@ -46,5 +46,5 @@
       obj <- catr_wfs_get_address_rc("XXXXX", srs = 9999)
     Condition
       Error:
-      ! `srs` should be one of "4326", "4258", "25829", "25830", "25831", "3785", "3857", "3035", "3041", "3042", "3043", "32627" or "32628", not "9999".
+      ! `srs` should be one of "3785", "3857", "4258", "4326", "25829", "25830" or "25831", not "9999".
 

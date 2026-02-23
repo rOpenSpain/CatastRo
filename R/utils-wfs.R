@@ -172,22 +172,9 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
         )
       )
     }
-    # From http://ovc.catastro.meh.es/INSPIRE/wfsCP.aspx GetCapabilities
-    valid <- c(
-      4326,
-      4258,
-      25829,
-      25830,
-      25831,
-      3785,
-      3857,
-      3035,
-      3041,
-      3042,
-      3043,
-      32627,
-      32628
-    )
+
+    srs_db <- CatastRo::catr_srs_values
+    valid <- srs_db[srs_db$wfs_service, ]$SRS
     srs <- as.numeric(match_arg_pretty(srs, as.character(valid)))
 
     sfobj <- x

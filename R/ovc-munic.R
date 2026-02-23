@@ -7,31 +7,27 @@
 #' Returns the names and codes of a municipality. Returns both the codes as per
 #' the Cadastre and as per the INE (National Statistics Institute).
 #'
+#' @encoding UTF-8
+#' @family OVCCallejero
+#' @family search
+#' @export
+#' @inheritParams catr_ovc_get_cpmrc
+#' @inherit catr_ovc_get_cpmrc return
+#'
 #' @references
 #' [ConsultaMunicipioCodigos](`r ovcurl("mun")`).
 #'
-#' @family OVCCallejero
-#' @family search
+#' @seealso
+#' [mapSpain::esp_get_munic_siane()] to get shapes of municipalities, including
+#' the INE code.
 #'
-#' @return A [tibble][tibble::tbl_df]. See **Details**
-#'
-#' @export
-#'
-#' @seealso [mapSpain::esp_get_munic()] to get shapes of municipalities,
-#' including the INE code.
-#'
-#' @inheritParams catr_ovc_get_cpmrc
 #' @param cpro The code of a province, as provided by
 #'   [catr_ovc_get_cod_provinces()].
-#' @param cmun Code of a municipality, as recorded on the Spanish Cadastre.
-#' @param cmun_ine Code of a municipality, as recorded on National Statistics
-#'   Institute. See [INE: List of
-#' municipalities](https://www.ine.es/daco/daco42/codmun/codmun00i.htm)
+#' @param cmun,cmun_ine Code of a municipality, as recorded on the Spanish
+#'   Cadastre (`cmun`) or the National Statistics Institute. Either `cmun` or
+#'   `cmun_ine` should be provided.
 #'
 #' @details
-#' Parameter `cpro` is mandatory. Either `cmun` or `cmun_ine` should be
-#' provided.
-#'
 #' On a successful query, the function returns a [tibble][tibble::tbl_df]
 #' with one row including the following columns:
 #' * `munic`: Name of the municipality as per the Cadastre.

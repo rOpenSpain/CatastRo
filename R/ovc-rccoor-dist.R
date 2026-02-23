@@ -9,38 +9,35 @@
 #' references found in an area of 50 square meters around the requested
 #' coordinates.
 #'
-#' @references
-#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
-#'
+#' @encoding UTF-8
 #' @family OVCCoordenadas
 #' @family cadastral references
-#' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
-#' @inheritParams catr_atom_get_address
+#' @inheritParams catr_ovc_get_cpmrc
+#' @export
+#' @inherit catr_ovc_get_cpmrc return
+#'
+#' @references
+#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
 #'
 #' @param lat Latitude to use on the query. It should be specified in the same
 #'  in the CRS/SRS `specified` by `srs`.
 #' @param lon Longitude to use on the query. It should be specified in the same
 #'  in the CRS/SRS `specified` by `srs`.
-#' @param srs SRS/CRS to use on the query. To check the admitted values check
-#'   [catr_srs_values], specifically the `ovc_service` column.
 #'
-#' @return A [tibble][tibble::tbl_df]. See **Details**
-#'
-#' @export
+#' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
 #'
 #' @details
-#'
 #' When the API does not provide any result, the function returns a
 #' [tibble][tibble::tbl_df] with the input parameters only.
 #'
 #' On a successful query, the function returns a [tibble][tibble::tbl_df] with
 #' one row by cadastral reference, including the following columns:
-#' * `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
-#' * `refcat`: Cadastral reference.
-#' * `address`: Address as it is recorded on the Cadastre.
-#' * `cmun_ine`: Municipality code as registered on the INE (National
+#' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
+#' - `refcat`: Cadastral reference.
+#' - `address`: Address as it is recorded on the Cadastre.
+#' - `cmun_ine`: Municipality code as registered on the INE (National
 #'    Statistics Institute).
-#' * Rest of fields: Check the API Docs.
+#' - Rest of fields: Check the API Docs.
 #'
 #' @examplesIf run_example()
 #' \donttest{

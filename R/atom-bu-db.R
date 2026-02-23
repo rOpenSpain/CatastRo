@@ -1,10 +1,8 @@
 #' ATOM INSPIRE: Reference database for ATOM buildings
 #'
 #' @description
-#'
 #' Create a database containing the URLs provided in the INSPIRE ATOM service
 #' of the Spanish Cadastre for extracting buildings.
-#'
 #'  - `catr_atom_get_buildings_db_all()` provides a top-level table including
 #'     information on all the territorial offices (except the Basque Country and
 #'     Navarre) listing the municipalities included in each office.
@@ -12,35 +10,19 @@
 #'     territorial office including information for each of the municipalities
 #'     of that office.
 #'
-#' @source
-#' <https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml>
-#'
+#' @encoding UTF-8
 #' @family INSPIRE
 #' @family ATOM
 #' @family buildings
 #' @family databases
-#'
 #' @inheritParams catr_atom_get_address_db_all
-#' @inheritParams catr_set_cache_dir
-#'
-#' @rdname catr_atom_get_buildings_db
+#' @inherit catr_atom_get_address_db_all return
 #' @export
 #'
-#' @return
-#' A [tibble][tibble::tbl_df] with the information requested.
-#'  - `catr_atom_get_buildings_db_all()` includes the following fields:
-#'    - `territorial_office`: Territorial office, corresponding to each province
-#'       of Spain except the Basque Country and Navarre.
-#'    - `url`: ATOM URL for the corresponding territorial office.
-#'    - `munic`: Name of the municipality.
-#'    - `date`: Reference date of the data. Note that the information from
-#'       this service is updated twice a year.
-#'  - `catr_atom_get_buildings_db_to()` includes the following fields:
-#'    - `munic`: Name of the municipality.
-#'    - `url`: URL for downloading information of the corresponding
-#'       municipality.
-#'    - `date`: Reference date of the data. Note that **the information from
-#'       this service is updated twice a year**.
+#' @rdname catr_atom_get_buildings_db
+#'
+#' @source
+#' <https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml>
 #'
 #' @examplesIf run_example()
 #' \donttest{

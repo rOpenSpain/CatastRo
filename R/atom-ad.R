@@ -1,30 +1,43 @@
 #' ATOM INSPIRE: Download all addresses of a municipality
 #'
+#' @description
 #' Retrieve the spatial data of all addresses belonging to a single municipality
 #' using the INSPIRE ATOM service. The function also returns corresponding
 #' street information in fields prefixed with `tfname_*`.
 #'
-#' @references
-#'
-#' ```{r child = "man/chunks/atompdf.Rmd"}
-#' ```
-#'
+#' @encoding UTF-8
 #' @family INSPIRE
 #' @family ATOM
 #' @family addresses
 #' @family spatial
+#' @inheritParams catr_atom_get_address_db_all
+#' @export
+#'
+#' @references
+#' ```{r, echo=FALSE, comment="", results="asis"}
+#' paste0("[API Documentation](https://www.catastro.hacienda.gob.es/",
+#'        "webinspire/documentos/inspire-ATOM.pdf).") |>
+#'   cat()
+#'
+#' cat("\n\n")
+#' paste0("[INSPIRE Services for Cadastral Cartography](https://www.catastro",
+#'        ".hacienda.gob.es/webinspire/index.html).") |> cat()
+#'
+#' ```
+#'
+#' @param munic Municipality to extract. It can be a part of a string or the
+#'   cadastral code. See [catr_atom_search_munic()] for getting the cadastral
+#'   codes.
+#' @param to Optional parameter for defining the Territorial Office to which
+#'   `munic` belongs. This parameter is a helper for narrowing the search.
 #' @param cache `r lifecycle::badge("deprecated")` `cache` is no longer
 #'   supported; this function will always cache results.
 #'
-#' @export
 #' @return A [`sf`][sf::st_sf] object.
 #'
-#' @inheritParams catr_atom_get_parcels
 #' @examplesIf run_example()
 #' \donttest{
-#' s <- catr_atom_get_address("Melque",
-#'   to = "Segovia"
-#' )
+#' s <- catr_atom_get_address("Melque", to = "Segovia")
 #'
 #' library(ggplot2)
 #'

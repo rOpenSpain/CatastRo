@@ -6,32 +6,34 @@
 #'
 #' Returns the coordinates for a specific cadastral reference.
 #'
+#' @encoding UTF-8
+#' @family OVCCoordenadas
+#' @family cadastral references
+#' @inheritParams catr_set_cache_dir
+#' @export
+#'
 #' @references
 #' [Consulta CPMRC](`r ovcurl("CPMRC")`).
 #'
-#' @family OVCCoordenadas
-#' @family cadastral references
 #' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
-#' @inheritParams catr_ovc_get_rccoor
 #'
 #' @param rc The cadastral reference to be geocoded.
 #' @param province,municipality Optional, used for narrowing the search.
+#' @param srs SRS/CRS to use on the query. To check the admitted values check
+#'   [catr_srs_values], specifically the `ovc_service` column.
 #'
 #' @return A [tibble][tibble::tbl_df]. See **Details**
 #'
-#' @export
-#'
 #' @details
-#'
 #' When the API does not provide any result, the function returns a
 #' [tibble][tibble::tbl_df] with the input parameters only.
 #'
 #' On a successful query, the function returns a [tibble][tibble::tbl_df]
 #' with one row per cadastral reference, including the following columns:
-#' * `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
-#' * `refcat`: Cadastral Reference.
-#' * `address`: Address as it is recorded on the Cadastre.
-#' * Rest of fields: Check the API Docs.
+#' - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
+#' - `refcat`: Cadastral Reference.
+#' - `address`: Address as it is recorded on the Cadastre.
+#' - Rest of fields: Check the API Docs.
 #'
 #' @examplesIf run_example()
 #' \donttest{

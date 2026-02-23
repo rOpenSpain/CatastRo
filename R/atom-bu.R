@@ -1,33 +1,27 @@
 #' ATOM INSPIRE: Download all buildings of a municipality
 #'
+#' @description
 #' Retrieve the spatial data of all buildings belonging to a single municipality
 #' using the INSPIRE ATOM service.
 #'
-#' @references
-#'
-#' ```{r child = "man/chunks/atompdf.Rmd"}
-#' ```
-
+#' @encoding UTF-8
 #' @family INSPIRE
 #' @family ATOM
 #' @family buildings
 #' @family spatial
-#'
+#' @inheritParams catr_atom_get_address
 #' @export
-#' @return A [`sf`][sf::st_sf] object.
 #'
-#' @inheritParams catr_atom_get_parcels
+#' @inherit catr_atom_get_address references return
+#'
 #' @param what Information to load. It could be:
-#'   - `"building"` for buildings.
-#'   - `"buildingpart"` for parts of a building.
-#'   - `"other"` for other elements, such as swimming pools, etc.
+#'  - `"building"` for buildings.
+#'  - `"buildingpart"` for parts of a building.
+#'  - `"other"` for other elements, such as swimming pools, etc.
 #'
 #' @examplesIf run_example()
 #' \donttest{
-#' s <- catr_atom_get_buildings("Nava de la Asuncion",
-#'   to = "Segovia",
-#'   what = "building"
-#' )
+#' s <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 #'
 #' library(ggplot2)
 #' ggplot(s) +
