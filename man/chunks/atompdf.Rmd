@@ -1,3 +1,0 @@
-[API Documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ATOM.pdf).
-
-[INSPIRE Services for Cadastral Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).

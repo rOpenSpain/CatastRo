@@ -46,7 +46,7 @@ reference:
     class="external-link">SpatRaster</a></code> objects.
   contents:
   - has_concept("WMS")
-  - mapSpain::esp_getTiles()
+  - mapSpain::esp_get_tiles()
   - terra::plotRGB()
   - tidyterra::geom_spatraster_rgb()
 - title: OVCCoordenadas API

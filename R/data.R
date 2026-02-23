@@ -1,23 +1,20 @@
 #' @title Reference SRS codes for \CRANpkg{CatastRo} APIs
 #'
-#' @family databases
-#' @family WFS
-#' @family OVCCoordenadas
-#'
-#' @name catr_srs_values
-#'
-#' @docType data
-#'
 #' @description
 #' A [tibble][tibble::tbl_df] including the valid SRS (also known as CRS)
 #' values that may be used on each API service. The values are provided
 #' as [EPSG
 #' codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 #'
+#' @docType data
+#' @encoding UTF-8
+#' @family databases
+#' @family WFS
+#' @family OVCCoordenadas
+#' @name catr_srs_values
+#'
 #' @references
-#'
 #' ```{r, echo=FALSE, results='asis'}
-#'
 #' cat(paste0("* [OVCCoordenadas](https://ovc.catastro.meh.es/",
 #' "ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)."))
 #'
@@ -25,8 +22,6 @@
 #'
 #' * [INSPIRE WFS
 #' Service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
-#'
-#' @encoding UTF-8
 #'
 #' @seealso [sf::st_crs()].
 #'
@@ -43,9 +38,7 @@
 #'   \item{wfs_service}{Logical. Is this code valid on INSPIRE WFS services?}
 #' }
 #' @details
-#'
 #' ```{r, echo=FALSE}
-#'
 #' tb <- CatastRo::catr_srs_values
 #' for(i in seq_len(ncol(tb))){
 #'   tb[,i] <- as.vector(paste0("`", tb[[i]], "`"))

@@ -19,27 +19,29 @@ BugReports: https://github.com/rOpenSpain/CatastRo/issues
 Depends: 
     R (>= 4.1.0)
 Imports: 
+    cli,
     dplyr,
     httr2 (>= 1.0.0),
-    mapSpain (>= 0.7.0),
+    lifecycle,
+    mapSpain (>= 1.0.0),
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
-    stringi,
     terra,
     tibble,
+    tools,
+    utils,
     xml2
 Suggests: 
     ggplot2,
     knitr,
-    png,
     quarto,
-    slippymath,
     testthat (>= 3.0.0),
-    tidyterra
+    tidyterra,
+    withr
 VignetteBuilder: 
     quarto
 Config/Needs/website: ropenspain/rostemplate, devtools, sessioninfo,
-    remotes, sfheaders, rapidjsonr, jsonify, geometries
+    remotes, sfheaders, rapidjsonr, jsonify, geometries, magick
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: © Dirección General del Catastro <https://www.catastro.meh.es/>
