@@ -61,7 +61,7 @@ Alternatively, you can install the development version of **CatastRo**
 with:
 
 ``` r
-remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
+pak::pak("rOpenSpain/CatastRo")
 ```
 
 </div>
@@ -72,21 +72,23 @@ The SSL certificate of the Spanish Cadastre presents some issues that
 may cause an error when using **CatastRo** (especially on macOS, see
 issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
-``` r
-#> ...(more lines on error)
-#>
-#> 1: In download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb") :
-#>   URL 'https://www.catastro.minhafp.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml':
-#>   status was 'SSL peer certificate or SSH remote key was not OK'
-#>
-#> ...
-```
-
 You can try to fix it by running this line on your session right after
 you start using the package:
 
 ``` r
-options(download.file.method = "curl", download.file.extra = "-k -L")
+# Disable SSL verification
+options(catastro_ssl_verify = 0)
+```
+
+If you wish to make this setup persistent write the same code in your
+[`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
+
+``` r
+# Open your .Rprofile with
+usethis::edit_r_profile()
+
+# And write on that file:
+options(catastro_ssl_verify = 0)
 ```
 
 ## Package API
@@ -200,7 +202,7 @@ ggplot(bu) +
   ) +
   scale_fill_manual(values = hcl.colors(6, "Dark 3")) +
   theme_minimal() +
-  ggtitle("Nava de la Asunción, Segovia")
+  labs(title = "Nava de la Asunción, Segovia")
 ```
 
 <img src="man/figures/README-atom-1.png" style="width:100.0%"
@@ -210,18 +212,18 @@ alt="Extracting buildings in Nava de la Asuncion with the ATOM service" />
 
 ``` r
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
-  c(-5.569, 42.598, -5.564, 42.601),
+  c(-4.134, 40.952, -4.131, 40.953),
   srs = 4326
 )
 
 # Map
 ggplot(wfs_get_buildings) +
   geom_sf() +
-  ggtitle("Leon Cathedral, Spain")
+  labs(title = "Alcázar of Segovia, Segovia, Spain")
 ```
 
 <img src="man/figures/README-wfs-1.png" style="width:100.0%"
-alt="Extract Leon Cathedral with the WFS service" />
+alt="Extract Alcázar of Segovia with the WFS service" />
 
 ## A note on caching
 

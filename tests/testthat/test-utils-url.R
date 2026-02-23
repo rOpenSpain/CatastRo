@@ -147,10 +147,7 @@ test_that("Caching errors", {
   skip_on_cran()
   skip_if_offline()
 
-  url <- paste0(
-    "https://www.catastro.hacienda.gob.es/INSPIRE/",
-    "fakefile.txt"
-  )
+  url <- "http://ropenspain.github.io/CatastRo/noexist-this-file.txt"
   cdir <- file.path(tempdir(), "testthat_ex5")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
@@ -161,7 +158,7 @@ test_that("Caching errors", {
       cache_dir = cdir,
       subdir = "fixme",
       update_cache = FALSE,
-      verbose = FALSE
+      verbose = TRUE
     ),
     "Error"
   )
@@ -251,10 +248,8 @@ test_that("Tests body", {
 
   expect_s3_class(fend, "httr2_response")
 
-  url <- paste0(
-    "https://www.catastro.hacienda.gob.es/INSPIRE/",
-    "Addresses/fake-file.atom.xml"
-  )
+  url <- "http://ropenspain.github.io/CatastRo/noexist-this-file.txt"
+
   expect_message(
     fend <- get_request_body(url, verbose = TRUE),
     "GET"

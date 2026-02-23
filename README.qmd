@@ -205,23 +205,23 @@ ggplot(bu) +
   ) +
   scale_fill_manual(values = hcl.colors(6, "Dark 3")) +
   theme_minimal() +
-  ggtitle("Nava de la Asunción, Segovia")
+  labs(title = "Nava de la Asunción, Segovia")
 ```
 
 ### Extract geometries using the WFS service
 
 ```{r}
 #| label: wfs
-#| fig-cap: Extract Leon Cathedral with the WFS service
+#| fig-cap: Extract Alcázar of Segovia with the WFS service
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
-  c(-5.569, 42.598, -5.564, 42.601),
+  c(-4.134, 40.952, -4.131, 40.953),
   srs = 4326
 )
 
 # Map
 ggplot(wfs_get_buildings) +
   geom_sf() +
-  ggtitle("Leon Cathedral, Spain")
+  labs(title = "Alcázar of Segovia, Segovia, Spain")
 ```
 
 ## A note on caching
