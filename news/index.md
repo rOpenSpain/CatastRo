@@ -2,6 +2,8 @@
 
 ## CatastRo 1.0.0
 
+CRAN release: 2026-02-23
+
 This major release introduces a full overhaul of the codebase and test
 suite. All requests now use **httr2**, and cached files are reorganized
 into topic-based subfolders for easier management.

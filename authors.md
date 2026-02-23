@@ -14,7 +14,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/rOpenSpain/CatastRo/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/rOpenSpain/CatastRo/blob/release/inst/CITATION)
 
 Delgado Panadero Á, Hernangómez D (2026). *CatastRo: Interface to the
 API Sede Electrónica Del Catastro*.
