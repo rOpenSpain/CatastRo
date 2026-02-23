@@ -36,7 +36,7 @@ session.
 }
 \description{
 This function will store your \code{cache_dir} path on your local machine and
-would load it for future sessions. Type \code{Sys.getenv("CATASTROESP_CACHE_DIR")}
+will load it for future sessions. Type \code{Sys.getenv("CATASTROESP_CACHE_DIR")}
 to find your cached path or use \code{\link[=catr_detect_cache_dir]{catr_detect_cache_dir()}}.
 }
 \details{
@@ -51,8 +51,8 @@ path to a small configuration file under
 In \CRANpkg{CatastRo} >= 1.0.0 the location of the configuration file has
 moved from \code{rappdirs::user_config_dir("CatastRo", "R")} to
 \code{tools::R_user_dir("CatastRo", "config")}. We have implemented a
-functionality that would migrate previous configuration files from one
-location to another with a message. This message would appear only once
+functionality that will migrate previous configuration files from one
+location to another with a message. This message will appear only once
 informing of the migration.
 }
 \section{Caching strategies}{

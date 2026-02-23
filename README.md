@@ -40,8 +40,8 @@ install.packages("CatastRo")
 
 <div class="pkgdown-devel">
 
-Check the docs of the developing version
-in <https://ropenspain.github.io/CatastRo/dev/>.
+Check the docs of the developing version in
+<https://ropenspain.github.io/CatastRo/dev/>.
 
 You can install the developing version of **CatastRo** using the
 [r-universe](https://ropenspain.r-universe.dev/CatastRo):
@@ -66,21 +66,21 @@ pak::pak("rOpenSpain/CatastRo")
 
 </div>
 
-## Known issues
+## SSL issues
 
 The SSL certificate of the Spanish Cadastre presents some issues that
 may cause an error when using **CatastRo** (especially on macOS, see
 issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
-You can try to fix it by running this line on your session right after
-you start using the package:
+In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
+your session right after you start using the package: \`
 
 ``` r
 # Disable SSL verification
 options(catastro_ssl_verify = 0)
 ```
 
-If you wish to make this setup persistent write the same code in your
+If you wish to make this setup persistent, write the same code in your
 [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
 ``` r
@@ -116,7 +116,7 @@ INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
 service.
 
 Note that the coverage of this service is 95% of the Spanish territory,
-<u>excluding the Basque Country and Navarre</u>[^1] that have their own
+excluding the Basque Country and Navarre[^1], which have their own
 independent cadastral offices.
 
 There are three types of functions, each one querying a different

@@ -14,12 +14,12 @@ catr_get_code_from_coords(
 )
 }
 \arguments{
-\item{x}{It could be:
+\item{x}{It can be:
 \itemize{
 \item A pair of coordinates \code{c(x,y)}. In this case the \code{srs} of the coordinates
 should be provided.
 \item A \code{\link[sf:sf]{sf}} object. If the object has several geometries only the
-first value would be used. The function would extract the coordinates
+first value will be used. The function will extract the coordinates
 using \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }}
 

@@ -28,14 +28,14 @@
     Code
       no_res <- catr_atom_get_buildings_db_to(to = "aaaana", cache_dir = tempdir())
     Message
-      ! No Territorial Office found with pattern "aaaana".
+      ! No territorial office found with pattern "aaaana".
 
 ---
 
     Code
       several <- catr_atom_get_buildings_db_to(to = "lencia", cache_dir = tempdir())
     Message
-      i Found 2 Territorial offices with pattern "lencia".
+      i Found 2 territorial offices with pattern "lencia".
       v Selecting "Territorial office 34 Palencia".
       x Discarding:
         "Territorial office 46 Valencia"

@@ -19,10 +19,10 @@
 #' @references
 #' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
 #'
-#' @param lat Latitude to use on the query. It should be specified in the same
-#'  in the CRS/SRS `specified` by `srs`.
-#' @param lon Longitude to use on the query. It should be specified in the same
-#'  in the CRS/SRS `specified` by `srs`.
+#' @param lat Latitude to use on the query. It should be specified in the
+#'   CRS/SRS defined in `srs`.
+#' @param lon Longitude to use on the query. It should be specified in the
+#'   CRS/SRS defined in `srs`.
 #'
 #' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
 #'

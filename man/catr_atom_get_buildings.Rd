@@ -20,10 +20,10 @@ catr_atom_get_buildings(
 cadastral code. See \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} for getting the cadastral
 codes.}
 
-\item{to}{Optional argument for defining the Territorial Office to which
+\item{to}{Optional argument for defining the territorial office to which
 \code{munic} belongs. This argument is a helper for narrowing the search.}
 
-\item{what}{Information to load. It could be:
+\item{what}{Information to load. It can be:
 \itemize{
 \item \code{"building"} for buildings.
 \item \code{"buildingpart"} for parts of a building.

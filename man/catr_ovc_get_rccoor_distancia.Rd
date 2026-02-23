@@ -8,11 +8,11 @@
 catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 }
 \arguments{
-\item{lat}{Latitude to use on the query. It should be specified in the same
-in the CRS/SRS \code{specified} by \code{srs}.}
+\item{lat}{Latitude to use on the query. It should be specified in the
+CRS/SRS defined in \code{srs}.}
 
-\item{lon}{Longitude to use on the query. It should be specified in the same
-in the CRS/SRS \code{specified} by \code{srs}.}
+\item{lon}{Longitude to use on the query. It should be specified in the
+CRS/SRS defined in \code{srs}.}
 
 \item{srs}{SRS/CRS to use on the query. To check the admitted values check
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}

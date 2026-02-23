@@ -28,7 +28,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
-\item{what}{Information to load. It could be:
+\item{what}{Information to load. It can be:
 \itemize{
 \item \code{"building"} for buildings.
 \item \code{"buildingpart"} for parts of a building.

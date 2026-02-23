@@ -43,7 +43,7 @@ matching.}
 A \link[tibble:tbl_df-class]{tibble} with the information requested with the following
 fields:
 \itemize{
-\item \code{territorial_office}: Territorial office, corresponding to each province
+\item \code{territorial_office}: territorial office, corresponding to each province
 of Spain except the Basque Country and Navarre.
 \item \code{url}: ATOM URL for the corresponding territorial office.
 \item \code{munic}: Name of the municipality.

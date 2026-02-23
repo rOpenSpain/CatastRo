@@ -23,7 +23,6 @@
 #' * [INSPIRE WFS
 #' Service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 #'
-#'
 #' @seealso [sf::st_crs()].
 #'
 #' @format

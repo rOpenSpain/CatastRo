@@ -8,7 +8,6 @@ test_that("SSL verifier (#40)", {
   expect_equal(getOption("catastro_ssl_verify", 1L), 0L)
 })
 
-
 test_that("Test offline", {
   skip_on_cran()
   skip_if_offline()

@@ -130,7 +130,7 @@ get_sf_from_bbox <- function(bbox, srs = NULL) {
   # Sanity check
   if (!(is.numeric(bbox) && length(bbox) == 4)) {
     cli::cli_abort(
-      "{.arg bbox} have length {.val {4L}}, not {.val {length(bbox)}}."
+      "{.arg bbox} has length {.val {4L}}, not {.val {length(bbox)}}."
     )
   }
 

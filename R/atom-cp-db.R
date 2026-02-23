@@ -101,7 +101,7 @@ catr_atom_get_parcels_db_to <- function(
   to_loc <- ensure_null(grep(to, allto, ignore.case = TRUE))
   if (is.null(to_loc)) {
     cli::cli_alert_warning(
-      "No Territorial Office found with pattern {.str {to}}."
+      "No territorial office found with pattern {.str {to}}."
     )
     return(NULL)
   }
@@ -118,7 +118,7 @@ catr_atom_get_parcels_db_to <- function(
 
   if (length(tb) > 1) {
     cli::cli_alert_info(
-      "Found {length(tb)} Territorial offices with pattern {.str {to}}."
+      "Found {length(tb)} territorial offices with pattern {.str {to}}."
     )
 
     cli::cli_alert_success("Selecting {.str {tb[1]}}.")

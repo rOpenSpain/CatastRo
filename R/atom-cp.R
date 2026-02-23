@@ -13,9 +13,9 @@
 #' @export
 #'
 #' @inherit catr_atom_get_address references return
-#' @param what Information to load. It could be:
-#'   -`"parcel"` for cadastral parcels.
-#'   -`"zoning"` for cadastral zoning.
+#' @param what Information to load. It can be:
+#'   - `"parcel"` for cadastral parcels.
+#'   - `"zoning"` for cadastral zoning.
 #'
 #' @examplesIf run_example()
 #' \donttest{

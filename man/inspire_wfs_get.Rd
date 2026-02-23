@@ -35,7 +35,7 @@ Client tool for WFS INSPIRE services
 }
 \details{
 This function is used internally in all the WFS calls. We expose it to make
-it available to another users and/or developers for accessing other
+it available to other users and/or developers for accessing other
 cadastral or INSPIRE resources. See \strong{Examples}.
 }
 \examples{

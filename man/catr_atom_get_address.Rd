@@ -19,7 +19,7 @@ catr_atom_get_address(
 cadastral code. See \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} for getting the cadastral
 codes.}
 
-\item{to}{Optional argument for defining the Territorial Office to which
+\item{to}{Optional argument for defining the territorial office to which
 \code{munic} belongs. This argument is a helper for narrowing the search.}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer

@@ -5,7 +5,6 @@
 #' object and returns the corresponding municipality code for those coordinates
 #' using [catr_ovc_get_cod_munic()].
 #'
-#'
 #' @encoding UTF-8
 #' @family search
 #' @inheritParams catr_ovc_get_cod_munic
@@ -20,11 +19,11 @@
 #' [mapSpain::esp_get_munic_siane()], [catr_ovc_get_cod_munic()],
 #' [sf::st_centroid()].
 #'
-#' @param x It could be:
+#' @param x It can be:
 #'   - A pair of coordinates `c(x,y)`. In this case the `srs` of the coordinates
 #'     should be provided.
 #'   - A [`sf`][sf::st_sf] object. If the object has several geometries only the
-#'     first value would be used. The function would extract the coordinates
+#'     first value will be used. The function will extract the coordinates
 #'     using `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 #'
 #' @examplesIf run_example()
