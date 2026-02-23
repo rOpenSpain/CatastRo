@@ -4,7 +4,7 @@ development:
   mode: auto
 
 repo:
-  branch: main
+  branch: release
 
 template:
   bootstrap: 5
