@@ -96,7 +96,7 @@
 <h2 id="ssl-issues">SSL issues<a class="anchor" aria-label="anchor" href="#ssl-issues"></a>
 </h2>
 <p>The SSL certificate of the Spanish Cadastre presents some issues that may cause an error when using <strong>CatastRo</strong> (especially on macOS, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>):</p>
-<p>In <strong>CatastRo &gt;= 1.0.0</strong> you can try to fix it by running this line in your session right after you start using the package: `</p>
+<p>In <strong>CatastRo &gt;= 1.0.0</strong> you can try to fix it by running this line in your session right after you start using the package:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Disable SSL verification</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>catastro_ssl_verify <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
@@ -161,7 +161,7 @@
 <span></span>
 <span><span class="fu"><a href="reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 10</span></span>
-<span><span class="co">#&gt;   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span></span>
+<span><span class="co">#&gt;   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt</span></span>
 <span><span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;</span></span>
 <span><span class="co">#&gt; 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…</span></span></code></pre></div>
 </div>
@@ -175,7 +175,7 @@
 <span>  srs <span class="op">=</span> <span class="st">"4230"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 8</span></span>
-<span><span class="co">#&gt;   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span></span>
+<span><span class="co">#&gt;   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;</span></span>
 <span><span class="co">#&gt; 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…</span></span></code></pre></div>
 </div>
@@ -227,8 +227,9 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>
-Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. <a href="https://doi.org/10.32614/CRAN.package.CatastRo" class="external-link">doi:10.32614/CRAN.package.CatastRo</a>, <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
 </p>
+<p>Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. <a href="https://doi.org/10.32614/CRAN.package.CatastRo" class="external-link">doi:10.32614/CRAN.package.CatastRo</a>, <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.</p>
+
 <p>A BibTeX entry for LaTeX users is:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>CatastRo,</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>

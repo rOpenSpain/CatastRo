@@ -21,7 +21,7 @@ may cause an error when using **CatastRo** (especially on macOS, see
 issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
 In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
-your session right after you start using the package: \`
+your session right after you start using the package:
 
 ``` r
 # Disable SSL verification
@@ -115,7 +115,7 @@ library(CatastRo)
 
 catr_ovc_get_cpmrc(rc = "13077A01800039")
 #> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt
 #>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
 #> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…
 ```
@@ -129,7 +129,7 @@ catr_ovc_get_rccoor(
   srs = "4230"
 )
 #> # A tibble: 1 × 8
-#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt
 #>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
 #> 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
 ```
