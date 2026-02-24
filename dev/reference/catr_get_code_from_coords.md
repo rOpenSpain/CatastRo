@@ -2,11 +2,7 @@
 
 This function takes as input a pair of coordinates of a
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object and
-returns the corresponding municipality code for those coordinates.
-
-See also
-[`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
-and
+returns the corresponding municipality code for those coordinates using
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_munic.md).
 
 ## Usage
@@ -25,18 +21,21 @@ catr_get_code_from_coords(
 
 - x:
 
-  It could be:
+  It can be:
 
-  - A pair of coordinates c(x,y).
+  - A pair of coordinates `c(x,y)`. In this case the `srs` of the
+    coordinates should be provided.
 
   - A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
-    See **Details**.
+    If the object has several geometries only the first value will be
+    used. The function will extract the coordinates using
+    `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 
 - srs:
 
   SRS/CRS to use on the query. To check the admitted values check
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
-  specifically the `wfs_service` column. See **Details**.
+  specifically the `ovc_service` column.
 
 - verbose:
 
@@ -59,24 +58,60 @@ catr_get_code_from_coords(
       `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
       information starts as of 2005.
 
+  `resolution`
+
+  :   character string or number. Resolution of the geospatial data. One
+      of:
+
+      - "10": 1:10 million.
+
+      - "6.5": 1:6.5 million.
+
+      - "3": 1:3 million.
+
+  `region`
+
+  :   Optional. A vector of region names, NUTS or ISO codes (see
+      [`esp_dict_region_code()`](https://ropenspain.github.io/mapSpain/reference/esp_dict.html)).
+
+  `munic`
+
+  :   character string. A name or
+      [`regex`](https://rdrr.io/r/base/grep.html) expression with the
+      names of the required municipalities. `NULL` will return all
+      municipalities.
+
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with the format described in
-[`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_munic.md).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+See **Details**
 
 ## Details
 
-When `x` is a numeric vector, make sure that the `srs` matches the
-coordinate values.
+On a successful query, the function returns a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+one row including the following columns:
 
-When `x` is a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-object, only the first value would be used. The function would extract
-the coordinates using `sf::st_centroid(x, of_largest_polygon = TRUE)`.
+- `munic`: Name of the municipality as per the Cadastre.
+
+- `catr_to`: Cadastral territorial office code.
+
+- `catr_munic`: Municipality code as recorded on the Cadastre.
+
+- `catrcode`: Full Cadastral code for the municipality.
+
+- `cpro`: Province code as per the INE.
+
+- `catr_munic`: Municipality code as per the INE.
+
+- `catrcode`: Full INE code for the municipality.
+
+- Rest of fields: Check the API Docs.
 
 ## See also
 
 [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html),
+[`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_munic.md),
 [`sf::st_centroid()`](https://r-spatial.github.io/sf/reference/geos_unary.html).
 
 Other search:

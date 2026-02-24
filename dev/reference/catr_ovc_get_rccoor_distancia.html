@@ -17,7 +17,7 @@ coordinates."><meta property="og:image" content="https://ropenspain.github.io/Ca
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@ coordinates."><meta property="og:image" content="https://ropenspain.github.io/Ca
 
     <div class="ref-description section level2">
     <p>Implementation of the OVCCoordenadas service
-<a href="http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia" class="external-link">Consulta RCCOOR Distancia</a>.</p>
+<a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia" class="external-link">Consulta RCCOOR Distancia</a>.</p>
 <p>Returns the cadastral reference found for a set of coordinates. If no
 cadastral references are found, the API returns a list of the cadastral
 references found in an area of 50 square meters around the requested
@@ -72,13 +72,13 @@ coordinates.</p>
 
 
 <dl><dt id="arg-lat">lat<a class="anchor" aria-label="anchor" href="#arg-lat"></a></dt>
-<dd><p>Latitude to use on the query. It should be specified in the same
-in the CRS/SRS <code>specified</code> by <code>srs</code>.</p></dd>
+<dd><p>Latitude to use on the query. It should be specified in the
+CRS/SRS defined in <code>srs</code>.</p></dd>
 
 
 <dt id="arg-lon">lon<a class="anchor" aria-label="anchor" href="#arg-lon"></a></dt>
-<dd><p>Longitude to use on the query. It should be specified in the same
-in the CRS/SRS <code>specified</code> by <code>srs</code>.</p></dd>
+<dd><p>Longitude to use on the query. It should be specified in the
+CRS/SRS defined in <code>srs</code>.</p></dd>
 
 
 <dt id="arg-srs">srs<a class="anchor" aria-label="anchor" href="#arg-srs"></a></dt>
@@ -97,9 +97,9 @@ in the CRS/SRS <code>specified</code> by <code>srs</code>.</p></dd>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>When the API does not provide any result, the function returns a
-<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with the input parameters only.</p>
+<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with the input arguments only.</p>
 <p>On a successful query, the function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with
-one row by cadastral reference, including the following columns:</p><ul><li><p><code>geo.xcen</code>, <code>geo.ycen</code>, <code>geo.srs</code>: Input parameters of the query.</p></li>
+one row by cadastral reference, including the following columns:</p><ul><li><p><code>geo.xcen</code>, <code>geo.ycen</code>, <code>geo.srs</code>: Input arguments of the query.</p></li>
 <li><p><code>refcat</code>: Cadastral reference.</p></li>
 <li><p><code>address</code>: Address as it is recorded on the Cadastre.</p></li>
 <li><p><code>cmun_ine</code>: Municipality code as registered on the INE (National
@@ -108,7 +108,7 @@ Statistics Institute).</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p><a href="http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia" class="external-link">Consulta RCCOOR Distancia</a>.</p>
+    <p><a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia" class="external-link">Consulta RCCOOR Distancia</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

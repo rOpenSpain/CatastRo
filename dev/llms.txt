@@ -7,8 +7,8 @@ cadastral parcels, maps, and geocode cadastral references.
 
 ## Installation
 
-Check the docs of the developing version
-in <https://ropenspain.github.io/CatastRo/dev/>.
+Check the docs of the developing version in
+<https://ropenspain.github.io/CatastRo/dev/>.
 
 You can install the developing version of **CatastRo** using the
 [r-universe](https://ropenspain.r-universe.dev/CatastRo):
@@ -28,30 +28,32 @@ Alternatively, you can install the development version of **CatastRo**
 with:
 
 ``` r
-remotes::install_github("rOpenSpain/CatastRo", dependencies = TRUE)
+pak::pak("rOpenSpain/CatastRo")
 ```
 
-## Known issues
+## SSL issues
 
 The SSL certificate of the Spanish Cadastre presents some issues that
 may cause an error when using **CatastRo** (especially on macOS, see
 issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
+In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
+your session right after you start using the package:
+
 ``` r
-#> ...(more lines on error)
-#>
-#> 1: In download.file(url, filepath, quiet = isFALSE(verbose), mode = "wb") :
-#>   URL 'https://www.catastro.minhafp.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml':
-#>   status was 'SSL peer certificate or SSH remote key was not OK'
-#>
-#> ...
+# Disable SSL verification
+options(catastro_ssl_verify = 0)
 ```
 
-You can try to fix it by running this line on your session right after
-you start using the package:
+If you wish to make this setup persistent, write the same code in your
+[`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
 ``` r
-options(download.file.method = "curl", download.file.extra = "-k -L")
+# Open your .Rprofile with
+usethis::edit_r_profile()
+
+# And write on that file:
+options(catastro_ssl_verify = 0)
 ```
 
 ## Package API
@@ -79,7 +81,7 @@ INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
 service.
 
 Note that the coverage of this service is 95% of the Spanish territory,
-*excluding the Basque Country and Navarre*[¹](#fn1) that have their own
+excluding the Basque Country and Navarre[¹](#fn1), which have their own
 independent cadastral offices.
 
 There are three types of functions, each one querying a different
@@ -165,7 +167,7 @@ ggplot(bu) +
   ) +
   scale_fill_manual(values = hcl.colors(6, "Dark 3")) +
   theme_minimal() +
-  ggtitle("Nava de la Asunción, Segovia")
+  labs(title = "Nava de la Asunción, Segovia")
 ```
 
 ![Extracting buildings in Nava de la Asuncion with the ATOM
@@ -175,17 +177,17 @@ service](reference/figures/README-atom-1.png)
 
 ``` r
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
-  c(-5.569, 42.598, -5.564, 42.601),
+  c(-4.134, 40.952, -4.131, 40.953),
   srs = 4326
 )
 
 # Map
 ggplot(wfs_get_buildings) +
   geom_sf() +
-  ggtitle("Leon Cathedral, Spain")
+  labs(title = "Alcázar of Segovia, Segovia, Spain")
 ```
 
-![Extract Leon Cathedral with the WFS
+![Extract Alcázar of Segovia with the WFS
 service](reference/figures/README-wfs-1.png)
 
 ## A note on caching
@@ -216,7 +218,7 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {0.4.1.9000},
+  version = {1.0.0.9000},
   url = {https://ropenspain.github.io/CatastRo/},
   abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
 }

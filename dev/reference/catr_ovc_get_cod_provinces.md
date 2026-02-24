@@ -39,7 +39,6 @@ Other search:
 
 ``` r
 # \donttest{
-
 catr_ovc_get_cod_provinces()
 #> # A tibble: 48 × 2
 #>    cpine np       

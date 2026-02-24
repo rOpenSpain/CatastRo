@@ -28,13 +28,16 @@ catr_atom_get_parcels(
 
 - to:
 
-  Optional parameter for defining the Territorial Office to which
-  `munic` belongs. This parameter is a helper for narrowing the search.
+  Optional argument for defining the territorial office to which `munic`
+  belongs. This argument is a helper for narrowing the search.
 
 - what:
 
-  Information to load. It could be: -`"parcel"` for cadastral parcels.
-  -`"zoning"` for cadastral zoning.
+  Information to load. It can be:
+
+  - `"parcel"` for cadastral parcels.
+
+  - `"zoning"` for cadastral zoning.
 
 - cache:
 
@@ -106,10 +109,7 @@ Other spatial:
 
 ``` r
 # \donttest{
-s <- catr_atom_get_parcels("Melque",
-  to = "Segovia",
-  what = "parcel"
-)
+s <- catr_atom_get_parcels("Melque", to = "Segovia", what = "parcel")
 
 library(ggplot2)
 

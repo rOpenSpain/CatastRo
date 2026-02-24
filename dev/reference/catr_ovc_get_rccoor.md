@@ -15,13 +15,13 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude to use on the query. It should be specified in the same in
-  the CRS/SRS `specified` by `srs`.
+  Latitude to use on the query. It should be specified in the CRS/SRS
+  defined in `srs`.
 
 - lon:
 
-  Longitude to use on the query. It should be specified in the same in
-  the CRS/SRS `specified` by `srs`.
+  Longitude to use on the query. It should be specified in the CRS/SRS
+  defined in `srs`.
 
 - srs:
 
@@ -42,13 +42,13 @@ See **Details**
 
 When the API does not provide any result, the function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-the input parameters only.
+the input arguments only.
 
 On a successful query, the function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 one row by cadastral reference, including the following columns:
 
-- `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
+- `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 
 - `refcat`: Cadastral Reference.
 

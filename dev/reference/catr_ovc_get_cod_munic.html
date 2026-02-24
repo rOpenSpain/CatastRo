@@ -13,7 +13,7 @@ the Cadastre and as per the INE (National Statistics Institute)."><meta property
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,13 +70,10 @@ the Cadastre and as per the INE (National Statistics Institute).</p>
 <code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code>.</p></dd>
 
 
-<dt id="arg-cmun">cmun<a class="anchor" aria-label="anchor" href="#arg-cmun"></a></dt>
-<dd><p>Code of a municipality, as recorded on the Spanish Cadastre.</p></dd>
-
-
-<dt id="arg-cmun-ine">cmun_ine<a class="anchor" aria-label="anchor" href="#arg-cmun-ine"></a></dt>
-<dd><p>Code of a municipality, as recorded on National Statistics
-Institute. See <a href="https://www.ine.es/daco/daco42/codmun/codmun00i.htm" class="external-link">INE: List of municipalities</a></p></dd>
+<dt id="arg-cmun-cmun-ine">cmun, cmun_ine<a class="anchor" aria-label="anchor" href="#arg-cmun-cmun-ine"></a></dt>
+<dd><p>Code of a municipality, as recorded on the Spanish
+Cadastre (<code>cmun</code>) or the National Statistics Institute. Either <code>cmun</code> or
+<code>cmun_ine</code> should be provided.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -89,9 +86,7 @@ Institute. See <a href="https://www.ine.es/daco/daco42/codmun/codmun00i.htm" cla
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Parameter <code>cpro</code> is mandatory. Either <code>cmun</code> or <code>cmun_ine</code> should be
-provided.</p>
-<p>On a successful query, the function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>
+    <p>On a successful query, the function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>
 with one row including the following columns:</p><ul><li><p><code>munic</code>: Name of the municipality as per the Cadastre.</p></li>
 <li><p><code>catr_to</code>: Cadastral territorial office code.</p></li>
 <li><p><code>catr_munic</code>: Municipality code as recorded on the Cadastre.</p></li>
@@ -107,8 +102,8 @@ with one row including the following columns:</p><ul><li><p><code>munic</code>: 
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html" class="external-link">mapSpain::esp_get_munic()</a></code> to get shapes of municipalities,
-including the INE code.</p>
+    <div class="dont-index"><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html" class="external-link">mapSpain::esp_get_munic_siane()</a></code> to get shapes of municipalities, including
+the INE code.</p>
 <p>OVCCoordenadas API:
 <code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code></p>
 <p>Other search:

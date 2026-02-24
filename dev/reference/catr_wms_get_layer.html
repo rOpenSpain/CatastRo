@@ -9,7 +9,7 @@ mapSpain::esp_get_tiles()."><meta property="og:image" content="https://ropenspai
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,7 @@ mapSpain::esp_get_tiles()."><meta property="og:image" content="https://ropenspai
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>See <strong>Details</strong>. It could be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that defines
+<dd><p>See <strong>Bounding box</strong>. It could be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that defines
 the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
 <li><p>A <code>sf/sfc</code> object, as provided by the <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> package.</p></li>
 </ul></dd>
@@ -80,15 +80,13 @@ the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
 
 <dt id="arg-srs">srs<a class="anchor" aria-label="anchor" href="#arg-srs"></a></dt>
 <dd><p>SRS/CRS to use on the query. To check the admitted values check
-<a href="catr_srs_values.html">catr_srs_values</a>, specifically the <code>wfs_service</code> column. See <strong>Details</strong>.</p></dd>
+<a href="catr_srs_values.html">catr_srs_values</a>, specifically the <code>wfs_service</code> column. See
+<strong>Bounding box</strong>.</p></dd>
 
 
-<dt id="arg-what">what<a class="anchor" aria-label="anchor" href="#arg-what"></a></dt>
-<dd><p>Layer to be extracted, see <strong>Details</strong>.</p></dd>
-
-
-<dt id="arg-styles">styles<a class="anchor" aria-label="anchor" href="#arg-styles"></a></dt>
-<dd><p>Style of the WMS layer. See <strong>Details</strong>.</p></dd>
+<dt id="arg-what-styles">what, styles<a class="anchor" aria-label="anchor" href="#arg-what-styles"></a></dt>
+<dd><p>Layer and style of the WMS layer to be downloaded. See
+<strong>Layers and styles</strong>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -141,22 +139,30 @@ Resolution (in pixels) of the final tile.</p></dd>
 see <code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::RGB()</a></code>.</p>
     </div>
     <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>When <code>x</code> is a numeric vector, make sure that the <code>srs</code> matches the
+    <h2 id="bounding-box">Bounding box<a class="anchor" aria-label="anchor" href="#bounding-box"></a></h2>
+
+
+<p>When <code>x</code> is a numeric vector, make sure that the <code>srs</code> matches the
 coordinate values. When <code>x</code> is a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object, the value
 <code>srs</code> is ignored.</p>
 <p>The query is performed using <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a> (Web Mercator)
-and the tile is projected back to the SRS of <code>x</code>. In
-case that the tile looks deformed, try either providing <code>x</code> or specify the
-SRS of the requested tile via the <code>srs</code> parameter, that ideally would need
-to match the SRS of <code>x</code>. See <strong>Examples</strong>.</p>
+and the tile is projected back to the SRS of <code>x</code>. In case that the tile
+looks deformed, try either providing <code>x</code> or specify the SRS of the requested
+tile via the <code>srs</code> argument, that (ideally) would need to match the SRS of
+<code>x</code>. See <strong>Examples</strong>.</p>
     </div>
     <div class="section level2">
-    <h2 id="layers">Layers<a class="anchor" aria-label="anchor" href="#layers"></a></h2>
-    <p>The parameter <code>what</code> defines the layer to be extracted. The equivalence with
+    <h2 id="layers-and-styles">Layers and styles<a class="anchor" aria-label="anchor" href="#layers-and-styles"></a></h2>
+
+
+<div class="section">
+<h3 id="layers">Layers<a class="anchor" aria-label="anchor" href="#layers"></a></h3>
+
+
+<p>The argument <code>what</code> defines the layer to be extracted. The equivalence with
 the
 <a href="https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Docs</a>
-equivalence is:</p><ul><li><p><code>"parcel"</code>: CP.CadastralParcel</p></li>
+reference is:</p><ul><li><p><code>"parcel"</code>: CP.CadastralParcel</p></li>
 <li><p><code>"zoning"</code>: CP.CadastralZoning</p></li>
 <li><p><code>"building"</code>: BU.Building</p></li>
 <li><p><code>"buildingpart"</code>: BU.BuildingPart</p></li>
@@ -164,9 +170,12 @@ equivalence is:</p><ul><li><p><code>"parcel"</code>: CP.CadastralParcel</p></li>
 <li><p><code>"admboundary"</code>: AU.AdministrativeBoundary</p></li>
 <li><p><code>"admunit"</code>: AU.AdministrativeUnit</p></li>
 </ul></div>
-    <div class="section level2">
-    <h2 id="styles">Styles<a class="anchor" aria-label="anchor" href="#styles"></a></h2>
-    <p>The WMS service provides different styles on each layer (<code>what</code> parameter).
+
+<div class="section">
+<h3 id="styles">Styles<a class="anchor" aria-label="anchor" href="#styles"></a></h3>
+
+
+<p>The WMS service provides different styles on each layer (<code>what</code> argument).
 Some of the styles available are:</p><ul><li><p><code>"parcel"</code>: styles : <code>"BoundariesOnly"</code>, <code>"ReferencePointOnly"</code>,
 <code>"ELFCadastre"</code>.</p></li>
 <li><p><code>"zoning"</code>: styles : <code>"BoundariesOnly"</code>, <code>"ELFCadastre"</code>.</p></li>
@@ -175,11 +184,8 @@ Some of the styles available are:</p><ul><li><p><code>"parcel"</code>: styles : 
 <li><p><code>"admboundary"</code>, <code>"admunit"</code>: <code>"ELFCadastre"</code></p></li>
 </ul><p>Check the <a href="https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Docs</a>
 for more information.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p><a href="https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf" class="external-link">API Documentation</a>.</p>
-<p><a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">INSPIRE Services for Cadastral Cartography</a>.</p>
+</div>
+
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

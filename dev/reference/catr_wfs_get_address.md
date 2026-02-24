@@ -4,7 +4,7 @@ Get the spatial data of addresses. The WFS Service allows performing
 several types of queries:
 
 - By bounding box: Implemented on `catr_wfs_get_address_bbox()`. Extract
-  objects included in the bounding box provided. See **Details**.
+  objects included in the bounding box provided. See **Bounding box**.
 
 &nbsp;
 
@@ -37,7 +37,7 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 
 - x:
 
-  See **Details**. It could be:
+  See **Bounding box**. It could be:
 
   - A numeric vector of length 4 with the coordinates that defines the
     bounding box: `c(xmin, ymin, xmax, ymax)`
@@ -49,7 +49,7 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 
   SRS/CRS to use on the query. To check the admitted values check
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
-  specifically the `wfs_service` column. See **Details**.
+  specifically the `wfs_service` column. See **Bounding box**.
 
 - verbose:
 
@@ -79,6 +79,11 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
+## API Limits
+
+The API service is limited to a bounding box of 4km2 and a maximum of
+5,000 elements.
+
 ## Bounding box
 
 When `x` is a numeric vector, make sure that the `srs` matches the
@@ -96,11 +101,6 @@ The result is always provided in the SRS of the
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object provided
 as input.
 
-## API Limits
-
-The API service is limited to a bounding box of 4km2 and a maximum of
-5.000 elements.
-
 ## References
 
 [API
@@ -110,8 +110,6 @@ Documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspir
 Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
-
-[`sf::st_bbox()`](https://r-spatial.github.io/sf/reference/st_bbox.html)
 
 INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),

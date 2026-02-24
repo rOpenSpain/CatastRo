@@ -26,7 +26,7 @@ catr_wms_get_layer(
 
 - x:
 
-  See **Details**. It could be:
+  See **Bounding box**. It could be:
 
   - A numeric vector of length 4 with the coordinates that defines the
     bounding box: `c(xmin, ymin, xmax, ymax)`
@@ -38,15 +38,12 @@ catr_wms_get_layer(
 
   SRS/CRS to use on the query. To check the admitted values check
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
-  specifically the `wfs_service` column. See **Details**.
+  specifically the `wfs_service` column. See **Bounding box**.
 
-- what:
+- what, styles:
 
-  Layer to be extracted, see **Details**.
-
-- styles:
-
-  Style of the WMS layer. See **Details**.
+  Layer and style of the WMS layer to be downloaded. See **Layers and
+  styles**.
 
 - update_cache:
 
@@ -104,7 +101,7 @@ A [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
 is returned, with 3 (RGB) or 4 (RGBA) layers, see
 [`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html).
 
-## Details
+## Bounding box
 
 When `x` is a numeric vector, make sure that the `srs` matches the
 coordinate values. When `x` is a
@@ -114,15 +111,17 @@ value `srs` is ignored.
 The query is performed using [EPSG:3857](https://epsg.io/3857) (Web
 Mercator) and the tile is projected back to the SRS of `x`. In case that
 the tile looks deformed, try either providing `x` or specify the SRS of
-the requested tile via the `srs` parameter, that ideally would need to
+the requested tile via the `srs` argument, that (ideally) would need to
 match the SRS of `x`. See **Examples**.
 
-## Layers
+## Layers and styles
 
-The parameter `what` defines the layer to be extracted. The equivalence
+### Layers
+
+The argument `what` defines the layer to be extracted. The equivalence
 with the [API
 Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
-equivalence is:
+reference is:
 
 - `"parcel"`: CP.CadastralParcel
 
@@ -138,10 +137,10 @@ equivalence is:
 
 - `"admunit"`: AU.AdministrativeUnit
 
-## Styles
+### Styles
 
 The WMS service provides different styles on each layer (`what`
-parameter). Some of the styles available are:
+argument). Some of the styles available are:
 
 - `"parcel"`: styles : `"BoundariesOnly"`, `"ReferencePointOnly"`,
   `"ELFCadastre"`.
@@ -157,14 +156,6 @@ parameter). Some of the styles available are:
 Check the [API
 Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
 for more information.
-
-## References
-
-[API
-Documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf).
-
-[INSPIRE Services for Cadastral
-Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 

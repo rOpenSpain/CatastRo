@@ -103,7 +103,10 @@ library(tidyterra) # For terra tiles
 
 ggplot() +
   geom_spatraster_rgb(data = labs) +
-  geom_sf(data = stadium_parcel_pr, fill = NA, col = "red", linewidth = 2) +
+  geom_sf(
+    data = stadium_parcel_pr,
+    fill = NA, col = "red", linewidth = 2
+  ) +
   geom_sf(data = stadium, fill = "red", alpha = .5) +
   coord_sf(crs = 25830)
 ```
@@ -180,11 +183,11 @@ Now let’s extract the construction year, available in the column
 # Extract 4 initial positions
 year <- substr(dataviz$beginning, 1, 4)
 
-# Replace all that doesn't look as a number with 0000
+# Replace all entries that do not look like numbers with 0000
 year[!(year %in% 0:2500)] <- "0000"
 
 
-# To numeric
+# Convert to numeric
 year <- as.integer(year)
 
 # New column
@@ -202,7 +205,6 @@ dataviz <- dataviz |>
   mutate(
     year_cat = cut(year, breaks = c(0, seq(1900, 2030, by = 10)), dig.lab = 4)
   )
-
 
 ggplot(dataviz) +
   geom_sf(aes(fill = year_cat), color = NA, na.rm = TRUE) +

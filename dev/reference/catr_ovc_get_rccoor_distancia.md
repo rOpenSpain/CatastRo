@@ -1,7 +1,7 @@
 # OVCCoordenadas: Reverse geocode cadastral references on a region
 
 Implementation of the OVCCoordenadas service [Consulta RCCOOR
-Distancia](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
+Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
 
 Returns the cadastral reference found for a set of coordinates. If no
 cadastral references are found, the API returns a list of the cadastral
@@ -18,13 +18,13 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude to use on the query. It should be specified in the same in
-  the CRS/SRS `specified` by `srs`.
+  Latitude to use on the query. It should be specified in the CRS/SRS
+  defined in `srs`.
 
 - lon:
 
-  Longitude to use on the query. It should be specified in the same in
-  the CRS/SRS `specified` by `srs`.
+  Longitude to use on the query. It should be specified in the CRS/SRS
+  defined in `srs`.
 
 - srs:
 
@@ -45,13 +45,13 @@ See **Details**
 
 When the API does not provide any result, the function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-the input parameters only.
+the input arguments only.
 
 On a successful query, the function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 one row by cadastral reference, including the following columns:
 
-- `geo.xcen`, `geo.ycen`, `geo.srs`: Input parameters of the query.
+- `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 
 - `refcat`: Cadastral reference.
 
@@ -65,7 +65,7 @@ one row by cadastral reference, including the following columns:
 ## References
 
 [Consulta RCCOOR
-Distancia](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
+Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
 
 ## See also
 

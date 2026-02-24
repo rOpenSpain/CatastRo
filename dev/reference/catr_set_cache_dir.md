@@ -1,7 +1,7 @@
 # Set your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache dir
 
 This function will store your `cache_dir` path on your local machine and
-would load it for future sessions. Type
+will load it for future sessions. Type
 `Sys.getenv("CATASTROESP_CACHE_DIR")` to find your cached path or use
 `catr_detect_cache_dir()`.
 
@@ -65,8 +65,8 @@ In [CatastRo](https://CRAN.R-project.org/package=CatastRo) \>= 1.0.0 the
 location of the configuration file has moved from
 `rappdirs::user_config_dir("CatastRo", "R")` to
 `tools::R_user_dir("CatastRo", "config")`. We have implemented a
-functionality that would migrate previous configuration files from one
-location to another with a message. This message would appear only once
+functionality that will migrate previous configuration files from one
+location to another with a message. This message will appear only once
 informing of the migration.
 
 ## Caching strategies
@@ -109,32 +109,32 @@ Other cache utilities:
 ## Examples
 
 ``` r
-# Don't run this! It would modify your current state
+# Caution! It would modify your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/Rtmp8NWk5M/CatastRo
+#> ℹ /tmp/RtmpMZoqU7/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 catr_set_cache_dir(ex)
-#> ℹ CatastRo cache dir is /tmp/Rtmp8NWk5M/example/cachenew.
+#> ℹ CatastRo cache dir is /tmp/RtmpMZoqU7/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 catr_detect_cache_dir()
-#> ℹ /tmp/Rtmp8NWk5M/example/cachenew
-#> [1] "/tmp/Rtmp8NWk5M/example/cachenew"
+#> ℹ /tmp/RtmpMZoqU7/example/cachenew
+#> [1] "/tmp/RtmpMZoqU7/example/cachenew"
 
 # Restore initial cache
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache dir is /tmp/Rtmp8NWk5M/CatastRo.
+#> ℹ CatastRo cache dir is /tmp/RtmpMZoqU7/CatastRo.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/Rtmp8NWk5M/CatastRo
+#> ℹ /tmp/RtmpMZoqU7/CatastRo
 #> [1] TRUE
 # }
 
 
 catr_detect_cache_dir()
-#> ℹ /tmp/Rtmp8NWk5M/CatastRo
-#> [1] "/tmp/Rtmp8NWk5M/CatastRo"
+#> ℹ /tmp/RtmpMZoqU7/CatastRo
+#> [1] "/tmp/RtmpMZoqU7/CatastRo"
 ```

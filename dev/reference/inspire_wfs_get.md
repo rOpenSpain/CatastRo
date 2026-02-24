@@ -32,7 +32,7 @@ inspire_wfs_get(
 
 - query:
 
-  A named list with the name and value of the parameters to query.
+  A named list with the name and value of the arguments to query.
 
 - verbose:
 
@@ -46,7 +46,7 @@ A character string with the path of the resulting file in the
 ## Details
 
 This function is used internally in all the WFS calls. We expose it to
-make it available to another users and/or developers for accessing other
+make it available to other users and/or developers for accessing other
 cadastral or INSPIRE resources. See **Examples**.
 
 ## See also

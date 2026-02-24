@@ -8,7 +8,7 @@ API directly through an **R** IDE.
 This API is used to retrieve the spatial coordinates of an urban
 property. It is not necessary to be the owner to get the information;
 you only need to know the cadastral reference (*RC*) of the property.
-Although the RC is the only compulsory parameter, providing the address
+Although the RC is the only compulsory argument, providing the address
 can improve results and help avoid errors in the RC.
 
 Additionally, the API can be used to obtain the RC of an urban property.
@@ -132,7 +132,7 @@ catr_ovc_get_cpmrc(
 |----------:|---------:|:---------------|:----------------------------------------------------------------------------------------------------|:--------|:--------|:------------------|:-----------------|:----------|:----------------------------------------------------------------------------------------------------|
 | -3.456242 | 38.61966 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.45624183836806 | 38.6196566583596 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
-The `province` and `municipality` parameters are optional, but if
+The `province` and `municipality` arguments are optional, but if
 `municipality` is provided, `province` must also be provided. If a value
 is passed to the `province` argument while `municipality` is `NULL`, the
 function
@@ -145,7 +145,7 @@ catr_ovc_get_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) |>
   knitr::kable()
-#> Error code: 11. LA PROVINCIA ES OBLIGATORIA
+#> ✖ Error code: 11. LA PROVINCIA ES OBLIGATORIA
 ```
 
 | refcat         | geo.srs   |

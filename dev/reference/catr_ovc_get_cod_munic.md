@@ -19,15 +19,11 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
   The code of a province, as provided by
   [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_provinces.md).
 
-- cmun:
+- cmun, cmun_ine:
 
-  Code of a municipality, as recorded on the Spanish Cadastre.
-
-- cmun_ine:
-
-  Code of a municipality, as recorded on National Statistics Institute.
-  See [INE: List of
-  municipalities](https://www.ine.es/daco/daco42/codmun/codmun00i.htm)
+  Code of a municipality, as recorded on the Spanish Cadastre (`cmun`)
+  or the National Statistics Institute. Either `cmun` or `cmun_ine`
+  should be provided.
 
 - verbose:
 
@@ -39,9 +35,6 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 See **Details**
 
 ## Details
-
-Parameter `cpro` is mandatory. Either `cmun` or `cmun_ine` should be
-provided.
 
 On a successful query, the function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
@@ -69,7 +62,7 @@ one row including the following columns:
 
 ## See also
 
-[`mapSpain::esp_get_munic()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic.html)
+[`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
 to get shapes of municipalities, including the INE code.
 
 OVCCoordenadas API:

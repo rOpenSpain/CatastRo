@@ -28,12 +28,12 @@ catr_atom_get_buildings(
 
 - to:
 
-  Optional parameter for defining the Territorial Office to which
-  `munic` belongs. This parameter is a helper for narrowing the search.
+  Optional argument for defining the territorial office to which `munic`
+  belongs. This argument is a helper for narrowing the search.
 
 - what:
 
-  Information to load. It could be:
+  Information to load. It can be:
 
   - `"building"` for buildings.
 
@@ -111,10 +111,7 @@ Other spatial:
 
 ``` r
 # \donttest{
-s <- catr_atom_get_buildings("Nava de la Asuncion",
-  to = "Segovia",
-  what = "building"
-)
+s <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 library(ggplot2)
 ggplot(s) +

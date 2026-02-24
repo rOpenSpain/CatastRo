@@ -46,7 +46,7 @@ See **Details**
 
 When the API does not provide any result, the function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-the input parameters only.
+the input arguments only.
 
 On a successful query, the function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with

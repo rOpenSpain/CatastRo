@@ -25,8 +25,8 @@ catr_atom_search_munic(
 
 - to:
 
-  Optional parameter for defining the Territorial Office to which
-  `munic` belongs. This parameter is a helper for narrowing the search.
+  Optional argument for defining the territorial office to which `munic`
+  belongs. This argument is a helper for narrowing the search.
 
 - cache:
 

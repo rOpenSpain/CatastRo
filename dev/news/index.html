@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.4.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +44,55 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="catastro-development-version">CatastRo (development version)<a class="anchor" aria-label="anchor" href="#catastro-development-version"></a></h2>
-<ul><li>The minimum <strong>R</strong> version required is now 4.1.0.</li>
-<li>Migrate vignettes to Quarto.</li>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.0.0" id="catastro-100">CatastRo 1.0.0<a class="anchor" aria-label="anchor" href="#catastro-100"></a></h2><p class="text-muted">CRAN release: 2026-02-23</p>
+<p>This major release introduces a full overhaul of the codebase and test suite. All requests now use <strong>httr2</strong>, and cached files are reorganized into topic-based subfolders for easier management.</p>
+<blockquote>
+<p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
+</blockquote>
+<p>We have transitioned from <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code> to <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> for managing your persistent cache directory. If you are a heavy <strong>CatastRo</strong> user and already have a cache directory in place, you’ll receive a one-time friendly message informing you about this migration. Consider it a warm welcome to <strong>CatastRo</strong> 1.0.0 😉.</p>
+<p>The package now requires <strong>R ≥ 4.1.0</strong>, and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
+<div class="section level3">
+<h3 id="major-changes-1-0-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-1-0-0"></a></h3>
+<ul><li>Minimum required R version is now <strong>4.1.0</strong>.</li>
+<li>Refactor code and test suite for improved stability.</li>
+<li>Switch API requests to <strong>httr2</strong>.</li>
+<li>New options (especially for macOS and Linux users):
+<ul><li>On SSL errors use <code>options(catastro_ssl_verify = 0)</code> to disable SSL verification.</li>
+<li>Query timeout can be controlled with <code>options(catastro_timeout = 300)</code> (Default value). Check <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</li>
+</ul></li>
+<li>Reorganize cache into topic-based subfolders.</li>
+</ul><blockquote>
+<p><strong>Note:</strong> Previous caches must be recreated.</p>
+</blockquote>
+<div class="section level4">
+<h4 id="compatibility-and-performance-1-0-0">Compatibility and performance<a class="anchor" aria-label="anchor" href="#compatibility-and-performance-1-0-0"></a></h4>
+<ul><li>Require <strong>R ≥ 4.1.0</strong>.</li>
+<li>Update dependencies:
+<ul><li>Add: <strong>cli</strong>, <strong>lifecycle</strong>, <strong>withr</strong>.</li>
+<li>Remove: <strong>png</strong>, <strong>slippymath</strong>.</li>
+</ul></li>
+<li>Return tidy objects consistently.</li>
+<li>Vignettes engine has been migrated to Quarto.</li>
 </ul></div>
+</div>
+<div class="section level3">
+<h3 id="deprecations-1-0-0">Deprecations<a class="anchor" aria-label="anchor" href="#deprecations-1-0-0"></a></h3>
+<ul><li>
+<code>cache</code> argument has been deprecated in all functions.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-features-1-0-0">New features<a class="anchor" aria-label="anchor" href="#new-features-1-0-0"></a></h3>
+<ul><li>Added <code><a href="../reference/inspire_wfs_get.html">inspire_wfs_get()</a></code>, a general function that downloads data of any INSPIRE-based API endpoint.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="other-updates-1-0-0">Other updates<a class="anchor" aria-label="anchor" href="#other-updates-1-0-0"></a></h3>
+<ul><li>Rewrite the full test suite.</li>
+<li>Review and improve documentation.</li>
+<li>Use <strong>cli</strong> for all messages.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.1" id="catastro-041">CatastRo 0.4.1<a class="anchor" aria-label="anchor" href="#catastro-041"></a></h2><p class="text-muted">CRAN release: 2025-03-24</p>
 <ul><li>Update documentation and URLs.</li>
@@ -77,7 +123,7 @@
 <ul><li>Add <strong>tidyterra</strong> to ‘Suggests’.</li>
 <li>Now <code><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> handles <code>sfc</code> objects (<a href="https://github.com/rOpenSpain/CatastRo/issues/26" class="external-link">#26</a>).</li>
 <li>
-<code><a href="../reference/catr_clear_cache.html">catr_clear_cache()</a></code> now has <code>config = FALSE</code> as default parameter.</li>
+<code><a href="../reference/catr_clear_cache.html">catr_clear_cache()</a></code> now has <code>config = FALSE</code> as default argument.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="catastro-021">CatastRo 0.2.1<a class="anchor" aria-label="anchor" href="#catastro-021"></a></h2><p class="text-muted">CRAN release: 2022-03-08</p>
@@ -86,19 +132,19 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="catastro-020">CatastRo 0.2.0<a class="anchor" aria-label="anchor" href="#catastro-020"></a></h2><p class="text-muted">CRAN release: 2022-02-28</p>
 <p><strong>Overall revamp of the package. Major changes to the API.</strong></p>
-<ul><li>Add <strong>ATOM INSPIRE</strong> capabilities:
+<ul><li>Added <strong>ATOM INSPIRE</strong> capabilities:
 <ul><li>Addresses: <code><a href="../reference/catr_atom_get_address.html">catr_atom_get_address()</a></code>, <code><a href="../reference/catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code>.</li>
 <li>Cadastral Parcels: <code><a href="../reference/catr_atom_get_parcels.html">catr_atom_get_parcels()</a></code>, <code><a href="../reference/catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_all()</a></code>.</li>
 <li>Buildings: <code><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code>, <code><a href="../reference/catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all()</a></code>.</li>
 </ul></li>
-<li>Add <strong>WFS INSPIRE</strong> capabilities:
+<li>Added <strong>WFS INSPIRE</strong> capabilities:
 <ul><li>Addresses: <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_bbox()</a></code>, <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_codvia()</a></code>, <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_postalcode()</a></code>, <code><a href="../reference/catr_wfs_get_address.html">catr_wfs_get_address_rc()</a></code>.</li>
 <li>Cadastral Parcels: <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel()</a></code>, <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_parcel()</a></code>, <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_parcel_zoning()</a></code>, <code><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_zoning()</a></code>.</li>
 <li>Buildings: <code><a href="../reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox()</a></code>, <code><a href="../reference/catr_wfs_get_buildings.html">catr_wfs_get_buildings_rc()</a></code>.</li>
 </ul></li>
-<li>Add <strong>WMS INSPIRE</strong> capabilities: <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</li>
-<li>New interface for <strong>OVC Services</strong>. Deprecated previous functions in favor of the new API:
-<ul><li>New SRS database in <code>catr_srs_values</code>, replaces <code>coordinates</code>.</li>
+<li>Added <strong>WMS INSPIRE</strong> capabilities: <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</li>
+<li>Added new interface for <strong>OVC Services</strong>. Deprecated previous functions in favor of the new API:
+<ul><li>New SRS database in <code><a href="../reference/catr_srs_values.html">?catr_srs_values</a></code>, replaces <code>coordinates</code>.</li>
 <li>
 <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code> replaces <code>near_rc()</code>.</li>
 <li>
@@ -106,7 +152,7 @@
 <li>
 <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> replaces <code>get_coor()</code>.</li>
 </ul></li>
-<li>Add <a href="https://ropensci.org/blog/2019/12/08/precompute-vignettes/" class="external-link">pre-computed</a> vignettes.</li>
+<li>Added <a href="https://ropensci.org/blog/2019/12/08/precompute-vignettes/" class="external-link">pre-computed</a> vignettes.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="catastro-010">CatastRo 0.1.0<a class="anchor" aria-label="anchor" href="#catastro-010"></a></h2>
