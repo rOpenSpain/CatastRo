@@ -73,7 +73,7 @@ may cause an error when using **CatastRo** (especially on macOS, see
 issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
 In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
-your session right after you start using the package: \`
+your session right after you start using the package:
 
 ``` r
 # Disable SSL verification
@@ -255,7 +255,7 @@ A BibTeX entry for LaTeX users is:
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       doi = {10.32614/CRAN.package.CatastRo},
       year = {2026},
-      version = {1.0.0},
+      version = {1.0.0.9000},
       url = {https://ropenspain.github.io/CatastRo/},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
     }

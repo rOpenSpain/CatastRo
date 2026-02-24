@@ -85,7 +85,7 @@ an error when using **CatastRo** (especially on macOS, see issue
 [#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
 In **CatastRo \>= 1.0.0** you can try to fix it by running this line in your
-session right after you start using the package: \`
+session right after you start using the package:
 
 ```{r}
 #| eval: false
