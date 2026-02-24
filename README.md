@@ -1,5 +1,3 @@
-
-
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
 # CatastRo <a href="https://ropenspain.github.io/CatastRo/"><img src="man/figures/logo.png" alt="CatastRo website" align="right" height="139"/></a>
@@ -32,7 +30,7 @@ cadastral parcels, maps, and geocode cadastral references.
 Install **CatastRo** from
 [**CRAN**](https://CRAN.R-project.org/package=CatastRo):
 
-``` r
+```r
 install.packages("CatastRo")
 ```
 
@@ -46,7 +44,7 @@ Check the docs of the developing version in
 You can install the developing version of **CatastRo** using the
 [r-universe](https://ropenspain.r-universe.dev/CatastRo):
 
-``` r
+```r
 # Install CatastRo in R:
 install.packages(
   "CatastRo",
@@ -60,7 +58,7 @@ install.packages(
 Alternatively, you can install the development version of **CatastRo**
 with:
 
-``` r
+```r
 pak::pak("rOpenSpain/CatastRo")
 ```
 
@@ -73,9 +71,9 @@ may cause an error when using **CatastRo** (especially on macOS, see
 issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
 In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
-your session right after you start using the package: \`
+your session right after you start using the package:
 
-``` r
+```r
 # Disable SSL verification
 options(catastro_ssl_verify = 0)
 ```
@@ -83,7 +81,7 @@ options(catastro_ssl_verify = 0)
 If you wish to make this setup persistent, write the same code in your
 [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
-``` r
+```r
 # Open your .Rprofile with
 usethis::edit_r_profile()
 
@@ -162,33 +160,33 @@ This script highlights some features of **CatastRo**:
 
 ### Geocode a cadastral reference
 
-``` r
+```r
 library(CatastRo)
 
 catr_ovc_get_cpmrc(rc = "13077A01800039")
 #> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt
 #>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
 #> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…
 ```
 
 ### Extract a cadastral reference from a given set of coordinates
 
-``` r
+```r
 catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
   srs = "4230"
 )
 #> # A tibble: 1 × 8
-#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt
 #>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
 #> 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
 ```
 
 ### Extract geometries using the ATOM service
 
-``` r
+```r
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 # Map
@@ -210,7 +208,7 @@ alt="Extracting buildings in Nava de la Asuncion with the ATOM service" />
 
 ### Extract geometries using the WFS service
 
-``` r
+```r
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
   c(-4.134, 40.952, -4.131, 40.953),
   srs = 4326
@@ -231,7 +229,7 @@ Some datasets and tiles may have a size larger than 50MB. You can use
 **CatastRo** to create your own local repository at a given local
 directory passing the following option:
 
-``` r
+```r
 catr_set_cache_dir("./path/to/location")
 ```
 
@@ -246,6 +244,7 @@ Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the
 API Sede Electrónica Del Catastro</em>.
 <a href="https://doi.org/10.32614/CRAN.package.CatastRo">doi:10.32614/CRAN.package.CatastRo</a>,
 <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
+
 </p>
 
 A BibTeX entry for LaTeX users is:
@@ -265,7 +264,8 @@ A BibTeX entry for LaTeX users is:
 Check the GitHub page for the [source
 code](https://github.com/ropenspain/CatastRo/).
 
-[^1]: The package
+[^1]:
+    The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar
     functionalities to **CatastRo**.
