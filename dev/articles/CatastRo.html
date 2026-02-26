@@ -94,11 +94,13 @@
 <p>The <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> service allows retrieving the coordinates of a known cadastral reference (geocoding). It is also possible to retrieve the cadastral references around a specific pair of coordinates (reverse geocoding). <strong>CatastRo</strong> returns the results in a tibble format. This functionality is described in detail in the corresponding vignette (see <code><a href="../articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code>).</p>
 </section><section class="level2"><h2 id="inspire-services">INSPIRE services<a class="anchor" aria-label="anchor" href="#inspire-services"></a>
 </h2>
-<blockquote>
-<p>The INSPIRE Directive aims to create a European Union spatial data infrastructure for the purposes of EU environmental policies and policies or activities which may have an impact on the environment. This European Spatial Data Infrastructure will enable the sharing of environmental spatial information among public sector organisations, facilitate public access to spatial information across Europe and assist in policy-making across boundaries.</p>
-<p><em>From <a href="https://knowledge-base.inspire.ec.europa.eu/index_en" class="external-link uri">https://knowledge-base.inspire.ec.europa.eu/index_en</a></em></p>
+<figure><blockquote class="blockquote">
+<p>The INSPIRE Directive aims to create a European Union Spatial Data Infrastructure (SDI) for the purposes of EU environmental policies and policies or activities which may have an impact on the environment. This European Spatial Data Infrastructure will enable the sharing of environmental spatial information among public sector organisations, facilitate public access to spatial information across Europe and assist in policy-making across boundaries.</p>
 </blockquote>
-<p>The implementation of the INSPIRE directive on the Spanish Cadastre (see <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Catastro INSPIRE</a>) allows retrieving spatial objects from the database of the cadastre:</p>
+<figcaption class="blockquote-footer">Source: <cite title="INSPIRE Knowledge
+Base"><a href="https://knowledge-base.inspire.ec.europa.eu/overview_en" class="external-link uri">INSPIRE Knowledge Base</a>
+</cite>
+</figcaption></figure><p>The implementation of the INSPIRE directive on the Spanish Cadastre (see <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Catastro INSPIRE</a>) allows retrieving spatial objects from the database of the cadastre:</p>
 <ul>
 <li>
 <strong>Vector objects:</strong> Parcels, addresses, buildings, cadastral zones and more. These objects are provided by <strong>CatastRo</strong> as <code>sf</code> objects as provided by the <strong>sf</strong> package.</li>
@@ -179,7 +181,7 @@ Figure 1: Example - Santiago Bernabeu
 <span></span>
 <span><span class="va">city_catr_code</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 12</span></span>
-<span><span class="co">#&gt;   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   </span></span>
+<span><span class="co">#&gt;   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
 <span><span class="co">#&gt; 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87</span></span>
 <span></span>

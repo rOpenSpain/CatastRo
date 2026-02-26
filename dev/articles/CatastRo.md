@@ -18,15 +18,16 @@ in detail in the corresponding vignette (see
 
 ## INSPIRE services
 
-> The INSPIRE Directive aims to create a European Union spatial data
-> infrastructure for the purposes of EU environmental policies and
+> The INSPIRE Directive aims to create a European Union Spatial Data
+> Infrastructure (SDI) for the purposes of EU environmental policies and
 > policies or activities which may have an impact on the environment.
 > This European Spatial Data Infrastructure will enable the sharing of
 > environmental spatial information among public sector organisations,
 > facilitate public access to spatial information across Europe and
 > assist in policy-making across boundaries.
->
-> *From <https://knowledge-base.inspire.ec.europa.eu/index_en>*
+
+Source: [INSPIRE Knowledge
+Base](https://knowledge-base.inspire.ec.europa.eu/overview_en)
 
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
 [Catastro
@@ -148,7 +149,7 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm
 #>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
 #> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
