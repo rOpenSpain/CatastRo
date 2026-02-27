@@ -116,16 +116,16 @@ catr_atom_get_parcels_db_all()
 #> # A tibble: 7,611 × 4
 #>    territorial_office             url                  munic date               
 #>    <chr>                          <chr>                <chr> <dttm>             
-#>  1 Territorial office 02 Albacete http://www.catastro… 0200… 2025-08-08 00:00:00
-#>  2 Territorial office 02 Albacete http://www.catastro… 0200… 2025-08-08 00:00:00
-#>  3 Territorial office 02 Albacete http://www.catastro… 0200… 2025-08-08 00:00:00
-#>  4 Territorial office 02 Albacete http://www.catastro… 0200… 2025-08-08 00:00:00
-#>  5 Territorial office 02 Albacete http://www.catastro… 0200… 2025-08-08 00:00:00
-#>  6 Territorial office 02 Albacete http://www.catastro… 0200… 2025-08-08 00:00:00
-#>  7 Territorial office 02 Albacete http://www.catastro… 0200… 2025-08-08 00:00:00
-#>  8 Territorial office 02 Albacete http://www.catastro… 0200… 2025-08-08 00:00:00
-#>  9 Territorial office 02 Albacete http://www.catastro… 0201… 2025-08-08 00:00:00
-#> 10 Territorial office 02 Albacete http://www.catastro… 0201… 2025-08-08 00:00:00
+#>  1 Territorial office 02 Albacete http://www.catastro… 0200… 2026-02-20 00:00:00
+#>  2 Territorial office 02 Albacete http://www.catastro… 0200… 2026-02-20 00:00:00
+#>  3 Territorial office 02 Albacete http://www.catastro… 0200… 2026-02-20 00:00:00
+#>  4 Territorial office 02 Albacete http://www.catastro… 0200… 2026-02-20 00:00:00
+#>  5 Territorial office 02 Albacete http://www.catastro… 0200… 2026-02-20 00:00:00
+#>  6 Territorial office 02 Albacete http://www.catastro… 0200… 2026-02-20 00:00:00
+#>  7 Territorial office 02 Albacete http://www.catastro… 0200… 2026-02-20 00:00:00
+#>  8 Territorial office 02 Albacete http://www.catastro… 0200… 2026-02-20 00:00:00
+#>  9 Territorial office 02 Albacete http://www.catastro… 0201… 2026-02-20 00:00:00
+#> 10 Territorial office 02 Albacete http://www.catastro… 0201… 2026-02-20 00:00:00
 #> # ℹ 7,601 more rows
 # }
 ```
