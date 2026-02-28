@@ -9,7 +9,7 @@ knitr:
     message: false
     dev: "ragg_png"
     tidy: "styler"
-    fig.path: "README-"
+    fig.path: "man/figures/README-"
     dpi: 120
     out.width: "100%"
 ---
