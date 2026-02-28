@@ -12,16 +12,16 @@
 .callout.callout-style-simple {
   padding: 0.4em 0.7em;
   border-left: 5px solid;
-  border-right: 1px solid #dee2e6;
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
+  border-right: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
+  border-top: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
+  border-bottom: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
 }
 
 .callout.callout-style-default {
   border-left: 5px solid;
-  border-right: 1px solid #dee2e6;
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
+  border-right: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
+  border-top: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
+  border-bottom: 1px solid RGBA(var(--bs-body-color-rgb), 0.1);
 }
 
 .callout .callout-body-container {
@@ -182,11 +182,11 @@
 }
 
 div.callout.callout {
-  border-left-color: #6a737b;
+  border-left-color: var(--bs-secondary);
 }
 
 div.callout.callout-style-default > .callout-header {
-  background-color: #6a737b;
+  background-color: var(--bs-secondary);
 }
 
 div.callout-note.callout {
@@ -194,7 +194,7 @@ div.callout-note.callout {
 }
 
 div.callout-note.callout-style-default > .callout-header {
-  background-color: rgb(233.4, 242.3, 252.2);
+  background-color: RGBA(var(--bs-info-rgb), 0.1);
 }
 
 div.callout-note:not(.callout-titled) .callout-icon::before {
@@ -214,7 +214,7 @@ div.callout-tip.callout {
 }
 
 div.callout-tip.callout-style-default > .callout-header {
-  background-color: rgb(235.8, 247.7, 231.9);
+  background-color: RGBA(var(--bs-success-rgb), 0.1);
 }
 
 div.callout-tip:not(.callout-titled) .callout-icon::before {
@@ -234,7 +234,7 @@ div.callout-warning.callout {
 }
 
 div.callout-warning.callout-style-default > .callout-header {
-  background-color: rgb(255, 241.2, 231.9);
+  background-color: RGBA(var(--bs-warning-rgb), 0.1);
 }
 
 div.callout-warning:not(.callout-titled) .callout-icon::before {
@@ -254,7 +254,7 @@ div.callout-caution.callout {
 }
 
 div.callout-caution.callout-style-default > .callout-header {
-  background-color: rgb(253.5, 246.8, 237.3);
+  background-color: RGBA(var(--bs-warning-rgb), 0.1);
 }
 
 div.callout-caution:not(.callout-titled) .callout-icon::before {
@@ -274,7 +274,7 @@ div.callout-important.callout {
 }
 
 div.callout-important.callout-style-default > .callout-header {
-  background-color: rgb(255, 229.5, 235.2);
+  background-color: RGBA(var(--bs-danger-rgb), 0.1);
 }
 
 div.callout-important:not(.callout-titled) .callout-icon::before {
