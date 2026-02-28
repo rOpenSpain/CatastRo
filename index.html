@@ -92,32 +92,20 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span><span class="op">)</span></span></code></pre></div>
 </div>
 
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-SSL issues
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<blockquote>
+<p>[!WARNING]</p>
+<h3 id="ssl-issues">SSL issues</h3>
 <p>The SSL certificate of the Spanish Cadastre presents some issues that may cause an error when using <strong>CatastRo</strong> (especially on macOS, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>):</p>
 <p>In <strong>CatastRo &gt;= 1.0.0</strong> you can try to fix it by running this line in your session right after you start using the package:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Disable SSL verification</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>catastro_ssl_verify <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <p>If you wish to make this setup persistent, write the same code in your <a href="https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html" class="external-link"><code>.Rprofile</code></a>:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>.Rprofile</strong></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># ... other options...</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>catastro_ssl_verify <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
-</div>
-</div>
+<p>Modify your <code>.Rprofile</code> with <code><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">usethis::edit_r_profile()</a></code>.</p>
+</blockquote>
 </div>
 <div class="section level2">
 <h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
@@ -208,7 +196,7 @@ SSL issues
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Dark 3"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Nava de la Asunción, Segovia"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="README-atom-1.png" style="width:100.0%" alt="Extracting buildings in Nava de la Asuncion with the ATOM service"></p>
+<p><img src="reference/figures/README-atom-1.png" style="width:100.0%" alt="Extracting buildings in Nava de la Asuncion with the ATOM service"></p>
 </div>
 <div class="section level3">
 <h3 id="extract-geometries-using-the-wfs-service">Extract geometries using the WFS service<a class="anchor" aria-label="anchor" href="#extract-geometries-using-the-wfs-service"></a>
@@ -223,7 +211,7 @@ SSL issues
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">wfs_get_buildings</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Alcázar of Segovia, Segovia, Spain"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="README-wfs-1.png" style="width:100.0%" alt="Extract Alcázar of Segovia with the WFS service"></p>
+<p><img src="reference/figures/README-wfs-1.png" style="width:100.0%" alt="Extract Alcázar of Segovia with the WFS service"></p>
 </div>
 </div>
 <div class="section level2">
