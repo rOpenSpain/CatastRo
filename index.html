@@ -16,7 +16,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Interface to the API Sede Electronica Del Catastro">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="Interface to the API Sede Electronica Del Catastro">
 <meta name="description" content="Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.">
 <meta property="og:description" content="Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.">
 <meta property="og:image" content="https://ropenspain.github.io/CatastRo/logo.png">
@@ -91,10 +92,16 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"CatastRo"</span><span class="op">)</span></span></code></pre></div>
 </div>
 
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="section level2">
-<h2 id="ssl-issues">SSL issues<a class="anchor" aria-label="anchor" href="#ssl-issues"></a>
-</h2>
+<div class="callout-title-container flex-fill">
+SSL issues
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The SSL certificate of the Spanish Cadastre presents some issues that may cause an error when using <strong>CatastRo</strong> (especially on macOS, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>):</p>
 <p>In <strong>CatastRo &gt;= 1.0.0</strong> you can try to fix it by running this line in your session right after you start using the package:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -109,7 +116,8 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>catastro_ssl_verify <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<p>Modify your <code>.Rprofile</code> with <code><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">usethis::edit_r_profile()</a></code>.</p>
+</div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
@@ -200,7 +208,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Dark 3"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Nava de la Asunción, Segovia"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-atom-1.png" style="width:100.0%" alt="Extracting buildings in Nava de la Asuncion with the ATOM service"></p>
+<p><img src="README-atom-1.png" style="width:100.0%" alt="Extracting buildings in Nava de la Asuncion with the ATOM service"></p>
 </div>
 <div class="section level3">
 <h3 id="extract-geometries-using-the-wfs-service">Extract geometries using the WFS service<a class="anchor" aria-label="anchor" href="#extract-geometries-using-the-wfs-service"></a>
@@ -215,7 +223,7 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">wfs_get_buildings</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Alcázar of Segovia, Segovia, Spain"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-wfs-1.png" style="width:100.0%" alt="Extract Alcázar of Segovia with the WFS service"></p>
+<p><img src="README-wfs-1.png" style="width:100.0%" alt="Extract Alcázar of Segovia with the WFS service"></p>
 </div>
 </div>
 <div class="section level2">
@@ -238,7 +246,7 @@ Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API S
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.CatastRo},</span>
 <span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="dv">0</span>.<span class="fl">0.9000</span>},</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="fl">0.0</span>},</span>
 <span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
 <span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Access public spatial data available under the INSPIRE directive. Tools <span class="cf">for</span> downloading references and addresses of properties, as well as map images.},</span>
 <span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>}</span></code></pre></div>

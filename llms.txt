@@ -14,7 +14,7 @@ Install **CatastRo** from
 install.packages("CatastRo")
 ```
 
-## SSL issues
+SSL issues
 
 The SSL certificate of the Spanish Cadastre presents some issues that
 may cause an error when using **CatastRo** (especially on macOS, see
@@ -37,9 +37,6 @@ If you wish to make this setup persistent, write the same code in your
 # ... other options...
 options(catastro_ssl_verify = 0)
 ```
-
-Modify your `.Rprofile` with
-[`usethis::edit_r_profile()`](https://usethis.r-lib.org/reference/edit.html).
 
 ## Package API
 
@@ -156,7 +153,7 @@ ggplot(bu) +
 ```
 
 ![Extracting buildings in Nava de la Asuncion with the ATOM
-service](reference/figures/README-atom-1.png)
+service](README-atom-1.png)
 
 ### Extract geometries using the WFS service
 
@@ -172,8 +169,7 @@ ggplot(wfs_get_buildings) +
   labs(title = "Alcázar of Segovia, Segovia, Spain")
 ```
 
-![Extract Alcázar of Segovia with the WFS
-service](reference/figures/README-wfs-1.png)
+![Extract Alcázar of Segovia with the WFS service](README-wfs-1.png)
 
 ## A note on caching
 
@@ -203,7 +199,7 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {1.0.0.9000},
+  version = {1.0.0},
   url = {https://ropenspain.github.io/CatastRo/},
   abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
 }
