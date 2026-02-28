@@ -101,12 +101,15 @@
 <code class="sourceCode R"><span><span class="co"># Disable SSL verification</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>catastro_ssl_verify <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <p>If you wish to make this setup persistent, write the same code in your <a href="https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html" class="external-link"><code>.Rprofile</code></a>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.Rprofile</strong></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Open your .Rprofile with</span></span>
-<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">edit_r_profile</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># And write on that file:</span></span>
+<code class="sourceCode R"><span><span class="co"># ... other options...</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>catastro_ssl_verify <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<p>Modify your <code>.Rprofile</code> with <code><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">usethis::edit_r_profile()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="package-api">Package API<a class="anchor" aria-label="anchor" href="#package-api"></a>
@@ -161,7 +164,7 @@
 <span></span>
 <span><span class="fu"><a href="reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 10</span></span>
-<span><span class="co">#&gt;   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt</span></span>
+<span><span class="co">#&gt;   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span></span>
 <span><span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;</span></span>
 <span><span class="co">#&gt; 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…</span></span></code></pre></div>
 </div>
@@ -175,7 +178,7 @@
 <span>  srs <span class="op">=</span> <span class="st">"4230"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 8</span></span>
-<span><span class="co">#&gt;   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt</span></span>
+<span><span class="co">#&gt;   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;</span></span>
 <span><span class="co">#&gt; 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…</span></span></code></pre></div>
 </div>
@@ -227,16 +230,15 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>
+Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. <a href="https://doi.org/10.32614/CRAN.package.CatastRo" class="external-link">doi:10.32614/CRAN.package.CatastRo</a>, <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
 </p>
-<p>Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. <a href="https://doi.org/10.32614/CRAN.package.CatastRo" class="external-link">doi:10.32614/CRAN.package.CatastRo</a>, <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.</p>
-
 <p>A BibTeX entry for LaTeX users is:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>CatastRo,</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.CatastRo},</span>
 <span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="fl">0.0</span>},</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="dv">0</span>.<span class="fl">0.9000</span>},</span>
 <span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
 <span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Access public spatial data available under the INSPIRE directive. Tools <span class="cf">for</span> downloading references and addresses of properties, as well as map images.},</span>
 <span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>}</span></code></pre></div>

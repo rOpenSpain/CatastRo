@@ -31,13 +31,15 @@ options(catastro_ssl_verify = 0)
 If you wish to make this setup persistent, write the same code in your
 [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
-``` r
-# Open your .Rprofile with
-usethis::edit_r_profile()
+    .Rprofile
 
-# And write on that file:
+``` r
+# ... other options...
 options(catastro_ssl_verify = 0)
 ```
+
+Modify your `.Rprofile` with
+[`usethis::edit_r_profile()`](https://usethis.r-lib.org/reference/edit.html).
 
 ## Package API
 
@@ -115,7 +117,7 @@ library(CatastRo)
 
 catr_ovc_get_cpmrc(rc = "13077A01800039")
 #> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
 #>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
 #> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…
 ```
@@ -129,7 +131,7 @@ catr_ovc_get_rccoor(
   srs = "4230"
 )
 #> # A tibble: 1 × 8
-#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt
+#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
 #>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
 #> 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
 ```
@@ -201,7 +203,7 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {1.0.0},
+  version = {1.0.0.9000},
   url = {https://ropenspain.github.io/CatastRo/},
   abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
 }
