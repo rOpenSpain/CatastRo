@@ -66,31 +66,44 @@ pak::pak("rOpenSpain/CatastRo")
 
 </div>
 
-> [!WARNING]
->
-> ### SSL issues
->
-> The SSL certificate of the Spanish Cadastre presents some issues that
-> may cause an error when using **CatastRo** (especially on macOS, see
-> issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
->
-> In **CatastRo \>= 1.0.0** you can try to fix it by running this line
-> in your session right after you start using the package:
->
-> ``` r
-> # Disable SSL verification
-> options(catastro_ssl_verify = 0)
-> ```
->
-> If you wish to make this setup persistent, write the same code in your
-> [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
->
-> ``` r
-> # ... other options...
-> options(catastro_ssl_verify = 0)
-> ```
->
-> Modify your `.Rprofile` with `usethis::edit_r_profile()`.
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container"><i class="callout-icon"></i></div>
+<div class="callout-title-container flex-fill">SSL issues</div></div>
+<div class="callout-body-container callout-body">
+
+The SSL certificate of the Spanish Cadastre presents some issues that
+may cause an error when using **CatastRo** (especially on macOS, see
+issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
+
+In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
+your session right after you start using the package:
+
+``` r
+# Disable SSL verification
+options(catastro_ssl_verify = 0)
+```
+
+If you wish to make this setup persistent, write the same code in your
+[`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
+
+<div class="code-with-filename">
+
+<div class="code-with-filename-file">
+
+<pre><strong>.Rprofile</strong></pre>
+
+``` r
+# ... other options...
+options(catastro_ssl_verify = 0)
+```
+
+</div>
+
+</div>
+
+</div>
+</div>
 
 ## Package API
 
@@ -206,7 +219,7 @@ ggplot(bu) +
   labs(title = "Nava de la Asunción, Segovia")
 ```
 
-<img src="man/figures/README-atom-1.png" style="width:100.0%"
+<img src="README-atom-1.png" style="width:100.0%"
 alt="Extracting buildings in Nava de la Asuncion with the ATOM service" />
 
 ### Extract geometries using the WFS service
@@ -223,7 +236,7 @@ ggplot(wfs_get_buildings) +
   labs(title = "Alcázar of Segovia, Segovia, Spain")
 ```
 
-<img src="man/figures/README-wfs-1.png" style="width:100.0%"
+<img src="README-wfs-1.png" style="width:100.0%"
 alt="Extract Alcázar of Segovia with the WFS service" />
 
 ## A note on caching
