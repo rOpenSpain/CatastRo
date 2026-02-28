@@ -14,32 +14,29 @@ Install **CatastRo** from
 install.packages("CatastRo")
 ```
 
-> \[!WARNING\]
->
-> ### SSL issues
->
-> The SSL certificate of the Spanish Cadastre presents some issues that
-> may cause an error when using **CatastRo** (especially on macOS, see
-> issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
->
-> In **CatastRo \>= 1.0.0** you can try to fix it by running this line
-> in your session right after you start using the package:
->
-> ``` r
-> # Disable SSL verification
-> options(catastro_ssl_verify = 0)
-> ```
->
-> If you wish to make this setup persistent, write the same code in your
-> [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
->
-> ``` r
-> # ... other options...
-> options(catastro_ssl_verify = 0)
-> ```
->
-> Modify your `.Rprofile` with
-> [`usethis::edit_r_profile()`](https://usethis.r-lib.org/reference/edit.html).
+SSL issues
+
+The SSL certificate of the Spanish Cadastre presents some issues that
+may cause an error when using **CatastRo** (especially on macOS, see
+issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
+
+In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
+your session right after you start using the package:
+
+``` r
+# Disable SSL verification
+options(catastro_ssl_verify = 0)
+```
+
+If you wish to make this setup persistent, write the same code in your
+[`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
+
+    .Rprofile
+
+``` r
+# ... other options...
+options(catastro_ssl_verify = 0)
+```
 
 ## Package API
 
