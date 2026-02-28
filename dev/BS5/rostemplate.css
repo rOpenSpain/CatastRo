@@ -474,6 +474,10 @@ code {
 	:not(li, blockquote) > div > .btn-copy-ex {
 		right: calc(var(--bs-gutter-x) * -0.5 + 5px);
 	}
+	.code-with-filename {
+		margin-right: calc(var(--bs-gutter-x) * 0.5);
+		margin-left: calc(var(--bs-gutter-x) * 0.5);
+	}
 }
 
 /* Clipboard button */
@@ -484,13 +488,21 @@ code {
 	color: var(--brand-ros_pre_bg);
 }
 
-.code-with-filename .code-with-filename-file pre {
+.code-with-filename {
+	margin-bottom: 10px;
+}
+
+.code-with-filename .code-with-filename-file pre:not(.sourceCode) {
 	margin-bottom: 0;
 	padding-top: 0.25rem;
 	padding-bottom: 0.25rem;
 	border-radius: 0;
 	color: var(--bs-body-color);
 	background-color: RGBA(var(--bs-body-color-rgb), 0.1);
+}
+.code-with-filename .code-with-filename-file pre {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 
 /* Section: Syntax highlighter emacs (como en la web de rOpenSpain) */

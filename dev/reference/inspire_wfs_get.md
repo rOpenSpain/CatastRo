@@ -86,10 +86,6 @@ file_local <- inspire_wfs_get(
     SRSNAME = "EPSG:25830"
   )
 )
-#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Timeout was reached [inspire.navarra.es]:
-#> Failed to connect to inspire.navarra.es port 443 after 134125 ms: Couldn't connect to server
 
 if (!is.null(file_local)) {
   pamp <- sf::read_sf(file_local)
@@ -98,5 +94,4 @@ if (!is.null(file_local)) {
   ggplot(pamp) +
     geom_sf()
 }
-#> Error: object 'file_local' not found
 ```
