@@ -96,6 +96,8 @@ options(catastro_ssl_verify = 0)
 
 </div>
 
+</div>
+
 Modify your `.Rprofile` with `usethis::edit_r_profile()`.
 
 ## Package API
@@ -271,8 +273,6 @@ A BibTeX entry for LaTeX users is:
 
 Check the GitHub page for the [source
 code](https://github.com/ropenspain/CatastRo/).
-
-</div>
 
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
