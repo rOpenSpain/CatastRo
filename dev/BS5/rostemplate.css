@@ -484,6 +484,15 @@ code {
 	color: var(--brand-ros_pre_bg);
 }
 
+.code-with-filename .code-with-filename-file pre {
+	margin-bottom: 0;
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+	border-radius: 0;
+	color: var(--bs-body-color);
+	background-color: RGBA(var(--bs-body-color-rgb), 0.1);
+}
+
 /* Section: Syntax highlighter emacs (como en la web de rOpenSpain) */
 pre {
 	display: block;

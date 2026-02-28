@@ -48,13 +48,15 @@ options(catastro_ssl_verify = 0)
 If you wish to make this setup persistent, write the same code in your
 [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
-``` r
-# Open your .Rprofile with
-usethis::edit_r_profile()
+    .Rprofile
 
-# And write on that file:
+``` r
+# ... other options...
 options(catastro_ssl_verify = 0)
 ```
+
+Modify your `.Rprofile` with
+[`usethis::edit_r_profile()`](https://usethis.r-lib.org/reference/edit.html).
 
 ## Package API
 
