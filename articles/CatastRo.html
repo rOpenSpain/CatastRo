@@ -18,8 +18,7 @@
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="CatastRo_files/libs/quarto-html/popper.min.js"></script><script src="CatastRo_files/libs/quarto-html/tippy.umd.min.js"></script><link href="CatastRo_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="CatastRo_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Get started">
+<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get started">
 <meta property="og:image" content="https://ropenspain.github.io/CatastRo/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@rOpenSpain">
@@ -179,10 +178,9 @@ Figure 1: Example - Santiago Bernabeu
 <span></span>
 <span><span class="va">city_catr_code</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 12</span></span>
-<span><span class="co">#&gt;   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   </span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: cm &lt;chr&gt;</span></span>
+<span><span class="co">#&gt;   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87</span></span>
 <span></span>
 <span><span class="va">city_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">city_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span></code></pre></div>
 <p>The next step in creating the visualization is to limit the analysis to a circle with a radius of 1.5 km around the city center:</p>
