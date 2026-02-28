@@ -14,7 +14,7 @@ knitr:
     out.width: "100%"
 ---
 
-<!-- README.md is generated from README.qmd. Please edit that file -->
+<!-- index.md is generated from index.qmd. Please edit that file -->
 
 # CatastRo <a href="https://ropenspain.github.io/CatastRo/"><img src="man/figures/logo.png" alt="CatastRo website" align="right" height="139"/></a>
 
