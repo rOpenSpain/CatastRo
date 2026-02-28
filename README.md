@@ -83,13 +83,20 @@ options(catastro_ssl_verify = 0)
 If you wish to make this setup persistent, write the same code in your
 [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
-``` r
-# Open your .Rprofile with
-usethis::edit_r_profile()
+<div class="code-with-filename">
 
-# And write on that file:
+<div class="code-with-filename-file">
+
+<pre><strong>.Rprofile</strong></pre>
+
+``` r
+# ... other options...
 options(catastro_ssl_verify = 0)
 ```
+
+</div>
+
+Modify your `.Rprofile` with `usethis::edit_r_profile()`.
 
 ## Package API
 
@@ -264,6 +271,8 @@ A BibTeX entry for LaTeX users is:
 
 Check the GitHub page for the [source
 code](https://github.com/ropenspain/CatastRo/).
+
+</div>
 
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
