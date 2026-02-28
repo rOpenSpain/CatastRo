@@ -96,14 +96,21 @@ options(catastro_ssl_verify = 0)
 If you wish to make this setup persistent, write the same code in your
 [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
+:::: code-with-filename
+::: code-with-filename-file
+```{=html}
+<pre><strong>.Rprofile</strong></pre>
+```
+
 ```{r}
 #| eval: false
-# Open your .Rprofile with
-usethis::edit_r_profile()
-
-# And write on that file:
+# ... other options...
 options(catastro_ssl_verify = 0)
 ```
+:::
+::::
+
+Modify your `.Rprofile` with `usethis::edit_r_profile()`.
 
 ## Package API
 
