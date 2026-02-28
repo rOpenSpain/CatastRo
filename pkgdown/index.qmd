@@ -9,7 +9,7 @@ knitr:
     message: false
     dev: "ragg_png"
     tidy: "styler"
-    fig.path: "man/figures/README-"
+    fig.path: "README-"
     dpi: 120
     out.width: "100%"
 ---
@@ -78,8 +78,15 @@ pak::pak("rOpenSpain/CatastRo")
 ```
 :::
 
-::: callout-warning
-## SSL issues
+
+
+```{=html}
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container"><i class="callout-icon"></i></div>
+<div class="callout-title-container flex-fill">SSL issues</div></div>
+<div class="callout-body-container callout-body">
+```
 
 The SSL certificate of the Spanish Cadastre presents some issues that may cause
 an error when using **CatastRo** (especially on macOS, see issue
@@ -97,14 +104,24 @@ options(catastro_ssl_verify = 0)
 If you wish to make this setup persistent, write the same code in your
 [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
+:::: code-with-filename
+::: code-with-filename-file
+```{=html}
+<pre><strong>.Rprofile</strong></pre>
+```
+
 ```{r}
 #| eval: false
 # ... other options...
 options(catastro_ssl_verify = 0)
 ```
-
-Modify your `.Rprofile` with `usethis::edit_r_profile()`.
 :::
+::::
+
+```{=html}
+</div>
+</div>
+```
 
 ## Package API
 
