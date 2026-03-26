@@ -23,13 +23,13 @@ first value will be used. The function will extract the coordinates
 using \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }}
 
-\item{srs}{SRS/CRS to use on the query. To check the admitted values check
+\item{srs}{SRS/CRS to use on the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{cache_dir}{A path to a cache directory. On \code{NULL} the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+stores cached files in a temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
 
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane}}

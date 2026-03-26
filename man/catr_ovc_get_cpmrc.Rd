@@ -16,7 +16,7 @@ catr_ovc_get_cpmrc(
 \arguments{
 \item{rc}{The cadastral reference to be geocoded.}
 
-\item{srs}{SRS/CRS to use on the query. To check the admitted values check
+\item{srs}{SRS/CRS to use on the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
 \item{province, municipality}{Optional, used for narrowing the search.}

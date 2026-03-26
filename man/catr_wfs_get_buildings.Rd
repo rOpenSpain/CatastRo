@@ -21,7 +21,7 @@ catr_wfs_get_buildings_rc(
 )
 }
 \arguments{
-\item{x}{See \strong{Bounding box}. It could be:
+\item{x}{See \strong{Bounding box}. It can be:
 \itemize{
 \item A numeric vector of length 4 with the coordinates that defines
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}
@@ -35,7 +35,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item \code{"other"} for other elements, such as swimming pools, etc.
 }}
 
-\item{srs}{SRS/CRS to use on the query. To check the admitted values check
+\item{srs}{SRS/CRS to use on the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
@@ -74,7 +74,7 @@ coordinate values. Additionally, the function queries the bounding box on
 a potential bug on the API side.
 
 When \code{x} is a \code{\link[sf:sf]{sf}} object, the value \code{srs} is ignored. In
-this case, the bounding box of the \code{\link[sf:sf]{sf}} object would be
+this case, the bounding box of the \code{\link[sf:sf]{sf}} object is
 used for the query (see \code{\link[sf:st_bbox]{sf::st_bbox()}}).
 
 The result is always provided in the SRS of the \code{\link[sf:sf]{sf}} object

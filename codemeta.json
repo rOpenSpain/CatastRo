@@ -283,7 +283,7 @@
   },
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["catastro", "cran", "cran-r", "gis", "maps", "r", "r-package", "ropenspain", "rstats", "spain", "spatial", "static-tiles"],
-  "fileSize": "1105.724KB",
+  "fileSize": "1106.16KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

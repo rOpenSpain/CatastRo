@@ -20,14 +20,14 @@ catr_wms_get_layer(
 )
 }
 \arguments{
-\item{x}{See \strong{Bounding box}. It could be:
+\item{x}{See \strong{Bounding box}. It can be:
 \itemize{
 \item A numeric vector of length 4 with the coordinates that defines
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
-\item{srs}{SRS/CRS to use on the query. To check the admitted values check
+\item{srs}{SRS/CRS to use on the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
@@ -35,10 +35,10 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \strong{Layers and styles}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default is
-\code{FALSE}. When set to \code{TRUE} it would force a new download.}
+\code{FALSE}. When set to \code{TRUE}, it forces a new download.}
 
 \item{cache_dir}{A path to a cache directory. On \code{NULL} the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+stores cached files in a temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
@@ -77,7 +77,7 @@ coordinate values. When \code{x} is a \code{\link[sf:sf]{sf}} object, the value
 The query is performed using \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator)
 and the tile is projected back to the SRS of \code{x}. In case that the tile
 looks deformed, try either providing \code{x} or specify the SRS of the requested
-tile via the \code{srs} argument, that (ideally) would need to match the SRS of
+tile via the \code{srs} argument, which should match the SRS of
 \code{x}. See \strong{Examples}.
 }
 

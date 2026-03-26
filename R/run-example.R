@@ -3,6 +3,7 @@
 #' Internal function to decide whether the example should run or not
 #'
 #' @return logical `TRUE` or `FALSE`
+#' @encoding UTF-8
 #'
 #' @details
 #' On CRAN or on macOS, results in `FALSE`

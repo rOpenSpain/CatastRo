@@ -31,11 +31,11 @@
 #'
 #' @return A [`sf`][sf::st_sf] object.
 #'
-#' @param x See **Bounding box**. It could be:
+#' @param x See **Bounding box**. It can be:
 #'   - A numeric vector of length 4 with the coordinates that defines
 #'     the bounding box: `c(xmin, ymin, xmax, ymax)`
 #'   - A `sf/sfc` object, as provided by the \CRANpkg{sf} package.
-#' @param srs SRS/CRS to use on the query. To check the admitted values check
+#' @param srs SRS/CRS to use on the query. To see allowed values, use
 #'   [catr_srs_values], specifically the `wfs_service` column. See
 #'   **Bounding box**.
 #' @param rc The cadastral reference to be extracted.
@@ -51,7 +51,7 @@
 #' a potential bug on the API side.
 #'
 #' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. In
-#' this case, the bounding box of the [`sf`][sf::st_sf] object would be
+#' this case, the bounding box of the [`sf`][sf::st_sf] object is
 #' used for the query (see [sf::st_bbox()]).
 #'
 #' The result is always provided in the SRS of the [`sf`][sf::st_sf] object

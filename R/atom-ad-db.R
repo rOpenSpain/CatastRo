@@ -24,9 +24,9 @@
 #' <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>
 #'
 #' @param cache `r lifecycle::badge("deprecated")` `cache` is no longer
-#'   supported; this function will always cache results.
+#'   supported, this function will always cache results.
 #' @param update_cache logical. Should the cached file be refreshed? Default is
-#'   `FALSE`. When set to `TRUE` it would force a new download.
+#'   `FALSE`. When set to `TRUE`, it forces a new download.
 #' @param to character. Territorial office. Internally uses [base::grep()] for
 #'   matching.
 #'

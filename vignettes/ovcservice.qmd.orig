@@ -55,9 +55,9 @@ package **tibble**.
 
 The OVCCoordenadas Web Service can be accessed using the following functions:
 
--   `catr_ovc_get_rccoor()`
--   `catr_ovc_get_rccoor_distancia()`
--   `catr_ovc_get_cpmrc()`
+- `catr_ovc_get_rccoor()`
+- `catr_ovc_get_rccoor_distancia()`
+- `catr_ovc_get_cpmrc()`
 
 ## Reverse geocoding cadastral references
 

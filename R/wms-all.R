@@ -34,7 +34,7 @@
 #' The query is performed using [EPSG:3857](https://epsg.io/3857) (Web Mercator)
 #' and the tile is projected back to the SRS of `x`. In case that the tile
 #' looks deformed, try either providing `x` or specify the SRS of the requested
-#' tile via the `srs` argument, that (ideally) would need to match the SRS of
+#' tile via the `srs` argument, which should match the SRS of
 #' `x`. See **Examples**.
 #'
 #' @section Layers and styles:

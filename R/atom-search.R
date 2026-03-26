@@ -3,6 +3,7 @@
 #' @description
 #' Search for a municipality (as a string, part of a string, or code) and get
 #' the corresponding code as per the Cadastre.
+#' @encoding UTF-8
 #'
 #' @family ATOM
 #' @family search

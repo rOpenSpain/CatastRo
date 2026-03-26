@@ -8,6 +8,7 @@
 #' @param verbose logical. Whether to print messages.
 #'
 #' @return The local file path of the downloaded file.
+#' @encoding UTF-8
 #'
 #' @noRd
 download_url <- function(

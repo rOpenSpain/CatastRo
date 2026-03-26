@@ -26,13 +26,13 @@ catr_atom_get_address_db_to(
 }
 \arguments{
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer
-supported; this function will always cache results.}
+supported, this function will always cache results.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default is
-\code{FALSE}. When set to \code{TRUE} it would force a new download.}
+\code{FALSE}. When set to \code{TRUE}, it forces a new download.}
 
 \item{cache_dir}{A path to a cache directory. On \code{NULL} the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+stores cached files in a temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 

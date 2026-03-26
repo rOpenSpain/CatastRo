@@ -1,10 +1,11 @@
 #' Read geospatial file into sf object with optional query
 #'
 #' @param file_local Local file path or URL to the geospatial file.
-#' @param hint Hint for zipped files
+#' @param hint Hint for zipped files.
 #' @param ... Additional arguments passed to `sf::read_sf()`.
 #'
 #' @return An `sf` object containing the geospatial data.
+#' @encoding UTF-8
 #'
 #' @noRd
 read_geo_file_sf <- function(
@@ -55,9 +56,9 @@ read_geo_file_sf <- function(
 #'
 #' Convert to UTF-8
 #'
-#' @param data_sf data_sf
+#' @param data_sf An `sf` object to be converted to UTF-8.
 #'
-#' @return data_sf with UTF-8 encoding.
+#' @return An `sf` object with UTF-8 encoding.
 #'
 #' @source Extracted from [`sf`][sf::st_sf] package.
 #'

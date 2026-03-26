@@ -54,16 +54,16 @@
 #' # OVC valid codes
 #' library(dplyr)
 #'
-#' catr_srs_values |> filter(ovc_service == TRUE)
+#' catr_srs_values |> filter(ovc_service)
 #'
 #' # WFS valid codes
 #'
-#' catr_srs_values |> filter(wfs_service == TRUE)
+#' catr_srs_values |> filter(wfs_service)
 #'
 #' # Use with sf::st_crs()
 #'
 #' catr_srs_values |>
-#'   filter(wfs_service == TRUE & ovc_service == TRUE) |>
+#'   filter(wfs_service & ovc_service) |>
 #'   print() |>
 #'   # First value
 #'   slice_head(n = 1) |>

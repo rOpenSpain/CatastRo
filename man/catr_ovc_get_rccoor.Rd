@@ -14,7 +14,7 @@ CRS/SRS defined in \code{srs}.}
 \item{lon}{Longitude to use on the query. It should be specified in the
 CRS/SRS defined in \code{srs}.}
 
-\item{srs}{SRS/CRS to use on the query. To check the admitted values check
+\item{srs}{SRS/CRS to use on the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}

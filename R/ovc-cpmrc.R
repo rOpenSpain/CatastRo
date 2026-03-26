@@ -19,7 +19,7 @@
 #'
 #' @param rc The cadastral reference to be geocoded.
 #' @param province,municipality Optional, used for narrowing the search.
-#' @param srs SRS/CRS to use on the query. To check the admitted values check
+#' @param srs SRS/CRS to use on the query. To see allowed values, use
 #'   [catr_srs_values], specifically the `ovc_service` column.
 #'
 #' @return A [tibble][tibble::tbl_df]. See **Details**

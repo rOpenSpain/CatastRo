@@ -37,6 +37,7 @@ Parcela
 Polígono
 RCCOOR
 RGBA
+Royé
 SALAMANCA
 SRS
 SSL
@@ -47,6 +48,7 @@ WFS
 WMS
 cadastral
 cadastre
+callout
 cli
 cmun
 codebase

@@ -9,6 +9,7 @@
 #' @return
 #' Invisibly returns `NULL`. Prints messages to the console if `verbose` is
 #' `TRUE`.
+#' @encoding UTF-8
 #'
 #' @noRd
 make_msg <- function(type = "generic", verbose, ...) {

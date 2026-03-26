@@ -27,18 +27,12 @@ cadastral parcels, maps, and geocode cadastral references.
 
 ## Installation
 
-<div class="pkgdown-release">
-
 Install **CatastRo** from
 [**CRAN**](https://CRAN.R-project.org/package=CatastRo):
 
 ``` r
 install.packages("CatastRo")
 ```
-
-</div>
-
-<div class="pkgdown-devel">
 
 Check the docs of the developing version in
 <https://ropenspain.github.io/CatastRo/dev/>.
@@ -63,8 +57,6 @@ with:
 ``` r
 pak::pak("rOpenSpain/CatastRo")
 ```
-
-</div>
 
 > [!WARNING]
 >

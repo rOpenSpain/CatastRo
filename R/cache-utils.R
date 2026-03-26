@@ -9,9 +9,10 @@
 #' This function will store your `cache_dir` path on your local machine and
 #' will load it for future sessions. Type `Sys.getenv("CATASTROESP_CACHE_DIR")`
 #' to find your cached path or use [catr_detect_cache_dir()].
+#' @encoding UTF-8
 #'
 #' @param cache_dir A path to a cache directory. On `NULL` the function
-#'   would store the cached files on a temporary dir (See [base::tempdir()]).
+#'   stores cached files in a temporary directory (see [base::tempdir()]).
 #' @param install If `TRUE`, will install the key in your local machine for
 #'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`
 #'   this argument is set to `FALSE` automatically.
@@ -34,7 +35,7 @@
 #' @section Caching strategies:
 #'
 #' Some files can be read from their online source without caching using the
-#' option `cache = FALSE`. Otherwise the source file would be downloaded to
+#' option `cache = FALSE`. Otherwise the source file is downloaded to
 #' your computer. \CRANpkg{CatastRo} implements the following caching options:
 #'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no
@@ -42,8 +43,8 @@
 #' - Modify the cache for a single session setting
 #'   `catr_set_cache_dir(cache_dir = "a/path/here")`.
 #' - For reproducible workflows, install a persistent cache with
-#'   `catr_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that would
-#'   be kept across **R** sessions.
+#'   `catr_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`.
+#'   This cache is kept across **R** sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function.
 #'
@@ -66,7 +67,7 @@
 #'
 #' @examples
 #'
-#' # Caution! It would modify your current state
+#' # Caution! It modifies your current state
 #' \dontrun{
 #' my_cache <- catr_detect_cache_dir()
 #'
@@ -176,6 +177,7 @@ catr_detect_cache_dir <- function() {
 #'
 #' @rdname catr_clear_cache
 #' @family cache utilities
+#' @encoding UTF-8
 #'
 #' @return Invisible. This function is called for its side effects.
 #'
@@ -198,11 +200,11 @@ catr_detect_cache_dir <- function() {
 #'
 #' @details
 #' This is an overkill function that is intended to reset your status
-#' as if you would never have installed and/or used \CRANpkg{CatastRo}.
+#' as if you had never installed and/or used \CRANpkg{CatastRo}.
 #'
 #' @examples
 #'
-#' # Don't run this! It would modify your current state
+#' # Don't run this! It modifies your current state
 #' \dontrun{
 #' my_cache <- catr_detect_cache_dir()
 #'
@@ -284,7 +286,7 @@ detect_cache_dir_muted <- function() {
     if (file.exists(cache_config)) {
       cached_path <- readLines(cache_config)
 
-      # Case on empty cached path - would default
+      # Case on empty cached path - default
       if (
         any(
           is.null(cached_path),
@@ -335,8 +337,8 @@ create_cache_dir <- function(cache_dir = NULL) {
 #' Migrate cache config from rappdirs to tools
 #'
 #' One-time function for CatastRo >= 1.0.0
-#' @param old old cache config folder
-#' @param new new cache config folder
+#' @param old Path to old cache config folder
+#' @param new Path to new cache config folder
 #'
 #' @noRd
 migrate_cache <- function(
