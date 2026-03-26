@@ -38,18 +38,18 @@ catr_atom_get_address_db_to(
 
 - cache:
 
-  **\[deprecated\]** `cache` is no longer supported; this function will
+  **\[deprecated\]** `cache` is no longer supported, this function will
   always cache results.
 
 - update_cache:
 
   logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function would store the
-  cached files on a temporary dir (See
+  A path to a cache directory. On `NULL` the function stores cached
+  files in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - verbose:

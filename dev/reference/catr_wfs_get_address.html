@@ -114,14 +114,14 @@ Extract objects of specific postal codes</p></li>
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>See <strong>Bounding box</strong>. It could be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that defines
+<dd><p>See <strong>Bounding box</strong>. It can be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that defines
 the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
 <li><p>A <code>sf/sfc</code> object, as provided by the <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> package.</p></li>
 </ul></dd>
 
 
 <dt id="arg-srs">srs<a class="anchor" aria-label="anchor" href="#arg-srs"></a></dt>
-<dd><p>SRS/CRS to use on the query. To check the admitted values check
+<dd><p>SRS/CRS to use on the query. To see allowed values, use
 <a href="catr_srs_values.html">catr_srs_values</a>, specifically the <code>wfs_service</code> column. See
 <strong>Bounding box</strong>.</p></dd>
 
@@ -170,7 +170,7 @@ coordinate values. Additionally, the function queries the bounding box on
 <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a> - ETRS89 / UTM zone 30N, to overcome
 a potential bug on the API side.</p>
 <p>When <code>x</code> is a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object, the value <code>srs</code> is ignored. In
-this case, the bounding box of the <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object would be
+this case, the bounding box of the <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object is
 used for the query (see <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>).</p>
 <p>The result is always provided in the SRS of the <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object
 provided as input.</p>

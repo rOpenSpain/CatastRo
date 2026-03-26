@@ -25,7 +25,7 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - srs:
 
-  SRS/CRS to use on the query. To check the admitted values check
+  SRS/CRS to use on the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 

@@ -39,7 +39,7 @@ Invisible. This function is called for its side effects.
 ## Details
 
 This is an overkill function that is intended to reset your status as if
-you would never have installed and/or used
+you had never installed and/or used
 [CatastRo](https://CRAN.R-project.org/package=CatastRo).
 
 ## See also
@@ -52,10 +52,10 @@ Other cache utilities:
 ## Examples
 
 ``` r
-# Don't run this! It would modify your current state
+# Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpAC9c6P/CatastRo
+#> ℹ /tmp/RtmplpBVqP/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -63,13 +63,13 @@ catr_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 catr_clear_cache(verbose = TRUE)
-#> ! CatastRo data deleted: /tmp/RtmpAC9c6P/example/cache (0 bytes).
+#> ! CatastRo data deleted: /tmp/RtmplpBVqP/example/cache (0 bytes).
 
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache dir is /tmp/RtmpAC9c6P/CatastRo.
+#> ℹ CatastRo cache dir is /tmp/RtmplpBVqP/CatastRo.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpAC9c6P/CatastRo
+#> ℹ /tmp/RtmplpBVqP/CatastRo
 #> [1] TRUE
 # }
 ```

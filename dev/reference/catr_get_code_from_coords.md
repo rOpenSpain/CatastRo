@@ -33,7 +33,7 @@ catr_get_code_from_coords(
 
 - srs:
 
-  SRS/CRS to use on the query. To check the admitted values check
+  SRS/CRS to use on the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
@@ -43,8 +43,8 @@ catr_get_code_from_coords(
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function would store the
-  cached files on a temporary dir (See
+  A path to a cache directory. On `NULL` the function stores cached
+  files in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - ...:

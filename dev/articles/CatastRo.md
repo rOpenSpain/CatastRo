@@ -68,7 +68,7 @@ the package by recreating a cadastral map of the surroundings of the
 [Santiago Bernabéu
 Stadium](https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium).
 We will use the **WMS and WFS services** to get different layers, in
-order order to show some of the capabilities of the package:
+order to show some of the capabilities of the package:
 
 ``` r
 # Extract building by bounding box
