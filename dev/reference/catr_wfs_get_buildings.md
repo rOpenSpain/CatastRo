@@ -34,7 +34,7 @@ catr_wfs_get_buildings_rc(
 
 - x:
 
-  See **Bounding box**. It can be:
+  See **Bounding box**. It may be:
 
   - A numeric vector of length 4 with the coordinates that defines the
     bounding box: `c(xmin, ymin, xmax, ymax)`
@@ -44,13 +44,13 @@ catr_wfs_get_buildings_rc(
 
 - what:
 
-  Information to load. It can be:
+  Information to load. Options are:
 
   - `"building"` for buildings.
 
   - `"buildingpart"` for parts of a building.
 
-  - `"other"` for other elements, such as swimming pools, etc.
+  - `"other"` for other elements such as swimming pools.
 
 - srs:
 

@@ -20,8 +20,8 @@ catr_atom_search_munic(
 
 - munic:
 
-  Municipality to extract. It can be part of a string or the cadastral
-  code. See `catr_atom_search_munic()` for getting the cadastral codes.
+  Municipality to extract, can be part of a string or a cadastral code.
+  See `catr_atom_search_munic()` for getting the cadastral codes.
 
 - to:
 
@@ -30,13 +30,13 @@ catr_atom_search_munic(
 
 - cache:
 
-  **\[deprecated\]** `cache` is no longer supported, this function will
-  always cache results.
+  **\[deprecated\]** `cache` is no longer supported, this function
+  always caches results.
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it forces a new download.
+  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 

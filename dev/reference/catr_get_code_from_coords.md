@@ -21,14 +21,14 @@ catr_get_code_from_coords(
 
 - x:
 
-  It can be:
+  It may be:
 
   - A pair of coordinates `c(x,y)`. In this case the `srs` of the
-    coordinates should be provided.
+    coordinates must be provided.
 
   - A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
-    If the object has several geometries only the first value will be
-    used. The function will extract the coordinates using
+    If the object has several geometries, only the first geometry is
+    used. The function extracts coordinates using
     `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 
 - srs:

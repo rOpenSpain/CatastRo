@@ -37,7 +37,7 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 
 - x:
 
-  See **Bounding box**. It can be:
+  See **Bounding box**. It may be:
 
   - A numeric vector of length 4 with the coordinates that defines the
     bounding box: `c(xmin, ymin, xmax, ymax)`

@@ -68,7 +68,7 @@ using the INSPIRE ATOM service.</p>
 
 
 <dl><dt id="arg-munic">munic<a class="anchor" aria-label="anchor" href="#arg-munic"></a></dt>
-<dd><p>Municipality to extract. It can be part of a string or the
+<dd><p>Municipality to extract, can be part of a string or a
 cadastral code. See <code><a href="catr_atom_search_munic.html">catr_atom_search_munic()</a></code> for getting the cadastral
 codes.</p></dd>
 
@@ -79,19 +79,19 @@ codes.</p></dd>
 
 
 <dt id="arg-what">what<a class="anchor" aria-label="anchor" href="#arg-what"></a></dt>
-<dd><p>Information to load. It can be:</p><ul><li><p><code>"building"</code> for buildings.</p></li>
+<dd><p>Information to load. Options are:</p><ul><li><p><code>"building"</code> for buildings.</p></li>
 <li><p><code>"buildingpart"</code> for parts of a building.</p></li>
-<li><p><code>"other"</code> for other elements, such as swimming pools, etc.</p></li>
+<li><p><code>"other"</code> for other elements such as swimming pools.</p></li>
 </ul></dd>
 
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> <code>cache</code> is no longer
-supported, this function will always cache results.</p></dd>
+supported, this function always caches results.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>logical. Should the cached file be refreshed? Default is
+<dd><p>logical, should the cached file be refreshed? Defaults to
 <code>FALSE</code>. When set to <code>TRUE</code>, it forces a new download.</p></dd>
 
 

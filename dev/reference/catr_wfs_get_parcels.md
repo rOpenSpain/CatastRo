@@ -51,7 +51,7 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
 - x:
 
-  See **Bounding box**. It can be:
+  See **Bounding box**. It may be:
 
   - A numeric vector of length 4 with the coordinates that defines the
     bounding box: `c(xmin, ymin, xmax, ymax)`
@@ -61,7 +61,7 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
 - what:
 
-  Information to load. It can be:
+  Information to load. Options are:
 
   - `"parcel"` for cadastral parcels.
 

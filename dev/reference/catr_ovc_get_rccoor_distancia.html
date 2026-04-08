@@ -72,13 +72,13 @@ coordinates.</p>
 
 
 <dl><dt id="arg-lat">lat<a class="anchor" aria-label="anchor" href="#arg-lat"></a></dt>
-<dd><p>Latitude to use on the query. It should be specified in the
-CRS/SRS defined in <code>srs</code>.</p></dd>
+<dd><p>Latitude for the query, expressed in the CRS/SRS defined by
+<code>srs</code>.</p></dd>
 
 
 <dt id="arg-lon">lon<a class="anchor" aria-label="anchor" href="#arg-lon"></a></dt>
-<dd><p>Longitude to use on the query. It should be specified in the
-CRS/SRS defined in <code>srs</code>.</p></dd>
+<dd><p>Longitude for the query, expressed in the CRS/SRS defined by
+<code>srs</code>.</p></dd>
 
 
 <dt id="arg-srs">srs<a class="anchor" aria-label="anchor" href="#arg-srs"></a></dt>
@@ -101,7 +101,7 @@ CRS/SRS defined in <code>srs</code>.</p></dd>
 <p>On a successful query, the function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with
 one row by cadastral reference, including the following columns:</p><ul><li><p><code>geo.xcen</code>, <code>geo.ycen</code>, <code>geo.srs</code>: Input arguments of the query.</p></li>
 <li><p><code>refcat</code>: Cadastral reference.</p></li>
-<li><p><code>address</code>: Address as it is recorded on the Cadastre.</p></li>
+<li><p><code>address</code>: Address as recorded in the Cadastre.</p></li>
 <li><p><code>cmun_ine</code>: Municipality code as registered on the INE (National
 Statistics Institute).</p></li>
 <li><p>Rest of fields: Check the API Docs.</p></li>

@@ -3,8 +3,8 @@
 Implementation of the OVCCallejero service
 [ConsultaMunicipioCodigos](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos).
 
-Returns the names and codes of a municipality. Returns both the codes as
-per the Cadastre and as per the INE (National Statistics Institute).
+Returns the names and codes of a municipality both as per the Cadastre
+and as per the INE (National Statistics Institute).
 
 ## Usage
 
@@ -22,8 +22,8 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 - cmun, cmun_ine:
 
   Code of a municipality, as recorded on the Spanish Cadastre (`cmun`)
-  or the National Statistics Institute. Either `cmun` or `cmun_ine`
-  should be provided.
+  or the National Statistics Institute. Either `cmun` or `cmun_ine` must
+  be provided.
 
 - verbose:
 
@@ -77,7 +77,7 @@ Other search:
 
 ``` r
 # \donttest{
-# Get municipality by cadastal code
+# Get municipality by cadastral code
 ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
 
 ab

@@ -69,11 +69,11 @@ using <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>It can be:</p><ul><li><p>A pair of coordinates <code>c(x,y)</code>. In this case the <code>srs</code> of the coordinates
-should be provided.</p></li>
-<li><p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object. If the object has several geometries only the
-first value will be used. The function will extract the coordinates
-using <code>sf::st_centroid(x, of_largest_polygon = TRUE)</code>.</p></li>
+<dd><p>It may be:</p><ul><li><p>A pair of coordinates <code>c(x,y)</code>. In this case the <code>srs</code> of the coordinates
+must be provided.</p></li>
+<li><p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object. If the object has several geometries, only
+the first geometry is used. The function extracts coordinates using
+<code>sf::st_centroid(x, of_largest_polygon = TRUE)</code>.</p></li>
 </ul></dd>
 
 

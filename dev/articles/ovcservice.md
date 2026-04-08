@@ -5,20 +5,20 @@ the [Sede electrónica del
 Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 API directly through an **R** IDE.
 
-This API is used to retrieve the spatial coordinates of an urban
-property. It is not necessary to be the owner to get the information;
-you only need to know the cadastral reference (*RC*) of the property.
-Although the RC is the only compulsory argument, providing the address
-can improve results and help avoid errors in the RC.
+This API retrieves the spatial coordinates of an urban property. It is
+not necessary to be the owner to get the information; you only need to
+know the cadastral reference (*RC*) of the property. Although the RC is
+the only required argument, providing the address can improve results
+and help avoid errors.
 
 Additionally, the API can be used to obtain the RC of an urban property.
 For this, the API requires the longitude and latitude. It also allows
 you to choose the spatial reference system (SRS, also known as CRS) from
 a list to express the coordinates.
 
-Finally, the API addresses cases where the exact location of the
-registered urban property is unknown. In such cases, it returns all
-properties located within a 50-meter square around the given point.
+The API also handles cases where the exact location of the registered
+urban property is unknown. In such cases, it returns all properties
+located within a 50-meter square around the given point.
 
 The documentation of this API can be found
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
@@ -67,6 +67,9 @@ data(catr_srs_values)
 
 # OVC valid codes
 library(dplyr)
+#> Error in `value[[3L]]()`:
+#> ! Package 'dplyr' version 1.2.1 cannot be unloaded:
+#>  Error in unloadNamespace(package) : namespace 'dplyr' is imported by 'tidyterra', 'tidyr' so cannot be unloaded
 
 catr_srs_values |>
   filter(ovc_service == TRUE) |>
@@ -152,7 +155,7 @@ catr_ovc_get_cpmrc(
 |:---------------|:----------|
 | 13077A01800039 | EPSG:4326 |
 
-When using only `rc` the result is provided as expected:
+When using only `rc`, the result is provided as expected:
 
 ``` r
 # No warning, get the result

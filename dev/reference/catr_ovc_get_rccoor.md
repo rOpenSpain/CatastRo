@@ -15,13 +15,11 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude to use on the query. It should be specified in the CRS/SRS
-  defined in `srs`.
+  Latitude for the query, expressed in the CRS/SRS defined by `srs`.
 
 - lon:
 
-  Longitude to use on the query. It should be specified in the CRS/SRS
-  defined in `srs`.
+  Longitude for the query, expressed in the CRS/SRS defined by `srs`.
 
 - srs:
 
@@ -52,7 +50,7 @@ one row by cadastral reference, including the following columns:
 
 - `refcat`: Cadastral Reference.
 
-- `address`: Address as it is recorded on the Cadastre.
+- `address`: Address as recorded in the Cadastre.
 
 - Rest of fields: Check the API Docs.
 

@@ -26,7 +26,7 @@ catr_wms_get_layer(
 
 - x:
 
-  See **Bounding box**. It can be:
+  See **Bounding box**. It may be:
 
   - A numeric vector of length 4 with the coordinates that defines the
     bounding box: `c(xmin, ymin, xmax, ymax)`
@@ -47,8 +47,8 @@ catr_wms_get_layer(
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE`, it forces a new download.
+  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 

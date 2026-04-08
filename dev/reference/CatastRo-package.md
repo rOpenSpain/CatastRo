@@ -21,6 +21,9 @@ Useful links:
 
 Authors:
 
+- Diego Hernangómez <diego.hernangomezherrero@gmail.com>
+  ([ORCID](https://orcid.org/0000-0001-8457-4658))
+
 - Ángel Delgado Panadero <delgadopanadero@gmail.com>
   ([ORCID](https://orcid.org/0000-0002-8189-9251)) \[copyright holder\]
 

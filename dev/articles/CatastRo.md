@@ -32,14 +32,14 @@ Base](https://knowledge-base.inspire.ec.europa.eu/overview_en)
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
 [Catastro
 INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
-allows retrieving spatial objects from the database of the cadastre:
+allows retrieval of spatial objects from the cadastral database:
 
 - **Vector objects:** Parcels, addresses, buildings, cadastral zones and
-  more. These objects are provided by **CatastRo** as `sf` objects as
-  provided by the **sf** package.
+  more. These objects are provided by **CatastRo** as `sf` objects,
+  using the **sf** package.
 - **Imagery:** Image layers representing the same information as the
   vector objects. These objects are provided by **CatastRo** as
-  `SpatRaster` objects as provided by the **terra** package.
+  `SpatRaster` objects, using the **terra** package.
 
 Note that the coverage of this service is 95% of the Spanish territory,
 excluding the Basque Country and Navarre[¹](#fn1), which have their own
@@ -52,9 +52,9 @@ service:
     objects of different cadastral elements for a specific municipality.
 
 2.  **WFS service**: The WFS service allows downloading vector objects
-    of specific cadastral elements. Note that there are some
-    *restrictions on the extent and number of elements* to query. For
-    batch downloading the ATOM service is preferred.
+    of specific cadastral elements. Note that there are restrictions on
+    the extent and number of elements that can be queried. For batch
+    downloading, the ATOM service is preferred.
 
 3.  **WMS service**: This service allows downloading georeferenced
     images of different cadastral elements.
@@ -129,6 +129,9 @@ First, we extract the coordinates of the city center of Granada using
 
 ``` r
 library(dplyr)
+#> Error in `value[[3L]]()`:
+#> ! Package 'dplyr' version 1.2.1 cannot be unloaded:
+#>  Error in unloadNamespace(package) : namespace 'dplyr' is imported by 'tidyterra', 'tidyr' so cannot be unloaded
 library(sf)
 library(mapSpain)
 
@@ -149,10 +152,9 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
