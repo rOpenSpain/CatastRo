@@ -12,7 +12,7 @@
       wfs_get_bbox(c(1, 2, 3, 4))
     Condition
       Error in `wfs_get_bbox()`:
-      ! You should provide also the `srs` argument when x is a double vector.
+      ! You should also provide the `srs` argument when x is a double vector.
 
 ---
 

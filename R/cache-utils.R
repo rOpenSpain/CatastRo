@@ -6,22 +6,22 @@
 #' @rdname catr_set_cache_dir
 #'
 #' @description
-#' This function will store your `cache_dir` path on your local machine and
-#' will load it for future sessions. Type `Sys.getenv("CATASTROESP_CACHE_DIR")`
-#' to find your cached path or use [catr_detect_cache_dir()].
+#' This function stores your `cache_dir` path on your local machine and loads
+#' it for future sessions. Type `Sys.getenv("CATASTROESP_CACHE_DIR")` to find
+#' your cached path or use [catr_detect_cache_dir()].
 #' @encoding UTF-8
 #'
 #' @param cache_dir A path to a cache directory. On `NULL` the function
 #'   stores cached files in a temporary directory (see [base::tempdir()]).
-#' @param install If `TRUE`, will install the key in your local machine for
-#'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`
-#'   this argument is set to `FALSE` automatically.
-#' @param overwrite If this is set to `TRUE`, it will overwrite an existing
-#'   `CATASTROESP_CACHE_DIR` that you already have in local machine.
+#' @param install If `TRUE`, installs the key in your local machine for use in
+#'   future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE` this
+#'   argument is set to `FALSE` automatically.
+#' @param overwrite If `TRUE`, overwrites an existing `CATASTROESP_CACHE_DIR`
+#'   already present on your local machine.
 #' @param verbose logical. If `TRUE` displays informational messages.
 #'
 #' @details
-#' By default, when no cache `cache_dir` is set the package uses a folder inside
+#' By default, when no `cache_dir` is set, the package uses a folder inside
 #' [base::tempdir()] (so files are temporary and are removed when the **R**
 #' session ends). To persist a cache across **R** sessions, use
 #' `catr_set_cache_dir(cache_dir, install = TRUE)` which writes the chosen
@@ -51,18 +51,18 @@
 #' Sometimes cached files may be corrupt. In that case, try re-downloading
 #' the data setting `update_cache = TRUE` in the corresponding function.
 #'
-#'  If you experience any problem with downloading, try to download the
-#'  corresponding file by any other method and save it on your
-#'  `cache_dir`. Use the option `verbose = TRUE` for debugging the API query
-#'  and [catr_detect_cache_dir()] to identify your cached path.
+#' If you experience any problem downloading, try downloading the
+#' corresponding file by another method and save it in your
+#' `cache_dir`. Use the option `verbose = TRUE` for debugging the API query
+#' and [catr_detect_cache_dir()] to identify your cached path.
 #'
 #' @note
 #'
 #' In \CRANpkg{CatastRo} >= 1.0.0 the location of the configuration file has
 #' moved from `rappdirs::user_config_dir("CatastRo", "R")` to
 #' `tools::R_user_dir("CatastRo", "config")`. We have implemented a
-#' functionality that will migrate previous configuration files from one
-#' location to another with a message. This message will appear only once
+#' functionality that migrates previous configuration files from one
+#' location to another with a message. This message appears only once
 #' informing of the migration.
 #'
 #' @examples
@@ -182,18 +182,17 @@ catr_detect_cache_dir <- function() {
 #' @return Invisible. This function is called for its side effects.
 #'
 #' @description
-#' **Use this function with caution**. This function will clear your cached
-#' data and configuration, specifically:
+#' **Use this function with caution**. This function clears your cached data
+#' and configuration, specifically:
 #'
 #' * Deletes the \CRANpkg{CatastRo} config directory
 #'   (`tools::R_user_dir("CatastRo", "config")`).
 #' * Deletes the `cache_dir` directory.
 #' * Deletes the values stored on `Sys.getenv("CATASTROESP_CACHE_DIR")`.
 #'
-#' @param config if `TRUE`, will delete the configuration folder of
+#' @param config If `TRUE`, deletes the configuration folder of
 #'   \CRANpkg{CatastRo}.
-#' @param cached_data If this is set to `TRUE`, it will delete your
-#'   `cache_dir` and all its content.
+#' @param cached_data If `TRUE`, deletes your `cache_dir` and all its contents.
 #' @inheritParams catr_set_cache_dir
 #'
 #' @seealso [tools::R_user_dir()]

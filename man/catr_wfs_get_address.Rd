@@ -17,7 +17,7 @@ catr_wfs_get_address_rc(rc, srs = NULL, verbose = FALSE)
 catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 }
 \arguments{
-\item{x}{See \strong{Bounding box}. It can be:
+\item{x}{See \strong{Bounding box}. It may be:
 \itemize{
 \item A numeric vector of length 4 with the coordinates that defines
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}
@@ -41,7 +41,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item{postalcode}{Postal code.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Get the spatial data of addresses. The WFS Service allows performing
@@ -80,11 +80,11 @@ coordinate values. Additionally, the function queries the bounding box on
 \href{https://epsg.io/25830}{EPSG:25830} - ETRS89 / UTM zone 30N, to overcome
 a potential bug on the API side.
 
-When \code{x} is a \code{\link[sf:sf]{sf}} object, the value \code{srs} is ignored. In
-this case, the bounding box of the \code{\link[sf:sf]{sf}} object is
+When \code{x} is a \code{\link[sf:st_sf]{sf}} object, the value \code{srs} is ignored. In
+this case, the bounding box of the \code{\link[sf:st_sf]{sf}} object is
 used for the query (see \code{\link[sf:st_bbox]{sf::st_bbox()}}).
 
-The result is always provided in the SRS of the \code{\link[sf:sf]{sf}} object
+The result is always provided in the SRS of the \code{\link[sf:st_sf]{sf}} object
 provided as input.
 }
 
@@ -112,34 +112,34 @@ ggplot(ad) +
 }
 \seealso{
 INSPIRE API functions:
-\code{\link{catr_atom_get_address}()},
-\code{\link{catr_atom_get_address_db_all}()},
-\code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_buildings_db_all}()},
-\code{\link{catr_atom_get_parcels}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
-\code{\link{catr_wfs_get_buildings_bbox}()},
-\code{\link{catr_wfs_get_parcels_bbox}()},
-\code{\link{catr_wms_get_layer}()},
-\code{\link{inspire_wfs_get}()}
+\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
+\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
+\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
+\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
+\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
+\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
+\code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}},
+\code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 
 Other INSPIRE WFS services:
 \code{\link{catr_srs_values}},
-\code{\link{catr_wfs_get_buildings_bbox}()},
-\code{\link{catr_wfs_get_parcels_bbox}()},
-\code{\link{inspire_wfs_get}()}
+\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
+\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
+\code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 
-Other addresses: 
-\code{\link{catr_atom_get_address}()},
-\code{\link{catr_atom_get_address_db_all}()}
+Other addresses:
+\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}}
 
-Other spatial: 
-\code{\link{catr_atom_get_address}()},
-\code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels}()},
-\code{\link{catr_wfs_get_buildings_bbox}()},
-\code{\link{catr_wfs_get_parcels_bbox}()},
-\code{\link{catr_wms_get_layer}()}
+Other spatial:
+\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
+\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
+\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
+\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
+\code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}}
 }
 \concept{INSPIRE}
 \concept{WFS}

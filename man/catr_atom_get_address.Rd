@@ -15,7 +15,7 @@ catr_atom_get_address(
 )
 }
 \arguments{
-\item{munic}{Municipality to extract. It can be part of a string or the
+\item{munic}{Municipality to extract, can be part of a string or a
 cadastral code. See \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} for getting the cadastral
 codes.}
 
@@ -23,18 +23,18 @@ codes.}
 \code{munic} belongs. This argument is a helper for narrowing the search.}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer
-supported, this function will always cache results.}
+supported, this function always caches results.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default is
+\item{update_cache}{logical, should the cached file be refreshed? Defaults to
 \code{FALSE}. When set to \code{TRUE}, it forces a new download.}
 
 \item{cache_dir}{A path to a cache directory. On \code{NULL} the function
-stores cached files in a temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
+stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Retrieve the spatial data of all addresses belonging to a single municipality
@@ -68,36 +68,36 @@ ggplot(s) +
 }
 \seealso{
 INSPIRE API functions:
-\code{\link{catr_atom_get_address_db_all}()},
-\code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_buildings_db_all}()},
-\code{\link{catr_atom_get_parcels}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
-\code{\link{catr_wfs_get_address_bbox}()},
-\code{\link{catr_wfs_get_buildings_bbox}()},
-\code{\link{catr_wfs_get_parcels_bbox}()},
-\code{\link{catr_wms_get_layer}()},
-\code{\link{inspire_wfs_get}()}
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
+\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
+\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
+\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
+\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
+\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
+\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
+\code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}},
+\code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 
 Other INSPIRE ATOM services:
-\code{\link{catr_atom_get_address_db_all}()},
-\code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_buildings_db_all}()},
-\code{\link{catr_atom_get_parcels}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
-\code{\link{catr_atom_search_munic}()}
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
+\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
+\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
+\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}}
 
-Other addresses: 
-\code{\link{catr_atom_get_address_db_all}()},
-\code{\link{catr_wfs_get_address_bbox}()}
+Other addresses:
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
+\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}}
 
-Other spatial: 
-\code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels}()},
-\code{\link{catr_wfs_get_address_bbox}()},
-\code{\link{catr_wfs_get_buildings_bbox}()},
-\code{\link{catr_wfs_get_parcels_bbox}()},
-\code{\link{catr_wms_get_layer}()}
+Other spatial:
+\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
+\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
+\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
+\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
+\code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}}
 }
 \concept{ATOM}
 \concept{INSPIRE}

@@ -169,7 +169,7 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
     if (is.null(srs)) {
       cli::cli_abort(
         paste0(
-          "You should provide also the {.arg srs} argument when x is ",
+          "You should also provide the {.arg srs} argument when x is ",
           "{.obj_type_friendly {x}}."
         )
       )

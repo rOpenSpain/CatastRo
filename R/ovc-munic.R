@@ -4,8 +4,8 @@
 #' Implementation of the OVCCallejero service
 #' [ConsultaMunicipioCodigos](`r ovcurl("mun")`).
 #'
-#' Returns the names and codes of a municipality. Returns both the codes as per
-#' the Cadastre and as per the INE (National Statistics Institute).
+#' Returns the names and codes of a municipality both as per the Cadastre
+#' and as per the INE (National Statistics Institute).
 #'
 #' @encoding UTF-8
 #' @family OVCCallejero
@@ -25,7 +25,7 @@
 #'   [catr_ovc_get_cod_provinces()].
 #' @param cmun,cmun_ine Code of a municipality, as recorded on the Spanish
 #'   Cadastre (`cmun`) or the National Statistics Institute. Either `cmun` or
-#'   `cmun_ine` should be provided.
+#'   `cmun_ine` must be provided.
 #'
 #' @details
 #' On a successful query, the function returns a [tibble][tibble::tbl_df]
@@ -41,7 +41,7 @@
 #'
 #' @examplesIf run_example()
 #' \donttest{
-#' # Get municipality by cadastal code
+#' # Get municipality by cadastral code
 #' ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
 #'
 #' ab

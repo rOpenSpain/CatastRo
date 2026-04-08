@@ -24,7 +24,7 @@ read_geo_file_sf <- function(
     if (fsize > thr) {
       fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
       make_msg("warning", TRUE, "Reading large file", fsize_unit)
-      make_msg("generic", TRUE, "It can take a while. Hold on!")
+      make_msg("generic", TRUE, "This may take a while.")
     }
   }
 

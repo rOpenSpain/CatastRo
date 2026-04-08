@@ -14,13 +14,13 @@ catr_get_code_from_coords(
 )
 }
 \arguments{
-\item{x}{It can be:
+\item{x}{It may be:
 \itemize{
 \item A pair of coordinates \code{c(x,y)}. In this case the \code{srs} of the coordinates
-should be provided.
-\item A \code{\link[sf:sf]{sf}} object. If the object has several geometries only the
-first value will be used. The function will extract the coordinates
-using \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
+must be provided.
+\item A \code{\link[sf:st_sf]{sf}} object. If the object has several geometries, only
+the first geometry is used. The function extracts coordinates using
+\code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }}
 
 \item{srs}{SRS/CRS to use on the query. To see allowed values, use
@@ -29,7 +29,7 @@ using \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{cache_dir}{A path to a cache directory. On \code{NULL} the function
-stores cached files in a temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
+stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane}}
@@ -52,15 +52,15 @@ municipalities.}
   }}
 }
 \value{
-A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}
+A \link[tibble:tbl_df]{tibble}. See \strong{Details}
 }
 \description{
-This function takes as input a pair of coordinates of a \code{\link[sf:sf]{sf}}
+This function takes as input a pair of coordinates of a \code{\link[sf:st_sf]{sf}}
 object and returns the corresponding municipality code for those coordinates
 using \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
 }
 \details{
-On a successful query, the function returns a \link[tibble:tbl_df-class]{tibble}
+On a successful query, the function returns a \link[tibble:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
 \item \code{munic}: Name of the municipality as per the Cadastre.
@@ -87,11 +87,11 @@ catr_get_code_from_coords(prov)
 }
 \seealso{
 \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}}, \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
-\code{\link[sf:geos_unary]{sf::st_centroid()}}.
+\code{\link[sf:st_centroid]{sf::st_centroid()}}.
 
-Other search: 
-\code{\link{catr_atom_search_munic}()},
-\code{\link{catr_ovc_get_cod_munic}()},
-\code{\link{catr_ovc_get_cod_provinces}()}
+Other search:
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
+\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
+\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 }
 \concept{search}

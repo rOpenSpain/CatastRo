@@ -25,13 +25,11 @@
 #'
 #' ```
 #'
-#' @param munic Municipality to extract. It can be part of a string or the
+#' @param munic Municipality to extract, can be part of a string or a
 #'   cadastral code. See [catr_atom_search_munic()] for getting the cadastral
 #'   codes.
 #' @param to Optional argument for defining the territorial office to which
 #'   `munic` belongs. This argument is a helper for narrowing the search.
-#' @param cache `r lifecycle::badge("deprecated")` `cache` is no longer
-#'   supported, this function will always cache results.
 #'
 #' @return A [`sf`][sf::st_sf] object.
 #'

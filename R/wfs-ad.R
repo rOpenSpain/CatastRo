@@ -31,7 +31,7 @@
 #'
 #' @return A [`sf`][sf::st_sf] object.
 #'
-#' @param x See **Bounding box**. It can be:
+#' @param x See **Bounding box**. It may be:
 #'   - A numeric vector of length 4 with the coordinates that defines
 #'     the bounding box: `c(xmin, ymin, xmax, ymax)`
 #'   - A `sf/sfc` object, as provided by the \CRANpkg{sf} package.

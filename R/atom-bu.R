@@ -14,10 +14,10 @@
 #'
 #' @inherit catr_atom_get_address references return
 #'
-#' @param what Information to load. It can be:
+#' @param what Information to load. Options are:
 #'  - `"building"` for buildings.
 #'  - `"buildingpart"` for parts of a building.
-#'  - `"other"` for other elements, such as swimming pools, etc.
+#'  - `"other"` for other elements such as swimming pools.
 #'
 #' @examplesIf run_example()
 #' \donttest{

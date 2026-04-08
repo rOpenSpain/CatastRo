@@ -27,7 +27,7 @@
 #' one row by cadastral reference, including the following columns:
 #' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 #' - `refcat`: Cadastral Reference.
-#' - `address`: Address as it is recorded on the Cadastre.
+#' - `address`: Address as recorded in the Cadastre.
 #' - Rest of fields: Check the API Docs.
 #'
 #' @examplesIf run_example()

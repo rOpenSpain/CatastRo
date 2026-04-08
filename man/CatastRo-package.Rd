@@ -24,6 +24,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID})
   \item Ángel Delgado Panadero \email{delgadopanadero@gmail.com} (\href{https://orcid.org/0000-0002-8189-9251}{ORCID}) [copyright holder]
 }
 

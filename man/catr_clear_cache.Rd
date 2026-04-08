@@ -8,11 +8,10 @@
 catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
-\item{config}{if \code{TRUE}, will delete the configuration folder of
+\item{config}{If \code{TRUE}, deletes the configuration folder of
 \CRANpkg{CatastRo}.}
 
-\item{cached_data}{If this is set to \code{TRUE}, it will delete your
-\code{cache_dir} and all its content.}
+\item{cached_data}{If \code{TRUE}, deletes your \code{cache_dir} and all its contents.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
@@ -20,8 +19,8 @@ catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 Invisible. This function is called for its side effects.
 }
 \description{
-\strong{Use this function with caution}. This function will clear your cached
-data and configuration, specifically:
+\strong{Use this function with caution}. This function clears your cached data
+and configuration, specifically:
 \itemize{
 \item Deletes the \CRANpkg{CatastRo} config directory
 (\code{tools::R_user_dir("CatastRo", "config")}).
@@ -51,9 +50,9 @@ identical(my_cache, catr_detect_cache_dir())
 }
 }
 \seealso{
-\code{\link[tools:userdir]{tools::R_user_dir()}}
+\code{\link[tools:R_user_dir]{tools::R_user_dir()}}
 
-Other cache utilities: 
-\code{\link{catr_set_cache_dir}()}
+Other cache utilities:
+\code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}}
 }
 \concept{cache utilities}

@@ -23,7 +23,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 **CatastRo** is a package that provides access to different API services
 of the [Spanish Cadastre](https://www.sedecatastro.gob.es/). With
 **CatastRo**, you can download spatial objects such as buildings,
-cadastral parcels, maps, and geocode cadastral references.
+cadastral parcels, and maps, and geocode cadastral references.
 
 ## Installation
 
@@ -140,17 +140,17 @@ service:
 
 The ATOM service allows batch-downloading vector objects of different
 cadastral elements for a specific municipality. The result is provided
-as `sf` objects (See **sf** package).
+as `sf` objects (see the **sf** package).
 
 These functions are named `catr_atom_get_xxx`.
 
 #### WFS service
 
 The WFS service allows downloading vector objects of specific cadastral
-elements. The results are provided as `sf` class objects (see the
+elements. The results are provided as `sf` objects (see the
 [**sf**](https://r-spatial.github.io/sf/) package). Note that there are
-some limitations on the extent and number of elements to query. For
-batch downloading the ATOM service is preferred.
+restrictions on the extent and number of elements that can be queried.
+For batch downloading, the ATOM service is preferred.
 
 These functions are named `catr_wfs_get_xxx`.
 
@@ -241,16 +241,15 @@ alt="Extract Alcázar of Segovia with the WFS service" />
 
 ## A note on caching
 
-Some datasets and tiles may have a size larger than 50MB. You can use
-**CatastRo** to create your own local repository at a given local
-directory passing the following option:
+Some datasets and tiles may exceed 50MB. You can set a local cache
+directory using the following function:
 
 ``` r
 catr_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **CatastRo** will look for the cached file and
-load it, speeding up the process.
+When this option is set, **CatastRo** will look for cached files and
+load them, speeding up the process.
 
 ## Citation
 

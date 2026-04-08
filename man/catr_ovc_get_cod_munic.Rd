@@ -13,22 +13,22 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 \item{cmun, cmun_ine}{Code of a municipality, as recorded on the Spanish
 Cadastre (\code{cmun}) or the National Statistics Institute. Either \code{cmun} or
-\code{cmun_ine} should be provided.}
+\code{cmun_ine} must be provided.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df-class]{tibble}. See \strong{Details}
+A \link[tibble:tbl_df]{tibble}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCallejero service
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos}{ConsultaMunicipioCodigos}.
 
-Returns the names and codes of a municipality. Returns both the codes as per
-the Cadastre and as per the INE (National Statistics Institute).
+Returns the names and codes of a municipality both as per the Cadastre
+and as per the INE (National Statistics Institute).
 }
 \details{
-On a successful query, the function returns a \link[tibble:tbl_df-class]{tibble}
+On a successful query, the function returns a \link[tibble:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
 \item \code{munic}: Name of the municipality as per the Cadastre.
@@ -44,7 +44,7 @@ with one row including the following columns:
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
-# Get municipality by cadastal code
+# Get municipality by cadastral code
 ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
 
 ab
@@ -65,12 +65,12 @@ ab2
 the INE code.
 
 OVCCoordenadas API:
-\code{\link{catr_ovc_get_cod_provinces}()}
+\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 
-Other search: 
-\code{\link{catr_atom_search_munic}()},
-\code{\link{catr_get_code_from_coords}()},
-\code{\link{catr_ovc_get_cod_provinces}()}
+Other search:
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
+\code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
+\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 }
 \concept{OVCCallejero}
 \concept{search}

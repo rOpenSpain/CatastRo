@@ -26,13 +26,13 @@ catr_atom_get_buildings_db_to(
 }
 \arguments{
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer
-supported, this function will always cache results.}
+supported, this function always caches results.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default is
+\item{update_cache}{logical, should the cached file be refreshed? Defaults to
 \code{FALSE}. When set to \code{TRUE}, it forces a new download.}
 
 \item{cache_dir}{A path to a cache directory. On \code{NULL} the function
-stores cached files in a temporary directory (see \code{\link[base:tempfile]{base::tempdir()}}).}
+stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
@@ -40,7 +40,7 @@ stores cached files in a temporary directory (see \code{\link[base:tempfile]{bas
 matching.}
 }
 \value{
-A \link[tibble:tbl_df-class]{tibble} with the information requested with the following
+A \link[tibble:tbl_df]{tibble} with the information requested with the following
 fields:
 \itemize{
 \item \code{territorial_office}: territorial office, corresponding to each province
@@ -72,33 +72,33 @@ catr_atom_get_buildings_db_all()
 }
 \seealso{
 INSPIRE API functions:
-\code{\link{catr_atom_get_address}()},
-\code{\link{catr_atom_get_address_db_all}()},
-\code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
-\code{\link{catr_wfs_get_address_bbox}()},
-\code{\link{catr_wfs_get_buildings_bbox}()},
-\code{\link{catr_wfs_get_parcels_bbox}()},
-\code{\link{catr_wms_get_layer}()},
-\code{\link{inspire_wfs_get}()}
+\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
+\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
+\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
+\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
+\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
+\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
+\code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}},
+\code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 
 Other INSPIRE ATOM services:
-\code{\link{catr_atom_get_address}()},
-\code{\link{catr_atom_get_address_db_all}()},
-\code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_atom_get_parcels}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
-\code{\link{catr_atom_search_munic}()}
+\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
+\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
+\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}}
 
-Other buildings: 
-\code{\link{catr_atom_get_buildings}()},
-\code{\link{catr_wfs_get_buildings_bbox}()}
+Other buildings:
+\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
+\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}}
 
-Other databases: 
-\code{\link{catr_atom_get_address_db_all}()},
-\code{\link{catr_atom_get_parcels_db_all}()},
-\code{\link{catr_atom_search_munic}()},
+Other databases:
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
+\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
 \code{\link{catr_srs_values}}
 }
 \concept{ATOM}
