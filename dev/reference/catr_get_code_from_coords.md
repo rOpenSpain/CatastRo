@@ -125,9 +125,6 @@ Other search:
 # \donttest{
 # Use with coords
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
-#> ✖ Error 504  (Gateway Timeout): <https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/se89_3_admin_muni_a_x.gpkg>.
-#> ! If you think this is a bug please consider opening an issue on <https://github.com/rOpenSpain/mapSpain/issues>
-#> → Returning "NULL"
 #> # A tibble: 1 × 12
 #>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
 #>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
@@ -137,10 +134,10 @@ catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 # Use with sf
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
-#> ✖ Error 504  (Gateway Timeout): <https://github.com/rOpenSpain/mapSpain/raw/sianedata/dist/se89_3_admin_muni_a_x.gpkg>.
-#> ! If you think this is a bug please consider opening an issue on <https://github.com/rOpenSpain/mapSpain/issues>
-#> → Returning "NULL"
-#> ! Coordinates not found
-#> NULL
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 MONROY 10      128        10128    10    125   10125   MONR… 10    128   10   
+#> # ℹ 1 more variable: cm <chr>
 # }
 ```
