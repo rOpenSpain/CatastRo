@@ -51,14 +51,14 @@ reference:
   - tidyterra::geom_spatraster_rgb()
 - title: OVCCoordenadas API
   desc: >
-    These functions allows to access the
+    These functions allow access to the
     [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
     service.
   contents:
   - has_concept("OVCCoordenadas")
 - title: OVCCallejero API
   desc: >
-    These functions allows to access the
+    These functions allow access to the
     [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
     service.
   contents:

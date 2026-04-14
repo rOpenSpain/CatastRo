@@ -68,8 +68,8 @@ with one row including the following columns:
 \item \code{catr_munic}: Municipality code as recorded on the Cadastre.
 \item \code{catrcode}: Full Cadastral code for the municipality.
 \item \code{cpro}: Province code as per the INE.
-\item \code{catr_munic}: Municipality code as per the INE.
-\item \code{catrcode}: Full INE code for the municipality.
+\item \code{cmun}: Municipality code as per the INE.
+\item \code{inecode}: Full INE code for the municipality.
 \item Rest of fields: Check the API Docs.
 }
 }

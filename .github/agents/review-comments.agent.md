@@ -1,6 +1,6 @@
 ---
 name: review-comments
-description: Review the roxygen2 and R comments.
+description: "Use when: reviewing roxygen2 and R comments in R package source files".
 argument-hint: Review comments.
 ---
 
@@ -23,3 +23,7 @@ semicolon (, over ;).
 
 When done, propose improvements and implement changes, but let me review your
 changes in the editor first.
+
+You can use tools to read files, search for patterns, and make edits. Use
+read_file to gather context, grep_search for finding comments, and
+replace_string_in_file for changes.

@@ -35,8 +35,8 @@
 #' * `catr_munic`: Municipality code as recorded on the Cadastre.
 #' * `catrcode`: Full Cadastral code for the municipality.
 #' * `cpro`: Province code as per the INE.
-#' * `catr_munic`: Municipality code as per the INE.
-#' * `catrcode`: Full INE code for the municipality.
+#' * `cmun`: Municipality code as per the INE.
+#' * `inecode`: Full INE code for the municipality.
 #' * Rest of fields: Check the API Docs.
 #'
 #' @examplesIf run_example()

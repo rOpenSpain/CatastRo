@@ -63,7 +63,7 @@ The OVCCoordenadas Web Service can be accessed using the following functions:
 The function `catr_ovc_get_rccoor()` takes the coordinates (`lat` and `lon`) and
 the spatial reference system (`srs`) used to express them. It returns a tibble
 with the cadastral reference of the property at that spatial point, including
-other information such as the address (town, street, and number).
+other information such as the address (town, street and number).
 
 ```{r}
 library(CatastRo)
@@ -109,7 +109,7 @@ catr_ovc_get_rccoor_distancia(
 The opposite query is also possible. When provided with a cadastral reference
 (`rc`), province (`province`), and municipality (`municipality`), the function
 `catr_ovc_get_cpmrc()` returns the coordinates (`lat` and `lon`) in a specified
-`srs`, along with the address (town, street, and number).
+`srs`, along with the address (town, street and number).
 
 ```{r}
 catr_ovc_get_cpmrc(

@@ -1,6 +1,6 @@
 ---
 name: review-docs
-description: Review the vignettes, articles, and README files.
+description: "Use when: reviewing vignettes, articles, and README files in R packages".
 argument-hint: Review docs.
 ---
 
@@ -21,3 +21,7 @@ modify any working code.
 
 When done, propose improvements and implement changes but let me review your
 changes in the editor first.
+
+You can use tools to read files, search for patterns, and make edits. Use
+read_file to gather context, grep_search for finding text, and
+replace_string_in_file for changes.
