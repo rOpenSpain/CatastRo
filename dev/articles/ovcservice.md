@@ -42,7 +42,7 @@ The function
 takes the coordinates (`lat` and `lon`) and the spatial reference system
 (`srs`) used to express them. It returns a tibble with the cadastral
 reference of the property at that spatial point, including other
-information such as the address (town, street, and number).
+information such as the address (town, street and number).
 
 ``` r
 library(CatastRo)
@@ -67,9 +67,6 @@ data(catr_srs_values)
 
 # OVC valid codes
 library(dplyr)
-#> Error in `value[[3L]]()`:
-#> ! Package 'dplyr' version 1.2.1 cannot be unloaded:
-#>  Error in unloadNamespace(package) : namespace 'dplyr' is imported by 'tidyterra', 'tidyr' so cannot be unloaded
 
 catr_srs_values |>
   filter(ovc_service == TRUE) |>
@@ -119,7 +116,7 @@ reference (`rc`), province (`province`), and municipality
 (`municipality`), the function
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md)
 returns the coordinates (`lat` and `lon`) in a specified `srs`, along
-with the address (town, street, and number).
+with the address (town, street and number).
 
 ``` r
 catr_ovc_get_cpmrc(

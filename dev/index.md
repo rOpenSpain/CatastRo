@@ -3,7 +3,7 @@
 **CatastRo** is a package that provides access to different API services
 of the [Spanish Cadastre](https://www.sedecatastro.gob.es/). With
 **CatastRo**, you can download spatial objects such as buildings,
-cadastral parcels, and maps, and geocode cadastral references.
+cadastral parcels and maps, and geocode cadastral references.
 
 ## Installation
 

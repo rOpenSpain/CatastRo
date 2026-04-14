@@ -50,9 +50,9 @@ one row including the following columns:
 
 - `cpro`: Province code as per the INE.
 
-- `catr_munic`: Municipality code as per the INE.
+- `cmun`: Municipality code as per the INE.
 
-- `catrcode`: Full INE code for the municipality.
+- `inecode`: Full INE code for the municipality.
 
 - Rest of fields: Check the API Docs.
 

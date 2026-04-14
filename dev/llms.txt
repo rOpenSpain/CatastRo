@@ -3,7 +3,7 @@
 **CatastRo** is a package that provides access to different API services
 of the [Spanish Cadastre](https://www.sedecatastro.gob.es/). With
 **CatastRo**, you can download spatial objects such as buildings,
-cadastral parcels, and maps, and geocode cadastral references.
+cadastral parcels and maps, and geocode cadastral references.
 
 ## Installation
 
@@ -316,7 +316,7 @@ objects.
 
 ## OVCCoordenadas API
 
-These functions allows to access the
+These functions allow access to the
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 service.
 
@@ -337,7 +337,7 @@ service.
 
 ## OVCCallejero API
 
-These functions allows to access the
+These functions allow access to the
 [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
 service.
 
