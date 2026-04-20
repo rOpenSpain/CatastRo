@@ -122,7 +122,6 @@ sanitize_sf <- function(data_sf) {
   data_sf
 }
 
-
 get_sf_from_bbox <- function(bbox, srs = NULL) {
   if (inherits(bbox, "sf") || inherits(bbox, "sfc")) {
     return(bbox)

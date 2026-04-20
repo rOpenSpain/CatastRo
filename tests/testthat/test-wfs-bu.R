@@ -50,7 +50,6 @@ test_that("BBOX Check", {
   expect_gt(nrow(obj2), nrow(ot))
 })
 
-
 test_that("Check error on bad rc", {
   skip_on_cran()
   skip_if_offline()

@@ -72,8 +72,8 @@ The implementation of the INSPIRE directive on the Spanish Cadastre (see
 allows retrieval of spatial objects from the cadastral database:
 
 - **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.
-  These objects are provided by **CatastRo** as `sf` objects, using the
-  **sf** package.
+  These objects are provided by **CatastRo** as `sf` objects, using the **sf**
+  package.
 - **Imagery:** Image layers representing the same information as the vector
   objects. These objects are provided by **CatastRo** as `SpatRaster` objects,
   using the **terra** package.
@@ -92,9 +92,9 @@ There are three types of functions, each one querying a different service:
     of different cadastral elements for a specific municipality.
 
 2.  **WFS service**: The WFS service allows downloading vector objects of
-    specific cadastral elements. Note that there are restrictions on the
-    extent and number of elements that can be queried. For batch downloading,
-    the ATOM service is preferred.
+    specific cadastral elements. Note that there are restrictions on the extent
+    and number of elements that can be queried. For batch downloading, the ATOM
+    service is preferred.
 
 3.  **WMS service**: This service allows downloading georeferenced images of
     different cadastral elements.

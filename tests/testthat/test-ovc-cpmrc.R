@@ -68,7 +68,6 @@ test_that("giving cadastral reference and SRS", {
   expect_true((is.numeric(result$xcoord) & is.numeric(result$ycoord)))
 })
 
-
 test_that("giving only the cadastral reference", {
   skip_on_cran()
   skip_if_offline()

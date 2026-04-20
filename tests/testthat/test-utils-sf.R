@@ -66,7 +66,6 @@ test_that("Read shp address", {
   expect_false(dir.exists(cdir))
 })
 
-
 test_that("get_sf_from_bbox", {
   a <- get_sf_from_bbox(c(1, 2, 3, 4), srs = 3857)
   b <- get_sf_from_bbox(a)

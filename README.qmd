@@ -147,8 +147,8 @@ These functions are named `catr_atom_get_xxx`.
 The WFS service allows downloading vector objects of specific cadastral
 elements. The results are provided as `sf` objects (see the
 [**sf**](https://r-spatial.github.io/sf/) package). Note that there are
-restrictions on the extent and number of elements that can be queried. For
-batch downloading, the ATOM service is preferred.
+restrictions on the extent and number of elements that can be queried. For batch
+downloading, the ATOM service is preferred.
 
 These functions are named `catr_wfs_get_xxx`.
 

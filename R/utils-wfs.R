@@ -147,7 +147,6 @@ inspire_wfs_get <- function(
   NULL
 }
 
-
 #' Prepare the bbox of an object for WFS
 #'
 #' Results in 3857 since the Catastro API fails in some other projections.

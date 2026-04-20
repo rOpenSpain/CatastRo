@@ -104,7 +104,6 @@ test_that("if data is know return NA", {
   expect_true(ncol(result) == 3)
 })
 
-
 test_that("unprecised coordinates", {
   skip_on_cran()
   skip_if_offline()

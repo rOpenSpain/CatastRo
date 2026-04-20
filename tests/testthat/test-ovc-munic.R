@@ -35,7 +35,6 @@ test_that("Test 404 all", {
   })
 })
 
-
 test_that("Callejero munic", {
   skip_on_cran()
   skip_if_offline()

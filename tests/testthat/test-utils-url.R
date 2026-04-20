@@ -185,7 +185,6 @@ test_that("Caching errors", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-
 test_that("No connection body", {
   skip_on_cran()
   skip_if_offline()
