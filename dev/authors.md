@@ -18,7 +18,7 @@ Source:
 
 Delgado Panadero Á, Hernangómez D (2026). *CatastRo: Interface to the
 API Sede Electrónica Del Catastro*.
-[doi:10.32614/CRAN.package.CatastRo](https://doi.org/10.32614/CRAN.package.CatastRo),
+[doi:10.32614/CRAN.package.CatastRo](https://doi.org/10.32614/CRAN.package.CatastRo).
 <https://ropenspain.github.io/CatastRo/>.
 
     @Manual{R-CatastRo,
