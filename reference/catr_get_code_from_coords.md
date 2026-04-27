@@ -1,8 +1,8 @@
 # Get the cadastral municipality code from coordinates
 
-This function takes as input a pair of coordinates of a
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object and
-returns the corresponding municipality code for those coordinates using
+Get the municipality code for coordinates using a
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or a
+pair of coordinates via
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md).
 
 ## Usage
@@ -21,30 +21,30 @@ catr_get_code_from_coords(
 
 - x:
 
-  It can be:
+  It may be:
 
   - A pair of coordinates `c(x,y)`. In this case the `srs` of the
-    coordinates should be provided.
+    coordinates must be provided.
 
   - A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
-    If the object has several geometries only the first value will be
-    used. The function will extract the coordinates using
+    If the object has several geometries, only the first geometry is
+    used. The function extracts coordinates using
     `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 
 - srs:
 
-  SRS/CRS to use on the query. To check the admitted values check
+  SRS/CRS to use on the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function would store the
-  cached files on a temporary dir (See
+  Path to a cache directory. On `NULL`, the function stores cached files
+  in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - ...:
@@ -102,9 +102,9 @@ one row including the following columns:
 
 - `cpro`: Province code as per the INE.
 
-- `catr_munic`: Municipality code as per the INE.
+- `cmun`: Municipality code as per the INE.
 
-- `catrcode`: Full INE code for the municipality.
+- `inecode`: Full INE code for the municipality.
 
 - Rest of fields: Check the API Docs.
 

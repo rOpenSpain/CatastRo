@@ -2,10 +2,8 @@
 
 Implementation of the OVCCoordenadas service [Consulta RCCOOR
 Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
-
-Returns the cadastral reference found for a set of coordinates. If no
-cadastral references are found, the API returns a list of the cadastral
-references found in an area of 50 square meters around the requested
+Return cadastral references for coordinates. If none found, the API
+returns references in a 50 square meter area around the requested
 coordinates.
 
 ## Usage
@@ -18,23 +16,21 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude to use on the query. It should be specified in the CRS/SRS
-  defined in `srs`.
+  Latitude for the query, expressed in the CRS/SRS defined by `srs`.
 
 - lon:
 
-  Longitude to use on the query. It should be specified in the CRS/SRS
-  defined in `srs`.
+  Longitude for the query, expressed in the CRS/SRS defined by `srs`.
 
 - srs:
 
-  SRS/CRS to use on the query. To check the admitted values check
+  SRS/CRS to use on the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
@@ -55,7 +51,7 @@ one row by cadastral reference, including the following columns:
 
 - `refcat`: Cadastral reference.
 
-- `address`: Address as it is recorded on the Cadastre.
+- `address`: Address as recorded in the Cadastre.
 
 - `cmun_ine`: Municipality code as registered on the INE (National
   Statistics Institute).

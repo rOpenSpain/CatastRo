@@ -2,7 +2,7 @@
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 including the valid SRS (also known as CRS) values that may be used on
-each API service. The values are provided as [EPSG
+each API service. Values are provided as [EPSG
 codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 
 ## Format
@@ -96,7 +96,7 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 
-catr_srs_values |> filter(ovc_service == TRUE)
+catr_srs_values |> filter(ovc_service)
 #> # A tibble: 14 × 4
 #>      SRS Description            ovc_service wfs_service
 #>    <dbl> <chr>                  <lgl>       <lgl>      
@@ -117,7 +117,7 @@ catr_srs_values |> filter(ovc_service == TRUE)
 
 # WFS valid codes
 
-catr_srs_values |> filter(wfs_service == TRUE)
+catr_srs_values |> filter(wfs_service)
 #> # A tibble: 7 × 4
 #>     SRS Description            ovc_service wfs_service
 #>   <dbl> <chr>                  <lgl>       <lgl>      
@@ -132,7 +132,7 @@ catr_srs_values |> filter(wfs_service == TRUE)
 # Use with sf::st_crs()
 
 catr_srs_values |>
-  filter(wfs_service == TRUE & ovc_service == TRUE) |>
+  filter(wfs_service & ovc_service) |>
   print() |>
   # First value
   slice_head(n = 1) |>

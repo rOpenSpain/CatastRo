@@ -1,6 +1,8 @@
 # Client tool for WFS INSPIRE services
 
-Client tool for WFS INSPIRE services
+Access WFS INSPIRE services. This function is used internally in WFS
+calls and is exposed for users and developers accessing other cadastral
+or INSPIRE resources.
 
 ## Usage
 
@@ -18,29 +20,27 @@ inspire_wfs_get(
 
 - scheme:
 
-  Identifies the protocol to be used to access the resource on the
-  Internet.
+  Character string. Protocol to access the resource on the Internet.
 
 - hostname:
 
-  Identifies the host that holds the resource.
+  Character string. Host that holds the resource.
 
 - path:
 
-  Identifies the specific resource in the host that the web client wants
-  to access.
+  Character string. Specific resource in the host to access.
 
 - query:
 
-  A named list with the name and value of the arguments to query.
+  Named list. Names and values of arguments to query.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
-A character string with the path of the resulting file in the
+Character string. Path of the resulting file in the
 [`tempfile()`](https://rdrr.io/r/base/tempfile.html) folder.
 
 ## Details

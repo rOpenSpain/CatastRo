@@ -2,8 +2,7 @@
 
 Implementation of the OVCCoordenadas service [Consulta
 CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC).
-
-Returns the coordinates for a specific cadastral reference.
+Returns coordinates for a specific cadastral reference.
 
 ## Usage
 
@@ -25,7 +24,7 @@ catr_ovc_get_cpmrc(
 
 - srs:
 
-  SRS/CRS to use on the query. To check the admitted values check
+  SRS/CRS to use on the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
@@ -35,7 +34,7 @@ catr_ovc_get_cpmrc(
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
@@ -56,7 +55,7 @@ one row per cadastral reference, including the following columns:
 
 - `refcat`: Cadastral Reference.
 
-- `address`: Address as it is recorded on the Cadastre.
+- `address`: Address as recorded in the Cadastre.
 
 - Rest of fields: Check the API Docs.
 
@@ -84,7 +83,7 @@ Other cadastral references:
 ``` r
 # \donttest{
 
-# using all the arguments
+# Using all arguments
 catr_ovc_get_cpmrc("13077A01800039",
   4230,
   province = "CIUDAD REAL",
@@ -95,7 +94,7 @@ catr_ovc_get_cpmrc("13077A01800039",
 #>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
 #> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4562… 38.6196… EPSG:4… DS D…
 
-# only the cadastral reference
+# Only the cadastral reference
 catr_ovc_get_cpmrc("9872023VH5797S")
 #> # A tibble: 1 × 10
 #>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  

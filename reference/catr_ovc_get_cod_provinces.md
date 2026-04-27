@@ -2,8 +2,7 @@
 
 Implementation of the OVCCallejero service
 [ConsultaProvincia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia).
-
-Returns a list of the provinces included in the Spanish Cadastre.
+Returns a list of provinces included in the Spanish Cadastre.
 
 ## Usage
 
@@ -15,7 +14,7 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 

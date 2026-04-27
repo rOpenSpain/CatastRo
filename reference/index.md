@@ -80,7 +80,7 @@ objects.
 
 ## OVCCoordenadas API
 
-These functions allows to access the
+These functions allow access to the
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 service.
 
@@ -101,7 +101,7 @@ service.
 
 ## OVCCallejero API
 
-These functions allows to access the
+These functions allow access to the
 [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
 service.
 

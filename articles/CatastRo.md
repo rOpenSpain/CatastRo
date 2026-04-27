@@ -18,27 +18,28 @@ in detail in the corresponding vignette (see
 
 ## INSPIRE services
 
-> The INSPIRE Directive aims to create a European Union spatial data
-> infrastructure for the purposes of EU environmental policies and
+> The INSPIRE Directive aims to create a European Union Spatial Data
+> Infrastructure (SDI) for the purposes of EU environmental policies and
 > policies or activities which may have an impact on the environment.
 > This European Spatial Data Infrastructure will enable the sharing of
 > environmental spatial information among public sector organisations,
 > facilitate public access to spatial information across Europe and
 > assist in policy-making across boundaries.
->
-> *From <https://knowledge-base.inspire.ec.europa.eu/index_en>*
+
+Source: [INSPIRE Knowledge
+Base](https://knowledge-base.inspire.ec.europa.eu/overview_en)
 
 The implementation of the INSPIRE directive on the Spanish Cadastre (see
 [Catastro
 INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
-allows retrieving spatial objects from the database of the cadastre:
+allows retrieval of spatial objects from the cadastral database:
 
 - **Vector objects:** Parcels, addresses, buildings, cadastral zones and
-  more. These objects are provided by **CatastRo** as `sf` objects as
-  provided by the **sf** package.
+  more. These objects are provided by **CatastRo** as `sf` objects,
+  using the **sf** package.
 - **Imagery:** Image layers representing the same information as the
   vector objects. These objects are provided by **CatastRo** as
-  `SpatRaster` objects as provided by the **terra** package.
+  `SpatRaster` objects, using the **terra** package.
 
 Note that the coverage of this service is 95% of the Spanish territory,
 excluding the Basque Country and Navarre[¹](#fn1), which have their own
@@ -51,9 +52,9 @@ service:
     objects of different cadastral elements for a specific municipality.
 
 2.  **WFS service**: The WFS service allows downloading vector objects
-    of specific cadastral elements. Note that there are some
-    *restrictions on the extent and number of elements* to query. For
-    batch downloading the ATOM service is preferred.
+    of specific cadastral elements. Note that there are restrictions on
+    the extent and number of elements that can be queried. For batch
+    downloading, the ATOM service is preferred.
 
 3.  **WMS service**: This service allows downloading georeferenced
     images of different cadastral elements.
@@ -67,10 +68,10 @@ the package by recreating a cadastral map of the surroundings of the
 [Santiago Bernabéu
 Stadium](https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium).
 We will use the **WMS and WFS services** to get different layers, in
-order order to show some of the capabilities of the package:
+order to show some of the capabilities of the package:
 
 ``` r
-# Extract building by bounding box
+# Extract buildings by bounding box
 # Check https://boundingbox.klokantech.com/
 
 library(CatastRo)

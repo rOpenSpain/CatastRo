@@ -26,7 +26,7 @@ catr_wms_get_layer(
 
 - x:
 
-  See **Bounding box**. It could be:
+  See **Bounding box**. It may be:
 
   - A numeric vector of length 4 with the coordinates that defines the
     bounding box: `c(xmin, ymin, xmax, ymax)`
@@ -36,7 +36,7 @@ catr_wms_get_layer(
 
 - srs:
 
-  SRS/CRS to use on the query. To check the admitted values check
+  SRS/CRS to use on the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `wfs_service` column. See **Bounding box**.
 
@@ -47,18 +47,18 @@ catr_wms_get_layer(
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function would store the
-  cached files on a temporary dir (See
+  Path to a cache directory. On `NULL`, the function stores cached files
+  in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 - crop:
 
@@ -111,8 +111,8 @@ value `srs` is ignored.
 The query is performed using [EPSG:3857](https://epsg.io/3857) (Web
 Mercator) and the tile is projected back to the SRS of `x`. In case that
 the tile looks deformed, try either providing `x` or specify the SRS of
-the requested tile via the `srs` argument, that (ideally) would need to
-match the SRS of `x`. See **Examples**.
+the requested tile via the `srs` argument, which should match the SRS of
+`x`. See **Examples**.
 
 ## Layers and styles
 

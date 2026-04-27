@@ -21,8 +21,8 @@ catr_atom_get_parcels(
 
 - munic:
 
-  Municipality to extract. It can be a part of a string or the cadastral
-  code. See
+  Municipality to extract, can be part of a string or a cadastral code.
+  See
   [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
   for getting the cadastral codes.
 
@@ -33,7 +33,7 @@ catr_atom_get_parcels(
 
 - what:
 
-  Information to load. It can be:
+  Information to load. Options are:
 
   - `"parcel"` for cadastral parcels.
 
@@ -41,23 +41,23 @@ catr_atom_get_parcels(
 
 - cache:
 
-  **\[deprecated\]** `cache` is no longer supported; this function will
-  always cache results.
+  **\[deprecated\]** `cache` is no longer supported, this function
+  always caches results.
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function would store the
-  cached files on a temporary dir (See
+  Path to a cache directory. On `NULL`, the function stores cached files
+  in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 

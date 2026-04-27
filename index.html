@@ -11,7 +11,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" sizes="any" href="favicon.ico">
 <link rel="manifest" href="site.webmanifest">
-<script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="katex-auto.js"></script><script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -33,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="index.html"><img src="apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +82,7 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><strong>CatastRo</strong> is a package that provides access to different API services of the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>. With <strong>CatastRo</strong>, you can download spatial objects such as buildings, cadastral parcels, maps, and geocode cadastral references.</p>
+<p><strong>CatastRo</strong> is a package that provides access to different API services of the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>. With <strong>CatastRo</strong>, you can download spatial objects such as buildings, cadastral parcels and maps, and geocode cadastral references.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -126,7 +127,7 @@ SSL issues
 <h3 id="ovccoordenadas">OVCCoordenadas<a class="anchor" aria-label="anchor" href="#ovccoordenadas"></a>
 </h3>
 <p>These functions allow geocoding and reverse geocoding of cadastral references using the <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p>
-<p>These functions are named <code>catr_ovc_get_*</code> and return a tibble, as provided by the package <strong>tibble</strong>. See <code><a href="articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code> where these functions are described.</p>
+<p>These functions are named <code>catr_ovc_get_*</code> and return a tibble, as provided by package <strong>tibble</strong>. See <code><a href="articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code> where these functions are described.</p>
 </div>
 <div class="section level3">
 <h3 id="inspire">INSPIRE<a class="anchor" aria-label="anchor" href="#inspire"></a>
@@ -137,13 +138,13 @@ SSL issues
 <div class="section level4">
 <h4 id="atom-service">ATOM service<a class="anchor" aria-label="anchor" href="#atom-service"></a>
 </h4>
-<p>The ATOM service allows batch-downloading vector objects of different cadastral elements for a specific municipality. The result is provided as <code>sf</code> objects (See <strong>sf</strong> package).</p>
+<p>The ATOM service allows batch-downloading vector objects of different cadastral elements for a specific municipality. The result is provided as <code>sf</code> objects (see the <strong>sf</strong> package).</p>
 <p>These functions are named <code>catr_atom_get_xxx</code>.</p>
 </div>
 <div class="section level4">
 <h4 id="wfs-service">WFS service<a class="anchor" aria-label="anchor" href="#wfs-service"></a>
 </h4>
-<p>The WFS service allows downloading vector objects of specific cadastral elements. The results are provided as <code>sf</code> class objects (see the <a href="https://r-spatial.github.io/sf/" class="external-link"><strong>sf</strong></a> package). Note that there are some limitations on the extent and number of elements to query. For batch downloading the ATOM service is preferred.</p>
+<p>The WFS service allows downloading vector objects of specific cadastral elements. The results are provided as <code>sf</code> objects (see the <a href="https://r-spatial.github.io/sf/" class="external-link"><strong>sf</strong></a> package). Note that there are restrictions on the extent and number of elements that can be queried. For batch downloading, the ATOM service is preferred.</p>
 <p>These functions are named <code>catr_wfs_get_xxx</code>.</p>
 </div>
 <div class="section level4">
@@ -228,16 +229,16 @@ SSL issues
 <div class="section level2">
 <h2 id="a-note-on-caching">A note on caching<a class="anchor" aria-label="anchor" href="#a-note-on-caching"></a>
 </h2>
-<p>Some datasets and tiles may have a size larger than 50MB. You can use <strong>CatastRo</strong> to create your own local repository at a given local directory passing the following option:</p>
+<p>Some datasets and tiles may exceed 50MB. You can set a local cache directory using the following function:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/catr_set_cache_dir.html">catr_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>When this option is set, <strong>CatastRo</strong> will look for the cached file and load it, speeding up the process.</p>
+<p>When this option is set, <strong>CatastRo</strong> will look for cached files and load them, speeding up the process.</p>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>
-Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. <a href="https://doi.org/10.32614/CRAN.package.CatastRo" class="external-link">doi:10.32614/CRAN.package.CatastRo</a>, <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
+Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. <a href="https://doi.org/10.32614/CRAN.package.CatastRo" class="external-link">doi:10.32614/CRAN.package.CatastRo</a>. <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
 </p>
 <p>A BibTeX entry for LaTeX users is:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>CatastRo,</span>
@@ -245,7 +246,7 @@ Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API S
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.CatastRo},</span>
 <span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="fl">0.0</span>},</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="fl">0.1</span>},</span>
 <span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropenspain.github.io<span class="sc">/</span>CatastRo<span class="sc">/</span>},</span>
 <span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Access public spatial data available under the INSPIRE directive. Tools <span class="cf">for</span> downloading references and addresses of properties, as well as map images.},</span>
 <span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>}</span></code></pre></div>

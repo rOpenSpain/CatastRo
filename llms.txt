@@ -3,7 +3,7 @@
 **CatastRo** is a package that provides access to different API services
 of the [Spanish Cadastre](https://www.sedecatastro.gob.es/). With
 **CatastRo**, you can download spatial objects such as buildings,
-cadastral parcels, maps, and geocode cadastral references.
+cadastral parcels and maps, and geocode cadastral references.
 
 ## Installation
 
@@ -51,7 +51,7 @@ references using the
 service.
 
 These functions are named `catr_ovc_get_*` and return a tibble, as
-provided by the package **tibble**. See
+provided by package **tibble**. See
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)
 where these functions are described.
 
@@ -73,17 +73,17 @@ service:
 
 The ATOM service allows batch-downloading vector objects of different
 cadastral elements for a specific municipality. The result is provided
-as `sf` objects (See **sf** package).
+as `sf` objects (see the **sf** package).
 
 These functions are named `catr_atom_get_xxx`.
 
 #### WFS service
 
 The WFS service allows downloading vector objects of specific cadastral
-elements. The results are provided as `sf` class objects (see the
+elements. The results are provided as `sf` objects (see the
 [**sf**](https://r-spatial.github.io/sf/) package). Note that there are
-some limitations on the extent and number of elements to query. For
-batch downloading the ATOM service is preferred.
+restrictions on the extent and number of elements that can be queried.
+For batch downloading, the ATOM service is preferred.
 
 These functions are named `catr_wfs_get_xxx`.
 
@@ -174,22 +174,21 @@ service](reference/figures/README-wfs-1.png)
 
 ## A note on caching
 
-Some datasets and tiles may have a size larger than 50MB. You can use
-**CatastRo** to create your own local repository at a given local
-directory passing the following option:
+Some datasets and tiles may exceed 50MB. You can set a local cache
+directory using the following function:
 
 ``` r
 catr_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **CatastRo** will look for the cached file and
-load it, speeding up the process.
+When this option is set, **CatastRo** will look for cached files and
+load them, speeding up the process.
 
 ## Citation
 
 Delgado Panadero Á, Hernangómez D (2026). *CatastRo: Interface to the
 API Sede Electrónica Del Catastro*.
-[doi:10.32614/CRAN.package.CatastRo](https://doi.org/10.32614/CRAN.package.CatastRo),
+[doi:10.32614/CRAN.package.CatastRo](https://doi.org/10.32614/CRAN.package.CatastRo).
 <https://ropenspain.github.io/CatastRo/>.
 
 A BibTeX entry for LaTeX users is:
@@ -200,7 +199,7 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {1.0.0},
+  version = {1.0.1},
   url = {https://ropenspain.github.io/CatastRo/},
   abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
 }
@@ -300,7 +299,7 @@ objects.
 
 ## OVCCoordenadas API
 
-These functions allows to access the
+These functions allow access to the
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 service.
 
@@ -321,7 +320,7 @@ service.
 
 ## OVCCallejero API
 
-These functions allows to access the
+These functions allow access to the
 [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
 service.
 

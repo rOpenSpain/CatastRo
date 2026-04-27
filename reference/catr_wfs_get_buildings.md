@@ -34,7 +34,7 @@ catr_wfs_get_buildings_rc(
 
 - x:
 
-  See **Bounding box**. It could be:
+  See **Bounding box**. It may be:
 
   - A numeric vector of length 4 with the coordinates that defines the
     bounding box: `c(xmin, ymin, xmax, ymax)`
@@ -44,23 +44,23 @@ catr_wfs_get_buildings_rc(
 
 - what:
 
-  Information to load. It can be:
+  Information to load. Options are:
 
   - `"building"` for buildings.
 
   - `"buildingpart"` for parts of a building.
 
-  - `"other"` for other elements, such as swimming pools, etc.
+  - `"other"` for other elements such as swimming pools.
 
 - srs:
 
-  SRS/CRS to use on the query. To check the admitted values check
+  SRS/CRS to use on the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `wfs_service` column. See **Bounding box**.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 - rc:
 
@@ -84,8 +84,8 @@ overcome a potential bug on the API side.
 
 When `x` is a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 object, the value `srs` is ignored. In this case, the bounding box of
-the [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-would be used for the query (see
+the [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
+used for the query (see
 [`sf::st_bbox()`](https://r-spatial.github.io/sf/reference/st_bbox.html)).
 
 The result is always provided in the SRS of the

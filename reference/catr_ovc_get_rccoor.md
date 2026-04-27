@@ -2,7 +2,6 @@
 
 Implementation of the OVCCoordenadas service [Consulta
 RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR).
-
 Returns the cadastral reference found for a set of specific coordinates.
 
 ## Usage
@@ -15,23 +14,21 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude to use on the query. It should be specified in the CRS/SRS
-  defined in `srs`.
+  Latitude for the query, expressed in the CRS/SRS defined by `srs`.
 
 - lon:
 
-  Longitude to use on the query. It should be specified in the CRS/SRS
-  defined in `srs`.
+  Longitude for the query, expressed in the CRS/SRS defined by `srs`.
 
 - srs:
 
-  SRS/CRS to use on the query. To check the admitted values check
+  SRS/CRS to use on the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
@@ -52,7 +49,7 @@ one row by cadastral reference, including the following columns:
 
 - `refcat`: Cadastral Reference.
 
-- `address`: Address as it is recorded on the Cadastre.
+- `address`: Address as recorded in the Cadastre.
 
 - Rest of fields: Check the API Docs.
 
