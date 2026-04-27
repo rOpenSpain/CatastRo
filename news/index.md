@@ -2,6 +2,8 @@
 
 ## CatastRo 1.0.1
 
+CRAN release: 2026-04-27
+
 - Update documentation.
 
 ## CatastRo 1.0.0
