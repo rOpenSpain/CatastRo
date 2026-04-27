@@ -15,17 +15,16 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 Cadastre (\code{cmun}) or the National Statistics Institute. Either \code{cmun} or
 \code{cmun_ine} must be provided.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCallejero service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos}{ConsultaMunicipioCodigos}.
-
-Returns the names and codes of a municipality both as per the Cadastre
-and as per the INE (National Statistics Institute).
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos}{ConsultaMunicipioCodigos}. Returns names and codes
+of a municipality as per the Cadastre and the INE (National Statistics
+Institute).
 }
 \details{
 On a successful query, the function returns a \link[tibble:tbl_df]{tibble}

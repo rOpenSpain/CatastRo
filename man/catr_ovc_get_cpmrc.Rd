@@ -21,16 +21,15 @@ catr_ovc_get_cpmrc(
 
 \item{province, municipality}{Optional, used for narrowing the search.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCoordenadas service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta CPMRC}.
-
-Returns the coordinates for a specific cadastral reference.
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta CPMRC}. Returns coordinates for a
+specific cadastral reference.
 }
 \details{
 When the API does not provide any result, the function returns a

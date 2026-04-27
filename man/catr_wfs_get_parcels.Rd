@@ -42,7 +42,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
 \item{cod_zona}{Cadastral zone code.}
 
@@ -52,8 +52,8 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Get the spatial data of cadastral parcels and zones. The WFS Service allows
-to perform several types of queries:
+Get the spatial data of cadastral parcels and zones. The WFS Service
+allows several types of queries:
 \itemize{
 \item By bounding box: Implemented on \code{catr_wfs_get_parcels_bbox()}. Extract
 objects included in the bounding box provided. See \strong{Bounding box}.

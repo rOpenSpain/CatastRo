@@ -112,7 +112,7 @@ show some of the capabilities of the package:
 ```{r}
 #| label: santbernabeu
 #| fig-cap: "Figure 1: Example - Santiago Bernabeu"
-# Extract building by bounding box
+# Extract buildings by bounding box
 # Check https://boundingbox.klokantech.com/
 
 library(CatastRo)

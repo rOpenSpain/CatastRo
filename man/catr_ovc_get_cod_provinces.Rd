@@ -8,16 +8,15 @@
 catr_ovc_get_cod_provinces(verbose = FALSE)
 }
 \arguments{
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble}.
 }
 \description{
 Implementation of the OVCCallejero service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
-
-Returns a list of the provinces included in the Spanish Cadastre.
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}. Returns a list of provinces
+included in the Spanish Cadastre.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}

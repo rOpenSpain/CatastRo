@@ -2,9 +2,8 @@
 #'
 #' @description
 #' A [tibble][tibble::tbl_df] including the valid SRS (also known as CRS)
-#' values that may be used on each API service. The values are provided
-#' as [EPSG
-#' codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
+#' values that may be used on each API service. Values are provided as
+#' [EPSG codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 #'
 #' @docType data
 #' @encoding UTF-8
@@ -15,12 +14,12 @@
 #'
 #' @references
 #' ```{r, echo=FALSE, results='asis'}
-#' cat(paste0("* [OVCCoordenadas](https://ovc.catastro.meh.es/",
+#' cat(paste0("- [OVCCoordenadas](https://ovc.catastro.meh.es/",
 #' "ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)."))
 #'
 #' ```
 #'
-#' * [INSPIRE WFS
+#' - [INSPIRE WFS
 #' Service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 #'
 #' @seealso [sf::st_crs()].

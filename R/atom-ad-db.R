@@ -1,14 +1,16 @@
 #' ATOM INSPIRE: Reference database for ATOM addresses
 #'
 #' @description
-#' Create a database containing the URLs provided in the INSPIRE ATOM service
-#' of the Spanish Cadastre for extracting addresses.
-#'  - `catr_atom_get_address_db_all()` provides a top-level table including
-#'     information on all the territorial offices (except the Basque Country and
-#'     Navarre) listing the municipalities included in each office.
-#'  - `catr_atom_get_address_db_to()` provides a table for the specified
-#'     territorial office including information for each of the municipalities
-#'     of that office.
+#' Create a database containing the URLs provided in the INSPIRE ATOM
+#' service of the Spanish Cadastre for extracting addresses.
+#'
+#' - `catr_atom_get_address_db_all()` provides a top-level table
+#'    including information on all the territorial offices (except the
+#'    Basque Country and Navarre) listing the municipalities included in
+#'    each office.
+#' - `catr_atom_get_address_db_to()` provides a table for the specified
+#'    territorial office including information for each of the
+#'    municipalities of that office.
 #'
 #' @encoding UTF-8
 #' @family INSPIRE
@@ -34,7 +36,7 @@
 #' A [tibble][tibble::tbl_df] with the information requested with the following
 #' fields:
 #'  - `territorial_office`: territorial office, corresponding to each province
-#'   of Spain except the Basque Country and Navarre.
+#'    of Spain except the Basque Country and Navarre.
 #'  - `url`: ATOM URL for the corresponding territorial office.
 #'  - `munic`: Name of the municipality.
 #'  - `date`: Reference date of the data. Note that **the information from this

@@ -16,17 +16,17 @@ catr_set_cache_dir(
 catr_detect_cache_dir()
 }
 \arguments{
-\item{cache_dir}{A path to a cache directory. On \code{NULL} the function
+\item{cache_dir}{Path to a cache directory. On \code{NULL}, the function
 stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
-\item{overwrite}{If \code{TRUE}, overwrites an existing \code{CATASTROESP_CACHE_DIR}
-already present on your local machine.}
+\item{overwrite}{Logical. If \code{TRUE}, overwrites an existing
+\code{CATASTROESP_CACHE_DIR} already present on your machine.}
 
-\item{install}{If \code{TRUE}, installs the key in your local machine for use in
-future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE} this
-argument is set to \code{FALSE} automatically.}
+\item{install}{Logical. If \code{TRUE}, installs the key on your local
+machine for use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir}
+is \code{FALSE}, this argument is set to \code{FALSE} automatically.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
 \code{catr_set_cache_dir()} returns an (invisible) character with the path to
@@ -36,9 +36,9 @@ your \code{cache_dir}, but it is mainly called for its side effect.
 session.
 }
 \description{
-This function stores your \code{cache_dir} path on your local machine and loads
-it for future sessions. Type \code{Sys.getenv("CATASTROESP_CACHE_DIR")} to find
-your cached path or use \code{\link[=catr_detect_cache_dir]{catr_detect_cache_dir()}}.
+Store your \code{cache_dir} path on your local machine for future sessions.
+Type \code{Sys.getenv("CATASTROESP_CACHE_DIR")} to find your cached path or
+use \code{\link[=catr_detect_cache_dir]{catr_detect_cache_dir()}}.
 }
 \details{
 By default, when no \code{cache_dir} is set, the package uses a folder inside

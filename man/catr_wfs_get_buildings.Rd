@@ -39,7 +39,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
 \item{rc}{The cadastral reference to be extracted.}
 }

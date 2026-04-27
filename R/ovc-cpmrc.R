@@ -2,9 +2,8 @@
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service
-#' [Consulta CPMRC](`r ovcurl("CPMRC")`).
-#'
-#' Returns the coordinates for a specific cadastral reference.
+#' [Consulta CPMRC](`r ovcurl("CPMRC")`). Returns coordinates for a
+#' specific cadastral reference.
 #'
 #' @encoding UTF-8
 #' @family OVCCoordenadas

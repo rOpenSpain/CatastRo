@@ -31,10 +31,10 @@ supported, this function always caches results.}
 \item{update_cache}{logical, should the cached file be refreshed? Defaults to
 \code{FALSE}. When set to \code{TRUE}, it forces a new download.}
 
-\item{cache_dir}{A path to a cache directory. On \code{NULL} the function
+\item{cache_dir}{Path to a cache directory. On \code{NULL}, the function
 stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
 \item{to}{character. Territorial office. Internally uses \code{\link[base:grep]{base::grep()}} for
 matching.}
@@ -52,15 +52,16 @@ service is updated twice a year}.
 }
 }
 \description{
-Create a database containing the URLs provided in the INSPIRE ATOM service
-of the Spanish Cadastre for extracting addresses.
+Create a database containing the URLs provided in the INSPIRE ATOM
+service of the Spanish Cadastre for extracting addresses.
 \itemize{
-\item \code{catr_atom_get_address_db_all()} provides a top-level table including
-information on all the territorial offices (except the Basque Country and
-Navarre) listing the municipalities included in each office.
+\item \code{catr_atom_get_address_db_all()} provides a top-level table
+including information on all the territorial offices (except the
+Basque Country and Navarre) listing the municipalities included in
+each office.
 \item \code{catr_atom_get_address_db_to()} provides a table for the specified
-territorial office including information for each of the municipalities
-of that office.
+territorial office including information for each of the
+municipalities of that office.
 }
 }
 \examples{

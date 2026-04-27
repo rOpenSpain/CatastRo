@@ -6,19 +6,19 @@
 #' @rdname catr_set_cache_dir
 #'
 #' @description
-#' This function stores your `cache_dir` path on your local machine and loads
-#' it for future sessions. Type `Sys.getenv("CATASTROESP_CACHE_DIR")` to find
-#' your cached path or use [catr_detect_cache_dir()].
+#' Store your `cache_dir` path on your local machine for future sessions.
+#' Type `Sys.getenv("CATASTROESP_CACHE_DIR")` to find your cached path or
+#' use [catr_detect_cache_dir()].
 #' @encoding UTF-8
 #'
-#' @param cache_dir A path to a cache directory. On `NULL` the function
+#' @param cache_dir Path to a cache directory. On `NULL`, the function
 #'   stores cached files in a temporary directory (see [base::tempdir()]).
-#' @param install If `TRUE`, installs the key in your local machine for use in
-#'   future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE` this
-#'   argument is set to `FALSE` automatically.
-#' @param overwrite If `TRUE`, overwrites an existing `CATASTROESP_CACHE_DIR`
-#'   already present on your local machine.
-#' @param verbose logical. If `TRUE` displays informational messages.
+#' @param install Logical. If `TRUE`, installs the key on your local
+#'   machine for use in future sessions. Defaults to `FALSE`. If `cache_dir`
+#'   is `FALSE`, this argument is set to `FALSE` automatically.
+#' @param overwrite Logical. If `TRUE`, overwrites an existing
+#'   `CATASTROESP_CACHE_DIR` already present on your machine.
+#' @param verbose Logical. If `TRUE`, displays informational messages.
 #'
 #' @details
 #' By default, when no `cache_dir` is set, the package uses a folder inside
@@ -185,10 +185,10 @@ catr_detect_cache_dir <- function() {
 #' **Use this function with caution**. This function clears your cached data
 #' and configuration, specifically:
 #'
-#' * Deletes the \CRANpkg{CatastRo} config directory
+#' - Deletes the \CRANpkg{CatastRo} config directory
 #'   (`tools::R_user_dir("CatastRo", "config")`).
-#' * Deletes the `cache_dir` directory.
-#' * Deletes the values stored on `Sys.getenv("CATASTROESP_CACHE_DIR")`.
+#' - Deletes the `cache_dir` directory.
+#' - Deletes the values stored on `Sys.getenv("CATASTROESP_CACHE_DIR")`.
 #'
 #' @param config If `TRUE`, deletes the configuration folder of
 #'   \CRANpkg{CatastRo}.

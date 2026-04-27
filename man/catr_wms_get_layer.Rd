@@ -37,10 +37,10 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item{update_cache}{logical, should the cached file be refreshed? Defaults to
 \code{FALSE}. When set to \code{TRUE}, it forces a new download.}
 
-\item{cache_dir}{A path to a cache directory. On \code{NULL} the function
+\item{cache_dir}{Path to a cache directory. On \code{NULL}, the function
 stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
 \item{crop}{logical. If \code{TRUE}, the results will be cropped to the specified
 \code{x} extent. If \code{x} is an \code{\link[sf:sf]{sf}} object with one \code{POINT},
@@ -65,8 +65,8 @@ A \code{\link[terra:rast]{SpatRaster}} is returned, with 3 (RGB) or 4 (RGBA) lay
 see \code{\link[terra:RGB]{terra::RGB()}}.
 }
 \description{
-Get geotagged images from the Spanish Cadastre. This function is a wrapper of
-\code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles()}}.
+Get geotagged images from the Spanish Cadastre. This function is a
+wrapper of \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles()}}.
 }
 \section{Bounding box}{
 

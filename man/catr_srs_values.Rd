@@ -20,8 +20,8 @@ code.}
 }
 \description{
 A \link[tibble:tbl_df]{tibble} including the valid SRS (also known as CRS)
-values that may be used on each API service. The values are provided
-as \href{https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset}{EPSG codes}.
+values that may be used on each API service. Values are provided as
+\href{https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset}{EPSG codes}.
 }
 \details{
 Table: Content of \link{catr_srs_values}\tabular{llll}{

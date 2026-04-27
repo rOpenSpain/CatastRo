@@ -1,12 +1,14 @@
-#' Should the example run?
+#' Decide whether an example should run
 #'
-#' Internal function to decide whether the example should run or not
+#' @description
+#' Determine whether an example should run based on the current platform and
+#' network availability.
 #'
-#' @return logical `TRUE` or `FALSE`
+#' @return Logical. `TRUE` if examples should run, `FALSE` otherwise.
 #' @encoding UTF-8
 #'
 #' @details
-#' On CRAN or on macOS, results in `FALSE`
+#' Returns `FALSE` on CRAN, macOS, or when offline.
 #'
 #' @keywords internal
 #' @export
@@ -27,8 +29,10 @@ run_example <- function() {
   TRUE
 }
 
-#' Internal function to check if we are on CRAN
-#' @return logical
+#' Check if running on CRAN
+#'
+#' @return Logical. `TRUE` if running on CRAN, `FALSE` otherwise.
+#'
 #' @noRd
 on_cran <- function() {
   env <- Sys.getenv("NOT_CRAN")
@@ -39,8 +43,10 @@ on_cran <- function() {
   }
 }
 
-#' Internal function to check if we are on macos
-#' @return logical
+#' Check if running on macOS
+#'
+#' @return Logical. `TRUE` if running on macOS, `FALSE` otherwise.
+#'
 #' @noRd
 on_mac <- function() {
   tolower(Sys.info()[["sysname"]]) %in% c("mac", "darwin")

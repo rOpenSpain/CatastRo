@@ -1,8 +1,8 @@
 #' WFS INSPIRE: Download cadastral parcels
 #'
 #' @description
-#' Get the spatial data of cadastral parcels and zones. The WFS Service allows
-#' to perform several types of queries:
+#' Get the spatial data of cadastral parcels and zones. The WFS Service
+#' allows several types of queries:
 #' - By bounding box: Implemented on `catr_wfs_get_parcels_bbox()`. Extract
 #'   objects included in the bounding box provided. See **Bounding box**.
 #'

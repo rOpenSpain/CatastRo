@@ -1,3 +1,12 @@
+#' Internal function to read ATOM feed
+#'
+#' @param file Path to ATOM feed file.
+#' @param top Logical. Extract top-level entries?
+#' @param encoding Character string. File encoding. Defaults to "UTF-8".
+#'
+#' @return A [tibble][tibble::tbl_df] with ATOM feed entries.
+#'
+#' @noRd
 catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
   # Encoding error sometimes, thanks @dr_xeo
   feed <- try(

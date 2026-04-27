@@ -118,7 +118,7 @@ references using the
 service.
 
 These functions are named `catr_ovc_get_*` and return a tibble, as
-provided by the package **tibble**. See
+provided by package **tibble**. See
 `vignette("ovcservice", package = "CatastRo")` where these functions are
 described.
 
@@ -268,7 +268,7 @@ A BibTeX entry for LaTeX users is:
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       doi = {10.32614/CRAN.package.CatastRo},
       year = {2026},
-      version = {1.0.0.9000},
+      version = {1.0.1},
       url = {https://ropenspain.github.io/CatastRo/},
       abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
     }

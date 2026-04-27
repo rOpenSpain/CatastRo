@@ -26,9 +26,9 @@ the first geometry is used. The function extracts coordinates using
 \item{srs}{SRS/CRS to use on the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
-\item{cache_dir}{A path to a cache directory. On \code{NULL} the function
+\item{cache_dir}{Path to a cache directory. On \code{NULL}, the function
 stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
 \item{...}{
@@ -55,9 +55,8 @@ municipalities.}
 A \link[tibble:tbl_df]{tibble}. See \strong{Details}
 }
 \description{
-This function takes as input a pair of coordinates of a \code{\link[sf:st_sf]{sf}}
-object and returns the corresponding municipality code for those coordinates
-using \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
+Get the municipality code for coordinates using a \code{\link[sf:st_sf]{sf}}
+object or a pair of coordinates via \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
 }
 \details{
 On a successful query, the function returns a \link[tibble:tbl_df]{tibble}

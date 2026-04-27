@@ -1,8 +1,8 @@
 #' WMS INSPIRE: Download map images
 #'
 #' @description
-#' Get geotagged images from the Spanish Cadastre. This function is a wrapper of
-#' [mapSpain::esp_get_tiles()].
+#' Get geotagged images from the Spanish Cadastre. This function is a
+#' wrapper of [mapSpain::esp_get_tiles()].
 #'
 #' @encoding UTF-8
 #' @family INSPIRE

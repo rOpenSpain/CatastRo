@@ -3,18 +3,19 @@
 \encoding{UTF-8}
 \name{run_example}
 \alias{run_example}
-\title{Should the example run?}
+\title{Decide whether an example should run}
 \usage{
 run_example()
 }
 \value{
-logical \code{TRUE} or \code{FALSE}
+Logical. \code{TRUE} if examples should run, \code{FALSE} otherwise.
 }
 \description{
-Internal function to decide whether the example should run or not
+Determine whether an example should run based on the current platform and
+network availability.
 }
 \details{
-On CRAN or on macOS, results in \code{FALSE}
+Returns \code{FALSE} on CRAN, macOS, or when offline.
 }
 \examples{
 run_example()

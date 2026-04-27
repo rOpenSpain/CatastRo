@@ -28,10 +28,10 @@ supported, this function always caches results.}
 \item{update_cache}{logical, should the cached file be refreshed? Defaults to
 \code{FALSE}. When set to \code{TRUE}, it forces a new download.}
 
-\item{cache_dir}{A path to a cache directory. On \code{NULL} the function
+\item{cache_dir}{Path to a cache directory. On \code{NULL}, the function
 stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble}.

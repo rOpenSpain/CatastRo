@@ -17,16 +17,15 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 \item{srs}{SRS/CRS to use on the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble}. See \strong{Details}
 }
 \description{
 Implementation of the OVCCoordenadas service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta RCCOOR}.
-
-Returns the cadastral reference found for a set of specific coordinates.
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta RCCOOR}. Returns the cadastral
+reference found for a set of specific coordinates.
 }
 \details{
 When the API does not provide any result, the function returns a

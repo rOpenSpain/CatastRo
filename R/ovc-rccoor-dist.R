@@ -2,12 +2,9 @@
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service
-#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
-#'
-#' Returns the cadastral reference found for a set of coordinates. If no
-#' cadastral references are found, the API returns a list of the cadastral
-#' references found in an area of 50 square meters around the requested
-#' coordinates.
+#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`). Return cadastral
+#' references for coordinates. If none found, the API returns references
+#' in a 50 square meter area around the requested coordinates.
 #'
 #' @encoding UTF-8
 #' @family OVCCoordenadas

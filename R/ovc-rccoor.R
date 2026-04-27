@@ -2,9 +2,8 @@
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service
-#' [Consulta RCCOOR](`r ovcurl("RCCOOR")`).
-#'
-#' Returns the cadastral reference found for a set of specific coordinates.
+#' [Consulta RCCOOR](`r ovcurl("RCCOOR")`). Returns the cadastral
+#' reference found for a set of specific coordinates.
 #'
 #' @encoding UTF-8
 #' @family OVCCoordenadas

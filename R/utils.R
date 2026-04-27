@@ -1,13 +1,13 @@
 #' Create messages based on type
 #'
-#' @param type character string. Type of message. Accepted values are
-#'  `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
+#' @param type Character string. Type of message. Accepted values are
+#'   `"generic"`, `"success"`, `"warning"`, `"danger"`, or `"info"`.
 #'
-#' @param verbose logical. Whether to print the message or not.
-#' @param ... Character strings to be combined into the message.
+#' @param verbose Logical. Whether to print messages to the console.
+#' @param ... Character strings to combine into the message.
 #'
 #' @return
-#' Invisibly returns `NULL`. Prints messages to the console if `verbose` is
+#' Invisibly returns `NULL`. Prints messages to console if `verbose` is
 #' `TRUE`.
 #' @encoding UTF-8
 #'
@@ -39,8 +39,8 @@ make_msg <- function(type = "generic", verbose, ...) {
 
 #' Match argument with pretty error message
 #'
-#' @param arg The argument to match.
-#' @param choices The possible choices for the argument.
+#' @param arg Argument to match.
+#' @param choices Possible choices for the argument.
 #'
 #' @return
 #' The matched argument.

@@ -1,9 +1,8 @@
 #' Get the cadastral municipality code from coordinates
 #'
 #' @description
-#' This function takes as input a pair of coordinates of a [`sf`][sf::st_sf]
-#' object and returns the corresponding municipality code for those coordinates
-#' using [catr_ovc_get_cod_munic()].
+#' Get the municipality code for coordinates using a [`sf`][sf::st_sf]
+#' object or a pair of coordinates via [catr_ovc_get_cod_munic()].
 #'
 #' @encoding UTF-8
 #' @family search
