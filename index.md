@@ -11,6 +11,7 @@ Install **CatastRo** from
 [**CRAN**](https://CRAN.R-project.org/package=CatastRo):
 
 ``` r
+
 install.packages("CatastRo")
 ```
 
@@ -24,6 +25,7 @@ In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
 your session right after you start using the package:
 
 ``` r
+
 # Disable SSL verification
 options(catastro_ssl_verify = 0)
 ```
@@ -34,6 +36,7 @@ If you wish to make this setup persistent, write the same code in your
     .Rprofile
 
 ``` r
+
 # ... other options...
 options(catastro_ssl_verify = 0)
 ```
@@ -63,7 +66,7 @@ INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
 service.
 
 Note that the coverage of this service is 95% of the Spanish territory,
-excluding the Basque Country and Navarre[¹](#fn1), which have their own
+excluding the Basque Country and Navarre[^1], which have their own
 independent cadastral offices.
 
 There are three types of functions, each one querying a different
@@ -110,6 +113,7 @@ This script highlights some features of **CatastRo**:
 ### Geocode a cadastral reference
 
 ``` r
+
 library(CatastRo)
 
 catr_ovc_get_cpmrc(rc = "13077A01800039")
@@ -122,6 +126,7 @@ catr_ovc_get_cpmrc(rc = "13077A01800039")
 ### Extract a cadastral reference from a given set of coordinates
 
 ``` r
+
 catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
@@ -136,6 +141,7 @@ catr_ovc_get_rccoor(
 ### Extract geometries using the ATOM service
 
 ``` r
+
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
 # Map
@@ -158,6 +164,7 @@ service](reference/figures/README-atom-1.png)
 ### Extract geometries using the WFS service
 
 ``` r
+
 wfs_get_buildings <- catr_wfs_get_buildings_bbox(
   c(-4.134, 40.952, -4.131, 40.953),
   srs = 4326
@@ -178,6 +185,7 @@ Some datasets and tiles may exceed 50MB. You can set a local cache
 directory using the following function:
 
 ``` r
+
 catr_set_cache_dir("./path/to/location")
 ```
 
@@ -210,9 +218,7 @@ A BibTeX entry for LaTeX users is:
 Check the GitHub page for the [source
 code](https://github.com/ropenspain/CatastRo/).
 
-------------------------------------------------------------------------
-
-1.  The package
+[^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar
     functionalities to **CatastRo**.

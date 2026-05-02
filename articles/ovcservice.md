@@ -45,6 +45,7 @@ reference of the property at that spatial point, including other
 information such as the address (town, street and number).
 
 ``` r
+
 library(CatastRo)
 
 result <- catr_ovc_get_rccoor(
@@ -56,13 +57,14 @@ result <- catr_ovc_get_rccoor(
 knitr::kable(result)
 ```
 
-| refcat         | address                                                                                             | pc.pc1  | pc.pc2  |  geo.xcen | geo.ycen | geo.srs   | ldt                                                                                                 |
-|:---------------|:----------------------------------------------------------------------------------------------------|:--------|:--------|----------:|---------:|:----------|:----------------------------------------------------------------------------------------------------|
+| refcat | address | pc.pc1 | pc.pc2 | geo.xcen | geo.ycen | geo.srs | ldt |
+|:---|:---|:---|:---|---:|---:|:---|:---|
 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.456242 | 38.61966 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
 The function accepts as a `srs` argument the following values:
 
 ``` r
+
 data(catr_srs_values)
 
 # OVC valid codes
@@ -96,6 +98,7 @@ square centered on the coordinates `lat` and `lon` using the function
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md).
 
 ``` r
+
 catr_ovc_get_rccoor_distancia(
   lat = 40.96002,
   lon = -5.663408,
@@ -104,10 +107,10 @@ catr_ovc_get_rccoor_distancia(
   knitr::kable()
 ```
 
-|  geo.xcen | geo.ycen | geo.srs   | refcat         | address                                         | cmun_ine | pc.pc1  | pc.pc2  | dt.loine.cp | dt.loine.cm | dt.lourb.dir.cv | dt.lourb.dir.pnp | ldt                                             | dis   |
-|----------:|---------:|:----------|:---------------|:------------------------------------------------|:---------|:--------|:--------|:------------|:------------|:----------------|:-----------------|:------------------------------------------------|:------|
-| -5.663408 | 40.96002 | EPSG:4230 | 5877501TL7357F | AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      | 37274    | 5877501 | TL7357F | 37          | 274         | 643             | 1                | AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      | 21.81 |
-| -5.663408 | 40.96002 | EPSG:4230 | 5778706TL7357H | AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) | 37274    | 5778706 | TL7357H | 37          | 274         | 643             | 2                | AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) | 23.18 |
+| geo.xcen | geo.ycen | geo.srs | refcat | address | cmun_ine | pc.pc1 | pc.pc2 | dt.loine.cp | dt.loine.cm | dt.lourb.dir.cv | dt.lourb.dir.pnp | ldt | dis |
+|---:|---:|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
+| -5.663408 | 40.96002 | EPSG:4230 | 5877501TL7357F | AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA) | 37274 | 5877501 | TL7357F | 37 | 274 | 643 | 1 | AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA) | 21.81 |
+| -5.663408 | 40.96002 | EPSG:4230 | 5778706TL7357H | AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) | 37274 | 5778706 | TL7357H | 37 | 274 | 643 | 2 | AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) | 23.18 |
 
 ## Geocoding a cadastral reference
 
@@ -119,6 +122,7 @@ returns the coordinates (`lat` and `lon`) in a specified `srs`, along
 with the address (town, street and number).
 
 ``` r
+
 catr_ovc_get_cpmrc(
   rc = "13077A01800039",
   srs = "4230",
@@ -128,8 +132,8 @@ catr_ovc_get_cpmrc(
   knitr::kable()
 ```
 
-|    xcoord |   ycoord | refcat         | address                                                                                             | pc.pc1  | pc.pc2  | geo.xcen          | geo.ycen         | geo.srs   | ldt                                                                                                 |
-|----------:|---------:|:---------------|:----------------------------------------------------------------------------------------------------|:--------|:--------|:------------------|:-----------------|:----------|:----------------------------------------------------------------------------------------------------|
+| xcoord | ycoord | refcat | address | pc.pc1 | pc.pc2 | geo.xcen | geo.ycen | geo.srs | ldt |
+|---:|---:|:---|:---|:---|:---|:---|:---|:---|:---|
 | -3.456242 | 38.61966 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.45624183836806 | 38.6196566583596 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
 The `province` and `municipality` arguments are optional, but if
@@ -140,6 +144,7 @@ function
 will display a message and return an empty tibble.
 
 ``` r
+
 catr_ovc_get_cpmrc(
   rc = "13077A01800039",
   municipality = "SANTA CRUZ DE MUDELA"
@@ -155,11 +160,12 @@ catr_ovc_get_cpmrc(
 When using only `rc`, the result is provided as expected:
 
 ``` r
+
 # No warning, get the result
 catr_ovc_get_cpmrc(rc = "13077A01800039") |>
   knitr::kable()
 ```
 
-|    xcoord |   ycoord | refcat         | address                                                                                             | pc.pc1  | pc.pc2  | geo.xcen          | geo.ycen         | geo.srs   | ldt                                                                                                 |
-|----------:|---------:|:---------------|:----------------------------------------------------------------------------------------------------|:--------|:--------|:------------------|:-----------------|:----------|:----------------------------------------------------------------------------------------------------|
+| xcoord | ycoord | refcat | address | pc.pc1 | pc.pc2 | geo.xcen | geo.ycen | geo.srs | ldt |
+|---:|---:|:---|:---|:---|:---|:---|:---|:---|:---|
 | -3.457532 | 38.61843 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.45753233627867 | 38.6184314024661 | EPSG:4326 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |

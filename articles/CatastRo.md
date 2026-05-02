@@ -42,7 +42,7 @@ allows retrieval of spatial objects from the cadastral database:
   `SpatRaster` objects, using the **terra** package.
 
 Note that the coverage of this service is 95% of the Spanish territory,
-excluding the Basque Country and Navarre[¹](#fn1), which have their own
+excluding the Basque Country and Navarre[^1], which have their own
 independent cadastral offices.
 
 There are three types of functions, each one querying a different
@@ -71,6 +71,7 @@ We will use the **WMS and WFS services** to get different layers, in
 order to show some of the capabilities of the package:
 
 ``` r
+
 # Extract buildings by bounding box
 # Check https://boundingbox.klokantech.com/
 
@@ -128,6 +129,7 @@ First, we extract the coordinates of the city center of Granada using
 **mapSpain**:
 
 ``` r
+
 library(dplyr)
 library(sf)
 library(mapSpain)
@@ -145,13 +147,15 @@ with
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md).
 
 ``` r
+
 city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
-#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
+#> # ℹ 1 more variable: cm <chr>
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
@@ -160,6 +164,7 @@ The next step in creating the visualization is to limit the analysis to
 a circle with a radius of 1.5 km around the city center:
 
 ``` r
+
 buff <- city |>
   # Adjust CRS to 25830: (Buildings)
   st_transform(st_crs(city_bu)) |>
@@ -181,6 +186,7 @@ Now let’s extract the construction year, available in the column
 `beginning`:
 
 ``` r
+
 # Extract 4 initial positions
 year <- substr(dataviz$beginning, 1, 4)
 
@@ -202,6 +208,7 @@ visualization. Here we use the function
 decade starting from year 1900:
 
 ``` r
+
 dataviz <- dataviz |>
   mutate(
     year_cat = cut(year, breaks = c(0, seq(1900, 2030, by = 10)), dig.lab = 4)
@@ -247,9 +254,7 @@ Figure 2: Granada - Urban growth
 Royé, Dominique. 2019. *Visualize Urban Growth*.
 <https://dominicroye.github.io/blog/visualize-urban-growth/>.
 
-------------------------------------------------------------------------
-
-1.  The package
+[^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar
     functionalities to **CatastRo**.
