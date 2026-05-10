@@ -116,11 +116,7 @@ catr_ovc_get_rccoor_distancia <- function(
 
   # Join all
 
-  out <- dplyr::bind_cols(
-    overall,
-    rc_help,
-    rc_all
-  )
+  out <- dplyr::bind_cols(overall, rc_help, rc_all)
 
   # Numeric
   out["geo.xcen"] <- as.numeric(out[["geo.xcen"]])

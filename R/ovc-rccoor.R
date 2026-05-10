@@ -78,15 +78,9 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
   if (("lerr" %in% names(err))) {
     df <- tibble::as_tibble_row(unlist(err["lerr"]))
 
-    cli::cli_alert_danger(
-      paste0("Error code: ", df[1, 1], ". ", df[1, 2])
-    )
+    cli::cli_alert_danger(paste0("Error code: ", df[1, 1], ". ", df[1, 2]))
 
-    empty <- tibble::tibble(
-      a = lat,
-      b = lon,
-      srs = srs
-    )
+    empty <- tibble::tibble(a = lat, b = lon, srs = srs)
 
     names(empty) <- c("geo.xcen", "geo.ycen", "geo.srs")
     return(empty)
@@ -105,10 +99,7 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
 
   # Join all
 
-  out <- dplyr::bind_cols(
-    rc_help,
-    overall
-  )
+  out <- dplyr::bind_cols(rc_help, overall)
 
   # Numeric
   out["geo.xcen"] <- as.numeric(out[["geo.xcen"]])

@@ -6,9 +6,7 @@ test_that("Test offline", {
     FALSE
   })
 
-  expect_snapshot(
-    fend <- catr_ovc_get_cpmrc("9872023VH5797S")
-  )
+  expect_snapshot(fend <- catr_ovc_get_cpmrc("9872023VH5797S"))
   expect_null(fend)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -25,9 +23,7 @@ test_that("Test 404 all", {
     TRUE
   })
 
-  expect_snapshot(
-    fend <- catr_ovc_get_cpmrc("9872023VH5797S")
-  )
+  expect_snapshot(fend <- catr_ovc_get_cpmrc("9872023VH5797S"))
   expect_null(fend)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -38,12 +34,7 @@ test_that("Test 404 all", {
 test_that("Expect error on bad SRS", {
   skip_on_cran()
   skip_if_offline()
-  expect_error(
-    catr_ovc_get_cpmrc(
-      rc = "s",
-      srs = "abcd"
-    )
-  )
+  expect_error(catr_ovc_get_cpmrc(rc = "s", srs = "abcd"))
 })
 
 test_that("giving all the arguments", {

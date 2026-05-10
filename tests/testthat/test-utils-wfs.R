@@ -45,10 +45,7 @@ test_that("Test offline", {
     )
   )
   expect_null(fend)
-  expect_length(
-    list.files(cdir, recursive = TRUE),
-    0
-  )
+  expect_length(list.files(cdir, recursive = TRUE), 0)
   unlink(cdir, recursive = TRUE, force = TRUE)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -150,10 +147,7 @@ test_that("Bad query", {
 
   expect_snapshot(
     error = TRUE,
-    s <- inspire_wfs_get(
-      path = "INSPIRE/wfsBU.aspx",
-      query = 20
-    )
+    s <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", query = 20)
   )
 
   expect_snapshot(

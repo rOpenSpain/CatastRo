@@ -6,9 +6,7 @@ test_that("Test offline", {
     FALSE
   })
 
-  expect_snapshot(
-    fend <- catr_ovc_get_cod_munic(4, 5)
-  )
+  expect_snapshot(fend <- catr_ovc_get_cod_munic(4, 5))
   expect_null(fend)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -25,9 +23,7 @@ test_that("Test 404 all", {
     TRUE
   })
 
-  expect_snapshot(
-    fend <- catr_ovc_get_cod_munic(4, 5)
-  )
+  expect_snapshot(fend <- catr_ovc_get_cod_munic(4, 5))
   expect_null(fend)
 
   local_mocked_bindings(is_404 = function(...) {

@@ -198,9 +198,7 @@ test_that("No connection body", {
     "buildings/ES.SDGC.BU.atom.xml"
   )
 
-  expect_snapshot(
-    fend <- get_request_body(url, verbose = FALSE)
-  )
+  expect_snapshot(fend <- get_request_body(url, verbose = FALSE))
   expect_null(fend)
   local_mocked_bindings(is_online_fun = function(...) {
     httr2::is_online()
@@ -220,9 +218,7 @@ test_that("Error body", {
     "Addresses/ES.SDGC.AD.atom.xml"
   )
 
-  expect_snapshot(
-    fend <- get_request_body(url, verbose = FALSE)
-  )
+  expect_snapshot(fend <- get_request_body(url, verbose = FALSE))
   expect_null(fend)
   local_mocked_bindings(is_404 = function(...) {
     FALSE
@@ -239,19 +235,13 @@ test_that("Tests body", {
     "Addresses/ES.SDGC.AD.atom.xml"
   )
 
-  expect_message(
-    fend <- get_request_body(url, verbose = TRUE),
-    "GET"
-  )
+  expect_message(fend <- get_request_body(url, verbose = TRUE), "GET")
 
   expect_s3_class(fend, "httr2_response")
 
   url <- "http://ropenspain.github.io/CatastRo/noexist-this-file.txt"
 
-  expect_message(
-    fend <- get_request_body(url, verbose = TRUE),
-    "GET"
-  )
+  expect_message(fend <- get_request_body(url, verbose = TRUE), "GET")
 
   expect_null(fend)
 })

@@ -55,12 +55,10 @@ catr_atom_search_munic <- function(
       all <- all[linesto, ]
     } else {
       if (verbose) {
-        cli::cli_alert_warning(
-          paste0(
-            "Ignoring {.arg to} argument. No results ",
-            "found with pattern {.str {munic}} in {.str {to}}."
-          )
-        )
+        cli::cli_alert_warning(paste0(
+          "Ignoring {.arg to} argument. No results ",
+          "found with pattern {.str {munic}} in {.str {to}}."
+        ))
       }
     }
   }

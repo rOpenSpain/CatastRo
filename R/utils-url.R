@@ -88,10 +88,7 @@ download_url <- function(
   test_offline <- is_404()
   if (test_offline) {
     # Modify to redirect to fake url
-    req <- httr2::req_url(
-      req,
-      "http://ovc.catastro.meh.es/urlnoexist/fake"
-    )
+    req <- httr2::req_url(req, "http://ovc.catastro.meh.es/urlnoexist/fake")
     file_local <- tempfile(fileext = ".txt")
   }
 
@@ -102,18 +99,14 @@ download_url <- function(
     get_status_code <- httr2::resp_status(resp) # nolint
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
-    cli::cli_alert_danger(
-      c(
-        "{.strong Error {get_status_code}} ({get_status_desc}):",
-        " {.url {url}}."
-      )
-    )
-    cli::cli_alert_warning(
-      c(
-        "If you think this is a bug please consider opening an issue on ",
-        "{.url https://github.com/ropenspain/CatastRo/issues}"
-      )
-    )
+    cli::cli_alert_danger(c(
+      "{.strong Error {get_status_code}} ({get_status_desc}):",
+      " {.url {url}}."
+    ))
+    cli::cli_alert_warning(c(
+      "If you think this is a bug please consider opening an issue on ",
+      "{.url https://github.com/ropenspain/CatastRo/issues}"
+    ))
     cli::cli_alert("Returning {.val NULL}")
     return(NULL)
   }
@@ -132,10 +125,7 @@ download_url <- function(
 #' @return httr2 response object.
 #'
 #' @noRd
-get_request_body <- function(
-  url,
-  verbose = TRUE
-) {
+get_request_body <- function(url, verbose = TRUE) {
   msg <- paste0("GET {.url ", url, "}.")
   make_msg("info", verbose, msg)
 
@@ -165,10 +155,7 @@ get_request_body <- function(
   test_offline <- is_404()
   if (test_offline) {
     # Modify to redirect to fake url
-    req <- httr2::req_url(
-      req,
-      "http://ovc.catastro.meh.es/urlnoexist/fake"
-    )
+    req <- httr2::req_url(req, "http://ovc.catastro.meh.es/urlnoexist/fake")
   }
 
   resp <- httr2::req_perform(req)
@@ -177,18 +164,14 @@ get_request_body <- function(
     get_status_code <- httr2::resp_status(resp) # nolint
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
-    cli::cli_alert_danger(
-      c(
-        "{.strong Error {get_status_code}} ({get_status_desc}):",
-        " {.url {url}}."
-      )
-    )
-    cli::cli_alert_warning(
-      c(
-        "If you think this is a bug please consider opening an issue on ",
-        "{.url https://github.com/ropenspain/CatastRo/issues}"
-      )
-    )
+    cli::cli_alert_danger(c(
+      "{.strong Error {get_status_code}} ({get_status_desc}):",
+      " {.url {url}}."
+    ))
+    cli::cli_alert_warning(c(
+      "If you think this is a bug please consider opening an issue on ",
+      "{.url https://github.com/ropenspain/CatastRo/issues}"
+    ))
     cli::cli_alert("Returning {.val NULL}")
     return(NULL)
   }

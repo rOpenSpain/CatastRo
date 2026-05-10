@@ -10,9 +10,7 @@ test_that("Test offline", {
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
-  expect_snapshot(
-    fend <- catr_atom_search_munic("LABAJOS", cache_dir = cdir)
-  )
+  expect_snapshot(fend <- catr_atom_search_munic("LABAJOS", cache_dir = cdir))
   expect_null(fend)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -72,9 +70,7 @@ test_that("Test search", {
 
   # Try with no result
 
-  expect_snapshot(
-    c <- catr_atom_search_munic("XXX", cache_dir = cdir)
-  )
+  expect_snapshot(c <- catr_atom_search_munic("XXX", cache_dir = cdir))
   expect_null(c)
 
   expect_message(

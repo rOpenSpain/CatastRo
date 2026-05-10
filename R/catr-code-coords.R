@@ -50,12 +50,10 @@ catr_get_code_from_coords <- function(
       )
     }
     if (is.null(srs)) {
-      cli::cli_abort(
-        paste0(
-          "You should also provide the {.arg srs} argument when x is ",
-          "{.obj_type_friendly {x}}."
-        )
-      )
+      cli::cli_abort(paste0(
+        "You should also provide the {.arg srs} argument when x is ",
+        "{.obj_type_friendly {x}}."
+      ))
     }
 
     x <- sf::st_point(x)

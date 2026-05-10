@@ -10,9 +10,7 @@ test_that("Test offline", {
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
-  expect_snapshot(
-    fend <- catr_atom_get_address("Madrid", cache_dir = cdir)
-  )
+  expect_snapshot(fend <- catr_atom_get_address("Madrid", cache_dir = cdir))
   expect_null(fend)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -130,11 +128,7 @@ test_that("Test 404 single", {
   })
 
   expect_snapshot(
-    fend <- catr_atom_get_address(
-      "Melque",
-      to = "Segovia",
-      cache_dir = cdir
-    )
+    fend <- catr_atom_get_address("Melque", to = "Segovia", cache_dir = cdir)
   )
   expect_null(fend)
   local_mocked_bindings(is_404 = function(...) {

@@ -87,12 +87,10 @@ catr_atom_get_address <- function(
       all <- all[linesto, ]
     } else {
       if (verbose) {
-        cli::cli_alert_warning(
-          paste0(
-            "Ignoring {.arg to} argument. No results ",
-            "found with pattern {.str {munic}} in {.str {to}}."
-          )
-        )
+        cli::cli_alert_warning(paste0(
+          "Ignoring {.arg to} argument. No results ",
+          "found with pattern {.str {munic}} in {.str {to}}."
+        ))
       }
     }
   }
@@ -100,15 +98,11 @@ catr_atom_get_address <- function(
   to_loc <- ensure_null(grep(munic, all$munic, ignore.case = TRUE))
 
   if (is.null(to_loc)) {
-    cli::cli_alert_warning(
-      "No municipality found with pattern {.str {munic}}."
-    )
-    cli::cli_alert_info(
-      paste0(
-        "Check available municipalities with ",
-        "{.fn CatastRo::catr_atom_get_address_db_all}."
-      )
-    )
+    cli::cli_alert_warning("No municipality found with pattern {.str {munic}}.")
+    cli::cli_alert_info(paste0(
+      "Check available municipalities with ",
+      "{.fn CatastRo::catr_atom_get_address_db_all}."
+    ))
     return(NULL)
   }
 
@@ -153,9 +147,7 @@ catr_atom_get_address <- function(
   ref <- unlist(strsplit(tb$munic, "-"))[1]
 
   # Prepare download URL for municipality data
-  api_entry <- municurls[
-    grepl(ref, municurls$munic, ignore.case = TRUE),
-  ]$url
+  api_entry <- municurls[grepl(ref, municurls$munic, ignore.case = TRUE), ]$url
 
   api_entry <- URLencode(api_entry)
 

@@ -102,13 +102,9 @@ catr_ovc_get_cod_munic <- function(
   if (("lerr" %in% names(err))) {
     df <- tibble::as_tibble_row(unlist(err["lerr"]))
 
-    cli::cli_alert_danger(
-      paste0("Error code: ", df[1, 1], ". ", df[1, 2])
-    )
+    cli::cli_alert_danger(paste0("Error code: ", df[1, 1], ". ", df[1, 2]))
 
-    empty <- tibble::tibble(
-      name = NA
-    )
+    empty <- tibble::tibble(name = NA)
 
     return(empty)
   }
@@ -143,11 +139,7 @@ catr_ovc_get_cod_munic <- function(
 
   inecodes$inecode <- paste0(inecodes$cpro, inecodes$cmun)
 
-  overall <- dplyr::bind_cols(
-    catcodes,
-    inecodes,
-    df
-  )
+  overall <- dplyr::bind_cols(catcodes, inecodes, df)
 
   overall
 }

@@ -45,22 +45,12 @@ ovc_codes <- c(
   23031
 )
 
-catr_srs_values <- catr_srs_values |>
-  mutate(ovc_service = SRS %in% ovc_codes)
+catr_srs_values <- catr_srs_values |> mutate(ovc_service = SRS %in% ovc_codes)
 
 # Add column for WFS services
-wfs_codes <- c(
-  4326,
-  4258,
-  25829,
-  25830,
-  25831,
-  3785,
-  3857
-)
+wfs_codes <- c(4326, 4258, 25829, 25830, 25831, 3785, 3857)
 
-catr_srs_values <- catr_srs_values |>
-  mutate(wfs_service = SRS %in% wfs_codes)
+catr_srs_values <- catr_srs_values |> mutate(wfs_service = SRS %in% wfs_codes)
 
 catr_srs_values
 usethis::use_data(catr_srs_values, overwrite = TRUE)

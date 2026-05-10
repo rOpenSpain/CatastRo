@@ -154,18 +154,12 @@ catr_wms_get_layer <- function(
 
   # Manage styles and options
   # Custom options
-  opts <- list(
-    styles = styles,
-    version = "1.1.0"
-  )
+  opts <- list(styles = styles, version = "1.1.0")
 
   # Add srs
   if (!is.null(srs)) {
     if (!any(grepl("epsg", srs, ignore.case = TRUE))) {
-      opts <- modifyList(
-        opts,
-        list(srs = paste0("EPSG:", srs))
-      )
+      opts <- modifyList(opts, list(srs = paste0("EPSG:", srs)))
     }
   }
 
@@ -174,10 +168,7 @@ catr_wms_get_layer <- function(
     finalopts <- opts
   } else {
     names(options) <- tolower(names(options))
-    finalopts <- modifyList(
-      opts,
-      options
-    )
+    finalopts <- modifyList(opts, options)
   }
 
   # Check if need to change crs

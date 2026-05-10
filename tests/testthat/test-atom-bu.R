@@ -10,9 +10,7 @@ test_that("Test offline", {
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
-  expect_snapshot(
-    fend <- catr_atom_get_buildings("LABAJOS", cache_dir = cdir)
-  )
+  expect_snapshot(fend <- catr_atom_get_buildings("LABAJOS", cache_dir = cdir))
   expect_null(fend)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -94,11 +92,7 @@ test_that("ATOM Buildings", {
   expect_s3_class(s, "sf")
 
   # Check other options
-  me_bu <- catr_atom_get_buildings(
-    "Melque",
-    to = "Segovia",
-    cache_dir = cdir
-  )
+  me_bu <- catr_atom_get_buildings("Melque", to = "Segovia", cache_dir = cdir)
 
   me_bupart <- catr_atom_get_buildings(
     "Melque",
@@ -154,11 +148,7 @@ test_that("Test 404 single", {
   })
 
   expect_snapshot(
-    fend <- catr_atom_get_buildings(
-      "Melque",
-      to = "Segovia",
-      cache_dir = cdir
-    )
+    fend <- catr_atom_get_buildings("Melque", to = "Segovia", cache_dir = cdir)
   )
   expect_null(fend)
   local_mocked_bindings(is_404 = function(...) {

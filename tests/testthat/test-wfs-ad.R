@@ -3,10 +3,7 @@ test_that("BBOX Check", {
   skip_if_offline()
 
   expect_message(
-    fend <- catr_wfs_get_address_bbox(
-      c(-20, -20, -19, -20),
-      srs = 4326
-    ),
+    fend <- catr_wfs_get_address_bbox(c(-20, -20, -19, -20), srs = 4326),
     "didn't provide results"
   )
   expect_null(fend)
@@ -42,9 +39,7 @@ test_that("AD CODVIA", {
   expect_s3_class(obj, "sf")
   expect_equal(sf::st_crs(obj)$epsg, 4326)
 
-  expect_snapshot(
-    obj <- catr_wfs_get_address_codvia("1", 110, 390)
-  )
+  expect_snapshot(obj <- catr_wfs_get_address_codvia("1", 110, 390))
   expect_null(obj)
   expect_snapshot(
     error = TRUE,
@@ -64,9 +59,7 @@ test_that("AD RC", {
   expect_s3_class(obj, "sf")
   expect_equal(sf::st_crs(obj)$epsg, 4326)
 
-  expect_snapshot(
-    obj <- catr_wfs_get_address_rc("3662303TF")
-  )
+  expect_snapshot(obj <- catr_wfs_get_address_rc("3662303TF"))
   expect_null(obj)
   expect_snapshot(
     error = TRUE,
@@ -87,9 +80,7 @@ test_that("AD Postal Code", {
   expect_s3_class(obj, "sf")
   expect_equal(sf::st_crs(obj)$epsg, 4326)
 
-  expect_snapshot(
-    obj <- catr_wfs_get_address_postalcode("XXXXX")
-  )
+  expect_snapshot(obj <- catr_wfs_get_address_postalcode("XXXXX"))
   expect_null(obj)
   expect_snapshot(
     error = TRUE,

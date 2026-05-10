@@ -97,10 +97,7 @@ match_arg_pretty <- function(arg, choices) {
     }
 
     cli::cli_abort(
-      c(
-        paste0("{.arg {arg_name}} should be ", msg),
-        "i" = reg_msg
-      ),
+      c(paste0("{.arg {arg_name}} should be ", msg), "i" = reg_msg),
       call = NULL
     )
   }

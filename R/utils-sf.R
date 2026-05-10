@@ -85,11 +85,10 @@ sanitize_sf <- function(data_sf) {
     g <- sf::st_geometry(data_sf)
 
     nm <- "geometry"
-    data_utf8 <-
-      as.data.frame(
-        set_utf8(sf::st_drop_geometry(data_sf)),
-        stringsAsFactors = FALSE
-      )
+    data_utf8 <- as.data.frame(
+      set_utf8(sf::st_drop_geometry(data_sf)),
+      stringsAsFactors = FALSE
+    )
   } else {
     data_utf8 <- set_utf8(data_sf)
   }
@@ -136,9 +135,7 @@ get_sf_from_bbox <- function(bbox, srs = NULL) {
 
   srs <- ensure_null(srs)
   if (is.null(srs)) {
-    cli::cli_abort(
-      "Please provide a valid non-empty value for {.arg srs}."
-    )
+    cli::cli_abort("Please provide a valid non-empty value for {.arg srs}.")
   }
 
   # Create template for a spatial bbox

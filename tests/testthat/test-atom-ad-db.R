@@ -21,9 +21,7 @@ test_that("Test offline db_all", {
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
-  expect_snapshot(
-    fend <- catr_atom_get_address_db_all(cache_dir = cdir)
-  )
+  expect_snapshot(fend <- catr_atom_get_address_db_all(cache_dir = cdir))
   expect_null(fend)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -70,9 +68,7 @@ test_that("Test 404 all", {
     TRUE
   })
 
-  expect_snapshot(
-    fend <- catr_atom_get_address_db_all(cache_dir = cdir)
-  )
+  expect_snapshot(fend <- catr_atom_get_address_db_all(cache_dir = cdir))
   expect_null(fend)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -80,9 +76,7 @@ test_that("Test 404 all", {
   })
   unlink(cdir, recursive = TRUE, force = TRUE)
   # Otherwise work
-  expect_silent(
-    fend <- catr_atom_get_address_db_all(cache_dir = cdir)
-  )
+  expect_silent(fend <- catr_atom_get_address_db_all(cache_dir = cdir))
   expect_gt(nrow(fend), 20)
 
   if (dir.exists(cdir)) {
@@ -112,9 +106,7 @@ test_that("Test 404 to", {
   })
   unlink(cdir, recursive = TRUE, force = TRUE)
   # Otherwise work
-  expect_silent(
-    fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
-  )
+  expect_silent(fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir))
   expect_gt(nrow(fend), 100)
 
   if (dir.exists(cdir)) {
@@ -131,45 +123,30 @@ test_that("Test atom ad", {
     cache_dir = tempdir()
   ))
   expect_snapshot(
-    no_res <- catr_atom_get_address_db_to(
-      to = "aaaana",
-      cache_dir = tempdir()
-    )
+    no_res <- catr_atom_get_address_db_to(to = "aaaana", cache_dir = tempdir())
   )
   expect_null(no_res)
 
   expect_silent(
-    nmel <- catr_atom_get_address_db_to(
-      to = "Melilla",
-      cache_dir = tempdir()
-    )
+    nmel <- catr_atom_get_address_db_to(to = "Melilla", cache_dir = tempdir())
   )
   expect_s3_class(nmel, "tbl")
   expect_shape(nmel, dim = c(1, 3))
 
   # Several patterns
   expect_snapshot(
-    several <- catr_atom_get_address_db_to(
-      to = "lencia",
-      cache_dir = tempdir()
-    )
+    several <- catr_atom_get_address_db_to(to = "lencia", cache_dir = tempdir())
   )
 
   expect_silent(
-    pal <- catr_atom_get_address_db_to(
-      to = "Palencia",
-      cache_dir = tempdir()
-    )
+    pal <- catr_atom_get_address_db_to(to = "Palencia", cache_dir = tempdir())
   )
 
   expect_identical(several, pal)
 
   # full name
   expect_silent(
-    val <- catr_atom_get_address_db_to(
-      to = "valencia",
-      cache_dir = tempdir()
-    )
+    val <- catr_atom_get_address_db_to(to = "valencia", cache_dir = tempdir())
   )
   expect_false(pal$munic[1] == val$munic[1])
 })

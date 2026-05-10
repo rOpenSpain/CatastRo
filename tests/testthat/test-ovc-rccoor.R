@@ -7,11 +7,7 @@ test_that("Test offline", {
   })
 
   expect_snapshot(
-    fend <- catr_ovc_get_rccoor(
-      lat = 40.963200,
-      lon = -5.671420,
-      srs = 4326
-    )
+    fend <- catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, srs = 4326)
   )
   expect_null(fend)
 
@@ -30,11 +26,7 @@ test_that("Test 404 all", {
   })
 
   expect_snapshot(
-    fend <- catr_ovc_get_rccoor(
-      lat = 40.963200,
-      lon = -5.671420,
-      srs = 4326
-    )
+    fend <- catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, srs = 4326)
   )
   expect_null(fend)
 
@@ -47,11 +39,7 @@ test_that("Expect error on bad SRS", {
   skip_on_cran()
   skip_if_offline()
 
-  expect_error(catr_ovc_get_rccoor(
-    lat = 40.963200,
-    lon = -5.671420,
-    "abcd"
-  ))
+  expect_error(catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, "abcd"))
 })
 
 test_that("return data.frame given SRS", {
@@ -108,11 +96,7 @@ test_that("unprecised coordinates", {
   skip_on_cran()
   skip_if_offline()
 
-  result <- catr_ovc_get_rccoor(
-    lat = 40.963200,
-    lon = -5.671420,
-    srs = "4326"
-  )
+  result <- catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, srs = "4326")
   expect_true(ncol(result) == 3)
 })
 

@@ -3,10 +3,7 @@ test_that("BBOX Check", {
   skip_if_offline()
 
   expect_message(
-    fend <- catr_wfs_get_buildings_bbox(
-      c(-20, -20, -19, -20),
-      srs = 4326
-    ),
+    fend <- catr_wfs_get_buildings_bbox(c(-20, -20, -19, -20), srs = 4326),
     "didn't provide results"
   )
   expect_null(fend)
@@ -30,20 +27,14 @@ test_that("BBOX Check", {
   expect_true(sf::st_crs(obj2) == sf::st_crs(25829))
 
   # Another types
-  parts <- catr_wfs_get_buildings_bbox(
-    bbox,
-    what = "buildingpart"
-  )
+  parts <- catr_wfs_get_buildings_bbox(bbox, what = "buildingpart")
 
   expect_s3_class(parts, "sf")
 
   expect_gt(nrow(parts), nrow(obj2))
 
-  ot <- # Another types
-    parts <- catr_wfs_get_buildings_bbox(
-      bbox,
-      what = "other"
-    )
+  # Another types
+  ot <- parts <- catr_wfs_get_buildings_bbox(bbox, what = "other")
 
   expect_s3_class(ot, "sf")
 

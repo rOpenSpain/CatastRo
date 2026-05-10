@@ -81,9 +81,7 @@ inspire_wfs_get <- function(
   }
 
   if (l_end == 0) {
-    cli::cli_abort(
-      "{.arg query} can't be {.obj_type_friendly {query}}."
-    )
+    cli::cli_abort("{.arg query} can't be {.obj_type_friendly {query}}.")
   }
 
   # SRS should be checked
@@ -136,9 +134,10 @@ inspire_wfs_get <- function(
   err <- xml2::read_xml(xml_file, encoding = "UTF-8")
   msg <- unlist(xml2::as_list(err)["ExceptionReport"], use.names = FALSE)
 
-  cli::cli_alert_danger(
-    c("The query {.url {url}} didn't provide results:\n", msg)
-  )
+  cli::cli_alert_danger(c(
+    "The query {.url {url}} didn't provide results:\n",
+    msg
+  ))
 
   # Clean temp
   unlink(list.files(
@@ -169,12 +168,10 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
       )
     }
     if (is.null(srs)) {
-      cli::cli_abort(
-        paste0(
-          "You should also provide the {.arg srs} argument when x is ",
-          "{.obj_type_friendly {x}}."
-        )
-      )
+      cli::cli_abort(paste0(
+        "You should also provide the {.arg srs} argument when x is ",
+        "{.obj_type_friendly {x}}."
+      ))
     }
 
     srs_db <- CatastRo::catr_srs_values
@@ -201,12 +198,10 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
     cli::cli_alert_warning(
       "API Endpoint Restriction: {limit_km2} km2. Your query is {area} km2."
     )
-    cli::cli_alert_info(
-      paste0(
-        "Operation may fail, check the results or use a ",
-        "smaller area on {.arg x}."
-      )
-    )
+    cli::cli_alert_info(paste0(
+      "Operation may fail, check the results or use a ",
+      "smaller area on {.arg x}."
+    ))
   }
   sf::st_bbox(sfobj)
 }

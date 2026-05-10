@@ -113,9 +113,7 @@ test_that("Check", {
 
   expect_error(catr_get_code_from_coords(c(0, 0)))
   expect_error(catr_get_code_from_coords(c(0, 0, 0)))
-  expect_message(
-    catr_get_code_from_coords(c(0, 0), srs = 4326)
-  )
+  expect_message(catr_get_code_from_coords(c(0, 0), srs = 4326))
   expect_s3_class(
     catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326),
     "tbl"
@@ -131,10 +129,7 @@ test_that("Check", {
   expect_silent(catr_get_code_from_coords(m[1, ]))
 
   # Try polis
-  m2 <- mapSpain::esp_get_ccaa_siane(
-    "Murcia",
-    cache_dir = cdir
-  )
+  m2 <- mapSpain::esp_get_ccaa_siane("Murcia", cache_dir = cdir)
   s3 <- catr_get_code_from_coords(m2, cache_dir = cdir)
 
   expect_s3_class(s3, "tbl")
