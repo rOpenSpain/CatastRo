@@ -1,34 +1,34 @@
-# OVCCoordenadas Web Service
+# OVCCoordenadas web service
 
-**CatastRo** allows querying the OVCCoordenadas Web Service provided by
+**CatastRo** allows querying the OVCCoordenadas web service provided by
 the [Sede electrónica del
 Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 API directly through an **R** IDE.
 
-This API retrieves the spatial coordinates of an urban property. It is
-not necessary to be the owner to get the information; you only need to
-know the cadastral reference (*RC*) of the property. Although the RC is
-the only required argument, providing the address can improve results
-and help avoid errors.
+This API retrieves the spatial coordinates of an urban property. You do
+not need to be the owner to get the information; you only need to know
+the cadastral reference (*RC*) of the property. Although the RC is the
+only required argument, providing the address can improve results and
+help avoid errors.
 
 Additionally, the API can be used to obtain the RC of an urban property.
-For this, the API requires the longitude and latitude. It also allows
-you to choose the spatial reference system (SRS, also known as CRS) from
-a list to express the coordinates.
+For this, the API requires longitude and latitude. It also allows you to
+choose the spatial reference system (SRS, also known as CRS) from a list
+to express the coordinates.
 
 The API also handles cases where the exact location of the registered
 urban property is unknown. In such cases, it returns all properties
 located within a 50-meter square around the given point.
 
-The documentation of this API can be found
+The documentation for this API is available
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
 These functions are named `catr_ovc_*` and return a tibble, as provided
-by the package **tibble**.
+by the **tibble** package.
 
 ## CatastRo API
 
-The OVCCoordenadas Web Service can be accessed using the following
+The OVCCoordenadas web service can be accessed using the following
 functions:
 
 - [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
@@ -61,7 +61,7 @@ knitr::kable(result)
 |:---|:---|:---|:---|---:|---:|:---|:---|
 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.456242 | 38.61966 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
-The function accepts as a `srs` argument the following values:
+The function accepts the following values for the `srs` argument:
 
 ``` r
 
@@ -115,7 +115,7 @@ catr_ovc_get_rccoor_distancia(
 ## Geocoding a cadastral reference
 
 The opposite query is also possible. When provided with a cadastral
-reference (`rc`), province (`province`), and municipality
+reference (`rc`), province (`province`) and municipality
 (`municipality`), the function
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
 returns the coordinates (`lat` and `lon`) in a specified `srs`, along
@@ -161,7 +161,7 @@ When using only `rc`, the result is provided as expected:
 
 ``` r
 
-# No warning, get the result
+# Get the result without a warning.
 catr_ovc_get_cpmrc(rc = "13077A01800039") |>
   knitr::kable()
 ```

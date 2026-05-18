@@ -19,7 +19,7 @@ several types of queries:
 &nbsp;
 
 - By postal codes: Implemented on `catr_wfs_get_address_postalcode()`.
-  Extract objects of specific postal codes
+  Extract objects of specific postal codes.
 
 ## Usage
 
@@ -39,15 +39,15 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 
   See **Bounding box**. It may be:
 
-  - A numeric vector of length 4 with the coordinates that defines the
-    bounding box: `c(xmin, ymin, xmax, ymax)`
+  - A numeric vector of length 4 with the coordinates that define the
+    bounding box: `c(xmin, ymin, xmax, ymax)`.
 
   - A `sf/sfc` object, as provided by the
     [sf](https://CRAN.R-project.org/package=sf) package.
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `wfs_service` column. See **Bounding box**.
 
@@ -81,7 +81,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## API Limits
 
-The API service is limited to a bounding box of 4km2 and a maximum of
+The API service is limited to a bounding box of 4 km2 and a maximum of
 5,000 elements.
 
 ## Bounding box

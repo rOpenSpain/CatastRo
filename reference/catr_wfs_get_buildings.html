@@ -41,7 +41,7 @@ Extract objects of specific cadastral references.
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas Web Service</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas web service</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -96,8 +96,8 @@ Extract objects of specific cadastral references.</p></li>
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>See <strong>Bounding box</strong>. It may be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that defines
-the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
+<dd><p>See <strong>Bounding box</strong>. It may be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that define
+the bounding box: <code>c(xmin, ymin, xmax, ymax)</code>.</p></li>
 <li><p>A <code>sf/sfc</code> object, as provided by the <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> package.</p></li>
 </ul></dd>
 
@@ -110,7 +110,7 @@ the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
 
 
 <dt id="arg-srs">srs<a class="anchor" aria-label="anchor" href="#arg-srs"></a></dt>
-<dd><p>SRS/CRS to use on the query. To see allowed values, use
+<dd><p>SRS/CRS to use in the query. To see allowed values, use
 <a href="catr_srs_values.html">catr_srs_values</a>, specifically the <code>wfs_service</code> column. See
 <strong>Bounding box</strong>.</p></dd>
 
@@ -131,7 +131,7 @@ the bounding box: <code>c(xmin, ymin, xmax, ymax)</code></p></li>
     <h2 id="api-limits">API Limits<a class="anchor" aria-label="anchor" href="#api-limits"></a></h2>
 
 
-<p>The API service is limited to a bounding box of 4km2 and a maximum of 5,000
+<p>The API service is limited to a bounding box of 4 km2 and a maximum of 5,000
 elements.</p>
     </div>
     <div class="section level2">
@@ -186,7 +186,7 @@ provided as input.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
-<span class="r-in"><span><span class="co"># Using bbox</span></span></span>
+<span class="r-in"><span><span class="co"># Using a bbox</span></span></span>
 <span class="r-in"><span><span class="va">building</span> <span class="op">&lt;-</span> <span class="fu">catr_wfs_get_buildings_bbox</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="fl">376550</span>,</span></span>
@@ -202,7 +202,7 @@ provided as input.</p>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Search using bbox"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="catr_wfs_get_buildings-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Using rc</span></span></span>
+<span class="r-in"><span><span class="co"># Using a cadastral reference</span></span></span>
 <span class="r-in"><span><span class="va">rc</span> <span class="op">&lt;-</span> <span class="fu">catr_wfs_get_buildings_rc</span><span class="op">(</span><span class="st">"6656601UL7465N"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">rc</span><span class="op">)</span> <span class="op">+</span></span></span>

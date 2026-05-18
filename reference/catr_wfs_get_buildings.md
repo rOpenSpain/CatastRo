@@ -36,8 +36,8 @@ catr_wfs_get_buildings_rc(
 
   See **Bounding box**. It may be:
 
-  - A numeric vector of length 4 with the coordinates that defines the
-    bounding box: `c(xmin, ymin, xmax, ymax)`
+  - A numeric vector of length 4 with the coordinates that define the
+    bounding box: `c(xmin, ymin, xmax, ymax)`.
 
   - A `sf/sfc` object, as provided by the
     [sf](https://CRAN.R-project.org/package=sf) package.
@@ -54,7 +54,7 @@ catr_wfs_get_buildings_rc(
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `wfs_service` column. See **Bounding box**.
 
@@ -72,7 +72,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## API Limits
 
-The API service is limited to a bounding box of 4km2 and a maximum of
+The API service is limited to a bounding box of 4 km2 and a maximum of
 5,000 elements.
 
 ## Bounding box
@@ -136,7 +136,7 @@ Other spatial:
 
 ``` r
 # \donttest{
-# Using bbox
+# Using a bbox
 building <- catr_wfs_get_buildings_bbox(
   c(
     376550,
@@ -152,7 +152,7 @@ ggplot(building) +
   labs(title = "Search using bbox")
 
 
-# Using rc
+# Using a cadastral reference
 rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
 library(ggplot2)
 ggplot(rc) +

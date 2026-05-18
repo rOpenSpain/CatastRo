@@ -1,7 +1,7 @@
 # Reference SRS codes for [CatastRo](https://CRAN.R-project.org/package=CatastRo) APIs
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-including the valid SRS (also known as CRS) values that may be used on
+including the valid SRS (also known as CRS) values that may be used in
 each API service. Values are provided as [EPSG
 codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 
@@ -137,7 +137,7 @@ catr_srs_values |>
   # First value
   slice_head(n = 1) |>
   pull(SRS) |>
-  # As crs
+  # As CRS
   sf::st_crs(.)
 #> # A tibble: 5 × 4
 #>     SRS Description            ovc_service wfs_service

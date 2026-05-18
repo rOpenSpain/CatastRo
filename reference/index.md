@@ -1,10 +1,10 @@
 # Package index
 
-## ATOM INSPIRE API
+## ATOM INSPIRE services
 
 These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects as
-provided by the INSPIRE ATOM services of the Spanish Cadastre.
+[sf](https://r-spatial.github.io/sf/reference/sf.html) objects from the
+INSPIRE ATOM services of the Spanish Cadastre.
 
 - [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md)
   : ATOM INSPIRE: Download all addresses of a municipality
@@ -24,11 +24,11 @@ provided by the INSPIRE ATOM services of the Spanish Cadastre.
 - [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
   : ATOM INSPIRE: Search for municipality codes
 
-## WFS INSPIRE API
+## WFS INSPIRE services
 
 These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects as
-provided by the INSPIRE WFS services of the Spanish Cadastre.
+[sf](https://r-spatial.github.io/sf/reference/sf.html) objects from the
+INSPIRE WFS services of the Spanish Cadastre.
 
 - [`catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md)
   :
@@ -56,11 +56,11 @@ provided by the INSPIRE WFS services of the Spanish Cadastre.
 - [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
   : Client tool for WFS INSPIRE services
 
-## WMS INSPIRE API
+## WMS INSPIRE services
 
 These functions return
-[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
-objects.
+[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html) map
+images from the INSPIRE WMS services of the Spanish Cadastre.
 
 - [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
   : WMS INSPIRE: Download map images
@@ -78,9 +78,10 @@ objects.
 
   Visualise `SpatRaster` objects as images (from tidyterra)
 
-## OVCCoordenadas API
+## OVCCoordenadas service
 
-These functions allow access to the
+These functions geocode and reverse geocode cadastral references using
+the
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 service.
 
@@ -99,9 +100,9 @@ service.
   Reference SRS codes for
   [CatastRo](https://CRAN.R-project.org/package=CatastRo) APIs
 
-## OVCCallejero API
+## OVCCallejero service
 
-These functions allow access to the
+These functions query province and municipality codes using the
 [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
 service.
 
@@ -111,6 +112,9 @@ service.
   : OVCCallejero: Extract a list of provinces with their codes
 
 ## Search functions
+
+Helpers for finding cadastral municipality codes and related reference
+data.
 
 - [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
   : ATOM INSPIRE: Search for municipality codes
@@ -122,6 +126,9 @@ service.
   : OVCCallejero: Extract a list of provinces with their codes
 
 ## Cache management
+
+Tools for configuring, detecting and clearing the local cache used by
+**CatastRo**.
 
 - [`catr_clear_cache()`](https://ropenspain.github.io/CatastRo/reference/catr_clear_cache.md)
   :
@@ -137,6 +144,8 @@ service.
   dir
 
 ## Databases and reference data
+
+Reference tables and helper databases used by the package services.
 
 - [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
   [`catr_atom_get_address_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
@@ -161,6 +170,8 @@ service.
 
 ## About the package
 
+Package-level documentation and overview.
+
 - [`CatastRo`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
   [`CatastRo-package`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
-  : CatastRo: Interface to the API 'Sede Electronica Del Catastro'
+  : CatastRo: Interface to the Spanish Cadastre APIs

@@ -21,8 +21,8 @@ The SSL certificate of the Spanish Cadastre presents some issues that
 may cause an error when using **CatastRo** (especially on macOS, see
 issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
-In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
-your session right after you start using the package:
+In **CatastRo \>= 1.0.0**, you can try to fix it by running this line in
+your session right after loading the package:
 
 ``` r
 
@@ -43,7 +43,7 @@ options(catastro_ssl_verify = 0)
 
 ## Package API
 
-The functions of **CatastRo** are organised by API endpoint. The package
+The functions of **CatastRo** are organized by API endpoint. The package
 naming convention is `catr_*api*_*description*`.
 
 ### OVCCoordenadas
@@ -54,9 +54,9 @@ references using the
 service.
 
 These functions are named `catr_ovc_get_*` and return a tibble, as
-provided by package **tibble**. See
+provided by the **tibble** package. See
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)
-where these functions are described.
+for a detailed description of these functions.
 
 ### INSPIRE
 
@@ -74,7 +74,7 @@ service:
 
 #### ATOM service
 
-The ATOM service allows batch-downloading vector objects of different
+The ATOM service allows batch downloading vector objects of different
 cadastral elements for a specific municipality. The result is provided
 as `sf` objects (see the **sf** package).
 
@@ -144,7 +144,7 @@ catr_ovc_get_rccoor(
 
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
-# Map
+# Map.
 library(ggplot2)
 
 ggplot(bu) +
@@ -158,7 +158,7 @@ ggplot(bu) +
   labs(title = "Nava de la Asunción, Segovia")
 ```
 
-![Extracting buildings in Nava de la Asuncion with the ATOM
+![Extract buildings in Nava de la Asuncion with the ATOM
 service](reference/figures/README-atom-1.png)
 
 ### Extract geometries using the WFS service
@@ -170,7 +170,7 @@ wfs_get_buildings <- catr_wfs_get_buildings_bbox(
   srs = 4326
 )
 
-# Map
+# Map.
 ggplot(wfs_get_buildings) +
   geom_sf() +
   labs(title = "Alcázar of Segovia, Segovia, Spain")
@@ -181,7 +181,7 @@ service](reference/figures/README-wfs-1.png)
 
 ## A note on caching
 
-Some datasets and tiles may exceed 50MB. You can set a local cache
+Some datasets and tiles may exceed 50 MB. You can set a local cache
 directory using the following function:
 
 ``` r
@@ -209,7 +209,7 @@ A BibTeX entry for LaTeX users is:
   year = {2026},
   version = {1.0.1},
   url = {https://ropenspain.github.io/CatastRo/},
-  abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
+  abstract = {Access public spatial data from the Spanish Cadastre through its INSPIRE and cadastral web services. Provides tools to download cadastral parcels, buildings, addresses and map images, and to geocode cadastral references.},
 }
 ```
 
@@ -225,11 +225,11 @@ code](https://github.com/ropenspain/CatastRo/).
 
 # Package index
 
-## ATOM INSPIRE API
+## ATOM INSPIRE services
 
 These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects as
-provided by the INSPIRE ATOM services of the Spanish Cadastre.
+[sf](https://r-spatial.github.io/sf/reference/sf.html) objects from the
+INSPIRE ATOM services of the Spanish Cadastre.
 
 - [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md)
   : ATOM INSPIRE: Download all addresses of a municipality
@@ -249,11 +249,11 @@ provided by the INSPIRE ATOM services of the Spanish Cadastre.
 - [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
   : ATOM INSPIRE: Search for municipality codes
 
-## WFS INSPIRE API
+## WFS INSPIRE services
 
 These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects as
-provided by the INSPIRE WFS services of the Spanish Cadastre.
+[sf](https://r-spatial.github.io/sf/reference/sf.html) objects from the
+INSPIRE WFS services of the Spanish Cadastre.
 
 - [`catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md)
   :
@@ -281,11 +281,11 @@ provided by the INSPIRE WFS services of the Spanish Cadastre.
 - [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
   : Client tool for WFS INSPIRE services
 
-## WMS INSPIRE API
+## WMS INSPIRE services
 
 These functions return
-[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
-objects.
+[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html) map
+images from the INSPIRE WMS services of the Spanish Cadastre.
 
 - [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
   : WMS INSPIRE: Download map images
@@ -303,9 +303,10 @@ objects.
 
   Visualise `SpatRaster` objects as images (from tidyterra)
 
-## OVCCoordenadas API
+## OVCCoordenadas service
 
-These functions allow access to the
+These functions geocode and reverse geocode cadastral references using
+the
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 service.
 
@@ -324,9 +325,9 @@ service.
   Reference SRS codes for
   [CatastRo](https://CRAN.R-project.org/package=CatastRo) APIs
 
-## OVCCallejero API
+## OVCCallejero service
 
-These functions allow access to the
+These functions query province and municipality codes using the
 [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
 service.
 
@@ -336,6 +337,9 @@ service.
   : OVCCallejero: Extract a list of provinces with their codes
 
 ## Search functions
+
+Helpers for finding cadastral municipality codes and related reference
+data.
 
 - [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
   : ATOM INSPIRE: Search for municipality codes
@@ -347,6 +351,9 @@ service.
   : OVCCallejero: Extract a list of provinces with their codes
 
 ## Cache management
+
+Tools for configuring, detecting and clearing the local cache used by
+**CatastRo**.
 
 - [`catr_clear_cache()`](https://ropenspain.github.io/CatastRo/reference/catr_clear_cache.md)
   :
@@ -362,6 +369,8 @@ service.
   dir
 
 ## Databases and reference data
+
+Reference tables and helper databases used by the package services.
 
 - [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
   [`catr_atom_get_address_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
@@ -386,9 +395,11 @@ service.
 
 ## About the package
 
+Package-level documentation and overview.
+
 - [`CatastRo`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
   [`CatastRo-package`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
-  : CatastRo: Interface to the API 'Sede Electronica Del Catastro'
+  : CatastRo: Interface to the Spanish Cadastre APIs
 
 # Articles
 
@@ -397,9 +408,9 @@ service.
 - [Get
   started](https://ropenspain.github.io/CatastRo/articles/CatastRo.md):
 
-  Brief introduction to CatastRo package.
+  Brief introduction to the CatastRo package.
 
-- [OVCCoordenadas Web
-  Service](https://ropenspain.github.io/CatastRo/articles/ovcservice.md):
+- [OVCCoordenadas web
+  service](https://ropenspain.github.io/CatastRo/articles/ovcservice.md):
 
   Retrieve spatial coordinates of urban properties.

@@ -53,8 +53,8 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
   See **Bounding box**. It may be:
 
-  - A numeric vector of length 4 with the coordinates that defines the
-    bounding box: `c(xmin, ymin, xmax, ymax)`
+  - A numeric vector of length 4 with the coordinates that define the
+    bounding box: `c(xmin, ymin, xmax, ymax)`.
 
   - A `sf/sfc` object, as provided by the
     [sf](https://CRAN.R-project.org/package=sf) package.
@@ -69,7 +69,7 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `wfs_service` column. See **Bounding box**.
 
@@ -93,9 +93,9 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 The API service is limited to the following constraints:
 
-- `"parcel`: Bounding box of 1km2 and a maximum of 5,000 elements.
+- `"parcel"`: Bounding box of 1 km2 and a maximum of 5,000 elements.
 
-- `"zoning"`: Bounding box of 25km2 and a maximum of 5,000 elements.
+- `"zoning"`: Bounding box of 25 km2 and a maximum of 5,000 elements.
 
 ## Bounding box
 

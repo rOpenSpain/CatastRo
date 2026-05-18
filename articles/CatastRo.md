@@ -2,7 +2,7 @@
 
 **CatastRo** provides access to different API services of the [Spanish
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
-download official information on addresses, properties, parcels, and
+download official information on addresses, properties, parcels and
 buildings.
 
 ## OVCCoordenadas service
@@ -21,7 +21,7 @@ in detail in the corresponding vignette (see
 > The INSPIRE Directive aims to create a European Union Spatial Data
 > Infrastructure (SDI) for the purposes of EU environmental policies and
 > policies or activities which may have an impact on the environment.
-> This European Spatial Data Infrastructure will enable the sharing of
+> This European Spatial Data Infrastructure enables the sharing of
 > environmental spatial information among public sector organisations,
 > facilitate public access to spatial information across Europe and
 > assist in policy-making across boundaries.
@@ -29,17 +29,17 @@ in detail in the corresponding vignette (see
 Source: [INSPIRE Knowledge
 Base](https://knowledge-base.inspire.ec.europa.eu/overview_en)
 
-The implementation of the INSPIRE directive on the Spanish Cadastre (see
+The implementation of the INSPIRE directive in the Spanish Cadastre (see
 [Catastro
 INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
 allows retrieval of spatial objects from the cadastral database:
 
 - **Vector objects:** Parcels, addresses, buildings, cadastral zones and
-  more. These objects are provided by **CatastRo** as `sf` objects,
-  using the **sf** package.
+  more. **CatastRo** provides these objects as `sf` objects, using the
+  **sf** package.
 - **Imagery:** Image layers representing the same information as the
-  vector objects. These objects are provided by **CatastRo** as
-  `SpatRaster` objects, using the **terra** package.
+  vector objects. **CatastRo** provides these objects as `SpatRaster`
+  objects, using the **terra** package.
 
 Note that the coverage of this service is 95% of the Spanish territory,
 excluding the Basque Country and Navarre[^1], which have their own
@@ -63,16 +63,15 @@ service:
 
 ### Working with layers
 
-In this example, we will demonstrate some of the main capabilities of
-the package by recreating a cadastral map of the surroundings of the
+In this example, we demonstrate some of the main capabilities of the
+package by recreating a cadastral map of the surroundings of the
 [Santiago Bernabéu
 Stadium](https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium).
-We will use the **WMS and WFS services** to get different layers, in
-order to show some of the capabilities of the package:
+We use the **WMS and WFS services** to get different layers.
 
 ``` r
 
-# Extract buildings by bounding box
+# Extract buildings by bounding box.
 # Check https://boundingbox.klokantech.com/
 
 library(CatastRo)
@@ -82,15 +81,15 @@ stadium <- catr_wfs_get_buildings_bbox(
   srs = 4326
 )
 
-# Now extract cadastral parcels. We can use spatial objects on the query
+# Extract cadastral parcels using spatial objects in the query.
 
 stadium_parcel <- catr_wfs_get_parcels_bbox(stadium)
 
-# Project for tiles
+# Project for tiles.
 
 stadium_parcel_pr <- sf::st_transform(stadium_parcel, 25830)
 
-# Extract imagery: Labels of the parcel
+# Extract parcel label imagery.
 
 labs <- catr_wms_get_layer(
   stadium_parcel_pr,
@@ -99,9 +98,9 @@ labs <- catr_wms_get_layer(
   srs = 25830
 )
 
-# Plot
+# Plot.
 library(ggplot2)
-library(tidyterra) # For terra tiles
+library(tidyterra) # For terra tiles.
 
 ggplot() +
   geom_spatraster_rgb(data = labs) +
@@ -113,19 +112,19 @@ ggplot() +
   coord_sf(crs = 25830)
 ```
 
-![Figure 1: Example - Santiago Bernabeu](./santbernabeu-1.png)
+![Figure 1: Santiago Bernabeu example](./santbernabeu-1.png)
 
-Figure 1: Example - Santiago Bernabeu
+Figure 1: Santiago Bernabeu example
 
 ### Thematic maps
 
 We can also create thematic maps using the information available on the
-spatial objects. We will produce a visualization of the urban growth of
+spatial objects. We produce a visualization of the urban growth of
 Granada using **CatastRo**, replicating the map produced by [Dominic
 Royé](https://dominicroye.github.io) ([Royé 2019](#ref-roye19)), using
 the **ATOM service**.
 
-First, we extract the coordinates of the city center of Granada using
+First, we extract the coordinates of Granada’s city center using
 **mapSpain**:
 
 ``` r
@@ -134,13 +133,13 @@ library(dplyr)
 library(sf)
 library(mapSpain)
 
-# Use mapSpain for getting the coords
+# Use mapSpain to get the coordinates.
 
 city <- esp_get_capimun(munic = "^Granada$")
 ```
 
 The next step is to extract the buildings using the ATOM service. We
-will also use the function
+also use
 [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.md)
 to identify Granada’s code in the Cadastre and download the buildings
 with
@@ -165,12 +164,12 @@ a circle with a radius of 1.5 km around the city center:
 ``` r
 
 buff <- city |>
-  # Adjust CRS to 25830: (Buildings)
+  # Adjust CRS to 25830 for buildings.
   st_transform(st_crs(city_bu)) |>
-  # Buffer
+  # Buffer.
   st_buffer(1500)
 
-# Cut buildings
+# Cut buildings.
 dataviz <- st_intersection(city_bu, buff)
 
 ggplot(dataviz) +
@@ -186,17 +185,16 @@ Now let’s extract the construction year, available in the column
 
 ``` r
 
-# Extract 4 initial positions
+# Extract the first four positions.
 year <- substr(dataviz$beginning, 1, 4)
 
-# Replace all entries that do not look like numbers with 0000
+# Replace entries that do not look like numbers with 0000.
 year[!(year %in% 0:2500)] <- "0000"
 
-
-# Convert to numeric
+# Convert to numeric.
 year <- as.integer(year)
 
-# New column
+# Add a new column.
 dataviz <- dataviz |>
   mutate(year = year)
 ```

@@ -11,7 +11,7 @@ CRAN release: 2026-04-27
 CRAN release: 2026-02-23
 
 This major release introduces a full overhaul of the codebase and test
-suite. All requests now use **httr2**, and cached files are reorganized
+suite. All requests now use **httr2** and cached files are reorganized
 into topic-based subfolders for easier management.
 
 > Because of internal changes, **existing caches are not compatible**
@@ -23,9 +23,9 @@ to [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) for
 managing your persistent cache directory. If you are a heavy
 **CatastRo** user and already have a cache directory in place, you’ll
 receive a one-time friendly message informing you about this migration.
-Consider it a warm welcome to **CatastRo** 1.0.0 😉.
+Consider it a warm welcome to **CatastRo** 1.0.0.
 
-The package now requires **R ≥ 4.1.0**, and dependency updates improve
+The package now requires **R ≥ 4.1.0** and dependency updates improve
 both performance and maintainability. All functions return tidy objects
 (tibbles or `sf` objects with tibble data).
 
@@ -35,10 +35,10 @@ both performance and maintainability. All functions return tidy objects
 - Refactor code and test suite for improved stability.
 - Switch API requests to **httr2**.
 - New options (especially for macOS and Linux users):
-  - On SSL errors use `options(catastro_ssl_verify = 0)` to disable SSL
+  - On SSL errors, use `options(catastro_ssl_verify = 0)` to disable SSL
     verification.
   - Query timeout can be controlled with
-    `options(catastro_timeout = 300)` (Default value). Check
+    `options(catastro_timeout = 300)` (default value). Check
     [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
     for details.
 - Reorganize cache into topic-based subfolders.
@@ -118,10 +118,9 @@ CRAN release: 2023-01-08
 
 CRAN release: 2022-05-27
 
-- Add **tidyterra** to ‘Suggests’.
-- Now
-  [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.md)
-  handles `sfc` objects
+- Add **tidyterra** to `Suggests`.
+- [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.md)
+  now handles `sfc` objects
   ([\#26](https://github.com/rOpenSpain/CatastRo/issues/26)).
 - [`catr_clear_cache()`](https://ropenspain.github.io/CatastRo/reference/catr_clear_cache.md)
   now has `config = FALSE` as default argument.
@@ -138,23 +137,23 @@ CRAN release: 2022-02-28
 
 **Overall revamp of the package. Major changes to the API.**
 
-- Added **ATOM INSPIRE** capabilities:
+- Add **ATOM INSPIRE** capabilities:
   - Addresses:
     [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
     [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md).
-  - Cadastral Parcels:
+  - Cadastral parcels:
     [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md),
     [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md).
   - Buildings:
     [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
     [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md).
-- Added **WFS INSPIRE** capabilities:
+- Add **WFS INSPIRE** capabilities:
   - Addresses:
     [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
     [`catr_wfs_get_address_codvia()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
     [`catr_wfs_get_address_postalcode()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
     [`catr_wfs_get_address_rc()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md).
-  - Cadastral Parcels:
+  - Cadastral parcels:
     [`catr_wfs_get_parcels_neigh_parcel()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md),
     [`catr_wfs_get_parcels_parcel()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md),
     [`catr_wfs_get_parcels_parcel_zoning()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md),
@@ -162,9 +161,9 @@ CRAN release: 2022-02-28
   - Buildings:
     [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
     [`catr_wfs_get_buildings_rc()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md).
-- Added **WMS INSPIRE** capabilities:
+- Add **WMS INSPIRE** capabilities:
   [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md).
-- Added new interface for **OVC Services**. Deprecated previous
+- Add a new interface for **OVC Services**. Deprecated previous
   functions in favor of the new API:
   - New SRS database in
     [`?catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),

@@ -1,8 +1,8 @@
 # Set your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache dir
 
-Store your `cache_dir` path on your local machine for future sessions.
-Type `Sys.getenv("CATASTROESP_CACHE_DIR")` to find your cached path or
-use `catr_detect_cache_dir()`.
+Store your `cache_dir` path locally for future sessions. Type
+`Sys.getenv("CATASTROESP_CACHE_DIR")` or use `catr_detect_cache_dir()`
+to find your cached path.
 
 ## Usage
 
@@ -28,7 +28,7 @@ catr_detect_cache_dir()
 - overwrite:
 
   Logical. If `TRUE`, overwrites an existing `CATASTROESP_CACHE_DIR`
-  already present on your machine.
+  value already present on your machine.
 
 - install:
 
@@ -64,9 +64,9 @@ In [CatastRo](https://CRAN.R-project.org/package=CatastRo) \>= 1.0.0 the
 location of the configuration file has moved from
 `rappdirs::user_config_dir("CatastRo", "R")` to
 `tools::R_user_dir("CatastRo", "config")`. We have implemented a
-functionality that migrates previous configuration files from one
-location to another with a message. This message appears only once
-informing of the migration.
+function that migrates previous configuration files from one location to
+another with a message. This message appears only once to inform you of
+the migration.
 
 ## Caching strategies
 
@@ -79,7 +79,7 @@ implements the following caching options:
   [`tempdir()`](https://rdrr.io/r/base/tempfile.html)-based cache (no
   install).
 
-- Modify the cache for a single session setting
+- Modify the cache for a single session by setting
   `catr_set_cache_dir(cache_dir = "a/path/here")`.
 
 - For reproducible workflows, install a persistent cache with
@@ -90,11 +90,11 @@ implements the following caching options:
   corresponding function.
 
 Sometimes cached files may be corrupt. In that case, try re-downloading
-the data setting `update_cache = TRUE` in the corresponding function.
+the data by setting `update_cache = TRUE` in the corresponding function.
 
 If you experience any problem downloading, try downloading the
 corresponding file by another method and save it in your `cache_dir`.
-Use the option `verbose = TRUE` for debugging the API query and
+Use the option `verbose = TRUE` to debug the API query and
 `catr_detect_cache_dir()` to identify your cached path.
 
 ## See also
@@ -108,32 +108,32 @@ Other cache utilities:
 
 ``` r
 
-# Caution! It modifies your current state
+# Caution! This modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpGWFBV7/CatastRo
+#> ℹ /tmp/RtmpxWKoJA/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 catr_set_cache_dir(ex)
-#> ℹ CatastRo cache dir is /tmp/RtmpGWFBV7/example/cachenew.
+#> ℹ CatastRo cache dir is /tmp/RtmpxWKoJA/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 catr_detect_cache_dir()
-#> ℹ /tmp/RtmpGWFBV7/example/cachenew
-#> [1] "/tmp/RtmpGWFBV7/example/cachenew"
+#> ℹ /tmp/RtmpxWKoJA/example/cachenew
+#> [1] "/tmp/RtmpxWKoJA/example/cachenew"
 
 # Restore initial cache
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache dir is /tmp/RtmpGWFBV7/CatastRo.
+#> ℹ CatastRo cache dir is /tmp/RtmpxWKoJA/CatastRo.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpGWFBV7/CatastRo
+#> ℹ /tmp/RtmpxWKoJA/CatastRo
 #> [1] TRUE
 # }
 
 
 catr_detect_cache_dir()
-#> ℹ /tmp/RtmpGWFBV7/CatastRo
-#> [1] "/tmp/RtmpGWFBV7/CatastRo"
+#> ℹ /tmp/RtmpxWKoJA/CatastRo
+#> [1] "/tmp/RtmpxWKoJA/CatastRo"
 ```

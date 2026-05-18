@@ -32,7 +32,7 @@ inspire_wfs_get(
 
 - query:
 
-  Named list. Names and values of arguments to query.
+  Named list. Names and values of arguments for the query.
 
 - verbose:
 
@@ -72,7 +72,7 @@ Other INSPIRE WFS services:
 ## Examples
 
 ``` r
-# Accessing the Cadastre of Navarra
+# Access the Cadastre of Navarra
 # Try also https://ropenspain.github.io/CatastRoNav/
 
 file_local <- inspire_wfs_get(

@@ -28,15 +28,15 @@ catr_wms_get_layer(
 
   See **Bounding box**. It may be:
 
-  - A numeric vector of length 4 with the coordinates that defines the
-    bounding box: `c(xmin, ymin, xmax, ymax)`
+  - A numeric vector of length 4 with the coordinates that define the
+    bounding box: `c(xmin, ymin, xmax, ymax)`.
 
   - A `sf/sfc` object, as provided by the
     [sf](https://CRAN.R-project.org/package=sf) package.
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `wfs_service` column. See **Bounding box**.
 
@@ -120,7 +120,7 @@ the requested tile via the `srs` argument, which should match the SRS of
 
 The argument `what` defines the layer to be extracted. The equivalence
 with the [API
-Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
 reference is:
 
 - `"parcel"`: CP.CadastralParcel
@@ -142,19 +142,19 @@ reference is:
 The WMS service provides different styles on each layer (`what`
 argument). Some of the styles available are:
 
-- `"parcel"`: styles : `"BoundariesOnly"`, `"ReferencePointOnly"`,
+- `"parcel"`: Styles: `"BoundariesOnly"`, `"ReferencePointOnly"`,
   `"ELFCadastre"`.
 
-- `"zoning"`: styles : `"BoundariesOnly"`, `"ELFCadastre"`.
+- `"zoning"`: Styles: `"BoundariesOnly"`, `"ELFCadastre"`.
 
-- `"building"`, `"buildingpart"`: `"ELFCadastre"`
+- `"building"`, `"buildingpart"`: `"ELFCadastre"`.
 
-- `"address"`: `"Number.ELFCadastre"`
+- `"address"`: `"Number.ELFCadastre"`.
 
-- `"admboundary"`, `"admunit"`: `"ELFCadastre"`
+- `"admboundary"`, `"admunit"`: `"ELFCadastre"`.
 
 Check the [API
-Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
 for more information.
 
 ## See also
@@ -221,7 +221,7 @@ parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
 
 parcels_img <- catr_wms_get_layer(parcels,
   what = "buildingpart",
-  srs = 25830, # As parcels object
+  srs = 25830, # Same as the parcels object
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )

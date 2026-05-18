@@ -1,7 +1,7 @@
 # ATOM INSPIRE: Search for municipality codes
 
 Search for a municipality (as a string, part of a string, or code) and
-get the corresponding code as per the Cadastre.
+get the corresponding code according to the Cadastre.
 
 ## Usage
 

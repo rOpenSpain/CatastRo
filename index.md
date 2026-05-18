@@ -21,8 +21,8 @@ The SSL certificate of the Spanish Cadastre presents some issues that
 may cause an error when using **CatastRo** (especially on macOS, see
 issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 
-In **CatastRo \>= 1.0.0** you can try to fix it by running this line in
-your session right after you start using the package:
+In **CatastRo \>= 1.0.0**, you can try to fix it by running this line in
+your session right after loading the package:
 
 ``` r
 
@@ -43,7 +43,7 @@ options(catastro_ssl_verify = 0)
 
 ## Package API
 
-The functions of **CatastRo** are organised by API endpoint. The package
+The functions of **CatastRo** are organized by API endpoint. The package
 naming convention is `catr_*api*_*description*`.
 
 ### OVCCoordenadas
@@ -54,9 +54,9 @@ references using the
 service.
 
 These functions are named `catr_ovc_get_*` and return a tibble, as
-provided by package **tibble**. See
+provided by the **tibble** package. See
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)
-where these functions are described.
+for a detailed description of these functions.
 
 ### INSPIRE
 
@@ -74,7 +74,7 @@ service:
 
 #### ATOM service
 
-The ATOM service allows batch-downloading vector objects of different
+The ATOM service allows batch downloading vector objects of different
 cadastral elements for a specific municipality. The result is provided
 as `sf` objects (see the **sf** package).
 
@@ -144,7 +144,7 @@ catr_ovc_get_rccoor(
 
 bu <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
-# Map
+# Map.
 library(ggplot2)
 
 ggplot(bu) +
@@ -158,7 +158,7 @@ ggplot(bu) +
   labs(title = "Nava de la Asunción, Segovia")
 ```
 
-![Extracting buildings in Nava de la Asuncion with the ATOM
+![Extract buildings in Nava de la Asuncion with the ATOM
 service](reference/figures/README-atom-1.png)
 
 ### Extract geometries using the WFS service
@@ -170,7 +170,7 @@ wfs_get_buildings <- catr_wfs_get_buildings_bbox(
   srs = 4326
 )
 
-# Map
+# Map.
 ggplot(wfs_get_buildings) +
   geom_sf() +
   labs(title = "Alcázar of Segovia, Segovia, Spain")
@@ -181,7 +181,7 @@ service](reference/figures/README-wfs-1.png)
 
 ## A note on caching
 
-Some datasets and tiles may exceed 50MB. You can set a local cache
+Some datasets and tiles may exceed 50 MB. You can set a local cache
 directory using the following function:
 
 ``` r
@@ -209,7 +209,7 @@ A BibTeX entry for LaTeX users is:
   year = {2026},
   version = {1.0.1},
   url = {https://ropenspain.github.io/CatastRo/},
-  abstract = {Access public spatial data available under the INSPIRE directive. Tools for downloading references and addresses of properties, as well as map images.},
+  abstract = {Access public spatial data from the Spanish Cadastre through its INSPIRE and cadastral web services. Provides tools to download cadastral parcels, buildings, addresses and map images, and to geocode cadastral references.},
 }
 ```
 

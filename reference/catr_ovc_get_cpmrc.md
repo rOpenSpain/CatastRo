@@ -24,7 +24,7 @@ catr_ovc_get_cpmrc(
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
@@ -39,7 +39,7 @@ catr_ovc_get_cpmrc(
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+See **Details**.
 
 ## Details
 
@@ -53,11 +53,11 @@ one row per cadastral reference, including the following columns:
 
 - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 
-- `refcat`: Cadastral Reference.
+- `refcat`: Cadastral reference.
 
 - `address`: Address as recorded in the Cadastre.
 
-- Rest of fields: Check the API Docs.
+- Rest of fields: Check the API documentation.
 
 ## References
 

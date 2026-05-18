@@ -19,7 +19,7 @@
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas Web Service</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas web service</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -42,9 +42,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="atom-inspire-api">ATOM INSPIRE API<a class="anchor" aria-label="anchor" href="#atom-inspire-api"></a></h2>
+      <h2 id="atom-inspire-services">ATOM INSPIRE services<a class="anchor" aria-label="anchor" href="#atom-inspire-services"></a></h2>
 
-      <div class="section-desc"><p>These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><span class="pkg">sf</span></a> objects as provided by the INSPIRE ATOM services of the Spanish Cadastre.</p></div>
+      <div class="section-desc"><p>These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><span class="pkg">sf</span></a> objects from the INSPIRE ATOM services of the Spanish Cadastre.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -100,9 +100,9 @@
         </dt>
         <dd>ATOM INSPIRE: Search for municipality codes</dd>
       </dl></div><div class="section level2">
-      <h2 id="wfs-inspire-api">WFS INSPIRE API<a class="anchor" aria-label="anchor" href="#wfs-inspire-api"></a></h2>
+      <h2 id="wfs-inspire-services">WFS INSPIRE services<a class="anchor" aria-label="anchor" href="#wfs-inspire-services"></a></h2>
 
-      <div class="section-desc"><p>These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><span class="pkg">sf</span></a> objects as provided by the INSPIRE WFS services of the Spanish Cadastre.</p></div>
+      <div class="section-desc"><p>These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><span class="pkg">sf</span></a> objects from the INSPIRE WFS services of the Spanish Cadastre.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -144,9 +144,9 @@
         </dt>
         <dd>Client tool for WFS INSPIRE services</dd>
       </dl></div><div class="section level2">
-      <h2 id="wms-inspire-api">WMS INSPIRE API<a class="anchor" aria-label="anchor" href="#wms-inspire-api"></a></h2>
+      <h2 id="wms-inspire-services">WMS INSPIRE services<a class="anchor" aria-label="anchor" href="#wms-inspire-services"></a></h2>
 
-      <div class="section-desc"><p>These functions return <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">SpatRaster</a></code> objects.</p></div>
+      <div class="section-desc"><p>These functions return <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">SpatRaster</a></code> map images from the INSPIRE WMS services of the Spanish Cadastre.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -181,9 +181,9 @@
         </dt>
         <dd>Visualise <code>SpatRaster</code> objects as images (from tidyterra)</dd>
       </dl></div><div class="section level2">
-      <h2 id="ovccoordenadas-api">OVCCoordenadas API<a class="anchor" aria-label="anchor" href="#ovccoordenadas-api"></a></h2>
+      <h2 id="ovccoordenadas-service">OVCCoordenadas service<a class="anchor" aria-label="anchor" href="#ovccoordenadas-service"></a></h2>
 
-      <div class="section-desc"><p>These functions allow access to the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p></div>
+      <div class="section-desc"><p>These functions geocode and reverse geocode cadastral references using the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -218,9 +218,9 @@
         </dt>
         <dd>Reference SRS codes for <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> APIs</dd>
       </dl></div><div class="section level2">
-      <h2 id="ovccallejero-api">OVCCallejero API<a class="anchor" aria-label="anchor" href="#ovccallejero-api"></a></h2>
+      <h2 id="ovccallejero-service">OVCCallejero service<a class="anchor" aria-label="anchor" href="#ovccallejero-service"></a></h2>
 
-      <div class="section-desc"><p>These functions allow access to the <a href="http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx" class="external-link">OVCCallejero</a> service.</p></div>
+      <div class="section-desc"><p>These functions query province and municipality codes using the <a href="http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx" class="external-link">OVCCallejero</a> service.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -243,7 +243,7 @@
       </dl></div><div class="section level2">
       <h2 id="search-functions">Search functions<a class="anchor" aria-label="anchor" href="#search-functions"></a></h2>
 
-
+      <div class="section-desc"><p>Helpers for finding cadastral municipality codes and related reference data.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -280,7 +280,7 @@
       </dl></div><div class="section level2">
       <h2 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h2>
 
-
+      <div class="section-desc"><p>Tools for configuring, detecting and clearing the local cache used by <strong>CatastRo</strong>.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -303,7 +303,7 @@
       </dl></div><div class="section level2">
       <h2 id="databases-and-reference-data">Databases and reference data<a class="anchor" aria-label="anchor" href="#databases-and-reference-data"></a></h2>
 
-
+      <div class="section-desc"><p>Reference tables and helper databases used by the package services.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -347,7 +347,7 @@
       </dl></div><div class="section level2">
       <h2 id="about-the-package">About the package<a class="anchor" aria-label="anchor" href="#about-the-package"></a></h2>
 
-
+      <div class="section-desc"><p>Package-level documentation and overview.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -359,7 +359,7 @@
           <code><a href="CatastRo-package.html">CatastRo</a></code> <code><a href="CatastRo-package.html">CatastRo-package</a></code>
 
         </dt>
-        <dd>CatastRo: Interface to the API 'Sede Electronica Del Catastro'</dd>
+        <dd>CatastRo: Interface to the Spanish Cadastre APIs</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

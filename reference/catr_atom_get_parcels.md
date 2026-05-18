@@ -116,7 +116,7 @@ library(ggplot2)
 ggplot(s) +
   geom_sf() +
   labs(
-    title = "Cadastral Parcels",
+    title = "Cadastral parcels",
     subtitle = "Melque de Cercos, Segovia"
   )
 

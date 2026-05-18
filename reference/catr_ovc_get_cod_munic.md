@@ -2,8 +2,8 @@
 
 Implementation of the OVCCallejero service
 [ConsultaMunicipioCodigos](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos).
-Returns names and codes of a municipality as per the Cadastre and the
-INE (National Statistics Institute).
+Returns names and codes of a municipality according to the Cadastre and
+the INE (National Statistics Institute).
 
 ## Usage
 
@@ -31,7 +31,7 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+See **Details**.
 
 ## Details
 
@@ -39,7 +39,7 @@ On a successful query, the function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 one row including the following columns:
 
-- `munic`: Name of the municipality as per the Cadastre.
+- `munic`: Name of the municipality according to the Cadastre.
 
 - `catr_to`: Cadastral territorial office code.
 
@@ -47,13 +47,13 @@ one row including the following columns:
 
 - `catrcode`: Full Cadastral code for the municipality.
 
-- `cpro`: Province code as per the INE.
+- `cpro`: Province code according to the INE.
 
-- `cmun`: Municipality code as per the INE.
+- `cmun`: Municipality code according to the INE.
 
 - `inecode`: Full INE code for the municipality.
 
-- Rest of fields: Check the API Docs.
+- Rest of fields: Check the API documentation.
 
 ## References
 

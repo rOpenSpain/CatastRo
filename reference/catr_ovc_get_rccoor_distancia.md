@@ -2,7 +2,7 @@
 
 Implementation of the OVCCoordenadas service [Consulta RCCOOR
 Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
-Return cadastral references for coordinates. If none found, the API
+Returns cadastral references for coordinates. If none found, the API
 returns references in a 50 square meter area around the requested
 coordinates.
 
@@ -24,7 +24,7 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
@@ -35,7 +35,7 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+See **Details**.
 
 ## Details
 
@@ -56,7 +56,7 @@ one row by cadastral reference, including the following columns:
 - `cmun_ine`: Municipality code as registered on the INE (National
   Statistics Institute).
 
-- Rest of fields: Check the API Docs.
+- Rest of fields: Check the API documentation.
 
 ## References
 

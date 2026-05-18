@@ -67,7 +67,7 @@ catr_atom_get_buildings_db_to(
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 with the information requested with the following fields:
 
-- `territorial_office`: territorial office, corresponding to each
+- `territorial_office`: Territorial office, corresponding to each
   province of Spain except the Basque Country and Navarre.
 
 - `url`: ATOM URL for the corresponding territorial office.
