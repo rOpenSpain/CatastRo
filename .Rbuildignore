@@ -56,3 +56,4 @@
 [.]markdown$
 ^\.positai$
 ^\.claude$
+^\.gitattributes$

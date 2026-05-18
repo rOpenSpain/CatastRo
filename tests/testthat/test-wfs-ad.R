@@ -71,12 +71,12 @@ test_that("AD Postal Code", {
   skip_on_cran()
   skip_if_offline()
 
-  obj <- catr_wfs_get_address_postalcode("18518")
+  obj <- catr_wfs_get_address_postalcode("11009")
   expect_true(nrow(obj) > 1)
   expect_s3_class(obj, "sf")
 
   # Another SRS
-  obj <- catr_wfs_get_address_postalcode("18518", srs = 4326)
+  obj <- catr_wfs_get_address_postalcode("11009", srs = 4326)
   expect_s3_class(obj, "sf")
   expect_equal(sf::st_crs(obj)$epsg, 4326)
 
