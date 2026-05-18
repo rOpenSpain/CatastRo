@@ -23,56 +23,67 @@ authors:
     href: "https://www.enchufa2.es/"
 
 reference:
-- title: ATOM INSPIRE API
+- title: ATOM INSPIRE services
   desc: >
     These functions return <a
     href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link"><span class="pkg">sf</span></a> objects as provided by
-    the INSPIRE ATOM services of the Spanish Cadastre.
+    class="external-link"><span class="pkg">sf</span></a> objects from the
+    INSPIRE ATOM services of the Spanish Cadastre.
   contents:
   - has_concept("ATOM")
-- title: WFS INSPIRE API
+- title: WFS INSPIRE services
   desc: >
     These functions return <a
     href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link"><span class="pkg">sf</span></a> objects as provided by
-    the INSPIRE WFS services of the Spanish Cadastre.
+    class="external-link"><span class="pkg">sf</span></a> objects from the
+    INSPIRE WFS services of the Spanish Cadastre.
   contents:
   - has_concept("WFS")
-- title: WMS INSPIRE API
+- title: WMS INSPIRE services
   desc: >
     These functions return <code><a
     href="https://rspatial.github.io/terra/reference/rast.html"
-    class="external-link">SpatRaster</a></code> objects.
+    class="external-link">SpatRaster</a></code> map images from the INSPIRE WMS
+    services of the Spanish Cadastre.
   contents:
   - has_concept("WMS")
   - mapSpain::esp_get_tiles()
   - terra::plotRGB()
   - tidyterra::geom_spatraster_rgb()
-- title: OVCCoordenadas API
+- title: OVCCoordenadas service
   desc: >
-    These functions allow access to the
+    These functions geocode and reverse geocode cadastral references using the
     [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
     service.
   contents:
   - has_concept("OVCCoordenadas")
-- title: OVCCallejero API
+- title: OVCCallejero service
   desc: >
-    These functions allow access to the
+    These functions query province and municipality codes using the
     [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
     service.
   contents:
   - has_concept("OVCCallejero")
 - title: Search functions
+  desc: >
+    Helpers for finding cadastral municipality codes and related reference
+    data.
   contents:
   - has_concept("search")
 - title: Cache management
+  desc: >
+    Tools for configuring, detecting and clearing the local cache used by
+    **CatastRo**.
   contents:
   - has_concept("cache utilities")
 - title: Databases and reference data
+  desc: >
+    Reference tables and helper databases used by the package services.
   contents:
   - has_concept("databases")
 
 - title: About the package
+  desc: >
+    Package-level documentation and overview.
   contents:
   - CatastRo-package

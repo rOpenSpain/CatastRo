@@ -1,4 +1,4 @@
-# Helper
+# Helper.
 ovcurl <- function(x) {
   # nocov start
   base <- "https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc"

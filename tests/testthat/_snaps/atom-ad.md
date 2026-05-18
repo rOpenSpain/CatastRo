@@ -3,8 +3,8 @@
     Code
       fend <- catr_atom_get_address("Madrid", cache_dir = cdir)
     Message
-      x Offline
-      > Returning "NULL"
+      x Offline.
+      > Returning "NULL".
 
 # Test 404 all
 
@@ -12,8 +12,8 @@
       fend <- catr_atom_get_address("MELQUE", to = "Segovia", cache_dir = cdir)
     Message
       x Error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
-      ! If you think this is a bug please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
-      > Returning "NULL"
+      ! If you think this is a bug, please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
+      > Returning "NULL".
 
 # ATOM Addresses
 
@@ -43,6 +43,6 @@
       fend <- catr_atom_get_address("Melque", to = "Segovia", cache_dir = cdir)
     Message
       x Error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/40/40146-MELQUE%20DE%20CERCOS/A.ES.SDGC.AD.40146.zip>.
-      ! If you think this is a bug please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
-      > Returning "NULL"
+      ! If you think this is a bug, please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
+      > Returning "NULL".
 

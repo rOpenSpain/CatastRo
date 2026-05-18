@@ -82,7 +82,7 @@ catr_atom_get_address <- function(
   if (!is.null(to)) {
     linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
 
-    # Filter by territorial office if matches found
+    # Filter by territorial office if matches are found.
     if (length(linesto) > 1) {
       all <- all[linesto, ]
     } else {
@@ -106,7 +106,7 @@ catr_atom_get_address <- function(
     return(NULL)
   }
 
-  # Compute string distances for municipality matching
+  # Compute string distances for municipality matching.
   with_d <- data.frame(
     munic = all$munic,
     territorial_office = all$territorial_office,
@@ -143,10 +143,10 @@ catr_atom_get_address <- function(
     cache_dir = cache_dir,
     verbose = FALSE
   )
-  # Extract municipality code from reference string
+  # Extract municipality code from reference string.
   ref <- unlist(strsplit(tb$munic, "-"))[1]
 
-  # Prepare download URL for municipality data
+  # Prepare download URL for municipality data.
   api_entry <- municurls[grepl(ref, municurls$munic, ignore.case = TRUE), ]$url
 
   api_entry <- URLencode(api_entry)
@@ -170,7 +170,7 @@ catr_atom_get_address <- function(
     layer_hint = "Thorough"
   )
 
-  # Rename and prepare for left join
+  # Rename and prepare for left join.
   names(str_names) <- paste0("tfname_", names(str_names))
 
   sfobj$tfname_gml_id <- vapply(

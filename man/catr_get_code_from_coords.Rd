@@ -16,14 +16,14 @@ catr_get_code_from_coords(
 \arguments{
 \item{x}{It may be:
 \itemize{
-\item A pair of coordinates \code{c(x,y)}. In this case the \code{srs} of the coordinates
-must be provided.
+\item A pair of coordinates \code{c(x, y)}. In this case the \code{srs} of the
+coordinates must be provided.
 \item A \code{\link[sf:st_sf]{sf}} object. If the object has several geometries, only
 the first geometry is used. The function extracts coordinates using
 \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }}
 
-\item{srs}{SRS/CRS to use on the query. To see allowed values, use
+\item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
@@ -52,7 +52,7 @@ municipalities.}
   }}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}. See \strong{Details}
+A \link[tibble:tbl_df]{tibble}. See \strong{Details}.
 }
 \description{
 Get the municipality code for coordinates using a \code{\link[sf:st_sf]{sf}}
@@ -62,20 +62,20 @@ object or a pair of coordinates via \code{\link[=catr_ovc_get_cod_munic]{catr_ov
 On a successful query, the function returns a \link[tibble:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
-\item \code{munic}: Name of the municipality as per the Cadastre.
+\item \code{munic}: Name of the municipality according to the Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
 \item \code{catr_munic}: Municipality code as recorded on the Cadastre.
 \item \code{catrcode}: Full Cadastral code for the municipality.
-\item \code{cpro}: Province code as per the INE.
-\item \code{cmun}: Municipality code as per the INE.
+\item \code{cpro}: Province code according to the INE.
+\item \code{cmun}: Municipality code according to the INE.
 \item \code{inecode}: Full INE code for the municipality.
-\item Rest of fields: Check the API Docs.
+\item Rest of fields: Check the API documentation.
 }
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
-# Use with coords
+# Use with coordinates
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 
 # Use with sf

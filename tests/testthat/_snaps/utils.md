@@ -97,7 +97,7 @@
       a_fun()
     Condition
       Error in `a_fun()`:
-      ! `a` can't be missing.
+      ! `a` cannot be missing.
 
 ---
 
@@ -105,5 +105,5 @@
       a_fun(a = 1)
     Condition
       Error in `a_fun()`:
-      ! `b` can't be missing.
+      ! `b` cannot be missing.
 

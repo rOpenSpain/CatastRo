@@ -43,7 +43,7 @@ matching.}
 A \link[tibble:tbl_df]{tibble} with the information requested with the following
 fields:
 \itemize{
-\item \code{territorial_office}: territorial office, corresponding to each province
+\item \code{territorial_office}: Territorial office, corresponding to each province
 of Spain except the Basque Country and Navarre.
 \item \code{url}: ATOM URL for the corresponding territorial office.
 \item \code{munic}: Name of the municipality.
@@ -55,13 +55,12 @@ service is updated twice a year}.
 Create a database containing the URLs provided in the INSPIRE ATOM
 service of the Spanish Cadastre for extracting cadastral parcels.
 \itemize{
-\item \code{catr_atom_get_parcels_db_all()} provides a top-level table
-including information on all the territorial offices (except the
-Basque Country and Navarre) listing the municipalities included in
-each office.
+\item \code{catr_atom_get_parcels_db_all()} provides a top-level table including
+information on all the territorial offices (except the Basque Country and
+Navarre) listing the municipalities included in each office.
 \item \code{catr_atom_get_parcels_db_to()} provides a table for the specified
-territorial office including information for each of the
-municipalities of that office.
+territorial office including information for each of the municipalities
+of that office.
 }
 }
 \examples{

@@ -15,9 +15,9 @@
 #' @inherit catr_atom_get_address references return
 #'
 #' @param what Information to load. Options are:
-#'  - `"building"` for buildings.
-#'  - `"buildingpart"` for parts of a building.
-#'  - `"other"` for other elements such as swimming pools.
+#' - `"building"` for buildings.
+#' - `"buildingpart"` for parts of a building.
+#' - `"other"` for other elements such as swimming pools.
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -53,10 +53,10 @@ catr_atom_get_buildings <- function(
     )
   }
 
-  # Sanity checks
+  # Validate arguments.
   what <- match_arg_pretty(what)
 
-  # Transform
+  # Convert the selected layer to the source file name.
   what <- switch(what,
     "building" = "building.gml",
     "buildingpart" = "buildingpart.gml",
@@ -78,7 +78,7 @@ catr_atom_get_buildings <- function(
   if (!is.null(to)) {
     linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
 
-    # Filter by territorial office if matches found
+    # Filter by territorial office if matches are found.
     if (length(linesto) > 1) {
       all <- all[linesto, ]
     } else {
@@ -102,7 +102,7 @@ catr_atom_get_buildings <- function(
     return(NULL)
   }
 
-  # Compute string distances for municipality matching
+  # Compute string distances for municipality matching.
   with_d <- data.frame(
     munic = all$munic,
     territorial_office = all$territorial_office,
@@ -139,10 +139,10 @@ catr_atom_get_buildings <- function(
     cache_dir = cache_dir,
     verbose = FALSE
   )
-  # Extract municipality code from reference string
+  # Extract municipality code from reference string.
   ref <- unlist(strsplit(tb$munic, "-"))[1]
 
-  # Prepare download URL for municipality data
+  # Prepare download URL for municipality data.
   api_entry <- municurls[grepl(ref, municurls$munic, ignore.case = TRUE), ]$url
 
   api_entry <- URLencode(api_entry)

@@ -19,15 +19,15 @@
 #' [sf::st_centroid()].
 #'
 #' @param x It may be:
-#'   - A pair of coordinates `c(x,y)`. In this case the `srs` of the coordinates
-#'     must be provided.
-#'   - A [`sf`][sf::st_sf] object. If the object has several geometries, only
-#'     the first geometry is used. The function extracts coordinates using
-#'     `sf::st_centroid(x, of_largest_polygon = TRUE)`.
+#' - A pair of coordinates `c(x, y)`. In this case the `srs` of the
+#'   coordinates must be provided.
+#' - A [`sf`][sf::st_sf] object. If the object has several geometries, only
+#'   the first geometry is used. The function extracts coordinates using
+#'   `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 #'
 #' @examplesIf run_example()
 #' \donttest{
-#' # Use with coords
+#' # Use with coordinates
 #' catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 #'
 #' # Use with sf
@@ -59,7 +59,7 @@ catr_get_code_from_coords <- function(
     x <- sf::st_point(x)
     x <- sf::st_sfc(x)
 
-    # Set crs
+    # Set CRS.
     sf::st_crs(x) <- sf::st_crs(srs)
   }
 
@@ -74,7 +74,7 @@ catr_get_code_from_coords <- function(
   x <- sf::st_transform(x[1], 3857)
   x <- sf::st_centroid(x, of_largest_polygon = TRUE)
 
-  # Get munic
+  # Get municipality.
   cache_dir <- create_cache_dir(cache_dir)
 
   mun <- mapSpain::esp_get_munic_siane(
@@ -92,7 +92,7 @@ catr_get_code_from_coords <- function(
   aa <- sf::st_intersects(mun, x, sparse = FALSE)
 
   if (!any(as.vector(aa))) {
-    cli::cli_alert_warning("Coordinates not found")
+    cli::cli_alert_warning("Coordinates not found.")
     return(NULL)
   }
 

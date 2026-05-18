@@ -13,9 +13,10 @@
 #' @export
 #'
 #' @inherit catr_atom_get_address references return
+#'
 #' @param what Information to load. Options are:
-#'   - `"parcel"` for cadastral parcels.
-#'   - `"zoning"` for cadastral zoning.
+#' - `"parcel"` for cadastral parcels.
+#' - `"zoning"` for cadastral zoning.
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -26,7 +27,7 @@
 #' ggplot(s) +
 #'   geom_sf() +
 #'   labs(
-#'     title = "Cadastral Parcels",
+#'     title = "Cadastral parcels",
 #'     subtitle = "Melque de Cercos, Segovia"
 #'   )
 #' }
@@ -48,7 +49,7 @@ catr_atom_get_parcels <- function(
     )
   }
 
-  # Sanity checks
+  # Validate arguments.
   what <- match_arg_pretty(what)
   munic <- validate_non_empty_arg(munic)
   to <- ensure_null(to)
@@ -65,7 +66,7 @@ catr_atom_get_parcels <- function(
   if (!is.null(to)) {
     linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
 
-    # Filter by territorial office if matches found
+    # Filter by territorial office if matches are found.
     if (length(linesto) > 1) {
       all <- all[linesto, ]
     } else {
@@ -89,7 +90,7 @@ catr_atom_get_parcels <- function(
     return(NULL)
   }
 
-  # Compute string distances for municipality matching
+  # Compute string distances for municipality matching.
   with_d <- data.frame(
     munic = all$munic,
     territorial_office = all$territorial_office,
@@ -126,10 +127,10 @@ catr_atom_get_parcels <- function(
     cache_dir = cache_dir,
     verbose = FALSE
   )
-  # Extract municipality code from reference string
+  # Extract municipality code from reference string.
   ref <- unlist(strsplit(tb$munic, "-"))[1]
 
-  # Prepare download URL for municipality data
+  # Prepare download URL for municipality data.
   api_entry <- municurls[grepl(ref, municurls$munic, ignore.case = TRUE), ]$url
 
   api_entry <- URLencode(api_entry)

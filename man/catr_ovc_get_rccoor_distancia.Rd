@@ -14,17 +14,17 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 \item{lon}{Longitude for the query, expressed in the CRS/SRS defined by
 \code{srs}.}
 
-\item{srs}{SRS/CRS to use on the query. To see allowed values, use
+\item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}. See \strong{Details}
+A \link[tibble:tbl_df]{tibble}. See \strong{Details}.
 }
 \description{
 Implementation of the OVCCoordenadas service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}. Return cadastral
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}. Returns cadastral
 references for coordinates. If none found, the API returns references
 in a 50 square meter area around the requested coordinates.
 }
@@ -40,7 +40,7 @@ one row by cadastral reference, including the following columns:
 \item \code{address}: Address as recorded in the Cadastre.
 \item \code{cmun_ine}: Municipality code as registered on the INE (National
 Statistics Institute).
-\item Rest of fields: Check the API Docs.
+\item Rest of fields: Check the API documentation.
 }
 }
 \examples{

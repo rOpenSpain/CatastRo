@@ -17,7 +17,7 @@
 #'   Internet.
 #' @param hostname Character string. Host that holds the resource.
 #' @param path Character string. Specific resource in the host to access.
-#' @param query Named list. Names and values of arguments to query.
+#' @param query Named list. Names and values of arguments for the query.
 #'
 #' @return
 #' Character string. Path of the resulting file in the [tempfile()] folder.
@@ -28,7 +28,7 @@
 #' cadastral or INSPIRE resources. See **Examples**.
 #'
 #' @examplesIf run_example()
-#' # Accessing the Cadastre of Navarra
+#' # Access the Cadastre of Navarra
 #' # Try also https://ropenspain.github.io/CatastRoNav/
 #'
 #' file_local <- inspire_wfs_get(
@@ -57,7 +57,7 @@ inspire_wfs_get <- function(
   query = list(),
   verbose = FALSE
 ) {
-  # Validate query
+  # Validate query.
   if (!is.list(query)) {
     cli::cli_abort(
       "{.arg query} should be a list, not {.obj_type_friendly {query}}."
@@ -81,27 +81,27 @@ inspire_wfs_get <- function(
   }
 
   if (l_end == 0) {
-    cli::cli_abort("{.arg query} can't be {.obj_type_friendly {query}}.")
+    cli::cli_abort("{.arg query} cannot be {.obj_type_friendly {query}}.")
   }
 
-  # SRS should be checked
+  # Normalize SRS values.
   if ("srsname" %in% names(query)) {
     srs <- query$srsname
     query$srsname <- ifelse(grepl("^EPS", srs), srs, paste0("EPSG:", srs))
   }
 
-  # We don't use httr2 since some needed values (::, ,) are masked
+  # Avoid httr2 because it masks some required values (`::`, `,`).
   q <- paste0(names(query), "=", query, collapse = "&")
 
-  # Build url
+  # Build URL.
   url <- paste0(trimws(hostname), "/", trimws(path), "?", q)
 
-  # Clean double slashes and ?? just in case
+  # Clean double slashes and repeated question marks.
   url <- gsub("//", "/", url, fixed = TRUE)
   url <- gsub("??", "?", url, fixed = TRUE)
 
   url <- paste0(trimws(scheme), "://", url)
-  # Create id from md5sum
+  # Create an ID from the MD5 checksum.
   tmpfile <- tempfile(fileext = "txt")
   writeLines(url, tmpfile)
   id <- unname(tools::md5sum(tmpfile))
@@ -120,14 +120,14 @@ inspire_wfs_get <- function(
     return(NULL)
   }
 
-  # Check results
+  # Check results.
   top20lines <- readLines(file_local, n = 20, warn = FALSE)
 
   if (!any(grepl("<Exception", top20lines))) {
     return(file_local)
   }
 
-  # If not gml
+  # Handle non-GML responses.
   xml_file <- gsub("gml$", "xml", file_local)
   file.copy(file_local, xml_file)
 
@@ -139,7 +139,7 @@ inspire_wfs_get <- function(
     msg
   ))
 
-  # Clean temp
+  # Clean temporary files.
   unlink(list.files(
     tempdir(),
     recursive = TRUE,
@@ -154,10 +154,10 @@ inspire_wfs_get <- function(
 #' Results in 3857 since the Catastro API fails in some other projections.
 #' Also warn if beyond the API limits.
 #'
-#' @param x sf or double vector of length 4.
-#' @param srs SRS of the bbox, not needed if x is sf.
-#' @param srs_dest Destination srs.
-#' @param limit_km2 API limit
+#' @param x `sf` object or double vector of length 4.
+#' @param srs SRS of the bbox, not needed if `x` is an `sf` object.
+#' @param srs_dest Destination SRS.
+#' @param limit_km2 API limit.
 #'
 #' @noRd
 wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
@@ -188,15 +188,15 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
 
   sfobj <- sf::st_transform(sfobj, srs_dest)
 
-  # API limits (using 3857)
+  # API limits using EPSG:3857.
   obj_for_area <- sf::st_transform(sfobj, 3857)
   area <- sf::st_area(obj_for_area)
-  # Dirty convert to km2
+  # Convert area to km2.
   area <- round(as.double(area) / 1000000, 1)
 
   if (area > limit_km2) {
     cli::cli_alert_warning(
-      "API Endpoint Restriction: {limit_km2} km2. Your query is {area} km2."
+      "API endpoint restriction: {limit_km2} km2. Your query is {area} km2."
     )
     cli::cli_alert_info(paste0(
       "Operation may fail, check the results or use a ",

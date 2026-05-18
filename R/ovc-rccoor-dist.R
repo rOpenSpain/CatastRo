@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service
-#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`). Return cadastral
+#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`). Returns cadastral
 #' references for coordinates. If none found, the API returns references
 #' in a 50 square meter area around the requested coordinates.
 #'
@@ -34,7 +34,7 @@
 #' - `address`: Address as recorded in the Cadastre.
 #' - `cmun_ine`: Municipality code as registered on the INE (National
 #'    Statistics Institute).
-#' - Rest of fields: Check the API Docs.
+#' - Rest of fields: Check the API documentation.
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -50,7 +50,7 @@ catr_ovc_get_rccoor_distancia <- function(
   srs = 4326,
   verbose = FALSE
 ) {
-  # Sanity checks
+  # Validate arguments.
   lat <- validate_non_empty_arg(lat)
   lon <- validate_non_empty_arg(lon)
 
@@ -60,8 +60,8 @@ catr_ovc_get_rccoor_distancia <- function(
   srs <- match_arg_pretty(srs, valid)
   srs <- paste0("EPSG:", srs)
 
-  # Prepare query
-  ##  Build url
+  # Prepare query.
+  # Build URL.
   api_entry <- paste0(
     "http://ovc.catastro.meh.es/ovcservweb/",
     "OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR_Distancia?",
@@ -75,7 +75,7 @@ catr_ovc_get_rccoor_distancia <- function(
     Coordenada_Y = lat
   )
 
-  # Extract results
+  # Extract results.
   resp <- get_request_body(api_entry, verbose = verbose)
 
   if (is.null(resp)) {
@@ -90,15 +90,15 @@ catr_ovc_get_rccoor_distancia <- function(
   ]][["coordd"]]
   # nolint end
 
-  # Get overall info of the query
+  # Get overall query information.
   overall <- unlist(res["geo"])
   overall <- tibble::as_tibble_row(overall)
 
-  # Extract Ref Cast info
+  # Extract cadastral reference information.
   rc <- res[["lpcd"]]
 
   if (is.null(rc)) {
-    cli::cli_alert_warning("Query does not produce results.")
+    cli::cli_alert_warning("Query did not return results.")
     return(overall)
   }
 
@@ -107,18 +107,18 @@ catr_ovc_get_rccoor_distancia <- function(
   })
   rc_all <- dplyr::bind_rows(rc_all)
 
-  # Build additional fields, as the RC, address and munic (INE)
+  # Build additional fields, such as RC, address and municipality (INE).
   rc_help <- tibble::tibble(
     refcat = paste0(rc_all$pc.pc1, rc_all$pc.pc2),
     address = rc_all$ldt,
     cmun_ine = paste0(rc_all$dt.loine.cp, rc_all$dt.loine.cm)
   )
 
-  # Join all
+  # Join all results.
 
   out <- dplyr::bind_cols(overall, rc_help, rc_all)
 
-  # Numeric
+  # Convert columns to numeric.
   out["geo.xcen"] <- as.numeric(out[["geo.xcen"]])
   out["geo.ycen"] <- as.numeric(out[["geo.ycen"]])
 

@@ -20,15 +20,22 @@
 *.Rprofile text eol=lf
 
 *.bmp binary
+*.eot binary
 *.gif binary
 *.ico binary
 *.jpg binary
 *.jpeg binary
 *.png binary
 *.rda binary
+*.rds binary
 *.tif binary
 *.tiff binary
+*.ttf binary
+*.otf binary
 *.webp binary
 *.gpkg binary
 *.pdf binary
 *.woff binary
+*.woff2 binary
+*.zip binary
+*.gz binary

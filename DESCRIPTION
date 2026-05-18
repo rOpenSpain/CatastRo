@@ -1,5 +1,5 @@
 Package: CatastRo
-Title: Interface to the API 'Sede Electronica Del Catastro'
+Title: Interface to the Spanish Cadastre APIs
 Version: 1.0.1
 Authors@R: c(
     person("Ángel", "Delgado Panadero", , "delgadopanadero@gmail.com", role = c("aut", "cph"),
@@ -9,9 +9,10 @@ Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8457-4658"))
   )
-Description: Access public spatial data available under the 'INSPIRE'
-    directive. Tools for downloading references and addresses of
-    properties, as well as map images.
+Description: Access public spatial data from the Spanish Cadastre through
+    its 'INSPIRE' and cadastral web services. Provides tools to download
+    cadastral parcels, buildings, addresses and map images, and to geocode
+    cadastral references.
 License: GPL-2
 URL: https://ropenspain.github.io/CatastRo/,
     https://github.com/rOpenSpain/CatastRo

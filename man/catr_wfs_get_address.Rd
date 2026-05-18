@@ -19,12 +19,12 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 \arguments{
 \item{x}{See \strong{Bounding box}. It may be:
 \itemize{
-\item A numeric vector of length 4 with the coordinates that defines
-the bounding box: \code{c(xmin, ymin, xmax, ymax)}
+\item A numeric vector of length 4 with the coordinates that define
+the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 \item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
-\item{srs}{SRS/CRS to use on the query. To see allowed values, use
+\item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
@@ -64,12 +64,12 @@ objects of specific cadastral references.
 
 \itemize{
 \item By postal codes: Implemented on \code{catr_wfs_get_address_postalcode()}.
-Extract objects of specific postal codes
+Extract objects of specific postal codes.
 }
 }
 \section{API Limits}{
 
-The API service is limited to a bounding box of 4km2 and a maximum of 5,000
+The API service is limited to a bounding box of 4 km2 and a maximum of 5,000
 elements.
 }
 

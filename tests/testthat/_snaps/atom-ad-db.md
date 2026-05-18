@@ -3,16 +3,16 @@
     Code
       fend <- catr_atom_get_address_db_all(cache_dir = cdir)
     Message
-      x Offline
-      > Returning "NULL"
+      x Offline.
+      > Returning "NULL".
 
 # Test offline db_to
 
     Code
       fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
     Message
-      x Offline
-      > Returning "NULL"
+      x Offline.
+      > Returning "NULL".
 
 # Test 404 all
 
@@ -20,8 +20,8 @@
       fend <- catr_atom_get_address_db_all(cache_dir = cdir)
     Message
       x Error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
-      ! If you think this is a bug please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
-      > Returning "NULL"
+      ! If you think this is a bug, please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
+      > Returning "NULL".
 
 # Test atom ad
 
@@ -64,6 +64,6 @@
       fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
     Message
       x Error 404 (Not Found): <http://www.catastro.hacienda.gob.es/INSPIRE/addresses/28/ES.SDGC.ad.atom_28.xml>.
-      ! If you think this is a bug please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
-      > Returning "NULL"
+      ! If you think this is a bug, please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
+      > Returning "NULL".
 

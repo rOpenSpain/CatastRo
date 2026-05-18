@@ -25,9 +25,9 @@
 #' On a successful query, the function returns a [tibble][tibble::tbl_df] with
 #' one row by cadastral reference, including the following columns:
 #' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
-#' - `refcat`: Cadastral Reference.
+#' - `refcat`: Cadastral reference.
 #' - `address`: Address as recorded in the Cadastre.
-#' - Rest of fields: Check the API Docs.
+#' - Rest of fields: Check the API documentation.
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -38,7 +38,7 @@
 #' )
 #' }
 catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
-  # Sanity checks
+  # Validate arguments.
   lat <- validate_non_empty_arg(lat)
   lon <- validate_non_empty_arg(lon)
 
@@ -48,8 +48,8 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
   srs <- match_arg_pretty(srs, valid)
   srs <- paste0("EPSG:", srs)
 
-  # Prepare query
-  ##  Build url
+  # Prepare query.
+  # Build URL.
   api_entry <- paste0(
     "http://ovc.catastro.meh.es/ovcservweb/",
     "OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR?",
@@ -63,7 +63,7 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
     Coordenada_Y = lat
   )
 
-  # Extract results
+  # Extract results.
   resp <- get_request_body(api_entry, verbose = verbose)
 
   if (is.null(resp)) {
@@ -72,7 +72,7 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
 
   content_list <- xml2::as_list(httr2::resp_body_xml(resp))
 
-  # Check API custom error
+  # Check API custom error.
   err <- content_list[["consulta_coordenadas"]]
 
   if (("lerr" %in% names(err))) {
@@ -88,20 +88,20 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
 
   res <- content_list[["consulta_coordenadas"]][["coordenadas"]][["coord"]]
 
-  # Get info of the query
+  # Get query information.
   overall <- tibble::as_tibble_row(unlist(res))
 
-  # Extract helper info
+  # Extract helper information.
   rc_help <- tibble::tibble(
     refcat = paste0(overall$pc.pc1, overall$pc.pc2),
     address = overall$ldt
   )
 
-  # Join all
+  # Join all results.
 
   out <- dplyr::bind_cols(rc_help, overall)
 
-  # Numeric
+  # Convert columns to numeric.
   out["geo.xcen"] <- as.numeric(out[["geo.xcen"]])
   out["geo.ycen"] <- as.numeric(out[["geo.ycen"]])
 

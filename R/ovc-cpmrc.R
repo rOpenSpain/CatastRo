@@ -18,10 +18,10 @@
 #'
 #' @param rc The cadastral reference to be geocoded.
 #' @param province,municipality Optional, used for narrowing the search.
-#' @param srs SRS/CRS to use on the query. To see allowed values, use
+#' @param srs SRS/CRS to use in the query. To see allowed values, use
 #'   [catr_srs_values], specifically the `ovc_service` column.
 #'
-#' @return A [tibble][tibble::tbl_df]. See **Details**
+#' @return A [tibble][tibble::tbl_df]. See **Details**.
 #'
 #' @details
 #' When the API does not provide any result, the function returns a
@@ -30,9 +30,9 @@
 #' On a successful query, the function returns a [tibble][tibble::tbl_df]
 #' with one row per cadastral reference, including the following columns:
 #' - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
-#' - `refcat`: Cadastral Reference.
+#' - `refcat`: Cadastral reference.
 #' - `address`: Address as recorded in the Cadastre.
-#' - Rest of fields: Check the API Docs.
+#' - Rest of fields: Check the API documentation.
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -55,7 +55,7 @@ catr_ovc_get_cpmrc <- function(
   municipality = NULL,
   verbose = FALSE
 ) {
-  # Sanity checks
+  # Validate arguments.
   rc <- validate_non_empty_arg(rc)
 
   valid_srs <- CatastRo::catr_srs_values
@@ -64,15 +64,15 @@ catr_ovc_get_cpmrc <- function(
   srs <- match_arg_pretty(srs, valid)
   srs <- paste0("EPSG:", srs)
 
-  # Prepare query
-  ##  Build url
+  # Prepare query.
+  # Build URL.
   api_entry <- paste0(
     "http://ovc.catastro.meh.es/ovcservweb/",
     "OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?",
     "Provincia=&Municipio=&SRS=&RC="
   )
 
-  # Replace NAs and NULL on optional params
+  # Replace missing optional parameters.
   province <- ensure_null(province)
   municipality <- ensure_null(municipality)
 
@@ -84,7 +84,7 @@ catr_ovc_get_cpmrc <- function(
     Municipio = ifelse(is.null(municipality), "", municipality)
   )
 
-  # Extract results
+  # Extract results.
   resp <- get_request_body(api_entry, verbose = verbose)
 
   if (is.null(resp)) {
@@ -93,7 +93,7 @@ catr_ovc_get_cpmrc <- function(
 
   content_list <- xml2::as_list(httr2::resp_body_xml(resp))
 
-  # Check API custom error
+  # Check API custom error.
   err <- content_list[["consulta_coordenadas"]]
 
   if (("lerr" %in% names(err))) {
@@ -109,10 +109,10 @@ catr_ovc_get_cpmrc <- function(
 
   res <- content_list[["consulta_coordenadas"]][["coordenadas"]][["coord"]]
 
-  # Get info of the query
+  # Get query information.
   overall <- tibble::as_tibble_row(unlist(res))
 
-  # Extract helper info
+  # Extract helper information.
   rc_help <- tibble::tibble(
     xcoord = as.double(overall$geo.xcen),
     ycoord = as.double(overall$geo.ycen),
@@ -120,7 +120,7 @@ catr_ovc_get_cpmrc <- function(
     address = overall$ldt
   )
 
-  # Join all
+  # Join all results.
 
   out <- dplyr::bind_cols(rc_help, overall)
 

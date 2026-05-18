@@ -27,8 +27,8 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 \arguments{
 \item{x}{See \strong{Bounding box}. It may be:
 \itemize{
-\item A numeric vector of length 4 with the coordinates that defines
-the bounding box: \code{c(xmin, ymin, xmax, ymax)}
+\item A numeric vector of length 4 with the coordinates that define
+the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 \item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
@@ -38,7 +38,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item \code{"zoning"} for cadastral zoning.
 }}
 
-\item{srs}{SRS/CRS to use on the query. To see allowed values, use
+\item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
@@ -85,8 +85,8 @@ specific cadastral zone.
 
 The API service is limited to the following constraints:
 \itemize{
-\item \verb{"parcel}: Bounding box of 1km2 and a maximum of 5,000 elements.
-\item \code{"zoning"}: Bounding box of 25km2 and a maximum of 5,000 elements.
+\item \code{"parcel"}: Bounding box of 1 km2 and a maximum of 5,000 elements.
+\item \code{"zoning"}: Bounding box of 25 km2 and a maximum of 5,000 elements.
 }
 }
 

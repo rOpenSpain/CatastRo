@@ -3,13 +3,14 @@
 #' @description
 #' Create a database containing the URLs provided in the INSPIRE ATOM
 #' service of the Spanish Cadastre for extracting buildings.
-#'  - `catr_atom_get_buildings_db_all()` provides a top-level table
-#'    including information on all the territorial offices (except the
-#'    Basque Country and Navarre) listing the municipalities included in
-#'    each office.
-#'  - `catr_atom_get_buildings_db_to()` provides a table for the specified
-#'    territorial office including information for each of the
-#'    municipalities of that office.
+#'
+#' - `catr_atom_get_buildings_db_all()` provides a top-level table
+#'   including information on all the territorial offices (except the
+#'   Basque Country and Navarre) listing the municipalities included in
+#'   each office.
+#' - `catr_atom_get_buildings_db_to()` provides a table for the specified
+#'   territorial office including information for each of the municipalities
+#'   of that office.
 #'
 #' @encoding UTF-8
 #' @family INSPIRE
@@ -90,7 +91,7 @@ catr_atom_get_buildings_db_to <- function(
 
   alldist <- unique(all[, c("territorial_office", "url")])
 
-  # Escape parentheses in territorial office names for matching
+  # Escape parentheses in territorial office names for matching.
   to <- gsub("\\(|\\)", "", to)
   allto <- gsub("\\(|\\)", "", alldist$territorial_office)
 
@@ -102,7 +103,7 @@ catr_atom_get_buildings_db_to <- function(
     return(NULL)
   }
 
-  # Compute string distances for territorial office matching
+  # Compute string distances for territorial office matching.
   with_d <- data.frame(
     to = alldist$territorial_office,
     dist = as.vector(adist(to, alldist$territorial_office))

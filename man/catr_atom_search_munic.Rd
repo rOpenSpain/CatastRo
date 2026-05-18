@@ -38,7 +38,7 @@ A \link[tibble:tbl_df]{tibble}.
 }
 \description{
 Search for a municipality (as a string, part of a string, or code) and get
-the corresponding code as per the Cadastre.
+the corresponding code according to the Cadastre.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}

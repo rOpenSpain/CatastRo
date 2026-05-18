@@ -45,7 +45,7 @@
 #'
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(
-#'    " [API Docs](https://www.catastro.hacienda.gob.es/",
+#'    " [API documentation](https://www.catastro.hacienda.gob.es/",
 #'      "webinspire/documentos/inspire-WMS.pdf) ")
 #'      )
 #'
@@ -62,17 +62,17 @@
 #' ## Styles
 #' The WMS service provides different styles on each layer (`what` argument).
 #' Some of the styles available are:
-#' - `"parcel"`: styles : `"BoundariesOnly"`, `"ReferencePointOnly"`,
+#' - `"parcel"`: Styles: `"BoundariesOnly"`, `"ReferencePointOnly"`,
 #'   `"ELFCadastre"`.
-#' - `"zoning"`: styles : `"BoundariesOnly"`, `"ELFCadastre"`.
-#' - `"building"`, `"buildingpart"`: `"ELFCadastre"`
-#' - `"address"`: `"Number.ELFCadastre"`
-#' - `"admboundary"`, `"admunit"`: `"ELFCadastre"`
+#' - `"zoning"`: Styles: `"BoundariesOnly"`, `"ELFCadastre"`.
+#' - `"building"`, `"buildingpart"`: `"ELFCadastre"`.
+#' - `"address"`: `"Number.ELFCadastre"`.
+#' - `"admboundary"`, `"admunit"`: `"ELFCadastre"`.
 #'
 #' Check the
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(
-#'    " [API Docs](https://www.catastro.hacienda.gob.es/",
+#'    " [API documentation](https://www.catastro.hacienda.gob.es/",
 #'      "webinspire/documentos/inspire-WMS.pdf) ")
 #'      )
 #'
@@ -105,7 +105,7 @@
 #'
 #' parcels_img <- catr_wms_get_layer(parcels,
 #'   what = "buildingpart",
-#'   srs = 25830, # As parcels object
+#'   srs = 25830, # Same as the parcels object
 #'   bbox_expand = 0.3,
 #'   styles = "ELFCadastre"
 #' )
@@ -138,7 +138,7 @@ catr_wms_get_layer <- function(
   bbox_res <- get_sf_from_bbox(x, srs)
   cache_dir <- create_cache_dir(cache_dir)
 
-  # Manage layer
+  # Manage layer.
 
   what <- match_arg_pretty(what)
 
@@ -152,18 +152,18 @@ catr_wms_get_layer <- function(
     "admunit" = "Catastro.AdministrativeUnit"
   )
 
-  # Manage styles and options
-  # Custom options
+  # Manage styles and options.
+  # Set custom options.
   opts <- list(styles = styles, version = "1.1.0")
 
-  # Add srs
+  # Add SRS.
   if (!is.null(srs)) {
     if (!any(grepl("epsg", srs, ignore.case = TRUE))) {
       opts <- modifyList(opts, list(srs = paste0("EPSG:", srs)))
     }
   }
 
-  # Add to options
+  # Add to options.
   if (is.null(options)) {
     finalopts <- opts
   } else {
@@ -171,14 +171,14 @@ catr_wms_get_layer <- function(
     finalopts <- modifyList(opts, options)
   }
 
-  # Check if need to change crs
+  # Check whether the CRS must change.
 
   if (finalopts$version >= "1.3.0") {
     newnames <- gsub("srs", "crs", names(finalopts), fixed = TRUE)
     names(finalopts) <- newnames
   }
 
-  # Query
+  # Query the WMS service.
 
   out <- mapSpain::esp_get_tiles(
     x = bbox_res,

@@ -8,7 +8,7 @@
 #'
 #' @noRd
 catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
-  # Encoding error sometimes, thanks @dr_xeo
+  # Retry without encoding when the parser fails.
   feed <- try(
     xml2::as_list(xml2::read_xml(
       file,
@@ -18,16 +18,16 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
     silent = TRUE
   )
 
-  # On error try without encoding
+  # Try without encoding on error.
   if (inherits(feed, "try-error")) {
     feed <- xml2::as_list(xml2::read_xml(file, options = "NOCDATA"))
   }
 
-  # Prepare data
+  # Prepare data.
   feed <- feed$feed
   feed <- feed[names(feed) == "entry"]
 
-  # Convert to tibble
+  # Convert to tibble.
   if (top) {
     tbl_all <- lapply(feed, function(x) {
       title <- unlist(x$title)
@@ -35,7 +35,7 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
       date <- as.POSIXct(unlist(feed[1]$entry$updated))
       value <- unlist(x$content$div$div)
 
-      # Clean
+      # Clean values.
       value <- trimws(gsub("\\n|\\t", "", value))
       value <- value[grepl("^[0-9]", value)]
 

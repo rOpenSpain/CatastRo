@@ -3,6 +3,7 @@
 #' @description
 #' Get the spatial data of buildings. The WFS Service allows performing
 #' two types of queries:
+#'
 #' - By bounding box: Implemented on `catr_wfs_get_buildings_bbox()`.
 #'   Extract objects included in the bounding box provided. See
 #'   **Bounding box**.
@@ -27,12 +28,12 @@ catr_wfs_get_buildings_bbox <- function(
   srs = NULL,
   verbose = FALSE
 ) {
-  # Sanity checks
+  # Validate arguments.
   x <- validate_non_empty_arg(x)
   srs <- ensure_null(srs)
   what <- match_arg_pretty(what)
 
-  # Switch to stored queries
+  # Switch to stored queries.
   stored_query <- switch(what,
     "building" = "BU.BUILDING",
     "buildingpart" = "BU.BUILDINGPART",
@@ -60,7 +61,7 @@ catr_wfs_get_buildings_bbox <- function(
     return(NULL)
   }
 
-  # Transform back to the desired srs
+  # Transform back to the desired SRS.
   out <- read_geo_file_sf(file_local)
   unlink(file_local)
   if (is.null(srs)) {
@@ -78,7 +79,7 @@ catr_wfs_get_buildings_bbox <- function(
 #' @export
 #' @examplesIf run_example()
 #' \donttest{
-#' # Using bbox
+#' # Using a bbox
 #' building <- catr_wfs_get_buildings_bbox(
 #'   c(
 #'     376550,
@@ -93,7 +94,7 @@ catr_wfs_get_buildings_bbox <- function(
 #'   geom_sf() +
 #'   labs(title = "Search using bbox")
 #'
-#' # Using rc
+#' # Using a cadastral reference
 #' rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
 #' library(ggplot2)
 #' ggplot(rc) +
@@ -106,16 +107,16 @@ catr_wfs_get_buildings_rc <- function(
   srs = NULL,
   verbose = FALSE
 ) {
-  # Sanity checks
+  # Validate arguments.
   rc <- validate_non_empty_arg(rc)
   srs <- ensure_null(srs)
   what <- match_arg_pretty(what)
-  # Fake call to validate srs
+  # Validate SRS.
   if (!is.null(srs)) {
     wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
   }
 
-  # Switch to stored queries
+  # Switch to stored queries.
   stored_query <- switch(what,
     "building" = "GetBuildingByParcel",
     "buildingpart" = "GetBuildingPartByParcel",

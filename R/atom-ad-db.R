@@ -35,12 +35,12 @@
 #' @return
 #' A [tibble][tibble::tbl_df] with the information requested with the following
 #' fields:
-#'  - `territorial_office`: territorial office, corresponding to each province
-#'    of Spain except the Basque Country and Navarre.
-#'  - `url`: ATOM URL for the corresponding territorial office.
-#'  - `munic`: Name of the municipality.
-#'  - `date`: Reference date of the data. Note that **the information from this
-#'    service is updated twice a year**.
+#' - `territorial_office`: Territorial office, corresponding to each province
+#'   of Spain except the Basque Country and Navarre.
+#' - `url`: ATOM URL for the corresponding territorial office.
+#' - `munic`: Name of the municipality.
+#' - `date`: Reference date of the data. Note that **the information from this
+#'   service is updated twice a year**.
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -107,7 +107,7 @@ catr_atom_get_address_db_to <- function(
 
   alldist <- unique(all[, c("territorial_office", "url")])
 
-  # Escape parentheses in territorial office names for matching
+  # Escape parentheses in territorial office names for matching.
   to <- gsub("\\(|\\)", "", to)
   allto <- gsub("\\(|\\)", "", alldist$territorial_office)
 
@@ -119,7 +119,7 @@ catr_atom_get_address_db_to <- function(
     return(NULL)
   }
 
-  # Compute string distances for territorial office matching
+  # Compute string distances for territorial office matching.
   with_d <- data.frame(
     to = alldist$territorial_office,
     dist = as.vector(adist(to, alldist$territorial_office))

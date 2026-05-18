@@ -3,6 +3,7 @@
 #' @description
 #' Get the spatial data of addresses. The WFS Service allows performing
 #' several types of queries:
+#'
 #' - By bounding box: Implemented on `catr_wfs_get_address_bbox()`.
 #'   Extract objects included in the bounding box provided. See
 #'   **Bounding box**.
@@ -32,16 +33,16 @@
 #' @return A [`sf`][sf::st_sf] object.
 #'
 #' @param x See **Bounding box**. It may be:
-#'   - A numeric vector of length 4 with the coordinates that defines
-#'     the bounding box: `c(xmin, ymin, xmax, ymax)`
-#'   - A `sf/sfc` object, as provided by the \CRANpkg{sf} package.
-#' @param srs SRS/CRS to use on the query. To see allowed values, use
+#' - A numeric vector of length 4 with the coordinates that define
+#'   the bounding box: `c(xmin, ymin, xmax, ymax)`.
+#' - A `sf/sfc` object, as provided by the \CRANpkg{sf} package.
+#' @param srs SRS/CRS to use in the query. To see allowed values, use
 #'   [catr_srs_values], specifically the `wfs_service` column. See
 #'   **Bounding box**.
 #' @param rc The cadastral reference to be extracted.
 #'
 #' @section API Limits:
-#' The API service is limited to a bounding box of 4km2 and a maximum of 5,000
+#' The API service is limited to a bounding box of 4 km2 and a maximum of 5,000
 #' elements.
 #'
 #' @section Bounding box:
@@ -57,7 +58,7 @@
 #' The result is always provided in the SRS of the [`sf`][sf::st_sf] object
 #' provided as input.
 catr_wfs_get_address_bbox <- function(x, srs = NULL, verbose = FALSE) {
-  # Sanity checks
+  # Validate arguments.
   x <- validate_non_empty_arg(x)
   srs <- ensure_null(srs)
 
@@ -82,7 +83,7 @@ catr_wfs_get_address_bbox <- function(x, srs = NULL, verbose = FALSE) {
     return(NULL)
   }
 
-  # Transform back to the desired srs
+  # Transform back to the desired SRS.
   out <- read_geo_file_sf(file_local)
   unlink(file_local)
   if (is.null(srs)) {
@@ -113,7 +114,7 @@ catr_wfs_get_address_codvia <- function(
   del <- validate_non_empty_arg(del)
   mun <- validate_non_empty_arg(mun)
   srs <- ensure_null(srs)
-  # Fake call to validate srs
+  # Validate SRS.
   if (!is.null(srs)) {
     wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
   }
@@ -156,7 +157,7 @@ catr_wfs_get_address_codvia <- function(
 catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
   rc <- validate_non_empty_arg(rc)
   srs <- ensure_null(srs)
-  # Fake call to validate srs
+  # Validate SRS.
   if (!is.null(srs)) {
     wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
   }
@@ -189,7 +190,7 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 }
 #' @description
 #' - By postal codes: Implemented on `catr_wfs_get_address_postalcode()`.
-#'   Extract objects of specific postal codes
+#'   Extract objects of specific postal codes.
 #'
 #' @param postalcode Postal code.
 #'
@@ -216,7 +217,7 @@ catr_wfs_get_address_postalcode <- function(
 ) {
   postalcode <- validate_non_empty_arg(postalcode)
   srs <- ensure_null(srs)
-  # Fake call to validate srs
+  # Validate SRS.
   if (!is.null(srs)) {
     wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
   }

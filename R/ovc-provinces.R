@@ -22,14 +22,14 @@
 #' }
 #'
 catr_ovc_get_cod_provinces <- function(verbose = FALSE) {
-  # Prepare query
-  ##  Build url
+  # Prepare query.
+  # Build URL.
   api_entry <- paste0(
     "http://ovc.catastro.meh.es/ovcservweb/",
     "/ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaProvincia?"
   )
 
-  # Extract results
+  # Extract results.
   resp <- get_request_body(api_entry, verbose = verbose)
 
   if (is.null(resp)) {
@@ -40,13 +40,13 @@ catr_ovc_get_cod_provinces <- function(verbose = FALSE) {
 
   res <- content_list[["consulta_provinciero"]][["provinciero"]]
 
-  # Get a list of tibbles
+  # Get a list of tibbles.
   res_tibble <- lapply(res, function(x) {
     df <- tibble::as_tibble_row(unlist(x))
     df
   })
 
-  # Bind all
+  # Bind all results.
   overall <- dplyr::bind_rows(res_tibble)
 
   overall

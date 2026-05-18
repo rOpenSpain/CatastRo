@@ -21,7 +21,7 @@ Internet.}
 
 \item{path}{Character string. Specific resource in the host to access.}
 
-\item{query}{Named list. Names and values of arguments to query.}
+\item{query}{Named list. Names and values of arguments for the query.}
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
@@ -40,7 +40,7 @@ cadastral or INSPIRE resources. See \strong{Examples}.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
-# Accessing the Cadastre of Navarra
+# Access the Cadastre of Navarra
 # Try also https://ropenspain.github.io/CatastRoNav/
 
 file_local <- inspire_wfs_get(

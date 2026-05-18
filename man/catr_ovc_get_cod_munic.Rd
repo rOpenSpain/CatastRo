@@ -18,26 +18,26 @@ Cadastre (\code{cmun}) or the National Statistics Institute. Either \code{cmun} 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}. See \strong{Details}
+A \link[tibble:tbl_df]{tibble}. See \strong{Details}.
 }
 \description{
 Implementation of the OVCCallejero service
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos}{ConsultaMunicipioCodigos}. Returns names and codes
-of a municipality as per the Cadastre and the INE (National Statistics
+of a municipality according to the Cadastre and the INE (National Statistics
 Institute).
 }
 \details{
 On a successful query, the function returns a \link[tibble:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
-\item \code{munic}: Name of the municipality as per the Cadastre.
+\item \code{munic}: Name of the municipality according to the Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
 \item \code{catr_munic}: Municipality code as recorded on the Cadastre.
 \item \code{catrcode}: Full Cadastral code for the municipality.
-\item \code{cpro}: Province code as per the INE.
-\item \code{cmun}: Municipality code as per the INE.
+\item \code{cpro}: Province code according to the INE.
+\item \code{cmun}: Municipality code according to the INE.
 \item \code{inecode}: Full INE code for the municipality.
-\item Rest of fields: Check the API Docs.
+\item Rest of fields: Check the API documentation.
 }
 }
 \examples{

@@ -16,7 +16,7 @@ read_geo_file_sf <- function(
   layer_hint = NULL,
   ...
 ) {
-  # Warn if file size is huge and no query
+  # Warn if the file is large and no query is available.
 
   if (all(!grepl("^http", file_local), file.exists(file_local))) {
     fsize <- file.size(file_local)
@@ -30,14 +30,14 @@ read_geo_file_sf <- function(
     }
   }
 
-  # Create and read 'vsizip' construct for shp.zip
+  # Create and read the 'vsizip' construct for shp.zip.
   if (grepl(".zip$", file_local, ignore.case = TRUE)) {
     shp_zip <- unzip(file_local, list = TRUE)
     shp_zip <- shp_zip$Name
     shp_zip <- shp_zip[grepl(hint, shp_zip)]
     shp_end <- shp_zip[1]
 
-    # Read with vszip
+    # Read with vsizip.
     file_local <- file.path("/vsizip/", file_local, shp_end)
     file_local <- gsub("//", "/", file_local, fixed = TRUE)
   }
@@ -78,7 +78,7 @@ sanitize_sf <- function(data_sf) {
   }
   # end
 
-  # To UTF-8
+  # Convert to UTF-8.
   names <- names(data_sf)
 
   if (inherits(data_sf, "sf")) {
@@ -99,17 +99,16 @@ sanitize_sf <- function(data_sf) {
     return(data_utf8)
   }
 
-  # Regenerate with right encoding
+  # Regenerate with the correct encoding.
   data_sf <- sf::st_as_sf(data_utf8, g)
 
-  # Rename geometry to geometry
+  # Restore the geometry column name.
   newnames <- names(data_sf)
   newnames[newnames == "g"] <- nm
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  # Some CRS are not properly defined (i.e may have additionalm properties)
-  # Normalize with the EPSG number
+  # Normalize CRS definitions with the EPSG number.
 
   epsg_num <- sf::st_crs(data_sf)$epsg
   if (!identical(sf::st_crs(data_sf), sf::st_crs(epsg_num))) {
@@ -126,7 +125,7 @@ get_sf_from_bbox <- function(bbox, srs = NULL) {
     return(bbox)
   }
 
-  # Sanity check
+  # Validate arguments.
   if (!(is.numeric(bbox) && length(bbox) == 4)) {
     cli::cli_abort(
       "{.arg bbox} has length {.val {4L}}, not {.val {length(bbox)}}."
@@ -138,11 +137,11 @@ get_sf_from_bbox <- function(bbox, srs = NULL) {
     cli::cli_abort("Please provide a valid non-empty value for {.arg srs}.")
   }
 
-  # Create template for a spatial bbox
+  # Create a template for a spatial bbox.
   template_sf <- sf::st_sfc(sf::st_point(c(0, 0)))
   template_bbox <- sf::st_bbox(template_sf)
 
-  # Create the spatial object
+  # Create the spatial object.
   bbox_new <- bbox
   class(bbox_new) <- class(template_bbox)
 

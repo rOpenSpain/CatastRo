@@ -23,8 +23,8 @@ catr_wfs_get_buildings_rc(
 \arguments{
 \item{x}{See \strong{Bounding box}. It may be:
 \itemize{
-\item A numeric vector of length 4 with the coordinates that defines
-the bounding box: \code{c(xmin, ymin, xmax, ymax)}
+\item A numeric vector of length 4 with the coordinates that define
+the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 \item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
@@ -35,7 +35,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}
 \item \code{"other"} for other elements such as swimming pools.
 }}
 
-\item{srs}{SRS/CRS to use on the query. To see allowed values, use
+\item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
@@ -62,7 +62,7 @@ Extract objects of specific cadastral references.
 }
 \section{API Limits}{
 
-The API service is limited to a bounding box of 4km2 and a maximum of 5,000
+The API service is limited to a bounding box of 4 km2 and a maximum of 5,000
 elements.
 }
 
@@ -84,7 +84,7 @@ provided as input.
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
-# Using bbox
+# Using a bbox
 building <- catr_wfs_get_buildings_bbox(
   c(
     376550,
@@ -99,7 +99,7 @@ ggplot(building) +
   geom_sf() +
   labs(title = "Search using bbox")
 
-# Using rc
+# Using a cadastral reference
 rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
 library(ggplot2)
 ggplot(rc) +

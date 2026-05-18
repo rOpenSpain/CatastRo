@@ -2,7 +2,7 @@
 #'
 #' @description
 #' A [tibble][tibble::tbl_df] including the valid SRS (also known as CRS)
-#' values that may be used on each API service. Values are provided as
+#' values that may be used in each API service. Values are provided as
 #' [EPSG codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 #'
 #' @docType data
@@ -67,6 +67,6 @@
 #'   # First value
 #'   slice_head(n = 1) |>
 #'   pull(SRS) |>
-#'   # As crs
+#'   # As CRS
 #'   sf::st_crs(.)
 NULL

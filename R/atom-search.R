@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Search for a municipality (as a string, part of a string, or code) and get
-#' the corresponding code as per the Cadastre.
+#' the corresponding code according to the Cadastre.
 #' @encoding UTF-8
 #'
 #' @family ATOM
@@ -50,7 +50,7 @@ catr_atom_search_munic <- function(
   if (!is.null(to)) {
     linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
 
-    # Filter by territorial office if matches found
+    # Filter by territorial office if matches are found.
     if (length(linesto) > 1) {
       all <- all[linesto, ]
     } else {
@@ -72,7 +72,7 @@ catr_atom_search_munic <- function(
     return(NULL)
   }
 
-  # Compute string distances for municipality matching
+  # Compute string distances for municipality matching.
   with_d <- data.frame(
     munic = all$munic,
     territorial_office = all$territorial_office,
@@ -81,10 +81,10 @@ catr_atom_search_munic <- function(
   with_d <- with_d[to_loc, ]
   with_d <- with_d[order(with_d$dist), ]
 
-  # Get lines and cols
+  # Keep the matching rows and columns.
   res <- with_d[, c("territorial_office", "munic")]
 
-  # Split to get code
+  # Split municipality labels to get the code.
 
   res$catrcode <- vapply(
     res$munic,

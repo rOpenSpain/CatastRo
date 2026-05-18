@@ -3,7 +3,7 @@
 #' @description
 #' Implementation of the OVCCallejero service
 #' [ConsultaMunicipioCodigos](`r ovcurl("mun")`). Returns names and codes
-#' of a municipality as per the Cadastre and the INE (National Statistics
+#' of a municipality according to the Cadastre and the INE (National Statistics
 #' Institute).
 #'
 #' @encoding UTF-8
@@ -30,14 +30,14 @@
 #' On a successful query, the function returns a [tibble][tibble::tbl_df]
 #' with one row including the following columns:
 #'
-#' - `munic`: Name of the municipality as per the Cadastre.
+#' - `munic`: Name of the municipality according to the Cadastre.
 #' - `catr_to`: Cadastral territorial office code.
 #' - `catr_munic`: Municipality code as recorded on the Cadastre.
 #' - `catrcode`: Full Cadastral code for the municipality.
-#' - `cpro`: Province code as per the INE.
-#' - `cmun`: Municipality code as per the INE.
+#' - `cpro`: Province code according to the INE.
+#' - `cmun`: Municipality code according to the INE.
 #' - `inecode`: Full INE code for the municipality.
-#' - Rest of fields: Check the API Docs.
+#' - Rest of fields: Check the API documentation.
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -72,8 +72,8 @@ catr_ovc_get_cod_munic <- function(
     )
   }
 
-  # Prepare query
-  ##  Build url
+  # Prepare query.
+  # Build URL.
   api_entry <- paste0(
     "http://ovc.catastro.meh.es/ovcservweb/",
     "/ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaMunicipioCodigos?",
@@ -87,7 +87,7 @@ catr_ovc_get_cod_munic <- function(
     CodigoMunicipioIne = ifelse(is.null(cmun_ine), "", cmun_ine)
   )
 
-  # Extract results
+  # Extract results.
   resp <- get_request_body(api_entry, verbose = verbose)
 
   if (is.null(resp)) {
@@ -96,7 +96,7 @@ catr_ovc_get_cod_munic <- function(
 
   content_list <- xml2::as_list(httr2::resp_body_xml(resp))
 
-  # Check API custom error
+  # Check API custom error.
   err <- content_list[[1]]
 
   if (("lerr" %in% names(err))) {
@@ -113,7 +113,7 @@ catr_ovc_get_cod_munic <- function(
 
   df <- tibble::as_tibble_row(unlist(res))
 
-  # Fix names
+  # Fix names.
   newnames <- vapply(
     names(df),
     function(x) {
@@ -124,7 +124,7 @@ catr_ovc_get_cod_munic <- function(
 
   names(df) <- newnames
 
-  # Create friendly codes
+  # Create friendly codes.
   catcodes <- tibble::tibble(
     munic = df$nm,
     catr_to = sprintf("%02d", as.integer(df$cd)),

@@ -22,17 +22,17 @@ download_url <- function(
   cache_dir <- create_cache_dir(cache_dir)
   cache_dir <- create_cache_dir(file.path(cache_dir, subdir))
 
-  # Create destfile and clean
+  # Create and clean destination file.
   file_local <- file.path(cache_dir, name)
   file_local <- gsub("//", "/", file_local, fixed = TRUE)
 
   msg <- paste0("Cache dir is {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
-  # Check if file already exists
+  # Check whether the file already exists.
   fileoncache <- file.exists(file_local)
 
-  # If already cached return
+  # Return cached files unless a refresh is requested.
   if (isFALSE(update_cache) && fileoncache) {
     msg <- paste0("File already cached: {.file ", file_local, "}.")
     make_msg("success", verbose, msg)
@@ -41,7 +41,7 @@ download_url <- function(
   }
 
   if (fileoncache) {
-    make_msg("warning", verbose, "Updating cached file")
+    make_msg("warning", verbose, "Updating cached file.")
   }
 
   msg <- paste0("Downloading {.url ", url, "}.")
@@ -64,14 +64,12 @@ download_url <- function(
   }
 
   if (!is_online_fun()) {
-    cli::cli_alert_danger("Offline")
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert_danger("Offline.")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
 
-  # Response
-
-  # Check before the size to see if we need to inform with HEAD
+  # Use HEAD to check whether the download size should be reported.
   get_header <- httr2::req_method(req, "HEAD")
   getsize <- httr2::req_perform(get_header)
 
@@ -84,10 +82,10 @@ download_url <- function(
     req <- httr2::req_progress(req)
   }
 
-  # Testing
+  # Testing.
   test_offline <- is_404()
   if (test_offline) {
-    # Modify to redirect to fake url
+    # Redirect to a fake URL.
     req <- httr2::req_url(req, "http://ovc.catastro.meh.es/urlnoexist/fake")
     file_local <- tempfile(fileext = ".txt")
   }
@@ -104,10 +102,10 @@ download_url <- function(
       " {.url {url}}."
     ))
     cli::cli_alert_warning(c(
-      "If you think this is a bug please consider opening an issue on ",
+      "If you think this is a bug, please consider opening an issue on ",
       "{.url https://github.com/ropenspain/CatastRo/issues}"
     ))
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
   msg <- paste0("Download successful on {.file ", file_local, "}.")
@@ -115,7 +113,6 @@ download_url <- function(
 
   file_local
 }
-
 
 #' Internal function to get the response body from a URL
 #'
@@ -146,15 +143,15 @@ get_request_body <- function(url, verbose = TRUE) {
   }
 
   if (!is_online_fun()) {
-    cli::cli_alert_danger("Offline")
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert_danger("Offline.")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
 
-  # Testing
+  # Testing.
   test_offline <- is_404()
   if (test_offline) {
-    # Modify to redirect to fake url
+    # Redirect to a fake URL.
     req <- httr2::req_url(req, "http://ovc.catastro.meh.es/urlnoexist/fake")
   }
 
@@ -169,14 +166,14 @@ get_request_body <- function(url, verbose = TRUE) {
       " {.url {url}}."
     ))
     cli::cli_alert_warning(c(
-      "If you think this is a bug please consider opening an issue on ",
+      "If you think this is a bug, please consider opening an issue on ",
       "{.url https://github.com/ropenspain/CatastRo/issues}"
     ))
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
 
-  make_msg("success", verbose, "Success")
+  make_msg("success", verbose, "Success.")
   resp
 }
 

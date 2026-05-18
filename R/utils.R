@@ -69,18 +69,18 @@ match_arg_pretty <- function(arg, choices) {
   }
 
   lmatch <- match(arg, choices)
-  # Hint
+  # Build a hint for approximate matches.
   aproxmatch <- pmatch(arg, choices)[1]
 
   if (length(arg) > 1 || is.na(lmatch)) {
-    # Create error message
+    # Create error message.
     if (length(choices) == 1) {
       msg <- paste0("{.str ", choices, "}")
     } else {
       l_choices <- length(choices)
       msg <- paste0("{.str ", choices[-l_choices], "}", collapse = ", ")
       msg <- paste0(msg, " or {.str ", choices[l_choices], "}")
-      # Add one of at the begining
+      # Add "one of" at the beginning.
       msg <- paste0("one of ", msg)
     }
 
@@ -88,7 +88,7 @@ match_arg_pretty <- function(arg, choices) {
     bad_arg <- paste0("{.str ", arg, "}", collapse = " or ")
     msg <- paste0(msg, bad_arg, ".")
 
-    # Maybe is a regex?
+    # Suggest an approximate match.
     reg_msg <- NULL
     if (!is.na(aproxmatch)) {
       aprox <- choices[aproxmatch]
@@ -122,7 +122,7 @@ validate_non_empty_arg <- function(arg, call = parent.frame(1)) {
   arg_name <- as.character(substitute(arg)) # nolint
 
   if (missing(arg)) {
-    cli::cli_abort("{.arg {arg_name}} can't be missing.", call = call)
+    cli::cli_abort("{.arg {arg_name}} cannot be missing.", call = call)
   }
 
   arg

@@ -3,6 +3,7 @@
 #' @description
 #' Get the spatial data of cadastral parcels and zones. The WFS Service
 #' allows several types of queries:
+#'
 #' - By bounding box: Implemented on `catr_wfs_get_parcels_bbox()`. Extract
 #'   objects included in the bounding box provided. See **Bounding box**.
 #'
@@ -22,20 +23,21 @@
 #'
 #' @section API Limits:
 #' The API service is limited to the following constraints:
-#' - `"parcel`: Bounding box of 1km2 and a maximum of 5,000 elements.
-#' - `"zoning"`: Bounding box of 25km2 and a maximum of 5,000 elements.
+#'
+#' - `"parcel"`: Bounding box of 1 km2 and a maximum of 5,000 elements.
+#' - `"zoning"`: Bounding box of 25 km2 and a maximum of 5,000 elements.
 catr_wfs_get_parcels_bbox <- function(
   x,
   what = c("parcel", "zoning"),
   srs = NULL,
   verbose = FALSE
 ) {
-  # Sanity checks
+  # Validate arguments.
   x <- validate_non_empty_arg(x)
   srs <- ensure_null(srs)
   what <- match_arg_pretty(what)
 
-  # Switch to stored queries
+  # Switch to stored queries.
   stored_query <- switch(what,
     "parcel" = "CP.CADASTRALPARCEL",
     "zoning" = "CP.CADASTRALZONING"
@@ -72,7 +74,7 @@ catr_wfs_get_parcels_bbox <- function(
     return(NULL)
   }
 
-  # Transform back to the desired srs
+  # Transform back to the desired SRS.
   out <- read_geo_file_sf(file_local)
   unlink(file_local)
   if (is.null(srs)) {
@@ -89,10 +91,10 @@ catr_wfs_get_parcels_bbox <- function(
 #' @rdname catr_wfs_get_parcels
 #' @export
 catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
-  # Sanity checks
+  # Validate arguments.
   cod_zona <- validate_non_empty_arg(cod_zona)
   srs <- ensure_null(srs)
-  # Fake call to validate srs
+  # Validate SRS.
   if (!is.null(srs)) {
     wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
   }
@@ -130,10 +132,10 @@ catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
 #' @rdname catr_wfs_get_parcels
 #' @export
 catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
-  # Sanity checks
+  # Validate arguments.
   rc <- validate_non_empty_arg(rc)
   srs <- ensure_null(srs)
-  # Fake call to validate srs
+  # Validate SRS.
   if (!is.null(srs)) {
     wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
   }
@@ -172,10 +174,10 @@ catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #' @rdname catr_wfs_get_parcels
 #' @export
 catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
-  # Sanity checks
+  # Validate arguments.
   rc <- validate_non_empty_arg(rc)
   srs <- ensure_null(srs)
-  # Fake call to validate srs
+  # Validate SRS.
   if (!is.null(srs)) {
     wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
   }
@@ -208,8 +210,8 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 }
 #' @description
 #' - Cadastral parcels by zoning: Implemented on
-#'  `catr_wfs_get_parcels_parcel_zoning()`. Extract cadastral parcels of a
-#'  specific cadastral zone.
+#'   `catr_wfs_get_parcels_parcel_zoning()`. Extract cadastral parcels of a
+#'   specific cadastral zone.
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export
@@ -232,10 +234,10 @@ catr_wfs_get_parcels_parcel_zoning <- function(
   srs = NULL,
   verbose = FALSE
 ) {
-  # Sanity checks
+  # Validate arguments.
   cod_zona <- validate_non_empty_arg(cod_zona)
   srs <- ensure_null(srs)
-  # Fake call to validate srs
+  # Validate SRS.
   if (!is.null(srs)) {
     wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
   }

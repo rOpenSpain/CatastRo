@@ -16,7 +16,7 @@ catr_ovc_get_cpmrc(
 \arguments{
 \item{rc}{The cadastral reference to be geocoded.}
 
-\item{srs}{SRS/CRS to use on the query. To see allowed values, use
+\item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
 \item{province, municipality}{Optional, used for narrowing the search.}
@@ -24,7 +24,7 @@ catr_ovc_get_cpmrc(
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}. See \strong{Details}
+A \link[tibble:tbl_df]{tibble}. See \strong{Details}.
 }
 \description{
 Implementation of the OVCCoordenadas service
@@ -39,9 +39,9 @@ On a successful query, the function returns a \link[tibble:tbl_df]{tibble}
 with one row per cadastral reference, including the following columns:
 \itemize{
 \item \code{xcoord}, \code{ycoord}: X and Y coordinates in the specified SRS.
-\item \code{refcat}: Cadastral Reference.
+\item \code{refcat}: Cadastral reference.
 \item \code{address}: Address as recorded in the Cadastre.
-\item Rest of fields: Check the API Docs.
+\item Rest of fields: Check the API documentation.
 }
 }
 \examples{

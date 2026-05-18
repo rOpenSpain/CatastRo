@@ -22,12 +22,12 @@ catr_wms_get_layer(
 \arguments{
 \item{x}{See \strong{Bounding box}. It may be:
 \itemize{
-\item A numeric vector of length 4 with the coordinates that defines
-the bounding box: \code{c(xmin, ymin, xmax, ymax)}
+\item A numeric vector of length 4 with the coordinates that define
+the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 \item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
 }}
 
-\item{srs}{SRS/CRS to use on the query. To see allowed values, use
+\item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
@@ -87,7 +87,7 @@ tile via the \code{srs} argument, which should match the SRS of
 
 The argument \code{what} defines the layer to be extracted. The equivalence with
 the
-\href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
+\href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf}{API documentation}
 reference is:
 \itemize{
 \item \code{"parcel"}: CP.CadastralParcel
@@ -105,15 +105,15 @@ reference is:
 The WMS service provides different styles on each layer (\code{what} argument).
 Some of the styles available are:
 \itemize{
-\item \code{"parcel"}: styles : \code{"BoundariesOnly"}, \code{"ReferencePointOnly"},
+\item \code{"parcel"}: Styles: \code{"BoundariesOnly"}, \code{"ReferencePointOnly"},
 \code{"ELFCadastre"}.
-\item \code{"zoning"}: styles : \code{"BoundariesOnly"}, \code{"ELFCadastre"}.
-\item \code{"building"}, \code{"buildingpart"}: \code{"ELFCadastre"}
-\item \code{"address"}: \code{"Number.ELFCadastre"}
-\item \code{"admboundary"}, \code{"admunit"}: \code{"ELFCadastre"}
+\item \code{"zoning"}: Styles: \code{"BoundariesOnly"}, \code{"ELFCadastre"}.
+\item \code{"building"}, \code{"buildingpart"}: \code{"ELFCadastre"}.
+\item \code{"address"}: \code{"Number.ELFCadastre"}.
+\item \code{"admboundary"}, \code{"admunit"}: \code{"ELFCadastre"}.
 }
 
-Check the \href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf}{API Docs}
+Check the \href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf}{API documentation}
 for more information.
 }
 }
@@ -145,7 +145,7 @@ parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
 
 parcels_img <- catr_wms_get_layer(parcels,
   what = "buildingpart",
-  srs = 25830, # As parcels object
+  srs = 25830, # Same as the parcels object
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )
