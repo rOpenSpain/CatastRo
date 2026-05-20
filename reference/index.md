@@ -168,10 +168,10 @@ Reference tables and helper databases used by the package services.
   Reference SRS codes for
   [CatastRo](https://CRAN.R-project.org/package=CatastRo) APIs
 
-## About the package
+## Helpers and package metadata
 
-Package-level documentation and overview.
+Package-level documentation and example helpers.
 
 - [`CatastRo`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
   [`CatastRo-package`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
-  : CatastRo: Interface to the Spanish Cadastre APIs
+  : CatastRo: Access Spanish Cadastre APIs

@@ -1,6 +1,6 @@
 # Articles
 
-### All vignettes
+### Articles
 
 - [Get
   started](https://ropenspain.github.io/CatastRo/articles/CatastRo.md):

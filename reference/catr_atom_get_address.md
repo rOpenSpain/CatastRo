@@ -38,7 +38,7 @@ catr_atom_get_address(
 
 - update_cache:
 
-  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
   When set to `TRUE`, it forces a new download.
 
 - cache_dir:
@@ -58,10 +58,10 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 ## References
 
 [API
-Documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ATOM.pdf).
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ATOM.pdf).
 
-[INSPIRE Services for Cadastral
-Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
+[INSPIRE services for cadastral
+cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 

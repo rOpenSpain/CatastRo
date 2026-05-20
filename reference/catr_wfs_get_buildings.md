@@ -1,16 +1,15 @@
 # WFS INSPIRE: Download buildings
 
-Get the spatial data of buildings. The WFS Service allows performing two
+Get the spatial data of buildings. The WFS service allows performing two
 types of queries:
 
-- By bounding box: Implemented on `catr_wfs_get_buildings_bbox()`.
-  Extract objects included in the bounding box provided. See **Bounding
-  box**.
+- By bounding box: `catr_wfs_get_buildings_bbox()` extracts objects
+  included in the provided bounding box. See **Bounding box**.
 
 &nbsp;
 
-- By cadastral reference: Implemented on `catr_wfs_get_buildings_rc()`.
-  Extract objects of specific cadastral references.
+- By cadastral reference: `catr_wfs_get_buildings_rc()` extracts objects
+  for specific cadastral references.
 
 ## Usage
 
@@ -34,7 +33,7 @@ catr_wfs_get_buildings_rc(
 
 - x:
 
-  See **Bounding box**. It may be:
+  See **Bounding box**. Can be one of:
 
   - A numeric vector of length 4 with the coordinates that define the
     bounding box: `c(xmin, ymin, xmax, ymax)`.
@@ -95,10 +94,10 @@ as input.
 ## References
 
 [API
-Documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf).
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf).
 
-[INSPIRE Services for Cadastral
-Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
+[INSPIRE services for cadastral
+cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 

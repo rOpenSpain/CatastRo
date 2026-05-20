@@ -4,7 +4,8 @@
 
 CRAN release: 2026-04-27
 
-- Update documentation.
+- Improve documentation for cache behavior, INSPIRE services and OVC
+  reference data.
 
 ## CatastRo 1.0.0
 
@@ -17,13 +18,11 @@ into topic-based subfolders for easier management.
 > Because of internal changes, **existing caches are not compatible**
 > with this release and must be rebuilt.
 
-We have transitioned from
-[`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
-to [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) for
-managing your persistent cache directory. If you are a heavy
-**CatastRo** user and already have a cache directory in place, you’ll
-receive a one-time friendly message informing you about this migration.
-Consider it a warm welcome to **CatastRo** 1.0.0.
+Persistent cache directories now use
+[`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) instead of
+[`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html).
+If you already have a cache directory in place, **CatastRo** displays a
+one-time message about this migration.
 
 The package now requires **R ≥ 4.1.0** and dependency updates improve
 both performance and maintainability. All functions return tidy objects
@@ -31,8 +30,8 @@ both performance and maintainability. All functions return tidy objects
 
 ### Major changes
 
-- Minimum required R version is now **4.1.0**.
-- Refactor code and test suite for improved stability.
+- Minimum required **R** version is now **4.1.0**.
+- Refactor the code and test suite for improved stability.
 - Switch API requests to **httr2**.
 - New options (especially for macOS and Linux users):
   - On SSL errors, use `options(catastro_ssl_verify = 0)` to disable SSL
@@ -41,7 +40,7 @@ both performance and maintainability. All functions return tidy objects
     `options(catastro_timeout = 300)` (default value). Check
     [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
     for details.
-- Reorganize cache into topic-based subfolders.
+- Reorganize the cache into topic-based subfolders.
 
 > **Note:** Previous caches must be recreated.
 
@@ -56,19 +55,19 @@ both performance and maintainability. All functions return tidy objects
 
 ### Deprecations
 
-- `cache` argument has been deprecated in all functions.
+- The `cache` argument is deprecated in all functions.
 
 ### New features
 
-- Added
+- Add
   [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md),
   a general function that downloads data of any INSPIRE-based API
   endpoint.
 
 ### Other updates
 
-- Rewrite the full test suite.
 - Review and improve documentation.
+- Rewrite the full test suite.
 - Use **cli** for all messages.
 
 ## CatastRo 0.4.1
@@ -163,7 +162,7 @@ CRAN release: 2022-02-28
     [`catr_wfs_get_buildings_rc()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md).
 - Add **WMS INSPIRE** capabilities:
   [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md).
-- Add a new interface for **OVC Services**. Deprecated previous
+- Add a new interface for **OVC services**. Deprecated previous
   functions in favor of the new API:
   - New SRS database in
     [`?catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),

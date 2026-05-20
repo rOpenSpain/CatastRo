@@ -72,7 +72,7 @@ wrapper of <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_ge
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>See <strong>Bounding box</strong>. It may be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that define
+<dd><p>See <strong>Bounding box</strong>. Can be one of:</p><ul><li><p>A numeric vector of length 4 with the coordinates that define
 the bounding box: <code>c(xmin, ymin, xmax, ymax)</code>.</p></li>
 <li><p>A <code>sf/sfc</code> object, as provided by the <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> package.</p></li>
 </ul></dd>
@@ -90,7 +90,7 @@ the bounding box: <code>c(xmin, ymin, xmax, ymax)</code>.</p></li>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>logical, should the cached file be refreshed? Defaults to
+<dd><p>Logical. Should the cached file be refreshed? Defaults to
 <code>FALSE</code>. When set to <code>TRUE</code>, it forces a new download.</p></dd>
 
 
@@ -175,8 +175,8 @@ reference is:</p><ul><li><p><code>"parcel"</code>: CP.CadastralParcel</p></li>
 <h3 id="styles">Styles<a class="anchor" aria-label="anchor" href="#styles"></a></h3>
 
 
-<p>The WMS service provides different styles on each layer (<code>what</code> argument).
-Some of the styles available are:</p><ul><li><p><code>"parcel"</code>: Styles: <code>"BoundariesOnly"</code>, <code>"ReferencePointOnly"</code>,
+<p>The WMS service provides different styles for each layer (<code>what</code> argument).
+Some available styles are:</p><ul><li><p><code>"parcel"</code>: Styles: <code>"BoundariesOnly"</code>, <code>"ReferencePointOnly"</code>,
 <code>"ELFCadastre"</code>.</p></li>
 <li><p><code>"zoning"</code>: Styles: <code>"BoundariesOnly"</code>, <code>"ELFCadastre"</code>.</p></li>
 <li><p><code>"building"</code>, <code>"buildingpart"</code>: <code>"ELFCadastre"</code>.</p></li>

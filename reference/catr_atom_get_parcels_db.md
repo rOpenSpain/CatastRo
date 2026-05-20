@@ -3,13 +3,10 @@
 Create a database containing the URLs provided in the INSPIRE ATOM
 service of the Spanish Cadastre for extracting cadastral parcels.
 
-- `catr_atom_get_parcels_db_all()` provides a top-level table including
-  information on all the territorial offices (except the Basque Country
-  and Navarre) listing the municipalities included in each office.
-
-- `catr_atom_get_parcels_db_to()` provides a table for the specified
-  territorial office including information for each of the
-  municipalities of that office.
+`catr_atom_get_parcels_db_all()` provides a top-level table with all
+territorial offices, except the Basque Country and Navarre, and the
+municipalities included in each office. `catr_atom_get_parcels_db_to()`
+provides a table for one territorial office and its municipalities.
 
 ## Usage
 
@@ -43,7 +40,7 @@ catr_atom_get_parcels_db_to(
 
 - update_cache:
 
-  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
   When set to `TRUE`, it forces a new download.
 
 - cache_dir:
@@ -58,7 +55,7 @@ catr_atom_get_parcels_db_to(
 
 - to:
 
-  character. Territorial office. Internally uses
+  Character. Territorial office. Internally uses
   [`base::grep()`](https://rdrr.io/r/base/grep.html) for matching.
 
 ## Value
@@ -73,8 +70,8 @@ with the information requested with the following fields:
 
 - `munic`: Name of the municipality.
 
-- `date`: Reference date of the data. Note that **the information from
-  this service is updated twice a year**.
+- `date`: Reference date of the data. The information from this service
+  is updated twice a year.
 
 ## See also
 

@@ -1,6 +1,6 @@
 # Get started
 
-**CatastRo** provides access to different API services of the [Spanish
+**CatastRo** provides access to API services from the [Spanish
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
 download official information on addresses, properties, parcels and
 buildings.
@@ -9,11 +9,11 @@ buildings.
 
 The
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-service allows retrieving the coordinates of a known cadastral reference
+service retrieves the coordinates of a known cadastral reference
 (geocoding). It is also possible to retrieve the cadastral references
 around a specific pair of coordinates (reverse geocoding). **CatastRo**
-returns the results in a tibble format. This functionality is described
-in detail in the corresponding vignette (see
+returns the results as a tibble. This functionality is described in
+detail in the corresponding vignette (see
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)).
 
 ## INSPIRE services
@@ -22,8 +22,8 @@ in detail in the corresponding vignette (see
 > Infrastructure (SDI) for the purposes of EU environmental policies and
 > policies or activities which may have an impact on the environment.
 > This European Spatial Data Infrastructure enables the sharing of
-> environmental spatial information among public sector organisations,
-> facilitate public access to spatial information across Europe and
+> environmental spatial information among public sector organizations,
+> facilitates public access to spatial information across Europe and
 > assist in policy-making across boundaries.
 
 Source: [INSPIRE Knowledge
@@ -45,8 +45,7 @@ Note that the coverage of this service is 95% of the Spanish territory,
 excluding the Basque Country and Navarre[^1], which have their own
 independent cadastral offices.
 
-There are three types of functions, each one querying a different
-service:
+There are three types of functions, each querying a different service:
 
 1.  **ATOM service**: The ATOM service allows batch downloading vector
     objects of different cadastral elements for a specific municipality.
@@ -63,11 +62,11 @@ service:
 
 ### Working with layers
 
-In this example, we demonstrate some of the main capabilities of the
-package by recreating a cadastral map of the surroundings of the
-[Santiago Bernabéu
+This example demonstrates some of the main capabilities of the package
+by recreating a cadastral map of the surroundings of the [Santiago
+Bernabéu
 Stadium](https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium).
-We use the **WMS and WFS services** to get different layers.
+We use the WMS and WFS services to retrieve different layers.
 
 ``` r
 
@@ -124,7 +123,7 @@ Granada using **CatastRo**, replicating the map produced by [Dominic
 Royé](https://dominicroye.github.io) ([Royé 2019](#ref-roye19)), using
 the **ATOM service**.
 
-First, we extract the coordinates of Granada’s city center using
+First, we extract the coordinates of Granada’s city center with
 **mapSpain**:
 
 ``` r
@@ -158,8 +157,8 @@ city_catr_code
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
 
-The next step in creating the visualization is to limit the analysis to
-a circle with a radius of 1.5 km around the city center:
+Next, we limit the analysis to a circle with a radius of 1.5 km around
+the city center:
 
 ``` r
 
@@ -199,10 +198,9 @@ dataviz <- dataviz |>
   mutate(year = year)
 ```
 
-The last step is to create groups based on the year and create the data
-visualization. Here we use the function
-[`cut()`](https://rdrr.io/r/base/cut.html) to create classes for every
-decade starting from year 1900:
+The last step is to group the data by construction year and create the
+visualization. Here, [`cut()`](https://rdrr.io/r/base/cut.html) creates
+classes for each decade from 1900 onward:
 
 ``` r
 
@@ -254,4 +252,4 @@ Royé, Dominique. 2019. *Visualize Urban Growth*.
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar
-    functionalities to **CatastRo**.
+    functionality to **CatastRo**.

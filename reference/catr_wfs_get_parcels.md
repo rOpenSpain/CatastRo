@@ -1,32 +1,31 @@
 # WFS INSPIRE: Download cadastral parcels
 
-Get the spatial data of cadastral parcels and zones. The WFS Service
+Get the spatial data of cadastral parcels and zones. The WFS service
 allows several types of queries:
 
-- By bounding box: Implemented on `catr_wfs_get_parcels_bbox()`. Extract
-  objects included in the bounding box provided. See **Bounding box**.
+- By bounding box: `catr_wfs_get_parcels_bbox()` extracts objects
+  included in the provided bounding box. See **Bounding box**.
 
 &nbsp;
 
-- By zoning: Implemented on `catr_wfs_get_parcels_zoning()`. Extract
-  objects of a specific cadastral zone.
-
-&nbsp;
-
-- By cadastral parcel: Implemented on `catr_wfs_get_parcels_parcel()`.
-  Extract cadastral parcels of a specific cadastral reference.
-
-&nbsp;
-
-- Neighbor cadastral parcels: Implemented on
-  `catr_wfs_get_parcels_neigh_parcel()`. Extract neighbor cadastral
-  parcels of a specific cadastral reference.
-
-&nbsp;
-
-- Cadastral parcels by zoning: Implemented on
-  `catr_wfs_get_parcels_parcel_zoning()`. Extract cadastral parcels of a
+- By zoning: `catr_wfs_get_parcels_zoning()` extracts objects for a
   specific cadastral zone.
+
+&nbsp;
+
+- By cadastral parcel: `catr_wfs_get_parcels_parcel()` extracts
+  cadastral parcels for a specific cadastral reference.
+
+&nbsp;
+
+- Neighbor cadastral parcels: `catr_wfs_get_parcels_neigh_parcel()`
+  extracts neighbor cadastral parcels for a specific cadastral
+  reference.
+
+&nbsp;
+
+- Cadastral parcels by zoning: `catr_wfs_get_parcels_parcel_zoning()`
+  extracts cadastral parcels for a specific cadastral zone.
 
 ## Usage
 
@@ -51,7 +50,7 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
 - x:
 
-  See **Bounding box**. It may be:
+  See **Bounding box**. Can be one of:
 
   - A numeric vector of length 4 with the coordinates that define the
     bounding box: `c(xmin, ymin, xmax, ymax)`.
@@ -117,10 +116,10 @@ as input.
 ## References
 
 [API
-Documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf).
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf).
 
-[INSPIRE Services for Cadastral
-Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
+[INSPIRE services for cadastral
+cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 

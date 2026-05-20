@@ -26,7 +26,7 @@ catr_wms_get_layer(
 
 - x:
 
-  See **Bounding box**. It may be:
+  See **Bounding box**. Can be one of:
 
   - A numeric vector of length 4 with the coordinates that define the
     bounding box: `c(xmin, ymin, xmax, ymax)`.
@@ -47,7 +47,7 @@ catr_wms_get_layer(
 
 - update_cache:
 
-  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
   When set to `TRUE`, it forces a new download.
 
 - cache_dir:
@@ -139,8 +139,8 @@ reference is:
 
 ### Styles
 
-The WMS service provides different styles on each layer (`what`
-argument). Some of the styles available are:
+The WMS service provides different styles for each layer (`what`
+argument). Some available styles are:
 
 - `"parcel"`: Styles: `"BoundariesOnly"`, `"ReferencePointOnly"`,
   `"ELFCadastre"`.

@@ -88,9 +88,9 @@
 
 
 
-    <!-- ovcservice.qmd is generated from ovcservice.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> allows querying the OVCCoordenadas web service provided by the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a> API directly through an <strong>R</strong> IDE.</p>
-<p>This API retrieves the spatial coordinates of an urban property. You do not need to be the owner to get the information; you only need to know the cadastral reference (<em>RC</em>) of the property. Although the RC is the only required argument, providing the address can improve results and help avoid errors.</p>
-<p>Additionally, the API can be used to obtain the RC of an urban property. For this, the API requires longitude and latitude. It also allows you to choose the spatial reference system (SRS, also known as CRS) from a list to express the coordinates.</p>
+    <!-- ovcservice.qmd is generated from ovcservice.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> queries the OVCCoordenadas web service provided by the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a> API directly through an <strong>R</strong> IDE.</p>
+<p>This API retrieves the spatial coordinates of an urban property. You do not need to be the owner to get the information. You only need to know the cadastral reference (<em>RC</em>) of the property. Although the RC is the only required argument, providing the address can improve results and help avoid errors.</p>
+<p>The API can also obtain the RC of an urban property from longitude and latitude. It allows you to choose the spatial reference system (SRS, also known as CRS) used to express the coordinates.</p>
 <p>The API also handles cases where the exact location of the registered urban property is unknown. In such cases, it returns all properties located within a 50-meter square around the given point.</p>
 <p>The documentation for this API is available <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">here</a>.</p>
 <p>These functions are named <code>catr_ovc_*</code> and return a tibble, as provided by the <strong>tibble</strong> package.</p>
@@ -103,7 +103,7 @@
 <li><code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code></li>
 </ul></section><section class="level2"><h2 id="reverse-geocoding-cadastral-references">Reverse geocoding cadastral references<a class="anchor" aria-label="anchor" href="#reverse-geocoding-cadastral-references"></a>
 </h2>
-<p>The function <code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> takes the coordinates (<code>lat</code> and <code>lon</code>) and the spatial reference system (<code>srs</code>) used to express them. It returns a tibble with the cadastral reference of the property at that spatial point, including other information such as the address (town, street and number).</p>
+<p><code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> takes the coordinates (<code>lat</code> and <code>lon</code>) and the spatial reference system (<code>srs</code>) used to express them. It returns a tibble with the cadastral reference of the property at that spatial point, including other information such as the address (town, street and number).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span></span>
 <span></span>

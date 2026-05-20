@@ -22,11 +22,11 @@ with 16 rows and columns:
 
 - ovc_service:
 
-  Logical. Is this code valid on OVC services?
+  Logical. Whether this code is valid for OVC services.
 
 - wfs_service:
 
-  Logical. Is this code valid on INSPIRE WFS services?
+  Logical. Whether this code is valid for INSPIRE WFS services.
 
 ## Details
 
@@ -134,10 +134,10 @@ catr_srs_values |> filter(wfs_service)
 catr_srs_values |>
   filter(wfs_service & ovc_service) |>
   print() |>
-  # First value
+  # Select the first value.
   slice_head(n = 1) |>
   pull(SRS) |>
-  # As CRS
+  # Convert to a CRS.
   sf::st_crs(.)
 #> # A tibble: 5 × 4
 #>     SRS Description            ovc_service wfs_service

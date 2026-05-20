@@ -1,20 +1,19 @@
 # OVCCoordenadas web service
 
-**CatastRo** allows querying the OVCCoordenadas web service provided by
-the [Sede electrónica del
+**CatastRo** queries the OVCCoordenadas web service provided by the
+[Sede electrónica del
 Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 API directly through an **R** IDE.
 
 This API retrieves the spatial coordinates of an urban property. You do
-not need to be the owner to get the information; you only need to know
+not need to be the owner to get the information. You only need to know
 the cadastral reference (*RC*) of the property. Although the RC is the
 only required argument, providing the address can improve results and
 help avoid errors.
 
-Additionally, the API can be used to obtain the RC of an urban property.
-For this, the API requires longitude and latitude. It also allows you to
-choose the spatial reference system (SRS, also known as CRS) from a list
-to express the coordinates.
+The API can also obtain the RC of an urban property from longitude and
+latitude. It allows you to choose the spatial reference system (SRS,
+also known as CRS) used to express the coordinates.
 
 The API also handles cases where the exact location of the registered
 urban property is unknown. In such cases, it returns all properties
@@ -37,7 +36,6 @@ functions:
 
 ## Reverse geocoding cadastral references
 
-The function
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
 takes the coordinates (`lat` and `lon`) and the spatial reference system
 (`srs`) used to express them. It returns a tibble with the cadastral

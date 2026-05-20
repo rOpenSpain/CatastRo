@@ -1,7 +1,7 @@
 # Clear your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache dir
 
-**Use this function with caution**. This function clears your cached
-data and configuration, specifically:
+Use this function with caution. This function clears your cached data
+and configuration, specifically:
 
 - Deletes the [CatastRo](https://CRAN.R-project.org/package=CatastRo)
   config directory (`tools::R_user_dir("CatastRo", "config")`).
@@ -55,7 +55,7 @@ Other cache utilities:
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpGtDeF4/CatastRo
+#> ℹ /tmp/Rtmpc6Bjk6/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -63,13 +63,13 @@ catr_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 catr_clear_cache(verbose = TRUE)
-#> ! CatastRo data deleted: /tmp/RtmpGtDeF4/example/cache (0 bytes).
+#> ! CatastRo data deleted: /tmp/Rtmpc6Bjk6/example/cache (0 bytes).
 
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache dir is /tmp/RtmpGtDeF4/CatastRo.
+#> ℹ CatastRo cache dir is /tmp/Rtmpc6Bjk6/CatastRo.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpGtDeF4/CatastRo
+#> ℹ /tmp/Rtmpc6Bjk6/CatastRo
 #> [1] TRUE
 # }
 ```

@@ -21,7 +21,7 @@ catr_get_code_from_coords(
 
 - x:
 
-  It may be:
+  Can be one of:
 
   - A pair of coordinates `c(x, y)`. In this case the `srs` of the
     coordinates must be provided.
