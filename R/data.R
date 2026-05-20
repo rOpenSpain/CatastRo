@@ -33,8 +33,9 @@
 #'     [EPSG](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset)
 #'     code.}
 #'   \item{Description}{Description of the SRS/EPSG code.}
-#'   \item{ovc_service}{Logical. Is this code valid on OVC services?}
-#'   \item{wfs_service}{Logical. Is this code valid on INSPIRE WFS services?}
+#'   \item{ovc_service}{Logical. Whether this code is valid for OVC services.}
+#'   \item{wfs_service}{Logical. Whether this code is valid for INSPIRE WFS
+#'     services.}
 #' }
 #' @details
 #' ```{r, echo=FALSE}
@@ -64,9 +65,9 @@
 #' catr_srs_values |>
 #'   filter(wfs_service & ovc_service) |>
 #'   print() |>
-#'   # First value
+#'   # Select the first value.
 #'   slice_head(n = 1) |>
 #'   pull(SRS) |>
-#'   # As CRS
+#'   # Convert to a CRS.
 #'   sf::st_crs(.)
 NULL

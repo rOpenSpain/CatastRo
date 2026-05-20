@@ -25,7 +25,7 @@ catr_wfs_get_parcels_neigh_parcel(rc, srs = NULL, verbose = FALSE)
 catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 }
 \arguments{
-\item{x}{See \strong{Bounding box}. It may be:
+\item{x}{See \strong{Bounding box}. Can be one of:
 \itemize{
 \item A numeric vector of length 4 with the coordinates that define
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
@@ -52,33 +52,31 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Get the spatial data of cadastral parcels and zones. The WFS Service
+Get the spatial data of cadastral parcels and zones. The WFS service
 allows several types of queries:
 \itemize{
-\item By bounding box: Implemented on \code{catr_wfs_get_parcels_bbox()}. Extract
-objects included in the bounding box provided. See \strong{Bounding box}.
+\item By bounding box: \code{catr_wfs_get_parcels_bbox()} extracts objects included
+in the provided bounding box. See \strong{Bounding box}.
 }
 
 \itemize{
-\item By zoning: Implemented on \code{catr_wfs_get_parcels_zoning()}. Extract
-objects of a specific cadastral zone.
+\item By zoning: \code{catr_wfs_get_parcels_zoning()} extracts objects for a specific
+cadastral zone.
 }
 
 \itemize{
-\item By cadastral parcel: Implemented on \code{catr_wfs_get_parcels_parcel()}.
-Extract cadastral parcels of a specific cadastral reference.
+\item By cadastral parcel: \code{catr_wfs_get_parcels_parcel()} extracts cadastral
+parcels for a specific cadastral reference.
 }
 
 \itemize{
-\item Neighbor cadastral parcels: Implemented on
-\code{catr_wfs_get_parcels_neigh_parcel()}. Extract neighbor cadastral parcels
-of a specific cadastral reference.
+\item Neighbor cadastral parcels: \code{catr_wfs_get_parcels_neigh_parcel()}
+extracts neighbor cadastral parcels for a specific cadastral reference.
 }
 
 \itemize{
-\item Cadastral parcels by zoning: Implemented on
-\code{catr_wfs_get_parcels_parcel_zoning()}. Extract cadastral parcels of a
-specific cadastral zone.
+\item Cadastral parcels by zoning: \code{catr_wfs_get_parcels_parcel_zoning()}
+extracts cadastral parcels for a specific cadastral zone.
 }
 }
 \section{API Limits}{
@@ -123,9 +121,9 @@ ggplot(cp) +
 \dontshow{\}) # examplesIf}
 }
 \references{
-\href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf}{API Documentation}.
+\href{https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf}{API documentation}.
 
-\href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE Services for Cadastral Cartography}.
+\href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE services for cadastral cartography}.
 }
 \seealso{
 INSPIRE API functions:

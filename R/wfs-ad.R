@@ -1,12 +1,11 @@
 #' WFS INSPIRE: Download addresses
 #'
 #' @description
-#' Get the spatial data of addresses. The WFS Service allows performing
+#' Get the spatial data of addresses. The WFS service allows performing
 #' several types of queries:
 #'
-#' - By bounding box: Implemented on `catr_wfs_get_address_bbox()`.
-#'   Extract objects included in the bounding box provided. See
-#'   **Bounding box**.
+#' - By bounding box: `catr_wfs_get_address_bbox()` extracts objects included
+#'   in the provided bounding box. See **Bounding box**.
 #'
 #' @encoding UTF-8
 #' @family INSPIRE
@@ -20,11 +19,11 @@
 #'
 #' @references
 #' ```{r, echo=FALSE, comment="", results="asis"}
-#' paste0("[API Documentation](https://www.catastro.hacienda.gob.es/",
+#' paste0("[API documentation](https://www.catastro.hacienda.gob.es/",
 #'        "webinspire/documentos/inspire-ad-WFS.pdf).") |>
 #'   cat()
 #' cat("\n\n")
-#' paste0("[INSPIRE Services for Cadastral Cartography](https://www.",
+#' paste0("[INSPIRE services for cadastral cartography](https://www.",
 #'        "catastro.hacienda.gob.es/webinspire/index.html).") |>
 #'   cat()
 #'
@@ -32,7 +31,7 @@
 #'
 #' @return A [`sf`][sf::st_sf] object.
 #'
-#' @param x See **Bounding box**. It may be:
+#' @param x See **Bounding box**. Can be one of:
 #' - A numeric vector of length 4 with the coordinates that define
 #'   the bounding box: `c(xmin, ymin, xmax, ymax)`.
 #' - A `sf/sfc` object, as provided by the \CRANpkg{sf} package.
@@ -94,8 +93,8 @@ catr_wfs_get_address_bbox <- function(x, srs = NULL, verbose = FALSE) {
   out
 }
 #' @description
-#' - By street code: Implemented on `catr_wfs_get_address_codvia()`. Extract
-#'   objects of specific addresses.
+#' - By street code: `catr_wfs_get_address_codvia()` extracts objects for
+#'   specific addresses.
 #'
 #' @param codvia Cadastral street code.
 #' @param del Cadastral office code.
@@ -149,8 +148,8 @@ catr_wfs_get_address_codvia <- function(
 }
 
 #' @description
-#' - By cadastral reference: Implemented on `catr_wfs_get_address_rc()`. Extract
-#'   objects of specific cadastral references.
+#' - By cadastral reference: `catr_wfs_get_address_rc()` extracts objects for
+#'   specific cadastral references.
 #'
 #' @rdname catr_wfs_get_address
 #' @export
@@ -189,8 +188,8 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
   out
 }
 #' @description
-#' - By postal codes: Implemented on `catr_wfs_get_address_postalcode()`.
-#'   Extract objects of specific postal codes.
+#' - By postal codes: `catr_wfs_get_address_postalcode()` extracts objects for
+#'   specific postal codes.
 #'
 #' @param postalcode Postal code.
 #'

@@ -7,15 +7,15 @@ cff-version: 1.2.0
 message: 'To cite package "CatastRo" in publications use:'
 type: software
 license: GPL-2.0-only
-title: 'CatastRo: Interface to the Spanish Cadastre APIs'
+title: 'CatastRo: Access Spanish Cadastre APIs'
 version: 1.0.1
 doi: 10.32614/CRAN.package.CatastRo
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.CatastRo
 abstract: Access public spatial data from the Spanish Cadastre through its 'INSPIRE'
-  and cadastral web services. Provides tools to download cadastral parcels, buildings,
-  addresses and map images, and to geocode cadastral references.
+  and cadastral web services. Download cadastral parcels, buildings, addresses and
+  map images, and geocode cadastral references.
 authors:
 - family-names: Delgado Panadero
   given-names: Ángel
@@ -42,8 +42,8 @@ preferred-citation:
   version: 1.0.1
   url: https://ropenspain.github.io/CatastRo/
   abstract: Access public spatial data from the Spanish Cadastre through its INSPIRE
-    and cadastral web services. Provides tools to download cadastral parcels, buildings,
-    addresses and map images, and to geocode cadastral references.
+    and cadastral web services. Download cadastral parcels, buildings, addresses and
+    map images, and geocode cadastral references.
 repository: https://CRAN.R-project.org/package=CatastRo
 repository-code: https://github.com/rOpenSpain/CatastRo
 url: https://ropenspain.github.io/CatastRo/

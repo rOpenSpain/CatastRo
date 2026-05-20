@@ -176,7 +176,7 @@ catr_detect_cache_dir <- function() {
 #' @return Invisible. This function is called for its side effects.
 #'
 #' @description
-#' **Use this function with caution**. This function clears your cached data
+#' Use this function with caution. This function clears your cached data
 #' and configuration, specifically:
 #'
 #' - Deletes the \CRANpkg{CatastRo} config directory

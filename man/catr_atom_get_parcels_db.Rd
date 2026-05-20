@@ -28,7 +28,7 @@ catr_atom_get_parcels_db_to(
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer
 supported, this function always caches results.}
 
-\item{update_cache}{logical, should the cached file be refreshed? Defaults to
+\item{update_cache}{Logical. Should the cached file be refreshed? Defaults to
 \code{FALSE}. When set to \code{TRUE}, it forces a new download.}
 
 \item{cache_dir}{Path to a cache directory. On \code{NULL}, the function
@@ -36,7 +36,7 @@ stores cached files in a temporary directory (see \code{\link[base:tempdir]{base
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
-\item{to}{character. Territorial office. Internally uses \code{\link[base:grep]{base::grep()}} for
+\item{to}{Character. Territorial office. Internally uses \code{\link[base:grep]{base::grep()}} for
 matching.}
 }
 \value{
@@ -47,21 +47,18 @@ fields:
 of Spain except the Basque Country and Navarre.
 \item \code{url}: ATOM URL for the corresponding territorial office.
 \item \code{munic}: Name of the municipality.
-\item \code{date}: Reference date of the data. Note that \strong{the information from this
-service is updated twice a year}.
+\item \code{date}: Reference date of the data. The information from this service is
+updated twice a year.
 }
 }
 \description{
 Create a database containing the URLs provided in the INSPIRE ATOM
 service of the Spanish Cadastre for extracting cadastral parcels.
-\itemize{
-\item \code{catr_atom_get_parcels_db_all()} provides a top-level table including
-information on all the territorial offices (except the Basque Country and
-Navarre) listing the municipalities included in each office.
-\item \code{catr_atom_get_parcels_db_to()} provides a table for the specified
-territorial office including information for each of the municipalities
-of that office.
-}
+
+\code{catr_atom_get_parcels_db_all()} provides a top-level table with all
+territorial offices, except the Basque Country and Navarre, and the
+municipalities included in each office. \code{catr_atom_get_parcels_db_to()}
+provides a table for one territorial office and its municipalities.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}

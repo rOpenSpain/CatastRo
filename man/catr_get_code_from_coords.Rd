@@ -14,7 +14,7 @@ catr_get_code_from_coords(
 )
 }
 \arguments{
-\item{x}{It may be:
+\item{x}{Can be one of:
 \itemize{
 \item A pair of coordinates \code{c(x, y)}. In this case the \code{srs} of the
 coordinates must be provided.

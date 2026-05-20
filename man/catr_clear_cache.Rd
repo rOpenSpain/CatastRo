@@ -19,7 +19,7 @@ catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 Invisible. This function is called for its side effects.
 }
 \description{
-\strong{Use this function with caution}. This function clears your cached data
+Use this function with caution. This function clears your cached data
 and configuration, specifically:
 \itemize{
 \item Deletes the \CRANpkg{CatastRo} config directory

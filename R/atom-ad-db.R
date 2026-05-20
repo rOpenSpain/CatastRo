@@ -4,13 +4,10 @@
 #' Create a database containing the URLs provided in the INSPIRE ATOM
 #' service of the Spanish Cadastre for extracting addresses.
 #'
-#' - `catr_atom_get_address_db_all()` provides a top-level table
-#'    including information on all the territorial offices (except the
-#'    Basque Country and Navarre) listing the municipalities included in
-#'    each office.
-#' - `catr_atom_get_address_db_to()` provides a table for the specified
-#'    territorial office including information for each of the
-#'    municipalities of that office.
+#' `catr_atom_get_address_db_all()` provides a top-level table with all
+#' territorial offices, except the Basque Country and Navarre, and the
+#' municipalities included in each office. `catr_atom_get_address_db_to()`
+#' provides a table for one territorial office and its municipalities.
 #'
 #' @encoding UTF-8
 #' @family INSPIRE
@@ -27,9 +24,9 @@
 #'
 #' @param cache `r lifecycle::badge("deprecated")` `cache` is no longer
 #'   supported, this function always caches results.
-#' @param update_cache logical, should the cached file be refreshed? Defaults to
+#' @param update_cache Logical. Should the cached file be refreshed? Defaults to
 #'   `FALSE`. When set to `TRUE`, it forces a new download.
-#' @param to character. Territorial office. Internally uses [base::grep()] for
+#' @param to Character. Territorial office. Internally uses [base::grep()] for
 #'   matching.
 #'
 #' @return
@@ -39,8 +36,8 @@
 #'   of Spain except the Basque Country and Navarre.
 #' - `url`: ATOM URL for the corresponding territorial office.
 #' - `munic`: Name of the municipality.
-#' - `date`: Reference date of the data. Note that **the information from this
-#'   service is updated twice a year**.
+#' - `date`: Reference date of the data. The information from this service is
+#'   updated twice a year.
 #'
 #' @examplesIf run_example()
 #' \donttest{

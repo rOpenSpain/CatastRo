@@ -15,12 +15,12 @@
 #'
 #' @references
 #' ```{r, echo=FALSE, comment="", results="asis"}
-#' paste0("[API Documentation](https://www.catastro.hacienda.gob.es/",
+#' paste0("[API documentation](https://www.catastro.hacienda.gob.es/",
 #'        "webinspire/documentos/inspire-ATOM.pdf).") |>
 #'   cat()
 #'
 #' cat("\n\n")
-#' paste0("[INSPIRE Services for Cadastral Cartography](https://www.catastro",
+#' paste0("[INSPIRE services for cadastral cartography](https://www.catastro",
 #'        ".hacienda.gob.es/webinspire/index.html).") |> cat()
 #'
 #' ```

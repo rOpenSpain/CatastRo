@@ -60,8 +60,8 @@
 #' - `"admunit"`: AU.AdministrativeUnit
 #'
 #' ## Styles
-#' The WMS service provides different styles on each layer (`what` argument).
-#' Some of the styles available are:
+#' The WMS service provides different styles for each layer (`what` argument).
+#' Some available styles are:
 #' - `"parcel"`: Styles: `"BoundariesOnly"`, `"ReferencePointOnly"`,
 #'   `"ELFCadastre"`.
 #' - `"zoning"`: Styles: `"BoundariesOnly"`, `"ELFCadastre"`.

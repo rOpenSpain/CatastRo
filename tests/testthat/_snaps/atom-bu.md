@@ -21,7 +21,7 @@
       catr_atom_get_buildings("xyxghx", cache_dir = cdir)
     Message
       ! No municipality found with pattern "xyxghx".
-      i Check available municipalities with `CatastRo::catr_atom_get_address_db_all()`.
+      i Check available municipalities with `CatastRo::catr_atom_get_buildings_db_all()`.
     Output
       NULL
 

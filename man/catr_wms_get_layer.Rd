@@ -20,7 +20,7 @@ catr_wms_get_layer(
 )
 }
 \arguments{
-\item{x}{See \strong{Bounding box}. It may be:
+\item{x}{See \strong{Bounding box}. Can be one of:
 \itemize{
 \item A numeric vector of length 4 with the coordinates that define
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
@@ -34,7 +34,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 \item{what, styles}{Layer and style of the WMS layer to be downloaded. See
 \strong{Layers and styles}.}
 
-\item{update_cache}{logical, should the cached file be refreshed? Defaults to
+\item{update_cache}{Logical. Should the cached file be refreshed? Defaults to
 \code{FALSE}. When set to \code{TRUE}, it forces a new download.}
 
 \item{cache_dir}{Path to a cache directory. On \code{NULL}, the function
@@ -102,8 +102,8 @@ reference is:
 
 \subsection{Styles}{
 
-The WMS service provides different styles on each layer (\code{what} argument).
-Some of the styles available are:
+The WMS service provides different styles for each layer (\code{what} argument).
+Some available styles are:
 \itemize{
 \item \code{"parcel"}: Styles: \code{"BoundariesOnly"}, \code{"ReferencePointOnly"},
 \code{"ELFCadastre"}.

@@ -1,11 +1,11 @@
 #' WFS INSPIRE: Download cadastral parcels
 #'
 #' @description
-#' Get the spatial data of cadastral parcels and zones. The WFS Service
+#' Get the spatial data of cadastral parcels and zones. The WFS service
 #' allows several types of queries:
 #'
-#' - By bounding box: Implemented on `catr_wfs_get_parcels_bbox()`. Extract
-#'   objects included in the bounding box provided. See **Bounding box**.
+#' - By bounding box: `catr_wfs_get_parcels_bbox()` extracts objects included
+#'   in the provided bounding box. See **Bounding box**.
 #'
 #' @encoding UTF-8
 #' @family INSPIRE
@@ -83,8 +83,8 @@ catr_wfs_get_parcels_bbox <- function(
   out <- sf::st_transform(out, srs)
 }
 #' @description
-#' - By zoning: Implemented on `catr_wfs_get_parcels_zoning()`. Extract
-#'   objects of a specific cadastral zone.
+#' - By zoning: `catr_wfs_get_parcels_zoning()` extracts objects for a specific
+#'   cadastral zone.
 #'
 #' @param cod_zona Cadastral zone code.
 #'
@@ -126,8 +126,8 @@ catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
   out
 }
 #' @description
-#' - By cadastral parcel: Implemented on `catr_wfs_get_parcels_parcel()`.
-#'   Extract cadastral parcels of a specific cadastral reference.
+#' - By cadastral parcel: `catr_wfs_get_parcels_parcel()` extracts cadastral
+#'   parcels for a specific cadastral reference.
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export
@@ -167,9 +167,8 @@ catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
   out
 }
 #' @description
-#' - Neighbor cadastral parcels: Implemented on
-#'   `catr_wfs_get_parcels_neigh_parcel()`. Extract neighbor cadastral parcels
-#'   of a specific cadastral reference.
+#' - Neighbor cadastral parcels: `catr_wfs_get_parcels_neigh_parcel()`
+#'   extracts neighbor cadastral parcels for a specific cadastral reference.
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export
@@ -209,9 +208,8 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
   out
 }
 #' @description
-#' - Cadastral parcels by zoning: Implemented on
-#'   `catr_wfs_get_parcels_parcel_zoning()`. Extract cadastral parcels of a
-#'   specific cadastral zone.
+#' - Cadastral parcels by zoning: `catr_wfs_get_parcels_parcel_zoning()`
+#'   extracts cadastral parcels for a specific cadastral zone.
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export

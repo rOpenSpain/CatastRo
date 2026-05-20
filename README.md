@@ -20,10 +20,10 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 <!-- badges: end -->
 
-**CatastRo** is a package that provides access to different API services
-of the [Spanish Cadastre](https://www.sedecatastro.gob.es/). With
-**CatastRo**, you can download spatial objects such as buildings,
-cadastral parcels and maps, and geocode cadastral references.
+**CatastRo** provides access to API services from the [Spanish
+Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
+download spatial objects such as buildings, cadastral parcels and maps,
+and geocode cadastral references.
 
 ## Installation
 
@@ -37,7 +37,7 @@ install.packages("CatastRo")
 Check the documentation for the development version at
 <https://ropenspain.github.io/CatastRo/dev/>.
 
-You can install the development version of **CatastRo** using the
+You can install the development version of **CatastRo** from
 [r-universe](https://ropenspain.r-universe.dev/CatastRo):
 
 ``` r
@@ -62,12 +62,12 @@ pak::pak("rOpenSpain/CatastRo")
 >
 > ### SSL issues
 >
-> The SSL certificate of the Spanish Cadastre presents some issues that
-> may cause an error when using **CatastRo** (especially on macOS, see
-> issue [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
+> The SSL certificate of the Spanish Cadastre may cause an error when
+> using **CatastRo** (especially on macOS, see issue
+> [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
 >
 > In **CatastRo \>= 1.0.0**, you can try to fix it by running this line
-> in your session right after loading the package:
+> after loading the package:
 >
 > ``` r
 > # Disable SSL verification
@@ -103,8 +103,8 @@ description of these functions.
 
 ### INSPIRE
 
-These functions return spatial objects in the formats provided by the
-**sf** or **terra** packages using the [Catastro
+These functions return spatial objects in formats provided by the **sf**
+or **terra** packages using the [Catastro
 INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
 service.
 
@@ -112,8 +112,7 @@ Note that the coverage of this service is 95% of the Spanish territory,
 excluding the Basque Country and Navarre[^1], which have their own
 independent cadastral offices.
 
-There are three types of functions, each one querying a different
-service:
+There are three types of functions, each querying a different service:
 
 #### ATOM service
 
@@ -249,7 +248,7 @@ A BibTeX entry for LaTeX users is:
       year = {2026},
       version = {1.0.1},
       url = {https://ropenspain.github.io/CatastRo/},
-      abstract = {Access public spatial data from the Spanish Cadastre through its INSPIRE and cadastral web services. Provides tools to download cadastral parcels, buildings, addresses and map images, and to geocode cadastral references.},
+      abstract = {Access public spatial data from the Spanish Cadastre through its INSPIRE and cadastral web services. Download cadastral parcels, buildings, addresses and map images, and geocode cadastral references.},
     }
 
 ## Contribute
@@ -260,4 +259,4 @@ code](https://github.com/ropenspain/CatastRo/).
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar
-    functionalities to **CatastRo**.
+    functionality to **CatastRo**.

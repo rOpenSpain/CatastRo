@@ -18,7 +18,7 @@
 #' [mapSpain::esp_get_munic_siane()], [catr_ovc_get_cod_munic()],
 #' [sf::st_centroid()].
 #'
-#' @param x It may be:
+#' @param x Can be one of:
 #' - A pair of coordinates `c(x, y)`. In this case the `srs` of the
 #'   coordinates must be provided.
 #' - A [`sf`][sf::st_sf] object. If the object has several geometries, only

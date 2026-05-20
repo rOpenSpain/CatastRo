@@ -1,12 +1,11 @@
 #' WFS INSPIRE: Download buildings
 #'
 #' @description
-#' Get the spatial data of buildings. The WFS Service allows performing
+#' Get the spatial data of buildings. The WFS service allows performing
 #' two types of queries:
 #'
-#' - By bounding box: Implemented on `catr_wfs_get_buildings_bbox()`.
-#'   Extract objects included in the bounding box provided. See
-#'   **Bounding box**.
+#' - By bounding box: `catr_wfs_get_buildings_bbox()` extracts objects included
+#'   in the provided bounding box. See **Bounding box**.
 #'
 #' @encoding UTF-8
 #' @family INSPIRE
@@ -71,8 +70,8 @@ catr_wfs_get_buildings_bbox <- function(
 }
 
 #' @description
-#' - By cadastral reference: Implemented on `catr_wfs_get_buildings_rc()`.
-#'   Extract objects of specific cadastral references.
+#' - By cadastral reference: `catr_wfs_get_buildings_rc()` extracts objects for
+#'   specific cadastral references.
 #'
 #' @rdname catr_wfs_get_buildings
 #'
