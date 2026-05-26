@@ -22,8 +22,8 @@
 #'
 #' @details
 #' By default, when no `cache_dir` is set, the package uses a folder inside
-#' [base::tempdir()] (so files are temporary and are removed when the **R**
-#' session ends). To persist a cache across **R** sessions, use
+#' [base::tempdir()] (so files are temporary and are removed when the \R
+#' session ends). To persist a cache across \R sessions, use
 #' `catr_set_cache_dir(cache_dir, install = TRUE)` which writes the chosen
 #' path to a small configuration file under
 #' `tools::R_user_dir("CatastRo", "config")`.
@@ -44,7 +44,7 @@
 #'   `catr_set_cache_dir(cache_dir = "a/path/here")`.
 #' - For reproducible workflows, install a persistent cache with
 #'   `catr_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`.
-#'   This cache is kept across **R** sessions.
+#'   This cache is kept across \R sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function.
 #'
