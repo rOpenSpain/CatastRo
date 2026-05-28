@@ -8,7 +8,7 @@ message: 'To cite package "CatastRo" in publications use:'
 type: software
 license: GPL-2.0-only
 title: 'CatastRo: Access Spanish Cadastre APIs'
-version: 1.0.1
+version: 1.0.1.9000
 doi: 10.32614/CRAN.package.CatastRo
 identifiers:
 - type: doi
@@ -39,7 +39,7 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
   doi: 10.32614/CRAN.package.CatastRo
   year: '2026'
-  version: 1.0.1
+  version: 1.0.1.9000
   url: https://ropenspain.github.io/CatastRo/
   abstract: Access public spatial data from the Spanish Cadastre through its INSPIRE
     and cadastral web services. Download cadastral parcels, buildings, addresses and
@@ -364,8 +364,8 @@ references:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-  year: '2026'
   doi: 10.32614/CRAN.package.tidyterra
+  year: '2026'
 - type: software
   title: withr
   abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'
