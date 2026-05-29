@@ -101,7 +101,7 @@ catr_atom_get_address <- function(
     cli::cli_alert_warning("No municipality found with pattern {.str {munic}}.")
     cli::cli_alert_info(paste0(
       "Check available municipalities with ",
-      "{.fn CatastRo::catr_atom_get_address_db_all}."
+      "{.run CatastRo::catr_atom_get_address_db_all()}."
     ))
     return(NULL)
   }
