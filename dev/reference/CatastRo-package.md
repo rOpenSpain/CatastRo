@@ -1,8 +1,9 @@
-# CatastRo: Interface to the API 'Sede Electronica Del Catastro'
+# CatastRo: Access Spanish Cadastre Services
 
-Access public spatial data available under the 'INSPIRE' directive.
-Tools for downloading references and addresses of properties, as well as
-map images.
+Access public spatial data from the Spanish Cadastre through its
+'INSPIRE' and cadastral web services. Download cadastral parcels,
+buildings, addresses and map images, geocode cadastral references and
+look up cadastral references from coordinates.
 
 ## See also
 

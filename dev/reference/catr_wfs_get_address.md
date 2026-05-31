@@ -1,25 +1,25 @@
-# WFS INSPIRE: Download addresses
+# WFS INSPIRE: download addresses
 
-Get the spatial data of addresses. The WFS Service allows performing
+Get the spatial data of addresses. The WFS service allows performing
 several types of queries:
 
-- By bounding box: Implemented on `catr_wfs_get_address_bbox()`. Extract
-  objects included in the bounding box provided. See **Bounding box**.
+- By bounding box: `catr_wfs_get_address_bbox()` extracts objects
+  included in the provided bounding box. See **Bounding box**.
 
 &nbsp;
 
-- By street code: Implemented on `catr_wfs_get_address_codvia()`.
-  Extract objects of specific addresses.
+- By street code: `catr_wfs_get_address_codvia()` extracts objects for
+  specific addresses.
 
 &nbsp;
 
-- By cadastral reference: Implemented on `catr_wfs_get_address_rc()`.
-  Extract objects of specific cadastral references.
+- By cadastral reference: `catr_wfs_get_address_rc()` extracts objects
+  for specific cadastral references.
 
 &nbsp;
 
-- By postal codes: Implemented on `catr_wfs_get_address_postalcode()`.
-  Extract objects of specific postal codes
+- By postal codes: `catr_wfs_get_address_postalcode()` extracts objects
+  for specific postal codes.
 
 ## Usage
 
@@ -37,23 +37,23 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 
 - x:
 
-  See **Bounding box**. It may be:
+  See **Bounding box**. Can be one of:
 
-  - A numeric vector of length 4 with the coordinates that defines the
-    bounding box: `c(xmin, ymin, xmax, ymax)`
+  - A numeric vector of length 4 with the coordinates that define the
+    bounding box: `c(xmin, ymin, xmax, ymax)`.
 
   - A `sf/sfc` object, as provided by the
     [sf](https://CRAN.R-project.org/package=sf) package.
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
   specifically the `wfs_service` column. See **Bounding box**.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 - codvia:
 
@@ -81,7 +81,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## API Limits
 
-The API service is limited to a bounding box of 4km2 and a maximum of
+The API service is limited to a bounding box of 4 km2 and a maximum of
 5,000 elements.
 
 ## Bounding box
@@ -104,14 +104,14 @@ as input.
 ## References
 
 [API
-Documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf).
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf).
 
-[INSPIRE Services for Cadastral
-Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
+[INSPIRE services for cadastral
+cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
@@ -123,7 +123,7 @@ INSPIRE API functions:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md),
 [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
-Other INSPIRE WFS services:
+Related WFS INSPIRE functions:
 [`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
 [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),

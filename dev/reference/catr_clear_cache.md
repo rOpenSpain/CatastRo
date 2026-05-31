@@ -1,7 +1,7 @@
-# Clear your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache dir
+# Clear your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache directory
 
-**Use this function with caution**. This function clears your cached
-data and configuration, specifically:
+Use this function with caution. This function clears your cached data
+and configuration, specifically:
 
 - Deletes the [CatastRo](https://CRAN.R-project.org/package=CatastRo)
   config directory (`tools::R_user_dir("CatastRo", "config")`).
@@ -29,7 +29,7 @@ catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
@@ -37,9 +37,8 @@ Invisible. This function is called for its side effects.
 
 ## Details
 
-This is an overkill function that is intended to reset your status as if
-you had never installed and/or used
-[CatastRo](https://CRAN.R-project.org/package=CatastRo).
+This function resets your cache state as if you had never installed
+and/or used [CatastRo](https://CRAN.R-project.org/package=CatastRo).
 
 ## See also
 
@@ -51,10 +50,11 @@ Other cache utilities:
 ## Examples
 
 ``` r
+
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpBJDEem/CatastRo
+#> ℹ /tmp/Rtmp4kxnBP/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -62,13 +62,13 @@ catr_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 catr_clear_cache(verbose = TRUE)
-#> ! CatastRo data deleted: /tmp/RtmpBJDEem/example/cache (0 bytes).
+#> ! CatastRo cached data deleted: /tmp/Rtmp4kxnBP/example/cache (0 bytes).
 
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache dir is /tmp/RtmpBJDEem/CatastRo.
-#> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
+#> ℹ CatastRo cache directory is /tmp/Rtmp4kxnBP/CatastRo.
+#> ℹ To reuse this `cache_dir` in future sessions, run this function with `install = TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpBJDEem/CatastRo
+#> ℹ /tmp/Rtmp4kxnBP/CatastRo
 #> [1] TRUE
 # }
 ```

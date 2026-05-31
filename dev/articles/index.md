@@ -1,13 +1,13 @@
 # Articles
 
-### All vignettes
+### Articles
 
 - [Get
   started](https://ropenspain.github.io/CatastRo/dev/articles/CatastRo.md):
 
-  Brief introduction to CatastRo package.
+  Brief introduction to the CatastRo package.
 
-- [OVCCoordenadas Web
-  Service](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md):
+- [OVCCoordenadas web
+  service](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md):
 
   Retrieve spatial coordinates of urban properties.

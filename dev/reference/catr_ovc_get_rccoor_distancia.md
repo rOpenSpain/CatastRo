@@ -1,11 +1,9 @@
-# OVCCoordenadas: Reverse geocode cadastral references on a region
+# OVCCoordenadas: reverse geocode cadastral references near coordinates
 
 Implementation of the OVCCoordenadas service [Consulta RCCOOR
 Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
-
-Returns the cadastral reference found for a set of coordinates. If no
-cadastral references are found, the API returns a list of the cadastral
-references found in an area of 50 square meters around the requested
+Returns cadastral references for coordinates. If none found, the API
+returns references in a 50 square meter area around the requested
 coordinates.
 
 ## Usage
@@ -26,18 +24,18 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+See **Details**.
 
 ## Details
 
@@ -45,9 +43,9 @@ When the API does not provide any result, the function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 the input arguments only.
 
-On a successful query, the function returns a
+On a successful query, this function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row by cadastral reference, including the following columns:
+one row per cadastral reference, including the following columns:
 
 - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 
@@ -58,7 +56,7 @@ one row by cadastral reference, including the following columns:
 - `cmun_ine`: Municipality code as registered on the INE (National
   Statistics Institute).
 
-- Rest of fields: Check the API Docs.
+- Remaining fields: Check the API documentation.
 
 ## References
 
@@ -70,7 +68,7 @@ Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoorden
 [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md)
 
-OVCCoordenadas API:
+Related OVCCoordenadas functions:
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md),
 [`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md)

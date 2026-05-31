@@ -1,19 +1,18 @@
 # Get started
 
-**CatastRo** provides access to different API services of the [Spanish
+**CatastRo** provides access to services from the [Spanish
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
-download official information on addresses, properties, parcels, and
-buildings.
+download official address, cadastral parcel, building and map data.
 
 ## OVCCoordenadas service
 
 The
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-service allows retrieving the coordinates of a known cadastral reference
+service retrieves the coordinates of a known cadastral reference
 (geocoding). It is also possible to retrieve the cadastral references
 around a specific pair of coordinates (reverse geocoding). **CatastRo**
-returns the results in a tibble format. This functionality is described
-in detail in the corresponding vignette (see
+returns the results as a tibble. This functionality is described in
+detail in the corresponding vignette (see
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md)).
 
 ## INSPIRE services
@@ -21,57 +20,56 @@ in detail in the corresponding vignette (see
 > The INSPIRE Directive aims to create a European Union Spatial Data
 > Infrastructure (SDI) for the purposes of EU environmental policies and
 > policies or activities which may have an impact on the environment.
-> This European Spatial Data Infrastructure will enable the sharing of
-> environmental spatial information among public sector organisations,
-> facilitate public access to spatial information across Europe and
+> This European Spatial Data Infrastructure enables the sharing of
+> environmental spatial information among public sector organizations,
+> facilitates public access to spatial information across Europe and
 > assist in policy-making across boundaries.
 
 Source: [INSPIRE Knowledge
 Base](https://knowledge-base.inspire.ec.europa.eu/overview_en)
 
-The implementation of the INSPIRE directive on the Spanish Cadastre (see
-[Catastro
+The implementation of the INSPIRE directive in the Spanish Cadastre (see
+[Spanish Cadastre
 INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
 allows retrieval of spatial objects from the cadastral database:
 
 - **Vector objects:** Parcels, addresses, buildings, cadastral zones and
-  more. These objects are provided by **CatastRo** as `sf` objects,
-  using the **sf** package.
+  more. **CatastRo** returns these objects as `sf` objects, using the
+  **sf** package.
 - **Imagery:** Image layers representing the same information as the
-  vector objects. These objects are provided by **CatastRo** as
-  `SpatRaster` objects, using the **terra** package.
+  vector objects. **CatastRo** returns these objects as `SpatRaster`
+  objects, using the **terra** package.
 
-Note that the coverage of this service is 95% of the Spanish territory,
-excluding the Basque Country and Navarre[¹](#fn1), which have their own
-independent cadastral offices.
+Note that these services cover 95% of the Spanish territory, excluding
+the Basque Country and Navarre[^1], which have their own independent
+cadastral offices.
 
-There are three types of functions, each one querying a different
-service:
+There are three types of functions, each querying a different service:
 
-1.  **ATOM service**: The ATOM service allows batch downloading vector
-    objects of different cadastral elements for a specific municipality.
+1.  **ATOM service**: The ATOM service downloads complete municipal
+    datasets for different cadastral elements.
 
-2.  **WFS service**: The WFS service allows downloading vector objects
-    of specific cadastral elements. Note that there are restrictions on
-    the extent and number of elements that can be queried. For batch
-    downloading, the ATOM service is preferred.
+2.  **WFS service**: The WFS service downloads vector objects for
+    specific cadastral elements. Note that there are restrictions on the
+    extent and number of elements that can be queried. For full
+    municipal downloads, prefer the ATOM service.
 
-3.  **WMS service**: This service allows downloading georeferenced
-    images of different cadastral elements.
+3.  **WMS service**: The WMS service downloads georeferenced map images
+    for different cadastral elements.
 
 ## Examples
 
 ### Working with layers
 
-In this example, we will demonstrate some of the main capabilities of
-the package by recreating a cadastral map of the surroundings of the
-[Santiago Bernabéu
+This example demonstrates some of the main capabilities of the package
+by recreating a cadastral map of the surroundings of the [Santiago
+Bernabéu
 Stadium](https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium).
-We will use the **WMS and WFS services** to get different layers, in
-order to show some of the capabilities of the package:
+We use the WMS and WFS services to retrieve different layers.
 
 ``` r
-# Extract building by bounding box
+
+# Extract buildings by bounding box.
 # Check https://boundingbox.klokantech.com/
 
 library(CatastRo)
@@ -81,15 +79,15 @@ stadium <- catr_wfs_get_buildings_bbox(
   srs = 4326
 )
 
-# Now extract cadastral parcels. We can use spatial objects on the query
+# Extract cadastral parcels using spatial objects in the query.
 
 stadium_parcel <- catr_wfs_get_parcels_bbox(stadium)
 
-# Project for tiles
+# Project for tiles.
 
 stadium_parcel_pr <- sf::st_transform(stadium_parcel, 25830)
 
-# Extract imagery: Labels of the parcel
+# Extract parcel label imagery.
 
 labs <- catr_wms_get_layer(
   stadium_parcel_pr,
@@ -98,9 +96,9 @@ labs <- catr_wms_get_layer(
   srs = 25830
 )
 
-# Plot
+# Plot.
 library(ggplot2)
-library(tidyterra) # For terra tiles
+library(tidyterra) # For terra tiles.
 
 ggplot() +
   geom_spatraster_rgb(data = labs) +
@@ -112,62 +110,64 @@ ggplot() +
   coord_sf(crs = 25830)
 ```
 
-![Figure 1: Example - Santiago Bernabeu](./santbernabeu-1.png)
+![Figure 1: Santiago Bernabéu example](./santbernabeu-1.png)
 
-Figure 1: Example - Santiago Bernabeu
+Figure 1: Santiago Bernabéu example
 
 ### Thematic maps
 
 We can also create thematic maps using the information available on the
-spatial objects. We will produce a visualization of the urban growth of
+spatial objects. We produce a visualization of the urban growth of
 Granada using **CatastRo**, replicating the map produced by [Dominic
 Royé](https://dominicroye.github.io) ([Royé 2019](#ref-roye19)), using
 the **ATOM service**.
 
-First, we extract the coordinates of the city center of Granada using
+First, we extract the coordinates of Granada’s city center with
 **mapSpain**:
 
 ``` r
+
 library(dplyr)
 library(sf)
 library(mapSpain)
 
-# Use mapSpain for getting the coords
+# Use mapSpain to get the coordinates.
 
 city <- esp_get_capimun(munic = "^Granada$")
 ```
 
 The next step is to extract the buildings using the ATOM service. We
-will also use the function
+also use
 [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_get_code_from_coords.md)
 to identify Granada’s code in the Cadastre and download the buildings
 with
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md).
 
 ``` r
+
 city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
 
-The next step in creating the visualization is to limit the analysis to
-a circle with a radius of 1.5 km around the city center:
+Next, we limit the analysis to a circle with a radius of 1.5 km around
+the city center:
 
 ``` r
+
 buff <- city |>
-  # Adjust CRS to 25830: (Buildings)
+  # Adjust CRS to 25830 for buildings.
   st_transform(st_crs(city_bu)) |>
-  # Buffer
+  # Buffer.
   st_buffer(1500)
 
-# Cut buildings
+# Cut buildings.
 dataviz <- st_intersection(city_bu, buff)
 
 ggplot(dataviz) +
@@ -182,27 +182,27 @@ Now let’s extract the construction year, available in the column
 `beginning`:
 
 ``` r
-# Extract 4 initial positions
+
+# Extract the first four positions.
 year <- substr(dataviz$beginning, 1, 4)
 
-# Replace all entries that do not look like numbers with 0000
+# Replace entries that do not look like numbers with 0000.
 year[!(year %in% 0:2500)] <- "0000"
 
-
-# Convert to numeric
+# Convert to numeric.
 year <- as.integer(year)
 
-# New column
+# Add a new column.
 dataviz <- dataviz |>
   mutate(year = year)
 ```
 
-The last step is to create groups based on the year and create the data
-visualization. Here we use the function
-[`cut()`](https://rdrr.io/r/base/cut.html) to create classes for every
-decade starting from year 1900:
+The last step is to group the data by construction year and create the
+visualization. Here, [`cut()`](https://rdrr.io/r/base/cut.html) creates
+classes for each decade from 1900 onward:
 
 ``` r
+
 dataviz <- dataviz |>
   mutate(
     year_cat = cut(year, breaks = c(0, seq(1900, 2030, by = 10)), dig.lab = 4)
@@ -248,9 +248,7 @@ Figure 2: Granada - Urban growth
 Royé, Dominique. 2019. *Visualize Urban Growth*.
 <https://dominicroye.github.io/blog/visualize-urban-growth/>.
 
-------------------------------------------------------------------------
-
-1.  The package
+[^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar
-    functionalities to **CatastRo**.
+    functionality to **CatastRo**.

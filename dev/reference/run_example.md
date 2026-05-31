@@ -1,6 +1,7 @@
-# Should the example run?
+# Decide whether an example should run
 
-Internal function to decide whether the example should run or not
+Determine whether an example should run based on the current platform
+and network availability.
 
 ## Usage
 
@@ -10,11 +11,11 @@ run_example()
 
 ## Value
 
-logical `TRUE` or `FALSE`
+Logical. `TRUE` if examples should run, `FALSE` otherwise.
 
 ## Details
 
-On CRAN or on macOS, results in `FALSE`
+Returns `FALSE` on CRAN, macOS, or when offline.
 
 ## Examples
 

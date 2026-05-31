@@ -1,6 +1,8 @@
 # Client tool for WFS INSPIRE services
 
-Client tool for WFS INSPIRE services
+Access WFS INSPIRE services. This function is used internally in WFS
+calls and is exposed for users and developers accessing other cadastral
+or INSPIRE resources.
 
 ## Usage
 
@@ -18,29 +20,27 @@ inspire_wfs_get(
 
 - scheme:
 
-  Identifies the protocol to be used to access the resource on the
-  Internet.
+  Character string. Protocol to access the resource on the Internet.
 
 - hostname:
 
-  Identifies the host that holds the resource.
+  Character string. Host that holds the resource.
 
 - path:
 
-  Identifies the specific resource in the host that the web client wants
-  to access.
+  Character string. Specific resource in the host to access.
 
 - query:
 
-  A named list with the name and value of the arguments to query.
+  Named list. Names and values of arguments for the query.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
-A character string with the path of the resulting file in the
+Character string. Path of the resulting file in the
 [`tempfile()`](https://rdrr.io/r/base/tempfile.html) folder.
 
 ## Details
@@ -51,7 +51,7 @@ cadastral or INSPIRE resources. See **Examples**.
 
 ## See also
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
@@ -63,7 +63,7 @@ INSPIRE API functions:
 [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
 
-Other INSPIRE WFS services:
+Related WFS INSPIRE functions:
 [`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
@@ -72,7 +72,7 @@ Other INSPIRE WFS services:
 ## Examples
 
 ``` r
-# Accessing the Cadastre of Navarra
+# Access the Cadastre of Navarra
 # Try also https://ropenspain.github.io/CatastRoNav/
 
 file_local <- inspire_wfs_get(

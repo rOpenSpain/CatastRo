@@ -1,32 +1,31 @@
-# WFS INSPIRE: Download cadastral parcels
+# WFS INSPIRE: download cadastral parcels
 
-Get the spatial data of cadastral parcels and zones. The WFS Service
-allows to perform several types of queries:
+Get the spatial data of cadastral parcels and zones. The WFS service
+allows several types of queries:
 
-- By bounding box: Implemented on `catr_wfs_get_parcels_bbox()`. Extract
-  objects included in the bounding box provided. See **Bounding box**.
-
-&nbsp;
-
-- By zoning: Implemented on `catr_wfs_get_parcels_zoning()`. Extract
-  objects of a specific cadastral zone.
+- By bounding box: `catr_wfs_get_parcels_bbox()` extracts objects
+  included in the provided bounding box. See **Bounding box**.
 
 &nbsp;
 
-- By cadastral parcel: Implemented on `catr_wfs_get_parcels_parcel()`.
-  Extract cadastral parcels of a specific cadastral reference.
-
-&nbsp;
-
-- Neighbor cadastral parcels: Implemented on
-  `catr_wfs_get_parcels_neigh_parcel()`. Extract neighbor cadastral
-  parcels of a specific cadastral reference.
-
-&nbsp;
-
-- Cadastral parcels by zoning: Implemented on
-  `catr_wfs_get_parcels_parcel_zoning()`. Extract cadastral parcels of a
+- By zoning: `catr_wfs_get_parcels_zoning()` extracts objects for a
   specific cadastral zone.
+
+&nbsp;
+
+- By cadastral parcel: `catr_wfs_get_parcels_parcel()` extracts
+  cadastral parcels for a specific cadastral reference.
+
+&nbsp;
+
+- Neighbor cadastral parcels: `catr_wfs_get_parcels_neigh_parcel()`
+  extracts neighbor cadastral parcels for a specific cadastral
+  reference.
+
+&nbsp;
+
+- Cadastral parcels by zoning: `catr_wfs_get_parcels_parcel_zoning()`
+  extracts cadastral parcels for a specific cadastral zone.
 
 ## Usage
 
@@ -51,10 +50,10 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
 - x:
 
-  See **Bounding box**. It may be:
+  See **Bounding box**. Can be one of:
 
-  - A numeric vector of length 4 with the coordinates that defines the
-    bounding box: `c(xmin, ymin, xmax, ymax)`
+  - A numeric vector of length 4 with the coordinates that define the
+    bounding box: `c(xmin, ymin, xmax, ymax)`.
 
   - A `sf/sfc` object, as provided by the
     [sf](https://CRAN.R-project.org/package=sf) package.
@@ -69,13 +68,13 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
   specifically the `wfs_service` column. See **Bounding box**.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 - cod_zona:
 
@@ -93,9 +92,9 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 The API service is limited to the following constraints:
 
-- `"parcel`: Bounding box of 1km2 and a maximum of 5,000 elements.
+- `"parcel"`: Bounding box of 1 km2 and a maximum of 5,000 elements.
 
-- `"zoning"`: Bounding box of 25km2 and a maximum of 5,000 elements.
+- `"zoning"`: Bounding box of 25 km2 and a maximum of 5,000 elements.
 
 ## Bounding box
 
@@ -117,14 +116,14 @@ as input.
 ## References
 
 [API
-Documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf).
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ad-WFS.pdf).
 
-[INSPIRE Services for Cadastral
-Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
+[INSPIRE services for cadastral
+cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
@@ -136,7 +135,7 @@ INSPIRE API functions:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md),
 [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
-Other INSPIRE WFS services:
+Related WFS INSPIRE functions:
 [`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),

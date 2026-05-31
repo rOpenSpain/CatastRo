@@ -1,16 +1,13 @@
-# ATOM INSPIRE: Reference database for ATOM buildings
+# ATOM INSPIRE: reference database for ATOM buildings
 
-Create a database containing the URLs provided in the INSPIRE ATOM
+Create a database containing the URLs provided in the ATOM INSPIRE
 service of the Spanish Cadastre for extracting buildings.
 
-- `catr_atom_get_buildings_db_all()` provides a top-level table
-  including information on all the territorial offices (except the
-  Basque Country and Navarre) listing the municipalities included in
-  each office.
-
-- `catr_atom_get_buildings_db_to()` provides a table for the specified
-  territorial office including information for each of the
-  municipalities of that office.
+`catr_atom_get_buildings_db_all()` provides a top-level table with all
+territorial offices, except the Basque Country and Navarre, and the
+municipalities included in each office.
+`catr_atom_get_buildings_db_to()` provides a table for one territorial
+office and its municipalities.
 
 ## Usage
 
@@ -44,22 +41,22 @@ catr_atom_get_buildings_db_to(
 
 - update_cache:
 
-  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
   When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function stores cached
-  files in a temporary directory (see
+  Path to a cache directory. On `NULL`, the function stores cached files
+  in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 - to:
 
-  character. Territorial office. Internally uses
+  Character. Territorial office. Internally uses
   [`base::grep()`](https://rdrr.io/r/base/grep.html) for matching.
 
 ## Value
@@ -67,19 +64,19 @@ catr_atom_get_buildings_db_to(
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 with the information requested with the following fields:
 
-- `territorial_office`: territorial office, corresponding to each
+- `territorial_office`: Territorial office, corresponding to each
   province of Spain except the Basque Country and Navarre.
 
 - `url`: ATOM URL for the corresponding territorial office.
 
 - `munic`: Name of the municipality.
 
-- `date`: Reference date of the data. Note that **the information from
-  this service is updated twice a year**.
+- `date`: Reference date of the data. The information from this service
+  is updated twice a year.
 
 ## See also
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
@@ -91,7 +88,7 @@ INSPIRE API functions:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md),
 [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
-Other INSPIRE ATOM services:
+Related ATOM INSPIRE functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),

@@ -1,8 +1,8 @@
 # Get the cadastral municipality code from coordinates
 
-This function takes as input a pair of coordinates of a
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object and
-returns the corresponding municipality code for those coordinates using
+Get the municipality code for coordinates using a
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or a
+pair of coordinates via
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_munic.md).
 
 ## Usage
@@ -21,30 +21,30 @@ catr_get_code_from_coords(
 
 - x:
 
-  It may be:
+  Can be one of:
 
-  - A pair of coordinates `c(x,y)`. In this case the `srs` of the
+  - A pair of coordinates `c(x, y)`. In this case the `srs` of the
     coordinates must be provided.
 
   - A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
     If the object has several geometries, only the first geometry is
-    used. The function extracts coordinates using
+    used. This function extracts coordinates using
     `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function stores cached
-  files in a temporary directory (see
+  Path to a cache directory. On `NULL`, the function stores cached files
+  in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - ...:
@@ -84,15 +84,15 @@ catr_get_code_from_coords(
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+See **Details**.
 
 ## Details
 
-On a successful query, the function returns a
+On a successful query, this function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 one row including the following columns:
 
-- `munic`: Name of the municipality as per the Cadastre.
+- `munic`: Name of the municipality according to the Cadastre.
 
 - `catr_to`: Cadastral territorial office code.
 
@@ -100,13 +100,13 @@ one row including the following columns:
 
 - `catrcode`: Full Cadastral code for the municipality.
 
-- `cpro`: Province code as per the INE.
+- `cpro`: Province code according to the INE.
 
-- `cmun`: Municipality code as per the INE.
+- `cmun`: Municipality code according to the INE.
 
 - `inecode`: Full INE code for the municipality.
 
-- Rest of fields: Check the API Docs.
+- Remaining fields: Check the API documentation.
 
 ## See also
 
@@ -123,7 +123,7 @@ Other search:
 
 ``` r
 # \donttest{
-# Use with coords
+# Use with coordinates
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 #> # A tibble: 1 × 12
 #>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   

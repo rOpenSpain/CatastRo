@@ -1,10 +1,9 @@
-# OVCCallejero: Extract the code of a municipality
+# OVCCallejero: extract the code of a municipality
 
 Implementation of the OVCCallejero service
 [ConsultaMunicipioCodigos](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos).
-
-Returns the names and codes of a municipality both as per the Cadastre
-and as per the INE (National Statistics Institute).
+Returns names and codes of a municipality according to the Cadastre and
+the INE (National Statistics Institute).
 
 ## Usage
 
@@ -27,20 +26,20 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+See **Details**.
 
 ## Details
 
-On a successful query, the function returns a
+On a successful query, this function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 one row including the following columns:
 
-- `munic`: Name of the municipality as per the Cadastre.
+- `munic`: Name of the municipality according to the Cadastre.
 
 - `catr_to`: Cadastral territorial office code.
 
@@ -48,13 +47,13 @@ one row including the following columns:
 
 - `catrcode`: Full Cadastral code for the municipality.
 
-- `cpro`: Province code as per the INE.
+- `cpro`: Province code according to the INE.
 
-- `cmun`: Municipality code as per the INE.
+- `cmun`: Municipality code according to the INE.
 
 - `inecode`: Full INE code for the municipality.
 
-- Rest of fields: Check the API Docs.
+- Remaining fields: Check the API documentation.
 
 ## References
 
@@ -65,7 +64,7 @@ one row including the following columns:
 [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
 to get shapes of municipalities, including the INE code.
 
-OVCCoordenadas API:
+Related OVCCallejero functions:
 [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_provinces.md)
 
 Other search:

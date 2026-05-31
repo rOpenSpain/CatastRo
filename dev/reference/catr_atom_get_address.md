@@ -1,7 +1,7 @@
-# ATOM INSPIRE: Download all addresses of a municipality
+# ATOM INSPIRE: download all addresses of a municipality
 
 Retrieve the spatial data of all addresses belonging to a single
-municipality using the INSPIRE ATOM service. The function also returns
+municipality using the ATOM INSPIRE service. This function also returns
 corresponding street information in fields prefixed with `tfname_*`.
 
 ## Usage
@@ -38,18 +38,18 @@ catr_atom_get_address(
 
 - update_cache:
 
-  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
   When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function stores cached
-  files in a temporary directory (see
+  Path to a cache directory. On `NULL`, the function stores cached files
+  in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
@@ -58,14 +58,14 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 ## References
 
 [API
-Documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ATOM.pdf).
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-ATOM.pdf).
 
-[INSPIRE Services for Cadastral
-Cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
+[INSPIRE services for cadastral
+cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
 [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings_db.md),
@@ -77,7 +77,7 @@ INSPIRE API functions:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md),
 [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
-Other INSPIRE ATOM services:
+Related ATOM INSPIRE functions:
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
 [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings_db.md),

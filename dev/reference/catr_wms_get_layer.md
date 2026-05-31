@@ -1,4 +1,4 @@
-# WMS INSPIRE: Download map images
+# WMS INSPIRE: download map images
 
 Get geotagged images from the Spanish Cadastre. This function is a
 wrapper of
@@ -26,17 +26,17 @@ catr_wms_get_layer(
 
 - x:
 
-  See **Bounding box**. It may be:
+  See **Bounding box**. Can be one of:
 
-  - A numeric vector of length 4 with the coordinates that defines the
-    bounding box: `c(xmin, ymin, xmax, ymax)`
+  - A numeric vector of length 4 with the coordinates that define the
+    bounding box: `c(xmin, ymin, xmax, ymax)`.
 
   - A `sf/sfc` object, as provided by the
     [sf](https://CRAN.R-project.org/package=sf) package.
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
   specifically the `wfs_service` column. See **Bounding box**.
 
@@ -47,18 +47,18 @@ catr_wms_get_layer(
 
 - update_cache:
 
-  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
   When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function stores cached
-  files in a temporary directory (see
+  Path to a cache directory. On `NULL`, the function stores cached files
+  in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 - crop:
 
@@ -120,7 +120,7 @@ the requested tile via the `srs` argument, which should match the SRS of
 
 The argument `what` defines the layer to be extracted. The equivalence
 with the [API
-Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
 reference is:
 
 - `"parcel"`: CP.CadastralParcel
@@ -139,22 +139,22 @@ reference is:
 
 ### Styles
 
-The WMS service provides different styles on each layer (`what`
-argument). Some of the styles available are:
+The WMS service provides different styles for each layer (`what`
+argument). Some available styles are:
 
-- `"parcel"`: styles : `"BoundariesOnly"`, `"ReferencePointOnly"`,
+- `"parcel"`: Styles: `"BoundariesOnly"`, `"ReferencePointOnly"`,
   `"ELFCadastre"`.
 
-- `"zoning"`: styles : `"BoundariesOnly"`, `"ELFCadastre"`.
+- `"zoning"`: Styles: `"BoundariesOnly"`, `"ELFCadastre"`.
 
-- `"building"`, `"buildingpart"`: `"ELFCadastre"`
+- `"building"`, `"buildingpart"`: `"ELFCadastre"`.
 
-- `"address"`: `"Number.ELFCadastre"`
+- `"address"`: `"Number.ELFCadastre"`.
 
-- `"admboundary"`, `"admunit"`: `"ELFCadastre"`
+- `"admboundary"`, `"admunit"`: `"ELFCadastre"`.
 
 Check the [API
-Docs](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
+documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
 for more information.
 
 ## See also
@@ -167,7 +167,7 @@ For plotting see
 and
 [`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html).
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
@@ -221,7 +221,7 @@ parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
 
 parcels_img <- catr_wms_get_layer(parcels,
   what = "buildingpart",
-  srs = 25830, # As parcels object
+  srs = 25830, # Same as the parcels object
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )

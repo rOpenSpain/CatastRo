@@ -1,9 +1,8 @@
-# OVCCoordenadas: Geocode a cadastral reference
+# OVCCoordenadas: geocode a cadastral reference
 
 Implementation of the OVCCoordenadas service [Consulta
 CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC).
-
-Returns the coordinates for a specific cadastral reference.
+Returns coordinates for a specific cadastral reference.
 
 ## Usage
 
@@ -25,7 +24,7 @@ catr_ovc_get_cpmrc(
 
 - srs:
 
-  SRS/CRS to use on the query. To see allowed values, use
+  SRS/CRS to use in the query. To see allowed values, use
   [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
   specifically the `ovc_service` column.
 
@@ -35,30 +34,30 @@ catr_ovc_get_cpmrc(
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**
+See **Details**.
 
 ## Details
 
-When the API does not provide any result, the function returns a
+When the API does not provide any result, this function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 the input arguments only.
 
-On a successful query, the function returns a
+On a successful query, this function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 one row per cadastral reference, including the following columns:
 
 - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 
-- `refcat`: Cadastral Reference.
+- `refcat`: Cadastral reference.
 
 - `address`: Address as recorded in the Cadastre.
 
-- Rest of fields: Check the API Docs.
+- Remaining fields: Check the API documentation.
 
 ## References
 
@@ -70,7 +69,7 @@ CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas
 [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md)
 
-OVCCoordenadas API:
+Related OVCCoordenadas functions:
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md),
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md),
 [`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md)

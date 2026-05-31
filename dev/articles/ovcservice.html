@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>OVCCoordenadas Web Service • CatastRo</title>
+<title>OVCCoordenadas web service • CatastRo</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -13,13 +13,13 @@
 <link rel="manifest" href="../site.webmanifest">
 <!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="../katex-auto.js"></script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="ovcservice_files/libs/quarto-html/popper.min.js"></script><script src="ovcservice_files/libs/quarto-html/tippy.umd.min.js"></script><link href="ovcservice_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="ovcservice_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="OVCCoordenadas Web Service">
+<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="OVCCoordenadas web service">
 <meta property="og:image" content="https://ropenspain.github.io/CatastRo/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@rOpenSpain">
@@ -35,7 +35,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas Web Service</a></li>
+<li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas web service</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -75,7 +75,7 @@
 </nav><div class="container template-quarto">
     <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>OVCCoordenadas Web Service</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>OVCCoordenadas web service</h1>
 
       <p class="author">Ángel Delgado PanaderoDiego Hernangómez</p>
 
@@ -89,22 +89,22 @@
 
 
 
-    <!-- ovcservice.qmd is generated from ovcservice.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> allows querying the OVCCoordenadas Web Service provided by the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a> API directly through an <strong>R</strong> IDE.</p>
-<p>This API retrieves the spatial coordinates of an urban property. It is not necessary to be the owner to get the information; you only need to know the cadastral reference (<em>RC</em>) of the property. Although the RC is the only required argument, providing the address can improve results and help avoid errors.</p>
-<p>Additionally, the API can be used to obtain the RC of an urban property. For this, the API requires the longitude and latitude. It also allows you to choose the spatial reference system (SRS, also known as CRS) from a list to express the coordinates.</p>
-<p>The API also handles cases where the exact location of the registered urban property is unknown. In such cases, it returns all properties located within a 50-meter square around the given point.</p>
-<p>The documentation of this API can be found <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">here</a>.</p>
-<p>These functions are named <code>catr_ovc_*</code> and return a tibble, as provided by the package <strong>tibble</strong>.</p>
+    <!-- ovcservice.qmd is generated from ovcservice.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> provides an <strong>R</strong> interface to the OVCCoordenadas web service from the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a>.</p>
+<p>This service retrieves the spatial coordinates of an urban property. You do not need to be the owner to get the information. You only need to know the cadastral reference of the property. Although the cadastral reference is the only required argument, providing the address can improve results and help avoid errors.</p>
+<p>The service can also obtain the cadastral reference of an urban property from longitude and latitude. It allows you to choose the spatial reference system (SRS, also known as CRS) used to express the coordinates.</p>
+<p>The service also handles cases where the exact location of the registered urban property is unknown. In such cases, it returns all properties located within a 50-meter square around the given point.</p>
+<p>The documentation for this service is available <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">here</a>.</p>
+<p>These functions use the <code>catr_ovc_get_*()</code> prefix and return tibbles from the <strong>tibble</strong> package.</p>
 <section class="level2"><h2 id="catastro-api">CatastRo API<a class="anchor" aria-label="anchor" href="#catastro-api"></a>
 </h2>
-<p>The OVCCoordenadas Web Service can be accessed using the following functions:</p>
+<p>The OVCCoordenadas web service can be accessed using the following functions:</p>
 <ul>
 <li><code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code></li>
 <li><code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code></li>
 <li><code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code></li>
 </ul></section><section class="level2"><h2 id="reverse-geocoding-cadastral-references">Reverse geocoding cadastral references<a class="anchor" aria-label="anchor" href="#reverse-geocoding-cadastral-references"></a>
 </h2>
-<p>The function <code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> takes the coordinates (<code>lat</code> and <code>lon</code>) and the spatial reference system (<code>srs</code>) used to express them. It returns a tibble with the cadastral reference of the property at that spatial point, including other information such as the address (town, street and number).</p>
+<p><code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> takes the coordinates (<code>lat</code> and <code>lon</code>) and the spatial reference system (<code>srs</code>) used to express them. It returns a tibble with the cadastral reference of the property at that spatial point, including other information such as the address (town, street and number).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span></span>
 <span></span>
@@ -147,11 +147,11 @@
 <td style="text-align: left;">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 </tr></tbody>
 </table>
-<p>The function accepts as a <code>srs</code> argument the following values:</p>
+<p>This function accepts the following values for the <code>srs</code> argument:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">catr_srs_values</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># OVC valid codes</span></span>
+<span><span class="co"># OVC valid codes.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">catr_srs_values</span> <span class="op">|&gt;</span></span>
@@ -299,7 +299,7 @@
 </tbody>
 </table></section><section class="level2"><h2 id="geocoding-a-cadastral-reference">Geocoding a cadastral reference<a class="anchor" aria-label="anchor" href="#geocoding-a-cadastral-reference"></a>
 </h2>
-<p>The opposite query is also possible. When provided with a cadastral reference (<code>rc</code>), province (<code>province</code>), and municipality (<code>municipality</code>), the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> returns the coordinates (<code>lat</code> and <code>lon</code>) in a specified <code>srs</code>, along with the address (town, street and number).</p>
+<p>The opposite query is also possible. When provided with a cadastral reference (<code>rc</code>), province (<code>province</code>) and municipality (<code>municipality</code>), the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> returns the coordinates (<code>lat</code> and <code>lon</code>) in a specified <code>srs</code>, along with the address (town, street and number).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
 <span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>
@@ -346,14 +346,14 @@
 <td style="text-align: left;">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 </tr></tbody>
 </table>
-<p>The <code>province</code> and <code>municipality</code> arguments are optional, but if <code>municipality</code> is provided, <code>province</code> must also be provided. If a value is passed to the <code>province</code> argument while <code>municipality</code> is <code>NULL</code>, the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> will display a message and return an empty tibble.</p>
+<p>The <code>province</code> and <code>municipality</code> arguments are optional, but if <code>municipality</code> is provided, <code>province</code> must also be provided. If a value is passed to the <code>province</code> argument while <code>municipality</code> is <code>NULL</code>, the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> displays a message and returns an empty tibble.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
 <span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>
 <span>  municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span></span>
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✖ Error code: 11. LA PROVINCIA ES OBLIGATORIA</span></span></code></pre></div>
+<span><span class="co">#&gt; ✖ OVC service error 11: LA PROVINCIA ES OBLIGATORIA</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th style="text-align: left;">refcat</th>
@@ -366,7 +366,7 @@
 </table>
 <p>When using only <code>rc</code>, the result is provided as expected:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># No warning, get the result</span></span>
+<code class="sourceCode R"><span><span class="co"># Get the result without a warning.</span></span>
 <span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table style="width:100%;" class="table">

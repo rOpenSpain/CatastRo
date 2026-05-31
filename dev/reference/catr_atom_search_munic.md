@@ -1,7 +1,7 @@
-# ATOM INSPIRE: Search for municipality codes
+# ATOM INSPIRE: search for municipality codes
 
 Search for a municipality (as a string, part of a string, or code) and
-get the corresponding code as per the Cadastre.
+get the corresponding code according to the Cadastre.
 
 ## Usage
 
@@ -35,18 +35,18 @@ catr_atom_search_munic(
 
 - update_cache:
 
-  logical, should the cached file be refreshed? Defaults to `FALSE`.
+  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
   When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function stores cached
-  files in a temporary directory (see
+  Path to a cache directory. On `NULL`, the function stores cached files
+  in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical. If `TRUE`, displays informational messages.
 
 ## Value
 
@@ -54,7 +54,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## See also
 
-Other INSPIRE ATOM services:
+Related ATOM INSPIRE functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
