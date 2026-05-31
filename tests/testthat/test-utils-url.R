@@ -67,7 +67,7 @@ test_that("Test 404", {
       cache_dir = cdir,
       update_cache = TRUE
     ),
-    "Error "
+    "HTTP error"
   )
   expect_null(s)
 
@@ -112,7 +112,7 @@ test_that("Caching tests", {
       update_cache = FALSE,
       verbose = TRUE
     ),
-    "Cache dir is"
+    "Using cache directory"
   )
 
   expect_length(list.files(cdir, recursive = TRUE), 1)
@@ -125,7 +125,7 @@ test_that("Caching tests", {
       update_cache = FALSE,
       verbose = TRUE
     ),
-    "File already"
+    "Using cached file"
   )
 
   expect_message(
@@ -136,7 +136,7 @@ test_that("Caching tests", {
       update_cache = TRUE,
       verbose = TRUE
     ),
-    "Updating cached"
+    "Refreshing cached file"
   )
 
   unlink(cdir, recursive = TRUE, force = TRUE)
@@ -159,7 +159,7 @@ test_that("Caching errors", {
       update_cache = FALSE,
       verbose = TRUE
     ),
-    "Error"
+    "HTTP error"
   )
 
   expect_null(fend)
@@ -179,7 +179,7 @@ test_that("Caching errors", {
       update_cache = FALSE,
       verbose = FALSE
     ),
-    "The file to be downloaded has size"
+    "Download size is"
   )
 
   unlink(cdir, recursive = TRUE, force = TRUE)
@@ -235,13 +235,13 @@ test_that("Tests body", {
     "Addresses/ES.SDGC.AD.atom.xml"
   )
 
-  expect_message(fend <- get_request_body(url, verbose = TRUE), "GET")
+  expect_message(fend <- get_request_body(url, verbose = TRUE), "Requesting")
 
   expect_s3_class(fend, "httr2_response")
 
   url <- "http://ropenspain.github.io/CatastRo/noexist-this-file.txt"
 
-  expect_message(fend <- get_request_body(url, verbose = TRUE), "GET")
+  expect_message(fend <- get_request_body(url, verbose = TRUE), "Requesting")
 
   expect_null(fend)
 })

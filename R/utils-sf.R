@@ -25,7 +25,7 @@ read_geo_file_sf <- function(
     thr <- 20 * (1024^2)
     if (fsize > thr) {
       fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
-      make_msg("warning", TRUE, "Reading large file", fsize_unit)
+      make_msg("warning", TRUE, "Reading a large file", fsize_unit)
       make_msg("generic", TRUE, "This may take a while.")
     }
   }
@@ -128,13 +128,13 @@ get_sf_from_bbox <- function(bbox, srs = NULL) {
   # Validate arguments.
   if (!(is.numeric(bbox) && length(bbox) == 4)) {
     cli::cli_abort(
-      "{.arg bbox} has length {.val {4L}}, not {.val {length(bbox)}}."
+      "{.arg bbox} must have length {.val {4L}}, not {.val {length(bbox)}}."
     )
   }
 
   srs <- ensure_null(srs)
   if (is.null(srs)) {
-    cli::cli_abort("Please provide a valid non-empty value for {.arg srs}.")
+    cli::cli_abort("Provide a valid non-empty value for {.arg srs}.")
   }
 
   # Create a template for a spatial bbox.

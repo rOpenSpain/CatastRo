@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_atom_get_parcels}
 \alias{catr_atom_get_parcels}
-\title{ATOM INSPIRE: Download all cadastral parcels of a municipality}
+\title{ATOM INSPIRE: download all cadastral parcels of a municipality}
 \usage{
 catr_atom_get_parcels(
   munic,
@@ -45,7 +45,7 @@ A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Retrieve the spatial data of all cadastral parcels belonging to a single
-municipality using the INSPIRE ATOM service.
+municipality using the ATOM INSPIRE service.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
@@ -69,7 +69,7 @@ ggplot(s) +
 \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE services for cadastral cartography}.
 }
 \seealso{
-INSPIRE API functions:
+Related INSPIRE API functions:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
@@ -81,7 +81,7 @@ INSPIRE API functions:
 \code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}},
 \code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 
-Other INSPIRE ATOM services:
+Related ATOM INSPIRE functions:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},

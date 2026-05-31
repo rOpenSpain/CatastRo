@@ -4,7 +4,7 @@ test_that("BBOX Check", {
 
   expect_message(
     fend <- catr_wfs_get_buildings_bbox(c(-20, -20, -19, -20), srs = 4326),
-    "didn't provide results"
+    "WFS query returned an exception"
   )
   expect_null(fend)
 

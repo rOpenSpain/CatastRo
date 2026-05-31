@@ -29,9 +29,9 @@
         "familyName": "Delgado Panadero",
         "givenName": "Ángel"
       },
-      "description": "Access public spatial data from the Spanish Cadastre through its 'INSPIRE' and cadastral web services. Download cadastral parcels, buildings, addresses and map images, and geocode cadastral references.",
+      "description": "Access public spatial data from the Spanish Cadastre through its 'INSPIRE' and cadastral web services. Download cadastral parcels, buildings, addresses and map images, geocode cadastral references and look up cadastral references from coordinates.",
       "license": "https://spdx.org/licenses/GPL-2.0",
-      "name": "CatastRo: Access Spanish Cadastre APIs",
+      "name": "CatastRo: Access Spanish Cadastre Services",
       "programmingLanguage": {
         "type": "ComputerLanguage",
         "name": "R",

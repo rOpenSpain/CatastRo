@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_wms_get_layer}
 \alias{catr_wms_get_layer}
-\title{WMS INSPIRE: Download map images}
+\title{WMS INSPIRE: download map images}
 \usage{
 catr_wms_get_layer(
   x,
@@ -160,7 +160,7 @@ ggplot() +
 \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles()}} and \code{\link[terra:RGB]{terra::RGB()}}. For plotting see
 \code{\link[terra:plotRGB]{terra::plotRGB()}} and \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}}.
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},

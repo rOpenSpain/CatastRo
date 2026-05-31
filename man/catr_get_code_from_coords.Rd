@@ -19,7 +19,7 @@ catr_get_code_from_coords(
 \item A pair of coordinates \code{c(x, y)}. In this case the \code{srs} of the
 coordinates must be provided.
 \item A \code{\link[sf:st_sf]{sf}} object. If the object has several geometries, only
-the first geometry is used. The function extracts coordinates using
+the first geometry is used. This function extracts coordinates using
 \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }}
 
@@ -59,7 +59,7 @@ Get the municipality code for coordinates using a \code{\link[sf:st_sf]{sf}}
 object or a pair of coordinates via \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
 }
 \details{
-On a successful query, the function returns a \link[tibble:tbl_df]{tibble}
+On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
 \item \code{munic}: Name of the municipality according to the Cadastre.
@@ -69,7 +69,7 @@ with one row including the following columns:
 \item \code{cpro}: Province code according to the INE.
 \item \code{cmun}: Municipality code according to the INE.
 \item \code{inecode}: Full INE code for the municipality.
-\item Rest of fields: Check the API documentation.
+\item Remaining fields: Check the API documentation.
 }
 }
 \examples{

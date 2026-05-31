@@ -1,15 +1,16 @@
-#' Set your \CRANpkg{CatastRo} cache dir
-#'
-#' @family cache utilities
-#' @seealso [tools::R_user_dir()]
-#'
-#' @rdname catr_set_cache_dir
+#' Set your \CRANpkg{CatastRo} cache directory
 #'
 #' @description
 #' Store your `cache_dir` path locally for future sessions.
 #' Type `Sys.getenv("CATASTROESP_CACHE_DIR")` or use
 #' [catr_detect_cache_dir()] to find your cached path.
-#' @encoding UTF-8
+#' @details
+#' By default, when no `cache_dir` is set, the package uses a folder inside
+#' [base::tempdir()] (so files are temporary and are removed when the \R
+#' session ends). To persist a cache across \R sessions, use
+#' `catr_set_cache_dir(cache_dir, install = TRUE)` which writes the chosen
+#' path to a small configuration file under
+#' `tools::R_user_dir("CatastRo", "config")`.
 #'
 #' @param cache_dir Path to a cache directory. On `NULL`, the function
 #'   stores cached files in a temporary directory (see [base::tempdir()]).
@@ -19,14 +20,6 @@
 #' @param overwrite Logical. If `TRUE`, overwrites an existing
 #'   `CATASTROESP_CACHE_DIR` value already present on your machine.
 #' @param verbose Logical. If `TRUE`, displays informational messages.
-#'
-#' @details
-#' By default, when no `cache_dir` is set, the package uses a folder inside
-#' [base::tempdir()] (so files are temporary and are removed when the \R
-#' session ends). To persist a cache across \R sessions, use
-#' `catr_set_cache_dir(cache_dir, install = TRUE)` which writes the chosen
-#' path to a small configuration file under
-#' `tools::R_user_dir("CatastRo", "config")`.
 #'
 #' @return
 #' `catr_set_cache_dir()` returns an (invisible) character with the path to
@@ -65,6 +58,14 @@
 #' another with a message. This message appears only once to inform you of the
 #' migration.
 #'
+#' @seealso [tools::R_user_dir()]
+#'
+#' @family cache utilities
+#' @rdname catr_set_cache_dir
+#'
+#' @encoding UTF-8
+#'
+#' @export
 #' @examples
 #'
 #' # Caution! This modifies your current state
@@ -82,7 +83,6 @@
 #' identical(my_cache, catr_detect_cache_dir())
 #' }
 #'
-#' @export
 catr_set_cache_dir <- function(
   cache_dir = NULL,
   overwrite = FALSE,
@@ -96,7 +96,7 @@ catr_set_cache_dir <- function(
     make_msg(
       "info",
       verbose,
-      "Using a temporary cache dir (see {.fn base::tempdir}). ",
+      "Using a temporary cache directory (see {.fn base::tempdir}). ",
       "Set {.arg cache_dir} to a value to store permanently."
     )
 
@@ -113,7 +113,11 @@ catr_set_cache_dir <- function(
 
   # Create and expand the cache path.
   cache_dir <- create_cache_dir(cache_dir)
-  msg <- paste0("{.pkg CatastRo} cache dir is {.path ", cache_dir, "}.")
+  msg <- paste0(
+    "{.pkg CatastRo} cache directory is {.path ",
+    cache_dir,
+    "}."
+  )
   make_msg("info", verbose, msg)
 
   # Install the path in the environment variable.
@@ -133,8 +137,8 @@ catr_set_cache_dir <- function(
       writeLines(cache_dir, con = catastroesp_file)
     } else {
       cli::cli_abort(c(
-        "A {.arg cache_dir} path already exists.",
-        "You can overwrite it with {.arg overwrite = TRUE}."
+        "A {.arg cache_dir} value is already configured.",
+        "Set {.arg overwrite = TRUE} to replace it."
       ))
     }
     # nocov end
@@ -142,7 +146,7 @@ catr_set_cache_dir <- function(
     make_msg(
       "info",
       verbose && !is_temp,
-      "To install your {.arg cache_dir} path for use in future sessions",
+      "To reuse this {.arg cache_dir} in future sessions,",
       "run this function with {.arg install = TRUE}."
     )
   }
@@ -151,12 +155,12 @@ catr_set_cache_dir <- function(
   invisible(cache_dir)
 }
 
-#' @export
-#' @rdname catr_set_cache_dir
 #' @return
 #' `catr_detect_cache_dir()` returns the path to the `cache_dir` used in this
 #' session.
 #'
+#' @rdname catr_set_cache_dir
+#' @export
 #' @examples
 #'
 #' catr_detect_cache_dir()
@@ -167,13 +171,7 @@ catr_detect_cache_dir <- function() {
   cd
 }
 
-#' Clear your \CRANpkg{CatastRo} cache dir
-#'
-#' @rdname catr_clear_cache
-#' @family cache utilities
-#' @encoding UTF-8
-#'
-#' @return Invisible. This function is called for its side effects.
+#' Clear your \CRANpkg{CatastRo} cache directory
 #'
 #' @description
 #' Use this function with caution. This function clears your cached data
@@ -184,17 +182,24 @@ catr_detect_cache_dir <- function() {
 #' - Deletes the `cache_dir` directory.
 #' - Deletes the values stored on `Sys.getenv("CATASTROESP_CACHE_DIR")`.
 #'
+#' @details
+#' This function resets your cache state as if you had never installed and/or
+#' used \CRANpkg{CatastRo}.
+#'
 #' @param config If `TRUE`, deletes the configuration folder of
 #'   \CRANpkg{CatastRo}.
 #' @param cached_data If `TRUE`, deletes your `cache_dir` and all its contents.
 #' @inheritParams catr_set_cache_dir
 #'
+#' @return Invisible. This function is called for its side effects.
+#'
 #' @seealso [tools::R_user_dir()]
 #'
-#' @details
-#' This is an overkill function that is intended to reset your status
-#' as if you had never installed and/or used \CRANpkg{CatastRo}.
+#' @family cache utilities
+#' @rdname catr_clear_cache
+#' @encoding UTF-8
 #'
+#' @export
 #' @examples
 #'
 #' # Don't run this! It modifies your current state
@@ -211,7 +216,6 @@ catr_detect_cache_dir <- function() {
 #' catr_set_cache_dir(my_cache)
 #' identical(my_cache, catr_detect_cache_dir())
 #' }
-#' @export
 catr_clear_cache <- function(
   config = FALSE,
   cached_data = TRUE,
@@ -241,7 +245,7 @@ catr_clear_cache <- function(
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) {
       cli::cli_alert_warning(
-        "{.pkg CatastRo} data deleted: {.file {data_dir}} ({siz})."
+        "{.pkg CatastRo} cached data deleted: {.file {data_dir}} ({siz})."
       )
     }
   }
@@ -254,9 +258,9 @@ catr_clear_cache <- function(
 
 # Internal funs ----
 
-#' Detect cache dir silently
+#' Detect the cache directory silently
 #'
-#' @return Path to cache dir.
+#' @return Path to the cache directory.
 #' @noRd
 detect_cache_dir_muted <- function() {
   migrate_cache()
@@ -298,19 +302,19 @@ detect_cache_dir_muted <- function() {
 
 #' Create `cache_dir` if it does not exist
 #'
-#' @param cache_dir Path to cache dir.
-#' @return Path to cache dir.
+#' @param cache_dir Path to the cache directory.
+#' @return Path to the cache directory.
 #'
 #' @noRd
 create_cache_dir <- function(cache_dir = NULL) {
-  # Check cache dir from options if it is not set.
+  # Read the configured cache directory when no path is provided.
   if (is.null(cache_dir)) {
     cache_dir <- detect_cache_dir_muted()
   }
 
   cache_dir <- path.expand(cache_dir)
 
-  # Create cache dir if needed.
+  # Create the cache directory if needed.
   if (isFALSE(dir.exists(cache_dir))) {
     dir.create(cache_dir, recursive = TRUE)
   }
@@ -342,11 +346,11 @@ migrate_cache <- function(
     cache_dir <- readLines(old_fname)
     catr_set_cache_dir(cache_dir, install = TRUE, verbose = FALSE)
     cli::cli_alert_success(c(
-      "{.pkg CatastRo} >= 1.0.0: Cache configuration migrated. ",
-      "See {.strong Note} in {.fn CatastRo::catr_set_cache_dir} for details."
+      "{.pkg CatastRo} cache configuration migrated for version 1.0.0 or ",
+      "later. See {.strong Note} in {.fn CatastRo::catr_set_cache_dir}."
     ))
     cli::cli_alert_info(
-      "This is a one-time message. It will not be displayed in the future."
+      "This one-time message will not be shown again."
     )
   }
   unlink(old, force = TRUE, recursive = TRUE)

@@ -1,42 +1,10 @@
-#' @title Reference SRS codes for \CRANpkg{CatastRo} APIs
+#' Reference SRS codes for \CRANpkg{CatastRo} services
 #'
 #' @description
 #' A [tibble][tibble::tbl_df] including the valid SRS (also known as CRS)
 #' values that may be used in each API service. Values are provided as
 #' [EPSG codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 #'
-#' @docType data
-#' @encoding UTF-8
-#' @family databases
-#' @family WFS
-#' @family OVCCoordenadas
-#' @name catr_srs_values
-#'
-#' @references
-#' ```{r, echo=FALSE, results='asis'}
-#' cat(paste0("- [OVCCoordenadas](https://ovc.catastro.meh.es/",
-#' "ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)."))
-#'
-#' ```
-#'
-#' - [INSPIRE WFS
-#' Service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
-#'
-#' @seealso [sf::st_crs()].
-#'
-#' @format
-#' A [tibble][tibble::tbl_df] with `r nrow(CatastRo::catr_srs_values)` rows
-#' and columns:
-#' \describe{
-#'   \item{SRS}{Spatial Reference System (CRS) value, identified by the
-#'     corresponding
-#'     [EPSG](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset)
-#'     code.}
-#'   \item{Description}{Description of the SRS/EPSG code.}
-#'   \item{ovc_service}{Logical. Whether this code is valid for OVC services.}
-#'   \item{wfs_service}{Logical. Whether this code is valid for INSPIRE WFS
-#'     services.}
-#' }
 #' @details
 #' ```{r, echo=FALSE}
 #' tb <- CatastRo::catr_srs_values
@@ -48,6 +16,38 @@
 #'
 #' ```
 #'
+#' @format
+#' A [tibble][tibble::tbl_df] with `r nrow(CatastRo::catr_srs_values)` rows
+#' and columns:
+#' \describe{
+#'   \item{SRS}{Spatial Reference System (CRS) value, identified by the
+#'     corresponding
+#'     [EPSG](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset)
+#'     code.}
+#'   \item{Description}{Description of the SRS/EPSG code.}
+#'   \item{ovc_service}{Logical. Whether this code is valid for OVC services.}
+#'   \item{wfs_service}{Logical. Whether this code is valid for WFS INSPIRE
+#'     services.}
+#' }
+#' @references
+#' ```{r, echo=FALSE, results='asis'}
+#' cat(paste0("- [OVCCoordenadas](https://ovc.catastro.meh.es/",
+#' "ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)."))
+#'
+#' ```
+#'
+#' - [WFS INSPIRE
+#' Service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
+#'
+#' @seealso [sf::st_crs()].
+#'
+#' @family databases
+#' @family WFS
+#' @family OVCCoordenadas
+#' @docType data
+#' @name catr_srs_values
+#'
+#' @encoding UTF-8
 #' @examples
 #' data("catr_srs_values")
 #'

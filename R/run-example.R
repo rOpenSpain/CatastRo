@@ -4,11 +4,11 @@
 #' Determine whether an example should run based on the current platform and
 #' network availability.
 #'
-#' @return Logical. `TRUE` if examples should run, `FALSE` otherwise.
-#' @encoding UTF-8
-#'
 #' @details
 #' Returns `FALSE` on CRAN, macOS, or when offline.
+#'
+#' @return Logical. `TRUE` if examples should run, `FALSE` otherwise.
+#' @encoding UTF-8
 #'
 #' @keywords internal
 #' @export

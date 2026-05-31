@@ -16,7 +16,9 @@ figures:
 
 home:
   title: CatastRo
-  description: Access public spatial data from the Spanish Cadastre.
+  description: >
+    Access public spatial data from the Spanish Cadastre through INSPIRE and
+    OVC services.
 
 authors:
   Ángel Delgado Panadero:
@@ -32,7 +34,7 @@ reference:
     These functions return <a
     href="https://r-spatial.github.io/sf/reference/sf.html"
     class="external-link"><span class="pkg">sf</span></a> objects from the
-    INSPIRE ATOM services of the Spanish Cadastre.
+    ATOM INSPIRE services of the Spanish Cadastre.
   contents:
   - has_concept("ATOM")
 - title: WFS INSPIRE services
@@ -40,14 +42,14 @@ reference:
     These functions return <a
     href="https://r-spatial.github.io/sf/reference/sf.html"
     class="external-link"><span class="pkg">sf</span></a> objects from the
-    INSPIRE WFS services of the Spanish Cadastre.
+    WFS INSPIRE services of the Spanish Cadastre.
   contents:
   - has_concept("WFS")
 - title: WMS INSPIRE services
   desc: >
     These functions return <code><a
     href="https://rspatial.github.io/terra/reference/rast.html"
-    class="external-link">SpatRaster</a></code> map images from the INSPIRE WMS
+    class="external-link">SpatRaster</a></code> map images from the WMS INSPIRE
     services of the Spanish Cadastre.
   contents:
   - has_concept("WMS")

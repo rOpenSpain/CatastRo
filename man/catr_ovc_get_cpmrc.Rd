@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_cpmrc}
 \alias{catr_ovc_get_cpmrc}
-\title{OVCCoordenadas: Geocode a cadastral reference}
+\title{OVCCoordenadas: geocode a cadastral reference}
 \usage{
 catr_ovc_get_cpmrc(
   rc,
@@ -32,16 +32,16 @@ Implementation of the OVCCoordenadas service
 specific cadastral reference.
 }
 \details{
-When the API does not provide any result, the function returns a
+When the API does not provide any result, this function returns a
 \link[tibble:tbl_df]{tibble} with the input arguments only.
 
-On a successful query, the function returns a \link[tibble:tbl_df]{tibble}
+On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
 with one row per cadastral reference, including the following columns:
 \itemize{
 \item \code{xcoord}, \code{ycoord}: X and Y coordinates in the specified SRS.
 \item \code{refcat}: Cadastral reference.
 \item \code{address}: Address as recorded in the Cadastre.
-\item Rest of fields: Check the API documentation.
+\item Remaining fields: Check the API documentation.
 }
 }
 \examples{
@@ -66,7 +66,7 @@ catr_ovc_get_cpmrc("9872023VH5797S")
 \seealso{
 \link{catr_srs_values}, \code{vignette("ovcservice", package = "CatastRo")}
 
-OVCCoordenadas API:
+Related OVCCoordenadas functions:
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
 \code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}},
 \code{\link{catr_srs_values}}

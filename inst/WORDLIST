@@ -73,8 +73,6 @@ lifecycle
 loine
 lourb
 mapSpain
-organisations
-organised
 ovc
 pc
 pkgdown
@@ -83,6 +81,7 @@ pnp
 pre
 rOS
 refcat
+roxygen
 slippymath
 srs
 subfolders

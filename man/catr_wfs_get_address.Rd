@@ -6,7 +6,7 @@
 \alias{catr_wfs_get_address_codvia}
 \alias{catr_wfs_get_address_rc}
 \alias{catr_wfs_get_address_postalcode}
-\title{WFS INSPIRE: Download addresses}
+\title{WFS INSPIRE: download addresses}
 \usage{
 catr_wfs_get_address_bbox(x, srs = NULL, verbose = FALSE)
 
@@ -110,7 +110,7 @@ ggplot(ad) +
 \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE services for cadastral cartography}.
 }
 \seealso{
-INSPIRE API functions:
+Related INSPIRE API functions:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
@@ -122,7 +122,7 @@ INSPIRE API functions:
 \code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}},
 \code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 
-Other INSPIRE WFS services:
+Related WFS INSPIRE functions:
 \code{\link{catr_srs_values}},
 \code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
 \code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
