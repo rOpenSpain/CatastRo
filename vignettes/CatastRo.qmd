@@ -13,9 +13,9 @@ link-citations: true
 
 
 
-**CatastRo** provides access to API services from the [Spanish
+**CatastRo** provides access to services from the [Spanish
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
-download official information on addresses, properties, parcels and buildings.
+download official address, cadastral parcel, building and map data.
 
 ## OVCCoordenadas service
 
@@ -53,17 +53,16 @@ class="external-link uri">INSPIRE Knowledge Base</a>
 </figure>
 
 The implementation of the INSPIRE directive in the Spanish Cadastre (see
-[Catastro INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
+[Spanish Cadastre INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
 allows retrieval of spatial objects from the cadastral database:
 
 - **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.
-  **CatastRo** provides these objects as `sf` objects, using the **sf**
-  package.
+  **CatastRo** returns these objects as `sf` objects, using the **sf** package.
 - **Imagery:** Image layers representing the same information as the vector
-  objects. **CatastRo** provides these objects as `SpatRaster` objects,
-  using the **terra** package.
+  objects. **CatastRo** returns these objects as `SpatRaster` objects, using
+  the **terra** package.
 
-Note that the coverage of this service is 95% of the Spanish territory,
+Note that these services cover 95% of the Spanish territory,
 excluding the Basque Country and Navarre[^1], which have their own independent
 cadastral offices.
 
@@ -73,15 +72,15 @@ cadastral offices.
 
 There are three types of functions, each querying a different service:
 
-1.  **ATOM service**: The ATOM service allows batch downloading vector objects
-    of different cadastral elements for a specific municipality.
+1.  **ATOM service**: The ATOM service downloads complete municipal datasets
+    for different cadastral elements.
 
-2.  **WFS service**: The WFS service allows downloading vector objects of
-    specific cadastral elements. Note that there are restrictions on the extent
-    and number of elements that can be queried. For batch downloading, the ATOM
-    service is preferred.
+2.  **WFS service**: The WFS service downloads vector objects for specific
+    cadastral elements. Note that there are restrictions on the extent and
+    number of elements that can be queried. For full municipal downloads,
+    prefer the ATOM service.
 
-3.  **WMS service**: This service allows downloading georeferenced images of
+3.  **WMS service**: The WMS service downloads georeferenced map images for
     different cadastral elements.
 
 ## Examples
@@ -137,8 +136,8 @@ ggplot() +
 ```
 
 <div class="figure">
-<img src="./santbernabeu-1.png" alt="Figure 1: Santiago Bernabeu example" width="100%" />
-<p class="caption">Figure 1: Santiago Bernabeu example</p>
+<img src="./santbernabeu-1.png" alt="Figure 1: Santiago Bernabéu example" width="100%" />
+<p class="caption">Figure 1: Santiago Bernabéu example</p>
 </div>
 
 ### Thematic maps
@@ -179,8 +178,8 @@ city_catr_code
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
 
-Next, we limit the analysis to a circle
-with a radius of 1.5 km around the city center:
+Next, we limit the analysis to a circle with a radius of 1.5 km around the city
+center:
 
 
 ``` r

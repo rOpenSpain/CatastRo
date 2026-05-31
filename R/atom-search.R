@@ -1,17 +1,17 @@
-#' ATOM INSPIRE: Search for municipality codes
+#' ATOM INSPIRE: search for municipality codes
 #'
 #' @description
 #' Search for a municipality (as a string, part of a string, or code) and get
 #' the corresponding code according to the Cadastre.
-#' @encoding UTF-8
+#' @inheritParams catr_atom_get_parcels
+#'
+#' @return A [tibble][tibble::tbl_df].
 #'
 #' @family ATOM
 #' @family search
 #' @family databases
 #'
-#' @inheritParams catr_atom_get_parcels
-#'
-#' @return A [tibble][tibble::tbl_df].
+#' @encoding UTF-8
 #'
 #' @export
 #'
@@ -27,13 +27,7 @@ catr_atom_search_munic <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  if (lifecycle::is_present(cache)) {
-    lifecycle::deprecate_warn(
-      when = "1.0.0",
-      what = "CatastRo::catr_atom_search_munic(cache)",
-      details = "Results are always cached."
-    )
-  }
+  warn_deprecated_cache(cache, "CatastRo::catr_atom_search_munic(cache)")
 
   munic <- validate_non_empty_arg(munic)
   to <- ensure_null(to)
@@ -56,8 +50,8 @@ catr_atom_search_munic <- function(
     } else {
       if (verbose) {
         cli::cli_alert_warning(paste0(
-          "Ignoring {.arg to} argument. No results ",
-          "found with pattern {.str {munic}} in {.str {to}}."
+          "Ignoring {.arg to}, no territorial office ",
+          "matched {.str {to}}."
         ))
       }
     }
@@ -66,9 +60,15 @@ catr_atom_search_munic <- function(
   to_loc <- ensure_null(grep(munic, all$munic, ignore.case = TRUE))
 
   if (is.null(to_loc)) {
-    cli::cli_alert_warning(
-      "No municipality found with pattern {.str {munic}} in {.str {to}}."
-    )
+    if (is.null(to)) {
+      cli::cli_alert_warning(
+        "No municipality matched pattern {.str {munic}}."
+      )
+    } else {
+      cli::cli_alert_warning(
+        "No municipality matched pattern {.str {munic}} in {.str {to}}."
+      )
+    }
     return(NULL)
   }
 

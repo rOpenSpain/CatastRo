@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_clear_cache}
 \alias{catr_clear_cache}
-\title{Clear your \CRANpkg{CatastRo} cache dir}
+\title{Clear your \CRANpkg{CatastRo} cache directory}
 \usage{
 catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
@@ -29,8 +29,8 @@ and configuration, specifically:
 }
 }
 \details{
-This is an overkill function that is intended to reset your status
-as if you had never installed and/or used \CRANpkg{CatastRo}.
+This function resets your cache state as if you had never installed and/or
+used \CRANpkg{CatastRo}.
 }
 \examples{
 

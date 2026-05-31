@@ -3,15 +3,15 @@
     Code
       fend <- catr_ovc_get_cod_provinces()
     Message
-      x Offline.
-      > Returning "NULL".
+      x No internet connection detected.
+      > Returning "NULL" because the request cannot run.
 
 # Test 404 all
 
     Code
       fend <- catr_ovc_get_cod_provinces()
     Message
-      x Error 404 (Not Found): <http://ovc.catastro.meh.es/ovcservweb//ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaProvincia?>.
-      ! If you think this is a bug, please consider opening an issue on <https://github.com/ropenspain/CatastRo/issues>
-      > Returning "NULL".
+      x HTTP error 404 (Not Found): <http://ovc.catastro.meh.es/ovcservweb//ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaProvincia?>.
+      ! If this looks like a package bug, please open an issue at <https://github.com/ropenspain/CatastRo/issues>
+      > Returning "NULL" because the request failed.
 

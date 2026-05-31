@@ -1,4 +1,4 @@
-#' OVCCoordenadas: Reverse geocode cadastral references on a region
+#' OVCCoordenadas: reverse geocode cadastral references near coordinates
 #'
 #' @description
 #' Implementation of the OVCCoordenadas service
@@ -6,36 +6,36 @@
 #' references for coordinates. If none found, the API returns references
 #' in a 50 square meter area around the requested coordinates.
 #'
-#' @encoding UTF-8
-#' @family OVCCoordenadas
-#' @family cadastral references
-#' @inheritParams catr_ovc_get_cpmrc
-#' @export
-#' @inherit catr_ovc_get_cpmrc return
+#' @details
+#' When the API does not provide any result, the function returns a
+#' [tibble][tibble::tbl_df] with the input arguments only.
 #'
-#' @references
-#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
+#' On a successful query, this function returns a [tibble][tibble::tbl_df] with
+#' one row per cadastral reference, including the following columns:
+#' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
+#' - `refcat`: Cadastral reference.
+#' - `address`: Address as recorded in the Cadastre.
+#' - `cmun_ine`: Municipality code as registered on the INE (National
+#'    Statistics Institute).
+#' - Remaining fields: Check the API documentation.
 #'
 #' @param lat Latitude for the query, expressed in the CRS/SRS defined by
 #'   `srs`.
 #' @param lon Longitude for the query, expressed in the CRS/SRS defined by
 #'   `srs`.
 #'
+#' @inheritParams catr_ovc_get_cpmrc
+#' @inherit catr_ovc_get_cpmrc return
+#'
+#' @references
+#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
+#'
 #' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
 #'
-#' @details
-#' When the API does not provide any result, the function returns a
-#' [tibble][tibble::tbl_df] with the input arguments only.
-#'
-#' On a successful query, the function returns a [tibble][tibble::tbl_df] with
-#' one row by cadastral reference, including the following columns:
-#' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
-#' - `refcat`: Cadastral reference.
-#' - `address`: Address as recorded in the Cadastre.
-#' - `cmun_ine`: Municipality code as registered on the INE (National
-#'    Statistics Institute).
-#' - Rest of fields: Check the API documentation.
-#'
+#' @family OVCCoordenadas
+#' @family cadastral references
+#' @encoding UTF-8
+#' @export
 #' @examplesIf run_example()
 #' \donttest{
 #' catr_ovc_get_rccoor_distancia(
@@ -54,19 +54,13 @@ catr_ovc_get_rccoor_distancia <- function(
   lat <- validate_non_empty_arg(lat)
   lon <- validate_non_empty_arg(lon)
 
-  valid_srs <- CatastRo::catr_srs_values
-  valid <- as.character(valid_srs[valid_srs$ovc_service, ]$SRS)
+  srs <- ovc_validate_srs(srs)
 
-  srs <- match_arg_pretty(srs, valid)
-  srs <- paste0("EPSG:", srs)
-
-  # Prepare query.
-  # Build URL.
-  api_entry <- paste0(
-    "http://ovc.catastro.meh.es/ovcservweb/",
+  # Build the query URL.
+  api_entry <- ovc_base_url(paste0(
     "OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR_Distancia?",
     "SRS=&Coordenada_X=&Coordenada_Y="
-  )
+  ))
 
   api_entry <- httr2::url_modify_query(
     api_entry,
@@ -76,13 +70,10 @@ catr_ovc_get_rccoor_distancia <- function(
   )
 
   # Extract results.
-  resp <- get_request_body(api_entry, verbose = verbose)
-
-  if (is.null(resp)) {
+  content_list <- ovc_get_xml(api_entry, verbose = verbose)
+  if (is.null(content_list)) {
     return(NULL)
   }
-
-  content_list <- xml2::as_list(httr2::resp_body_xml(resp))
 
   # nolint start
   res <- content_list[["consulta_coordenadas_distancias"]][[
@@ -90,37 +81,31 @@ catr_ovc_get_rccoor_distancia <- function(
   ]][["coordd"]]
   # nolint end
 
-  # Get overall query information.
+  # Extract overall query information.
   overall <- unlist(res["geo"])
-  overall <- tibble::as_tibble_row(overall)
+  overall <- ovc_as_tibble_row(overall)
 
   # Extract cadastral reference information.
   rc <- res[["lpcd"]]
 
   if (is.null(rc)) {
-    cli::cli_alert_warning("Query did not return results.")
+    cli::cli_alert_warning("The query returned no cadastral references.")
     return(overall)
   }
 
-  rc_all <- lapply(rc, function(x) {
-    tibble::as_tibble_row(unlist(x))
-  })
-  rc_all <- dplyr::bind_rows(rc_all)
+  rc_all <- ovc_as_tibble_rows(rc)
 
-  # Build additional fields, such as RC, address and municipality (INE).
-  rc_help <- tibble::tibble(
-    refcat = paste0(rc_all$pc.pc1, rc_all$pc.pc2),
-    address = rc_all$ldt,
-    cmun_ine = paste0(rc_all$dt.loine.cp, rc_all$dt.loine.cm)
+  # Build additional cadastral reference, address and municipality fields.
+  rc_help <- dplyr::bind_cols(
+    ovc_ref_address(rc_all),
+    tibble::tibble(
+      cmun_ine = paste0(rc_all$dt.loine.cp, rc_all$dt.loine.cm)
+    )
   )
 
-  # Join all results.
+  # Join helper fields and the raw API response.
 
   out <- dplyr::bind_cols(overall, rc_help, rc_all)
 
-  # Convert columns to numeric.
-  out["geo.xcen"] <- as.numeric(out[["geo.xcen"]])
-  out["geo.ycen"] <- as.numeric(out[["geo.ycen"]])
-
-  out
+  ovc_numeric_coords(out)
 }

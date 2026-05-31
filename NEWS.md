@@ -1,12 +1,19 @@
+# CatastRo (development version)
+
+- This development cycle includes AI-assisted maintenance work to simplify
+  internal code, improve **cli** messages, standardize roxygen2 metadata and
+  make package documentation more consistent.
+
 # CatastRo 1.0.1
 
-- Improve documentation for cache behavior, INSPIRE services and OVC reference data.
+- Improve documentation for cache behavior, INSPIRE services and OVC reference
+  data.
 
 # CatastRo 1.0.0
 
 This major release introduces a full overhaul of the codebase and test suite.
-All requests now use **httr2** and cached files are reorganized into
-topic-based subfolders for easier management.
+All requests now use **httr2** and cached files are reorganized into topic-based
+subfolders for easier management.
 
 > Because of internal changes, **existing caches are not compatible** with this
 > release and must be rebuilt.
@@ -48,8 +55,8 @@ performance and maintainability. All functions return tidy objects (tibbles or
 
 ## New features
 
-- Add `inspire_wfs_get()`, a general function that downloads data of any
-  INSPIRE-based API endpoint.
+- Add `inspire_wfs_get()`, a general function that downloads data from any
+  INSPIRE-based service endpoint.
 
 ## Other updates
 

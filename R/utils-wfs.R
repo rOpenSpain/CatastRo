@@ -5,13 +5,10 @@
 #' and is exposed for users and developers accessing other cadastral or
 #' INSPIRE resources.
 #'
-#' @encoding UTF-8
-#' @family INSPIRE
-#' @family WFS
-#' @export
-#' @inheritParams catr_set_cache_dir
-#'
-#' @rdname inspire_wfs_get
+#' @details
+#' This function is used internally in all the WFS calls. We expose it to make
+#' it available to other users and/or developers for accessing other
+#' cadastral or INSPIRE resources. See **Examples**.
 #'
 #' @param scheme Character string. Protocol to access the resource on the
 #'   Internet.
@@ -19,14 +16,17 @@
 #' @param path Character string. Specific resource in the host to access.
 #' @param query Named list. Names and values of arguments for the query.
 #'
+#' @inheritParams catr_set_cache_dir
+#'
 #' @return
 #' Character string. Path of the resulting file in the [tempfile()] folder.
 #'
-#' @details
-#' This function is used internally in all the WFS calls. We expose it to make
-#' it available to other users and/or developers for accessing other
-#' cadastral or INSPIRE resources. See **Examples**.
+#' @family INSPIRE
+#' @family WFS
+#' @rdname inspire_wfs_get
 #'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf run_example()
 #' # Access the Cadastre of Navarra
 #' # Try also https://ropenspain.github.io/CatastRoNav/
@@ -60,7 +60,7 @@ inspire_wfs_get <- function(
   # Validate query.
   if (!is.list(query)) {
     cli::cli_abort(
-      "{.arg query} should be a list, not {.obj_type_friendly {query}}."
+      "{.arg query} must be a list, not {.obj_type_friendly {query}}."
     )
   }
 
@@ -76,12 +76,12 @@ inspire_wfs_get <- function(
 
   if (dif_nm > 0) {
     cli::cli_alert_warning(
-      "Removing {dif_nm} empty and/or unnamed element{?/s} in {.arg query}."
+      "Removed {dif_nm} empty or unnamed element{?s} from {.arg query}."
     )
   }
 
   if (l_end == 0) {
-    cli::cli_abort("{.arg query} cannot be {.obj_type_friendly {query}}.")
+    cli::cli_abort("{.arg query} must contain at least one named value.")
   }
 
   # Normalize SRS values.
@@ -135,7 +135,7 @@ inspire_wfs_get <- function(
   msg <- unlist(xml2::as_list(err)["ExceptionReport"], use.names = FALSE)
 
   cli::cli_alert_danger(c(
-    "The query {.url {url}} didn't provide results:\n",
+    "The WFS query returned an exception for {.url {url}}:\n",
     msg
   ))
 
@@ -149,30 +149,97 @@ inspire_wfs_get <- function(
   NULL
 }
 
+#' Validate an optional WFS SRS value
+#'
+#' @noRd
+wfs_validate_srs <- function(srs) {
+  if (!is.null(srs)) {
+    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
+  }
+
+  invisible(srs)
+}
+
+#' Run a WFS stored query and read the resulting spatial file
+#'
+#' @noRd
+wfs_read_stored_query <- function(path, query, srs = NULL, verbose = FALSE) {
+  wfs_validate_srs(srs)
+  query$SRSNAME <- srs
+
+  file_local <- inspire_wfs_get(
+    path = path,
+    verbose = verbose,
+    query = query
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
+  out
+}
+
+#' Run a WFS bounding box query and transform results back to input SRS
+#'
+#' @noRd
+wfs_read_bbox_query <- function(
+  x,
+  srs = NULL,
+  path,
+  typenames,
+  limit_km2,
+  verbose = FALSE
+) {
+  bbox_res <- wfs_get_bbox(
+    x = x,
+    srs = srs,
+    srs_dest = 25830,
+    limit_km2 = limit_km2
+  )
+
+  file_local <- inspire_wfs_get(
+    path = path,
+    verbose = verbose,
+    query = list(
+      service = "wfs",
+      version = "2.0.0",
+      request = "getfeature",
+      typenames = typenames,
+      bbox = paste0(bbox_res, collapse = ","),
+      SRSNAME = 25830
+    )
+  )
+
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  out <- read_geo_file_sf(file_local)
+  unlink(file_local)
+
+  if (is.null(srs)) {
+    srs <- sf::st_crs(x)
+  }
+  sf::st_transform(out, srs)
+}
+
 #' Prepare the bbox of an object for WFS
 #'
-#' Results in 3857 since the Catastro API fails in some other projections.
-#' Also warn if beyond the API limits.
+#' Results in 3857 since the WFS service fails in some other projections.
+#' Also warn if beyond the WFS service limit.
 #'
 #' @param x `sf` object or double vector of length 4.
 #' @param srs SRS of the bbox, not needed if `x` is an `sf` object.
 #' @param srs_dest Destination SRS.
-#' @param limit_km2 API limit.
+#' @param limit_km2 WFS service limit.
 #'
 #' @noRd
 wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
   if (!(inherits(x, "sf") || inherits(x, "sfc"))) {
-    if (length(x) != 4) {
-      cli::cli_abort(
-        "Length of {.arg x} should be {.val {4L}}, not {.val {length(x)}}."
-      )
-    }
-    if (is.null(srs)) {
-      cli::cli_abort(paste0(
-        "You should also provide the {.arg srs} argument when x is ",
-        "{.obj_type_friendly {x}}."
-      ))
-    }
+    validate_vector_with_srs(x, srs, 4L)
 
     srs_db <- CatastRo::catr_srs_values
     valid <- srs_db[srs_db$wfs_service, ]$SRS
@@ -188,7 +255,7 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
 
   sfobj <- sf::st_transform(sfobj, srs_dest)
 
-  # API limits using EPSG:3857.
+  # Check service limits using EPSG:3857.
   obj_for_area <- sf::st_transform(sfobj, 3857)
   area <- sf::st_area(obj_for_area)
   # Convert area to km2.
@@ -196,11 +263,11 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
 
   if (area > limit_km2) {
     cli::cli_alert_warning(
-      "API endpoint restriction: {limit_km2} km2. Your query is {area} km2."
+      "WFS service limit is {limit_km2} km2, your query covers {area} km2."
     )
     cli::cli_alert_info(paste0(
-      "Operation may fail, check the results or use a ",
-      "smaller area on {.arg x}."
+      "The request may fail. Check the results or use a ",
+      "smaller area in {.arg x}."
     ))
   }
   sf::st_bbox(sfobj)

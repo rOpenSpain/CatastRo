@@ -19,7 +19,10 @@ test_that("Messages", {
 
   expect_snapshot(make_msg("danger", TRUE, "OOPS!", "I did it again :("))
 
-  expect_snapshot(make_msg("success", TRUE, "Hooray!", "5/5 ;)"))
+  expect_snapshot(make_msg("success", TRUE, "Hooray!", "5/5 ,)"))
+
+  expect_silent(no_msg <- make_msg("nothing", TRUE, "aa"))
+  expect_null(no_msg)
 })
 
 test_that("Pretty match", {

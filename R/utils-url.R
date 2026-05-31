@@ -26,7 +26,7 @@ download_url <- function(
   file_local <- file.path(cache_dir, name)
   file_local <- gsub("//", "/", file_local, fixed = TRUE)
 
-  msg <- paste0("Cache dir is {.path ", cache_dir, "}.")
+  msg <- paste0("Using cache directory {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
   # Check whether the file already exists.
@@ -34,14 +34,14 @@ download_url <- function(
 
   # Return cached files unless a refresh is requested.
   if (isFALSE(update_cache) && fileoncache) {
-    msg <- paste0("File already cached: {.file ", file_local, "}.")
+    msg <- paste0("Using cached file {.file ", file_local, "}.")
     make_msg("success", verbose, msg)
 
     return(file_local)
   }
 
   if (fileoncache) {
-    make_msg("warning", verbose, "Updating cached file.")
+    make_msg("warning", verbose, "Refreshing cached file.")
   }
 
   msg <- paste0("Downloading {.url ", url, "}.")
@@ -64,8 +64,8 @@ download_url <- function(
   }
 
   if (!is_online_fun()) {
-    cli::cli_alert_danger("Offline.")
-    cli::cli_alert("Returning {.val NULL}.")
+    cli::cli_alert_danger("No internet connection detected.")
+    cli::cli_alert("Returning {.val NULL} because the request cannot run.")
     return(NULL)
   }
 
@@ -78,7 +78,7 @@ download_url <- function(
   thr <- 20 * (1024^2)
   if (size_dwn > thr) {
     sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
-    make_msg("warning", TRUE, "The file to be downloaded has size", sz_dwn)
+    make_msg("warning", TRUE, "Download size is", sz_dwn)
     req <- httr2::req_progress(req)
   }
 
@@ -98,17 +98,17 @@ download_url <- function(
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
     cli::cli_alert_danger(c(
-      "{.strong Error {get_status_code}} ({get_status_desc}):",
+      "{.strong HTTP error {get_status_code}} ({get_status_desc}):",
       " {.url {url}}."
     ))
     cli::cli_alert_warning(c(
-      "If you think this is a bug, please consider opening an issue on ",
+      "If this looks like a package bug, please open an issue at ",
       "{.url https://github.com/ropenspain/CatastRo/issues}"
     ))
-    cli::cli_alert("Returning {.val NULL}.")
+    cli::cli_alert("Returning {.val NULL} because the download failed.")
     return(NULL)
   }
-  msg <- paste0("Download successful on {.file ", file_local, "}.")
+  msg <- paste0("Downloaded file to {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
 
   file_local
@@ -123,7 +123,7 @@ download_url <- function(
 #'
 #' @noRd
 get_request_body <- function(url, verbose = TRUE) {
-  msg <- paste0("GET {.url ", url, "}.")
+  msg <- paste0("Requesting {.url ", url, "}.")
   make_msg("info", verbose, msg)
 
   req <- httr2::request(url)
@@ -143,8 +143,8 @@ get_request_body <- function(url, verbose = TRUE) {
   }
 
   if (!is_online_fun()) {
-    cli::cli_alert_danger("Offline.")
-    cli::cli_alert("Returning {.val NULL}.")
+    cli::cli_alert_danger("No internet connection detected.")
+    cli::cli_alert("Returning {.val NULL} because the request cannot run.")
     return(NULL)
   }
 
@@ -162,18 +162,18 @@ get_request_body <- function(url, verbose = TRUE) {
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
     cli::cli_alert_danger(c(
-      "{.strong Error {get_status_code}} ({get_status_desc}):",
+      "{.strong HTTP error {get_status_code}} ({get_status_desc}):",
       " {.url {url}}."
     ))
     cli::cli_alert_warning(c(
-      "If you think this is a bug, please consider opening an issue on ",
+      "If this looks like a package bug, please open an issue at ",
       "{.url https://github.com/ropenspain/CatastRo/issues}"
     ))
-    cli::cli_alert("Returning {.val NULL}.")
+    cli::cli_alert("Returning {.val NULL} because the request failed.")
     return(NULL)
   }
 
-  make_msg("success", verbose, "Success.")
+  make_msg("success", verbose, "Request succeeded.")
   resp
 }
 

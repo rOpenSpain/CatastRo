@@ -1,10 +1,10 @@
 list(
   rd_family_title = list(
-    ATOM = "Other INSPIRE ATOM services:",
-    WFS = "Other INSPIRE WFS services:",
-    WMS = "Other INSPIRE WMS services:",
-    INSPIRE = "INSPIRE API functions:",
-    OVCCoordenadas = "OVCCoordenadas API:",
-    OVCCallejero = "OVCCoordenadas API:"
+    ATOM = "Related ATOM INSPIRE functions:",
+    WFS = "Related WFS INSPIRE functions:",
+    WMS = "Related WMS INSPIRE functions:",
+    INSPIRE = "Related INSPIRE API functions:",
+    OVCCoordenadas = "Related OVCCoordenadas functions:",
+    OVCCallejero = "Related OVCCallejero functions:"
   )
 )

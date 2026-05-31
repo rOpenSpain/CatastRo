@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_cod_munic}
 \alias{catr_ovc_get_cod_munic}
-\title{OVCCallejero: Extract the code of a municipality}
+\title{OVCCallejero: extract the code of a municipality}
 \usage{
 catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 }
@@ -27,7 +27,7 @@ of a municipality according to the Cadastre and the INE (National Statistics
 Institute).
 }
 \details{
-On a successful query, the function returns a \link[tibble:tbl_df]{tibble}
+On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
 \item \code{munic}: Name of the municipality according to the Cadastre.
@@ -37,7 +37,7 @@ with one row including the following columns:
 \item \code{cpro}: Province code according to the INE.
 \item \code{cmun}: Municipality code according to the INE.
 \item \code{inecode}: Full INE code for the municipality.
-\item Rest of fields: Check the API documentation.
+\item Remaining fields: Check the API documentation.
 }
 }
 \examples{
@@ -63,7 +63,7 @@ ab2
 \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}} to get shapes of municipalities, including
 the INE code.
 
-OVCCoordenadas API:
+Related OVCCallejero functions:
 \code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 
 Other search:

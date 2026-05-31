@@ -1,30 +1,20 @@
-#' WMS INSPIRE: Download map images
+#' WMS INSPIRE: download map images
 #'
 #' @description
 #' Get geotagged images from the Spanish Cadastre. This function is a
 #' wrapper of [mapSpain::esp_get_tiles()].
 #'
-#' @encoding UTF-8
-#' @family INSPIRE
-#' @family WMS
-#' @family spatial
-#' @export
+#' @param what,styles Layer and style of the WMS layer to be downloaded. See
+#'   **Layers and styles**.
 #'
 #' @inheritParams catr_wfs_get_address_bbox
 #' @inheritParams catr_atom_get_address_db_all
 #' @inheritParams mapSpain::esp_get_tiles
 #' @inheritDotParams mapSpain::esp_get_tiles res:mask
 #'
-#' @param what,styles Layer and style of the WMS layer to be downloaded. See
-#'   **Layers and styles**.
-#'
 #' @return
 #' A [`SpatRaster`][terra::rast] is returned, with 3 (RGB) or 4 (RGBA) layers,
 #' see [terra::RGB()].
-#'
-#' @seealso
-#' [mapSpain::esp_get_tiles()] and [terra::RGB()]. For plotting see
-#' [terra::plotRGB()] and [tidyterra::geom_spatraster_rgb()].
 #'
 #' @section Bounding box:
 #' When `x` is a numeric vector, make sure that the `srs` matches the
@@ -78,6 +68,16 @@
 #'
 #' ```
 #' for more information.
+#'
+#' @seealso
+#' [mapSpain::esp_get_tiles()] and [terra::RGB()]. For plotting see
+#' [terra::plotRGB()] and [tidyterra::geom_spatraster_rgb()].
+#'
+#' @family INSPIRE
+#' @family WMS
+#' @family spatial
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf run_example()
 #' \donttest{

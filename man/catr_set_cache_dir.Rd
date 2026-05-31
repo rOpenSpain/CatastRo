@@ -4,7 +4,7 @@
 \name{catr_set_cache_dir}
 \alias{catr_set_cache_dir}
 \alias{catr_detect_cache_dir}
-\title{Set your \CRANpkg{CatastRo} cache dir}
+\title{Set your \CRANpkg{CatastRo} cache directory}
 \usage{
 catr_set_cache_dir(
   cache_dir = NULL,

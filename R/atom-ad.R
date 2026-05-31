@@ -1,17 +1,18 @@
-#' ATOM INSPIRE: Download all addresses of a municipality
+#' ATOM INSPIRE: download all addresses of a municipality
 #'
 #' @description
 #' Retrieve the spatial data of all addresses belonging to a single municipality
-#' using the INSPIRE ATOM service. The function also returns corresponding
+#' using the ATOM INSPIRE service. This function also returns corresponding
 #' street information in fields prefixed with `tfname_*`.
 #'
-#' @encoding UTF-8
-#' @family INSPIRE
-#' @family ATOM
-#' @family addresses
-#' @family spatial
+#' @param munic Municipality to extract, can be part of a string or a
+#'   cadastral code. See [catr_atom_search_munic()] for getting the cadastral
+#'   codes.
+#' @param to Optional argument for defining the territorial office to which
+#'   `munic` belongs. This argument is a helper for narrowing the search.
+#'
 #' @inheritParams catr_atom_get_address_db_all
-#' @export
+#' @return A [`sf`][sf::st_sf] object.
 #'
 #' @references
 #' ```{r, echo=FALSE, comment="", results="asis"}
@@ -25,13 +26,12 @@
 #'
 #' ```
 #'
-#' @param munic Municipality to extract, can be part of a string or a
-#'   cadastral code. See [catr_atom_search_munic()] for getting the cadastral
-#'   codes.
-#' @param to Optional argument for defining the territorial office to which
-#'   `munic` belongs. This argument is a helper for narrowing the search.
-#'
-#' @return A [`sf`][sf::st_sf] object.
+#' @family INSPIRE
+#' @family ATOM
+#' @family addresses
+#' @family spatial
+#' @encoding UTF-8
+#' @export
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -59,13 +59,7 @@ catr_atom_get_address <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  if (lifecycle::is_present(cache)) {
-    lifecycle::deprecate_warn(
-      when = "1.0.0",
-      what = "CatastRo::catr_atom_get_address(cache)",
-      details = "Results are always cached."
-    )
-  }
+  warn_deprecated_cache(cache, "CatastRo::catr_atom_get_address(cache)")
 
   munic <- validate_non_empty_arg(munic)
   to <- ensure_null(to)
@@ -79,77 +73,25 @@ catr_atom_get_address <- function(
     return(NULL)
   }
 
-  if (!is.null(to)) {
-    linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
+  tb <- catr_atom_select_munic(
+    all = all,
+    munic = munic,
+    to = to,
+    db_all_call = "catr_atom_get_address_db_all",
+    verbose = verbose
+  )
 
-    # Filter by territorial office if matches are found.
-    if (length(linesto) > 1) {
-      all <- all[linesto, ]
-    } else {
-      if (verbose) {
-        cli::cli_alert_warning(paste0(
-          "Ignoring {.arg to} argument. No results ",
-          "found with pattern {.str {munic}} in {.str {to}}."
-        ))
-      }
-    }
-  }
-
-  to_loc <- ensure_null(grep(munic, all$munic, ignore.case = TRUE))
-
-  if (is.null(to_loc)) {
-    cli::cli_alert_warning("No municipality found with pattern {.str {munic}}.")
-    cli::cli_alert_info(paste0(
-      "Check available municipalities with ",
-      "{.fn CatastRo::catr_atom_get_address_db_all}."
-    ))
+  if (is.null(tb)) {
     return(NULL)
   }
 
-  # Compute string distances for municipality matching.
-  with_d <- data.frame(
-    munic = all$munic,
-    territorial_office = all$territorial_office,
-    dist = as.vector(adist(munic, all$munic))
-  )
-  with_d <- with_d[to_loc, ]
-  tb <- with_d[order(with_d$dist), ]
-
-  if (nrow(tb) > 1) {
-    cli::cli_alert_info(
-      "Found {nrow(tb)} municipalities with pattern {.str {munic}}."
-    )
-
-    cli::cli_alert_success("Selecting {.str {tb[1,]$munic}}.")
-    cli::cli_alert_danger("Discarding:")
-    bullets <- tb[-1, ]$munic
-    bullets <- paste0("{.str ", bullets, "}")
-    names(bullets) <- rep(" ", length(bullets))
-    cli::cli_bullets(bullets)
-
-    tb <- tb[1, ]
-  }
-
-  make_msg(
-    "info",
-    verbose,
-    paste0("Extracting information for {.str ", tb$munic, "}.")
-  )
-
   municurls <- catr_atom_get_address_db_to(
     as.character(tb$territorial_office),
-    cache = cache,
     update_cache = update_cache,
     cache_dir = cache_dir,
     verbose = FALSE
   )
-  # Extract municipality code from reference string.
-  ref <- unlist(strsplit(tb$munic, "-"))[1]
-
-  # Prepare download URL for municipality data.
-  api_entry <- municurls[grepl(ref, municurls$munic, ignore.case = TRUE), ]$url
-
-  api_entry <- URLencode(api_entry)
+  api_entry <- catr_atom_get_munic_url(municurls, tb$munic)
 
   file_local <- download_url(
     url = api_entry,

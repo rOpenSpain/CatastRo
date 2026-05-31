@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_atom_search_munic}
 \alias{catr_atom_search_munic}
-\title{ATOM INSPIRE: Search for municipality codes}
+\title{ATOM INSPIRE: search for municipality codes}
 \usage{
 catr_atom_search_munic(
   munic,
@@ -48,7 +48,7 @@ catr_atom_search_munic("Mad")
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other INSPIRE ATOM services:
+Related ATOM INSPIRE functions:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},

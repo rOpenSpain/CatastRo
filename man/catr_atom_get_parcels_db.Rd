@@ -4,7 +4,7 @@
 \name{catr_atom_get_parcels_db_all}
 \alias{catr_atom_get_parcels_db_all}
 \alias{catr_atom_get_parcels_db_to}
-\title{ATOM INSPIRE: Reference database for ATOM cadastral parcels}
+\title{ATOM INSPIRE: reference database for ATOM cadastral parcels}
 \source{
 \url{https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
 }
@@ -52,7 +52,7 @@ updated twice a year.
 }
 }
 \description{
-Create a database containing the URLs provided in the INSPIRE ATOM
+Create a database containing the URLs provided in the ATOM INSPIRE
 service of the Spanish Cadastre for extracting cadastral parcels.
 
 \code{catr_atom_get_parcels_db_all()} provides a top-level table with all
@@ -68,7 +68,7 @@ catr_atom_get_parcels_db_all()
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-INSPIRE API functions:
+Related INSPIRE API functions:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
@@ -80,7 +80,7 @@ INSPIRE API functions:
 \code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}},
 \code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 
-Other INSPIRE ATOM services:
+Related ATOM INSPIRE functions:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},

@@ -80,7 +80,7 @@ test_that("Test search", {
       verbose = TRUE,
       cache_dir = cdir
     ),
-    'Ignoring `to` argument. No results found with pattern "Melque" in "XXX".'
+    'Ignoring `to`, no territorial office matched "XXX".'
   )
 
   d <- catr_atom_search_munic("Mel", to = "XXX", cache_dir = cdir)

@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{catr_srs_values}
 \alias{catr_srs_values}
-\title{Reference SRS codes for \CRANpkg{CatastRo} APIs}
+\title{Reference SRS codes for \CRANpkg{CatastRo} services}
 \format{
 A \link[tibble:tbl_df]{tibble} with 16 rows
 and columns:
@@ -15,7 +15,7 @@ corresponding
 code.}
 \item{Description}{Description of the SRS/EPSG code.}
 \item{ovc_service}{Logical. Whether this code is valid for OVC services.}
-\item{wfs_service}{Logical. Whether this code is valid for INSPIRE WFS
+\item{wfs_service}{Logical. Whether this code is valid for WFS INSPIRE
 services.}
 }
 }
@@ -71,7 +71,7 @@ catr_srs_values |>
 \references{
 \itemize{
 \item \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx}{OVCCoordenadas}.
-\item \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE WFS Service}.
+\item \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{WFS INSPIRE Service}.
 }
 }
 \seealso{
@@ -83,13 +83,13 @@ Other databases:
 \code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
 \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}}
 
-Other INSPIRE WFS services:
+Related WFS INSPIRE functions:
 \code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
 \code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
 \code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
 \code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 
-OVCCoordenadas API:
+Related OVCCoordenadas functions:
 \code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
 \code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}

@@ -1,4 +1,4 @@
-#' WFS INSPIRE: Download cadastral parcels
+#' WFS INSPIRE: download cadastral parcels
 #'
 #' @description
 #' Get the spatial data of cadastral parcels and zones. The WFS service
@@ -6,15 +6,6 @@
 #'
 #' - By bounding box: `catr_wfs_get_parcels_bbox()` extracts objects included
 #'   in the provided bounding box. See **Bounding box**.
-#'
-#' @encoding UTF-8
-#' @family INSPIRE
-#' @family WFS
-#' @family parcels
-#' @family spatial
-#' @export
-#'
-#' @rdname catr_wfs_get_parcels
 #'
 #' @inheritParams catr_wfs_get_address_bbox
 #' @inheritParams catr_atom_get_parcels
@@ -26,6 +17,15 @@
 #'
 #' - `"parcel"`: Bounding box of 1 km2 and a maximum of 5,000 elements.
 #' - `"zoning"`: Bounding box of 25 km2 and a maximum of 5,000 elements.
+#' @family INSPIRE
+#' @family WFS
+#' @family parcels
+#' @family spatial
+#' @rdname catr_wfs_get_parcels
+#'
+#' @encoding UTF-8
+#' @export
+#'
 catr_wfs_get_parcels_bbox <- function(
   x,
   what = c("parcel", "zoning"),
@@ -48,39 +48,14 @@ catr_wfs_get_parcels_bbox <- function(
     "zoning" = 25
   )
 
-  bbox_res <- wfs_get_bbox(
+  wfs_read_bbox_query(
     x = x,
     srs = srs,
-    srs_dest = 25830,
-    limit_km2 = limit
-  )
-
-  file_local <- inspire_wfs_get(
     path = "INSPIRE/wfsCP.aspx",
-    verbose = verbose,
-    query = list(
-      # WFS service
-      service = "wfs",
-      version = "2.0.0",
-      request = "getfeature",
-      typenames = stored_query,
-      # Stored query
-      bbox = paste0(bbox_res, collapse = ","),
-      SRSNAME = 25830
-    )
+    typenames = stored_query,
+    limit_km2 = limit,
+    verbose = verbose
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  # Transform back to the desired SRS.
-  out <- read_geo_file_sf(file_local)
-  unlink(file_local)
-  if (is.null(srs)) {
-    srs <- sf::st_crs(x)
-  }
-  out <- sf::st_transform(out, srs)
 }
 #' @description
 #' - By zoning: `catr_wfs_get_parcels_zoning()` extracts objects for a specific
@@ -94,36 +69,21 @@ catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
   # Validate arguments.
   cod_zona <- validate_non_empty_arg(cod_zona)
   srs <- ensure_null(srs)
-  # Validate SRS.
-  if (!is.null(srs)) {
-    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
-  }
 
   q <- list(
-    # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "GetZoning",
-    # Stored query
     cod_zona = cod_zona
   )
 
-  q$SRSNAME <- srs
-
-  file_local <- inspire_wfs_get(
+  wfs_read_stored_query(
     path = "INSPIRE/wfsCP.aspx",
-    verbose = verbose,
-    query = q
+    query = q,
+    srs = srs,
+    verbose = verbose
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  out <- read_geo_file_sf(file_local)
-  unlink(file_local)
-  out
 }
 #' @description
 #' - By cadastral parcel: `catr_wfs_get_parcels_parcel()` extracts cadastral
@@ -135,36 +95,21 @@ catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
   # Validate arguments.
   rc <- validate_non_empty_arg(rc)
   srs <- ensure_null(srs)
-  # Validate SRS.
-  if (!is.null(srs)) {
-    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
-  }
 
   q <- list(
-    # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "GetParcel",
-    # Stored query
     refcat = rc
   )
 
-  q$SRSNAME <- srs
-
-  file_local <- inspire_wfs_get(
+  wfs_read_stored_query(
     path = "INSPIRE/wfsCP.aspx",
-    verbose = verbose,
-    query = q
+    query = q,
+    srs = srs,
+    verbose = verbose
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  out <- read_geo_file_sf(file_local)
-  unlink(file_local)
-  out
 }
 #' @description
 #' - Neighbor cadastral parcels: `catr_wfs_get_parcels_neigh_parcel()`
@@ -176,36 +121,21 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
   # Validate arguments.
   rc <- validate_non_empty_arg(rc)
   srs <- ensure_null(srs)
-  # Validate SRS.
-  if (!is.null(srs)) {
-    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
-  }
 
   q <- list(
-    # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "GetNeighbourParcel",
-    # Stored query
     refcat = rc
   )
 
-  q$SRSNAME <- srs
-
-  file_local <- inspire_wfs_get(
+  wfs_read_stored_query(
     path = "INSPIRE/wfsCP.aspx",
-    verbose = verbose,
-    query = q
+    query = q,
+    srs = srs,
+    verbose = verbose
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  out <- read_geo_file_sf(file_local)
-  unlink(file_local)
-  out
 }
 #' @description
 #' - Cadastral parcels by zoning: `catr_wfs_get_parcels_parcel_zoning()`
@@ -235,34 +165,19 @@ catr_wfs_get_parcels_parcel_zoning <- function(
   # Validate arguments.
   cod_zona <- validate_non_empty_arg(cod_zona)
   srs <- ensure_null(srs)
-  # Validate SRS.
-  if (!is.null(srs)) {
-    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
-  }
 
   q <- list(
-    # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = "GetParcelsByZoning",
-    # Stored query
     cod_zona = cod_zona
   )
 
-  q$SRSNAME <- srs
-
-  file_local <- inspire_wfs_get(
+  wfs_read_stored_query(
     path = "INSPIRE/wfsCP.aspx",
-    verbose = verbose,
-    query = q
+    query = q,
+    srs = srs,
+    verbose = verbose
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  out <- read_geo_file_sf(file_local)
-  unlink(file_local)
-  out
 }

@@ -4,11 +4,11 @@
 \name{CatastRo-package}
 \alias{CatastRo}
 \alias{CatastRo-package}
-\title{CatastRo: Access Spanish Cadastre APIs}
+\title{CatastRo: Access Spanish Cadastre Services}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Access public spatial data from the Spanish Cadastre through its 'INSPIRE' and cadastral web services. Download cadastral parcels, buildings, addresses and map images, and geocode cadastral references.
+Access public spatial data from the Spanish Cadastre through its 'INSPIRE' and cadastral web services. Download cadastral parcels, buildings, addresses and map images, geocode cadastral references and look up cadastral references from coordinates.
 }
 \seealso{
 Useful links:

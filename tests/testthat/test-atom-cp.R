@@ -87,7 +87,7 @@ test_that("ATOM parcels", {
       verbose = TRUE,
       cache_dir = cdir
     ),
-    'Ignoring `to` argument. No results found with pattern "Melque" in "XXX".'
+    'Ignoring `to`, no territorial office matched "XXX".'
   )
   expect_s3_class(s, "sf")
 

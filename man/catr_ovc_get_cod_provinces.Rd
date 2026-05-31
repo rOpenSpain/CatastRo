@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_cod_provinces}
 \alias{catr_ovc_get_cod_provinces}
-\title{OVCCallejero: Extract a list of provinces with their codes}
+\title{OVCCallejero: extract provinces with their codes}
 \usage{
 catr_ovc_get_cod_provinces(verbose = FALSE)
 }
@@ -29,7 +29,7 @@ catr_ovc_get_cod_provinces()
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
 }
 \seealso{
-OVCCoordenadas API:
+Related OVCCallejero functions:
 \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}
 
 Other search:

@@ -1,4 +1,4 @@
-#' WFS INSPIRE: Download buildings
+#' WFS INSPIRE: download buildings
 #'
 #' @description
 #' Get the spatial data of buildings. The WFS service allows performing
@@ -7,20 +7,20 @@
 #' - By bounding box: `catr_wfs_get_buildings_bbox()` extracts objects included
 #'   in the provided bounding box. See **Bounding box**.
 #'
-#' @encoding UTF-8
-#' @family INSPIRE
-#' @family WFS
-#' @family buildings
-#' @family spatial
-#' @export
-#'
-#' @rdname catr_wfs_get_buildings
-#'
 #' @inheritParams catr_wfs_get_address_bbox
 #' @inheritParams catr_atom_get_buildings
 #' @inherit catr_wfs_get_address_bbox return references
 #' @inheritSection catr_wfs_get_address_bbox API Limits
 #' @inheritSection catr_wfs_get_address_bbox Bounding box
+#' @family INSPIRE
+#' @family WFS
+#' @family buildings
+#' @family spatial
+#' @rdname catr_wfs_get_buildings
+#'
+#' @encoding UTF-8
+#' @export
+#'
 catr_wfs_get_buildings_bbox <- function(
   x,
   what = c("building", "buildingpart", "other"),
@@ -39,34 +39,14 @@ catr_wfs_get_buildings_bbox <- function(
     "other" = "BU.OTHERCONSTRUCTION"
   )
 
-  bbox_res <- wfs_get_bbox(x = x, srs = srs, srs_dest = 25830, limit_km2 = 4)
-
-  file_local <- inspire_wfs_get(
+  wfs_read_bbox_query(
+    x = x,
+    srs = srs,
     path = "INSPIRE/wfsBU.aspx",
-    verbose = verbose,
-    query = list(
-      # WFS service
-      service = "wfs",
-      version = "2.0.0",
-      request = "getfeature",
-      typenames = stored_query,
-      # Stored query
-      bbox = paste0(bbox_res, collapse = ","),
-      SRSNAME = 25830
-    )
+    typenames = stored_query,
+    limit_km2 = 4,
+    verbose = verbose
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  # Transform back to the desired SRS.
-  out <- read_geo_file_sf(file_local)
-  unlink(file_local)
-  if (is.null(srs)) {
-    srs <- sf::st_crs(x)
-  }
-  out <- sf::st_transform(out, srs)
 }
 
 #' @description
@@ -110,10 +90,6 @@ catr_wfs_get_buildings_rc <- function(
   rc <- validate_non_empty_arg(rc)
   srs <- ensure_null(srs)
   what <- match_arg_pretty(what)
-  # Validate SRS.
-  if (!is.null(srs)) {
-    wfs_get_bbox(c(1, 1, 1, 1), srs = srs)
-  }
 
   # Switch to stored queries.
   stored_query <- switch(what,
@@ -123,27 +99,17 @@ catr_wfs_get_buildings_rc <- function(
   )
 
   q <- list(
-    # WFS service
     service = "wfs",
     version = "2.0.0",
     request = "getfeature",
     StoredQuerie_id = stored_query,
-    # Stored query
     REFCAT = rc
   )
-  q$SRSNAME <- srs
 
-  file_local <- inspire_wfs_get(
+  wfs_read_stored_query(
     path = "INSPIRE/wfsBU.aspx",
-    verbose = verbose,
-    query = q
+    query = q,
+    srs = srs,
+    verbose = verbose
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  out <- read_geo_file_sf(file_local)
-  unlink(file_local)
-  out
 }
