@@ -1,5 +1,11 @@
 # Changelog
 
+## CatastRo 1.0.2
+
+- This development cycle includes AI-assisted maintenance work to
+  simplify internal code, improve **cli** messages, standardize roxygen2
+  metadata and make package documentation more consistent.
+
 ## CatastRo 1.0.1
 
 CRAN release: 2026-04-27
@@ -61,7 +67,7 @@ both performance and maintainability. All functions return tidy objects
 
 - Add
   [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md),
-  a general function that downloads data of any INSPIRE-based API
+  a general function that downloads data from any INSPIRE-based service
   endpoint.
 
 ### Other updates

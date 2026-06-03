@@ -1,6 +1,6 @@
-# ATOM INSPIRE: Reference database for ATOM buildings
+# ATOM INSPIRE: reference database for ATOM buildings
 
-Create a database containing the URLs provided in the INSPIRE ATOM
+Create a database containing the URLs provided in the ATOM INSPIRE
 service of the Spanish Cadastre for extracting buildings.
 
 `catr_atom_get_buildings_db_all()` provides a top-level table with all
@@ -76,7 +76,7 @@ with the information requested with the following fields:
 
 ## See also
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
@@ -88,7 +88,7 @@ INSPIRE API functions:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md),
 [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
 
-Other INSPIRE ATOM services:
+Related ATOM INSPIRE functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),

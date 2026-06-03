@@ -1,7 +1,7 @@
-# ATOM INSPIRE: Download all buildings of a municipality
+# ATOM INSPIRE: download all buildings of a municipality
 
 Retrieve the spatial data of all buildings belonging to a single
-municipality using the INSPIRE ATOM service.
+municipality using the ATOM INSPIRE service.
 
 ## Usage
 
@@ -75,7 +75,7 @@ cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md),
@@ -87,7 +87,7 @@ INSPIRE API functions:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md),
 [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
 
-Other INSPIRE ATOM services:
+Related ATOM INSPIRE functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md),

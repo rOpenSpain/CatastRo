@@ -1,29 +1,29 @@
 # OVCCoordenadas web service
 
-**CatastRo** queries the OVCCoordenadas web service provided by the
-[Sede electrónica del
-Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
-API directly through an **R** IDE.
+**CatastRo** provides an **R** interface to the OVCCoordenadas web
+service from the [Sede electrónica del
+Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-This API retrieves the spatial coordinates of an urban property. You do
-not need to be the owner to get the information. You only need to know
-the cadastral reference (*RC*) of the property. Although the RC is the
-only required argument, providing the address can improve results and
-help avoid errors.
+This service retrieves the spatial coordinates of an urban property. You
+do not need to be the owner to get the information. You only need to
+know the cadastral reference of the property. Although the cadastral
+reference is the only required argument, providing the address can
+improve results and help avoid errors.
 
-The API can also obtain the RC of an urban property from longitude and
-latitude. It allows you to choose the spatial reference system (SRS,
-also known as CRS) used to express the coordinates.
+The service can also obtain the cadastral reference of an urban property
+from longitude and latitude. It allows you to choose the spatial
+reference system (SRS, also known as CRS) used to express the
+coordinates.
 
-The API also handles cases where the exact location of the registered
-urban property is unknown. In such cases, it returns all properties
-located within a 50-meter square around the given point.
+The service also handles cases where the exact location of the
+registered urban property is unknown. In such cases, it returns all
+properties located within a 50-meter square around the given point.
 
-The documentation for this API is available
+The documentation for this service is available
 [here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-These functions are named `catr_ovc_*` and return a tibble, as provided
-by the **tibble** package.
+These functions use the `catr_ovc_get_*()` prefix and return tibbles
+from the **tibble** package.
 
 ## CatastRo API
 
@@ -59,13 +59,13 @@ knitr::kable(result)
 |:---|:---|:---|:---|---:|---:|:---|:---|
 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.456242 | 38.61966 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
-The function accepts the following values for the `srs` argument:
+This function accepts the following values for the `srs` argument:
 
 ``` r
 
 data(catr_srs_values)
 
-# OVC valid codes
+# OVC valid codes.
 library(dplyr)
 
 catr_srs_values |>
@@ -139,7 +139,7 @@ The `province` and `municipality` arguments are optional, but if
 is passed to the `province` argument while `municipality` is `NULL`, the
 function
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
-will display a message and return an empty tibble.
+displays a message and returns an empty tibble.
 
 ``` r
 
@@ -148,7 +148,7 @@ catr_ovc_get_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) |>
   knitr::kable()
-#> ✖ Error code: 11. LA PROVINCIA ES OBLIGATORIA
+#> ✖ OVC service error 11: LA PROVINCIA ES OBLIGATORIA
 ```
 
 | refcat         | geo.srs   |

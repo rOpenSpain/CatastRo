@@ -1,4 +1,4 @@
-# WMS INSPIRE: Download map images
+# WMS INSPIRE: download map images
 
 Get geotagged images from the Spanish Cadastre. This function is a
 wrapper of
@@ -167,7 +167,7 @@ For plotting see
 and
 [`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html).
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),

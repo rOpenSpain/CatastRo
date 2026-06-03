@@ -1,4 +1,4 @@
-# Set your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache dir
+# Set your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache directory
 
 Store your `cache_dir` path locally for future sessions. Type
 `Sys.getenv("CATASTROESP_CACHE_DIR")` or use `catr_detect_cache_dir()`
@@ -52,10 +52,9 @@ this session.
 
 By default, when no `cache_dir` is set, the package uses a folder inside
 [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html) (so files are
-temporary and are removed when the **R** session ends). To persist a
-cache across **R** sessions, use
-`catr_set_cache_dir(cache_dir, install = TRUE)` which writes the chosen
-path to a small configuration file under
+temporary and are removed when the R session ends). To persist a cache
+across R sessions, use `catr_set_cache_dir(cache_dir, install = TRUE)`
+which writes the chosen path to a small configuration file under
 `tools::R_user_dir("CatastRo", "config")`.
 
 ## Note
@@ -84,7 +83,7 @@ implements the following caching options:
 
 - For reproducible workflows, install a persistent cache with
   `catr_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`. This
-  cache is kept across **R** sessions.
+  cache is kept across R sessions.
 
 - For caching specific files, use the `cache_dir` argument in the
   corresponding function.
@@ -111,29 +110,29 @@ Other cache utilities:
 # Caution! This modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/Rtmpc6Bjk6/CatastRo
+#> ℹ /tmp/Rtmpws3lB2/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 catr_set_cache_dir(ex)
-#> ℹ CatastRo cache dir is /tmp/Rtmpc6Bjk6/example/cachenew.
-#> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
+#> ℹ CatastRo cache directory is /tmp/Rtmpws3lB2/example/cachenew.
+#> ℹ To reuse this `cache_dir` in future sessions, run this function with `install = TRUE`.
 
 catr_detect_cache_dir()
-#> ℹ /tmp/Rtmpc6Bjk6/example/cachenew
-#> [1] "/tmp/Rtmpc6Bjk6/example/cachenew"
+#> ℹ /tmp/Rtmpws3lB2/example/cachenew
+#> [1] "/tmp/Rtmpws3lB2/example/cachenew"
 
 # Restore initial cache
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache dir is /tmp/Rtmpc6Bjk6/CatastRo.
-#> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
+#> ℹ CatastRo cache directory is /tmp/Rtmpws3lB2/CatastRo.
+#> ℹ To reuse this `cache_dir` in future sessions, run this function with `install = TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/Rtmpc6Bjk6/CatastRo
+#> ℹ /tmp/Rtmpws3lB2/CatastRo
 #> [1] TRUE
 # }
 
 
 catr_detect_cache_dir()
-#> ℹ /tmp/Rtmpc6Bjk6/CatastRo
-#> [1] "/tmp/Rtmpc6Bjk6/CatastRo"
+#> ℹ /tmp/Rtmpws3lB2/CatastRo
+#> [1] "/tmp/Rtmpws3lB2/CatastRo"
 ```

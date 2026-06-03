@@ -1,9 +1,10 @@
 # CatastRo
 
-**CatastRo** provides access to API services from the [Spanish
+**CatastRo** provides access to services from the [Spanish
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
-download spatial objects such as buildings, cadastral parcels and maps,
-and geocode cadastral references.
+download buildings, cadastral parcels, addresses and map imagery,
+geocode cadastral references and look up cadastral references from
+coordinates.
 
 ## Installation
 
@@ -43,57 +44,55 @@ options(catastro_ssl_verify = 0)
 
 ## Package API
 
-The functions of **CatastRo** are organized by API endpoint. The package
-naming convention is `catr_*api*_*description*`.
+The functions of **CatastRo** are organized by source service. The
+package naming convention is `catr_*service*_*description*`.
 
-### OVCCoordenadas
+### OVC services
 
-These functions allow geocoding and reverse geocoding of cadastral
-references using the
-[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-service.
+OVC services cover geocoding and reverse geocoding with
+[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx),
+and province and municipality code lookup with OVCCallejero.
 
-These functions are named `catr_ovc_get_*` and return a tibble, as
-provided by the **tibble** package. See
+These functions use the `catr_ovc_get_*()` prefix and return tibbles
+from the **tibble** package. See
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)
 for a detailed description of these functions.
 
 ### INSPIRE
 
-These functions return spatial objects in formats provided by the **sf**
-or **terra** packages using the [Catastro
+INSPIRE functions return spatial objects from the [Spanish Cadastre
 INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
-service.
+services using the **sf** or **terra** packages.
 
-Note that the coverage of this service is 95% of the Spanish territory,
-excluding the Basque Country and Navarre[^1], which have their own
-independent cadastral offices.
+Note that these services cover 95% of the Spanish territory, excluding
+the Basque Country and Navarre[^1], which have their own independent
+cadastral offices.
 
 There are three types of functions, each querying a different service:
 
 #### ATOM service
 
-The ATOM service allows batch downloading vector objects of different
-cadastral elements for a specific municipality. The result is provided
-as `sf` objects (see the **sf** package).
+The ATOM service downloads complete municipal datasets for different
+cadastral elements. Results are returned as `sf` objects from the **sf**
+package.
 
-These functions are named `catr_atom_get_xxx`.
+These functions use the `catr_atom_get_*()` prefix.
 
 #### WFS service
 
-The WFS service allows downloading vector objects of specific cadastral
-elements. The results are provided as `sf` objects (see the
-[**sf**](https://r-spatial.github.io/sf/) package). Note that there are
+The WFS service downloads vector objects for specific cadastral
+elements. Results are returned as `sf` objects from the
+[**sf**](https://r-spatial.github.io/sf/) package. Note that there are
 restrictions on the extent and number of elements that can be queried.
-For batch downloading, the ATOM service is preferred.
+For full municipal downloads, prefer the ATOM service.
 
-These functions are named `catr_wfs_get_xxx`.
+These functions use the `catr_wfs_get_*()` prefix.
 
 #### WMS service
 
-This service allows downloading georeferenced images of different
-cadastral elements. The results are provided as rasters in the format
-provided by the
+The WMS service downloads georeferenced map images for different
+cadastral elements. Results are returned as `SpatRaster` objects from
+the
 [**terra**](https://rspatial.github.io/terra/reference/terra-package.html)
 package.
 
@@ -102,8 +101,8 @@ There is a single function for querying this service:
 
 #### Terms and conditions of use
 
-Please check the service’s [downloading
-provisions](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf).
+Please check the service [terms of
+use](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf).
 
 ## Examples
 
@@ -122,7 +121,7 @@ catr_ovc_get_cpmrc(rc = "13077A01800039")
 #> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…
 ```
 
-### Extract a cadastral reference from a given set of coordinates
+### Reverse geocode coordinates to a cadastral reference
 
 ``` r
 
@@ -188,8 +187,8 @@ directory using the following function:
 catr_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **CatastRo** will look for cached files and
-load them, speeding up the process.
+When this option is set, **CatastRo** looks for cached files and loads
+them, which speeds up repeated queries.
 
 ## Citation
 
@@ -206,9 +205,9 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {1.0.1},
+  version = {1.0.2},
   url = {https://ropenspain.github.io/CatastRo/},
-  abstract = {Access public spatial data from the Spanish Cadastre through its INSPIRE and cadastral web services. Download cadastral parcels, buildings, addresses and map images, and geocode cadastral references.},
+  abstract = {Access public spatial data from the Spanish Catastro through its INSPIRE and related web services. Retrieve parcel, building, address and map image data, and convert between parcel references and coordinates.},
 }
 ```
 

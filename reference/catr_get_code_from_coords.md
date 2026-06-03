@@ -28,7 +28,7 @@ catr_get_code_from_coords(
 
   - A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
     If the object has several geometries, only the first geometry is
-    used. The function extracts coordinates using
+    used. This function extracts coordinates using
     `sf::st_centroid(x, of_largest_polygon = TRUE)`.
 
 - srs:
@@ -88,7 +88,7 @@ See **Details**.
 
 ## Details
 
-On a successful query, the function returns a
+On a successful query, this function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 one row including the following columns:
 
@@ -106,7 +106,7 @@ one row including the following columns:
 
 - `inecode`: Full INE code for the municipality.
 
-- Rest of fields: Check the API documentation.
+- Remaining fields: Check the API documentation.
 
 ## See also
 

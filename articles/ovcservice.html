@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,12 +88,12 @@
 
 
 
-    <!-- ovcservice.qmd is generated from ovcservice.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> queries the OVCCoordenadas web service provided by the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a> API directly through an <strong>R</strong> IDE.</p>
-<p>This API retrieves the spatial coordinates of an urban property. You do not need to be the owner to get the information. You only need to know the cadastral reference (<em>RC</em>) of the property. Although the RC is the only required argument, providing the address can improve results and help avoid errors.</p>
-<p>The API can also obtain the RC of an urban property from longitude and latitude. It allows you to choose the spatial reference system (SRS, also known as CRS) used to express the coordinates.</p>
-<p>The API also handles cases where the exact location of the registered urban property is unknown. In such cases, it returns all properties located within a 50-meter square around the given point.</p>
-<p>The documentation for this API is available <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">here</a>.</p>
-<p>These functions are named <code>catr_ovc_*</code> and return a tibble, as provided by the <strong>tibble</strong> package.</p>
+    <!-- ovcservice.qmd is generated from ovcservice.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> provides an <strong>R</strong> interface to the OVCCoordenadas web service from the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a>.</p>
+<p>This service retrieves the spatial coordinates of an urban property. You do not need to be the owner to get the information. You only need to know the cadastral reference of the property. Although the cadastral reference is the only required argument, providing the address can improve results and help avoid errors.</p>
+<p>The service can also obtain the cadastral reference of an urban property from longitude and latitude. It allows you to choose the spatial reference system (SRS, also known as CRS) used to express the coordinates.</p>
+<p>The service also handles cases where the exact location of the registered urban property is unknown. In such cases, it returns all properties located within a 50-meter square around the given point.</p>
+<p>The documentation for this service is available <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">here</a>.</p>
+<p>These functions use the <code>catr_ovc_get_*()</code> prefix and return tibbles from the <strong>tibble</strong> package.</p>
 <section class="level2"><h2 id="catastro-api">CatastRo API<a class="anchor" aria-label="anchor" href="#catastro-api"></a>
 </h2>
 <p>The OVCCoordenadas web service can be accessed using the following functions:</p>
@@ -146,11 +146,11 @@
 <td style="text-align: left;">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 </tr></tbody>
 </table>
-<p>The function accepts the following values for the <code>srs</code> argument:</p>
+<p>This function accepts the following values for the <code>srs</code> argument:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">catr_srs_values</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># OVC valid codes</span></span>
+<span><span class="co"># OVC valid codes.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">catr_srs_values</span> <span class="op">|&gt;</span></span>
@@ -345,14 +345,14 @@
 <td style="text-align: left;">DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL)</td>
 </tr></tbody>
 </table>
-<p>The <code>province</code> and <code>municipality</code> arguments are optional, but if <code>municipality</code> is provided, <code>province</code> must also be provided. If a value is passed to the <code>province</code> argument while <code>municipality</code> is <code>NULL</code>, the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> will display a message and return an empty tibble.</p>
+<p>The <code>province</code> and <code>municipality</code> arguments are optional, but if <code>municipality</code> is provided, <code>province</code> must also be provided. If a value is passed to the <code>province</code> argument while <code>municipality</code> is <code>NULL</code>, the function <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> displays a message and returns an empty tibble.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
 <span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>
 <span>  municipality <span class="op">=</span> <span class="st">"SANTA CRUZ DE MUDELA"</span></span>
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ✖ Error code: 11. LA PROVINCIA ES OBLIGATORIA</span></span></code></pre></div>
+<span><span class="co">#&gt; ✖ OVC service error 11: LA PROVINCIA ES OBLIGATORIA</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th style="text-align: left;">refcat</th>

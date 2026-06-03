@@ -1,4 +1,4 @@
-# ATOM INSPIRE: Search for municipality codes
+# ATOM INSPIRE: search for municipality codes
 
 Search for a municipality (as a string, part of a string, or code) and
 get the corresponding code according to the Cadastre.
@@ -54,7 +54,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## See also
 
-Other INSPIRE ATOM services:
+Related ATOM INSPIRE functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),

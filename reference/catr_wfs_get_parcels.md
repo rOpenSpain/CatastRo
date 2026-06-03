@@ -1,4 +1,4 @@
-# WFS INSPIRE: Download cadastral parcels
+# WFS INSPIRE: download cadastral parcels
 
 Get the spatial data of cadastral parcels and zones. The WFS service
 allows several types of queries:
@@ -123,7 +123,7 @@ cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-INSPIRE API functions:
+Related INSPIRE API functions:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
@@ -135,7 +135,7 @@ INSPIRE API functions:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md),
 [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
 
-Other INSPIRE WFS services:
+Related WFS INSPIRE functions:
 [`catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md),
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),

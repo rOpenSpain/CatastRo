@@ -1,4 +1,4 @@
-# OVCCallejero: Extract a list of provinces with their codes
+# OVCCallejero: extract provinces with their codes
 
 Implementation of the OVCCallejero service
 [ConsultaProvincia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia).
@@ -26,7 +26,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## See also
 
-OVCCoordenadas API:
+Related OVCCallejero functions:
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md)
 
 Other search:

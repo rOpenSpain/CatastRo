@@ -9,7 +9,7 @@ object or a pair of coordinates via catr_ovc_get_cod_munic()."><meta property="o
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@ object or a pair of coordinates via <code><a href="catr_ovc_get_cod_munic.html">
 <dd><p>Can be one of:</p><ul><li><p>A pair of coordinates <code>c(x, y)</code>. In this case the <code>srs</code> of the
 coordinates must be provided.</p></li>
 <li><p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object. If the object has several geometries, only
-the first geometry is used. The function extracts coordinates using
+the first geometry is used. This function extracts coordinates using
 <code>sf::st_centroid(x, of_largest_polygon = TRUE)</code>.</p></li>
 </ul></dd>
 
@@ -120,7 +120,7 @@ municipalities.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>On a successful query, the function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>
+    <p>On a successful query, this function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>
 with one row including the following columns:</p><ul><li><p><code>munic</code>: Name of the municipality according to the Cadastre.</p></li>
 <li><p><code>catr_to</code>: Cadastral territorial office code.</p></li>
 <li><p><code>catr_munic</code>: Municipality code as recorded on the Cadastre.</p></li>
@@ -128,7 +128,7 @@ with one row including the following columns:</p><ul><li><p><code>munic</code>: 
 <li><p><code>cpro</code>: Province code according to the INE.</p></li>
 <li><p><code>cmun</code>: Municipality code according to the INE.</p></li>
 <li><p><code>inecode</code>: Full INE code for the municipality.</p></li>
-<li><p>Rest of fields: Check the API documentation.</p></li>
+<li><p>Remaining fields: Check the API documentation.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

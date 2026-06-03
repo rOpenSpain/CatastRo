@@ -1,4 +1,4 @@
-# OVCCallejero: Extract the code of a municipality
+# OVCCallejero: extract the code of a municipality
 
 Implementation of the OVCCallejero service
 [ConsultaMunicipioCodigos](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos).
@@ -35,7 +35,7 @@ See **Details**.
 
 ## Details
 
-On a successful query, the function returns a
+On a successful query, this function returns a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
 one row including the following columns:
 
@@ -53,7 +53,7 @@ one row including the following columns:
 
 - `inecode`: Full INE code for the municipality.
 
-- Rest of fields: Check the API documentation.
+- Remaining fields: Check the API documentation.
 
 ## References
 
@@ -64,7 +64,7 @@ one row including the following columns:
 [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
 to get shapes of municipalities, including the INE code.
 
-OVCCoordenadas API:
+Related OVCCallejero functions:
 [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md)
 
 Other search:

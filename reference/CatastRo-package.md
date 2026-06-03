@@ -1,8 +1,9 @@
-# CatastRo: Access Spanish Cadastre APIs
+# CatastRo: Interface to the Spanish 'Catastro' Web Services
 
-Access public spatial data from the Spanish Cadastre through its
-'INSPIRE' and cadastral web services. Download cadastral parcels,
-buildings, addresses and map images, and geocode cadastral references.
+Access public spatial data from the Spanish 'Catastro' through its
+'INSPIRE' and related web services. Retrieve parcel, building, address
+and map image data, and convert between parcel references and
+coordinates.
 
 ## See also
 

@@ -1,4 +1,4 @@
-# Reference SRS codes for [CatastRo](https://CRAN.R-project.org/package=CatastRo) APIs
+# Reference SRS codes for [CatastRo](https://CRAN.R-project.org/package=CatastRo) services
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 including the valid SRS (also known as CRS) values that may be used in
@@ -26,7 +26,7 @@ with 16 rows and columns:
 
 - wfs_service:
 
-  Logical. Whether this code is valid for INSPIRE WFS services.
+  Logical. Whether this code is valid for WFS INSPIRE services.
 
 ## Details
 
@@ -56,7 +56,7 @@ Table: Content of catr_srs_values
 
 - [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-- [INSPIRE WFS
+- [WFS INSPIRE
   Service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
@@ -69,13 +69,13 @@ Other databases:
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
 [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
 
-Other INSPIRE WFS services:
+Related WFS INSPIRE functions:
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
 [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md),
 [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
 
-OVCCoordenadas API:
+Related OVCCoordenadas functions:
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md),
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md),
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
