@@ -29,9 +29,9 @@
         "familyName": "Delgado Panadero",
         "givenName": "Ángel"
       },
-      "description": "Access public spatial data from the Spanish Cadastre through its 'INSPIRE' and cadastral web services. Download cadastral parcels, buildings, addresses and map images, geocode cadastral references and look up cadastral references from coordinates.",
+      "description": "Access public spatial data from the Spanish 'Catastro' through its 'INSPIRE' and related web services. Retrieve parcel, building, address and map image data, and convert between parcel references and coordinates.",
       "license": "https://spdx.org/licenses/GPL-2.0",
-      "name": "CatastRo: Access Spanish Cadastre Services",
+      "name": "CatastRo: Interface to the Spanish 'Catastro' Web Services",
       "programmingLanguage": {
         "type": "ComputerLanguage",
         "name": "R",
@@ -44,7 +44,7 @@
         "url": "https://cran.r-project.org"
       },
       "runtimePlatform": "R version 4.6.0 (2026-04-24 ucrt)",
-      "version": "1.0.1.9000"
+      "version": "1.0.2"
     },
     {
       "id": "https://doi.org/10.32614/CRAN.package.CatastRo",
