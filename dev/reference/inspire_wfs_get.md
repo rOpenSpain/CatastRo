@@ -86,6 +86,9 @@ file_local <- inspire_wfs_get(
     SRSNAME = "EPSG:25830"
   )
 )
+#> ✖ HTTP error 400 (Bad Request): <https://inspire.navarra.es/services/BU/wfs?service=WFS&request=getfeature&typenames=BU:Building&bbox=609800,4740100,611000,4741300&srsname=EPSG:25830>.
+#> ! If this looks like a package bug, please open an issue at <https://github.com/ropenspain/CatastRo/issues>
+#> → Returning "NULL" because the download failed.
 
 if (!is.null(file_local)) {
   pamp <- sf::read_sf(file_local)
