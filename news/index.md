@@ -2,6 +2,8 @@
 
 ## CatastRo 1.0.2
 
+CRAN release: 2026-06-03
+
 - This development cycle includes AI-assisted maintenance work to
   simplify internal code, improve **cli** messages, standardize roxygen2
   metadata and make package documentation more consistent.
