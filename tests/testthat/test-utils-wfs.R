@@ -98,7 +98,7 @@ test_that("Test 404", {
     )
   )
   expect_length(s, 1)
-  expect_true(is.character(s))
+  expect_type(s, "character")
   expect_true(file.exists(s))
   expect_silent(tosf <- sf::read_sf(s))
   expect_s3_class(tosf, "sf")
