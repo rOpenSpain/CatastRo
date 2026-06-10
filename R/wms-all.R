@@ -157,10 +157,8 @@ catr_wms_get_layer <- function(
   opts <- list(styles = styles, version = "1.1.0")
 
   # Add SRS.
-  if (!is.null(srs)) {
-    if (!any(grepl("epsg", srs, ignore.case = TRUE))) {
-      opts <- modifyList(opts, list(srs = paste0("EPSG:", srs)))
-    }
+  if (!is.null(srs) && !any(grepl("epsg", srs, ignore.case = TRUE))) {
+    opts <- modifyList(opts, list(srs = paste0("EPSG:", srs)))
   }
 
   # Add to options.

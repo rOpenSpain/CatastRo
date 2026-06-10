@@ -268,7 +268,7 @@ detect_cache_dir_muted <- function() {
   # Try to read from the environment variable.
   getvar <- Sys.getenv("CATASTROESP_CACHE_DIR")
 
-  if (is.null(getvar) || is.na(getvar) || getvar == "") {
+  if (is.null(getvar) || is.na(getvar) || !nzchar(getvar)) {
     # Retrieve the cache path from the configuration file.
     cache_config <- file.path(
       tools::R_user_dir("CatastRo", "config"),
@@ -280,7 +280,7 @@ detect_cache_dir_muted <- function() {
       cached_path <- readLines(cache_config)
 
       # Use the default cache path for empty cached paths.
-      if (any(is.null(cached_path), is.na(cached_path), cached_path == "")) {
+      if (any(is.null(cached_path), is.na(cached_path), !nzchar(cached_path))) {
         cache_dir <- catr_set_cache_dir(overwrite = TRUE, verbose = FALSE)
         return(cache_dir)
       }

@@ -123,7 +123,7 @@ inspire_wfs_get <- function(
   # Check results.
   top20lines <- readLines(file_local, n = 20, warn = FALSE)
 
-  if (!any(grepl("<Exception", top20lines))) {
+  if (!any(grepl("<Exception", top20lines, fixed = TRUE))) {
     return(file_local)
   }
 
