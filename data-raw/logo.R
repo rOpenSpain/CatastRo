@@ -83,5 +83,5 @@ sticker(
   p_y = 1,
   h_fill = "white",
   h_color = text,
-  filename = "data-raw/logo.png",
+  filename = "data-raw/logo.png"
 )
