@@ -62,10 +62,9 @@ catr_wms_get_layer(
 
 - crop:
 
-  logical. If `TRUE`, the results will be cropped to the specified `x`
-  extent. If `x` is an
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-  one `POINT`, `crop` is set to `FALSE`. See
+  Logical. If `TRUE`, crop results to the specified `x` extent. If `x`
+  is an [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+  with one `POINT`, `crop` is set to `FALSE`. See
   [`terra::crop()`](https://rspatial.github.io/terra/reference/crop.html).
 
 - options:
@@ -79,20 +78,20 @@ catr_wms_get_layer(
 
   `res`
 
-  :   character string or number. Only valid for WMS providers.
+  :   Character string or number. Only valid for WMS providers.
       Resolution (in pixels) of the final tile.
 
   `bbox_expand`
 
-  :   number. Expansion percentage of the bounding box of `x`.
+  :   Number. Expansion percentage of the bounding box of `x`.
 
   `transparent`
 
-  :   logical. Provides transparent background, if supported.
+  :   Logical. Whether to use a transparent background, if supported.
 
   `mask`
 
-  :   logical. `TRUE` if the result should be masked to `x`. See
+  :   Logical. `TRUE` to mask the result to `x`. See
       [`terra::mask()`](https://rspatial.github.io/terra/reference/mask.html).
 
 ## Value
@@ -199,6 +198,8 @@ pict <- catr_wms_get_layer(
   srs = 25830,
   what = "parcel"
 )
+#> Warning: GDAL Error 4: `/tmp/RtmpwQzLJb/CatastRo/Catastro.CadastralParcel/05c7e4be955c71376986f07b3971ba1f/ddda1bf20cec7dab909f6724f9389f8c.png' not recognized as a supported file format.
+#> Error: [rast] cannot open this file as a SpatRaster: /tmp/RtmpwQzLJb/CatastRo/Catastro.CadastralParcel/05c7e4be955c71376986f07b3971ba1f/ddda1bf20cec7dab909f6724f9389f8c.png
 
 library(mapSpain)
 library(ggplot2)
@@ -211,11 +212,13 @@ library(tidyterra)
 
 ggplot() +
   geom_spatraster_rgb(data = pict)
-
+#> Error: object 'pict' not found
 
 # With a spatial object
 
 parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
+#> Cannot open data source /tmp/RtmpwQzLJb/wfs_inspire_cache/b332862bbe74a60af2fa574796d24de9.gml
+#> Error: Open failed.
 
 # Use styles
 
@@ -225,10 +228,11 @@ parcels_img <- catr_wms_get_layer(parcels,
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )
+#> Error: object 'parcels' not found
 
 ggplot() +
   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
   geom_spatraster_rgb(data = parcels_img)
-
+#> Error: object 'parcels' not found
 # }
 ```

@@ -90,15 +90,15 @@ stores cached files in a temporary directory (see <code><a href="https://rdrr.io
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Arguments passed on to <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html" class="external-link">mapSpain::esp_get_munic_siane</a></code></p><dl><dt><code>year</code></dt>
-<dd><p>character string or number. Release year, it must be in
-formats <code>YYYY</code> (assuming end of year) or <code>YYYY-MM-DD</code>. Historical
-information starts as of 2005.</p></dd>
+<dd><p>Character string or number. Release year. It must use format
+<code>YYYY</code> (assuming end of year) or <code>YYYY-MM-DD</code>. Historical information
+starts as of 2005.</p></dd>
 
     <dt><code>resolution</code></dt>
-<dd><p>character string or number. Resolution of the geospatial
-data. One of:</p><ul><li><p>"10": 1:10 million.</p></li>
-<li><p>"6.5": 1:6.5 million.</p></li>
-<li><p>"3": 1:3 million.</p></li>
+<dd><p>Character string or number. Resolution of the geospatial
+data. One of:</p><ul><li><p><code>"10"</code>: 1:10 million.</p></li>
+<li><p><code>"6.5"</code>: 1:6.5 million.</p></li>
+<li><p><code>"3"</code>: 1:3 million.</p></li>
 </ul></dd>
 
     <dt><code>region</code></dt>
@@ -106,8 +106,8 @@ data. One of:</p><ul><li><p>"10": 1:10 million.</p></li>
 (see <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_dict.html" class="external-link">esp_dict_region_code()</a></code>).</p></dd>
 
     <dt><code>munic</code></dt>
-<dd><p>character string. A name or <code><a href="https://rdrr.io/r/base/grep.html" class="external-link">regex</a></code> expression
-with the names of the required municipalities. <code>NULL</code> will return all
+<dd><p>Character string. A name or <code><a href="https://rdrr.io/r/base/grep.html" class="external-link">regex</a></code> expression
+with the names of the required municipalities. Use <code>NULL</code> to return all
 municipalities.</p></dd>
 
 
@@ -145,20 +145,24 @@ with one row including the following columns:</p><ul><li><p><code>munic</code>: 
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Use with coordinates</span></span></span>
 <span class="r-in"><span><span class="fu">catr_get_code_from_coords</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">16.25462</span>, <span class="fl">28.46824</span><span class="op">)</span>, srs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> SANTA… 38      900        38900    38    038   38038   SANT… 38    900   38   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: cm &lt;chr&gt;</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> OVC service error 0: problemas tecnicos. Tiempo estimado desde las 15.15H hasta las 19.H.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Disculpe las molestias.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   name </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #BB0000;">NA</span>   </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use with sf</span></span></span>
 <span class="r-in"><span><span class="va">prov</span> <span class="op">&lt;-</span> <span class="fu">mapSpain</span><span class="fu">::</span><span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_prov.html" class="external-link">esp_get_prov</a></span><span class="op">(</span><span class="st">"Caceres"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">catr_get_code_from_coords</span><span class="op">(</span><span class="va">prov</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> MONROY 10      128        10128    10    125   10125   MONR… 10    128   10   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: cm &lt;chr&gt;</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> OVC service error 0: problemas tecnicos. Tiempo estimado desde las 15.15H hasta las 19.H.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Disculpe las molestias.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   name </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #BB0000;">NA</span>   </span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

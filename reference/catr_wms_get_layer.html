@@ -104,9 +104,9 @@ stores cached files in a temporary directory (see <code><a href="https://rdrr.io
 
 
 <dt id="arg-crop">crop<a class="anchor" aria-label="anchor" href="#arg-crop"></a></dt>
-<dd><p>logical. If <code>TRUE</code>, the results will be cropped to the specified
-<code>x</code> extent. If <code>x</code> is an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object with one <code>POINT</code>,
-<code>crop</code> is set to <code>FALSE</code>. See <code><a href="https://rspatial.github.io/terra/reference/crop.html" class="external-link">terra::crop()</a></code>.</p></dd>
+<dd><p>Logical. If <code>TRUE</code>, crop results to the specified <code>x</code> extent. If
+<code>x</code> is an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object with one <code>POINT</code>, <code>crop</code> is set to
+<code>FALSE</code>. See <code><a href="https://rspatial.github.io/terra/reference/crop.html" class="external-link">terra::crop()</a></code>.</p></dd>
 
 
 <dt id="arg-options">options<a class="anchor" aria-label="anchor" href="#arg-options"></a></dt>
@@ -116,18 +116,18 @@ query.</p></dd>
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Arguments passed on to <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html" class="external-link">mapSpain::esp_get_tiles</a></code></p><dl><dt><code>res</code></dt>
-<dd><p>character string or number. Only valid for WMS providers.
+<dd><p>Character string or number. Only valid for WMS providers.
 Resolution (in pixels) of the final tile.</p></dd>
 
     <dt><code>bbox_expand</code></dt>
-<dd><p>number. Expansion percentage of the bounding box of <code>x</code>.</p></dd>
+<dd><p>Number. Expansion percentage of the bounding box of <code>x</code>.</p></dd>
 
     <dt><code>transparent</code></dt>
-<dd><p>logical. Provides transparent background, if supported.</p></dd>
+<dd><p>Logical. Whether to use a transparent background, if
+supported.</p></dd>
 
     <dt><code>mask</code></dt>
-<dd><p>logical. <code>TRUE</code> if the result should be masked to <code>x</code>. See
-<code><a href="https://rspatial.github.io/terra/reference/mask.html" class="external-link">terra::mask()</a></code>.</p></dd>
+<dd><p>Logical. <code>TRUE</code> to mask the result to <code>x</code>. See <code><a href="https://rspatial.github.io/terra/reference/mask.html" class="external-link">terra::mask()</a></code>.</p></dd>
 
 
 </dl></dd>
@@ -222,6 +222,8 @@ for more information.</p>
 <span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">25830</span>,</span></span>
 <span class="r-in"><span>  what <span class="op">=</span> <span class="st">"parcel"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 4: `/tmp/RtmpwQzLJb/CatastRo/Catastro.CadastralParcel/05c7e4be955c71376986f07b3971ba1f/ddda1bf20cec7dab909f6724f9389f8c.png' not recognized as a supported file format.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> [rast] cannot open this file as a SpatRaster: /tmp/RtmpwQzLJb/CatastRo/Catastro.CadastralParcel/05c7e4be955c71376986f07b3971ba1f/ddda1bf20cec7dab909f6724f9389f8c.png</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
@@ -234,11 +236,13 @@ for more information.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pict</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="catr_wms_get_layer-1.png" alt="" width="2188" height="1352"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'pict' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># With a spatial object</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span>, srs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cannot open data source /tmp/RtmpwQzLJb/wfs_inspire_cache/b332862bbe74a60af2fa574796d24de9.gml</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Open failed.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Use styles</span></span></span>
 <span class="r-in"><span></span></span>
@@ -248,11 +252,12 @@ for more information.</p>
 <span class="r-in"><span>  bbox_expand <span class="op">=</span> <span class="fl">0.3</span>,</span></span>
 <span class="r-in"><span>  styles <span class="op">=</span> <span class="st">"ELFCadastre"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'parcels' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels_img</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="catr_wms_get_layer-2.png" alt="" width="2188" height="1352"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'parcels' not found</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

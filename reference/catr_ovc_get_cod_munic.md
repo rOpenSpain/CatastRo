@@ -78,23 +78,27 @@ Other search:
 # \donttest{
 # Get municipality by cadastral code
 ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
+#> ✖ OVC service error 0: problemas tecnicos. Tiempo estimado desde las 15.15H hasta las 19.H.
+#> 
+#> Disculpe las molestias.
 
 ab
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
-#> # ℹ 1 more variable: cm <chr>
+#> # A tibble: 1 × 1
+#>   name 
+#>   <lgl>
+#> 1 NA   
 
 # Same query using the INE code
 
 ab2 <- catr_ovc_get_cod_munic(cpro = 2, cmun_ine = 3)
+#> ✖ OVC service error 0: problemas tecnicos. Tiempo estimado desde las 15.15H hasta las 19.H.
+#> 
+#> Disculpe las molestias.
 
 ab2
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
-#> # ℹ 1 more variable: cm <chr>
+#> # A tibble: 1 × 1
+#>   name 
+#>   <lgl>
+#> 1 NA   
 # }
 ```

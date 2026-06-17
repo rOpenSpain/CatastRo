@@ -89,16 +89,22 @@ catr_ovc_get_cpmrc("13077A01800039",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
 )
-#> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
-#> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4562… 38.6196… EPSG:4… DS D…
+#> ✖ OVC service error 0: problemas tecnicos. Tiempo estimado desde las 15.15H hasta las 19.H.
+#> 
+#> Disculpe las molestias.
+#> # A tibble: 1 × 2
+#>   refcat         geo.srs  
+#>   <chr>          <chr>    
+#> 1 13077A01800039 EPSG:4230
 
 # Only the cadastral reference
 catr_ovc_get_cpmrc("9872023VH5797S")
-#> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
-#> 1  -3.46   38.6 9872023VH… CL GLO… 98720… VH579… -3.4632… 38.6401… EPSG:4… CL G…
+#> ✖ OVC service error 0: problemas tecnicos. Tiempo estimado desde las 15.15H hasta las 19.H.
+#> 
+#> Disculpe las molestias.
+#> # A tibble: 1 × 2
+#>   refcat         geo.srs  
+#>   <chr>          <chr>    
+#> 1 9872023VH5797S EPSG:4326
 # }
 ```

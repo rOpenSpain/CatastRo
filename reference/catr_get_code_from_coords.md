@@ -54,20 +54,20 @@ catr_get_code_from_coords(
 
   `year`
 
-  :   character string or number. Release year, it must be in formats
+  :   Character string or number. Release year. It must use format
       `YYYY` (assuming end of year) or `YYYY-MM-DD`. Historical
       information starts as of 2005.
 
   `resolution`
 
-  :   character string or number. Resolution of the geospatial data. One
+  :   Character string or number. Resolution of the geospatial data. One
       of:
 
-      - "10": 1:10 million.
+      - `"10"`: 1:10 million.
 
-      - "6.5": 1:6.5 million.
+      - `"6.5"`: 1:6.5 million.
 
-      - "3": 1:3 million.
+      - `"3"`: 1:3 million.
 
   `region`
 
@@ -76,9 +76,9 @@ catr_get_code_from_coords(
 
   `munic`
 
-  :   character string. A name or
+  :   Character string. A name or
       [`regex`](https://rdrr.io/r/base/grep.html) expression with the
-      names of the required municipalities. `NULL` will return all
+      names of the required municipalities. Use `NULL` to return all
       municipalities.
 
 ## Value
@@ -125,19 +125,23 @@ Other search:
 # \donttest{
 # Use with coordinates
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 SANTA… 38      900        38900    38    038   38038   SANT… 38    900   38   
-#> # ℹ 1 more variable: cm <chr>
+#> ✖ OVC service error 0: problemas tecnicos. Tiempo estimado desde las 15.15H hasta las 19.H.
+#> 
+#> Disculpe las molestias.
+#> # A tibble: 1 × 1
+#>   name 
+#>   <lgl>
+#> 1 NA   
 
 # Use with sf
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 MONROY 10      128        10128    10    125   10125   MONR… 10    128   10   
-#> # ℹ 1 more variable: cm <chr>
+#> ✖ OVC service error 0: problemas tecnicos. Tiempo estimado desde las 15.15H hasta las 19.H.
+#> 
+#> Disculpe las molestias.
+#> # A tibble: 1 × 1
+#>   name 
+#>   <lgl>
+#> 1 NA   
 # }
 ```

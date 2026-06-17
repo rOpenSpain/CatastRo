@@ -86,17 +86,6 @@ catr_ovc_get_rccoor_distancia(
   lon = -5.671420,
   srs = 4326
 )
-#> # A tibble: 7 × 14
-#>   geo.xcen geo.ycen geo.srs   refcat  address cmun_ine pc.pc1 pc.pc2 dt.loine.cp
-#>      <dbl>    <dbl> <chr>     <chr>   <chr>   <chr>    <chr>  <chr>  <chr>      
-#> 1    -5.67     41.0 EPSG:4326 528380… CL SAN… 37274    52838… TL735… 37         
-#> 2    -5.67     41.0 EPSG:4326 528383… CT SAN… 37274    52838… TL735… 37         
-#> 3    -5.67     41.0 EPSG:4326 528341… CL SAN… 37274    52834… TL735… 37         
-#> 4    -5.67     41.0 EPSG:4326 538380… CT SAN… 37274    53838… TL735… 37         
-#> 5    -5.67     41.0 EPSG:4326 538480… CL GAR… 37274    53848… TL735… 37         
-#> 6    -5.67     41.0 EPSG:4326 538380… CL ENC… 37274    53838… TL735… 37         
-#> 7    -5.67     41.0 EPSG:4326 528383… CL SAN… 37274    52838… TL735… 37         
-#> # ℹ 5 more variables: dt.loine.cm <chr>, dt.lourb.dir.cv <chr>,
-#> #   dt.lourb.dir.pnp <chr>, ldt <chr>, dis <chr>
+#> Error in tibble::as_tibble_row(unlist(x)): `x` must be a vector in `as_tibble_row()`, not NULL.
 # }
 ```

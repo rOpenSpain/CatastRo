@@ -163,11 +163,13 @@ cp <- catr_wfs_get_parcels_bbox(
   ),
   srs = 25830
 )
+#> Cannot open data source /tmp/RtmpwQzLJb/wfs_inspire_cache/c970c27171e7d3c0072fbe089d2eff61.gml
+#> Error: Open failed.
 
 library(ggplot2)
 
 ggplot(cp) +
   geom_sf()
-
+#> Error: object 'cp' not found
 # }
 ```
