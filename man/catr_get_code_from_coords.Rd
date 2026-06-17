@@ -34,20 +34,20 @@ stores cached files in a temporary directory (see \code{\link[base:tempdir]{base
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane}}
   \describe{
-    \item{\code{year}}{character string or number. Release year, it must be in
-formats \code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical
-information starts as of 2005.}
-    \item{\code{resolution}}{character string or number. Resolution of the geospatial
+    \item{\code{year}}{Character string or number. Release year. It must use format
+\code{YYYY} (assuming end of year) or \code{YYYY-MM-DD}. Historical information
+starts as of 2005.}
+    \item{\code{resolution}}{Character string or number. Resolution of the geospatial
 data. One of:
 \itemize{
-\item "10": 1:10 million.
-\item "6.5": 1:6.5 million.
-\item "3": 1:3 million.
+\item \code{"10"}: 1:10 million.
+\item \code{"6.5"}: 1:6.5 million.
+\item \code{"3"}: 1:3 million.
 }}
     \item{\code{region}}{Optional. A vector of region names, NUTS or ISO codes
 (see \code{\link[mapSpain:esp_dict_region_code]{esp_dict_region_code()}}).}
-    \item{\code{munic}}{character string. A name or \code{\link[base:grep]{regex}} expression
-with the names of the required municipalities. \code{NULL} will return all
+    \item{\code{munic}}{Character string. A name or \code{\link[base:grep]{regex}} expression
+with the names of the required municipalities. Use \code{NULL} to return all
 municipalities.}
   }}
 }

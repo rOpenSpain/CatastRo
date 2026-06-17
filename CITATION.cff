@@ -1,7 +1,7 @@
-# --------------------------------------------
-# CITATION file created with {cffr} R package
+# ------------------------------------------------
+# CITATION.cff file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
-# --------------------------------------------
+# ------------------------------------------------
  
 cff-version: 1.2.0
 message: 'To cite package "CatastRo" in publications use:'
@@ -148,7 +148,7 @@ references:
   doi: 10.32614/CRAN.package.lifecycle
 - type: software
   title: mapSpain
-  abstract: 'mapSpain: Administrative Boundaries of Spain'
+  abstract: 'mapSpain: Administrative Boundaries and Static Map Tiles for Spain'
   notes: Imports
   url: https://ropenspain.github.io/mapSpain/
   repository: https://CRAN.R-project.org/package=mapSpain
@@ -358,7 +358,7 @@ references:
     Objects'
   notes: Suggests
   url: https://dieghernan.github.io/tidyterra/
-  repository: https://dieghernan.r-universe.dev
+  repository: https://CRAN.R-project.org/package=tidyterra
   authors:
   - family-names: Hernangómez
     given-names: Diego

@@ -42,9 +42,9 @@ stores cached files in a temporary directory (see \code{\link[base:tempdir]{base
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
-\item{crop}{logical. If \code{TRUE}, the results will be cropped to the specified
-\code{x} extent. If \code{x} is an \code{\link[sf:sf]{sf}} object with one \code{POINT},
-\code{crop} is set to \code{FALSE}. See \code{\link[terra:crop]{terra::crop()}}.}
+\item{crop}{Logical. If \code{TRUE}, crop results to the specified \code{x} extent. If
+\code{x} is an \code{\link[sf:st_sf]{sf}} object with one \code{POINT}, \code{crop} is set to
+\code{FALSE}. See \code{\link[terra:crop]{terra::crop()}}.}
 
 \item{options}{A named list containing additional options to pass to the
 query.}
@@ -52,12 +52,12 @@ query.}
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles}}
   \describe{
-    \item{\code{res}}{character string or number. Only valid for WMS providers.
+    \item{\code{res}}{Character string or number. Only valid for WMS providers.
 Resolution (in pixels) of the final tile.}
-    \item{\code{bbox_expand}}{number. Expansion percentage of the bounding box of \code{x}.}
-    \item{\code{transparent}}{logical. Provides transparent background, if supported.}
-    \item{\code{mask}}{logical. \code{TRUE} if the result should be masked to \code{x}. See
-\code{\link[terra:mask]{terra::mask()}}.}
+    \item{\code{bbox_expand}}{Number. Expansion percentage of the bounding box of \code{x}.}
+    \item{\code{transparent}}{Logical. Whether to use a transparent background, if
+supported.}
+    \item{\code{mask}}{Logical. \code{TRUE} to mask the result to \code{x}. See \code{\link[terra:mask]{terra::mask()}}.}
   }}
 }
 \value{
