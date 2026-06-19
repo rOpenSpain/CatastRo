@@ -67,7 +67,7 @@ images from the WMS INSPIRE services of the Spanish Cadastre.
 
 - [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
   [`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
-  : Get static tiles from public administrations of Spain (from
+  : Get static map tiles from public administrations of Spain (from
   mapSpain)
 
 - [`plotRGB(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/plotRGB.html)
@@ -76,7 +76,7 @@ images from the WMS INSPIRE services of the Spanish Cadastre.
 - [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
   :
 
-  Visualise `SpatRaster` objects as images (from tidyterra)
+  Plot `SpatRaster` objects as images (from tidyterra)
 
 ## OVCCoordenadas service
 

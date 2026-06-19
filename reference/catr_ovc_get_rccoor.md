@@ -81,12 +81,9 @@ catr_ovc_get_rccoor(
   lon = -3.45624183836806,
   srs = 4326
 )
-#> ✖ OVC service error 0: problemas tecnicos. Tiempo estimado desde las 15.15H hasta las 19.H.
-#> 
-#> Disculpe las molestias.
-#> # A tibble: 1 × 3
-#>   geo.xcen geo.ycen geo.srs  
-#>      <dbl>    <dbl> <chr>    
-#> 1     38.6    -3.46 EPSG:4326
+#> # A tibble: 1 × 8
+#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
+#> 1 13077A01800011 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
 # }
 ```

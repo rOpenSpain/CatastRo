@@ -151,13 +151,11 @@ ad <- catr_wfs_get_address_bbox(
   ),
   srs = 25830
 )
-#> Cannot open data source /tmp/RtmpwQzLJb/wfs_inspire_cache/e9047996caf25329510cc5b29510af61.gml
-#> Error: Open failed.
 
 library(ggplot2)
 
 ggplot(ad) +
   geom_sf()
-#> Error: object 'ad' not found
+
 # }
 ```

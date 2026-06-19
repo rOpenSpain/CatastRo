@@ -145,22 +145,18 @@ building <- catr_wfs_get_buildings_bbox(
   ),
   srs = 25830
 )
-#> Cannot open data source /tmp/RtmpwQzLJb/wfs_inspire_cache/384852bf19376349a3abde1bbbe18adb.gml
-#> Error: Open failed.
 library(ggplot2)
 ggplot(building) +
   geom_sf() +
   labs(title = "Search using bbox")
-#> Error: object 'building' not found
+
 
 # Using a cadastral reference
 rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
-#> Cannot open data source /tmp/RtmpwQzLJb/wfs_inspire_cache/e9549a8caf12666d6cf919e247fe4746.gml
-#> Error: Open failed.
 library(ggplot2)
 ggplot(rc) +
   geom_sf() +
   labs(title = "Search using rc")
-#> Error: object 'rc' not found
+
 # }
 ```
