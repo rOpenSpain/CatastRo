@@ -19,8 +19,8 @@ run_example <- function() {
   if (on_mac()) {
     return(FALSE)
   }
-  if (!httr2::is_online()) {
-    return(FALSE) # nocov
+  if (!is_online_fun()) {
+    return(FALSE)
   }
   if (on_cran()) {
     return(FALSE)
@@ -37,7 +37,7 @@ run_example <- function() {
 on_cran <- function() {
   env <- Sys.getenv("NOT_CRAN")
   if (identical(env, "")) {
-    !interactive() # nocov
+    !interactive()
   } else {
     !isTRUE(as.logical(env))
   }

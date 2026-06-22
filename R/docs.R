@@ -1,6 +1,5 @@
 # Helper.
 ovcurl <- function(x) {
-  # nocov start
   base <- "https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc"
 
   app <- switch(x,
@@ -13,5 +12,4 @@ ovcurl <- function(x) {
   )
 
   paste0(c(base, app), collapse = "/")
-  # nocov end
 }
