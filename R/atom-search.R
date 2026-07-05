@@ -92,5 +92,5 @@ catr_atom_search_munic <- function(
     FUN.VALUE = character(1)
   )
 
-  res
+  dplyr::as_tibble(res)
 }

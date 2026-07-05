@@ -52,6 +52,7 @@ test_that("Test search", {
   # Try with to
   b <- catr_atom_search_munic("Mad", to = 3, cache_dir = cdir)
 
+  expect_s3_class(a, "tbl_df")
   expect_gt(nrow(a), nrow(b))
 
   # Try with no result
