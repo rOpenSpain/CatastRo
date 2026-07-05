@@ -23,8 +23,7 @@ cached files in a temporary directory. See \code{\link[base:tempdir]{base::tempd
 \code{CATASTROESP_CACHE_DIR} value already present on your machine.}
 
 \item{install}{Logical. If \code{TRUE}, stores the path locally for use in future
-sessions. Defaults to \code{FALSE}. If \code{cache_dir}
-is \code{FALSE}, this argument is set to \code{FALSE} automatically.}
+sessions. Defaults to \code{FALSE}.}
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
@@ -60,9 +59,8 @@ migration.
 \section{Caching strategies}{
 
 
-Some files can be read from their online source without caching by using the
-argument \code{cache = FALSE}. Otherwise, the source file is downloaded to
-your computer. \CRANpkg{CatastRo} implements the following caching options:
+Source files are cached after download. \CRANpkg{CatastRo} implements the
+following caching options:
 \itemize{
 \item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no
 install).
@@ -80,7 +78,7 @@ the data by setting \code{update_cache = TRUE} in the corresponding function.
 
 If a download fails, try another download method and save the file in
 \code{cache_dir}. Use \code{verbose = TRUE} to inspect the API query
-and \code{\link[=catr_detect_cache_dir]{catr_detect_cache_dir()}} to identify your cached path.
+and \code{\link[=catr_detect_cache_dir]{catr_detect_cache_dir()}} to identify your cache path.
 }
 
 \examples{

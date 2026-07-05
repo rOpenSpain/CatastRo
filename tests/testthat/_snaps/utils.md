@@ -152,7 +152,7 @@
       test_msg("Testing fun reference with error.", verbose = 1)
     Condition
       Error in `test_msg()`:
-      ! `verbose` must be a single `TRUE` or `FALSE`.
+      ! `verbose` must be `TRUE` or `FALSE`.
 
 ---
 
@@ -160,7 +160,7 @@
       test_msg("Testing missing verbose.", verbose = NA)
     Condition
       Error in `test_msg()`:
-      ! `verbose` must be a single `TRUE` or `FALSE`.
+      ! `verbose` must be `TRUE` or `FALSE`.
 
 ---
 
@@ -168,7 +168,7 @@
       test_msg("Testing empty verbose.", verbose = logical())
     Condition
       Error in `test_msg()`:
-      ! `verbose` must be a single `TRUE` or `FALSE`.
+      ! `verbose` must be `TRUE` or `FALSE`.
 
 ---
 
@@ -176,5 +176,5 @@
       test_msg("Testing vector verbose.", verbose = c(TRUE, FALSE))
     Condition
       Error in `test_msg()`:
-      ! `verbose` must be a single `TRUE` or `FALSE`.
+      ! `verbose` must be `TRUE` or `FALSE`.
 

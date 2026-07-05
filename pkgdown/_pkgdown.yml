@@ -53,8 +53,8 @@ reference:
 
 - title: OVC services
   desc: >
-    Geocode cadastral references, reverse geocode coordinates and query
-    administrative codes through Spanish Cadastre OVC services.
+    Geocode cadastral references, reverse geocode coordinates and query Spanish
+    Cadastre province and municipality codes.
 - subtitle: Coordinates and cadastral references
   desc: >
     Convert between cadastral references and spatial coordinates.
@@ -81,20 +81,20 @@ reference:
     Configure, detect and clear the local cache used by **CatastRo**.
 - contents:
   - has_concept("cache_utilities")
-- subtitle: Datasets
+- subtitle: Reference data
   desc: >
-    Inspect SRS reference data used by the package services.
+    Inspect the SRS reference dataset used by the package services.
 - contents:
   - has_keyword("datasets")
 
-- title: Helpers and package metadata
+- title: Package metadata
   desc: >
     Read package-level documentation.
 - contents:
   - CatastRo-package
 
 articles:
-- title: Service guides
+- title: Service guide
   navbar: ~
   contents:
   - ovcservice

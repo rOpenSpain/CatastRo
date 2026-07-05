@@ -70,7 +70,7 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
   tbl_all
 }
 
-#' Read a top-level ATOM database
+#' Read a summary ATOM table
 #'
 #' @noRd
 catr_atom_read_db_all <- function(
@@ -97,7 +97,7 @@ catr_atom_read_db_all <- function(
   tbl
 }
 
-#' Read a territorial office ATOM database
+#' Read a territorial office ATOM table
 #'
 #' @noRd
 catr_atom_read_db_to <- function(
@@ -153,7 +153,7 @@ catr_atom_read_db_to <- function(
   make_msg(
     "info",
     verbose,
-    paste0("Extracting information for {.str ", tb, "}.")
+    paste0("Retrieving information for {.str ", tb, "}.")
   )
 
   api_entry <- as.character(alldist[alldist$territorial_office == tb, "url"])
@@ -176,7 +176,7 @@ catr_atom_read_db_to <- function(
   tbl
 }
 
-#' Select a municipality from an ATOM top-level database
+#' Select a municipality from an ATOM summary table
 #'
 #' @noRd
 catr_atom_select_munic <- function(
@@ -195,7 +195,7 @@ catr_atom_select_munic <- function(
     } else {
       if (verbose) {
         cli::cli_alert_warning(paste0(
-          "Ignoring {.arg to}, no territorial office ",
+          "Ignoring {.arg to} because no territorial office ",
           "matched {.str {to}}."
         ))
       }
@@ -242,13 +242,13 @@ catr_atom_select_munic <- function(
   make_msg(
     "info",
     verbose,
-    paste0("Extracting information for {.str ", tb$munic, "}.")
+    paste0("Retrieving information for {.str ", tb$munic, "}.")
   )
 
   tb
 }
 
-#' Find the municipality data URL in an ATOM territorial office database
+#' Find a municipality data URL in a territorial office ATOM table
 #'
 #' @noRd
 catr_atom_get_munic_url <- function(municurls, munic) {

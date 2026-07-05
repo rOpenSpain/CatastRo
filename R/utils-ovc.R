@@ -49,7 +49,9 @@ ovc_as_tibble_rows <- function(x) {
 ovc_report_error <- function(err) {
   df <- ovc_as_tibble_row(err["lerr"])
 
-  cli::cli_alert_danger(paste0("OVC service error ", df[1, 1], ": ", df[1, 2]))
+  cli::cli_alert_danger(
+    paste0("OVC service error {.val ", df[1, 1], "}: ", df[1, 2])
+  )
 }
 
 #' Detect an OVC API error

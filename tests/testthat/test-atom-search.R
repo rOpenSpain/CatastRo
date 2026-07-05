@@ -6,10 +6,7 @@ test_that("Test offline", {
     FALSE
   })
 
-  cdir <- file.path(tempdir(), "testthat_ex1")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex1")
   expect_snapshot(fend <- catr_atom_search_munic("LABAJOS", cache_dir = cdir))
   expect_null(fend)
 
@@ -17,17 +14,13 @@ test_that("Test offline", {
     httr2::is_online()
   })
   expect_identical(is_online_fun(), httr2::is_online())
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
 test_that("Test 404 all", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex2")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex2")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -47,19 +40,12 @@ test_that("Test 404 all", {
     fend <- catr_atom_search_munic("MELQUE", to = "Segovia", cache_dir = cdir)
   )
   expect_shape(fend, dim = c(1, 3))
-
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
 
 test_that("Test search", {
   skip_on_cran()
   skip_if_offline()
-  cdir <- file.path(tempdir(), "testthat_ex2")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex2")
   a <- catr_atom_search_munic("Mad", cache_dir = cdir)
   expect_gt(nrow(a), 1)
 
@@ -80,7 +66,7 @@ test_that("Test search", {
       verbose = TRUE,
       cache_dir = cdir
     ),
-    'Ignoring `to`, no territorial office matched "XXX".'
+    "Ignoring `to` because no territorial office matched"
   )
 
   d <- catr_atom_search_munic("Mel", to = "XXX", cache_dir = cdir)
@@ -92,18 +78,13 @@ test_that("Test search", {
   )
 
   expect_null(ff)
-  unlink(cdir)
 })
 
 test_that("Deprecations", {
   skip_on_cran()
   skip_if_offline()
-  cdir <- file.path(tempdir(), "testthat_ex2")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex2")
   expect_snapshot(
     a <- catr_atom_search_munic("Mad", cache_dir = cdir, cache = TRUE)
   )
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })

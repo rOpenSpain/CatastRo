@@ -4,7 +4,7 @@
       obj <- catr_wfs_get_address_codvia("1", 110, 390)
     Message
       x HTTP error 404 (Not Found): <https://ovc.catastro.meh.es/INSPIRE/wfsAD.aspx?service=wfs&version=2.0.0&request=getfeature&storedquerie_id=getadbycodvia&codvia=1&del=110&mun=390>.
-      ! If this looks like a package bug, please open an issue at <https://github.com/ropenspain/CatastRo/issues>
+      ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       > Returning "NULL" because the download failed.
 
 ---
@@ -37,7 +37,7 @@
       obj <- catr_wfs_get_address_postalcode("XXXXX")
     Message
       x HTTP error 404 (Not Found): <https://ovc.catastro.meh.es/INSPIRE/wfsAD.aspx?service=wfs&version=2.0.0&request=getfeature&storedquerie_id=getadbypostalcode&postalcode=XXXXX>.
-      ! If this looks like a package bug, please open an issue at <https://github.com/ropenspain/CatastRo/issues>
+      ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       > Returning "NULL" because the download failed.
 
 ---

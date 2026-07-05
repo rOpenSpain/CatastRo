@@ -9,7 +9,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Access public spatial data from the Spanish 'Catastro' through its 'INSPIRE' and related web services. Retrieve parcel, building, address and map image data, and convert between parcel references and coordinates.
+Access public spatial data from the Spanish Cadastre through its 'INSPIRE' and related web services. Retrieve cadastral parcel, building, address and georeferenced map image data and convert between cadastral references and coordinates.
 }
 \seealso{
 Useful links:

@@ -4,7 +4,7 @@
 \name{catr_atom_get_buildings_db_all}
 \alias{catr_atom_get_buildings_db_all}
 \alias{catr_atom_get_buildings_db_to}
-\title{ATOM INSPIRE: reference database for ATOM buildings}
+\title{ATOM INSPIRE: list building download URLs}
 \source{
 \url{https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml}
 }
@@ -54,7 +54,7 @@ updated twice a year.
 Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
 for downloading buildings.
 
-\code{catr_atom_get_buildings_db_all()} provides a top-level table with all
+\code{catr_atom_get_buildings_db_all()} provides a summary table with all
 territorial offices, except the Basque Country and Navarre and the
 municipalities included in each office. \code{catr_atom_get_buildings_db_to()}
 provides a table for one territorial office and its municipalities.

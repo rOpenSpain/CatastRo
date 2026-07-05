@@ -12,7 +12,7 @@
       fend <- catr_atom_search_munic("MELQUE", to = "Segovia", cache_dir = cdir)
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
-      ! If this looks like a package bug, please open an issue at <https://github.com/ropenspain/CatastRo/issues>
+      ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       > Returning "NULL" because the download failed.
 
 # Test search

@@ -99,12 +99,12 @@ download_url <- function(
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
     cli::cli_alert_danger(c(
-      "{.strong HTTP error {get_status_code}} ({get_status_desc}):",
+      "HTTP error {.val {get_status_code}} ({get_status_desc}):",
       " {.url {url}}."
     ))
-    cli::cli_alert_warning(c(
-      "If this looks like a package bug, please open an issue at ",
-      "{.url https://github.com/ropenspain/CatastRo/issues}"
+    cli::cli_alert_warning(paste0(
+      "If this looks like a package bug, open an issue at ",
+      "{.url https://github.com/ropenspain/CatastRo/issues}."
     ))
     cli::cli_alert("Returning {.val NULL} because the download failed.")
     return(NULL)
@@ -164,12 +164,12 @@ get_request_body <- function(url, verbose = TRUE) {
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
     cli::cli_alert_danger(c(
-      "{.strong HTTP error {get_status_code}} ({get_status_desc}):",
+      "HTTP error {.val {get_status_code}} ({get_status_desc}):",
       " {.url {url}}."
     ))
-    cli::cli_alert_warning(c(
-      "If this looks like a package bug, please open an issue at ",
-      "{.url https://github.com/ropenspain/CatastRo/issues}"
+    cli::cli_alert_warning(paste0(
+      "If this looks like a package bug, open an issue at ",
+      "{.url https://github.com/ropenspain/CatastRo/issues}."
     ))
     cli::cli_alert("Returning {.val NULL} because the request failed.")
     return(NULL)

@@ -20,7 +20,7 @@
       fend <- catr_atom_get_parcels_db_all(cache_dir = cdir)
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml>.
-      ! If this looks like a package bug, please open an issue at <https://github.com/ropenspain/CatastRo/issues>
+      ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       > Returning "NULL" because the download failed.
 
 # Test atom cp
@@ -64,6 +64,6 @@
       fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)
     Message
       x HTTP error 404 (Not Found): <http://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/28/ES.SDGC.CP.atom_28.xml>.
-      ! If this looks like a package bug, please open an issue at <https://github.com/ropenspain/CatastRo/issues>
+      ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       > Returning "NULL" because the download failed.
 

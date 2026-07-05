@@ -1,4 +1,4 @@
-#' OVCCoordenadas: reverse geocode a cadastral reference
+#' OVCCoordenadas: reverse geocode coordinates
 #'
 #' @description
 #' Query the OVCCoordenadas
@@ -7,13 +7,13 @@
 #'
 #' @details
 #' If the API returns no results, this function returns a
-#' [tibble][tibble::tbl_df] containing only the input arguments.
+#' [tibble][tibble::tbl_df] containing only query information.
 #'
 #' On a successful query, this function returns a [tibble][tibble::tbl_df] with
 #' one row per cadastral reference, including the following columns:
 #' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 #' - `refcat`: Cadastral reference.
-#' - `address`: Address as recorded in the Cadastre.
+#' - `address`: Address as recorded in the Spanish Cadastre.
 #' - Remaining fields: See the API documentation.
 #'
 #' @inheritParams catr_ovc_get_rccoor_distancia

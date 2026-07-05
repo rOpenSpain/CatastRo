@@ -50,12 +50,12 @@ retrieved.
 \description{
 Retrieve spatial building data through two types of WFS queries:
 \itemize{
-\item By bounding box: \code{catr_wfs_get_buildings_bbox()} extracts objects included
+\item By bounding box: \code{catr_wfs_get_buildings_bbox()} retrieves objects included
 in the provided bounding box. See \strong{Bounding box}.
 }
 
 \itemize{
-\item By cadastral reference: \code{catr_wfs_get_buildings_rc()} extracts objects for
+\item By cadastral reference: \code{catr_wfs_get_buildings_rc()} retrieves objects for
 specific cadastral references.
 }
 }
@@ -83,7 +83,7 @@ provided as input.
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
-# Using a bbox
+# Using a bounding box
 building <- catr_wfs_get_buildings_bbox(
   c(
     376550,
@@ -96,7 +96,7 @@ building <- catr_wfs_get_buildings_bbox(
 library(ggplot2)
 ggplot(building) +
   geom_sf() +
-  labs(title = "Search using bbox")
+  labs(title = "Search using a bounding box")
 
 # Using a cadastral reference
 rc <- catr_wfs_get_buildings_rc("6656601UL7465N")

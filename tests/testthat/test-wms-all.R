@@ -9,10 +9,7 @@ test_that("Check error", {
 test_that("Check tiles", {
   skip_on_cran()
   skip_if_offline()
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex")
   obj <- catr_wms_get_layer(
     c(760926, 4019259, 761155, 4019366),
     srs = 25829,
@@ -50,5 +47,4 @@ test_that("Check tiles", {
   )
 
   expect_s4_class(obj3, "SpatRaster")
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_wms_get_layer}
 \alias{catr_wms_get_layer}
-\title{WMS INSPIRE: download map images}
+\title{WMS INSPIRE: download georeferenced map images}
 \usage{
 catr_wms_get_layer(
   x,
@@ -31,7 +31,9 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
-\item{what, styles}{Layer and style to download from the WMS service. See
+\item{what}{WMS layer to download. See \strong{Layers and styles}.}
+
+\item{styles}{Style to apply to the selected WMS layer. See
 \strong{Layers and styles}.}
 
 \item{update_cache}{Logical. Whether to refresh the cached file. Defaults to
@@ -65,8 +67,8 @@ A \code{\link[terra:rast]{SpatRaster}} with three RGB or four RGBA layers. See
 \code{\link[terra:RGB]{terra::RGB()}}.
 }
 \description{
-Retrieve georeferenced images from the Spanish Cadastre WMS service. This
-function wraps \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles()}}.
+Retrieve georeferenced map images from the Spanish Cadastre WMS service.
+This function wraps \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles()}}.
 }
 \section{Bounding box}{
 
@@ -118,7 +120,7 @@ for complete layer and style information.
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
 \donttest{
 
-# With a bbox
+# With a bounding box
 
 pict <- catr_wms_get_layer(
   c(222500, 4019500, 223700, 4020700),

@@ -4,7 +4,7 @@
 \name{catr_atom_get_parcels_db_all}
 \alias{catr_atom_get_parcels_db_all}
 \alias{catr_atom_get_parcels_db_to}
-\title{ATOM INSPIRE: reference database for ATOM cadastral parcels}
+\title{ATOM INSPIRE: list cadastral parcel download URLs}
 \source{
 \url{https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml}
 }
@@ -54,7 +54,7 @@ updated twice a year.
 Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
 for downloading cadastral parcels.
 
-\code{catr_atom_get_parcels_db_all()} provides a top-level table with all
+\code{catr_atom_get_parcels_db_all()} provides a summary table with all
 territorial offices, except the Basque Country and Navarre and the
 municipalities included in each office. \code{catr_atom_get_parcels_db_to()}
 provides a table for one territorial office and its municipalities.

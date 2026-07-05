@@ -19,10 +19,7 @@ test_that("Test offline", {
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
     "Addresses/ES.SDGC.AD.atom.xml"
   )
-  cdir <- file.path(tempdir(), "testthat_ex3")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex3")
   expect_snapshot(
     fend <- download_url(
       url,
@@ -34,7 +31,6 @@ test_that("Test offline", {
   )
   expect_null(fend)
   expect_length(list.files(cdir, recursive = TRUE), 0)
-  unlink(cdir, recursive = TRUE, force = TRUE)
 
   local_mocked_bindings(is_online_fun = function(...) {
     httr2::is_online()
@@ -46,10 +42,7 @@ test_that("Test 404", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -86,9 +79,6 @@ test_that("Test 404", {
   )
   expect_length(s, 1)
   expect_type(s, "character")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
 
 test_that("Caching tests", {
@@ -100,10 +90,7 @@ test_that("Caching tests", {
     "Addresses/ES.SDGC.AD.atom.xml"
   )
 
-  cdir <- file.path(tempdir(), "testthat_ex4")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex4")
   expect_message(
     fend <- download_url(
       url,
@@ -138,8 +125,6 @@ test_that("Caching tests", {
     ),
     "Refreshing cached file"
   )
-
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
 test_that("Caching errors", {
@@ -147,10 +132,7 @@ test_that("Caching errors", {
   skip_if_offline()
 
   url <- "http://ropenspain.github.io/CatastRo/noexist-this-file.txt"
-  cdir <- file.path(tempdir(), "testthat_ex5")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex5")
   expect_message(
     fend <- download_url(
       url,
@@ -181,8 +163,6 @@ test_that("Caching errors", {
     ),
     "Download size is"
   )
-
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
 test_that("No connection body", {

@@ -136,7 +136,7 @@ get_sf_from_bbox <- function(bbox, srs = NULL) {
     cli::cli_abort("Provide a valid non-empty value for {.arg srs}.")
   }
 
-  # Create a template for a spatial bbox.
+  # Create a template for a spatial bounding box.
   template_sf <- sf::st_sfc(sf::st_point(c(0, 0)))
   template_bbox <- sf::st_bbox(template_sf)
 

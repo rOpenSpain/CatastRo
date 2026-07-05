@@ -35,14 +35,14 @@ cadastral reference.
 }
 \details{
 If the API returns no results, this function returns a
-\link[tibble:tbl_df]{tibble} containing only the input arguments.
+\link[tibble:tbl_df]{tibble} containing only query information.
 
 On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
 with one row per cadastral reference, including the following columns:
 \itemize{
 \item \code{xcoord}, \code{ycoord}: X and Y coordinates in the specified SRS.
 \item \code{refcat}: Cadastral reference.
-\item \code{address}: Address as recorded in the Cadastre.
+\item \code{address}: Address as recorded in the Spanish Cadastre.
 \item Remaining fields: See the API documentation.
 }
 }

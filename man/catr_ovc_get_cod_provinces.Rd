@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_cod_provinces}
 \alias{catr_ovc_get_cod_provinces}
-\title{OVCCallejero: extract provinces with their codes}
+\title{OVCCallejero: get province codes}
 \usage{
 catr_ovc_get_cod_provinces(verbose = FALSE)
 }

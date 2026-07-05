@@ -1,10 +1,10 @@
-#' ATOM INSPIRE: reference database for ATOM addresses
+#' ATOM INSPIRE: list address download URLs
 #'
 #' @description
 #' Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
 #' for downloading addresses.
 #'
-#' `catr_atom_get_address_db_all()` provides a top-level table with all
+#' `catr_atom_get_address_db_all()` provides a summary table with all
 #' territorial offices, except the Basque Country and Navarre and the
 #' municipalities included in each office. `catr_atom_get_address_db_to()`
 #' provides a table for one territorial office and its municipalities.

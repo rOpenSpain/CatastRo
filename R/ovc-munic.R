@@ -1,4 +1,4 @@
-#' OVCCallejero: extract the code of a municipality
+#' OVCCallejero: get municipality codes
 #'
 #' @description
 #' Query the OVCCallejero
@@ -10,7 +10,7 @@
 #' On a successful query, this function returns a [tibble][tibble::tbl_df]
 #' with one row including the following columns:
 #'
-#' - `munic`: Name of the municipality according to the Cadastre.
+#' - `munic`: Municipality name used by the Spanish Cadastre.
 #' - `catr_to`: Cadastral territorial office code.
 #' - `catr_munic`: Municipality code as recorded by the Cadastre.
 #' - `catrcode`: Full cadastral code for the municipality.
@@ -19,7 +19,7 @@
 #' - `inecode`: Full INE code for the municipality.
 #' - Remaining fields: See the API documentation.
 #'
-#' @param cpro The code of a province, as provided by
+#' @param cpro Province code returned by
 #'   [catr_ovc_get_cod_provinces()].
 #' @param cmun,cmun_ine Municipality code as recorded by the Spanish
 #'   Cadastre (`cmun`) or the National Statistics Institute. Either `cmun` or

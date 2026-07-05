@@ -58,7 +58,7 @@ catr_get_code_from_coords <- function(
 
   if (length(x) > 1) {
     cli::cli_alert_info(
-      "Using the first geometry, {.val {length(x)}} geometries were provided."
+      "Using the first geometry because {.val {length(x)}} were provided."
     )
   }
 

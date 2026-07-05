@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_atom_get_address}
 \alias{catr_atom_get_address}
-\title{ATOM INSPIRE: download all addresses of a municipality}
+\title{ATOM INSPIRE: download all addresses for a municipality}
 \usage{
 catr_atom_get_address(
   munic,

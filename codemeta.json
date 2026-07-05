@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "CatastRo",
-  "description": "Access public spatial data from the Spanish 'Catastro' through its 'INSPIRE' and related web services. Retrieve parcel, building, address and map image data, and convert between parcel references and coordinates.",
+  "description": "Access public spatial data from the Spanish Cadastre through its 'INSPIRE' and related web services. Retrieve cadastral parcel, building, address and georeferenced map image data and convert between cadastral references and coordinates.",
   "name": "CatastRo: Interface to the Spanish 'Catastro' Web Services",
   "relatedLink": ["https://ropenspain.github.io/CatastRo/", "https://CRAN.R-project.org/package=CatastRo"],
   "codeRepository": "https://github.com/rOpenSpain/CatastRo",
@@ -283,7 +283,7 @@
   },
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["catastro", "cran", "cran-r", "gis", "maps", "r", "r-package", "ropenspain", "rstats", "spain", "spatial", "static-tiles"],
-  "fileSize": "1087.636KB",
+  "fileSize": "1085.53KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

@@ -19,7 +19,7 @@
     Code
       wfs_get_bbox(buf, limit_km2 = 1)
     Message
-      ! WFS service limit is 1 km2, your query covers 100 km2.
+      ! WFS service limit is 1 km2. Your query covers 100 km2.
       i The request may fail. Check the results or use a smaller area in `x`.
     Output
        xmin  ymin  xmax  ymax 

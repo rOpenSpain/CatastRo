@@ -3,12 +3,12 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_cod_munic}
 \alias{catr_ovc_get_cod_munic}
-\title{OVCCallejero: extract the code of a municipality}
+\title{OVCCallejero: get municipality codes}
 \usage{
 catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 }
 \arguments{
-\item{cpro}{The code of a province, as provided by
+\item{cpro}{Province code returned by
 \code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}.}
 
 \item{cmun, cmun_ine}{Municipality code as recorded by the Spanish
@@ -31,7 +31,7 @@ Statistics Institute (INE).
 On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
-\item \code{munic}: Name of the municipality according to the Cadastre.
+\item \code{munic}: Municipality name used by the Spanish Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
 \item \code{catr_munic}: Municipality code as recorded by the Cadastre.
 \item \code{catrcode}: Full cadastral code for the municipality.

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_atom_get_parcels}
 \alias{catr_atom_get_parcels}
-\title{ATOM INSPIRE: download all cadastral parcels of a municipality}
+\title{ATOM INSPIRE: download all cadastral parcels for a municipality}
 \usage{
 catr_atom_get_parcels(
   munic,

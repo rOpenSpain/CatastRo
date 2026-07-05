@@ -1,4 +1,4 @@
-#' OVCCoordenadas: reverse geocode cadastral references near coordinates
+#' OVCCoordenadas: find cadastral references near coordinates
 #'
 #' @description
 #' Query the OVCCoordenadas
@@ -8,20 +8,20 @@
 #'
 #' @details
 #' If the API returns no results, this function returns a
-#' [tibble][tibble::tbl_df] containing only the input arguments.
+#' [tibble][tibble::tbl_df] containing only query information.
 #'
 #' On a successful query, this function returns a [tibble][tibble::tbl_df] with
 #' one row per cadastral reference, including the following columns:
 #' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 #' - `refcat`: Cadastral reference.
-#' - `address`: Address as recorded in the Cadastre.
+#' - `address`: Address as recorded in the Spanish Cadastre.
 #' - `cmun_ine`: Municipality code as registered on the INE (National
 #'    Statistics Institute).
 #' - Remaining fields: See the API documentation.
 #'
-#' @param lat Latitude for the query, expressed in the CRS/SRS defined by
+#' @param lat Latitude for the query, expressed in the SRS/CRS defined by
 #'   `srs`.
-#' @param lon Longitude for the query, expressed in the CRS/SRS defined by
+#' @param lon Longitude for the query, expressed in the SRS/CRS defined by
 #'   `srs`.
 #'
 #' @inheritParams catr_ovc_get_cpmrc

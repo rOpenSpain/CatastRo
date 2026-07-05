@@ -3,15 +3,15 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_rccoor_distancia}
 \alias{catr_ovc_get_rccoor_distancia}
-\title{OVCCoordenadas: reverse geocode cadastral references near coordinates}
+\title{OVCCoordenadas: find cadastral references near coordinates}
 \usage{
 catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 }
 \arguments{
-\item{lat}{Latitude for the query, expressed in the CRS/SRS defined by
+\item{lat}{Latitude for the query, expressed in the SRS/CRS defined by
 \code{srs}.}
 
-\item{lon}{Longitude for the query, expressed in the CRS/SRS defined by
+\item{lon}{Longitude for the query, expressed in the SRS/CRS defined by
 \code{srs}.}
 
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
@@ -31,14 +31,14 @@ the API searches within 50 square meters of the requested coordinates.
 }
 \details{
 If the API returns no results, this function returns a
-\link[tibble:tbl_df]{tibble} containing only the input arguments.
+\link[tibble:tbl_df]{tibble} containing only query information.
 
 On a successful query, this function returns a \link[tibble:tbl_df]{tibble} with
 one row per cadastral reference, including the following columns:
 \itemize{
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input arguments of the query.
 \item \code{refcat}: Cadastral reference.
-\item \code{address}: Address as recorded in the Cadastre.
+\item \code{address}: Address as recorded in the Spanish Cadastre.
 \item \code{cmun_ine}: Municipality code as registered on the INE (National
 Statistics Institute).
 \item Remaining fields: See the API documentation.

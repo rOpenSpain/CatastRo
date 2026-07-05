@@ -3,7 +3,7 @@
 #' @description
 #' Retrieve spatial address data through several types of WFS queries:
 #'
-#' - By bounding box: `catr_wfs_get_address_bbox()` extracts objects included
+#' - By bounding box: `catr_wfs_get_address_bbox()` retrieves objects included
 #'   in the provided bounding box. See **Bounding box**.
 #'
 #' @param x Input defining the query area. See **Bounding box**. It can be:
@@ -70,7 +70,7 @@ catr_wfs_get_address_bbox <- function(x, srs = NULL, verbose = FALSE) {
   )
 }
 #' @description
-#' - By street code: `catr_wfs_get_address_codvia()` extracts objects for
+#' - By street code: `catr_wfs_get_address_codvia()` retrieves objects for
 #'   specific addresses.
 #'
 #' @param codvia Cadastral street code.
@@ -110,7 +110,7 @@ catr_wfs_get_address_codvia <- function(
 }
 
 #' @description
-#' - By cadastral reference: `catr_wfs_get_address_rc()` extracts objects for
+#' - By cadastral reference: `catr_wfs_get_address_rc()` retrieves objects for
 #'   specific cadastral references.
 #'
 #' @rdname catr_wfs_get_address
@@ -135,7 +135,7 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
   )
 }
 #' @description
-#' - By postal codes: `catr_wfs_get_address_postalcode()` extracts objects for
+#' - By postal codes: `catr_wfs_get_address_postalcode()` retrieves objects for
 #'   specific postal codes.
 #'
 #' @param postalcode Postal code.

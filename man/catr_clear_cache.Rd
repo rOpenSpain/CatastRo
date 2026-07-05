@@ -8,7 +8,7 @@
 catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
-\item{config}{If \code{TRUE}, deletes the configuration folder of
+\item{config}{If \code{TRUE}, deletes the configuration directory of
 \CRANpkg{CatastRo}.}
 
 \item{cached_data}{If \code{TRUE}, deletes your \code{cache_dir} and all its contents.}
@@ -26,7 +26,7 @@ and configuration, specifically:
 \item Deletes the \CRANpkg{CatastRo} config directory
 (\code{tools::R_user_dir("CatastRo", "config")}).
 \item Deletes the \code{cache_dir} directory.
-\item Deletes the values stored on \code{Sys.getenv("CATASTROESP_CACHE_DIR")}.
+\item Clears the \code{CATASTROESP_CACHE_DIR} environment variable.
 }
 }
 \details{

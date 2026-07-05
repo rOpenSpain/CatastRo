@@ -56,28 +56,28 @@ retrieved.
 Retrieve spatial cadastral parcel and zoning data through several types of
 WFS queries:
 \itemize{
-\item By bounding box: \code{catr_wfs_get_parcels_bbox()} extracts objects included
+\item By bounding box: \code{catr_wfs_get_parcels_bbox()} retrieves objects included
 in the provided bounding box. See \strong{Bounding box}.
 }
 
 \itemize{
-\item By zoning: \code{catr_wfs_get_parcels_zoning()} extracts objects for a specific
+\item By zoning: \code{catr_wfs_get_parcels_zoning()} retrieves objects for a specific
 cadastral zone.
 }
 
 \itemize{
-\item By cadastral parcel: \code{catr_wfs_get_parcels_parcel()} extracts cadastral
+\item By cadastral parcel: \code{catr_wfs_get_parcels_parcel()} retrieves cadastral
 parcels for a specific cadastral reference.
 }
 
 \itemize{
 \item Neighbor cadastral parcels: \code{catr_wfs_get_parcels_neigh_parcel()}
-extracts neighbor cadastral parcels for a specific cadastral reference.
+retrieves neighboring cadastral parcels for a specific cadastral reference.
 }
 
 \itemize{
 \item Cadastral parcels by zoning: \code{catr_wfs_get_parcels_parcel_zoning()}
-extracts cadastral parcels for a specific cadastral zone.
+retrieves cadastral parcels for a specific cadastral zone.
 }
 }
 \section{API limits}{

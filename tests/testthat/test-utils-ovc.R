@@ -62,7 +62,7 @@ test_that("OVC error helpers detect and report API errors", {
 
   expect_true(ovc_has_error(err))
   expect_false(ovc_has_error(list(ok = TRUE)))
-  expect_message(ovc_report_error(err), "OVC service error 1: Bad request")
+  expect_snapshot(ovc_report_error(err))
 })
 
 test_that("OVC response fields are normalized", {

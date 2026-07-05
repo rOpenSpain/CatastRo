@@ -17,10 +17,7 @@ test_that("Test offline db_all", {
     FALSE
   })
 
-  cdir <- file.path(tempdir(), "testthat_ex1")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex1")
   expect_snapshot(fend <- catr_atom_get_address_db_all(cache_dir = cdir))
   expect_null(fend)
 
@@ -28,7 +25,6 @@ test_that("Test offline db_all", {
     httr2::is_online()
   })
   expect_identical(is_online_fun(), httr2::is_online())
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
 test_that("Test offline db_to", {
@@ -39,10 +35,7 @@ test_that("Test offline db_to", {
     FALSE
   })
 
-  cdir <- file.path(tempdir(), "testthat_ex1to")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex1to")
   expect_snapshot(
     fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
   )
@@ -52,17 +45,13 @@ test_that("Test offline db_to", {
     httr2::is_online()
   })
   expect_identical(is_online_fun(), httr2::is_online())
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
 test_that("Test 404 all", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex2")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex2")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -78,20 +67,13 @@ test_that("Test 404 all", {
   # Otherwise work
   expect_silent(fend <- catr_atom_get_address_db_all(cache_dir = cdir))
   expect_gt(nrow(fend), 20)
-
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
 
 test_that("Test 404 to", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex2to")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex2to")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -108,10 +90,6 @@ test_that("Test 404 to", {
   # Otherwise work
   expect_silent(fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir))
   expect_gt(nrow(fend), 100)
-
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
 
 test_that("Test atom ad", {
@@ -155,10 +133,7 @@ test_that("Deprecations", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex2to")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex2to")
 
   expect_snapshot(
     fend <- catr_atom_get_address_db_to(
@@ -171,20 +146,13 @@ test_that("Deprecations", {
   expect_snapshot(
     fend <- catr_atom_get_address_db_all(cache_dir = cdir, cache = FALSE)
   )
-
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
 
 test_that("Test 404 to bis", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex2to2")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex2to2")
 
   all <- catr_atom_get_address_db_all(cache_dir = cdir)
 
@@ -199,5 +167,4 @@ test_that("Test 404 to bis", {
   local_mocked_bindings(is_404 = function(...) {
     FALSE
   })
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })

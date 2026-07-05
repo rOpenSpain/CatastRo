@@ -21,6 +21,6 @@
       fend <- get_request_body(url, verbose = FALSE)
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
-      ! If this looks like a package bug, please open an issue at <https://github.com/ropenspain/CatastRo/issues>
+      ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       > Returning "NULL" because the request failed.
 

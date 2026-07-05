@@ -3,10 +3,7 @@ test_that("Test offline", {
   skip_if_offline()
   skip_if_not_installed("mapSpain")
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex")
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -32,7 +29,6 @@ test_that("Test offline", {
     httr2::is_online()
   })
   expect_identical(is_online_fun(), httr2::is_online())
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
 test_that("Test 404 all", {
@@ -40,10 +36,7 @@ test_that("Test 404 all", {
   skip_if_offline()
   skip_if_not_installed("mapSpain")
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -69,7 +62,6 @@ test_that("Test 404 all", {
   local_mocked_bindings(is_404 = function(...) {
     FALSE
   })
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
 test_that("Test 404 mapSpain", {
@@ -77,10 +69,7 @@ test_that("Test 404 mapSpain", {
   skip_if_offline()
   skip_if_not_installed("mapSpain")
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex")
 
   local_mocked_bindings(
     esp_get_munic_siane = function(...) {
@@ -98,16 +87,11 @@ test_that("Test 404 mapSpain", {
     )
   )
   expect_null(fend)
-
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 test_that("Check", {
   skip_on_cran()
   skip_if_offline()
-  cdir <- file.path(tempdir(), "testthat_excoord")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_excoord")
 
   # Try with coords
 
@@ -140,5 +124,4 @@ test_that("Check", {
   expect_s3_class(sfc, "sfc")
   s4 <- catr_get_code_from_coords(sfc, cache_dir = cdir)
   expect_s3_class(s4, "tbl")
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })

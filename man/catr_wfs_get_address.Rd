@@ -47,22 +47,22 @@ retrieved.
 \description{
 Retrieve spatial address data through several types of WFS queries:
 \itemize{
-\item By bounding box: \code{catr_wfs_get_address_bbox()} extracts objects included
+\item By bounding box: \code{catr_wfs_get_address_bbox()} retrieves objects included
 in the provided bounding box. See \strong{Bounding box}.
 }
 
 \itemize{
-\item By street code: \code{catr_wfs_get_address_codvia()} extracts objects for
+\item By street code: \code{catr_wfs_get_address_codvia()} retrieves objects for
 specific addresses.
 }
 
 \itemize{
-\item By cadastral reference: \code{catr_wfs_get_address_rc()} extracts objects for
+\item By cadastral reference: \code{catr_wfs_get_address_rc()} retrieves objects for
 specific cadastral references.
 }
 
 \itemize{
-\item By postal codes: \code{catr_wfs_get_address_postalcode()} extracts objects for
+\item By postal codes: \code{catr_wfs_get_address_postalcode()} retrieves objects for
 specific postal codes.
 }
 }

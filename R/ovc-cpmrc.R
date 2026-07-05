@@ -7,13 +7,13 @@
 #'
 #' @details
 #' If the API returns no results, this function returns a
-#' [tibble][tibble::tbl_df] containing only the input arguments.
+#' [tibble][tibble::tbl_df] containing only query information.
 #'
 #' On a successful query, this function returns a [tibble][tibble::tbl_df]
 #' with one row per cadastral reference, including the following columns:
 #' - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 #' - `refcat`: Cadastral reference.
-#' - `address`: Address as recorded in the Cadastre.
+#' - `address`: Address as recorded in the Spanish Cadastre.
 #' - Remaining fields: See the API documentation.
 #'
 #' @param rc The cadastral reference to be geocoded.

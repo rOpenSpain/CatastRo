@@ -259,7 +259,10 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
 
   if (area > limit_km2) {
     cli::cli_alert_warning(
-      "WFS service limit is {limit_km2} km2, your query covers {area} km2."
+      paste0(
+        "WFS service limit is {.val {limit_km2}} km2. ",
+        "Your query covers {.val {area}} km2."
+      )
     )
     cli::cli_alert_info(paste0(
       "The request may fail. Check the results or use a ",

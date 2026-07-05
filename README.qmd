@@ -81,8 +81,8 @@ The SSL certificate of the Spanish Cadastre may cause errors when using
 **CatastRo** (especially on macOS, see issue
 [#40](https://github.com/rOpenSpain/CatastRo/issues/40)).
 
-In **CatastRo \>= 1.0.0**, you can work around these errors by running this
-code after loading the package:
+In **CatastRo \>= 1.0.0**, you can work around these errors by running this code
+after loading the package:
 
 ```{r}
 #| eval: false
@@ -251,8 +251,8 @@ toBibtex(citation("CatastRo"))
 
 ## Contributing
 
-See the [source code and issue
-tracker](https://github.com/ropenspain/CatastRo/) on GitHub.
+See the [source code and issue tracker](https://github.com/ropenspain/CatastRo/)
+on GitHub.
 
 [^1]: The package [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
     provides access to the Cadastre of Navarre, with similar functionality to

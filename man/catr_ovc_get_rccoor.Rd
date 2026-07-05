@@ -3,15 +3,15 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_rccoor}
 \alias{catr_ovc_get_rccoor}
-\title{OVCCoordenadas: reverse geocode a cadastral reference}
+\title{OVCCoordenadas: reverse geocode coordinates}
 \usage{
 catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 }
 \arguments{
-\item{lat}{Latitude for the query, expressed in the CRS/SRS defined by
+\item{lat}{Latitude for the query, expressed in the SRS/CRS defined by
 \code{srs}.}
 
-\item{lon}{Longitude for the query, expressed in the CRS/SRS defined by
+\item{lon}{Longitude for the query, expressed in the SRS/CRS defined by
 \code{srs}.}
 
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
@@ -30,14 +30,14 @@ reference associated with a pair of coordinates.
 }
 \details{
 If the API returns no results, this function returns a
-\link[tibble:tbl_df]{tibble} containing only the input arguments.
+\link[tibble:tbl_df]{tibble} containing only query information.
 
 On a successful query, this function returns a \link[tibble:tbl_df]{tibble} with
 one row per cadastral reference, including the following columns:
 \itemize{
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input arguments of the query.
 \item \code{refcat}: Cadastral reference.
-\item \code{address}: Address as recorded in the Cadastre.
+\item \code{address}: Address as recorded in the Spanish Cadastre.
 \item Remaining fields: See the API documentation.
 }
 }

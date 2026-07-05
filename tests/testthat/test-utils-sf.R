@@ -2,10 +2,7 @@ test_that("Read shp", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex")
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/Buildings/46/",
     "46900-VALENCIA/A.ES.SDGC.BU.46900.zip"
@@ -25,19 +22,13 @@ test_that("Read shp", {
   expect_s3_class(s, "sf")
   expect_s3_class(s, "tbl_df")
   expect_true(file.exists(fake_local))
-
-  unlink(cdir, recursive = TRUE, force = TRUE)
-  expect_false(dir.exists(cdir))
 })
 
 test_that("Read shp address", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "testthat_ex")
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/40/",
     "40146-MELQUE%20DE%20CERCOS/A.ES.SDGC.AD.40146.zip"
@@ -61,9 +52,6 @@ test_that("Read shp address", {
   # But
   tb <- read_geo_file_sf(fake_local, hint = "gml", "fare")
   expect_s3_class(tb, c("tbl_df", "tbl", "data.frame"), exact = TRUE)
-
-  unlink(cdir, recursive = TRUE, force = TRUE)
-  expect_false(dir.exists(cdir))
 })
 
 test_that("get_sf_from_bbox", {

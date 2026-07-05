@@ -50,7 +50,7 @@ catr_atom_search_munic <- function(
     } else {
       if (verbose) {
         cli::cli_alert_warning(paste0(
-          "Ignoring {.arg to}, no territorial office ",
+          "Ignoring {.arg to} because no territorial office ",
           "matched {.str {to}}."
         ))
       }

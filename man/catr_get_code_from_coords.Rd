@@ -63,7 +63,7 @@ or a coordinate pair.
 On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
-\item \code{munic}: Name of the municipality according to the Cadastre.
+\item \code{munic}: Municipality name used by the Spanish Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
 \item \code{catr_munic}: Municipality code as recorded by the Cadastre.
 \item \code{catrcode}: Full cadastral code for the municipality.

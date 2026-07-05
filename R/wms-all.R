@@ -1,10 +1,11 @@
-#' WMS INSPIRE: download map images
+#' WMS INSPIRE: download georeferenced map images
 #'
 #' @description
-#' Retrieve georeferenced images from the Spanish Cadastre WMS service. This
-#' function wraps [mapSpain::esp_get_tiles()].
+#' Retrieve georeferenced map images from the Spanish Cadastre WMS service.
+#' This function wraps [mapSpain::esp_get_tiles()].
 #'
-#' @param what,styles Layer and style to download from the WMS service. See
+#' @param what WMS layer to download. See **Layers and styles**.
+#' @param styles Style to apply to the selected WMS layer. See
 #'   **Layers and styles**.
 #'
 #' @inheritParams catr_wfs_get_address_bbox
@@ -70,7 +71,7 @@
 #' @examplesIf run_example()
 #' \donttest{
 #'
-#' # With a bbox
+#' # With a bounding box
 #'
 #' pict <- catr_wms_get_layer(
 #'   c(222500, 4019500, 223700, 4020700),
