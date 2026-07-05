@@ -1,8 +1,8 @@
 #' ATOM INSPIRE: download all buildings of a municipality
 #'
 #' @description
-#' Retrieve the spatial data of all buildings belonging to a single municipality
-#' using the ATOM INSPIRE service.
+#' Retrieve spatial data for all buildings in a municipality using the ATOM
+#' INSPIRE service.
 #'
 #' @param what Information to load. Options are:
 #' - `"building"` for buildings.
@@ -12,10 +12,8 @@
 #' @inheritParams catr_atom_get_address
 #' @inherit catr_atom_get_address references return
 #'
-#' @family INSPIRE
-#' @family ATOM
+#' @family atom
 #' @family buildings
-#' @family spatial
 #' @encoding UTF-8
 #' @export
 #'

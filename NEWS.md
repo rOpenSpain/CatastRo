@@ -1,8 +1,6 @@
 # CatastRo 1.0.2
 
-- This development cycle includes AI-assisted maintenance work to simplify
-  internal code, improve **cli** messages, standardize roxygen2 metadata and
-  make package documentation more consistent.
+- Improve internal maintenance, **cli** messages, **roxygen2** metadata and package documentation.
 
 # CatastRo 1.0.1
 
@@ -12,15 +10,15 @@
 # CatastRo 1.0.0
 
 This major release introduces a full overhaul of the codebase and test suite.
-All requests now use **httr2** and cached files are reorganized into topic-based
-subfolders for easier management.
+All requests now use **httr2**. Cached files are organized into topic-based
+subdirectories for easier management.
 
 > Because of internal changes, **existing caches are not compatible** with this
 > release and must be rebuilt.
 
 Persistent cache directories now use `tools::R_user_dir()` instead of
-`rappdirs::user_config_dir()`. If you already have a cache directory in place,
-**CatastRo** displays a one-time message about this migration.
+`rappdirs::user_config_dir()`. If you already have a cache directory,
+**CatastRo** displays a one-time migration message.
 
 The package now requires **R ≥ 4.1.0** and dependency updates improve both
 performance and maintainability. All functions return tidy objects (tibbles or
@@ -47,7 +45,7 @@ performance and maintainability. All functions return tidy objects (tibbles or
   - Add: **cli**, **lifecycle**, **withr**.
   - Remove: **png**, **slippymath**.
 - Return tidy objects consistently.
-- Vignettes engine has been migrated to Quarto.
+- Migrate the vignette engine to Quarto.
 
 ## Deprecations
 
@@ -82,13 +80,13 @@ performance and maintainability. All functions return tidy objects (tibbles or
 - `catr_atom_get_address()` also returns the names of the streets (layer
   `"ThoroughfareName"` of the `*.gml` file). The new fields are named with the
   prefix `tfname_*`.
-- Add a helper function for easily detecting the `cache_dir`:
+- Add a helper function for detecting `cache_dir`:
   `catr_detect_cache_dir()`.
 - Update documentation and tests.
 
 # CatastRo 0.2.3
 
-- Housekeeping and updates of documentation.
+- Update documentation and package maintenance files.
 - Adapt `catr_wms_get_layer()` to **mapSpain** (\>= 0.7.0).
 
 # CatastRo 0.2.2
@@ -120,12 +118,12 @@ performance and maintainability. All functions return tidy objects (tibbles or
 - Add **WMS INSPIRE** capabilities: `catr_wms_get_layer()`.
 - Add a new interface for **OVC services**. Deprecated previous functions in
   favor of the new API:
-  - New SRS database in `?catr_srs_values`, replaces `coordinates`.
+  - The new SRS reference dataset in `?catr_srs_values` replaces `coordinates`.
   - `catr_ovc_get_rccoor_distancia()` replaces `near_rc()`.
   - `catr_ovc_get_rccoor()` replaces `get_rc()`.
   - `catr_ovc_get_cpmrc()` replaces `get_coor()`.
-- Added
-  [pre-computed](https://ropensci.org/blog/2019/12/08/precompute-vignettes/)
+- Add
+  [precomputed](https://ropensci.org/blog/2019/12/08/precompute-vignettes/)
   vignettes.
 
 # CatastRo 0.1.0

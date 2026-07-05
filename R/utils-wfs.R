@@ -1,28 +1,27 @@
-#' Client tool for WFS INSPIRE services
+#' Query WFS INSPIRE services
 #'
 #' @description
-#' Access WFS INSPIRE services. This function is used internally in WFS calls
-#' and is exposed for users and developers accessing other cadastral or
-#' INSPIRE resources.
+#' Build and run a WFS INSPIRE request. This function supports the package's WFS
+#' functions and is also available for querying other cadastral or INSPIRE
+#' resources.
 #'
 #' @details
-#' This function is used internally in all the WFS calls. We expose it to make
-#' it available to other users and/or developers for accessing other
-#' cadastral or INSPIRE resources. See **Examples**.
+#' The function constructs a request URL from its components, downloads the
+#' result to a temporary cache and reports WFS exceptions. See **Examples**.
 #'
-#' @param scheme Character string. Protocol to access the resource on the
-#'   Internet.
-#' @param hostname Character string. Host that holds the resource.
-#' @param path Character string. Specific resource in the host to access.
-#' @param query Named list. Names and values of arguments for the query.
+#' @param scheme Character string specifying the protocol used to access the
+#'   resource.
+#' @param hostname Character string specifying the resource host.
+#' @param path Character string specifying the resource path on the host.
+#' @param query Named list of query parameters and their values.
 #'
 #' @inheritParams catr_set_cache_dir
 #'
 #' @return
-#' Character string. Path of the resulting file in the [tempfile()] folder.
+#' A character string containing the downloaded file path. Returns `NULL` if
+#' the request fails.
 #'
-#' @family INSPIRE
-#' @family WFS
+#' @family wfs
 #' @rdname inspire_wfs_get
 #'
 #' @encoding UTF-8
@@ -167,11 +166,7 @@ wfs_read_stored_query <- function(path, query, srs = NULL, verbose = FALSE) {
   wfs_validate_srs(srs)
   query$SRSNAME <- srs
 
-  file_local <- inspire_wfs_get(
-    path = path,
-    verbose = verbose,
-    query = query
-  )
+  file_local <- inspire_wfs_get(path = path, verbose = verbose, query = query)
 
   if (is.null(file_local)) {
     return(NULL)
@@ -226,15 +221,16 @@ wfs_read_bbox_query <- function(
   sf::st_transform(out, srs)
 }
 
-#' Prepare the bbox of an object for WFS
+#' Prepare the bounding box of an object for WFS
 #'
-#' Results in 3857 since the WFS service fails in some other projections.
-#' Also warn if beyond the WFS service limit.
+#' Transforms the bounding box to EPSG:3857 by default because the WFS service
+#' fails with some other projections. Warns if the area exceeds the service
+#' limit.
 #'
-#' @param x `sf` object or double vector of length 4.
-#' @param srs SRS of the bbox, not needed if `x` is an `sf` object.
+#' @param x An `sf` object or a double vector of length 4.
+#' @param srs SRS of the bounding box. Not needed if `x` is an `sf` object.
 #' @param srs_dest Destination SRS.
-#' @param limit_km2 WFS service limit.
+#' @param limit_km2 Maximum query area in square kilometers.
 #'
 #' @noRd
 wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {

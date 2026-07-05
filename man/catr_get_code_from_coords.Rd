@@ -14,7 +14,7 @@ catr_get_code_from_coords(
 )
 }
 \arguments{
-\item{x}{Can be one of:
+\item{x}{Coordinate input. It can be:
 \itemize{
 \item A pair of coordinates \code{c(x, y)}. In this case the \code{srs} of the
 coordinates must be provided.
@@ -28,8 +28,8 @@ the first geometry is used. This function extracts coordinates using
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
-\item{cache_dir}{Path to a cache directory. On \code{NULL}, the function
-stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
+\item{cache_dir}{Path to a cache directory. If \code{NULL}, the function stores
+cached files in a temporary directory. See \code{\link[base:tempdir]{base::tempdir()}}.}
 
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane}}
@@ -52,11 +52,12 @@ municipalities.}
   }}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}. See \strong{Details}.
+A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+\code{NULL} if the request fails.
 }
 \description{
-Get the municipality code for coordinates using a \code{\link[sf:st_sf]{sf}}
-object or a pair of coordinates via \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}.
+Retrieve the municipality code associated with an \code{\link[sf:st_sf]{sf}} object
+or a coordinate pair.
 }
 \details{
 On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
@@ -64,12 +65,12 @@ with one row including the following columns:
 \itemize{
 \item \code{munic}: Name of the municipality according to the Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
-\item \code{catr_munic}: Municipality code as recorded on the Cadastre.
-\item \code{catrcode}: Full Cadastral code for the municipality.
+\item \code{catr_munic}: Municipality code as recorded by the Cadastre.
+\item \code{catrcode}: Full cadastral code for the municipality.
 \item \code{cpro}: Province code according to the INE.
 \item \code{cmun}: Municipality code according to the INE.
 \item \code{inecode}: Full INE code for the municipality.
-\item Remaining fields: Check the API documentation.
+\item Remaining fields: See the API documentation.
 }
 }
 \examples{
@@ -78,17 +79,20 @@ with one row including the following columns:
 # Use with coordinates
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 
-# Use with sf
+# Use with an sf object
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
 }
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}}, \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
-\code{\link[sf:st_centroid]{sf::st_centroid()}}.
+\itemize{
+\item \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}} retrieves municipality geometries.
+\item \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}} retrieves municipality codes.
+\item \code{\link[sf:st_centroid]{sf::st_centroid()}} computes geometry centroids.
+}
 
-Other search:
+Search for cadastral identifiers:
 \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
 \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
 \code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}

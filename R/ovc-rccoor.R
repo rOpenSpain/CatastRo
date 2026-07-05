@@ -1,31 +1,31 @@
 #' OVCCoordenadas: reverse geocode a cadastral reference
 #'
 #' @description
-#' Implementation of the OVCCoordenadas service
-#' [Consulta RCCOOR](`r ovcurl("RCCOOR")`). Returns the cadastral
-#' reference found for a set of specific coordinates.
+#' Query the OVCCoordenadas
+#' [Consulta RCCOOR](`r ovcurl("RCCOOR")`) service to retrieve the cadastral
+#' reference associated with a pair of coordinates.
 #'
 #' @details
-#' When the API does not provide any result, the function returns a
-#' [tibble][tibble::tbl_df] with the input arguments only.
+#' If the API returns no results, this function returns a
+#' [tibble][tibble::tbl_df] containing only the input arguments.
 #'
 #' On a successful query, this function returns a [tibble][tibble::tbl_df] with
 #' one row per cadastral reference, including the following columns:
 #' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 #' - `refcat`: Cadastral reference.
 #' - `address`: Address as recorded in the Cadastre.
-#' - Remaining fields: Check the API documentation.
+#' - Remaining fields: See the API documentation.
 #'
 #' @inheritParams catr_ovc_get_rccoor_distancia
 #'
 #' @inherit catr_ovc_get_rccoor_distancia return
+#' @inherit catr_ovc_get_cpmrc seealso
 #'
 #' @references
 #' [Consulta RCCOOR](`r ovcurl("RCCOOR")`).
 #'
-#' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
-#' @family OVCCoordenadas
-#' @family cadastral references
+#' @family ovc_coordinates
+#' @family cadastral_references
 #' @encoding UTF-8
 #' @export
 #' @examplesIf run_example()

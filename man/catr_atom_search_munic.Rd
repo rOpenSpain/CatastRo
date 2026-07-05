@@ -15,30 +15,30 @@ catr_atom_search_munic(
 )
 }
 \arguments{
-\item{munic}{Municipality to extract, can be part of a string or a
-cadastral code. See \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} for getting the cadastral
-codes.}
+\item{munic}{Municipality name, partial name or cadastral code. Use
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} to find cadastral codes.}
 
-\item{to}{Optional argument for defining the territorial office to which
-\code{munic} belongs. This argument is a helper for narrowing the search.}
+\item{to}{Optional territorial office containing \code{munic}. Use this argument
+to narrow the search.}
 
-\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{cache} is no longer
-supported, this function always caches results.}
+\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} This argument is no longer
+supported because results are always cached.}
 
-\item{update_cache}{Logical. Should the cached file be refreshed? Defaults to
-\code{FALSE}. When set to \code{TRUE}, it forces a new download.}
+\item{update_cache}{Logical. Whether to refresh the cached file. Defaults to
+\code{FALSE}.}
 
-\item{cache_dir}{Path to a cache directory. On \code{NULL}, the function
-stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
+\item{cache_dir}{Path to a cache directory. If \code{NULL}, the function stores
+cached files in a temporary directory. See \code{\link[base:tempdir]{base::tempdir()}}.}
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}.
+A \link[tibble:tbl_df]{tibble} with the territorial office,
+municipality name and cadastral code. Returns \code{NULL} if no match is found.
 }
 \description{
-Search for a municipality (as a string, part of a string, or code) and get
-the corresponding code according to the Cadastre.
+Search for a municipality by name or code and return matching Spanish
+Cadastre municipality codes.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
@@ -48,7 +48,7 @@ catr_atom_search_munic("Mad")
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Related ATOM INSPIRE functions:
+Download data from ATOM INSPIRE services:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
@@ -56,17 +56,10 @@ Related ATOM INSPIRE functions:
 \code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
 \code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}}
 
-Other search:
+Search for cadastral identifiers:
 \code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
 \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
 \code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
-
-Other databases:
-\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
-\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
-\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
-\code{\link{catr_srs_values}}
 }
-\concept{ATOM}
-\concept{databases}
+\concept{atom}
 \concept{search}

@@ -1,18 +1,18 @@
 #' ATOM INSPIRE: download all addresses of a municipality
 #'
 #' @description
-#' Retrieve the spatial data of all addresses belonging to a single municipality
-#' using the ATOM INSPIRE service. This function also returns corresponding
+#' Retrieve spatial data for all addresses in a municipality using the ATOM
+#' INSPIRE service. The result also contains corresponding
 #' street information in fields prefixed with `tfname_*`.
 #'
-#' @param munic Municipality to extract, can be part of a string or a
-#'   cadastral code. See [catr_atom_search_munic()] for getting the cadastral
-#'   codes.
-#' @param to Optional argument for defining the territorial office to which
-#'   `munic` belongs. This argument is a helper for narrowing the search.
+#' @param munic Municipality name, partial name or cadastral code. Use
+#'   [catr_atom_search_munic()] to find cadastral codes.
+#' @param to Optional territorial office containing `munic`. Use this argument
+#'   to narrow the search.
 #'
 #' @inheritParams catr_atom_get_address_db_all
-#' @return A [`sf`][sf::st_sf] object.
+#' @return An [`sf`][sf::st_sf] object. Returns `NULL` if the data cannot be
+#'   retrieved.
 #'
 #' @references
 #' ```{r, echo=FALSE, comment="", results="asis"}
@@ -26,10 +26,8 @@
 #'
 #' ```
 #'
-#' @family INSPIRE
-#' @family ATOM
+#' @family atom
 #' @family addresses
-#' @family spatial
 #' @encoding UTF-8
 #' @export
 #'

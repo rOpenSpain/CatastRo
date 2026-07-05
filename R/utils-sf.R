@@ -1,9 +1,8 @@
-#' Read geospatial file into sf object
+#' Read a geospatial file into an `sf` object
 #'
-#' @param file_local Character string. Local file path or URL to the
-#'   geospatial file.
-#' @param hint Character string. Hint for identifying files in zipped archives.
-#' @param layer_hint Character string. Optional hint for layer names.
+#' @param file_local Character string containing a local file path or URL.
+#' @param hint Character string used to identify files in ZIP archives.
+#' @param layer_hint Optional character string used to identify layer names.
 #' @param ... Additional arguments passed to `sf::read_sf()`.
 #'
 #' @return An `sf` object containing the geospatial data.
@@ -54,13 +53,13 @@ read_geo_file_sf <- function(
   data_sf
 }
 
-#' Convert sf object to UTF-8
+#' Convert an `sf` object to UTF-8
 #'
-#' @param data_sf An `sf` object to convert to UTF-8 encoding.
+#' @param data_sf An `sf` object to encode as UTF-8.
 #'
-#' @return An `sf` object with UTF-8 encoding applied.
+#' @return An `sf` object encoded as UTF-8.
 #'
-#' @source Extracted from [`sf`][sf::st_sf] package.
+#' @source Adapted from \CRANpkg{sf}.
 #'
 #' @noRd
 sanitize_sf <- function(data_sf) {
@@ -76,7 +75,7 @@ sanitize_sf <- function(data_sf) {
     }
     structure(lapply(x, to_utf8), names = n)
   }
-  # end
+  # End code adapted from sf.
 
   # Convert to UTF-8.
   names <- names(data_sf)

@@ -1,17 +1,18 @@
 #' OVCCallejero: extract provinces with their codes
 #'
 #' @description
-#' Implementation of the OVCCallejero service
-#' [ConsultaProvincia](`r ovcurl("prov")`). Returns a list of provinces
-#' included in the Spanish Cadastre.
+#' Query the OVCCallejero
+#' [ConsultaProvincia](`r ovcurl("prov")`) service to retrieve provinces and
+#' their Spanish Cadastre codes.
 #'
 #' @inheritParams catr_ovc_get_cpmrc
-#' @return A [tibble][tibble::tbl_df].
+#' @return A [tibble][tibble::tbl_df] with province names and codes. Returns
+#'   `NULL` if the request fails.
 #'
 #' @references
 #' [ConsultaProvincia](`r ovcurl("prov")`).
 #'
-#' @family OVCCallejero
+#' @family ovc_street_directory
 #' @family search
 #' @encoding UTF-8
 #' @export

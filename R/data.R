@@ -1,8 +1,8 @@
 #' Reference SRS codes for \CRANpkg{CatastRo} services
 #'
 #' @description
-#' A [tibble][tibble::tbl_df] including the valid SRS (also known as CRS)
-#' values that may be used in each API service. Values are provided as
+#' A [tibble][tibble::tbl_df] containing the valid SRS (also known as CRS)
+#' values for each API service. Values are represented as
 #' [EPSG codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 #'
 #' @details
@@ -37,15 +37,13 @@
 #' ```
 #'
 #' - [WFS INSPIRE
-#' Service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
+#' service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 #'
 #' @seealso [sf::st_crs()].
 #'
-#' @family databases
-#' @family WFS
-#' @family OVCCoordenadas
 #' @docType data
 #' @name catr_srs_values
+#' @keywords datasets
 #'
 #' @encoding UTF-8
 #' @examples

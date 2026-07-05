@@ -1,13 +1,14 @@
-#' Internal function to download and cache a file from a URL
+#' Download and cache a file from a URL
 #'
-#' @param url Character string. The URL to download.
-#' @param name Character string. The name of the file to save.
-#' @param cache_dir Character string. The base cache directory.
-#' @param subdir Character string. Subdirectory inside the cache directory.
-#' @param update_cache Logical. Whether to update the cached file.
-#' @param verbose Logical. Whether to print messages.
+#' @param url Character string containing the URL to download.
+#' @param name Character string specifying the destination file name.
+#' @param cache_dir Character string specifying the base cache directory.
+#' @param subdir Character string specifying a cache subdirectory.
+#' @param update_cache Logical. Whether to refresh the cached file.
+#' @param verbose Logical. Whether to display informational messages.
 #'
-#' @return Character string. Path of the downloaded file.
+#' @return A character string containing the downloaded file path. Returns
+#'   `NULL` if the download fails.
 #' @encoding UTF-8
 #'
 #' @noRd
@@ -82,7 +83,7 @@ download_url <- function(
     req <- httr2::req_progress(req)
   }
 
-  # Testing.
+  # Simulate an HTTP failure when requested by tests.
   test_offline <- is_404()
   if (test_offline) {
     # Redirect to a fake URL.
@@ -114,12 +115,13 @@ download_url <- function(
   file_local
 }
 
-#' Internal function to get the response body from a URL
+#' Get a response body from a URL
 #'
-#' @param url Character string. The URL to download.
-#' @param verbose Logical. Whether to print messages.
+#' @param url Character string containing the URL to request.
+#' @param verbose Logical. Whether to display informational messages.
 #'
-#' @return httr2 response object.
+#' @return A response object from \CRANpkg{httr2}. Returns `NULL` if the request
+#'   fails.
 #'
 #' @noRd
 get_request_body <- function(url, verbose = TRUE) {
@@ -148,7 +150,7 @@ get_request_body <- function(url, verbose = TRUE) {
     return(NULL)
   }
 
-  # Testing.
+  # Simulate an HTTP failure when requested by tests.
   test_offline <- is_404()
   if (test_offline) {
     # Redirect to a fake URL.
@@ -177,13 +179,13 @@ get_request_body <- function(url, verbose = TRUE) {
   resp
 }
 
-#' Wrapper is_online for testing
+#' Wrap `httr2::is_online()` for testing
 #' @noRd
 is_online_fun <- function(...) {
   httr2::is_online()
 }
 
-#' Wrapper is_404 for testing
+#' Report a simulated HTTP 404 response for testing
 #' @noRd
 is_404 <- function(...) {
   FALSE

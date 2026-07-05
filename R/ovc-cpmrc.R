@@ -1,36 +1,40 @@
 #' OVCCoordenadas: geocode a cadastral reference
 #'
 #' @description
-#' Implementation of the OVCCoordenadas service
-#' [Consulta CPMRC](`r ovcurl("CPMRC")`). Returns coordinates for a
-#' specific cadastral reference.
+#' Query the OVCCoordenadas
+#' [Consulta CPMRC](`r ovcurl("CPMRC")`) service to retrieve coordinates for a
+#' cadastral reference.
 #'
 #' @details
-#' When the API does not provide any result, this function returns a
-#' [tibble][tibble::tbl_df] with the input arguments only.
+#' If the API returns no results, this function returns a
+#' [tibble][tibble::tbl_df] containing only the input arguments.
 #'
 #' On a successful query, this function returns a [tibble][tibble::tbl_df]
 #' with one row per cadastral reference, including the following columns:
 #' - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 #' - `refcat`: Cadastral reference.
 #' - `address`: Address as recorded in the Cadastre.
-#' - Remaining fields: Check the API documentation.
+#' - Remaining fields: See the API documentation.
 #'
 #' @param rc The cadastral reference to be geocoded.
-#' @param province,municipality Optional, used for narrowing the search.
+#' @param province,municipality Optional character strings used to narrow the
+#'   search.
 #' @param srs SRS/CRS to use in the query. To see allowed values, use
 #'   [catr_srs_values], specifically the `ovc_service` column.
 #'
 #' @inheritParams catr_set_cache_dir
-#' @return A [tibble][tibble::tbl_df]. See **Details**.
+#' @return A [tibble][tibble::tbl_df] as described in **Details**. Returns
+#'   `NULL` if the request fails.
 #'
 #' @references
 #' [Consulta CPMRC](`r ovcurl("CPMRC")`).
 #'
-#' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
+#' @seealso
+#' - [catr_srs_values] lists supported SRS values.
+#' - `vignette("ovcservice", package = "CatastRo")` describes the OVC services.
 #'
-#' @family OVCCoordenadas
-#' @family cadastral references
+#' @family ovc_coordinates
+#' @family cadastral_references
 #' @encoding UTF-8
 #' @export
 #'

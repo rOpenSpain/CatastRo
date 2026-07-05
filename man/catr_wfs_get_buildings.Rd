@@ -21,11 +21,11 @@ catr_wfs_get_buildings_rc(
 )
 }
 \arguments{
-\item{x}{See \strong{Bounding box}. Can be one of:
+\item{x}{Input defining the query area. See \strong{Bounding box}. It can be:
 \itemize{
 \item A numeric vector of length 4 with the coordinates that define
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
-\item A \code{sf/sfc} object, as provided by the \CRANpkg{sf} package.
+\item An \code{sf} or \code{sfc} object from \CRANpkg{sf}.
 }}
 
 \item{what}{Information to load. Options are:
@@ -41,14 +41,14 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
-\item{rc}{The cadastral reference to be extracted.}
+\item{rc}{Cadastral reference to retrieve.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object. Returns \code{NULL} if the data cannot be
+retrieved.
 }
 \description{
-Get the spatial data of buildings. The WFS service allows performing
-two types of queries:
+Retrieve spatial building data through two types of WFS queries:
 \itemize{
 \item By bounding box: \code{catr_wfs_get_buildings_bbox()} extracts objects included
 in the provided bounding box. See \strong{Bounding box}.
@@ -59,7 +59,7 @@ in the provided bounding box. See \strong{Bounding box}.
 specific cadastral references.
 }
 }
-\section{API Limits}{
+\section{API limits}{
 
 The API service is limited to a bounding box of 4 km2 and a maximum of 5,000
 elements.
@@ -69,8 +69,8 @@ elements.
 
 When \code{x} is a numeric vector, make sure that the \code{srs} matches the
 coordinate values. Additionally, the function queries the bounding box on
-\href{https://epsg.io/25830}{EPSG:25830} - ETRS89 / UTM zone 30N, to overcome
-a potential bug on the API side.
+\href{https://epsg.io/25830}{EPSG:25830}, ETRS89 / UTM zone 30N, to work around a
+potential API issue.
 
 When \code{x} is a \code{\link[sf:st_sf]{sf}} object, the value \code{srs} is ignored. In
 this case, the bounding box of the \code{\link[sf:st_sf]{sf}} object is
@@ -113,37 +113,14 @@ ggplot(rc) +
 \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE services for cadastral cartography}.
 }
 \seealso{
-Related INSPIRE API functions:
-\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
-\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
-\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
-\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
-\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
-\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
-\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
-\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
-\code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}},
-\code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
-
-Related WFS INSPIRE functions:
-\code{\link{catr_srs_values}},
+Query data from WFS INSPIRE services:
 \code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
 \code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
 \code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 
-Other buildings:
+Work with cadastral buildings:
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
 \code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}}
-
-Other spatial:
-\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
-\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
-\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
-\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
-\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
-\code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}}
 }
-\concept{INSPIRE}
-\concept{WFS}
 \concept{buildings}
-\concept{spatial}
+\concept{wfs}

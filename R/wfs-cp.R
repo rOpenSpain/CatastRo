@@ -1,8 +1,8 @@
 #' WFS INSPIRE: download cadastral parcels
 #'
 #' @description
-#' Get the spatial data of cadastral parcels and zones. The WFS service
-#' allows several types of queries:
+#' Retrieve spatial cadastral parcel and zoning data through several types of
+#' WFS queries:
 #'
 #' - By bounding box: `catr_wfs_get_parcels_bbox()` extracts objects included
 #'   in the provided bounding box. See **Bounding box**.
@@ -12,15 +12,14 @@
 #' @inherit catr_wfs_get_address_bbox return references
 #' @inheritSection catr_wfs_get_address_bbox Bounding box
 #'
-#' @section API Limits:
+#' @section API limits:
 #' The API service is limited to the following constraints:
 #'
 #' - `"parcel"`: Bounding box of 1 km2 and a maximum of 5,000 elements.
 #' - `"zoning"`: Bounding box of 25 km2 and a maximum of 5,000 elements.
-#' @family INSPIRE
-#' @family WFS
+#'
+#' @family wfs
 #' @family parcels
-#' @family spatial
 #' @rdname catr_wfs_get_parcels
 #'
 #' @encoding UTF-8

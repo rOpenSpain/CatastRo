@@ -107,3 +107,74 @@
       Error in `a_fun()`:
       ! `b` cannot be missing.
 
+# cli_abort_if_not validates conditions
+
+    Code
+      cli_abort_if_not(`Message supports {.cls inline} {.str markup}.` = is.logical(1))
+    Condition
+      Error:
+      ! Message supports <inline> "markup".
+
+---
+
+    Code
+      cli_abort_if_not(`Missing conditions fail.` = NA)
+    Condition
+      Error:
+      ! Missing conditions fail.
+
+---
+
+    Code
+      cli_abort_if_not(`Empty conditions fail.` = logical())
+    Condition
+      Error:
+      ! Empty conditions fail.
+
+---
+
+    Code
+      cli_abort_if_not(FALSE)
+    Condition
+      Error:
+      ! All conditions supplied to `cli_abort_if_not()` must be named.
+
+---
+
+    Code
+      test_msg("Testing fun reference.", verbose = TRUE)
+    Message
+      x Testing fun reference.
+
+---
+
+    Code
+      test_msg("Testing fun reference with error.", verbose = 1)
+    Condition
+      Error in `test_msg()`:
+      ! `verbose` must be a single `TRUE` or `FALSE`.
+
+---
+
+    Code
+      test_msg("Testing missing verbose.", verbose = NA)
+    Condition
+      Error in `test_msg()`:
+      ! `verbose` must be a single `TRUE` or `FALSE`.
+
+---
+
+    Code
+      test_msg("Testing empty verbose.", verbose = logical())
+    Condition
+      Error in `test_msg()`:
+      ! `verbose` must be a single `TRUE` or `FALSE`.
+
+---
+
+    Code
+      test_msg("Testing vector verbose.", verbose = c(TRUE, FALSE))
+    Condition
+      Error in `test_msg()`:
+      ! `verbose` must be a single `TRUE` or `FALSE`.
+

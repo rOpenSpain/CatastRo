@@ -1,18 +1,18 @@
 #' ATOM INSPIRE: search for municipality codes
 #'
 #' @description
-#' Search for a municipality (as a string, part of a string, or code) and get
-#' the corresponding code according to the Cadastre.
+#' Search for a municipality by name or code and return matching Spanish
+#' Cadastre municipality codes.
+#'
 #' @inheritParams catr_atom_get_parcels
 #'
-#' @return A [tibble][tibble::tbl_df].
+#' @return A [tibble][tibble::tbl_df] with the territorial office,
+#'   municipality name and cadastral code. Returns `NULL` if no match is found.
 #'
-#' @family ATOM
+#' @family atom
 #' @family search
-#' @family databases
 #'
 #' @encoding UTF-8
-#'
 #' @export
 #'
 #' @examplesIf run_example()
@@ -61,9 +61,7 @@ catr_atom_search_munic <- function(
 
   if (is.null(to_loc)) {
     if (is.null(to)) {
-      cli::cli_alert_warning(
-        "No municipality matched pattern {.str {munic}}."
-      )
+      cli::cli_alert_warning("No municipality matched pattern {.str {munic}}.")
     } else {
       cli::cli_alert_warning(
         "No municipality matched pattern {.str {munic}} in {.str {to}}."

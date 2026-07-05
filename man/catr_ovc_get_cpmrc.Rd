@@ -19,21 +19,23 @@ catr_ovc_get_cpmrc(
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
-\item{province, municipality}{Optional, used for narrowing the search.}
+\item{province, municipality}{Optional character strings used to narrow the
+search.}
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}. See \strong{Details}.
+A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+\code{NULL} if the request fails.
 }
 \description{
-Implementation of the OVCCoordenadas service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta CPMRC}. Returns coordinates for a
-specific cadastral reference.
+Query the OVCCoordenadas
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta CPMRC} service to retrieve coordinates for a
+cadastral reference.
 }
 \details{
-When the API does not provide any result, this function returns a
-\link[tibble:tbl_df]{tibble} with the input arguments only.
+If the API returns no results, this function returns a
+\link[tibble:tbl_df]{tibble} containing only the input arguments.
 
 On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
 with one row per cadastral reference, including the following columns:
@@ -41,7 +43,7 @@ with one row per cadastral reference, including the following columns:
 \item \code{xcoord}, \code{ycoord}: X and Y coordinates in the specified SRS.
 \item \code{refcat}: Cadastral reference.
 \item \code{address}: Address as recorded in the Cadastre.
-\item Remaining fields: Check the API documentation.
+\item Remaining fields: See the API documentation.
 }
 }
 \examples{
@@ -64,16 +66,18 @@ catr_ovc_get_cpmrc("9872023VH5797S")
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta CPMRC}.
 }
 \seealso{
-\link{catr_srs_values}, \code{vignette("ovcservice", package = "CatastRo")}
+\itemize{
+\item \link{catr_srs_values} lists supported SRS values.
+\item \code{vignette("ovcservice", package = "CatastRo")} describes the OVC services.
+}
 
-Related OVCCoordenadas functions:
+Convert coordinates and cadastral references:
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
-\code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}},
-\code{\link{catr_srs_values}}
+\code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
 
-Other cadastral references:
+Work with cadastral references:
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
 \code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
 }
-\concept{OVCCoordenadas}
-\concept{cadastral references}
+\concept{cadastral_references}
+\concept{ovc_coordinates}

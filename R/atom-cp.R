@@ -1,8 +1,8 @@
 #' ATOM INSPIRE: download all cadastral parcels of a municipality
 #'
 #' @description
-#' Retrieve the spatial data of all cadastral parcels belonging to a single
-#' municipality using the ATOM INSPIRE service.
+#' Retrieve spatial data for all cadastral parcels in a municipality using the
+#' ATOM INSPIRE service.
 #'
 #' @param what Information to load. Options are:
 #' - `"parcel"` for cadastral parcels.
@@ -11,10 +11,8 @@
 #' @inheritParams catr_atom_get_address
 #' @inherit catr_atom_get_address references return
 #'
-#' @family INSPIRE
-#' @family ATOM
+#' @family atom
 #' @family parcels
-#' @family spatial
 #' @encoding UTF-8
 #' @export
 #'

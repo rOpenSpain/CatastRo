@@ -153,3 +153,22 @@ test_that("Mock migration", {
   expect_false(file.exists(old_fname))
   expect_true(file.exists(new_fname))
 })
+
+test_that("catr_set_cache_dir validates arguments", {
+  expect_snapshot(
+    error = TRUE,
+    catr_set_cache_dir(cache_dir = 1, verbose = FALSE)
+  )
+  expect_snapshot(
+    error = TRUE,
+    catr_set_cache_dir(overwrite = NA, verbose = FALSE)
+  )
+  expect_snapshot(
+    error = TRUE,
+    catr_set_cache_dir(
+      cache_dir = tempdir(),
+      install = c(TRUE, FALSE),
+      verbose = FALSE
+    )
+  )
+})

@@ -1,25 +1,24 @@
 #' ATOM INSPIRE: reference database for ATOM addresses
 #'
 #' @description
-#' Create a database containing the URLs provided in the ATOM INSPIRE
-#' service of the Spanish Cadastre for extracting addresses.
+#' Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
+#' for downloading addresses.
 #'
 #' `catr_atom_get_address_db_all()` provides a top-level table with all
-#' territorial offices, except the Basque Country and Navarre, and the
+#' territorial offices, except the Basque Country and Navarre and the
 #' municipalities included in each office. `catr_atom_get_address_db_to()`
 #' provides a table for one territorial office and its municipalities.
 #'
-#' @param cache `r lifecycle::badge("deprecated")` `cache` is no longer
-#'   supported, this function always caches results.
-#' @param update_cache Logical. Should the cached file be refreshed? Defaults to
-#'   `FALSE`. When set to `TRUE`, it forces a new download.
-#' @param to Character. Territorial office. Internally uses [base::grep()] for
-#'   matching.
+#' @param cache `r lifecycle::badge("deprecated")` This argument is no longer
+#'   supported because results are always cached.
+#' @param update_cache Logical. Whether to refresh the cached file. Defaults to
+#'   `FALSE`.
+#' @param to Character string. Territorial office to match using [base::grep()].
 #'
 #' @inheritParams catr_set_cache_dir
 #' @return
-#' A [tibble][tibble::tbl_df] with the information requested with the following
-#' fields:
+#' A [tibble][tibble::tbl_df] with the requested information in the following
+#' columns:
 #' - `territorial_office`: Territorial office, corresponding to each province
 #'   of Spain except the Basque Country and Navarre.
 #' - `url`: ATOM URL for the corresponding territorial office.
@@ -30,10 +29,8 @@
 #' @source
 #' <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>
 #'
-#' @family INSPIRE
-#' @family ATOM
+#' @family atom
 #' @family addresses
-#' @family databases
 #' @rdname catr_atom_get_address_db
 #'
 #' @encoding UTF-8

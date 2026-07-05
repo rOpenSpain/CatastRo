@@ -16,7 +16,8 @@ catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-Invisible. This function is called for its side effects.
+Invisibly returns \code{NULL}. This function is called for its side
+effects.
 }
 \description{
 Use this function with caution. This function clears your cached data
@@ -29,8 +30,8 @@ and configuration, specifically:
 }
 }
 \details{
-This function resets your cache state as if you had never installed and/or
-used \CRANpkg{CatastRo}.
+This function resets the cache state as if you had never used
+\CRANpkg{CatastRo}.
 }
 \examples{
 
@@ -50,9 +51,9 @@ identical(my_cache, catr_detect_cache_dir())
 }
 }
 \seealso{
-\code{\link[tools:R_user_dir]{tools::R_user_dir()}}
+\code{\link[tools:R_user_dir]{tools::R_user_dir()}} defines platform-specific user directories.
 
-Other cache utilities:
+Manage the local cache:
 \code{\link[=catr_set_cache_dir]{catr_set_cache_dir()}}
 }
-\concept{cache utilities}
+\concept{cache_utilities}

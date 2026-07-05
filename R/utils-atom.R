@@ -1,10 +1,11 @@
-#' Internal function to read ATOM feed
+#' Read an ATOM feed
 #'
-#' @param file Path to ATOM feed file.
-#' @param top Logical. Extract top-level entries?
-#' @param encoding Character string. File encoding. Defaults to "UTF-8".
+#' @param file Path to an ATOM feed file.
+#' @param top Logical. Whether to extract top-level entries.
+#' @param encoding Character string specifying the file encoding. Defaults to
+#'   `"UTF-8"`.
 #'
-#' @return A [tibble][tibble::tbl_df] with ATOM feed entries.
+#' @return A [tibble][tibble::tbl_df] containing ATOM feed entries.
 #'
 #' @noRd
 catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
@@ -23,11 +24,11 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
     feed <- xml2::as_list(xml2::read_xml(file, options = "NOCDATA"))
   }
 
-  # Prepare data.
+  # Extract feed entries.
   feed <- feed$feed
   feed <- feed[names(feed) == "entry"]
 
-  # Convert to tibble.
+  # Convert feed entries to rows.
   if (top) {
     tbl_all <- lapply(feed, function(x) {
       title <- unlist(x$title)
@@ -120,9 +121,7 @@ catr_atom_read_db_to <- function(
 
   to_loc <- ensure_null(grep(to, allto, ignore.case = TRUE))
   if (is.null(to_loc)) {
-    cli::cli_alert_warning(
-      "No territorial office matched pattern {.str {to}}."
-    )
+    cli::cli_alert_warning("No territorial office matched pattern {.str {to}}.")
     return(NULL)
   }
 

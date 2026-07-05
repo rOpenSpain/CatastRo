@@ -1,10 +1,10 @@
 #' OVCCallejero: extract the code of a municipality
 #'
 #' @description
-#' Implementation of the OVCCallejero service
-#' [ConsultaMunicipioCodigos](`r ovcurl("mun")`). Returns names and codes
-#' of a municipality according to the Cadastre and the INE (National Statistics
-#' Institute).
+#' Query the OVCCallejero
+#' [ConsultaMunicipioCodigos](`r ovcurl("mun")`) service to retrieve
+#' municipality names and codes from the Spanish Cadastre and the National
+#' Statistics Institute (INE).
 #'
 #' @details
 #' On a successful query, this function returns a [tibble][tibble::tbl_df]
@@ -12,16 +12,16 @@
 #'
 #' - `munic`: Name of the municipality according to the Cadastre.
 #' - `catr_to`: Cadastral territorial office code.
-#' - `catr_munic`: Municipality code as recorded on the Cadastre.
-#' - `catrcode`: Full Cadastral code for the municipality.
+#' - `catr_munic`: Municipality code as recorded by the Cadastre.
+#' - `catrcode`: Full cadastral code for the municipality.
 #' - `cpro`: Province code according to the INE.
 #' - `cmun`: Municipality code according to the INE.
 #' - `inecode`: Full INE code for the municipality.
-#' - Remaining fields: Check the API documentation.
+#' - Remaining fields: See the API documentation.
 #'
 #' @param cpro The code of a province, as provided by
 #'   [catr_ovc_get_cod_provinces()].
-#' @param cmun,cmun_ine Code of a municipality, as recorded on the Spanish
+#' @param cmun,cmun_ine Municipality code as recorded by the Spanish
 #'   Cadastre (`cmun`) or the National Statistics Institute. Either `cmun` or
 #'   `cmun_ine` must be provided.
 #'
@@ -35,7 +35,7 @@
 #' [mapSpain::esp_get_munic_siane()] to get shapes of municipalities, including
 #' the INE code.
 #'
-#' @family OVCCallejero
+#' @family ovc_street_directory
 #' @family search
 #' @encoding UTF-8
 #' @export
@@ -105,7 +105,7 @@ catr_ovc_get_cod_munic <- function(
 
   df <- ovc_as_tibble_row(res)
 
-  # Fix names.
+  # Keep only leaf names from nested XML paths.
   newnames <- vapply(
     names(df),
     function(x) {
@@ -116,7 +116,7 @@ catr_ovc_get_cod_munic <- function(
 
   names(df) <- newnames
 
-  # Create friendly codes.
+  # Create normalized cadastral and INE codes.
   catcodes <- tibble::tibble(
     munic = df$nm,
     catr_to = sprintf("%02d", as.integer(df$cd)),

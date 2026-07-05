@@ -17,9 +17,7 @@ test_that("Offline", {
   skip_on_cran()
   skip_on_os("mac")
 
-  local_mocked_bindings(
-    is_online_fun = function(...) FALSE
-  )
+  local_mocked_bindings(is_online_fun = function(...) FALSE)
 
   expect_false(run_example())
 })
@@ -66,9 +64,7 @@ test_that("Not on CRAN", {
 
   withr::local_envvar(c(NOT_CRAN = "true"))
 
-  local_mocked_bindings(
-    is_online_fun = function(...) TRUE
-  )
+  local_mocked_bindings(is_online_fun = function(...) TRUE)
 
   expect_false(on_cran())
   expect_true(run_example())

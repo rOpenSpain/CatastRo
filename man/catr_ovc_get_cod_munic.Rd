@@ -11,20 +11,21 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 \item{cpro}{The code of a province, as provided by
 \code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}.}
 
-\item{cmun, cmun_ine}{Code of a municipality, as recorded on the Spanish
+\item{cmun, cmun_ine}{Municipality code as recorded by the Spanish
 Cadastre (\code{cmun}) or the National Statistics Institute. Either \code{cmun} or
 \code{cmun_ine} must be provided.}
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}. See \strong{Details}.
+A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+\code{NULL} if the request fails.
 }
 \description{
-Implementation of the OVCCallejero service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos}{ConsultaMunicipioCodigos}. Returns names and codes
-of a municipality according to the Cadastre and the INE (National Statistics
-Institute).
+Query the OVCCallejero
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos}{ConsultaMunicipioCodigos} service to retrieve
+municipality names and codes from the Spanish Cadastre and the National
+Statistics Institute (INE).
 }
 \details{
 On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
@@ -32,12 +33,12 @@ with one row including the following columns:
 \itemize{
 \item \code{munic}: Name of the municipality according to the Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
-\item \code{catr_munic}: Municipality code as recorded on the Cadastre.
-\item \code{catrcode}: Full Cadastral code for the municipality.
+\item \code{catr_munic}: Municipality code as recorded by the Cadastre.
+\item \code{catrcode}: Full cadastral code for the municipality.
 \item \code{cpro}: Province code according to the INE.
 \item \code{cmun}: Municipality code according to the INE.
 \item \code{inecode}: Full INE code for the municipality.
-\item Remaining fields: Check the API documentation.
+\item Remaining fields: See the API documentation.
 }
 }
 \examples{
@@ -63,13 +64,13 @@ ab2
 \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}} to get shapes of municipalities, including
 the INE code.
 
-Related OVCCallejero functions:
+Query OVC province and municipality codes:
 \code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 
-Other search:
+Search for cadastral identifiers:
 \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
 \code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
 \code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 }
-\concept{OVCCallejero}
+\concept{ovc_street_directory}
 \concept{search}

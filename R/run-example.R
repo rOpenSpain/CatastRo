@@ -5,12 +5,12 @@
 #' network availability.
 #'
 #' @details
-#' Returns `FALSE` on CRAN, macOS, or when offline.
+#' Returns `FALSE` on CRAN, macOS or when offline.
 #'
 #' @return Logical. `TRUE` if examples should run, `FALSE` otherwise.
-#' @encoding UTF-8
 #'
 #' @keywords internal
+#' @encoding UTF-8
 #' @export
 #' @examples
 #' run_example()
@@ -29,7 +29,7 @@ run_example <- function() {
   TRUE
 }
 
-#' Check if running on CRAN
+#' Check whether code is running on CRAN
 #'
 #' @return Logical. `TRUE` if running on CRAN, `FALSE` otherwise.
 #'
@@ -43,7 +43,7 @@ on_cran <- function() {
   }
 }
 
-#' Check if running on macOS
+#' Check whether code is running on macOS
 #'
 #' @return Logical. `TRUE` if running on macOS, `FALSE` otherwise.
 #'

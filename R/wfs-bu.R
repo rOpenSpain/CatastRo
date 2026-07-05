@@ -1,8 +1,7 @@
 #' WFS INSPIRE: download buildings
 #'
 #' @description
-#' Get the spatial data of buildings. The WFS service allows performing
-#' two types of queries:
+#' Retrieve spatial building data through two types of WFS queries:
 #'
 #' - By bounding box: `catr_wfs_get_buildings_bbox()` extracts objects included
 #'   in the provided bounding box. See **Bounding box**.
@@ -10,12 +9,10 @@
 #' @inheritParams catr_wfs_get_address_bbox
 #' @inheritParams catr_atom_get_buildings
 #' @inherit catr_wfs_get_address_bbox return references
-#' @inheritSection catr_wfs_get_address_bbox API Limits
+#' @inheritSection catr_wfs_get_address_bbox API limits
 #' @inheritSection catr_wfs_get_address_bbox Bounding box
-#' @family INSPIRE
-#' @family WFS
+#' @family wfs
 #' @family buildings
-#' @family spatial
 #' @rdname catr_wfs_get_buildings
 #'
 #' @encoding UTF-8

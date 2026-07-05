@@ -1,18 +1,25 @@
-#' Create messages based on type
+#' Display a message by type
 #'
-#' @param type Character string. Type of message. Accepted values are
-#'   `"generic"`, `"success"`, `"warning"`, `"danger"`, or `"info"`.
+#' @param type Character string specifying the message type. Accepted values are
+#'   `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #'
-#' @param verbose Logical. Whether to print messages to the console.
+#' @param verbose Logical. Whether to display the message.
 #' @param ... Character strings to combine into the message.
 #'
-#' @return
-#' Invisibly returns `NULL`. Prints messages to console if `verbose` is
-#' `TRUE`.
+#' @return Invisibly returns `NULL`.
 #' @encoding UTF-8
 #'
 #' @noRd
-make_msg <- function(type = "generic", verbose, ...) {
+make_msg <- function(type = "generic", verbose, ..., .envir = parent.frame()) {
+  cli_abort_if_not(
+    "{.arg verbose} must be {.code TRUE} or {.code FALSE}." = is.logical(
+      verbose
+    ) &&
+      length(verbose) == 1L &&
+      !is.na(verbose),
+    .envir = .envir
+  )
+
   if (!verbose) {
     return(invisible())
   }
@@ -33,10 +40,10 @@ make_msg <- function(type = "generic", verbose, ...) {
   invisible()
 }
 
-#' Match argument with pretty error message
+#' Match an argument with an informative error
 #'
 #' @param arg Argument to match.
-#' @param choices Possible choices for the argument.
+#' @param choices Possible values for `arg`.
 #'
 #' @return
 #' The matched argument.
@@ -137,12 +144,10 @@ warn_deprecated_cache <- function(cache, what) {
 
 validate_vector_with_srs <- function(x, srs, expected_length) {
   if (length(x) != expected_length) {
-    cli::cli_abort(
-      paste0(
-        "{.arg x} must have length {.val {expected_length}}, not ",
-        "{.val {length(x)}}."
-      )
-    )
+    cli::cli_abort(paste0(
+      "{.arg x} must have length {.val {expected_length}}, not ",
+      "{.val {length(x)}}."
+    ))
   }
   if (is.null(srs)) {
     cli::cli_abort(paste0(
@@ -152,4 +157,36 @@ validate_vector_with_srs <- function(x, srs, expected_length) {
   }
 
   invisible()
+}
+
+# Adapted from https://github.com/r-lib/cli/issues/672.
+cli_abort_if_not <- function(
+  ...,
+  .call = .envir,
+  .envir = parent.frame(),
+  .frame = .envir
+) {
+  for (i in seq_len(...length())) {
+    condition <- ...elt(i)
+    message <- ...names()[i]
+
+    if (is.null(message) || is.na(message) || !nzchar(message)) {
+      cli::cli_abort(
+        "All conditions supplied to {.fun cli_abort_if_not} must be named.",
+        call = .call,
+        .envir = .envir,
+        .frame = .frame
+      )
+    }
+
+    condition_is_true <- is.logical(condition) &&
+      length(condition) > 0L &&
+      !anyNA(condition) &&
+      all(condition)
+
+    if (!condition_is_true) {
+      cli::cli_abort(message, call = .call, .envir = .envir, .frame = .frame)
+    }
+  }
+  invisible(NULL)
 }

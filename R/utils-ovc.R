@@ -2,10 +2,7 @@
 #'
 #' @noRd
 ovc_base_url <- function(service) {
-  paste0(
-    "http://ovc.catastro.meh.es/ovcservweb/",
-    service
-  )
+  paste0("http://ovc.catastro.meh.es/ovcservweb/", service)
 }
 
 #' Validate and format an OVC SRS value
@@ -55,7 +52,7 @@ ovc_report_error <- function(err) {
   cli::cli_alert_danger(paste0("OVC service error ", df[1, 1], ": ", df[1, 2]))
 }
 
-#' Return TRUE when an OVC node contains an API error
+#' Detect an OVC API error
 #'
 #' @noRd
 ovc_has_error <- function(x) {
@@ -66,10 +63,7 @@ ovc_has_error <- function(x) {
 #'
 #' @noRd
 ovc_ref_address <- function(x) {
-  tibble::tibble(
-    refcat = paste0(x$pc.pc1, x$pc.pc2),
-    address = x$ldt
-  )
+  tibble::tibble(refcat = paste0(x$pc.pc1, x$pc.pc2), address = x$ldt)
 }
 
 #' Convert common OVC coordinate columns to numeric

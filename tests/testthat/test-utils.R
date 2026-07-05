@@ -85,3 +85,45 @@ test_that("Not empty", {
   expect_snapshot(error = TRUE, a_fun(a = 1))
   expect_identical(a_fun(a = 1, b = 1), c(1, 1))
 })
+test_that("cli_abort_if_not validates conditions", {
+  expect_silent(cli_abort_if_not("Condition fails." = TRUE))
+
+  expect_snapshot(
+    error = TRUE,
+    cli_abort_if_not(
+      "Message supports {.cls inline} {.str markup}." = is.logical(1)
+    )
+  )
+  expect_snapshot(
+    error = TRUE,
+    cli_abort_if_not("Missing conditions fail." = NA)
+  )
+  expect_snapshot(
+    error = TRUE,
+    cli_abort_if_not("Empty conditions fail." = logical())
+  )
+  expect_snapshot(error = TRUE, cli_abort_if_not(FALSE))
+
+  # Report errors from the function that called `make_msg()`.
+  test_msg <- function(x, verbose = TRUE) {
+    make_msg(type = "danger", verbose, x)
+  }
+
+  expect_snapshot(test_msg("Testing fun reference.", verbose = TRUE))
+  expect_snapshot(
+    error = TRUE,
+    test_msg("Testing fun reference with error.", verbose = 1)
+  )
+  expect_snapshot(
+    error = TRUE,
+    test_msg("Testing missing verbose.", verbose = NA)
+  )
+  expect_snapshot(
+    error = TRUE,
+    test_msg("Testing empty verbose.", verbose = logical())
+  )
+  expect_snapshot(
+    error = TRUE,
+    test_msg("Testing vector verbose.", verbose = c(TRUE, FALSE))
+  )
+})

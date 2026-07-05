@@ -1,10 +1,10 @@
 #' Get the cadastral municipality code from coordinates
 #'
 #' @description
-#' Get the municipality code for coordinates using a [`sf`][sf::st_sf]
-#' object or a pair of coordinates via [catr_ovc_get_cod_munic()].
+#' Retrieve the municipality code associated with an [`sf`][sf::st_sf] object
+#' or a coordinate pair.
 #'
-#' @param x Can be one of:
+#' @param x Coordinate input. It can be:
 #' - A pair of coordinates `c(x, y)`. In this case the `srs` of the
 #'   coordinates must be provided.
 #' - A [`sf`][sf::st_sf] object. If the object has several geometries, only
@@ -19,8 +19,9 @@
 #' @inherit catr_ovc_get_cpmrc seealso
 #'
 #' @seealso
-#' [mapSpain::esp_get_munic_siane()], [catr_ovc_get_cod_munic()],
-#' [sf::st_centroid()].
+#' - [mapSpain::esp_get_munic_siane()] retrieves municipality geometries.
+#' - [catr_ovc_get_cod_munic()] retrieves municipality codes.
+#' - [sf::st_centroid()] computes geometry centroids.
 #'
 #' @family search
 #' @encoding UTF-8
@@ -30,7 +31,7 @@
 #' # Use with coordinates
 #' catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 #'
-#' # Use with sf
+#' # Use with an sf object
 #' prov <- mapSpain::esp_get_prov("Caceres")
 #' catr_get_code_from_coords(prov)
 #' }

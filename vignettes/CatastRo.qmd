@@ -1,6 +1,6 @@
 ---
 title: "Get started"
-description: Brief introduction to the CatastRo package.
+description: Access Spanish Cadastre data with CatastRo.
 vignette: >
   %\VignetteIndexEntry{Get started}
   %\VignetteEngine{quarto::html}
@@ -15,16 +15,16 @@ link-citations: true
 
 **CatastRo** provides access to services from the [Spanish
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
-download official address, cadastral parcel, building and map data.
+retrieve addresses, buildings, cadastral parcels and georeferenced map images.
 
 ## OVCCoordenadas service
 
 The
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
 service retrieves the coordinates of a known cadastral reference
-(geocoding). It is also possible to retrieve the cadastral references around a
-specific pair of coordinates (reverse geocoding). **CatastRo** returns the
-results as a tibble. This functionality is described in detail in the
+(geocoding). It can also retrieve cadastral references near a pair of
+coordinates (reverse geocoding). **CatastRo** returns the results as tibbles.
+These operations are described in detail in the
 corresponding vignette (see `vignette("ovcservice", package = "CatastRo")`).
 
 ## INSPIRE services
@@ -52,9 +52,10 @@ class="external-link uri">INSPIRE Knowledge Base</a>
 
 </figure>
 
-The implementation of the INSPIRE directive in the Spanish Cadastre (see
-[Spanish Cadastre INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
-allows retrieval of spatial objects from the cadastral database:
+The Spanish Cadastre implementation of the INSPIRE directive (see [Spanish
+Cadastre INSPIRE
+services](https://www.catastro.hacienda.gob.es/webinspire/index.html)) provides
+access to spatial objects from the cadastral database:
 
 - **Vector objects:** Parcels, addresses, buildings, cadastral zones and more.
   **CatastRo** returns these objects as `sf` objects, using the **sf** package.
@@ -70,17 +71,17 @@ cadastral offices.
     provides access to the Cadastre of Navarre, with similar functionality to
     **CatastRo**.
 
-There are three types of functions, each querying a different service:
+There are three INSPIRE services:
 
-1.  **ATOM service**: The ATOM service downloads complete municipal datasets
+1.  **ATOM service:** The ATOM service downloads complete municipal datasets
     for different cadastral elements.
 
-2.  **WFS service**: The WFS service downloads vector objects for specific
+2.  **WFS service:** The WFS service downloads vector objects for specific
     cadastral elements. Note that there are restrictions on the extent and
     number of elements that can be queried. For full municipal downloads,
     prefer the ATOM service.
 
-3.  **WMS service**: The WMS service downloads georeferenced map images for
+3.  **WMS service:** The WMS service downloads georeferenced map images for
     different cadastral elements.
 
 ## Examples
@@ -104,11 +105,11 @@ stadium <- catr_wfs_get_buildings_bbox(
   srs = 4326
 )
 
-# Extract cadastral parcels using spatial objects in the query.
+# Extract cadastral parcels using a spatial object as the query input.
 
 stadium_parcel <- catr_wfs_get_parcels_bbox(stadium)
 
-# Project for tiles.
+# Transform to the tile CRS.
 
 stadium_parcel_pr <- sf::st_transform(stadium_parcel, 25830)
 
@@ -123,7 +124,7 @@ labs <- catr_wms_get_layer(
 
 # Plot.
 library(ggplot2)
-library(tidyterra) # For terra tiles.
+library(tidyterra) # Plot SpatRaster layers.
 
 ggplot() +
   geom_spatraster_rgb(data = labs) +
@@ -142,13 +143,12 @@ ggplot() +
 
 ### Thematic maps
 
-We can also create thematic maps using the information available on the spatial
-objects. We produce a visualization of the urban growth of Granada using
-**CatastRo**, replicating the map produced by [Dominic
-Royé](https://dominicroye.github.io) [@roye19], using the **ATOM service**.
+We can also create thematic maps from attributes in the spatial objects. This
+example visualizes the urban growth of Granada with **CatastRo**, reproducing a
+map by [Dominic Royé](https://dominicroye.github.io) [@roye19] with the ATOM
+service.
 
-First, we extract the coordinates of Granada's city center with
-**mapSpain**:
+First, we retrieve the geometry of Granada's city center with **mapSpain**:
 
 
 ``` r
@@ -156,14 +156,14 @@ library(dplyr)
 library(sf)
 library(mapSpain)
 
-# Use mapSpain to get the coordinates.
+# Use esp_get_capimun() to get the city geometry.
 
 city <- esp_get_capimun(munic = "^Granada$")
 ```
 
-The next step is to extract the buildings using the ATOM service. We also use
-`catr_get_code_from_coords()` to identify Granada's code in the Cadastre and
-download the buildings with `catr_atom_get_buildings()`.
+Next, we use `catr_get_code_from_coords()` to identify Granada's cadastral
+municipality code, then download its buildings with
+`catr_atom_get_buildings()`.
 
 
 ``` r
@@ -171,9 +171,10 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
-#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18   
+#> # ℹ 1 more variable: cm <chr>
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
@@ -201,14 +202,14 @@ ggplot(dataviz) +
 <p class="caption">Figure 2: Minimal cadastral map of Granada</p>
 </div>
 
-Now let's extract the construction year, available in the column `beginning`:
+Next, we extract the construction year from the `beginning` column:
 
 
 ``` r
 # Extract the first four positions.
 year <- substr(dataviz$beginning, 1, 4)
 
-# Replace entries that do not look like numbers with 0000.
+# Replace entries that do not look like years with 0000.
 year[!(year %in% 0:2500)] <- "0000"
 
 # Convert to numeric.
@@ -219,8 +220,8 @@ dataviz <- dataviz |>
   mutate(year = year)
 ```
 
-The last step is to group the data by construction year and create the
-visualization. Here, `cut()` creates classes for each decade from 1900 onward:
+Finally, we group the data by construction year and create the visualization.
+The `cut()` function creates classes for each decade from 1900 onward:
 
 
 ``` r
@@ -261,8 +262,8 @@ ggplot(dataviz) +
 ```
 
 <div class="figure">
-<img src="./dviz-1.png" alt="Figure 2: Granada - Urban growth" width="100%" />
-<p class="caption">Figure 2: Granada - Urban growth</p>
+<img src="./dviz-1.png" alt="Figure 3: Granada - Urban growth" width="100%" />
+<p class="caption">Figure 3: Granada - Urban growth</p>
 </div>
 
 ## References

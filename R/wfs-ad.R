@@ -1,34 +1,34 @@
 #' WFS INSPIRE: download addresses
 #'
 #' @description
-#' Get the spatial data of addresses. The WFS service allows performing
-#' several types of queries:
+#' Retrieve spatial address data through several types of WFS queries:
 #'
 #' - By bounding box: `catr_wfs_get_address_bbox()` extracts objects included
 #'   in the provided bounding box. See **Bounding box**.
 #'
-#' @param x See **Bounding box**. Can be one of:
+#' @param x Input defining the query area. See **Bounding box**. It can be:
 #' - A numeric vector of length 4 with the coordinates that define
 #'   the bounding box: `c(xmin, ymin, xmax, ymax)`.
-#' - A `sf/sfc` object, as provided by the \CRANpkg{sf} package.
+#' - An `sf` or `sfc` object from \CRANpkg{sf}.
 #' @param srs SRS/CRS to use in the query. To see allowed values, use
 #'   [catr_srs_values], specifically the `wfs_service` column. See
 #'   **Bounding box**.
-#' @param rc The cadastral reference to be extracted.
+#' @param rc Cadastral reference to retrieve.
 #'
 #' @inheritParams catr_set_cache_dir
 #'
-#' @return A [`sf`][sf::st_sf] object.
+#' @return An [`sf`][sf::st_sf] object. Returns `NULL` if the data cannot be
+#'   retrieved.
 #'
-#' @section API Limits:
+#' @section API limits:
 #' The API service is limited to a bounding box of 4 km2 and a maximum of 5,000
 #' elements.
 #'
 #' @section Bounding box:
 #' When `x` is a numeric vector, make sure that the `srs` matches the
 #' coordinate values. Additionally, the function queries the bounding box on
-#' [EPSG:25830](https://epsg.io/25830) - ETRS89 / UTM zone 30N, to overcome
-#' a potential bug on the API side.
+#' [EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work around a
+#' potential API issue.
 #'
 #' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. In
 #' this case, the bounding box of the [`sf`][sf::st_sf] object is
@@ -36,6 +36,7 @@
 #'
 #' The result is always provided in the SRS of the [`sf`][sf::st_sf] object
 #' provided as input.
+#'
 #' @references
 #' ```{r, echo=FALSE, comment="", results="asis"}
 #' paste0("[API documentation](https://www.catastro.hacienda.gob.es/",
@@ -48,10 +49,8 @@
 #'
 #' ```
 #'
-#' @family INSPIRE
-#' @family WFS
+#' @family wfs
 #' @family addresses
-#' @family spatial
 #' @rdname catr_wfs_get_address
 #' @encoding UTF-8
 #' @export

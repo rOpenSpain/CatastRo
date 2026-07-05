@@ -1,12 +1,12 @@
 ---
-title: "OVCCoordenadas web service"
-description: Retrieve spatial coordinates of urban properties.
+title: "OVCCoordenadas service"
+description: Geocode cadastral references and reverse geocode coordinates.
 author:
   - Ángel Delgado Panadero
   - Diego Hernangómez
 tbl-cap-location: bottom
 vignette: >
-  %\VignetteIndexEntry{OVCCoordenadas web service}
+  %\VignetteIndexEntry{OVCCoordenadas service}
   %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,38 +15,36 @@ vignette: >
 
 
 
-**CatastRo** provides an **R** interface to the OVCCoordenadas web service from
+**CatastRo** provides an R interface to the OVCCoordenadas service from
 the [Sede electrónica del Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-This service retrieves the spatial coordinates of an urban property. You do not
-need to be the owner to get the information. You only need to know the
-cadastral reference of the property. Although the cadastral reference is the
-only required argument, providing the address can improve results and help
-avoid errors.
+This service retrieves coordinates for a cadastral reference. The cadastral
+reference is the only required value, although optional province and
+municipality values can narrow the search.
 
-The service can also obtain the cadastral reference of an urban property from
-longitude and latitude. It allows you to choose the spatial reference system
-(SRS, also known as CRS) used to express the coordinates.
+The service can also retrieve cadastral references from longitude and latitude.
+You can choose the spatial reference system (SRS, also known as CRS) used to
+express the coordinates.
 
-The service also handles cases where the exact location of the registered urban
-property is unknown. In such cases, it returns all properties located within a
-50-meter square around the given point.
+If no exact match is found, the distance query returns cadastral references
+within 50 square meters of the requested coordinates.
 
-The documentation for this service is available
-[here](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
+See the [OVCCoordenadas service
+documentation](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
+for endpoint details.
 
 These functions use the `catr_ovc_get_*()` prefix and return tibbles from the
 **tibble** package.
 
 ## CatastRo API
 
-The OVCCoordenadas web service can be accessed using the following functions:
+The OVCCoordenadas service is available through the following functions:
 
-- `catr_ovc_get_rccoor()`
-- `catr_ovc_get_rccoor_distancia()`
-- `catr_ovc_get_cpmrc()`
+- `catr_ovc_get_rccoor()`.
+- `catr_ovc_get_rccoor_distancia()`.
+- `catr_ovc_get_cpmrc()`.
 
-## Reverse geocoding cadastral references
+## Reverse geocoding coordinates
 
 `catr_ovc_get_rccoor()` takes the coordinates (`lat` and `lon`) and the spatial
 reference system (`srs`) used to express them. It returns a tibble with the
@@ -110,8 +108,8 @@ catr_srs_values |>
 
 
 
-It is also possible to get all cadastral references within a 50-meter square
-centered on the coordinates `lat` and `lon` using the function
+You can retrieve cadastral references within 50 square meters of `lat` and
+`lon` with
 `catr_ovc_get_rccoor_distancia()`.
 
 
@@ -135,10 +133,10 @@ catr_ovc_get_rccoor_distancia(
 
 ## Geocoding a cadastral reference
 
-The opposite query is also possible. When provided with a cadastral reference
-(`rc`), province (`province`) and municipality (`municipality`), the function
-`catr_ovc_get_cpmrc()` returns the coordinates (`lat` and `lon`) in a specified
-`srs`, along with the address (town, street and number).
+For the opposite query, `catr_ovc_get_cpmrc()` accepts a cadastral reference
+(`rc`) and returns `xcoord` and `ycoord` in the specified `srs`, together with
+the address. Optional `province` and `municipality` values can narrow the
+search.
 
 
 ``` r
@@ -159,10 +157,7 @@ catr_ovc_get_cpmrc(
 
 
 
-The `province` and `municipality` arguments are optional, but if `municipality`
-is provided, `province` must also be provided. If a value is passed to the
-`province` argument while `municipality` is `NULL`, the function
-`catr_ovc_get_cpmrc()` displays a message and returns an empty tibble.
+The following query narrows the search with `municipality`:
 
 
 ``` r
@@ -182,7 +177,7 @@ catr_ovc_get_cpmrc(
 
 
 
-When using only `rc`, the result is provided as expected:
+You can also query with only `rc`:
 
 
 ``` r

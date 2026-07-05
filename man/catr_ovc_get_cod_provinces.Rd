@@ -11,12 +11,13 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}.
+A \link[tibble:tbl_df]{tibble} with province names and codes. Returns
+\code{NULL} if the request fails.
 }
 \description{
-Implementation of the OVCCallejero service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}. Returns a list of provinces
-included in the Spanish Cadastre.
+Query the OVCCallejero
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia} service to retrieve provinces and
+their Spanish Cadastre codes.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
@@ -29,13 +30,13 @@ catr_ovc_get_cod_provinces()
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
 }
 \seealso{
-Related OVCCallejero functions:
+Query OVC province and municipality codes:
 \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}
 
-Other search:
+Search for cadastral identifiers:
 \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
 \code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
 \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}
 }
-\concept{OVCCallejero}
+\concept{ovc_street_directory}
 \concept{search}

@@ -20,17 +20,18 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}. See \strong{Details}.
+A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+\code{NULL} if the request fails.
 }
 \description{
-Implementation of the OVCCoordenadas service
-\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}. Returns cadastral
-references for coordinates. If none found, the API returns references
-in a 50 square meter area around the requested coordinates.
+Query the OVCCoordenadas
+\href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia} service to retrieve
+cadastral references near a pair of coordinates. If no exact match is found,
+the API searches within 50 square meters of the requested coordinates.
 }
 \details{
-When the API does not provide any result, the function returns a
-\link[tibble:tbl_df]{tibble} with the input arguments only.
+If the API returns no results, this function returns a
+\link[tibble:tbl_df]{tibble} containing only the input arguments.
 
 On a successful query, this function returns a \link[tibble:tbl_df]{tibble} with
 one row per cadastral reference, including the following columns:
@@ -40,7 +41,7 @@ one row per cadastral reference, including the following columns:
 \item \code{address}: Address as recorded in the Cadastre.
 \item \code{cmun_ine}: Municipality code as registered on the INE (National
 Statistics Institute).
-\item Remaining fields: Check the API documentation.
+\item Remaining fields: See the API documentation.
 }
 }
 \examples{
@@ -58,16 +59,13 @@ catr_ovc_get_rccoor_distancia(
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
 }
 \seealso{
-\link{catr_srs_values}, \code{vignette("ovcservice", package = "CatastRo")}
-
-Related OVCCoordenadas functions:
+Convert coordinates and cadastral references:
 \code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
-\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
-\code{\link{catr_srs_values}}
+\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}}
 
-Other cadastral references:
+Work with cadastral references:
 \code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}}
 }
-\concept{OVCCoordenadas}
-\concept{cadastral references}
+\concept{cadastral_references}
+\concept{ovc_coordinates}

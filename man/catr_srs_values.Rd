@@ -20,8 +20,8 @@ services.}
 }
 }
 \description{
-A \link[tibble:tbl_df]{tibble} including the valid SRS (also known as CRS)
-values that may be used in each API service. Values are provided as
+A \link[tibble:tbl_df]{tibble} containing the valid SRS (also known as CRS)
+values for each API service. Values are represented as
 \href{https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset}{EPSG codes}.
 }
 \details{
@@ -71,29 +71,10 @@ catr_srs_values |>
 \references{
 \itemize{
 \item \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx}{OVCCoordenadas}.
-\item \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{WFS INSPIRE Service}.
+\item \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{WFS INSPIRE service}.
 }
 }
 \seealso{
 \code{\link[sf:st_crs]{sf::st_crs()}}.
-
-Other databases:
-\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
-\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
-\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
-\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}}
-
-Related WFS INSPIRE functions:
-\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
-\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
-\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
-\code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
-
-Related OVCCoordenadas functions:
-\code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
-\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
-\code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
 }
-\concept{OVCCoordenadas}
-\concept{WFS}
-\concept{databases}
+\keyword{datasets}

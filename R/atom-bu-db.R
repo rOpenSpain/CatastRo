@@ -1,11 +1,11 @@
 #' ATOM INSPIRE: reference database for ATOM buildings
 #'
 #' @description
-#' Create a database containing the URLs provided in the ATOM INSPIRE
-#' service of the Spanish Cadastre for extracting buildings.
+#' Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
+#' for downloading buildings.
 #'
 #' `catr_atom_get_buildings_db_all()` provides a top-level table with all
-#' territorial offices, except the Basque Country and Navarre, and the
+#' territorial offices, except the Basque Country and Navarre and the
 #' municipalities included in each office. `catr_atom_get_buildings_db_to()`
 #' provides a table for one territorial office and its municipalities.
 #'
@@ -14,10 +14,8 @@
 #' @source
 #' <https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml>
 #'
-#' @family INSPIRE
-#' @family ATOM
+#' @family atom
 #' @family buildings
-#' @family databases
 #' @rdname catr_atom_get_buildings_db
 #'
 #' @encoding UTF-8
@@ -59,10 +57,7 @@ catr_atom_get_buildings_db_to <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  warn_deprecated_cache(
-    cache,
-    "CatastRo::catr_atom_get_buildings_db_to(cache)"
-  )
+  warn_deprecated_cache(cache, "CatastRo::catr_atom_get_buildings_db_to(cache)")
 
   catr_atom_read_db_to(
     to = to,

@@ -1,14 +1,14 @@
 #' OVCCoordenadas: reverse geocode cadastral references near coordinates
 #'
 #' @description
-#' Implementation of the OVCCoordenadas service
-#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`). Returns cadastral
-#' references for coordinates. If none found, the API returns references
-#' in a 50 square meter area around the requested coordinates.
+#' Query the OVCCoordenadas
+#' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`) service to retrieve
+#' cadastral references near a pair of coordinates. If no exact match is found,
+#' the API searches within 50 square meters of the requested coordinates.
 #'
 #' @details
-#' When the API does not provide any result, the function returns a
-#' [tibble][tibble::tbl_df] with the input arguments only.
+#' If the API returns no results, this function returns a
+#' [tibble][tibble::tbl_df] containing only the input arguments.
 #'
 #' On a successful query, this function returns a [tibble][tibble::tbl_df] with
 #' one row per cadastral reference, including the following columns:
@@ -17,7 +17,7 @@
 #' - `address`: Address as recorded in the Cadastre.
 #' - `cmun_ine`: Municipality code as registered on the INE (National
 #'    Statistics Institute).
-#' - Remaining fields: Check the API documentation.
+#' - Remaining fields: See the API documentation.
 #'
 #' @param lat Latitude for the query, expressed in the CRS/SRS defined by
 #'   `srs`.
@@ -25,15 +25,13 @@
 #'   `srs`.
 #'
 #' @inheritParams catr_ovc_get_cpmrc
-#' @inherit catr_ovc_get_cpmrc return
+#' @inherit catr_ovc_get_cpmrc return seealso
 #'
 #' @references
 #' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
 #'
-#' @seealso [catr_srs_values], `vignette("ovcservice", package = "CatastRo")`
-#'
-#' @family OVCCoordenadas
-#' @family cadastral references
+#' @family ovc_coordinates
+#' @family cadastral_references
 #' @encoding UTF-8
 #' @export
 #' @examplesIf run_example()
@@ -98,9 +96,7 @@ catr_ovc_get_rccoor_distancia <- function(
   # Build additional cadastral reference, address and municipality fields.
   rc_help <- dplyr::bind_cols(
     ovc_ref_address(rc_all),
-    tibble::tibble(
-      cmun_ine = paste0(rc_all$dt.loine.cp, rc_all$dt.loine.cm)
-    )
+    tibble::tibble(cmun_ine = paste0(rc_all$dt.loine.cp, rc_all$dt.loine.cm))
   )
 
   # Join helper fields and the raw API response.

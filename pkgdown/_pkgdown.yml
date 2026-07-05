@@ -29,73 +29,72 @@ authors:
     href: "https://www.enchufa2.es/"
 
 reference:
-- title: ATOM INSPIRE services
+- title: INSPIRE services
   desc: >
-    These functions return <a
-    href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link"><span class="pkg">sf</span></a> objects from the
-    ATOM INSPIRE services of the Spanish Cadastre.
-  contents:
-  - has_concept("ATOM")
-- title: WFS INSPIRE services
+    Retrieve cadastral addresses, buildings, parcels and georeferenced map
+    images through Spanish Cadastre INSPIRE services.
+- subtitle: ATOM downloads
   desc: >
-    These functions return <a
-    href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link"><span class="pkg">sf</span></a> objects from the
-    WFS INSPIRE services of the Spanish Cadastre.
-  contents:
-  - has_concept("WFS")
-- title: WMS INSPIRE services
+    Download complete municipal cadastral datasets and query their metadata.
+- contents:
+  - has_concept("atom")
+- subtitle: WFS queries
   desc: >
-    These functions return <code><a
-    href="https://rspatial.github.io/terra/reference/rast.html"
-    class="external-link">SpatRaster</a></code> map images from the WMS INSPIRE
-    services of the Spanish Cadastre.
-  contents:
-  - has_concept("WMS")
-  - mapSpain::esp_get_tiles()
-  - terra::plotRGB()
-  - tidyterra::geom_spatraster_rgb()
-- title: OVCCoordenadas service
+    Retrieve cadastral features for a selected bounding box or cadastral
+    identifier.
+- contents:
+  - has_concept("wfs")
+  - -has_keyword("datasets")
+- subtitle: WMS maps
   desc: >
-    These functions geocode and reverse geocode cadastral references using the
-    [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
-    service.
-  contents:
-  - has_concept("OVCCoordenadas")
-- title: OVCCallejero service
+    Download georeferenced cadastral map images.
+- contents:
+  - has_concept("wms")
+
+- title: OVC services
   desc: >
-    These functions query province and municipality codes using the
-    [OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
-    service.
-  contents:
-  - has_concept("OVCCallejero")
-- title: Search functions
+    Geocode cadastral references, reverse geocode coordinates and query
+    administrative codes through Spanish Cadastre OVC services.
+- subtitle: Coordinates and cadastral references
   desc: >
-    Helpers for finding cadastral municipality codes and related reference data.
-  contents:
+    Convert between cadastral references and spatial coordinates.
+- contents:
+  - has_concept("ovc_coordinates")
+  - -has_keyword("datasets")
+- subtitle: Province and municipality codes
+  desc: >
+    Query province and municipality codes used by the Spanish Cadastre.
+- contents:
+  - has_concept("ovc_street_directory")
+
+- title: Utilities and reference data
+  desc: >
+    Search Spanish Cadastre identifiers, manage downloaded files and inspect
+    package reference data.
+- subtitle: Search
+  desc: >
+    Find cadastral municipality codes and related reference information.
+- contents:
   - has_concept("search")
-- title: Cache management
+- subtitle: Cache management
   desc: >
-    Tools for configuring, detecting and clearing the local cache used by
-    **CatastRo**.
-  contents:
-  - has_concept("cache utilities")
-- title: Databases and reference data
+    Configure, detect and clear the local cache used by **CatastRo**.
+- contents:
+  - has_concept("cache_utilities")
+- subtitle: Datasets
   desc: >
-    Reference tables and helper databases used by the package services.
-  contents:
-  - has_concept("databases")
+    Inspect SRS reference data used by the package services.
+- contents:
+  - has_keyword("datasets")
 
 - title: Helpers and package metadata
   desc: >
-    Package-level documentation and example helpers.
-  contents:
+    Read package-level documentation.
+- contents:
   - CatastRo-package
 
 articles:
-- title: Articles
+- title: Service guides
   navbar: ~
   contents:
-  - CatastRo
   - ovcservice
