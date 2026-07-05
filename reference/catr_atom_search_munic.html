@@ -119,88 +119,20 @@ municipality name and cadastral code. Returns <code>NULL</code> if no match is f
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="fu">catr_atom_search_munic</span><span class="op">(</span><span class="st">"Mad"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     territorial_office                               munic</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1257      Territorial office 09 Burgos                        09178-HUMADA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4323      Territorial office 28 Madrid                        28900-MADRID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1338      Territorial office 09 Burgos                       09287-QUEMADA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1899 Territorial office 13 Ciudad Real                       13011-ALMADEN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4098        Territorial office 27 Lugo                       27021-XERMADE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4222      Territorial office 28 Madrid                      28078-MADARCOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5078   Territorial office 37 Salamanca                      37177-MADROÑAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1604     Territorial office 10 Cáceres                     10116-MADROÑERA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5537     Territorial office 40 Segovia                     40134-MADERUELO</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7564    Territorial office 50 Zaragoza                     50280-VALMADRID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2494      Territorial office 17 Girona                    17104-MADREMANYA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2812 Territorial office 19 Guadalajara                    19024-ALMADRONES</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4777    Territorial office 34 Palencia                    34182-TORQUEMADA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4972   Territorial office 37 Salamanca                    37059-BUENAMADRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5701     Territorial office 41 Sevilla                    41057-EL MADROÑO</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6439      Territorial office 45 Toledo                    45088-MADRIDEJOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7140      Territorial office 49 Zamora                    49115-EL MADERAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7141      Territorial office 49 Zamora                    49116-MADRIDANOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44      Territorial office 02 Albacete                   02045-MADRIGUERAS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1603     Territorial office 10 Cáceres                   10115-MADRIGALEJO</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1900 Territorial office 13 Ciudad Real                   13012-ALMADENEJOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3643        Territorial office 24 León                   24203-VEGAQUEMADA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4055    Territorial office 26 La Rioja                   26161-VALDEMADERA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4348      Territorial office 29 Málaga                   29025-BENALMADENA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1685     Territorial office 10 Cáceres                  10198-TORREQUEMADA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3368        Territorial office 23 Jaén                  23004-ALDEAQUEMADA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6345      Territorial office 44 Teruel                 44275-VILLARQUEMADO</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1266      Territorial office 09 Burgos             09187-JARAMILLO QUEMADO</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1624     Territorial office 10 Cáceres             10136-NAVAS DEL MADROÑO</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4217      Territorial office 28 Madrid             28073-HUMANES DE MADRID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4262      Territorial office 28 Madrid             28123-RIVAS-VACIAMADRID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57      Territorial office 02 Albacete            02058-PATERNA DEL MADERA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1274      Territorial office 09 Burgos            09200-MADRIGAL DEL MONTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1602     Territorial office 10 Cáceres           10114-MADRIGAL DE LA VERA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4266      Territorial office 28 Madrid           28127-LAS ROZAS DE MADRID</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5653     Territorial office 41 Sevilla           41009-ALMADEN DE LA PLATA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1275      Territorial office 09 Burgos         09201-MADRIGALEJO DEL MONTE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5440     Territorial office 40 Segovia         40005-ALCONADA DE MADERUELO</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 429        Territorial office 05 Avila  05114-MADRIGAL DE LAS ALTAS TORRES</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3600        Territorial office 24 León 24156-SANTA CRISTINA DE VALMADRIGAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      catrcode</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1257    09178</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4323    28900</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1338    09287</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1899    13011</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4098    27021</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4222    28078</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5078    37177</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1604    10116</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5537    40134</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7564    50280</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2494    17104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2812    19024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4777    34182</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4972    37059</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5701    41057</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6439    45088</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7140    49115</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7141    49116</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44      02045</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1603    10115</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1900    13012</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3643    24203</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4055    26161</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4348    29025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1685    10198</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3368    23004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6345    44275</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1266    09187</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1624    10136</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4217    28073</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4262    28123</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57      02058</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1274    09200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1602    10114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4266    28127</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5653    41009</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1275    09201</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5440    40005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 429     05114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3600    24156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 40 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    territorial_office                munic           catrcode</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Territorial office 09 Burgos      09178-HUMADA    09178   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Territorial office 28 Madrid      28900-MADRID    28900   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Territorial office 09 Burgos      09287-QUEMADA   09287   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Territorial office 13 Ciudad Real 13011-ALMADEN   13011   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Territorial office 27 Lugo        27021-XERMADE   27021   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Territorial office 28 Madrid      28078-MADARCOS  28078   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Territorial office 37 Salamanca   37177-MADROÑAL  37177   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Territorial office 10 Cáceres     10116-MADROÑERA 10116   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Territorial office 40 Segovia     40134-MADERUELO 40134   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Territorial office 50 Zaragoza    50280-VALMADRID 50280   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 30 more rows</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
