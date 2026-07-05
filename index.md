@@ -2,9 +2,8 @@
 
 **CatastRo** provides access to services from the [Spanish
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
-download buildings, cadastral parcels, addresses and map imagery,
-geocode cadastral references and look up cadastral references from
-coordinates.
+retrieve addresses, buildings, cadastral parcels and georeferenced map
+images, geocode cadastral references and reverse geocode coordinates.
 
 ## Installation
 
@@ -18,12 +17,12 @@ install.packages("CatastRo")
 
 SSL issues
 
-The SSL certificate of the Spanish Cadastre may cause an error when
-using **CatastRo** (especially on macOS, see issue
-[\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
+The SSL certificate of the Spanish Cadastre may cause errors when using
+**CatastRo** (especially on macOS, see issue
+[\#40](https://github.com/rOpenSpain/CatastRo/issues/40)).
 
-In **CatastRo \>= 1.0.0**, you can try to fix it by running this line
-after loading the package:
+In **CatastRo \>= 1.0.0**, you can work around these errors by running
+this code after loading the package:
 
 ``` r
 
@@ -31,7 +30,7 @@ after loading the package:
 options(catastro_ssl_verify = 0)
 ```
 
-If you wish to make this setup persistent, write the same code in your
+To make this setting persistent, add the same code to your
 [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
     .Rprofile
@@ -49,26 +48,28 @@ package naming convention is `catr_*service*_*description*`.
 
 ### OVC services
 
-OVC services cover geocoding and reverse geocoding with
-[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx),
-and province and municipality code lookup with OVCCallejero.
+OVC services use
+[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
+for geocoding and reverse geocoding and OVCCallejero for province and
+municipality code lookup.
 
 These functions use the `catr_ovc_get_*()` prefix and return tibbles
 from the **tibble** package. See
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)
 for a detailed description of these functions.
 
-### INSPIRE
+### INSPIRE services
 
-INSPIRE functions return spatial objects from the [Spanish Cadastre
-INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
-services using the **sf** or **terra** packages.
+INSPIRE functions retrieve spatial objects from the [Spanish Cadastre
+INSPIRE
+services](https://www.catastro.hacienda.gob.es/webinspire/index.html)
+using the **sf** or **terra** packages.
 
 Note that these services cover 95% of the Spanish territory, excluding
 the Basque Country and Navarre[^1], which have their own independent
 cadastral offices.
 
-There are three types of functions, each querying a different service:
+There are three INSPIRE services:
 
 #### ATOM service
 
@@ -106,7 +107,7 @@ use](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf).
 
 ## Examples
 
-This script highlights some features of **CatastRo**:
+These examples highlight some features of **CatastRo**:
 
 ### Geocode a cadastral reference
 
@@ -177,7 +178,7 @@ ggplot(wfs_get_buildings) +
 ![Extract Alcázar of Segovia with the WFS
 service](reference/figures/README-wfs-1.png)
 
-## A note on caching
+## Cache management
 
 Some datasets and tiles may exceed 50 MB. You can set a local cache
 directory using the following function:
@@ -187,8 +188,8 @@ directory using the following function:
 catr_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **CatastRo** looks for cached files and loads
-them, which speeds up repeated queries.
+When a cache directory is configured, **CatastRo** reuses downloaded
+files, which speeds up repeated queries.
 
 ## Citation
 
@@ -211,10 +212,10 @@ A BibTeX entry for LaTeX users is:
 }
 ```
 
-## Contribute
+## Contributing
 
-Check the GitHub page for the [source
-code](https://github.com/ropenspain/CatastRo/).
+See the [source code and issue
+tracker](https://github.com/ropenspain/CatastRo/) on GitHub.
 
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)

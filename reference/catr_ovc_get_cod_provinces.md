@@ -1,8 +1,8 @@
 # OVCCallejero: extract provinces with their codes
 
-Implementation of the OVCCallejero service
-[ConsultaProvincia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia).
-Returns a list of provinces included in the Spanish Cadastre.
+Query the OVCCallejero
+[ConsultaProvincia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia)
+service to retrieve provinces and their Spanish Cadastre codes.
 
 ## Usage
 
@@ -18,7 +18,8 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with province names and codes. Returns `NULL` if the request fails.
 
 ## References
 
@@ -26,10 +27,10 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## See also
 
-Related OVCCallejero functions:
+Query OVC province and municipality codes:
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md)
 
-Other search:
+Search for cadastral identifiers:
 [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md),
 [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.md),
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md)

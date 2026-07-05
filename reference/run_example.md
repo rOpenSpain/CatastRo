@@ -15,7 +15,7 @@ Logical. `TRUE` if examples should run, `FALSE` otherwise.
 
 ## Details
 
-Returns `FALSE` on CRAN, macOS, or when offline.
+Returns `FALSE` on CRAN, macOS or when offline.
 
 ## Examples
 

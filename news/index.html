@@ -19,7 +19,7 @@
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas web service</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -44,7 +44,7 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.2" id="catastro-102">CatastRo 1.0.2<a class="anchor" aria-label="anchor" href="#catastro-102"></a></h2><p class="text-muted">CRAN release: 2026-06-03</p>
-<ul><li>This development cycle includes AI-assisted maintenance work to simplify internal code, improve <strong>cli</strong> messages, standardize roxygen2 metadata and make package documentation more consistent.</li>
+<ul><li>Improve internal maintenance, <strong>cli</strong> messages, <strong>roxygen2</strong> metadata and package documentation.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.1" id="catastro-101">CatastRo 1.0.1<a class="anchor" aria-label="anchor" href="#catastro-101"></a></h2><p class="text-muted">CRAN release: 2026-04-27</p>
@@ -52,11 +52,11 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.0" id="catastro-100">CatastRo 1.0.0<a class="anchor" aria-label="anchor" href="#catastro-100"></a></h2><p class="text-muted">CRAN release: 2026-02-23</p>
-<p>This major release introduces a full overhaul of the codebase and test suite. All requests now use <strong>httr2</strong> and cached files are reorganized into topic-based subfolders for easier management.</p>
+<p>This major release introduces a full overhaul of the codebase and test suite. All requests now use <strong>httr2</strong>. Cached files are organized into topic-based subdirectories for easier management.</p>
 <blockquote>
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
 </blockquote>
-<p>Persistent cache directories now use <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> instead of <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code>. If you already have a cache directory in place, <strong>CatastRo</strong> displays a one-time message about this migration.</p>
+<p>Persistent cache directories now use <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> instead of <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code>. If you already have a cache directory, <strong>CatastRo</strong> displays a one-time migration message.</p>
 <p>The package now requires <strong>R ≥ 4.1.0</strong> and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
 <div class="section level3">
 <h3 id="major-changes-1-0-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-1-0-0"></a></h3>
@@ -79,7 +79,7 @@
 <li>Remove: <strong>png</strong>, <strong>slippymath</strong>.</li>
 </ul></li>
 <li>Return tidy objects consistently.</li>
-<li>Vignettes engine has been migrated to Quarto.</li>
+<li>Migrate the vignette engine to Quarto.</li>
 </ul></div>
 </div>
 <div class="section level3">
@@ -114,12 +114,12 @@
 <h2 class="pkg-version" data-toc-text="0.3.0" id="catastro-030">CatastRo 0.3.0<a class="anchor" aria-label="anchor" href="#catastro-030"></a></h2><p class="text-muted">CRAN release: 2024-01-18</p>
 <ul><li>
 <code><a href="../reference/catr_atom_get_address.html">catr_atom_get_address()</a></code> also returns the names of the streets (layer <code>"ThoroughfareName"</code> of the <code>*.gml</code> file). The new fields are named with the prefix <code>tfname_*</code>.</li>
-<li>Add a helper function for easily detecting the <code>cache_dir</code>: <code><a href="../reference/catr_set_cache_dir.html">catr_detect_cache_dir()</a></code>.</li>
+<li>Add a helper function for detecting <code>cache_dir</code>: <code><a href="../reference/catr_set_cache_dir.html">catr_detect_cache_dir()</a></code>.</li>
 <li>Update documentation and tests.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="catastro-023">CatastRo 0.2.3<a class="anchor" aria-label="anchor" href="#catastro-023"></a></h2><p class="text-muted">CRAN release: 2023-01-08</p>
-<ul><li>Housekeeping and updates of documentation.</li>
+<ul><li>Update documentation and package maintenance files.</li>
 <li>Adapt <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code> to <strong>mapSpain</strong> (&gt;= 0.7.0).</li>
 </ul></div>
     <div class="section level2">
@@ -149,7 +149,7 @@
 </ul></li>
 <li>Add <strong>WMS INSPIRE</strong> capabilities: <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</li>
 <li>Add a new interface for <strong>OVC services</strong>. Deprecated previous functions in favor of the new API:
-<ul><li>New SRS database in <code><a href="../reference/catr_srs_values.html">?catr_srs_values</a></code>, replaces <code>coordinates</code>.</li>
+<ul><li>The new SRS reference dataset in <code><a href="../reference/catr_srs_values.html">?catr_srs_values</a></code> replaces <code>coordinates</code>.</li>
 <li>
 <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code> replaces <code>near_rc()</code>.</li>
 <li>
@@ -157,7 +157,7 @@
 <li>
 <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> replaces <code>get_coor()</code>.</li>
 </ul></li>
-<li>Added <a href="https://ropensci.org/blog/2019/12/08/precompute-vignettes/" class="external-link">pre-computed</a> vignettes.</li>
+<li>Add <a href="https://ropensci.org/blog/2019/12/08/precompute-vignettes/" class="external-link">precomputed</a> vignettes.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="catastro-010">CatastRo 0.1.0<a class="anchor" aria-label="anchor" href="#catastro-010"></a></h2>

@@ -1,10 +1,10 @@
 # ATOM INSPIRE: reference database for ATOM addresses
 
-Create a database containing the URLs provided in the ATOM INSPIRE
-service of the Spanish Cadastre for extracting addresses.
+Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE
+service for downloading addresses.
 
 `catr_atom_get_address_db_all()` provides a top-level table with all
-territorial offices, except the Basque Country and Navarre, and the
+territorial offices, except the Basque Country and Navarre and the
 municipalities included in each office. `catr_atom_get_address_db_to()`
 provides a table for one territorial office and its municipalities.
 
@@ -35,19 +35,18 @@ catr_atom_get_address_db_to(
 
 - cache:
 
-  **\[deprecated\]** `cache` is no longer supported, this function
-  always caches results.
+  **\[deprecated\]** This argument is no longer supported because
+  results are always cached.
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
-  When set to `TRUE`, it forces a new download.
+  Logical. Whether to refresh the cached file. Defaults to `FALSE`.
 
 - cache_dir:
 
-  Path to a cache directory. On `NULL`, the function stores cached files
-  in a temporary directory (see
-  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
+  Path to a cache directory. If `NULL`, the function stores cached files
+  in a temporary directory. See
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html).
 
 - verbose:
 
@@ -55,13 +54,13 @@ catr_atom_get_address_db_to(
 
 - to:
 
-  Character. Territorial office. Internally uses
-  [`base::grep()`](https://rdrr.io/r/base/grep.html) for matching.
+  Character string. Territorial office to match using
+  [`base::grep()`](https://rdrr.io/r/base/grep.html).
 
 ## Value
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with the information requested with the following fields:
+with the requested information in the following columns:
 
 - `territorial_office`: Territorial office, corresponding to each
   province of Spain except the Basque Country and Navarre.
@@ -75,19 +74,7 @@ with the information requested with the following fields:
 
 ## See also
 
-Related INSPIRE API functions:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
-[`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md),
-[`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md),
-[`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md),
-[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md),
-[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
-
-Related ATOM INSPIRE functions:
+Download data from ATOM INSPIRE services:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
 [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md),
@@ -95,15 +82,9 @@ Related ATOM INSPIRE functions:
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
 [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
 
-Other addresses:
+Work with cadastral addresses:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
-
-Other databases:
-[`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md),
-[`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
-[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md),
-[`catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md)
 
 ## Examples
 

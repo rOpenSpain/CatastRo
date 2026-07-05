@@ -1,7 +1,7 @@
 # ATOM INSPIRE: download all cadastral parcels of a municipality
 
-Retrieve the spatial data of all cadastral parcels belonging to a single
-municipality using the ATOM INSPIRE service.
+Retrieve spatial data for all cadastral parcels in a municipality using
+the ATOM INSPIRE service.
 
 ## Usage
 
@@ -21,15 +21,14 @@ catr_atom_get_parcels(
 
 - munic:
 
-  Municipality to extract, can be part of a string or a cadastral code.
-  See
+  Municipality name, partial name or cadastral code. Use
   [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
-  for getting the cadastral codes.
+  to find cadastral codes.
 
 - to:
 
-  Optional argument for defining the territorial office to which `munic`
-  belongs. This argument is a helper for narrowing the search.
+  Optional territorial office containing `munic`. Use this argument to
+  narrow the search.
 
 - what:
 
@@ -41,19 +40,18 @@ catr_atom_get_parcels(
 
 - cache:
 
-  **\[deprecated\]** `cache` is no longer supported, this function
-  always caches results.
+  **\[deprecated\]** This argument is no longer supported because
+  results are always cached.
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
-  When set to `TRUE`, it forces a new download.
+  Logical. Whether to refresh the cached file. Defaults to `FALSE`.
 
 - cache_dir:
 
-  Path to a cache directory. On `NULL`, the function stores cached files
-  in a temporary directory (see
-  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
+  Path to a cache directory. If `NULL`, the function stores cached files
+  in a temporary directory. See
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html).
 
 - verbose:
 
@@ -61,7 +59,8 @@ catr_atom_get_parcels(
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+Returns `NULL` if the data cannot be retrieved.
 
 ## References
 
@@ -73,19 +72,7 @@ cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-Related INSPIRE API functions:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
-[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
-[`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md),
-[`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md),
-[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md),
-[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
-
-Related ATOM INSPIRE functions:
+Download data from ATOM INSPIRE services:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
@@ -93,17 +80,9 @@ Related ATOM INSPIRE functions:
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
 [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
 
-Other parcels:
+Work with cadastral parcels:
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
 [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
-
-Other spatial:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md),
-[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
 
 ## Examples
 

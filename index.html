@@ -50,7 +50,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/ovcservice.html">OVCCoordenadas web service</a></li>
+<li><a class="dropdown-item" href="articles/ovcservice.html">OVCCoordenadas service</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -84,7 +84,7 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><strong>CatastRo</strong> provides access to services from the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>. With <strong>CatastRo</strong>, you can download buildings, cadastral parcels, addresses and map imagery, geocode cadastral references and look up cadastral references from coordinates.</p>
+<p><strong>CatastRo</strong> provides access to services from the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>. With <strong>CatastRo</strong>, you can retrieve addresses, buildings, cadastral parcels and georeferenced map images, geocode cadastral references and reverse geocode coordinates.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -104,12 +104,12 @@ SSL issues
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The SSL certificate of the Spanish Cadastre may cause an error when using <strong>CatastRo</strong> (especially on macOS, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>):</p>
-<p>In <strong>CatastRo &gt;= 1.0.0</strong>, you can try to fix it by running this line after loading the package:</p>
+<p>The SSL certificate of the Spanish Cadastre may cause errors when using <strong>CatastRo</strong> (especially on macOS, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>).</p>
+<p>In <strong>CatastRo &gt;= 1.0.0</strong>, you can work around these errors by running this code after loading the package:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Disable SSL verification</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>catastro_ssl_verify <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p>If you wish to make this setup persistent, write the same code in your <a href="https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html" class="external-link"><code>.Rprofile</code></a>:</p>
+<p>To make this setting persistent, add the same code to your <a href="https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html" class="external-link"><code>.Rprofile</code></a>:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>.Rprofile</strong></pre>
@@ -128,15 +128,15 @@ SSL issues
 <div class="section level3">
 <h3 id="ovc-services">OVC services<a class="anchor" aria-label="anchor" href="#ovc-services"></a>
 </h3>
-<p>OVC services cover geocoding and reverse geocoding with <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a>, and province and municipality code lookup with OVCCallejero.</p>
+<p>OVC services use <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> for geocoding and reverse geocoding and OVCCallejero for province and municipality code lookup.</p>
 <p>These functions use the <code>catr_ovc_get_*()</code> prefix and return tibbles from the <strong>tibble</strong> package. See <code><a href="articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code> for a detailed description of these functions.</p>
 </div>
 <div class="section level3">
-<h3 id="inspire">INSPIRE<a class="anchor" aria-label="anchor" href="#inspire"></a>
+<h3 id="inspire-services">INSPIRE services<a class="anchor" aria-label="anchor" href="#inspire-services"></a>
 </h3>
-<p>INSPIRE functions return spatial objects from the <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Spanish Cadastre INSPIRE</a> services using the <strong>sf</strong> or <strong>terra</strong> packages.</p>
+<p>INSPIRE functions retrieve spatial objects from the <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Spanish Cadastre INSPIRE services</a> using the <strong>sf</strong> or <strong>terra</strong> packages.</p>
 <p>Note that these services cover 95% of the Spanish territory, excluding the Basque Country and Navarre<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The package &lt;a href="https://ropenspain.github.io/CatastRoNav/"&gt;&lt;strong&gt;CatastRoNav&lt;/strong&gt;&lt;/a&gt; provides access to the Cadastre of Navarre, with similar functionality to &lt;strong&gt;CatastRo&lt;/strong&gt;.&lt;/p&gt;'><sup>1</sup></a>, which have their own independent cadastral offices.</p>
-<p>There are three types of functions, each querying a different service:</p>
+<p>There are three INSPIRE services:</p>
 <div class="section level4">
 <h4 id="atom-service">ATOM service<a class="anchor" aria-label="anchor" href="#atom-service"></a>
 </h4>
@@ -165,7 +165,7 @@ SSL issues
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>This script highlights some features of <strong>CatastRo</strong>:</p>
+<p>These examples highlight some features of <strong>CatastRo</strong>:</p>
 <div class="section level3">
 <h3 id="geocode-a-cadastral-reference">Geocode a cadastral reference<a class="anchor" aria-label="anchor" href="#geocode-a-cadastral-reference"></a>
 </h3>
@@ -229,12 +229,12 @@ SSL issues
 </div>
 </div>
 <div class="section level2">
-<h2 id="a-note-on-caching">A note on caching<a class="anchor" aria-label="anchor" href="#a-note-on-caching"></a>
+<h2 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a>
 </h2>
 <p>Some datasets and tiles may exceed 50 MB. You can set a local cache directory using the following function:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/catr_set_cache_dir.html">catr_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>When this option is set, <strong>CatastRo</strong> looks for cached files and loads them, which speeds up repeated queries.</p>
+<p>When a cache directory is configured, <strong>CatastRo</strong> reuses downloaded files, which speeds up repeated queries.</p>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -254,9 +254,9 @@ Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API S
 <span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
+<h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h2>
-<p>Check the GitHub page for the <a href="https://github.com/ropenspain/CatastRo/" class="external-link">source code</a>.</p>
+<p>See the <a href="https://github.com/ropenspain/CatastRo/" class="external-link">source code and issue tracker</a> on GitHub.</p>
 </div>
 </div>
 

@@ -1,7 +1,7 @@
 # ATOM INSPIRE: search for municipality codes
 
-Search for a municipality (as a string, part of a string, or code) and
-get the corresponding code according to the Cadastre.
+Search for a municipality by name or code and return matching Spanish
+Cadastre municipality codes.
 
 ## Usage
 
@@ -20,29 +20,28 @@ catr_atom_search_munic(
 
 - munic:
 
-  Municipality to extract, can be part of a string or a cadastral code.
-  See `catr_atom_search_munic()` for getting the cadastral codes.
+  Municipality name, partial name or cadastral code. Use
+  `catr_atom_search_munic()` to find cadastral codes.
 
 - to:
 
-  Optional argument for defining the territorial office to which `munic`
-  belongs. This argument is a helper for narrowing the search.
+  Optional territorial office containing `munic`. Use this argument to
+  narrow the search.
 
 - cache:
 
-  **\[deprecated\]** `cache` is no longer supported, this function
-  always caches results.
+  **\[deprecated\]** This argument is no longer supported because
+  results are always cached.
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
-  When set to `TRUE`, it forces a new download.
+  Logical. Whether to refresh the cached file. Defaults to `FALSE`.
 
 - cache_dir:
 
-  Path to a cache directory. On `NULL`, the function stores cached files
-  in a temporary directory (see
-  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
+  Path to a cache directory. If `NULL`, the function stores cached files
+  in a temporary directory. See
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html).
 
 - verbose:
 
@@ -50,11 +49,13 @@ catr_atom_search_munic(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with the territorial office, municipality name and cadastral code.
+Returns `NULL` if no match is found.
 
 ## See also
 
-Related ATOM INSPIRE functions:
+Download data from ATOM INSPIRE services:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
@@ -62,16 +63,10 @@ Related ATOM INSPIRE functions:
 [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md),
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
 
-Other search:
+Search for cadastral identifiers:
 [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.md),
 [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md),
 [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md)
-
-Other databases:
-[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
-[`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md),
-[`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
-[`catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md)
 
 ## Examples
 

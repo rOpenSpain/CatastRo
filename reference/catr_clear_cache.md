@@ -33,18 +33,19 @@ catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 ## Value
 
-Invisible. This function is called for its side effects.
+Invisibly returns `NULL`. This function is called for its side effects.
 
 ## Details
 
-This function resets your cache state as if you had never installed
-and/or used [CatastRo](https://CRAN.R-project.org/package=CatastRo).
+This function resets the cache state as if you had never used
+[CatastRo](https://CRAN.R-project.org/package=CatastRo).
 
 ## See also
 
-[`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html)
+[`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) defines
+platform-specific user directories.
 
-Other cache utilities:
+Manage the local cache:
 [`catr_set_cache_dir()`](https://ropenspain.github.io/CatastRo/reference/catr_set_cache_dir.md)
 
 ## Examples
@@ -54,7 +55,7 @@ Other cache utilities:
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpBhliXQ/CatastRo
+#> ℹ /tmp/RtmpTcoGA6/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -62,13 +63,13 @@ catr_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 catr_clear_cache(verbose = TRUE)
-#> ! CatastRo cached data deleted: /tmp/RtmpBhliXQ/example/cache (0 bytes).
+#> ! CatastRo cached data deleted: /tmp/RtmpTcoGA6/example/cache (0 bytes).
 
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache directory is /tmp/RtmpBhliXQ/CatastRo.
+#> ℹ CatastRo cache directory is /tmp/RtmpTcoGA6/CatastRo.
 #> ℹ To reuse this `cache_dir` in future sessions, run this function with `install = TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpBhliXQ/CatastRo
+#> ℹ /tmp/RtmpTcoGA6/CatastRo
 #> [1] TRUE
 # }
 ```

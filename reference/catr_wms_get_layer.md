@@ -1,7 +1,7 @@
 # WMS INSPIRE: download map images
 
-Get geotagged images from the Spanish Cadastre. This function is a
-wrapper of
+Retrieve georeferenced images from the Spanish Cadastre WMS service.
+This function wraps
 [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html).
 
 ## Usage
@@ -26,13 +26,13 @@ catr_wms_get_layer(
 
 - x:
 
-  See **Bounding box**. Can be one of:
+  Input defining the query area. See **Bounding box**. It can be:
 
   - A numeric vector of length 4 with the coordinates that define the
     bounding box: `c(xmin, ymin, xmax, ymax)`.
 
-  - A `sf/sfc` object, as provided by the
-    [sf](https://CRAN.R-project.org/package=sf) package.
+  - An `sf` or `sfc` object from
+    [sf](https://CRAN.R-project.org/package=sf).
 
 - srs:
 
@@ -42,19 +42,18 @@ catr_wms_get_layer(
 
 - what, styles:
 
-  Layer and style of the WMS layer to be downloaded. See **Layers and
+  Layer and style to download from the WMS service. See **Layers and
   styles**.
 
 - update_cache:
 
-  Logical. Should the cached file be refreshed? Defaults to `FALSE`.
-  When set to `TRUE`, it forces a new download.
+  Logical. Whether to refresh the cached file. Defaults to `FALSE`.
 
 - cache_dir:
 
-  Path to a cache directory. On `NULL`, the function stores cached files
-  in a temporary directory (see
-  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
+  Path to a cache directory. If `NULL`, the function stores cached files
+  in a temporary directory. See
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html).
 
 - verbose:
 
@@ -97,7 +96,7 @@ catr_wms_get_layer(
 ## Value
 
 A [`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html)
-is returned, with 3 (RGB) or 4 (RGBA) layers, see
+with three RGB or four RGBA layers. See
 [`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html).
 
 ## Bounding box
@@ -107,84 +106,63 @@ coordinate values. When `x` is a
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object, the
 value `srs` is ignored.
 
-The query is performed using [EPSG:3857](https://epsg.io/3857) (Web
-Mercator) and the tile is projected back to the SRS of `x`. In case that
-the tile looks deformed, try either providing `x` or specify the SRS of
-the requested tile via the `srs` argument, which should match the SRS of
-`x`. See **Examples**.
+The query uses [EPSG:3857](https://epsg.io/3857) (Web Mercator), then
+transforms the tile back to the SRS of `x`. If the tile appears
+distorted, provide a spatial object as `x` or set `srs` to the SRS of
+the requested tile. See **Examples**.
 
 ## Layers and styles
 
 ### Layers
 
-The argument `what` defines the layer to be extracted. The equivalence
-with the [API
-documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
-reference is:
+The `what` argument selects one of the following API layers:
 
-- `"parcel"`: CP.CadastralParcel
+- `"parcel"`: `CP.CadastralParcel`.
 
-- `"zoning"`: CP.CadastralZoning
+- `"zoning"`: `CP.CadastralZoning`.
 
-- `"building"`: BU.Building
+- `"building"`: `BU.Building`.
 
-- `"buildingpart"`: BU.BuildingPart
+- `"buildingpart"`: `BU.BuildingPart`.
 
-- `"address"`: AD.Address
+- `"address"`: `AD.Address`.
 
-- `"admboundary"`: AU.AdministrativeBoundary
+- `"admboundary"`: `AU.AdministrativeBoundary`.
 
-- `"admunit"`: AU.AdministrativeUnit
+- `"admunit"`: `AU.AdministrativeUnit`.
 
 ### Styles
 
 The WMS service provides different styles for each layer (`what`
-argument). Some available styles are:
+argument). Available styles include:
 
-- `"parcel"`: Styles: `"BoundariesOnly"`, `"ReferencePointOnly"`,
+- `"parcel"`: `"BoundariesOnly"`, `"ReferencePointOnly"` and
   `"ELFCadastre"`.
 
-- `"zoning"`: Styles: `"BoundariesOnly"`, `"ELFCadastre"`.
+- `"zoning"`: `"BoundariesOnly"` and `"ELFCadastre"`.
 
-- `"building"`, `"buildingpart"`: `"ELFCadastre"`.
+- `"building"` and `"buildingpart"`: `"ELFCadastre"`.
 
 - `"address"`: `"Number.ELFCadastre"`.
 
-- `"admboundary"`, `"admunit"`: `"ELFCadastre"`.
+- `"admboundary"` and `"admunit"`: `"ELFCadastre"`.
 
-Check the [API
+See the [API
 documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspire-WMS.pdf)
-for more information.
+for complete layer and style information.
 
 ## See also
 
-[`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
-and
-[`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html).
-For plotting see
-[`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html)
-and
-[`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html).
+- [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
+  downloads map tiles.
 
-Related INSPIRE API functions:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
-[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
-[`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md),
-[`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md),
-[`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md),
-[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
+- [`terra::RGB()`](https://rspatial.github.io/terra/reference/RGB.html)
+  identifies RGB channels.
 
-Other spatial:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
-[`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md),
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
+- [`terra::plotRGB()`](https://rspatial.github.io/terra/reference/plotRGB.html)
+  and
+  [`tidyterra::geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
+  plot RGB rasters.
 
 ## Examples
 

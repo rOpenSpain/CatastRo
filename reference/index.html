@@ -19,7 +19,7 @@
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas web service</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -42,9 +42,14 @@
     </div>
 
     <div class="section level2">
-      <h2 id="atom-inspire-services">ATOM INSPIRE services<a class="anchor" aria-label="anchor" href="#atom-inspire-services"></a></h2>
+      <h2 id="inspire-services">INSPIRE services<a class="anchor" aria-label="anchor" href="#inspire-services"></a></h2>
 
-      <div class="section-desc"><p>These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><span class="pkg">sf</span></a> objects from the ATOM INSPIRE services of the Spanish Cadastre.</p></div>
+      <div class="section-desc"><p>Retrieve cadastral addresses, buildings, parcels and georeferenced map images through Spanish Cadastre INSPIRE services.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+      <h3 id="atom-downloads">ATOM downloads<a class="anchor" aria-label="anchor" href="#atom-downloads"></a></h3>
+      <div class="section-desc"><p>Download complete municipal cadastral datasets and query their metadata.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -100,9 +105,9 @@
         </dt>
         <dd>ATOM INSPIRE: search for municipality codes</dd>
       </dl></div><div class="section level2">
-      <h2 id="wfs-inspire-services">WFS INSPIRE services<a class="anchor" aria-label="anchor" href="#wfs-inspire-services"></a></h2>
 
-      <div class="section-desc"><p>These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><span class="pkg">sf</span></a> objects from the WFS INSPIRE services of the Spanish Cadastre.</p></div>
+      <h3 id="wfs-queries">WFS queries<a class="anchor" aria-label="anchor" href="#wfs-queries"></a></h3>
+      <div class="section-desc"><p>Retrieve cadastral features for a selected bounding box or cadastral identifier.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -110,13 +115,6 @@
 
 
       <dl><dt>
-
-          <code><a href="catr_srs_values.html">catr_srs_values</a></code>
-
-        </dt>
-        <dd>Reference SRS codes for <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> services</dd>
-
-        <dt>
 
           <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_bbox()</a></code> <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_codvia()</a></code> <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_rc()</a></code> <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_postalcode()</a></code>
 
@@ -142,11 +140,11 @@
           <code><a href="inspire_wfs_get.html">inspire_wfs_get()</a></code>
 
         </dt>
-        <dd>Client tool for WFS INSPIRE services</dd>
+        <dd>Query WFS INSPIRE services</dd>
       </dl></div><div class="section level2">
-      <h2 id="wms-inspire-services">WMS INSPIRE services<a class="anchor" aria-label="anchor" href="#wms-inspire-services"></a></h2>
 
-      <div class="section-desc"><p>These functions return <code><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">SpatRaster</a></code> map images from the WMS INSPIRE services of the Spanish Cadastre.</p></div>
+      <h3 id="wms-maps">WMS maps<a class="anchor" aria-label="anchor" href="#wms-maps"></a></h3>
+      <div class="section-desc"><p>Download georeferenced cadastral map images.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -159,31 +157,15 @@
 
         </dt>
         <dd>WMS INSPIRE: download map images</dd>
-
-        <dt>
-
-          <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html" class="external-link">esp_get_tiles()</a></code> <code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html" class="external-link">esp_get_attributions()</a></code>
-
-        </dt>
-        <dd>Get static map tiles from public administrations of Spain (from mapSpain)</dd>
-
-        <dt>
-
-          <code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">plotRGB(<i>&lt;SpatRaster&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Red-Green-Blue plot of a multi-layered SpatRaster (from terra)</dd>
-
-        <dt>
-
-          <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb()</a></code>
-
-        </dt>
-        <dd>Plot <code>SpatRaster</code> objects as images (from tidyterra)</dd>
       </dl></div><div class="section level2">
-      <h2 id="ovccoordenadas-service">OVCCoordenadas service<a class="anchor" aria-label="anchor" href="#ovccoordenadas-service"></a></h2>
+      <h2 id="ovc-services">OVC services<a class="anchor" aria-label="anchor" href="#ovc-services"></a></h2>
 
-      <div class="section-desc"><p>These functions geocode and reverse geocode cadastral references using the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">OVCCoordenadas</a> service.</p></div>
+      <div class="section-desc"><p>Geocode cadastral references, reverse geocode coordinates and query administrative codes through Spanish Cadastre OVC services.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+      <h3 id="coordinates-and-cadastral-references">Coordinates and cadastral references<a class="anchor" aria-label="anchor" href="#coordinates-and-cadastral-references"></a></h3>
+      <div class="section-desc"><p>Convert between cadastral references and spatial coordinates.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -210,17 +192,10 @@
 
         </dt>
         <dd>OVCCoordenadas: reverse geocode cadastral references near coordinates</dd>
-
-        <dt>
-
-          <code><a href="catr_srs_values.html">catr_srs_values</a></code>
-
-        </dt>
-        <dd>Reference SRS codes for <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> services</dd>
       </dl></div><div class="section level2">
-      <h2 id="ovccallejero-service">OVCCallejero service<a class="anchor" aria-label="anchor" href="#ovccallejero-service"></a></h2>
 
-      <div class="section-desc"><p>These functions query province and municipality codes using the <a href="http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx" class="external-link">OVCCallejero</a> service.</p></div>
+      <h3 id="province-and-municipality-codes">Province and municipality codes<a class="anchor" aria-label="anchor" href="#province-and-municipality-codes"></a></h3>
+      <div class="section-desc"><p>Query province and municipality codes used by the Spanish Cadastre.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -241,9 +216,14 @@
         </dt>
         <dd>OVCCallejero: extract provinces with their codes</dd>
       </dl></div><div class="section level2">
-      <h2 id="search-functions">Search functions<a class="anchor" aria-label="anchor" href="#search-functions"></a></h2>
+      <h2 id="utilities-and-reference-data">Utilities and reference data<a class="anchor" aria-label="anchor" href="#utilities-and-reference-data"></a></h2>
 
-      <div class="section-desc"><p>Helpers for finding cadastral municipality codes and related reference data.</p></div>
+      <div class="section-desc"><p>Search Spanish Cadastre identifiers, manage downloaded files and inspect package reference data.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+      <h3 id="search">Search<a class="anchor" aria-label="anchor" href="#search"></a></h3>
+      <div class="section-desc"><p>Find cadastral municipality codes and related reference information.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -278,9 +258,9 @@
         </dt>
         <dd>OVCCallejero: extract provinces with their codes</dd>
       </dl></div><div class="section level2">
-      <h2 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h2>
 
-      <div class="section-desc"><p>Tools for configuring, detecting and clearing the local cache used by <strong>CatastRo</strong>.</p></div>
+      <h3 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h3>
+      <div class="section-desc"><p>Configure, detect and clear the local cache used by <strong>CatastRo</strong>.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -301,9 +281,9 @@
         </dt>
         <dd>Set your <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> cache directory</dd>
       </dl></div><div class="section level2">
-      <h2 id="databases-and-reference-data">Databases and reference data<a class="anchor" aria-label="anchor" href="#databases-and-reference-data"></a></h2>
 
-      <div class="section-desc"><p>Reference tables and helper databases used by the package services.</p></div>
+      <h3 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h3>
+      <div class="section-desc"><p>Inspect SRS reference data used by the package services.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -312,34 +292,6 @@
 
       <dl><dt>
 
-          <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code> <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_to()</a></code>
-
-        </dt>
-        <dd>ATOM INSPIRE: reference database for ATOM addresses</dd>
-
-        <dt>
-
-          <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all()</a></code> <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_to()</a></code>
-
-        </dt>
-        <dd>ATOM INSPIRE: reference database for ATOM buildings</dd>
-
-        <dt>
-
-          <code><a href="catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_all()</a></code> <code><a href="catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_to()</a></code>
-
-        </dt>
-        <dd>ATOM INSPIRE: reference database for ATOM cadastral parcels</dd>
-
-        <dt>
-
-          <code><a href="catr_atom_search_munic.html">catr_atom_search_munic()</a></code>
-
-        </dt>
-        <dd>ATOM INSPIRE: search for municipality codes</dd>
-
-        <dt>
-
           <code><a href="catr_srs_values.html">catr_srs_values</a></code>
 
         </dt>
@@ -347,7 +299,7 @@
       </dl></div><div class="section level2">
       <h2 id="helpers-and-package-metadata">Helpers and package metadata<a class="anchor" aria-label="anchor" href="#helpers-and-package-metadata"></a></h2>
 
-      <div class="section-desc"><p>Package-level documentation and example helpers.</p></div>
+      <div class="section-desc"><p>Read package-level documentation.</p></div>
 
       <dl></dl></div><div class="section level2">
 

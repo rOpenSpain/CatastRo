@@ -2,9 +2,8 @@
 
 **CatastRo** provides access to services from the [Spanish
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
-download buildings, cadastral parcels, addresses and map imagery,
-geocode cadastral references and look up cadastral references from
-coordinates.
+retrieve addresses, buildings, cadastral parcels and georeferenced map
+images, geocode cadastral references and reverse geocode coordinates.
 
 ## Installation
 
@@ -18,12 +17,12 @@ install.packages("CatastRo")
 
 SSL issues
 
-The SSL certificate of the Spanish Cadastre may cause an error when
-using **CatastRo** (especially on macOS, see issue
-[\#40](https://github.com/rOpenSpain/CatastRo/issues/40)):
+The SSL certificate of the Spanish Cadastre may cause errors when using
+**CatastRo** (especially on macOS, see issue
+[\#40](https://github.com/rOpenSpain/CatastRo/issues/40)).
 
-In **CatastRo \>= 1.0.0**, you can try to fix it by running this line
-after loading the package:
+In **CatastRo \>= 1.0.0**, you can work around these errors by running
+this code after loading the package:
 
 ``` r
 
@@ -31,7 +30,7 @@ after loading the package:
 options(catastro_ssl_verify = 0)
 ```
 
-If you wish to make this setup persistent, write the same code in your
+To make this setting persistent, add the same code to your
 [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 
     .Rprofile
@@ -49,26 +48,28 @@ package naming convention is `catr_*service*_*description*`.
 
 ### OVC services
 
-OVC services cover geocoding and reverse geocoding with
-[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx),
-and province and municipality code lookup with OVCCallejero.
+OVC services use
+[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
+for geocoding and reverse geocoding and OVCCallejero for province and
+municipality code lookup.
 
 These functions use the `catr_ovc_get_*()` prefix and return tibbles
 from the **tibble** package. See
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)
 for a detailed description of these functions.
 
-### INSPIRE
+### INSPIRE services
 
-INSPIRE functions return spatial objects from the [Spanish Cadastre
-INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html)
-services using the **sf** or **terra** packages.
+INSPIRE functions retrieve spatial objects from the [Spanish Cadastre
+INSPIRE
+services](https://www.catastro.hacienda.gob.es/webinspire/index.html)
+using the **sf** or **terra** packages.
 
 Note that these services cover 95% of the Spanish territory, excluding
 the Basque Country and Navarre[^1], which have their own independent
 cadastral offices.
 
-There are three types of functions, each querying a different service:
+There are three INSPIRE services:
 
 #### ATOM service
 
@@ -106,7 +107,7 @@ use](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf).
 
 ## Examples
 
-This script highlights some features of **CatastRo**:
+These examples highlight some features of **CatastRo**:
 
 ### Geocode a cadastral reference
 
@@ -177,7 +178,7 @@ ggplot(wfs_get_buildings) +
 ![Extract Alcázar of Segovia with the WFS
 service](reference/figures/README-wfs-1.png)
 
-## A note on caching
+## Cache management
 
 Some datasets and tiles may exceed 50 MB. You can set a local cache
 directory using the following function:
@@ -187,8 +188,8 @@ directory using the following function:
 catr_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, **CatastRo** looks for cached files and loads
-them, which speeds up repeated queries.
+When a cache directory is configured, **CatastRo** reuses downloaded
+files, which speeds up repeated queries.
 
 ## Citation
 
@@ -211,10 +212,10 @@ A BibTeX entry for LaTeX users is:
 }
 ```
 
-## Contribute
+## Contributing
 
-Check the GitHub page for the [source
-code](https://github.com/ropenspain/CatastRo/).
+See the [source code and issue
+tracker](https://github.com/ropenspain/CatastRo/) on GitHub.
 
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
@@ -223,11 +224,14 @@ code](https://github.com/ropenspain/CatastRo/).
 
 # Package index
 
-## ATOM INSPIRE services
+## INSPIRE services
 
-These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects from the
-ATOM INSPIRE services of the Spanish Cadastre.
+Retrieve cadastral addresses, buildings, parcels and georeferenced map
+images through Spanish Cadastre INSPIRE services.
+
+### ATOM downloads
+
+Download complete municipal cadastral datasets and query their metadata.
 
 - [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md)
   : ATOM INSPIRE: download all addresses of a municipality
@@ -247,98 +251,69 @@ ATOM INSPIRE services of the Spanish Cadastre.
 - [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
   : ATOM INSPIRE: search for municipality codes
 
-## WFS INSPIRE services
+### WFS queries
 
-These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects from the
-WFS INSPIRE services of the Spanish Cadastre.
-
-- [`catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md)
-  :
-
-  Reference SRS codes for
-  [CatastRo](https://CRAN.R-project.org/package=CatastRo) services
+Retrieve cadastral features for a selected bounding box or cadastral
+identifier.
 
 - [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
   [`catr_wfs_get_address_codvia()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
   [`catr_wfs_get_address_rc()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
   [`catr_wfs_get_address_postalcode()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
   : WFS INSPIRE: download addresses
-
 - [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md)
   [`catr_wfs_get_buildings_rc()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md)
   : WFS INSPIRE: download buildings
-
 - [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
   [`catr_wfs_get_parcels_zoning()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
   [`catr_wfs_get_parcels_parcel()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
   [`catr_wfs_get_parcels_neigh_parcel()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
   [`catr_wfs_get_parcels_parcel_zoning()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
   : WFS INSPIRE: download cadastral parcels
-
 - [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
-  : Client tool for WFS INSPIRE services
+  : Query WFS INSPIRE services
 
-## WMS INSPIRE services
+### WMS maps
 
-These functions return
-[`SpatRaster`](https://rspatial.github.io/terra/reference/rast.html) map
-images from the WMS INSPIRE services of the Spanish Cadastre.
+Download georeferenced cadastral map images.
 
 - [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
   : WMS INSPIRE: download map images
 
-- [`esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
-  [`esp_get_attributions()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
-  : Get static map tiles from public administrations of Spain (from
-  mapSpain)
+## OVC services
 
-- [`plotRGB(`*`<SpatRaster>`*`)`](https://rspatial.github.io/terra/reference/plotRGB.html)
-  : Red-Green-Blue plot of a multi-layered SpatRaster (from terra)
+Geocode cadastral references, reverse geocode coordinates and query
+administrative codes through Spanish Cadastre OVC services.
 
-- [`geom_spatraster_rgb()`](https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html)
-  :
+### Coordinates and cadastral references
 
-  Plot `SpatRaster` objects as images (from tidyterra)
-
-## OVCCoordenadas service
-
-These functions geocode and reverse geocode cadastral references using
-the
-[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
-service.
+Convert between cadastral references and spatial coordinates.
 
 - [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
   : OVCCoordenadas: geocode a cadastral reference
-
 - [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
   : OVCCoordenadas: reverse geocode a cadastral reference
-
 - [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
   : OVCCoordenadas: reverse geocode cadastral references near
   coordinates
 
-- [`catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md)
-  :
+### Province and municipality codes
 
-  Reference SRS codes for
-  [CatastRo](https://CRAN.R-project.org/package=CatastRo) services
-
-## OVCCallejero service
-
-These functions query province and municipality codes using the
-[OVCCallejero](http://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx)
-service.
+Query province and municipality codes used by the Spanish Cadastre.
 
 - [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md)
   : OVCCallejero: extract the code of a municipality
 - [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md)
   : OVCCallejero: extract provinces with their codes
 
-## Search functions
+## Utilities and reference data
 
-Helpers for finding cadastral municipality codes and related reference
-data.
+Search Spanish Cadastre identifiers, manage downloaded files and inspect
+package reference data.
+
+### Search
+
+Find cadastral municipality codes and related reference information.
 
 - [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
   : ATOM INSPIRE: search for municipality codes
@@ -349,10 +324,9 @@ data.
 - [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md)
   : OVCCallejero: extract provinces with their codes
 
-## Cache management
+### Cache management
 
-Tools for configuring, detecting and clearing the local cache used by
-**CatastRo**.
+Configure, detect and clear the local cache used by **CatastRo**.
 
 - [`catr_clear_cache()`](https://ropenspain.github.io/CatastRo/reference/catr_clear_cache.md)
   :
@@ -367,24 +341,9 @@ Tools for configuring, detecting and clearing the local cache used by
   Set your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache
   directory
 
-## Databases and reference data
+### Datasets
 
-Reference tables and helper databases used by the package services.
-
-- [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
-  [`catr_atom_get_address_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
-  : ATOM INSPIRE: reference database for ATOM addresses
-
-- [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
-  [`catr_atom_get_buildings_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
-  : ATOM INSPIRE: reference database for ATOM buildings
-
-- [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
-  [`catr_atom_get_parcels_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
-  : ATOM INSPIRE: reference database for ATOM cadastral parcels
-
-- [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
-  : ATOM INSPIRE: search for municipality codes
+Inspect SRS reference data used by the package services.
 
 - [`catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md)
   :
@@ -394,7 +353,7 @@ Reference tables and helper databases used by the package services.
 
 ## Helpers and package metadata
 
-Package-level documentation and example helpers.
+Read package-level documentation.
 
 - [`CatastRo`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
   [`CatastRo-package`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
@@ -402,14 +361,9 @@ Package-level documentation and example helpers.
 
 # Articles
 
-### Articles
+### Service guides
 
-- [Get
-  started](https://ropenspain.github.io/CatastRo/articles/CatastRo.md):
-
-  Brief introduction to the CatastRo package.
-
-- [OVCCoordenadas web
+- [OVCCoordenadas
   service](https://ropenspain.github.io/CatastRo/articles/ovcservice.md):
 
-  Retrieve spatial coordinates of urban properties.
+  Geocode cadastral references and reverse geocode coordinates.
