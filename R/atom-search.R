@@ -6,7 +6,7 @@
 #'
 #' @inheritParams catr_atom_get_parcels
 #'
-#' @return A [tibble][tibble::tbl_df] with the territorial office,
+#' @return A [tibble][dplyr::tbl_df] with the territorial office,
 #'   municipality name and cadastral code. Returns `NULL` if no match is found.
 #'
 #' @family atom

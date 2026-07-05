@@ -18,7 +18,7 @@ Cadastre (\code{cmun}) or the National Statistics Institute. Either \code{cmun} 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
 \code{NULL} if the request fails.
 }
 \description{
@@ -28,7 +28,7 @@ municipality names and codes from the Spanish Cadastre and the National
 Statistics Institute (INE).
 }
 \details{
-On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
+On a successful query, this function returns a \link[dplyr:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
 \item \code{munic}: Municipality name used by the Spanish Cadastre.

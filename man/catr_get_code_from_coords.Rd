@@ -52,7 +52,7 @@ municipalities.}
   }}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
 \code{NULL} if the request fails.
 }
 \description{
@@ -60,7 +60,7 @@ Retrieve the municipality code associated with an \code{\link[sf:st_sf]{sf}} obj
 or a coordinate pair.
 }
 \details{
-On a successful query, this function returns a \link[tibble:tbl_df]{tibble}
+On a successful query, this function returns a \link[dplyr:tbl_df]{tibble}
 with one row including the following columns:
 \itemize{
 \item \code{munic}: Municipality name used by the Spanish Cadastre.

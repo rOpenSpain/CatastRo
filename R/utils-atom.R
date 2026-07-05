@@ -5,7 +5,7 @@
 #' @param encoding Character string specifying the file encoding. Defaults to
 #'   `"UTF-8"`.
 #'
-#' @return A [tibble][tibble::tbl_df] containing ATOM feed entries.
+#' @return A [tibble][dplyr::tbl_df] containing ATOM feed entries.
 #'
 #' @noRd
 catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
@@ -40,7 +40,7 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
       value <- trimws(gsub("\\n|\\t", "", value))
       value <- value[grepl("^[0-9]", value)]
 
-      tbl <- tibble::tibble(
+      tbl <- dplyr::tibble(
         title = trimws(title),
         url = trimws(url),
         value = trimws(value),
@@ -55,7 +55,7 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
       url <- unlist(attr(x$link, "href"))
       date <- as.POSIXct(unlist(feed[1]$entry$updated))
 
-      tbl <- tibble::tibble(
+      tbl <- dplyr::tibble(
         title = trimws(title),
         url = trimws(url),
         date = date

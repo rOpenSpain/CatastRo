@@ -92,7 +92,7 @@ sanitize_sf <- function(data_sf) {
     data_utf8 <- set_utf8(data_sf)
   }
 
-  data_utf8 <- tibble::as_tibble(data_utf8)
+  data_utf8 <- dplyr::as_tibble(data_utf8)
 
   if (!inherits(data_sf, "sf")) {
     return(data_utf8)

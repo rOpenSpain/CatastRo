@@ -17,7 +17,7 @@
 #'
 #' @inheritParams catr_set_cache_dir
 #' @return
-#' A [tibble][tibble::tbl_df] with the requested information in the following
+#' A [tibble][dplyr::tbl_df] with the requested information in the following
 #' columns:
 #' - `territorial_office`: Territorial office, corresponding to each province
 #'   of Spain except the Basque Country and Navarre.

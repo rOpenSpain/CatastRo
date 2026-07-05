@@ -6,7 +6,7 @@
 #' their Spanish Cadastre codes.
 #'
 #' @inheritParams catr_ovc_get_cpmrc
-#' @return A [tibble][tibble::tbl_df] with province names and codes. Returns
+#' @return A [tibble][dplyr::tbl_df] with province names and codes. Returns
 #'   `NULL` if the request fails.
 #'
 #' @references

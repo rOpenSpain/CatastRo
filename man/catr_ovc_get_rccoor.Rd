@@ -20,7 +20,7 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
 \code{NULL} if the request fails.
 }
 \description{
@@ -30,9 +30,9 @@ reference associated with a pair of coordinates.
 }
 \details{
 If the API returns no results, this function returns a
-\link[tibble:tbl_df]{tibble} containing only query information.
+\link[dplyr:tbl_df]{tibble} containing only query information.
 
-On a successful query, this function returns a \link[tibble:tbl_df]{tibble} with
+On a successful query, this function returns a \link[dplyr:tbl_df]{tibble} with
 one row per cadastral reference, including the following columns:
 \itemize{
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input arguments of the query.

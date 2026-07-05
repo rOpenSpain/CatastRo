@@ -11,7 +11,7 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} with province names and codes. Returns
+A \link[dplyr:tbl_df]{tibble} with province names and codes. Returns
 \code{NULL} if the request fails.
 }
 \description{

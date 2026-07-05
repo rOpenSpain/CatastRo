@@ -7,9 +7,9 @@
 #'
 #' @details
 #' If the API returns no results, this function returns a
-#' [tibble][tibble::tbl_df] containing only query information.
+#' [tibble][dplyr::tbl_df] containing only query information.
 #'
-#' On a successful query, this function returns a [tibble][tibble::tbl_df]
+#' On a successful query, this function returns a [tibble][dplyr::tbl_df]
 #' with one row per cadastral reference, including the following columns:
 #' - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 #' - `refcat`: Cadastral reference.
@@ -23,7 +23,7 @@
 #'   [catr_srs_values], specifically the `ovc_service` column.
 #'
 #' @inheritParams catr_set_cache_dir
-#' @return A [tibble][tibble::tbl_df] as described in **Details**. Returns
+#' @return A [tibble][dplyr::tbl_df] as described in **Details**. Returns
 #'   `NULL` if the request fails.
 #'
 #' @references
@@ -93,7 +93,7 @@ catr_ovc_get_cpmrc <- function(
 
   if (ovc_has_error(err)) {
     ovc_report_error(err)
-    empty <- tibble::tibble(r = rc, srs = srs)
+    empty <- dplyr::tibble(r = rc, srs = srs)
 
     names(empty) <- c("refcat", "geo.srs")
     return(empty)
@@ -106,7 +106,7 @@ catr_ovc_get_cpmrc <- function(
 
   # Build helper fields.
   rc_help <- dplyr::bind_cols(
-    tibble::tibble(
+    dplyr::tibble(
       xcoord = as.double(overall$geo.xcen),
       ycoord = as.double(overall$geo.ycen)
     ),

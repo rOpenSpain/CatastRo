@@ -33,7 +33,7 @@ cached files in a temporary directory. See \code{\link[base:tempdir]{base::tempd
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} with the territorial office,
+A \link[dplyr:tbl_df]{tibble} with the territorial office,
 municipality name and cadastral code. Returns \code{NULL} if no match is found.
 }
 \description{

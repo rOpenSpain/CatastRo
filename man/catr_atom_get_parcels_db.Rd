@@ -39,7 +39,7 @@ cached files in a temporary directory. See \code{\link[base:tempdir]{base::tempd
 \item{to}{Character string. Territorial office to match using \code{\link[base:grep]{base::grep()}}.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} with the requested information in the following
+A \link[dplyr:tbl_df]{tibble} with the requested information in the following
 columns:
 \itemize{
 \item \code{territorial_office}: Territorial office, corresponding to each province

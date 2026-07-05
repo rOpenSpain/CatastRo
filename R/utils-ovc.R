@@ -33,7 +33,7 @@ ovc_get_xml <- function(url, verbose = FALSE) {
 #'
 #' @noRd
 ovc_as_tibble_row <- function(x) {
-  tibble::as_tibble_row(unlist(x))
+  dplyr::bind_cols(as.list(unlist(x)))
 }
 
 #' Convert OVC XML nodes to a tibble
@@ -65,7 +65,7 @@ ovc_has_error <- function(x) {
 #'
 #' @noRd
 ovc_ref_address <- function(x) {
-  tibble::tibble(refcat = paste0(x$pc.pc1, x$pc.pc2), address = x$ldt)
+  dplyr::tibble(refcat = paste0(x$pc.pc1, x$pc.pc2), address = x$ldt)
 }
 
 #' Convert common OVC coordinate columns to numeric

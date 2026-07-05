@@ -8,9 +8,9 @@
 #'
 #' @details
 #' If the API returns no results, this function returns a
-#' [tibble][tibble::tbl_df] containing only query information.
+#' [tibble][dplyr::tbl_df] containing only query information.
 #'
-#' On a successful query, this function returns a [tibble][tibble::tbl_df] with
+#' On a successful query, this function returns a [tibble][dplyr::tbl_df] with
 #' one row per cadastral reference, including the following columns:
 #' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 #' - `refcat`: Cadastral reference.
@@ -96,7 +96,7 @@ catr_ovc_get_rccoor_distancia <- function(
   # Build additional cadastral reference, address and municipality fields.
   rc_help <- dplyr::bind_cols(
     ovc_ref_address(rc_all),
-    tibble::tibble(cmun_ine = paste0(rc_all$dt.loine.cp, rc_all$dt.loine.cm))
+    dplyr::tibble(cmun_ine = paste0(rc_all$dt.loine.cp, rc_all$dt.loine.cm))
   )
 
   # Join helper fields and the raw API response.

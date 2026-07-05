@@ -1,7 +1,7 @@
 #' Reference SRS codes for \CRANpkg{CatastRo} services
 #'
 #' @description
-#' A [tibble][tibble::tbl_df] containing valid SRS values, also known as CRS
+#' A [tibble][dplyr::tbl_df] containing valid SRS values, also known as CRS
 #' values, for each API service. Values are represented as
 #' [EPSG codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 #'
@@ -17,7 +17,7 @@
 #' ```
 #'
 #' @format
-#' A [tibble][tibble::tbl_df] with `r nrow(CatastRo::catr_srs_values)` rows
+#' A [tibble][dplyr::tbl_df] with `r nrow(CatastRo::catr_srs_values)` rows
 #' and columns:
 #' \describe{
 #'   \item{SRS}{Spatial reference system (SRS) value, also known as a

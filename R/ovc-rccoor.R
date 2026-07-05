@@ -7,9 +7,9 @@
 #'
 #' @details
 #' If the API returns no results, this function returns a
-#' [tibble][tibble::tbl_df] containing only query information.
+#' [tibble][dplyr::tbl_df] containing only query information.
 #'
-#' On a successful query, this function returns a [tibble][tibble::tbl_df] with
+#' On a successful query, this function returns a [tibble][dplyr::tbl_df] with
 #' one row per cadastral reference, including the following columns:
 #' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 #' - `refcat`: Cadastral reference.
@@ -67,7 +67,7 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
 
   if (ovc_has_error(err)) {
     ovc_report_error(err)
-    empty <- tibble::tibble(a = lat, b = lon, srs = srs)
+    empty <- dplyr::tibble(a = lat, b = lon, srs = srs)
 
     names(empty) <- c("geo.xcen", "geo.ycen", "geo.srs")
     return(empty)

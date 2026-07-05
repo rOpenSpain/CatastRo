@@ -7,7 +7,7 @@
 #' Statistics Institute (INE).
 #'
 #' @details
-#' On a successful query, this function returns a [tibble][tibble::tbl_df]
+#' On a successful query, this function returns a [tibble][dplyr::tbl_df]
 #' with one row including the following columns:
 #'
 #' - `munic`: Municipality name used by the Spanish Cadastre.
@@ -96,7 +96,7 @@ catr_ovc_get_cod_munic <- function(
 
   if (ovc_has_error(err)) {
     ovc_report_error(err)
-    empty <- tibble::tibble(name = NA)
+    empty <- dplyr::tibble(name = NA)
 
     return(empty)
   }
@@ -117,14 +117,14 @@ catr_ovc_get_cod_munic <- function(
   names(df) <- newnames
 
   # Create normalized cadastral and INE codes.
-  catcodes <- tibble::tibble(
+  catcodes <- dplyr::tibble(
     munic = df$nm,
     catr_to = sprintf("%02d", as.integer(df$cd)),
     catr_munic = sprintf("%03d", as.integer(df$cmc))
   )
 
   catcodes$catrcode <- paste0(catcodes$catr_to, catcodes$catr_munic)
-  inecodes <- tibble::tibble(
+  inecodes <- dplyr::tibble(
     cpro = sprintf("%02d", as.integer(df$cp)),
     cmun = sprintf("%03d", as.integer(df$cm))
   )
