@@ -138,7 +138,7 @@ catr_ovc_get_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) |>
   knitr::kable()
-#> ✖ OVC service error 11: LA PROVINCIA ES OBLIGATORIA
+#> ✖ OVC service error "11": LA PROVINCIA ES OBLIGATORIA
 ```
 
 | refcat         | geo.srs   |

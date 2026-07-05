@@ -8,7 +8,7 @@ and configuration, specifically:
 
 - Deletes the `cache_dir` directory.
 
-- Deletes the values stored on `Sys.getenv("CATASTROESP_CACHE_DIR")`.
+- Clears the `CATASTROESP_CACHE_DIR` environment variable.
 
 ## Usage
 
@@ -20,7 +20,7 @@ catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - config:
 
-  If `TRUE`, deletes the configuration folder of
+  If `TRUE`, deletes the configuration directory of
   [CatastRo](https://CRAN.R-project.org/package=CatastRo).
 
 - cached_data:
@@ -55,7 +55,7 @@ Manage the local cache:
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpTcoGA6/CatastRo
+#> ℹ /tmp/Rtmp1FVoGn/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -63,13 +63,13 @@ catr_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 catr_clear_cache(verbose = TRUE)
-#> ! CatastRo cached data deleted: /tmp/RtmpTcoGA6/example/cache (0 bytes).
+#> ! CatastRo cached data deleted: /tmp/Rtmp1FVoGn/example/cache (0 bytes).
 
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache directory is /tmp/RtmpTcoGA6/CatastRo.
-#> ℹ To reuse this `cache_dir` in future sessions, run this function with `install = TRUE`.
+#> ℹ CatastRo cache directory is /tmp/Rtmp1FVoGn/CatastRo.
+#> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpTcoGA6/CatastRo
+#> ℹ /tmp/Rtmp1FVoGn/CatastRo
 #> [1] TRUE
 # }
 ```

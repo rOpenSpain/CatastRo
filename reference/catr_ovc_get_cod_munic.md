@@ -1,4 +1,4 @@
-# OVCCallejero: extract the code of a municipality
+# OVCCallejero: get municipality codes
 
 Query the OVCCallejero
 [ConsultaMunicipioCodigos](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos)
@@ -15,7 +15,7 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 - cpro:
 
-  The code of a province, as provided by
+  Province code returned by
   [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md).
 
 - cmun, cmun_ine:
@@ -30,16 +30,16 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
 described in **Details**. Returns `NULL` if the request fails.
 
 ## Details
 
 On a successful query, this function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row including the following columns:
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
+row including the following columns:
 
-- `munic`: Name of the municipality according to the Cadastre.
+- `munic`: Municipality name used by the Spanish Cadastre.
 
 - `catr_to`: Cadastral territorial office code.
 
@@ -78,23 +78,23 @@ Search for cadastral identifiers:
 # \donttest{
 # Get municipality by cadastral code
 ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
-#> Error in httr2::req_perform(req): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
 
 ab
-#> Error: object 'ab' not found
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
+#> # ℹ 1 more variable: cm <chr>
 
 # Same query using the INE code
 
 ab2 <- catr_ovc_get_cod_munic(cpro = 2, cmun_ine = 3)
-#> Error in httr2::req_perform(req): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
 
 ab2
-#> Error: object 'ab2' not found
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
+#> # ℹ 1 more variable: cm <chr>
 # }
 ```

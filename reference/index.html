@@ -61,42 +61,42 @@
           <code><a href="catr_atom_get_address.html">catr_atom_get_address()</a></code>
 
         </dt>
-        <dd>ATOM INSPIRE: download all addresses of a municipality</dd>
+        <dd>ATOM INSPIRE: download all addresses for a municipality</dd>
 
         <dt>
 
           <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code> <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_to()</a></code>
 
         </dt>
-        <dd>ATOM INSPIRE: reference database for ATOM addresses</dd>
+        <dd>ATOM INSPIRE: list address download URLs</dd>
 
         <dt>
 
           <code><a href="catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code>
 
         </dt>
-        <dd>ATOM INSPIRE: download all buildings of a municipality</dd>
+        <dd>ATOM INSPIRE: download all buildings for a municipality</dd>
 
         <dt>
 
           <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all()</a></code> <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_to()</a></code>
 
         </dt>
-        <dd>ATOM INSPIRE: reference database for ATOM buildings</dd>
+        <dd>ATOM INSPIRE: list building download URLs</dd>
 
         <dt>
 
           <code><a href="catr_atom_get_parcels.html">catr_atom_get_parcels()</a></code>
 
         </dt>
-        <dd>ATOM INSPIRE: download all cadastral parcels of a municipality</dd>
+        <dd>ATOM INSPIRE: download all cadastral parcels for a municipality</dd>
 
         <dt>
 
           <code><a href="catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_all()</a></code> <code><a href="catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_to()</a></code>
 
         </dt>
-        <dd>ATOM INSPIRE: reference database for ATOM cadastral parcels</dd>
+        <dd>ATOM INSPIRE: list cadastral parcel download URLs</dd>
 
         <dt>
 
@@ -156,11 +156,11 @@
           <code><a href="catr_wms_get_layer.html">catr_wms_get_layer()</a></code>
 
         </dt>
-        <dd>WMS INSPIRE: download map images</dd>
+        <dd>WMS INSPIRE: download georeferenced map images</dd>
       </dl></div><div class="section level2">
       <h2 id="ovc-services">OVC services<a class="anchor" aria-label="anchor" href="#ovc-services"></a></h2>
 
-      <div class="section-desc"><p>Geocode cadastral references, reverse geocode coordinates and query administrative codes through Spanish Cadastre OVC services.</p></div>
+      <div class="section-desc"><p>Geocode cadastral references, reverse geocode coordinates and query Spanish Cadastre province and municipality codes.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -184,14 +184,14 @@
           <code><a href="catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code>
 
         </dt>
-        <dd>OVCCoordenadas: reverse geocode a cadastral reference</dd>
+        <dd>OVCCoordenadas: reverse geocode coordinates</dd>
 
         <dt>
 
           <code><a href="catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code>
 
         </dt>
-        <dd>OVCCoordenadas: reverse geocode cadastral references near coordinates</dd>
+        <dd>OVCCoordenadas: find cadastral references near coordinates</dd>
       </dl></div><div class="section level2">
 
       <h3 id="province-and-municipality-codes">Province and municipality codes<a class="anchor" aria-label="anchor" href="#province-and-municipality-codes"></a></h3>
@@ -207,14 +207,14 @@
           <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>
 
         </dt>
-        <dd>OVCCallejero: extract the code of a municipality</dd>
+        <dd>OVCCallejero: get municipality codes</dd>
 
         <dt>
 
           <code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code>
 
         </dt>
-        <dd>OVCCallejero: extract provinces with their codes</dd>
+        <dd>OVCCallejero: get province codes</dd>
       </dl></div><div class="section level2">
       <h2 id="utilities-and-reference-data">Utilities and reference data<a class="anchor" aria-label="anchor" href="#utilities-and-reference-data"></a></h2>
 
@@ -249,14 +249,14 @@
           <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>
 
         </dt>
-        <dd>OVCCallejero: extract the code of a municipality</dd>
+        <dd>OVCCallejero: get municipality codes</dd>
 
         <dt>
 
           <code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code>
 
         </dt>
-        <dd>OVCCallejero: extract provinces with their codes</dd>
+        <dd>OVCCallejero: get province codes</dd>
       </dl></div><div class="section level2">
 
       <h3 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h3>
@@ -282,8 +282,8 @@
         <dd>Set your <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> cache directory</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h3>
-      <div class="section-desc"><p>Inspect SRS reference data used by the package services.</p></div>
+      <h3 id="reference-data">Reference data<a class="anchor" aria-label="anchor" href="#reference-data"></a></h3>
+      <div class="section-desc"><p>Inspect the SRS reference dataset used by the package services.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -297,7 +297,7 @@
         </dt>
         <dd>Reference SRS codes for <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> services</dd>
       </dl></div><div class="section level2">
-      <h2 id="helpers-and-package-metadata">Helpers and package metadata<a class="anchor" aria-label="anchor" href="#helpers-and-package-metadata"></a></h2>
+      <h2 id="package-metadata">Package metadata<a class="anchor" aria-label="anchor" href="#package-metadata"></a></h2>
 
       <div class="section-desc"><p>Read package-level documentation.</p></div>
 

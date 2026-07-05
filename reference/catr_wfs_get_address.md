@@ -2,22 +2,22 @@
 
 Retrieve spatial address data through several types of WFS queries:
 
-- By bounding box: `catr_wfs_get_address_bbox()` extracts objects
+- By bounding box: `catr_wfs_get_address_bbox()` retrieves objects
   included in the provided bounding box. See **Bounding box**.
 
 &nbsp;
 
-- By street code: `catr_wfs_get_address_codvia()` extracts objects for
+- By street code: `catr_wfs_get_address_codvia()` retrieves objects for
   specific addresses.
 
 &nbsp;
 
-- By cadastral reference: `catr_wfs_get_address_rc()` extracts objects
+- By cadastral reference: `catr_wfs_get_address_rc()` retrieves objects
   for specific cadastral references.
 
 &nbsp;
 
-- By postal codes: `catr_wfs_get_address_postalcode()` extracts objects
+- By postal codes: `catr_wfs_get_address_postalcode()` retrieves objects
   for specific postal codes.
 
 ## Usage
@@ -130,11 +130,15 @@ ad <- catr_wfs_get_address_bbox(
   ),
   srs = 25830
 )
+#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
 
 library(ggplot2)
 
 ggplot(ad) +
   geom_sf()
-
+#> Error: object 'ad' not found
 # }
 ```

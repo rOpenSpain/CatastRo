@@ -1,6 +1,6 @@
 # Articles
 
-### Service guides
+### Service guide
 
 - [OVCCoordenadas
   service](https://ropenspain.github.io/CatastRo/articles/ovcservice.md):

@@ -38,24 +38,24 @@ catr_ovc_get_cpmrc(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
 described in **Details**. Returns `NULL` if the request fails.
 
 ## Details
 
 If the API returns no results, this function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-containing only the input arguments.
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) containing
+only query information.
 
 On a successful query, this function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row per cadastral reference, including the following columns:
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
+row per cadastral reference, including the following columns:
 
 - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 
 - `refcat`: Cadastral reference.
 
-- `address`: Address as recorded in the Cadastre.
+- `address`: Address as recorded in the Spanish Cadastre.
 
 - Remaining fields: See the API documentation.
 

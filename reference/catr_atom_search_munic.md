@@ -49,9 +49,9 @@ catr_atom_search_munic(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with the territorial office, municipality name and cadastral code.
-Returns `NULL` if no match is found.
+A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) with the
+territorial office, municipality name and cadastral code. Returns `NULL`
+if no match is found.
 
 ## See also
 

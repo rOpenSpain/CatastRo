@@ -1,9 +1,9 @@
-# ATOM INSPIRE: reference database for ATOM buildings
+# ATOM INSPIRE: list building download URLs
 
 Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE
 service for downloading buildings.
 
-`catr_atom_get_buildings_db_all()` provides a top-level table with all
+`catr_atom_get_buildings_db_all()` provides a summary table with all
 territorial offices, except the Basque Country and Navarre and the
 municipalities included in each office.
 `catr_atom_get_buildings_db_to()` provides a table for one territorial
@@ -60,8 +60,8 @@ catr_atom_get_buildings_db_to(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with the requested information in the following columns:
+A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) with the
+requested information in the following columns:
 
 - `territorial_office`: Territorial office, corresponding to each
   province of Spain except the Basque Country and Navarre.

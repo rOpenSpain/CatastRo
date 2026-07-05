@@ -1,4 +1,4 @@
-# OVCCallejero: extract provinces with their codes
+# OVCCallejero: get province codes
 
 Query the OVCCallejero
 [ConsultaProvincia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia)
@@ -18,8 +18,8 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with province names and codes. Returns `NULL` if the request fails.
+A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) with
+province names and codes. Returns `NULL` if the request fails.
 
 ## References
 

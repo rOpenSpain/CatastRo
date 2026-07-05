@@ -88,17 +88,17 @@ search.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> as described in <strong>Details</strong>. Returns
+    <p>A <a href="https://dplyr.tidyverse.org/reference/defunct.html" class="external-link">tibble</a> as described in <strong>Details</strong>. Returns
 <code>NULL</code> if the request fails.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>If the API returns no results, this function returns a
-<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> containing only the input arguments.</p>
-<p>On a successful query, this function returns a <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>
+<a href="https://dplyr.tidyverse.org/reference/defunct.html" class="external-link">tibble</a> containing only query information.</p>
+<p>On a successful query, this function returns a <a href="https://dplyr.tidyverse.org/reference/defunct.html" class="external-link">tibble</a>
 with one row per cadastral reference, including the following columns:</p><ul><li><p><code>xcoord</code>, <code>ycoord</code>: X and Y coordinates in the specified SRS.</p></li>
 <li><p><code>refcat</code>: Cadastral reference.</p></li>
-<li><p><code>address</code>: Address as recorded in the Cadastre.</p></li>
+<li><p><code>address</code>: Address as recorded in the Spanish Cadastre.</p></li>
 <li><p>Remaining fields: See the API documentation.</p></li>
 </ul></div>
     <div class="section level2">

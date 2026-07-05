@@ -1,4 +1,4 @@
-# OVCCoordenadas: reverse geocode a cadastral reference
+# OVCCoordenadas: reverse geocode coordinates
 
 Query the OVCCoordenadas [Consulta
 RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
@@ -15,11 +15,11 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude for the query, expressed in the CRS/SRS defined by `srs`.
+  Latitude for the query, expressed in the SRS/CRS defined by `srs`.
 
 - lon:
 
-  Longitude for the query, expressed in the CRS/SRS defined by `srs`.
+  Longitude for the query, expressed in the SRS/CRS defined by `srs`.
 
 - srs:
 
@@ -33,24 +33,24 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
 described in **Details**. Returns `NULL` if the request fails.
 
 ## Details
 
 If the API returns no results, this function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-containing only the input arguments.
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) containing
+only query information.
 
 On a successful query, this function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row per cadastral reference, including the following columns:
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
+row per cadastral reference, including the following columns:
 
 - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 
 - `refcat`: Cadastral reference.
 
-- `address`: Address as recorded in the Cadastre.
+- `address`: Address as recorded in the Spanish Cadastre.
 
 - Remaining fields: See the API documentation.
 

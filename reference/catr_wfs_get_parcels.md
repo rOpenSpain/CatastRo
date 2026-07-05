@@ -3,29 +3,29 @@
 Retrieve spatial cadastral parcel and zoning data through several types
 of WFS queries:
 
-- By bounding box: `catr_wfs_get_parcels_bbox()` extracts objects
+- By bounding box: `catr_wfs_get_parcels_bbox()` retrieves objects
   included in the provided bounding box. See **Bounding box**.
 
 &nbsp;
 
-- By zoning: `catr_wfs_get_parcels_zoning()` extracts objects for a
+- By zoning: `catr_wfs_get_parcels_zoning()` retrieves objects for a
   specific cadastral zone.
 
 &nbsp;
 
-- By cadastral parcel: `catr_wfs_get_parcels_parcel()` extracts
+- By cadastral parcel: `catr_wfs_get_parcels_parcel()` retrieves
   cadastral parcels for a specific cadastral reference.
 
 &nbsp;
 
 - Neighbor cadastral parcels: `catr_wfs_get_parcels_neigh_parcel()`
-  extracts neighbor cadastral parcels for a specific cadastral
+  retrieves neighboring cadastral parcels for a specific cadastral
   reference.
 
 &nbsp;
 
 - Cadastral parcels by zoning: `catr_wfs_get_parcels_parcel_zoning()`
-  extracts cadastral parcels for a specific cadastral zone.
+  retrieves cadastral parcels for a specific cadastral zone.
 
 ## Usage
 

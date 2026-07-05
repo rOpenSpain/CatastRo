@@ -2,13 +2,13 @@
 
 Retrieve spatial building data through two types of WFS queries:
 
-- By bounding box: `catr_wfs_get_buildings_bbox()` extracts objects
+- By bounding box: `catr_wfs_get_buildings_bbox()` retrieves objects
   included in the provided bounding box. See **Bounding box**.
 
 &nbsp;
 
-- By cadastral reference: `catr_wfs_get_buildings_rc()` extracts objects
-  for specific cadastral references.
+- By cadastral reference: `catr_wfs_get_buildings_rc()` retrieves
+  objects for specific cadastral references.
 
 ## Usage
 
@@ -114,7 +114,7 @@ Work with cadastral buildings:
 
 ``` r
 # \donttest{
-# Using a bbox
+# Using a bounding box
 building <- catr_wfs_get_buildings_bbox(
   c(
     376550,
@@ -127,7 +127,7 @@ building <- catr_wfs_get_buildings_bbox(
 library(ggplot2)
 ggplot(building) +
   geom_sf() +
-  labs(title = "Search using bbox")
+  labs(title = "Search using a bounding box")
 
 
 # Using a cadastral reference
