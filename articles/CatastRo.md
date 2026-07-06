@@ -243,7 +243,7 @@ Figure 3: Granada - Urban growth
 
 ## References
 
-Royé, Dominique. 2019. *Visualize Urban Growth*.
+Royé, Dominic. 2019. *Visualize Urban Growth*.
 <https://dominicroye.github.io/blog/visualize-urban-growth/>.
 
 [^1]: The package
