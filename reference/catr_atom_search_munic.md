@@ -39,8 +39,8 @@ catr_atom_search_munic(
 
 - cache_dir:
 
-  Path to a cache directory. If `NULL`, the function stores cached files
-  in a temporary directory. See
+  Path to a cache directory. If `NULL` or `FALSE`, the function stores
+  cached files in a temporary directory. See
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html).
 
 - verbose:

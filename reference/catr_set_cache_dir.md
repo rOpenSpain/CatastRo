@@ -22,8 +22,8 @@ catr_detect_cache_dir()
 
 - cache_dir:
 
-  Path to a cache directory. If `NULL`, the function stores cached files
-  in a temporary directory. See
+  Path to a cache directory. If `NULL` or `FALSE`, the function stores
+  cached files in a temporary directory. See
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html).
 
 - overwrite:
@@ -112,29 +112,29 @@ Manage the local cache:
 # Caution! This modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpNjjtjv/CatastRo
+#> ℹ /tmp/RtmpR8ETwm/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 catr_set_cache_dir(ex)
-#> ℹ CatastRo cache directory is /tmp/RtmpNjjtjv/example/cachenew.
+#> ℹ CatastRo cache directory is /tmp/RtmpR8ETwm/example/cachenew.
 #> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 
 catr_detect_cache_dir()
-#> ℹ /tmp/RtmpNjjtjv/example/cachenew
-#> [1] "/tmp/RtmpNjjtjv/example/cachenew"
+#> ℹ /tmp/RtmpR8ETwm/example/cachenew
+#> [1] "/tmp/RtmpR8ETwm/example/cachenew"
 
 # Restore initial cache
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache directory is /tmp/RtmpNjjtjv/CatastRo.
+#> ℹ CatastRo cache directory is /tmp/RtmpR8ETwm/CatastRo.
 #> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpNjjtjv/CatastRo
+#> ℹ /tmp/RtmpR8ETwm/CatastRo
 #> [1] TRUE
 # }
 
 
 catr_detect_cache_dir()
-#> ℹ /tmp/RtmpNjjtjv/CatastRo
-#> [1] "/tmp/RtmpNjjtjv/CatastRo"
+#> ℹ /tmp/RtmpR8ETwm/CatastRo
+#> [1] "/tmp/RtmpR8ETwm/CatastRo"
 ```

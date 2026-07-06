@@ -1,14 +1,16 @@
 # Clear your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache directory
 
-Use this function with caution. This function clears your cached data
-and configuration, specifically:
+Use this function with caution. Depending on its arguments, this
+function:
 
 - Deletes the [CatastRo](https://CRAN.R-project.org/package=CatastRo)
-  config directory (`tools::R_user_dir("CatastRo", "config")`).
+  configuration directory when `config = TRUE`
+  (`tools::R_user_dir("CatastRo", "config")`).
 
-- Deletes the `cache_dir` directory.
+- Deletes the `cache_dir` directory and its contents when
+  `cached_data = TRUE`.
 
-- Clears the `CATASTROESP_CACHE_DIR` environment variable.
+- Always clears the `CATASTROESP_CACHE_DIR` environment variable.
 
 ## Usage
 
@@ -37,7 +39,8 @@ Invisibly returns `NULL`. This function is called for its side effects.
 
 ## Details
 
-This function resets the cache state as if you had never used
+With `config = TRUE` and `cached_data = TRUE`, this function resets the
+cache state as if you had never used
 [CatastRo](https://CRAN.R-project.org/package=CatastRo).
 
 ## See also
@@ -55,7 +58,7 @@ Manage the local cache:
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpNjjtjv/CatastRo
+#> ℹ /tmp/RtmpR8ETwm/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -63,13 +66,13 @@ catr_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 catr_clear_cache(verbose = TRUE)
-#> ! CatastRo cached data deleted: /tmp/RtmpNjjtjv/example/cache (0 bytes).
+#> ! CatastRo cached data deleted: /tmp/RtmpR8ETwm/example/cache (0 bytes).
 
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache directory is /tmp/RtmpNjjtjv/CatastRo.
+#> ℹ CatastRo cache directory is /tmp/RtmpR8ETwm/CatastRo.
 #> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpNjjtjv/CatastRo
+#> ℹ /tmp/RtmpR8ETwm/CatastRo
 #> [1] TRUE
 # }
 ```
