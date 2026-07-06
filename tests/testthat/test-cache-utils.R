@@ -154,6 +154,22 @@ test_that("Mock migration", {
   expect_true(file.exists(new_fname))
 })
 
+test_that("cache_dir = FALSE uses a nonpersistent temporary cache", {
+  withr::local_envvar(CATASTROESP_CACHE_DIR = NA)
+
+  expect_message(
+    cache_dir <- catr_set_cache_dir(
+      cache_dir = FALSE,
+      install = TRUE,
+      verbose = TRUE
+    ),
+    "temporary cache directory"
+  )
+
+  expect_identical(cache_dir, file.path(tempdir(), "CatastRo"))
+  expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), cache_dir)
+})
+
 test_that("catr_set_cache_dir validates arguments", {
   expect_snapshot(
     error = TRUE,

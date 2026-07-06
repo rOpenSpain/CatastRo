@@ -28,8 +28,9 @@ the first geometry is used. This function extracts coordinates using
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
-\item{cache_dir}{Path to a cache directory. If \code{NULL}, the function stores
-cached files in a temporary directory. See \code{\link[base:tempdir]{base::tempdir()}}.}
+\item{cache_dir}{Path to a cache directory. If \code{NULL} or \code{FALSE}, the
+function stores cached files in a temporary directory. See
+\code{\link[base:tempdir]{base::tempdir()}}.}
 
 \item{...}{
   Arguments passed on to \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane}}

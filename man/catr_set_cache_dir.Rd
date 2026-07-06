@@ -16,8 +16,9 @@ catr_set_cache_dir(
 catr_detect_cache_dir()
 }
 \arguments{
-\item{cache_dir}{Path to a cache directory. If \code{NULL}, the function stores
-cached files in a temporary directory. See \code{\link[base:tempdir]{base::tempdir()}}.}
+\item{cache_dir}{Path to a cache directory. If \code{NULL} or \code{FALSE}, the
+function stores cached files in a temporary directory. See
+\code{\link[base:tempdir]{base::tempdir()}}.}
 
 \item{overwrite}{Logical. If \code{TRUE}, overwrites an existing
 \code{CATASTROESP_CACHE_DIR} value already present on your machine.}

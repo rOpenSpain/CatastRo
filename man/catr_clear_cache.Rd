@@ -20,18 +20,19 @@ Invisibly returns \code{NULL}. This function is called for its side
 effects.
 }
 \description{
-Use this function with caution. This function clears your cached data
-and configuration, specifically:
+Use this function with caution. Depending on its arguments, this function:
 \itemize{
-\item Deletes the \CRANpkg{CatastRo} config directory
+\item Deletes the \CRANpkg{CatastRo} configuration directory when
+\code{config = TRUE}
 (\code{tools::R_user_dir("CatastRo", "config")}).
-\item Deletes the \code{cache_dir} directory.
-\item Clears the \code{CATASTROESP_CACHE_DIR} environment variable.
+\item Deletes the \code{cache_dir} directory and its contents when
+\code{cached_data = TRUE}.
+\item Always clears the \code{CATASTROESP_CACHE_DIR} environment variable.
 }
 }
 \details{
-This function resets the cache state as if you had never used
-\CRANpkg{CatastRo}.
+With \code{config = TRUE} and \code{cached_data = TRUE}, this function resets the
+cache state as if you had never used \CRANpkg{CatastRo}.
 }
 \examples{
 

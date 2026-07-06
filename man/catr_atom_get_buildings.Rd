@@ -35,8 +35,9 @@ supported because results are always cached.}
 \item{update_cache}{Logical. Whether to refresh the cached file. Defaults to
 \code{FALSE}.}
 
-\item{cache_dir}{Path to a cache directory. If \code{NULL}, the function stores
-cached files in a temporary directory. See \code{\link[base:tempdir]{base::tempdir()}}.}
+\item{cache_dir}{Path to a cache directory. If \code{NULL} or \code{FALSE}, the
+function stores cached files in a temporary directory. See
+\code{\link[base:tempdir]{base::tempdir()}}.}
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 }
