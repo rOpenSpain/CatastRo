@@ -179,10 +179,6 @@ pict <- catr_wms_get_layer(
   srs = 25830,
   what = "parcel"
 )
-#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
 
 library(mapSpain)
 library(ggplot2)
@@ -195,15 +191,12 @@ library(tidyterra)
 
 ggplot() +
   geom_spatraster_rgb(data = pict)
-#> Error: object 'pict' not found
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
+
 
 # With a spatial object
 
 parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
-#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
 
 # Use styles
 
@@ -213,11 +206,11 @@ parcels_img <- catr_wms_get_layer(parcels,
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )
-#> Error: object 'parcels' not found
 
 ggplot() +
   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
   geom_spatraster_rgb(data = parcels_img)
-#> Error: object 'parcels' not found
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
+
 # }
 ```

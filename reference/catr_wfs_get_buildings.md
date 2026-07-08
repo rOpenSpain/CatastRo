@@ -124,26 +124,18 @@ building <- catr_wfs_get_buildings_bbox(
   ),
   srs = 25830
 )
-#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
 library(ggplot2)
 ggplot(building) +
   geom_sf() +
   labs(title = "Search using a bounding box")
-#> Error: object 'building' not found
+
 
 # Using a cadastral reference
 rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
-#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
 library(ggplot2)
 ggplot(rc) +
   geom_sf() +
   labs(title = "Search using rc")
-#> Error: object 'rc' not found
+
 # }
 ```

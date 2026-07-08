@@ -89,10 +89,20 @@ their Spanish Cadastre codes.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="fu">catr_ovc_get_cod_provinces</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(req):</span> Failed to perform HTTP request.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [ovc.catastro.meh.es]:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> Recv failure: Connection reset by peer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 48 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    cpine np       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 15    A CORUÑA </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 03    ALACANT  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 02    ALBACETE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 04    ALMERIA  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 33    ASTURIAS </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 05    AVILA    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 06    BADAJOZ  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 08    BARCELONA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 09    BURGOS   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 10    CACERES  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 38 more rows</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
@@ -129,7 +139,7 @@ their Spanish Cadastre codes.</p>
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-md-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-md-start lh-base">
         <p>Template <a href="https://ropenspain.github.io/rostemplate/" class="external-link">rostemplate</a> by
