@@ -35,123 +35,158 @@ test_that("Test cache", {
   expect_true(dir.exists(current))
 })
 
-test_that("Mock restart", {
+test_that("catr_set_cache_dir installs and overwrites mocked config", {
   skip_on_cran()
 
   withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
-  cache_config <- file.path(
-    tools::R_user_dir("CatastRo", "config"),
-    "CATASTROESP_CACHE_DIR"
+  config_dir <- file.path(tempdir(), "catr-config-missing")
+  unlink(config_dir, recursive = TRUE, force = TRUE)
+  withr::defer(unlink(config_dir, recursive = TRUE, force = TRUE))
+
+  cache_dir <- withr::local_tempdir(pattern = "catr-cache")
+  next_cache_dir <- withr::local_tempdir(pattern = "catr-cache-next")
+
+  local_mocked_bindings(catr_r_user_dir = function(...) config_dir)
+
+  cache_config <- file.path(config_dir, "CATASTROESP_CACHE_DIR")
+
+  expect_silent(
+    installed <- catr_set_cache_dir(
+      cache_dir,
+      install = TRUE,
+      verbose = FALSE
+    )
   )
 
-  config_existed <- file.exists(cache_config)
-  config_value <- if (config_existed) {
-    readLines(cache_config, warn = FALSE)
-  } else {
-    NULL
-  }
+  expect_identical(installed, cache_dir)
+  expect_identical(readLines(cache_config, warn = FALSE), cache_dir)
+  expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), cache_dir)
 
-  withr::defer({
-    unlink(cache_config)
+  expect_snapshot(
+    error = TRUE,
+    catr_set_cache_dir(next_cache_dir, install = TRUE, verbose = FALSE)
+  )
 
-    if (config_existed) {
-      dir.create(dirname(cache_config), recursive = TRUE, showWarnings = FALSE)
-      writeLines(config_value, cache_config)
-    }
-  })
-
-  expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), "")
-
-  if (config_existed) {
-    catr_clear_cache(cached_data = FALSE, config = TRUE)
-
-    expect_false(file.exists(cache_config))
-    expect_false(nzchar(Sys.getenv("CATASTROESP_CACHE_DIR")))
-
-    default_loc <- detect_cache_dir_muted()
-
-    expect_identical(file.path(tempdir(), "CatastRo"), default_loc)
-
-    expect_message(
-      catr_set_cache_dir(config_value, overwrite = TRUE, install = TRUE),
-      "cache directory is"
+  expect_silent(
+    overwritten <- catr_set_cache_dir(
+      next_cache_dir,
+      overwrite = TRUE,
+      install = TRUE,
+      verbose = FALSE
     )
-  }
+  )
 
-  muted <- detect_cache_dir_muted()
-  created <- create_cache_dir()
-  muted2 <- detect_cache_dir_muted()
-
-  expect_identical(muted, created)
-  expect_identical(muted, muted2)
-  expect_true(nzchar(Sys.getenv("CATASTROESP_CACHE_DIR")))
+  expect_identical(overwritten, next_cache_dir)
+  expect_identical(readLines(cache_config, warn = FALSE), next_cache_dir)
 })
 
-test_that("Mock migration", {
+test_that("catr_clear_cache removes mocked config", {
+  skip_on_cran()
+
+  config_dir <- withr::local_tempdir(pattern = "catr-config")
+  data_dir <- withr::local_tempdir(pattern = "catr-cache")
+
+  local_mocked_bindings(catr_r_user_dir = function(...) config_dir)
+  withr::local_envvar(c(CATASTROESP_CACHE_DIR = data_dir))
+
+  writeLines(data_dir, file.path(config_dir, "CATASTROESP_CACHE_DIR"))
+
+  expect_message(
+    catr_clear_cache(config = TRUE, cached_data = FALSE, verbose = TRUE),
+    "cache configuration deleted"
+  )
+
+  expect_false(dir.exists(config_dir))
+  expect_true(dir.exists(data_dir))
+  expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), "")
+})
+
+test_that("detect_cache_dir_muted uses mocked config", {
   skip_on_cran()
 
   withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
-  old <- rappdirs::user_config_dir("CatastRo", "R")
-  new <- tools::R_user_dir("CatastRo", "config")
-  fname <- "CATASTROESP_CACHE_DIR"
+  config_dir <- withr::local_tempdir(pattern = "catr-config")
+  cache_dir <- withr::local_tempdir(pattern = "catr-cache")
 
-  old_fname <- file.path(old, fname)
-  new_fname <- file.path(new, fname)
+  local_mocked_bindings(catr_r_user_dir = function(...) config_dir)
 
-  old_existed <- file.exists(old_fname)
-  new_existed <- file.exists(new_fname)
+  writeLines(cache_dir, file.path(config_dir, "CATASTROESP_CACHE_DIR"))
 
-  old_value <- if (old_existed) {
-    readLines(old_fname, warn = FALSE)
-  } else {
-    NULL
-  }
+  detected <- detect_cache_dir_muted()
 
-  new_value <- if (new_existed) {
-    readLines(new_fname, warn = FALSE)
-  } else {
-    NULL
-  }
+  expect_identical(detected, cache_dir)
+  expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), cache_dir)
+})
 
-  withr::defer({
-    unlink(old_fname)
-    unlink(new_fname)
+test_that("detect_cache_dir_muted replaces invalid mocked config", {
+  skip_on_cran()
 
-    if (old_existed) {
-      dir.create(dirname(old_fname), recursive = TRUE, showWarnings = FALSE)
-      writeLines(old_value, old_fname)
-    }
+  withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
-    if (new_existed) {
-      dir.create(dirname(new_fname), recursive = TRUE, showWarnings = FALSE)
-      writeLines(new_value, new_fname)
-    }
-  })
+  config_dir <- withr::local_tempdir(pattern = "catr-config")
 
-  expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), "")
+  local_mocked_bindings(catr_r_user_dir = function(...) config_dir)
 
-  unlink(old_fname)
-  unlink(new_fname)
+  writeLines("", file.path(config_dir, "CATASTROESP_CACHE_DIR"))
 
-  expect_false(file.exists(old_fname))
-  expect_false(file.exists(new_fname))
+  detected <- detect_cache_dir_muted()
 
-  create_cache_dir(old)
-  writeLines(tempdir(), old_fname)
-  expect_true(file.exists(old_fname))
-
-  expect_snapshot(detected <- detect_cache_dir_muted())
-
-  expect_silent(detected2 <- detect_cache_dir_muted())
-
-  expect_identical(detected, detected2)
-  expect_identical(detected, tempdir())
+  expect_identical(detected, file.path(tempdir(), "CatastRo"))
   expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), detected)
+})
 
-  expect_false(file.exists(old_fname))
-  expect_true(file.exists(new_fname))
+test_that("detect_cache_dir_muted uses default cache with no mocked config", {
+  skip_on_cran()
+
+  withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
+
+  config_dir <- withr::local_tempdir(pattern = "catr-config")
+
+  local_mocked_bindings(catr_r_user_dir = function(...) config_dir)
+
+  detected <- detect_cache_dir_muted()
+
+  expect_identical(detected, file.path(tempdir(), "CatastRo"))
+  expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), detected)
+})
+
+test_that("create_cache_dir detects missing cache_dir", {
+  skip_on_cran()
+
+  withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
+
+  config_dir <- withr::local_tempdir(pattern = "catr-config")
+
+  local_mocked_bindings(catr_r_user_dir = function(...) config_dir)
+
+  created <- create_cache_dir()
+
+  expect_identical(created, file.path(tempdir(), "CatastRo"))
+  expect_true(dir.exists(created))
+})
+
+test_that("migrate_cache moves old mocked config", {
+  skip_on_cran()
+
+  withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
+
+  old <- withr::local_tempdir(pattern = "catr-config-old")
+  new <- withr::local_tempdir(pattern = "catr-config-new")
+  cache_dir <- withr::local_tempdir(pattern = "catr-cache")
+
+  local_mocked_bindings(catr_r_user_dir = function(...) new)
+
+  writeLines(cache_dir, file.path(old, "CATASTROESP_CACHE_DIR"))
+
+  expect_snapshot(migrate_cache(old = old, new = new))
+
+  expect_false(dir.exists(old))
+  expect_identical(
+    readLines(file.path(new, "CATASTROESP_CACHE_DIR"), warn = FALSE),
+    cache_dir
+  )
 })
 
 test_that("cache_dir = FALSE uses a nonpersistent temporary cache", {

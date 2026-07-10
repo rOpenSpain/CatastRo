@@ -1,9 +1,12 @@
 test_that("Check error", {
-  expect_error(catr_wms_get_layer(
-    c(760926, 4019259, 761155, 4019366),
-    srs = 25829,
-    what = "aa"
-  ))
+  expect_snapshot(
+    error = TRUE,
+    catr_wms_get_layer(
+      c(760926, 4019259, 761155, 4019366),
+      srs = 25829,
+      what = "aa"
+    )
+  )
 })
 
 test_that("Check tiles", {
@@ -26,7 +29,7 @@ test_that("Check tiles", {
     cache_dir = cdir
   )
 
-  expect_true(terra::nrow(obj) > terra::nrow(objcrop))
+  expect_gt(terra::nrow(obj), terra::nrow(objcrop))
 
   # Convert to spatial object
   bbox <- get_sf_from_bbox(c(760926, 4019259, 761155, 4019366), 25829)

@@ -143,11 +143,8 @@ catr_set_cache_dir <- function(
   msg <- paste0("{.pkg CatastRo} cache directory is {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
-  # Install the path in the environment variable.
-  # nocov start
-
   if (install) {
-    config_dir <- tools::R_user_dir("CatastRo", "config")
+    config_dir <- catr_r_user_dir("CatastRo", "config")
     # Create the cache directory if it is not present.
     if (!dir.exists(config_dir)) {
       dir.create(config_dir, recursive = TRUE)
@@ -164,7 +161,6 @@ catr_set_cache_dir <- function(
         "Set {.arg overwrite} to {.code TRUE} to replace it."
       ))
     }
-    # nocov end
   } else {
     make_msg(
       "info",
@@ -265,10 +261,9 @@ catr_clear_cache <- function(
 
   migrate_cache()
 
-  config_dir <- tools::R_user_dir("CatastRo", "config")
+  config_dir <- catr_r_user_dir("CatastRo", "config")
   data_dir <- detect_cache_dir_muted()
 
-  # nocov start
   if (config && dir.exists(config_dir)) {
     unlink(config_dir, recursive = TRUE, force = TRUE)
 
@@ -276,7 +271,6 @@ catr_clear_cache <- function(
       cli::cli_alert_warning("{.pkg CatastRo} cache configuration deleted.")
     }
   }
-  # nocov end
   if (cached_data && dir.exists(data_dir)) {
     siz <- file.size(list.files(data_dir, recursive = TRUE, full.names = TRUE))
     siz <- sum(siz, na.rm = TRUE)
@@ -313,11 +307,10 @@ detect_cache_dir_muted <- function() {
   if (is.null(getvar) || is.na(getvar) || !nzchar(getvar)) {
     # Retrieve the cache path from the configuration file.
     cache_config <- file.path(
-      tools::R_user_dir("CatastRo", "config"),
+      catr_r_user_dir("CatastRo", "config"),
       "CATASTROESP_CACHE_DIR"
     )
 
-    # nocov start
     if (file.exists(cache_config)) {
       cached_path <- readLines(cache_config, warn = FALSE)
 
@@ -334,7 +327,6 @@ detect_cache_dir_muted <- function() {
       # Return the configured cache path.
       Sys.setenv(CATASTROESP_CACHE_DIR = cached_path)
       cached_path
-      # nocov end
     } else {
       # Use the default cache location.
 
@@ -377,7 +369,7 @@ create_cache_dir <- function(cache_dir = NULL) {
 #' @noRd
 migrate_cache <- function(
   old = rappdirs::user_config_dir("CatastRo", "R"),
-  new = tools::R_user_dir("CatastRo", "config")
+  new = catr_r_user_dir("CatastRo", "config")
 ) {
   fname <- "CATASTROESP_CACHE_DIR"
 
@@ -409,4 +401,11 @@ migrate_cache <- function(
   unlink(old, force = TRUE, recursive = TRUE)
 
   invisible()
+}
+
+#' Wrapper for user-specific directories
+#'
+#' @noRd
+catr_r_user_dir <- function(...) {
+  tools::R_user_dir(...)
 }

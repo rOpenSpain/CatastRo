@@ -38,5 +38,5 @@ test_that("Callejero provinces", {
   s <- catr_ovc_get_cod_provinces()
   expect_s3_class(s, "tbl")
 
-  expect_message(catr_ovc_get_cod_provinces(verbose = TRUE))
+  expect_snapshot(df <- catr_ovc_get_cod_provinces(verbose = TRUE))
 })

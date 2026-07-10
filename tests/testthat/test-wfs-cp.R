@@ -2,12 +2,18 @@ test_that("BBOX Check errors", {
   skip_on_cran()
   skip_if_offline()
 
-  expect_error(catr_wfs_get_parcels_bbox(x = "1234", what = "xxx"))
-  expect_error(catr_wfs_get_parcels_bbox(x = "1234"))
-  expect_error(catr_wfs_get_parcels_bbox(x = c("1234", "a", "3", "4")))
-  expect_error(catr_wfs_get_parcels_bbox(x = c(1, 2, 3)))
-  expect_error(catr_wfs_get_parcels_bbox(x = c(1, 2, 3, 4)))
-  expect_message(s <- catr_wfs_get_parcels_bbox(x = c(1, 2, 3, 4), srs = 3857))
+  expect_snapshot(
+    error = TRUE,
+    catr_wfs_get_parcels_bbox(x = "1234", what = "xxx")
+  )
+  expect_snapshot(error = TRUE, catr_wfs_get_parcels_bbox(x = "1234"))
+  expect_snapshot(
+    error = TRUE,
+    catr_wfs_get_parcels_bbox(x = c("1234", "a", "3", "4"))
+  )
+  expect_snapshot(error = TRUE, catr_wfs_get_parcels_bbox(x = c(1, 2, 3)))
+  expect_snapshot(error = TRUE, catr_wfs_get_parcels_bbox(x = c(1, 2, 3, 4)))
+  expect_snapshot(s <- catr_wfs_get_parcels_bbox(x = c(1, 2, 3, 4), srs = 3857))
   expect_null(s)
 })
 
@@ -21,12 +27,12 @@ test_that("BBOX Check projections", {
     srs = 25829
   )
 
-  expect_true(sf::st_crs(obj)$epsg == 25829)
+  expect_equal(sf::st_crs(obj)$epsg, 25829)
 
   # Convert to spatial object
   obj2 <- sf::st_transform(obj, 4326)
   obj2 <- catr_wfs_get_parcels_bbox(obj2)
-  expect_true(sf::st_crs(obj2)$epsg == 4326)
+  expect_equal(sf::st_crs(obj2)$epsg, 4326)
 
   # Another type
   obj3 <- catr_wfs_get_parcels_bbox(obj2, what = "zoning")
@@ -43,11 +49,11 @@ test_that("CP Zone", {
   expect_s3_class(obj2, "sf")
   expect_gt(nrow(obj2), nrow(obj))
 
-  expect_message(
+  expect_snapshot(
     obj <- catr_wfs_get_parcels_zoning("41624TF3146SZZ", srs = 3857)
   )
   expect_null(obj)
-  expect_message(
+  expect_snapshot(
     obj <- catr_wfs_get_parcels_parcel_zoning("41624TF3146SZZ", srs = 3857)
   )
   expect_null(obj)

@@ -18,8 +18,15 @@
 # Callejero munic
 
     Code
-      catr_ovc_get_cod_munic(2)
+      df <- catr_ovc_get_cod_munic(2)
     Condition
       Error in `catr_ovc_get_cod_munic()`:
       ! Provide a non-"NULL" value for either `cmun` or `cmun_ine`.
+
+---
+
+    Code
+      df <- catr_ovc_get_cod_munic(5, 1304)
+    Message
+      x OVC service error "24": EL CÓDIGO DE MUNICIPIO DEBE SER UNA SECUENCIA DE HASTA 3 DÍGITOS.
 

@@ -95,9 +95,9 @@ test_that("Check", {
 
   # Try with coords
 
-  expect_error(catr_get_code_from_coords(c(0, 0)))
-  expect_error(catr_get_code_from_coords(c(0, 0, 0)))
-  expect_message(catr_get_code_from_coords(c(0, 0), srs = 4326))
+  expect_snapshot(error = TRUE, df <- catr_get_code_from_coords(c(0, 0)))
+  expect_snapshot(error = TRUE, df <- catr_get_code_from_coords(c(0, 0, 0)))
+  expect_snapshot(df <- catr_get_code_from_coords(c(0, 0), srs = 4326))
   expect_s3_class(
     catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326),
     "tbl"
@@ -109,7 +109,7 @@ test_that("Check", {
     cache_dir = cdir
   )
 
-  expect_message(catr_get_code_from_coords(m, cache_dir = cdir))
+  expect_snapshot(catr_get_code_from_coords(m, cache_dir = cdir))
   expect_silent(catr_get_code_from_coords(m[1, ]))
 
   # Try polis

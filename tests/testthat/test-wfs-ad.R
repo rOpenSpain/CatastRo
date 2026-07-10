@@ -2,9 +2,8 @@ test_that("BBOX Check", {
   skip_on_cran()
   skip_if_offline()
 
-  expect_message(
-    fend <- catr_wfs_get_address_bbox(c(-20, -20, -19, -20), srs = 4326),
-    "WFS query returned an exception"
+  expect_snapshot(
+    fend <- catr_wfs_get_address_bbox(c(-20, -20, -19, -20), srs = 4326)
   )
   expect_null(fend)
 
@@ -13,7 +12,7 @@ test_that("BBOX Check", {
     srs = 25829
   )
 
-  expect_true(sf::st_crs(obj)$epsg == 25829)
+  expect_equal(sf::st_crs(obj)$epsg, 25829)
 
   # Convert to spatial object
   bbox <- c(760926, 4019259, 761155, 4019366)
@@ -24,7 +23,7 @@ test_that("BBOX Check", {
   expect_s3_class(bbox, "sfc")
 
   obj2 <- catr_wfs_get_address_bbox(bbox)
-  expect_true(sf::st_crs(obj2) == sf::st_crs(25829))
+  expect_equal(sf::st_crs(obj2), sf::st_crs(25829))
 })
 
 test_that("AD CODVIA", {
@@ -72,7 +71,7 @@ test_that("AD Postal Code", {
   skip_if_offline()
 
   obj <- catr_wfs_get_address_postalcode("11009")
-  expect_true(nrow(obj) > 1)
+  expect_gt(nrow(obj), 1)
   expect_s3_class(obj, "sf")
 
   # Another SRS

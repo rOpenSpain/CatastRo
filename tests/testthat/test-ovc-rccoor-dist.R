@@ -47,11 +47,14 @@ test_that("Expect error on bad SRS", {
   skip_on_cran()
   skip_if_offline()
 
-  expect_error(catr_ovc_get_rccoor_distancia(
-    lat = 40.963200,
-    lon = -5.671420,
-    "abcd"
-  ))
+  expect_snapshot(
+    error = TRUE,
+    df <- catr_ovc_get_rccoor_distancia(
+      lat = 40.963200,
+      lon = -5.671420,
+      "abcd"
+    )
+  )
 })
 
 test_that("return tibble given SRS", {
@@ -64,8 +67,8 @@ test_that("return tibble given SRS", {
     "4326"
   )
   expect_s3_class(result, "tbl")
-  expect_true(is.numeric(result$geo.xcen))
-  expect_true(is.numeric(result$geo.ycen))
+  expect_type(result$geo.xcen, "double")
+  expect_type(result$geo.ycen, "double")
 })
 
 test_that("return tibble without SRS", {
@@ -82,11 +85,9 @@ test_that("check fields without SRS", {
 
   result <- catr_ovc_get_rccoor_distancia(lat = 40.963200, lon = -5.671420)
 
-  expect_true(all(
-    is.character(result$address),
-    is.character(result$refcat),
-    is.character(result$cmun_ine)
-  ))
+  expect_type(result$address, "character")
+  expect_type(result$refcat, "character")
+  expect_type(result$cmun_ine, "character")
 })
 
 test_that("check fields given SRS", {
@@ -98,32 +99,34 @@ test_that("check fields given SRS", {
     lon = -5.671420,
     4230
   )
-  expect_true(all(
-    is.character(result$address),
-    is.character(result$refcat),
-    is.character(result$cmun_ine)
-  ))
+  expect_type(result$address, "character")
+  expect_type(result$refcat, "character")
+  expect_type(result$cmun_ine, "character")
 })
 
 test_that("if data is known return a tibble with 3 cols", {
   skip_on_cran()
   skip_if_offline()
 
-  expect_message(catr_ovc_get_rccoor_distancia(
-    lat = 99999999,
-    lon = -999999999
-  ))
+  expect_snapshot(
+    df <- catr_ovc_get_rccoor_distancia(
+      lat = 99999999,
+      lon = -999999999
+    )
+  )
   result <- catr_ovc_get_rccoor_distancia(lat = 99999999, lon = -999999999)
-  expect_true(ncol(result) == 3)
+  expect_equal(ncol(result), 3)
 })
 
 test_that("Expect message", {
   skip_on_cran()
   skip_if_offline()
 
-  expect_message(catr_ovc_get_rccoor_distancia(
-    lat = 40.963200,
-    lon = -5.671420,
-    verbose = TRUE
-  ))
+  expect_snapshot(
+    df <- catr_ovc_get_rccoor_distancia(
+      lat = 40.963200,
+      lon = -5.671420,
+      verbose = TRUE
+    )
+  )
 })

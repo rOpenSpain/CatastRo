@@ -6,7 +6,7 @@ test_that("wfs_get_bbox", {
 
   expect_equal(sf::st_crs(ok)$epsg, 3857)
 
-  expect_true(is.numeric(as.vector(ok)))
+  expect_type(as.vector(ok), "double")
   expect_length(ok, 4)
   expect_identical(ok, wfs_get_bbox(sf::st_as_sfc(ok)))
 

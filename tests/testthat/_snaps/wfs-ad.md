@@ -1,3 +1,11 @@
+# BBOX Check
+
+    Code
+      fend <- catr_wfs_get_address_bbox(c(-20, -20, -19, -20), srs = 4326)
+    Message
+      x The WFS query returned an exception for <https://ovc.catastro.meh.es/INSPIRE/wfsAD.aspx?service=wfs&version=2.0.0&request=getfeature&typenames=AD.ADDRESS&bbox=-1298652.47788616,-2304672.72126797,-1190638.18200508,-2293724.13416048&srsname=EPSG:25830>:
+      Area de la extensión fuera de los límites
+
 # AD CODVIA
 
     Code

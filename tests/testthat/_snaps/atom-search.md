@@ -25,6 +25,13 @@
 ---
 
     Code
+      d <- catr_atom_search_munic("Melque", to = "XXX", verbose = TRUE, cache_dir = cdir)
+    Message
+      ! Ignoring `to` because no territorial office matched "XXX".
+
+---
+
+    Code
       ff <- catr_atom_search_munic("Melilla", to = "Burgos", cache_dir = cdir)
     Message
       ! No municipality matched pattern "Melilla" in "Burgos".

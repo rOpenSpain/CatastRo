@@ -60,14 +60,13 @@ test_that("Test search", {
   expect_snapshot(c <- catr_atom_search_munic("XXX", cache_dir = cdir))
   expect_null(c)
 
-  expect_message(
+  expect_snapshot(
     d <- catr_atom_search_munic(
       "Melque",
       to = "XXX",
       verbose = TRUE,
       cache_dir = cdir
-    ),
-    "Ignoring `to` because no territorial office matched"
+    )
   )
 
   d <- catr_atom_search_munic("Mel", to = "XXX", cache_dir = cdir)
