@@ -130,11 +130,15 @@ ad <- catr_wfs_get_address_bbox(
   ),
   srs = 25830
 )
+#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
 
 library(ggplot2)
 
 ggplot(ad) +
   geom_sf()
-
+#> Error: object 'ad' not found
 # }
 ```
