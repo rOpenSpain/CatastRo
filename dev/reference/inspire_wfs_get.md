@@ -1,8 +1,8 @@
-# Client tool for WFS INSPIRE services
+# Query WFS INSPIRE services
 
-Access WFS INSPIRE services. This function is used internally in WFS
-calls and is exposed for users and developers accessing other cadastral
-or INSPIRE resources.
+Build and run a WFS INSPIRE request. This function supports the
+package's WFS functions and is also available for querying other
+cadastral or INSPIRE resources.
 
 ## Usage
 
@@ -20,19 +20,19 @@ inspire_wfs_get(
 
 - scheme:
 
-  Character string. Protocol to access the resource on the Internet.
+  Character string specifying the protocol used to access the resource.
 
 - hostname:
 
-  Character string. Host that holds the resource.
+  Character string specifying the resource host.
 
 - path:
 
-  Character string. Specific resource in the host to access.
+  Character string specifying the resource path on the host.
 
 - query:
 
-  Named list. Names and values of arguments for the query.
+  Named list of query parameters and their values.
 
 - verbose:
 
@@ -40,31 +40,18 @@ inspire_wfs_get(
 
 ## Value
 
-Character string. Path of the resulting file in the
-[`tempfile()`](https://rdrr.io/r/base/tempfile.html) folder.
+A character string containing the downloaded file path. Returns `NULL`
+if the request fails.
 
 ## Details
 
-This function is used internally in all the WFS calls. We expose it to
-make it available to other users and/or developers for accessing other
-cadastral or INSPIRE resources. See **Examples**.
+The function constructs a request URL from its components, downloads the
+result to a temporary cache and reports WFS exceptions. See
+**Examples**.
 
 ## See also
 
-Related INSPIRE API functions:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
-[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
-[`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings_db.md),
-[`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels.md),
-[`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels_db.md),
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
-[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
-
-Related WFS INSPIRE functions:
-[`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
+Query data from WFS INSPIRE services:
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
 [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
@@ -72,6 +59,7 @@ Related WFS INSPIRE functions:
 ## Examples
 
 ``` r
+if (FALSE) { # run_example()
 # Access the Cadastre of Navarra
 # Try also https://ropenspain.github.io/CatastRoNav/
 
@@ -86,9 +74,6 @@ file_local <- inspire_wfs_get(
     SRSNAME = "EPSG:25830"
   )
 )
-#> ✖ HTTP error 400 (Bad Request): <https://inspire.navarra.es/services/BU/wfs?service=WFS&request=getfeature&typenames=BU:Building&bbox=609800,4740100,611000,4741300&srsname=EPSG:25830>.
-#> ! If this looks like a package bug, please open an issue at <https://github.com/ropenspain/CatastRo/issues>
-#> → Returning "NULL" because the download failed.
 
 if (!is.null(file_local)) {
   pamp <- sf::read_sf(file_local)
@@ -96,5 +81,6 @@ if (!is.null(file_local)) {
   library(ggplot2)
   ggplot(pamp) +
     geom_sf()
+}
 }
 ```

@@ -1,8 +1,8 @@
 # OVCCoordenadas: geocode a cadastral reference
 
-Implementation of the OVCCoordenadas service [Consulta
-CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC).
-Returns coordinates for a specific cadastral reference.
+Query the OVCCoordenadas [Consulta
+CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
+service to retrieve coordinates for a cadastral reference.
 
 ## Usage
 
@@ -30,7 +30,7 @@ catr_ovc_get_cpmrc(
 
 - province, municipality:
 
-  Optional, used for narrowing the search.
+  Optional character strings used to narrow the search.
 
 - verbose:
 
@@ -38,26 +38,26 @@ catr_ovc_get_cpmrc(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**.
+A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
+described in **Details**. Returns `NULL` if the request fails.
 
 ## Details
 
-When the API does not provide any result, this function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-the input arguments only.
+If the API returns no results, this function returns a
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) containing
+only query information.
 
 On a successful query, this function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row per cadastral reference, including the following columns:
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
+row per cadastral reference, including the following columns:
 
 - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 
 - `refcat`: Cadastral reference.
 
-- `address`: Address as recorded in the Cadastre.
+- `address`: Address as recorded in the Spanish Cadastre.
 
-- Remaining fields: Check the API documentation.
+- Remaining fields: See the API documentation.
 
 ## References
 
@@ -66,21 +66,24 @@ CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas
 
 ## See also
 
-[catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
-[`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md)
+- [catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md)
+  lists supported SRS values.
 
-Related OVCCoordenadas functions:
+- [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md)
+  describes the OVC services.
+
+Convert coordinates and cadastral references:
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md),
-[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md),
-[`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md)
+[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
 
-Other cadastral references:
+Work with cadastral references:
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md),
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
 
 ## Examples
 
 ``` r
+if (FALSE) { # run_example()
 # \donttest{
 
 # Using all arguments
@@ -89,16 +92,9 @@ catr_ovc_get_cpmrc("13077A01800039",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
 )
-#> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
-#> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4562… 38.6196… EPSG:4… DS D…
 
 # Only the cadastral reference
 catr_ovc_get_cpmrc("9872023VH5797S")
-#> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
-#> 1  -3.46   38.6 9872023VH… CL GLO… 98720… VH579… -3.4632… 38.6401… EPSG:4… CL G…
 # }
+}
 ```

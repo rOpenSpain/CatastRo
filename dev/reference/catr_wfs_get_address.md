@@ -1,24 +1,23 @@
 # WFS INSPIRE: download addresses
 
-Get the spatial data of addresses. The WFS service allows performing
-several types of queries:
+Retrieve spatial address data through several types of WFS queries:
 
-- By bounding box: `catr_wfs_get_address_bbox()` extracts objects
+- By bounding box: `catr_wfs_get_address_bbox()` retrieves objects
   included in the provided bounding box. See **Bounding box**.
 
 &nbsp;
 
-- By street code: `catr_wfs_get_address_codvia()` extracts objects for
+- By street code: `catr_wfs_get_address_codvia()` retrieves objects for
   specific addresses.
 
 &nbsp;
 
-- By cadastral reference: `catr_wfs_get_address_rc()` extracts objects
+- By cadastral reference: `catr_wfs_get_address_rc()` retrieves objects
   for specific cadastral references.
 
 &nbsp;
 
-- By postal codes: `catr_wfs_get_address_postalcode()` extracts objects
+- By postal codes: `catr_wfs_get_address_postalcode()` retrieves objects
   for specific postal codes.
 
 ## Usage
@@ -37,13 +36,13 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 
 - x:
 
-  See **Bounding box**. Can be one of:
+  Input defining the query area. See **Bounding box**. It can be:
 
   - A numeric vector of length 4 with the coordinates that define the
     bounding box: `c(xmin, ymin, xmax, ymax)`.
 
-  - A `sf/sfc` object, as provided by the
-    [sf](https://CRAN.R-project.org/package=sf) package.
+  - An `sf` or `sfc` object from
+    [sf](https://CRAN.R-project.org/package=sf).
 
 - srs:
 
@@ -69,7 +68,7 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 
 - rc:
 
-  The cadastral reference to be extracted.
+  Cadastral reference to retrieve.
 
 - postalcode:
 
@@ -77,9 +76,10 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+Returns `NULL` if the data cannot be retrieved.
 
-## API Limits
+## API limits
 
 The API service is limited to a bounding box of 4 km2 and a maximum of
 5,000 elements.
@@ -88,8 +88,8 @@ The API service is limited to a bounding box of 4 km2 and a maximum of
 
 When `x` is a numeric vector, make sure that the `srs` matches the
 coordinate values. Additionally, the function queries the bounding box
-on [EPSG:25830](https://epsg.io/25830) - ETRS89 / UTM zone 30N, to
-overcome a potential bug on the API side.
+on [EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work
+around a potential API issue.
 
 When `x` is a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 object, the value `srs` is ignored. In this case, the bounding box of
@@ -111,39 +111,19 @@ cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-Related INSPIRE API functions:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
-[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
-[`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings_db.md),
-[`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels.md),
-[`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels_db.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
-[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md),
-[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
-
-Related WFS INSPIRE functions:
-[`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
+Query data from WFS INSPIRE services:
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
 [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
 [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
-Other addresses:
+Work with cadastral addresses:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md)
-
-Other spatial:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
-[`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
-[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
 
 ## Examples
 
 ``` r
+if (FALSE) { # run_example()
 # \donttest{
 ad <- catr_wfs_get_address_bbox(
   c(
@@ -156,6 +136,6 @@ library(ggplot2)
 
 ggplot(ad) +
   geom_sf()
-
 # }
+}
 ```

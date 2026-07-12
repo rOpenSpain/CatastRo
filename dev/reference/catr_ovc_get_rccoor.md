@@ -1,8 +1,9 @@
-# OVCCoordenadas: reverse geocode a cadastral reference
+# OVCCoordenadas: reverse geocode coordinates
 
-Implementation of the OVCCoordenadas service [Consulta
-RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR).
-Returns the cadastral reference found for a set of specific coordinates.
+Query the OVCCoordenadas [Consulta
+RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
+service to retrieve the cadastral reference associated with a pair of
+coordinates.
 
 ## Usage
 
@@ -14,11 +15,11 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude for the query, expressed in the CRS/SRS defined by `srs`.
+  Latitude for the query, expressed in the SRS/CRS defined by `srs`.
 
 - lon:
 
-  Longitude for the query, expressed in the CRS/SRS defined by `srs`.
+  Longitude for the query, expressed in the SRS/CRS defined by `srs`.
 
 - srs:
 
@@ -32,26 +33,26 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**.
+A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
+described in **Details**. Returns `NULL` if the request fails.
 
 ## Details
 
-When the API does not provide any result, the function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-the input arguments only.
+If the API returns no results, this function returns a
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) containing
+only query information.
 
 On a successful query, this function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row per cadastral reference, including the following columns:
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
+row per cadastral reference, including the following columns:
 
 - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 
 - `refcat`: Cadastral reference.
 
-- `address`: Address as recorded in the Cadastre.
+- `address`: Address as recorded in the Spanish Cadastre.
 
-- Remaining fields: Check the API documentation.
+- Remaining fields: See the API documentation.
 
 ## References
 
@@ -60,30 +61,24 @@ RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenada
 
 ## See also
 
-[catr_srs_values](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
-[`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md)
-
-Related OVCCoordenadas functions:
+Convert coordinates and cadastral references:
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),
-[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md),
-[`catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md)
+[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
 
-Other cadastral references:
+Work with cadastral references:
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
 
 ## Examples
 
 ``` r
+if (FALSE) { # run_example()
 # \donttest{
 catr_ovc_get_rccoor(
   lat = 38.6196566583596,
   lon = -3.45624183836806,
   srs = 4326
 )
-#> # A tibble: 1 × 8
-#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
-#> 1 13077A01800011 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
 # }
+}
 ```

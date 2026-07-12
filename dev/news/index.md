@@ -2,9 +2,17 @@
 
 ## CatastRo (development version)
 
-- This development cycle includes AI-assisted maintenance work to
-  simplify internal code, improve **cli** messages, standardize roxygen2
-  metadata and make package documentation more consistent.
+- [`run_example()`](https://ropenspain.github.io/CatastRo/dev/reference/run_example.md)
+  now skips examples on CI, preventing live Cadastre API calls from
+  failing package checks when the service blocks CI runners
+  ([\#78](https://github.com/rOpenSpain/CatastRo/issues/78)).
+
+## CatastRo 1.0.2
+
+CRAN release: 2026-06-03
+
+- Improve internal maintenance, **cli** messages, **roxygen2** metadata
+  and package documentation.
 
 ## CatastRo 1.0.1
 
@@ -18,8 +26,8 @@ CRAN release: 2026-04-27
 CRAN release: 2026-02-23
 
 This major release introduces a full overhaul of the codebase and test
-suite. All requests now use **httr2** and cached files are reorganized
-into topic-based subfolders for easier management.
+suite. All requests now use **httr2**. Cached files are organized into
+topic-based subdirectories for easier management.
 
 > Because of internal changes, **existing caches are not compatible**
 > with this release and must be rebuilt.
@@ -27,8 +35,8 @@ into topic-based subfolders for easier management.
 Persistent cache directories now use
 [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) instead of
 [`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html).
-If you already have a cache directory in place, **CatastRo** displays a
-one-time message about this migration.
+If you already have a cache directory, **CatastRo** displays a one-time
+migration message.
 
 The package now requires **R ≥ 4.1.0** and dependency updates improve
 both performance and maintainability. All functions return tidy objects
@@ -57,7 +65,7 @@ both performance and maintainability. All functions return tidy objects
   - Add: **cli**, **lifecycle**, **withr**.
   - Remove: **png**, **slippymath**.
 - Return tidy objects consistently.
-- Vignettes engine has been migrated to Quarto.
+- Migrate the vignette engine to Quarto.
 
 ### Deprecations
 
@@ -106,7 +114,7 @@ CRAN release: 2024-01-18
   also returns the names of the streets (layer `"ThoroughfareName"` of
   the `*.gml` file). The new fields are named with the prefix
   `tfname_*`.
-- Add a helper function for easily detecting the `cache_dir`:
+- Add a helper function for detecting `cache_dir`:
   [`catr_detect_cache_dir()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_set_cache_dir.md).
 - Update documentation and tests.
 
@@ -114,7 +122,7 @@ CRAN release: 2024-01-18
 
 CRAN release: 2023-01-08
 
-- Housekeeping and updates of documentation.
+- Update documentation and package maintenance files.
 - Adapt
   [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
   to **mapSpain** (\>= 0.7.0).
@@ -170,8 +178,8 @@ CRAN release: 2022-02-28
   [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md).
 - Add a new interface for **OVC services**. Deprecated previous
   functions in favor of the new API:
-  - New SRS database in
-    [`?catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md),
+  - The new SRS reference dataset in
+    [`?catr_srs_values`](https://ropenspain.github.io/CatastRo/dev/reference/catr_srs_values.md)
     replaces `coordinates`.
   - [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
     replaces `near_rc()`.
@@ -179,8 +187,8 @@ CRAN release: 2022-02-28
     replaces `get_rc()`.
   - [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md)
     replaces `get_coor()`.
-- Added
-  [pre-computed](https://ropensci.org/blog/2019/12/08/precompute-vignettes/)
+- Add
+  [precomputed](https://ropensci.org/blog/2019/12/08/precompute-vignettes/)
   vignettes.
 
 ## CatastRo 0.1.0

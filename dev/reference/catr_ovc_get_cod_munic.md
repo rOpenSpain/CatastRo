@@ -1,9 +1,9 @@
-# OVCCallejero: extract the code of a municipality
+# OVCCallejero: get municipality codes
 
-Implementation of the OVCCallejero service
-[ConsultaMunicipioCodigos](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos).
-Returns names and codes of a municipality according to the Cadastre and
-the INE (National Statistics Institute).
+Query the OVCCallejero
+[ConsultaMunicipioCodigos](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos)
+service to retrieve municipality names and codes from the Spanish
+Cadastre and the National Statistics Institute (INE).
 
 ## Usage
 
@@ -15,14 +15,14 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 - cpro:
 
-  The code of a province, as provided by
+  Province code returned by
   [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_provinces.md).
 
 - cmun, cmun_ine:
 
-  Code of a municipality, as recorded on the Spanish Cadastre (`cmun`)
-  or the National Statistics Institute. Either `cmun` or `cmun_ine` must
-  be provided.
+  Municipality code as recorded by the Spanish Cadastre (`cmun`) or the
+  National Statistics Institute. Either `cmun` or `cmun_ine` must be
+  provided.
 
 - verbose:
 
@@ -30,22 +30,22 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-See **Details**.
+A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
+described in **Details**. Returns `NULL` if the request fails.
 
 ## Details
 
 On a successful query, this function returns a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
-one row including the following columns:
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
+row including the following columns:
 
-- `munic`: Name of the municipality according to the Cadastre.
+- `munic`: Municipality name used by the Spanish Cadastre.
 
 - `catr_to`: Cadastral territorial office code.
 
-- `catr_munic`: Municipality code as recorded on the Cadastre.
+- `catr_munic`: Municipality code as recorded by the Cadastre.
 
-- `catrcode`: Full Cadastral code for the municipality.
+- `catrcode`: Full cadastral code for the municipality.
 
 - `cpro`: Province code according to the INE.
 
@@ -53,7 +53,7 @@ one row including the following columns:
 
 - `inecode`: Full INE code for the municipality.
 
-- Remaining fields: Check the API documentation.
+- Remaining fields: See the API documentation.
 
 ## References
 
@@ -64,10 +64,10 @@ one row including the following columns:
 [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
 to get shapes of municipalities, including the INE code.
 
-Related OVCCallejero functions:
+Query OVC province and municipality codes:
 [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_provinces.md)
 
-Other search:
+Search for cadastral identifiers:
 [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md),
 [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_get_code_from_coords.md),
 [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_provinces.md)
@@ -75,26 +75,18 @@ Other search:
 ## Examples
 
 ``` r
+if (FALSE) { # run_example()
 # \donttest{
 # Get municipality by cadastral code
 ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
 
 ab
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
-#> # ℹ 1 more variable: cm <chr>
 
 # Same query using the INE code
 
 ab2 <- catr_ovc_get_cod_munic(cpro = 2, cmun_ine = 3)
 
 ab2
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
-#> # ℹ 1 more variable: cm <chr>
 # }
+}
 ```

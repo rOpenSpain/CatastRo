@@ -2,17 +2,18 @@
 
 **CatastRo** provides access to services from the [Spanish
 Cadastre](https://www.sedecatastro.gob.es/). With **CatastRo**, you can
-download official address, cadastral parcel, building and map data.
+retrieve addresses, buildings, cadastral parcels and georeferenced map
+images.
 
 ## OVCCoordenadas service
 
 The
 [OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
 service retrieves the coordinates of a known cadastral reference
-(geocoding). It is also possible to retrieve the cadastral references
-around a specific pair of coordinates (reverse geocoding). **CatastRo**
-returns the results as a tibble. This functionality is described in
-detail in the corresponding vignette (see
+(geocoding). It can also retrieve cadastral references near a pair of
+coordinates (reverse geocoding). **CatastRo** returns the results as
+tibbles. These operations are described in detail in the corresponding
+vignette (see
 [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md)).
 
 ## INSPIRE services
@@ -28,10 +29,10 @@ detail in the corresponding vignette (see
 Source: [INSPIRE Knowledge
 Base](https://knowledge-base.inspire.ec.europa.eu/overview_en)
 
-The implementation of the INSPIRE directive in the Spanish Cadastre (see
-[Spanish Cadastre
-INSPIRE](https://www.catastro.hacienda.gob.es/webinspire/index.html))
-allows retrieval of spatial objects from the cadastral database:
+The Spanish Cadastre implementation of the INSPIRE directive (see
+[Spanish Cadastre INSPIRE
+services](https://www.catastro.hacienda.gob.es/webinspire/index.html))
+provides access to spatial objects from the cadastral database:
 
 - **Vector objects:** Parcels, addresses, buildings, cadastral zones and
   more. **CatastRo** returns these objects as `sf` objects, using the
@@ -44,17 +45,17 @@ Note that these services cover 95% of the Spanish territory, excluding
 the Basque Country and Navarre[^1], which have their own independent
 cadastral offices.
 
-There are three types of functions, each querying a different service:
+There are three INSPIRE services:
 
-1.  **ATOM service**: The ATOM service downloads complete municipal
+1.  **ATOM service:** The ATOM service downloads complete municipal
     datasets for different cadastral elements.
 
-2.  **WFS service**: The WFS service downloads vector objects for
+2.  **WFS service:** The WFS service downloads vector objects for
     specific cadastral elements. Note that there are restrictions on the
     extent and number of elements that can be queried. For full
     municipal downloads, prefer the ATOM service.
 
-3.  **WMS service**: The WMS service downloads georeferenced map images
+3.  **WMS service:** The WMS service downloads georeferenced map images
     for different cadastral elements.
 
 ## Examples
@@ -79,11 +80,11 @@ stadium <- catr_wfs_get_buildings_bbox(
   srs = 4326
 )
 
-# Extract cadastral parcels using spatial objects in the query.
+# Extract cadastral parcels using a spatial object as the query input.
 
 stadium_parcel <- catr_wfs_get_parcels_bbox(stadium)
 
-# Project for tiles.
+# Transform to the tile CRS.
 
 stadium_parcel_pr <- sf::st_transform(stadium_parcel, 25830)
 
@@ -98,7 +99,7 @@ labs <- catr_wms_get_layer(
 
 # Plot.
 library(ggplot2)
-library(tidyterra) # For terra tiles.
+library(tidyterra) # Plot SpatRaster layers.
 
 ggplot() +
   geom_spatraster_rgb(data = labs) +
@@ -116,13 +117,12 @@ Figure 1: Santiago Bernabéu example
 
 ### Thematic maps
 
-We can also create thematic maps using the information available on the
-spatial objects. We produce a visualization of the urban growth of
-Granada using **CatastRo**, replicating the map produced by [Dominic
-Royé](https://dominicroye.github.io) ([Royé 2019](#ref-roye19)), using
-the **ATOM service**.
+We can also create thematic maps from attributes in the spatial objects.
+This example visualizes the urban growth of Granada with **CatastRo**,
+reproducing a map by [Dominic Royé](https://dominicroye.github.io)
+([Royé 2019](#ref-roye19)) with the ATOM service.
 
-First, we extract the coordinates of Granada’s city center with
+First, we retrieve the geometry of Granada’s city center with
 **mapSpain**:
 
 ``` r
@@ -131,16 +131,15 @@ library(dplyr)
 library(sf)
 library(mapSpain)
 
-# Use mapSpain to get the coordinates.
+# Use esp_get_capimun() to get the city geometry.
 
 city <- esp_get_capimun(munic = "^Granada$")
 ```
 
-The next step is to extract the buildings using the ATOM service. We
-also use
+Next, we use
 [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_get_code_from_coords.md)
-to identify Granada’s code in the Cadastre and download the buildings
-with
+to identify Granada’s cadastral municipality code, then download its
+buildings with
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md).
 
 ``` r
@@ -178,15 +177,14 @@ ggplot(dataviz) +
 
 Figure 2: Minimal cadastral map of Granada
 
-Now let’s extract the construction year, available in the column
-`beginning`:
+Next, we extract the construction year from the `beginning` column:
 
 ``` r
 
 # Extract the first four positions.
 year <- substr(dataviz$beginning, 1, 4)
 
-# Replace entries that do not look like numbers with 0000.
+# Replace entries that do not look like years with 0000.
 year[!(year %in% 0:2500)] <- "0000"
 
 # Convert to numeric.
@@ -197,9 +195,9 @@ dataviz <- dataviz |>
   mutate(year = year)
 ```
 
-The last step is to group the data by construction year and create the
-visualization. Here, [`cut()`](https://rdrr.io/r/base/cut.html) creates
-classes for each decade from 1900 onward:
+Finally, we group the data by construction year and create the
+visualization. The [`cut()`](https://rdrr.io/r/base/cut.html) function
+creates classes for each decade from 1900 onward:
 
 ``` r
 
@@ -239,13 +237,13 @@ ggplot(dataviz) +
   )
 ```
 
-![Figure 2: Granada - Urban growth](./dviz-1.png)
+![Figure 3: Granada - Urban growth](./dviz-1.png)
 
-Figure 2: Granada - Urban growth
+Figure 3: Granada - Urban growth
 
 ## References
 
-Royé, Dominique. 2019. *Visualize Urban Growth*.
+Royé, Dominic. 2019. *Visualize Urban Growth*.
 <https://dominicroye.github.io/blog/visualize-urban-growth/>.
 
 [^1]: The package

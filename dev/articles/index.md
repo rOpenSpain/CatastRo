@@ -1,13 +1,8 @@
 # Articles
 
-### Articles
+### Service guide
 
-- [Get
-  started](https://ropenspain.github.io/CatastRo/dev/articles/CatastRo.md):
-
-  Brief introduction to the CatastRo package.
-
-- [OVCCoordenadas web
+- [OVCCoordenadas
   service](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md):
 
-  Retrieve spatial coordinates of urban properties.
+  Geocode cadastral references and reverse geocode coordinates.
