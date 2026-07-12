@@ -70,9 +70,26 @@ download_url <- function(
     return(NULL)
   }
 
+  # Simulate an HTTP failure when requested by tests.
+  test_offline <- is_404()
+  if (test_offline) {
+    report_http_error(url)
+    cli::cli_alert("Returning {.val NULL} because the download failed.")
+    return(NULL)
+  }
+
   # Use HEAD to check whether the download size should be reported.
   get_header <- httr2::req_method(req, "HEAD")
-  getsize <- httr2::req_perform(get_header)
+  getsize <- tryCatch(
+    httr2::req_perform(get_header),
+    httr2_failure = function(cnd) {
+      report_request_failure(cnd, "download")
+      NULL
+    }
+  )
+  if (is.null(getsize)) {
+    return(NULL)
+  }
 
   size_dwn <- as.numeric(httr2::resp_header(getsize, "content-length", 0))
   class(size_dwn) <- class(object.size("a"))
@@ -83,29 +100,25 @@ download_url <- function(
     req <- httr2::req_progress(req)
   }
 
-  # Simulate an HTTP failure when requested by tests.
-  test_offline <- is_404()
-  if (test_offline) {
-    # Redirect to a fake URL.
-    req <- httr2::req_url(req, "http://ovc.catastro.meh.es/urlnoexist/fake")
-    file_local <- tempfile(fileext = ".txt")
+  resp <- tryCatch(
+    httr2::req_perform(req, path = file_local),
+    httr2_failure = function(cnd) {
+      unlink(file_local, force = TRUE)
+      report_request_failure(cnd, "download")
+      NULL
+    }
+  )
+  if (is.null(resp)) {
+    return(NULL)
   }
-
-  resp <- httr2::req_perform(req, path = file_local)
 
   if (httr2::resp_is_error(resp)) {
     unlink(file_local, force = TRUE)
-    get_status_code <- httr2::resp_status(resp) # nolint
-    get_status_desc <- httr2::resp_status_desc(resp) # nolint
-
-    cli::cli_alert_danger(c(
-      "HTTP error {.val {get_status_code}} ({get_status_desc}):",
-      " {.url {url}}."
-    ))
-    cli::cli_alert_warning(paste0(
-      "If this looks like a package bug, open an issue at ",
-      "{.url https://github.com/ropenspain/CatastRo/issues}."
-    ))
+    report_http_error(
+      url,
+      httr2::resp_status(resp),
+      httr2::resp_status_desc(resp)
+    )
     cli::cli_alert("Returning {.val NULL} because the download failed.")
     return(NULL)
   }
@@ -153,24 +166,28 @@ get_request_body <- function(url, verbose = TRUE) {
   # Simulate an HTTP failure when requested by tests.
   test_offline <- is_404()
   if (test_offline) {
-    # Redirect to a fake URL.
-    req <- httr2::req_url(req, "http://ovc.catastro.meh.es/urlnoexist/fake")
+    report_http_error(url)
+    cli::cli_alert("Returning {.val NULL} because the request failed.")
+    return(NULL)
   }
 
-  resp <- httr2::req_perform(req)
+  resp <- tryCatch(
+    httr2::req_perform(req),
+    httr2_failure = function(cnd) {
+      report_request_failure(cnd, "request")
+      NULL
+    }
+  )
+  if (is.null(resp)) {
+    return(NULL)
+  }
 
   if (httr2::resp_is_error(resp)) {
-    get_status_code <- httr2::resp_status(resp) # nolint
-    get_status_desc <- httr2::resp_status_desc(resp) # nolint
-
-    cli::cli_alert_danger(c(
-      "HTTP error {.val {get_status_code}} ({get_status_desc}):",
-      " {.url {url}}."
-    ))
-    cli::cli_alert_warning(paste0(
-      "If this looks like a package bug, open an issue at ",
-      "{.url https://github.com/ropenspain/CatastRo/issues}."
-    ))
+    report_http_error(
+      url,
+      httr2::resp_status(resp),
+      httr2::resp_status_desc(resp)
+    )
     cli::cli_alert("Returning {.val NULL} because the request failed.")
     return(NULL)
   }
@@ -189,4 +206,29 @@ is_online_fun <- function(...) {
 #' @noRd
 is_404 <- function(...) {
   FALSE
+}
+
+report_http_error <- function(
+  url,
+  status_code = 404,
+  status_desc = "Not Found"
+) {
+  cli::cli_alert_danger(c(
+    "HTTP error {.val {status_code}} ({status_desc}):",
+    " {.url {url}}."
+  ))
+  cli::cli_alert_warning(paste0(
+    "If this looks like a package bug, open an issue at ",
+    "{.url https://github.com/ropenspain/CatastRo/issues}."
+  ))
+}
+
+report_request_failure <- function(cnd, type) {
+  cli::cli_alert_danger(
+    "The {type} request could not be completed."
+  )
+  cli::cli_alert_warning(conditionMessage(cnd))
+  cli::cli_alert(
+    "Returning {.val NULL} because the {type} failed."
+  )
 }
