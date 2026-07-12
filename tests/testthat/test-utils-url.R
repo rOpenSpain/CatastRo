@@ -1,7 +1,8 @@
 test_that("SSL verifier (#40)", {
-  skip_on_cran()
-  skip_if_offline()
   skip_if_not_installed("withr")
+
+  expect_equal(getOption("catastro_ssl_verify", 1L), 0)
+  expect_equal(getOption("catastro_timeout", 300), 600)
 
   withr::local_options(list(catastro_ssl_verify = 1L))
   expect_equal(getOption("catastro_ssl_verify", 1L), 1L)
