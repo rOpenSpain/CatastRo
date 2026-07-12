@@ -1,3 +1,24 @@
+# municipality ATOM search handles mocked misses
+
+    Code
+      result <- catr_atom_search_munic("No match")
+    Message
+      ! No municipality matched pattern "No match".
+
+---
+
+    Code
+      result <- catr_atom_search_munic("Melque", to = "No office", verbose = TRUE)
+    Message
+      ! Ignoring `to` because no territorial office matched "No office".
+
+---
+
+    Code
+      result <- catr_atom_search_munic("Madrid", to = "Segovia")
+    Message
+      ! No municipality matched pattern "Madrid" in "Segovia".
+
 # Test offline
 
     Code

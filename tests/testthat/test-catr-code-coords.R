@@ -38,9 +38,12 @@ test_that("Test 404 all", {
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_404 = function(...) {
+      TRUE
+    },
+    catr_req_perform = mock_404_response
+  )
 
   expect_snapshot(
     fend <- catr_get_code_from_coords(
@@ -67,6 +70,7 @@ test_that("Test 404 all", {
 test_that("Test 404 mapSpain", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
   skip_if_not_installed("mapSpain")
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
@@ -91,6 +95,7 @@ test_that("Test 404 mapSpain", {
 test_that("Check", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
   cdir <- withr::local_tempdir(pattern = "testthat_excoord")
 
   # Try with coords

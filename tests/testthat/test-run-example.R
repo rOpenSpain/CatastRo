@@ -3,11 +3,20 @@ test_that("On mac", {
   skip_if_offline()
   skip_on_os("mac")
 
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    on_ci = function(...) FALSE
+  )
+
   expect_false(on_mac())
   expect_true(run_example())
-  local_mocked_bindings(on_mac = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    on_ci = function(...) FALSE,
+    on_mac = function(...) {
+      TRUE
+    }
+  )
 
   expect_false(run_example())
 })
@@ -17,7 +26,10 @@ test_that("Offline", {
   skip_on_cran()
   skip_on_os("mac")
 
-  local_mocked_bindings(is_online_fun = function(...) FALSE)
+  local_mocked_bindings(
+    is_online_fun = function(...) FALSE,
+    on_ci = function(...) FALSE
+  )
 
   expect_false(run_example())
 })
@@ -29,19 +41,35 @@ test_that("Online", {
 
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
+    on_ci = function(...) FALSE,
     on_cran = function(...) FALSE
   )
 
   expect_true(run_example())
 })
 
+test_that("On CI", {
+  skip_on_cran()
+  skip_on_os("mac")
+
+  withr::local_envvar(c(CI = "true", GITHUB_ACTIONS = "true"))
+
+  local_mocked_bindings(is_online_fun = function(...) TRUE)
+
+  expect_true(on_ci())
+  expect_false(run_example())
+})
+
 
 test_that("On CRAN", {
   skip_on_cran()
-  skip_if_offline()
   skip_on_os("mac")
 
   withr::local_envvar(c(NOT_CRAN = "false"))
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    on_ci = function(...) FALSE
+  )
 
   expect_true(on_cran())
   expect_false(run_example())
@@ -64,7 +92,10 @@ test_that("Not on CRAN", {
 
   withr::local_envvar(c(NOT_CRAN = "true"))
 
-  local_mocked_bindings(is_online_fun = function(...) TRUE)
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    on_ci = function(...) FALSE
+  )
 
   expect_false(on_cran())
   expect_true(run_example())

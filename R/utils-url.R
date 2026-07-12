@@ -49,9 +49,7 @@ download_url <- function(
   make_msg("info", verbose, msg)
 
   req <- httr2::request(url)
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
+  req <- httr2::req_error(req, is_error = catr_is_error)
 
   req <- httr2::req_options(
     req,
@@ -70,19 +68,6 @@ download_url <- function(
     return(NULL)
   }
 
-  # Use HEAD to check whether the download size should be reported.
-  get_header <- httr2::req_method(req, "HEAD")
-  getsize <- httr2::req_perform(get_header)
-
-  size_dwn <- as.numeric(httr2::resp_header(getsize, "content-length", 0))
-  class(size_dwn) <- class(object.size("a"))
-  thr <- 20 * (1024^2)
-  if (size_dwn > thr) {
-    sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
-    make_msg("warning", TRUE, "Download size is", sz_dwn)
-    req <- httr2::req_progress(req)
-  }
-
   # Simulate an HTTP failure when requested by tests.
   test_offline <- is_404()
   if (test_offline) {
@@ -91,7 +76,40 @@ download_url <- function(
     file_local <- tempfile(fileext = ".txt")
   }
 
-  resp <- httr2::req_perform(req, path = file_local)
+  if (!test_offline) {
+    # Use HEAD to check whether the download size should be reported.
+    get_header <- httr2::req_method(req, "HEAD")
+    getsize <- tryCatch(
+      catr_req_perform(get_header),
+      httr2_failure = function(cnd) {
+        catr_request_failure(cnd, failure = "download")
+      }
+    )
+
+    if (is.null(getsize)) {
+      return(NULL)
+    }
+
+    size_dwn <- as.numeric(httr2::resp_header(getsize, "content-length", 0))
+    class(size_dwn) <- class(object.size("a"))
+    thr <- 20 * (1024^2)
+    if (size_dwn > thr) {
+      sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
+      make_msg("warning", TRUE, "Download size is", sz_dwn)
+      req <- httr2::req_progress(req)
+    }
+  }
+
+  resp <- tryCatch(
+    catr_req_perform(req, path = file_local),
+    httr2_failure = function(cnd) {
+      catr_request_failure(cnd, file_local, failure = "download")
+    }
+  )
+
+  if (is.null(resp)) {
+    return(NULL)
+  }
 
   if (httr2::resp_is_error(resp)) {
     unlink(file_local, force = TRUE)
@@ -129,9 +147,7 @@ get_request_body <- function(url, verbose = TRUE) {
   make_msg("info", verbose, msg)
 
   req <- httr2::request(url)
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
+  req <- httr2::req_error(req, is_error = catr_is_error)
 
   req <- httr2::req_options(
     req,
@@ -157,7 +173,16 @@ get_request_body <- function(url, verbose = TRUE) {
     req <- httr2::req_url(req, "http://ovc.catastro.meh.es/urlnoexist/fake")
   }
 
-  resp <- httr2::req_perform(req)
+  resp <- tryCatch(
+    catr_req_perform(req),
+    httr2_failure = function(cnd) {
+      catr_request_failure(cnd, failure = "request")
+    }
+  )
+
+  if (is.null(resp)) {
+    return(NULL)
+  }
 
   if (httr2::resp_is_error(resp)) {
     get_status_code <- httr2::resp_status(resp) # nolint
@@ -183,6 +208,36 @@ get_request_body <- function(url, verbose = TRUE) {
 #' @noRd
 is_online_fun <- function(...) {
   httr2::is_online()
+}
+
+#' Wrap `httr2::req_perform()` for testing
+#' @noRd
+catr_req_perform <- httr2::req_perform
+
+#' Report all HTTP responses as non-throwing
+#' @noRd
+catr_is_error <- function(resp) {
+  FALSE
+}
+
+#' Convert transport failures to `NULL`
+#' @noRd
+catr_request_failure <- function(cnd, file_local = NULL, failure) {
+  if (!is.null(file_local)) {
+    unlink(file_local, force = TRUE)
+  }
+
+  failure_intro <- if (identical(failure, "request")) {
+    "The request could not be completed."
+  } else {
+    "The {failure} request could not be completed."
+  }
+
+  cli::cli_alert_danger(failure_intro)
+  cli::cli_alert_warning(conditionMessage(cnd))
+  cli::cli_alert("Returning {.val NULL} because the {failure} failed.")
+
+  NULL
 }
 
 #' Report a simulated HTTP 404 response for testing

@@ -19,9 +19,12 @@ test_that("Test 404 all", {
   skip_on_cran()
   skip_if_offline()
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_404 = function(...) {
+      TRUE
+    },
+    catr_req_perform = mock_404_response
+  )
 
   expect_snapshot(fend <- catr_ovc_get_cpmrc("9872023VH5797S"))
   expect_null(fend)
@@ -43,6 +46,7 @@ test_that("Expect error on bad SRS", {
 test_that("giving all the arguments", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_cpmrc(
     "13077A01800039",
@@ -60,6 +64,7 @@ test_that("giving all the arguments", {
 test_that("giving cadastral reference and SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_cpmrc("9872023VH5797S", "4230")
   expect_type(result$xcoord, "double")
@@ -69,6 +74,7 @@ test_that("giving cadastral reference and SRS", {
 test_that("giving only the cadastral reference", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   expect_snapshot(df <- catr_ovc_get_cpmrc("9872023VH5797S", verbose = TRUE))
 
@@ -80,6 +86,7 @@ test_that("giving only the cadastral reference", {
 test_that("given Municipio, Provincia is needed", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   expect_snapshot(
     nnn <- catr_ovc_get_cpmrc(

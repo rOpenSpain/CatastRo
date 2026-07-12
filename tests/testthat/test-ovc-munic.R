@@ -19,9 +19,12 @@ test_that("Test 404 all", {
   skip_on_cran()
   skip_if_offline()
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_404 = function(...) {
+      TRUE
+    },
+    catr_req_perform = mock_404_response
+  )
 
   expect_snapshot(fend <- catr_ovc_get_cod_munic(4, 5))
   expect_null(fend)
@@ -34,6 +37,7 @@ test_that("Test 404 all", {
 test_that("Callejero munic", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   expect_snapshot(error = TRUE, df <- catr_ovc_get_cod_munic(2))
   s <- catr_ovc_get_cod_munic(5, 900)

@@ -25,6 +25,22 @@
        xmin  ymin  xmax  ymax 
           0     0 10000 10000 
 
+# inspire_wfs_get validates and normalizes mocked queries
+
+    Code
+      result <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", query = list(request = "getfeature",
+        Typenames = "BU.BUILDING", SRSname = 25829, bbox = "", empty = NULL, NA))
+    Message
+      ! Removed 3 empty or unnamed elements from `query`.
+
+# inspire_wfs_get handles mocked WFS exceptions
+
+    Code
+      result <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", query = list(request = "getfeature"))
+    Message
+      x The WFS query returned an exception for <https://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?request=getfeature>:
+      Mocked WFS error
+
 # Test offline
 
     Code

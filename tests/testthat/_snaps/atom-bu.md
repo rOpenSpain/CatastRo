@@ -1,3 +1,11 @@
+# building ATOM returns NULL when mocked dependencies fail
+
+    Code
+      result <- catr_atom_get_buildings("No match")
+    Message
+      ! No municipality matched pattern "No match".
+      i Check available municipalities with `CatastRo::catr_atom_get_buildings_db_all()`.
+
 # Test offline
 
     Code

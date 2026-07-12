@@ -21,9 +21,12 @@ test_that("Test 404 all", {
   skip_on_cran()
   skip_if_offline()
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_404 = function(...) {
+      TRUE
+    },
+    catr_req_perform = mock_404_response
+  )
 
   expect_snapshot(
     fend <- catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, srs = 4326)
@@ -48,6 +51,7 @@ test_that("Expect error on bad SRS", {
 test_that("return data.frame given SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor(
     lat = 38.6196566583596,
@@ -62,6 +66,7 @@ test_that("return data.frame given SRS", {
 test_that("return data.frame without SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor(lat = 38.6196566583596, lon = -3.45624183836806)
   expect_s3_class(result, "tbl")
@@ -70,6 +75,7 @@ test_that("return data.frame without SRS", {
 test_that("check fields without SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor(lat = 38.6196566583596, lon = -3.45624183836806)
   expect_type(result$address, "character")
@@ -79,6 +85,7 @@ test_that("check fields without SRS", {
 test_that("check fields given SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor(
     lat = 38.6196566583596,
@@ -92,6 +99,7 @@ test_that("check fields given SRS", {
 test_that("if data is know return NA", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor(lat = 99999999, lon = -999999999)
   expect_equal(ncol(result), 3)
@@ -100,6 +108,7 @@ test_that("if data is know return NA", {
 test_that("unprecised coordinates", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, srs = "4326")
   expect_equal(ncol(result), 3)
@@ -108,6 +117,7 @@ test_that("unprecised coordinates", {
 test_that("Verbose", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   expect_snapshot(
     df <- catr_ovc_get_rccoor(

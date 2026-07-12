@@ -178,3 +178,14 @@
       Error in `test_msg()`:
       ! `verbose` must be `TRUE` or `FALSE`.
 
+# deprecated cache warnings are reported
+
+    Code
+      warn_deprecated_cache(FALSE, "mock_fun(cache)")
+    Condition
+      Warning:
+      The `cache` argument of `mock_fun()` is deprecated as of CatastRo 1.0.0.
+      i Results are always cached.
+      i The deprecated feature was likely used in the base package.
+        Please report the issue to the authors.
+

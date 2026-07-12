@@ -127,3 +127,7 @@ test_that("cli_abort_if_not validates conditions", {
     test_msg("Testing vector verbose.", verbose = c(TRUE, FALSE))
   )
 })
+
+test_that("deprecated cache warnings are reported", {
+  expect_snapshot(warn_deprecated_cache(FALSE, "mock_fun(cache)"))
+})
