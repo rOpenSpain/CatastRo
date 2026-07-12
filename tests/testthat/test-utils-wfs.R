@@ -31,8 +31,7 @@ test_that("Test offline", {
     FALSE
   })
 
-  cdir <- file.path(tempdir(), "wfs_inspire_cache")
-  unlink(cdir, recursive = TRUE)
+  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
   expect_snapshot(
     fend <- inspire_wfs_get(
       path = "INSPIRE/wfsBU.aspx",
@@ -46,7 +45,6 @@ test_that("Test offline", {
   )
   expect_null(fend)
   expect_length(list.files(cdir, recursive = TRUE), 0)
-  unlink(cdir, recursive = TRUE, force = TRUE)
 
   local_mocked_bindings(is_online_fun = function(...) {
     httr2::is_online()
@@ -58,10 +56,7 @@ test_that("Test 404", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "wfs_inspire_cache")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -85,7 +80,23 @@ test_that("Test 404", {
     FALSE
   })
 
-  # Otherwise work
+  local_mocked_bindings(download_url = function(
+    url,
+    name,
+    cache_dir,
+    subdir,
+    ...
+  ) {
+    out <- file.path(cache_dir, subdir, name)
+    dir.create(dirname(out), recursive = TRUE, showWarnings = FALSE)
+    sfobj <- sf::st_sf(
+      id = 1,
+      geometry = sf::st_sfc(sf::st_point(c(742438, 4046840)), crs = 25829)
+    )
+    sf::st_write(sfobj, out, quiet = TRUE)
+    out
+  })
+
   expect_silent(
     s <- inspire_wfs_get(
       path = "INSPIRE/wfsBU.aspx",
@@ -102,20 +113,36 @@ test_that("Test 404", {
   expect_true(file.exists(s))
   expect_silent(tosf <- sf::read_sf(s))
   expect_s3_class(tosf, "sf")
-
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
 
 test_that("Error on call", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "wfs_inspire_cache")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
+
+  local_mocked_bindings(download_url = function(
+    url,
+    name,
+    cache_dir,
+    subdir,
+    ...
+  ) {
+    out <- file.path(cache_dir, subdir, name)
+    dir.create(dirname(out), recursive = TRUE, showWarnings = FALSE)
+    writeLines(
+      c(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+        "<ExceptionReport>",
+        "  <Exception>",
+        "    <ExceptionText>Bad WFS query.</ExceptionText>",
+        "  </Exception>",
+        "</ExceptionReport>"
+      ),
+      out
+    )
+    out
+  })
 
   expect_message(
     s <- inspire_wfs_get(
@@ -130,20 +157,13 @@ test_that("Error on call", {
     "WFS query returned an exception"
   )
   expect_null(s)
-
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
 
 test_that("Bad query", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- file.path(tempdir(), "wfs_inspire_cache")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
 
   expect_snapshot(
     error = TRUE,
@@ -157,6 +177,23 @@ test_that("Bad query", {
       query = list(20, NA, NULL)
     )
   )
+
+  local_mocked_bindings(download_url = function(
+    url,
+    name,
+    cache_dir,
+    subdir,
+    ...
+  ) {
+    out <- file.path(cache_dir, subdir, name)
+    dir.create(dirname(out), recursive = TRUE, showWarnings = FALSE)
+    sfobj <- sf::st_sf(
+      id = 1,
+      geometry = sf::st_sfc(sf::st_point(c(742438, 4046840)), crs = 25829)
+    )
+    sf::st_write(sfobj, out, quiet = TRUE)
+    out
+  })
 
   expect_message(
     s <- inspire_wfs_get(
@@ -191,11 +228,9 @@ test_that("Bad query", {
   ) |>
     read_geo_file_sf()
 
+  sfobj1$gml_id <- NULL
+  sfobj2$gml_id <- NULL
   expect_identical(sfobj1, sfobj2)
   expect_s3_class(sfobj1, "sf")
   expect_equal(sf::st_crs(sfobj1)$epsg, 25829)
-
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
