@@ -179,6 +179,11 @@ test_that("coordinate lookup can call the real APIs", {
   skip_on_ci()
   skip_if_not_installed("mapSpain")
 
-  result <- catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
+  cdir <- withr::local_tempdir(pattern = "testthat_coords")
+  result <- catr_get_code_from_coords(
+    c(-16.25462, 28.46824),
+    srs = 4326,
+    cache_dir = cdir
+  )
   expect_s3_class(result, "tbl")
 })

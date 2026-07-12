@@ -185,5 +185,6 @@ catr_wms_get_layer <- function(
 }
 
 catr_esp_get_tiles <- function(...) {
+  # nocov start
   mapSpain::esp_get_tiles(...)
-}
+} # nocov end

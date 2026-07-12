@@ -74,3 +74,19 @@ test_that("Check tiles", {
   expect_equal(calls[[4]]$options$crs, "EPSG:25830")
   expect_null(calls[[4]]$options$srs)
 })
+
+test_that("WMS layer can call the real API", {
+  skip_on_cran()
+  skip_if_offline()
+  skip_on_ci()
+
+  cdir <- withr::local_tempdir(pattern = "testthat_wms")
+  obj <- catr_wms_get_layer(
+    c(222500, 4019500, 222700, 4019700),
+    srs = 25830,
+    what = "building",
+    cache_dir = cdir
+  )
+
+  expect_s4_class(obj, "SpatRaster")
+})

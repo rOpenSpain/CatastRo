@@ -178,6 +178,39 @@ test_that("Caching errors", {
   expect_equal(req_perform_calls, 2)
 })
 
+test_that("Download transport failures return NULL", {
+  skip_on_cran()
+
+  url <- paste0(
+    "https://www.catastro.hacienda.gob.es/INSPIRE/Buildings/46",
+    "/46900-VALENCIA/A.ES.SDGC.BU.46900.zip"
+  )
+  cdir <- withr::local_tempdir(pattern = "testthat_transport")
+  fail <- function() {
+    rlang::abort("Mock transport failure.", class = "httr2_failure")
+  }
+
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(...) fail()
+  )
+  expect_snapshot(fend <- download_url(url, cache_dir = cdir, verbose = FALSE))
+  expect_null(fend)
+
+  local_mocked_bindings(
+    catr_req_perform = function(req, path = NULL, ...) {
+      if (is.null(path)) {
+        return(httr2::response(status_code = 200))
+      }
+      writeLines("partial", path)
+      fail()
+    }
+  )
+  expect_snapshot(fend <- download_url(url, cache_dir = cdir, verbose = FALSE))
+  expect_null(fend)
+  expect_false(file.exists(file.path(cdir, "fixme", basename(url))))
+})
+
 test_that("No connection body", {
   skip_on_cran()
   skip_if_offline()
@@ -216,6 +249,24 @@ test_that("Error body", {
   local_mocked_bindings(is_404 = function(...) {
     FALSE
   })
+})
+
+test_that("Body transport failures return NULL", {
+  skip_on_cran()
+
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(...) {
+      rlang::abort("Mock transport failure.", class = "httr2_failure")
+    }
+  )
+  url <- paste0(
+    "https://www.catastro.hacienda.gob.es/INSPIRE/",
+    "Addresses/ES.SDGC.AD.atom.xml"
+  )
+
+  expect_snapshot(fend <- get_request_body(url, verbose = FALSE))
+  expect_null(fend)
 })
 
 

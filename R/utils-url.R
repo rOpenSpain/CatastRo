@@ -230,9 +230,16 @@ report_http_error <- function(
 }
 
 report_request_failure <- function(cnd, type) {
-  cli::cli_alert_danger(
-    "The {type} request could not be completed."
-  )
+  request_type <- if (identical(type, "request")) {
+    "request"
+  } else {
+    paste(type, "request")
+  }
+  cli::cli_alert_danger(paste0(
+    "The ",
+    request_type,
+    " could not be completed."
+  ))
   cli::cli_alert_warning(conditionMessage(cnd))
   cli::cli_alert(
     "Returning {.val NULL} because the {type} failed."
