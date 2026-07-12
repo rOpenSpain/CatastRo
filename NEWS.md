@@ -1,6 +1,6 @@
 # CatastRo (development version)
 
-- `run_example()` now skips examples on CI, preventing live Cadastre API calls from failing package checks when the service blocks CI runners (#78).
+- `run_example()` now allows examples to run on CI when the package is online and not running on CRAN or macOS.
 
 # CatastRo 1.0.2
 
