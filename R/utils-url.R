@@ -81,7 +81,7 @@ download_url <- function(
   # Use HEAD to check whether the download size should be reported.
   get_header <- httr2::req_method(req, "HEAD")
   getsize <- tryCatch(
-    httr2::req_perform(get_header),
+    catr_req_perform(get_header),
     httr2_failure = function(cnd) {
       report_request_failure(cnd, "download")
       NULL
@@ -101,7 +101,7 @@ download_url <- function(
   }
 
   resp <- tryCatch(
-    httr2::req_perform(req, path = file_local),
+    catr_req_perform(req, path = file_local),
     httr2_failure = function(cnd) {
       unlink(file_local, force = TRUE)
       report_request_failure(cnd, "download")
@@ -172,7 +172,7 @@ get_request_body <- function(url, verbose = TRUE) {
   }
 
   resp <- tryCatch(
-    httr2::req_perform(req),
+    catr_req_perform(req),
     httr2_failure = function(cnd) {
       report_request_failure(cnd, "request")
       NULL
@@ -200,6 +200,12 @@ get_request_body <- function(url, verbose = TRUE) {
 #' @noRd
 is_online_fun <- function(...) {
   httr2::is_online()
+}
+
+#' Wrap `httr2::req_perform()` for testing
+#' @noRd
+catr_req_perform <- function(...) {
+  httr2::req_perform(...)
 }
 
 #' Report a simulated HTTP 404 response for testing

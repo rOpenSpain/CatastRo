@@ -146,8 +146,20 @@ test_that("Caching errors", {
 
   expect_null(fend)
 
-  # Warn if size of download is huge
+  req_perform_calls <- 0
+  local_mocked_bindings(catr_req_perform = function(req, path = NULL, ...) {
+    req_perform_calls <<- req_perform_calls + 1
 
+    if (req_perform_calls == 1) {
+      return(httr2::response(
+        status_code = 200,
+        headers = list("content-length" = as.character(21 * 1024^2))
+      ))
+    }
+
+    writeLines("ok", path)
+    httr2::response(status_code = 200)
+  })
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/Buildings/46",
     "/46900-VALENCIA/A.ES.SDGC.BU.46900.zip"
@@ -163,6 +175,7 @@ test_that("Caching errors", {
     ),
     "Download size is"
   )
+  expect_equal(req_perform_calls, 2)
 })
 
 test_that("No connection body", {

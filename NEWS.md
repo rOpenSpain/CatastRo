@@ -1,6 +1,5 @@
 # CatastRo 1.0.2
 
-- `download_url()` and `get_request_body()` now return `NULL` when transport errors interrupt HTTP requests, including reset connections.
 - Improve internal maintenance, **cli** messages, **roxygen2** metadata and package documentation.
 
 # CatastRo 1.0.1
