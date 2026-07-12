@@ -3,9 +3,8 @@ test_that("SSL verifier (#40)", {
   skip_if_offline()
   skip_if_not_installed("withr")
 
-  # This is a check to see if setup.R work. Expected to fail if not
-  # called with test_local(), etc.
-  expect_equal(getOption("catastro_ssl_verify", 1L), 0L)
+  withr::local_options(list(catastro_ssl_verify = 1L))
+  expect_equal(getOption("catastro_ssl_verify", 1L), 1L)
 })
 
 test_that("Test offline", {
