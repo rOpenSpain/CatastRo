@@ -5,7 +5,7 @@
 #' network availability.
 #'
 #' @details
-#' Returns `FALSE` on CRAN, CI, macOS or when offline.
+#' Returns `FALSE` on CRAN, macOS or when offline.
 #'
 #' @return Logical. `TRUE` if examples should run, `FALSE` otherwise.
 #'
@@ -16,9 +16,6 @@
 #' run_example()
 #'
 run_example <- function() {
-  if (on_ci()) {
-    return(FALSE)
-  }
   if (on_mac()) {
     return(FALSE)
   }
@@ -44,18 +41,6 @@ on_cran <- function() {
   } else {
     !isTRUE(as.logical(env))
   }
-}
-
-#' Check whether code is running on CI
-#'
-#' @return Logical. `TRUE` if running on CI, `FALSE` otherwise.
-#'
-#' @noRd
-on_ci <- function() {
-  ci <- Sys.getenv("CI")
-  gh <- Sys.getenv("GITHUB_ACTIONS")
-
-  isTRUE(as.logical(ci)) || isTRUE(as.logical(gh))
 }
 
 #' Check whether code is running on macOS
