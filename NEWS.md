@@ -1,3 +1,7 @@
+# CatastRo (development version)
+
+- `run_example()` now skips examples on CI, preventing live Cadastre API calls from failing package checks when the service blocks CI runners (#78).
+
 # CatastRo 1.0.2
 
 - Improve internal maintenance, **cli** messages, **roxygen2** metadata and package documentation.

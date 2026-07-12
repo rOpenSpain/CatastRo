@@ -15,7 +15,7 @@ Determine whether an example should run based on the current platform and
 network availability.
 }
 \details{
-Returns \code{FALSE} on CRAN, macOS or when offline.
+Returns \code{FALSE} on CRAN, CI, macOS or when offline.
 }
 \examples{
 run_example()

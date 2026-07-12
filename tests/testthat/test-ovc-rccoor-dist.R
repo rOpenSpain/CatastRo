@@ -25,9 +25,12 @@ test_that("Test 404 all", {
   skip_on_cran()
   skip_if_offline()
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_404 = function(...) {
+      TRUE
+    },
+    catr_req_perform = mock_404_response
+  )
 
   expect_snapshot(
     fend <- catr_ovc_get_rccoor_distancia(
@@ -60,6 +63,7 @@ test_that("Expect error on bad SRS", {
 test_that("return tibble given SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor_distancia(
     lat = 40.963200,
@@ -74,6 +78,7 @@ test_that("return tibble given SRS", {
 test_that("return tibble without SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor_distancia(lat = 40.963200, lon = -5.671420)
   expect_s3_class(result, "tbl")
@@ -82,6 +87,7 @@ test_that("return tibble without SRS", {
 test_that("check fields without SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor_distancia(lat = 40.963200, lon = -5.671420)
 
@@ -93,6 +99,7 @@ test_that("check fields without SRS", {
 test_that("check fields given SRS", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   result <- catr_ovc_get_rccoor_distancia(
     lat = 40.963200,
@@ -107,6 +114,7 @@ test_that("check fields given SRS", {
 test_that("if data is known return a tibble with 3 cols", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   expect_snapshot(
     df <- catr_ovc_get_rccoor_distancia(
@@ -121,6 +129,7 @@ test_that("if data is known return a tibble with 3 cols", {
 test_that("Expect message", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   expect_snapshot(
     df <- catr_ovc_get_rccoor_distancia(

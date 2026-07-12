@@ -131,7 +131,8 @@ catr_wms_get_layer <- function(
 
   what <- match_arg_pretty(what)
 
-  layer <- switch(what,
+  layer <- switch(
+    what,
     "building" = "Catastro.Building",
     "buildingpart" = "Catastro.BuildingPart",
     "parcel" = "Catastro.CadastralParcel",
@@ -166,7 +167,7 @@ catr_wms_get_layer <- function(
 
   # Query the WMS service.
 
-  out <- mapSpain::esp_get_tiles(
+  out <- catr_esp_get_tiles(
     x = bbox_res,
     type = layer,
     update_cache = update_cache,
@@ -182,3 +183,5 @@ catr_wms_get_layer <- function(
 
   out
 }
+
+catr_esp_get_tiles <- mapSpain::esp_get_tiles

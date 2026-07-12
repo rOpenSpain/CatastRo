@@ -50,6 +50,7 @@ test_that("Test offline db_to", {
 test_that("Test 404 all", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2")
 
@@ -72,6 +73,7 @@ test_that("Test 404 all", {
 test_that("Test 404 to", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2to")
 
@@ -97,6 +99,7 @@ test_that("Test 404 to", {
 test_that("Test atom bu", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   expect_message(catr_atom_get_buildings_db_all(
     verbose = TRUE,
@@ -140,6 +143,7 @@ test_that("Test atom bu", {
 test_that("Deprecations", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2to")
 
@@ -159,6 +163,7 @@ test_that("Deprecations", {
 test_that("Test 404 to bis", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2to2")
 

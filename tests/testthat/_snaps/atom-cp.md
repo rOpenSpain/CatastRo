@@ -1,3 +1,11 @@
+# parcel ATOM returns NULL when mocked dependencies fail
+
+    Code
+      result <- catr_atom_get_parcels("No match")
+    Message
+      ! No municipality matched pattern "No match".
+      i Check available municipalities with `CatastRo::catr_atom_get_parcels_db_all()`.
+
 # Test offline
 
     Code

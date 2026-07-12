@@ -1,6 +1,26 @@
+test_that("local geospatial files are read and sanitized", {
+  local_file <- withr::local_tempfile(fileext = ".gpkg")
+  source_sf <- sf::st_sf(
+    name = "área",
+    geometry = sf::st_sfc(sf::st_point(c(0, 0)), crs = 4326)
+  )
+  sf::write_sf(source_sf, local_file, layer = "mock_layer", quiet = TRUE)
+
+  result <- read_geo_file_sf(local_file, layer_hint = "mock")
+
+  expect_s3_class(result, "sf")
+  expect_equal(result$name, "área")
+  expect_equal(sf::st_crs(result)$epsg, 4326)
+
+  tb <- sanitize_sf(data.frame(name = "área"))
+  expect_s3_class(tb, c("tbl_df", "tbl", "data.frame"), exact = TRUE)
+  expect_equal(tb$name, "área")
+})
+
 test_that("Read shp", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
   url <- paste0(
@@ -27,6 +47,7 @@ test_that("Read shp", {
 test_that("Read shp address", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
   url <- paste0(

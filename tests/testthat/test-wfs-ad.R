@@ -1,6 +1,40 @@
+test_that("AD wrappers build WFS queries", {
+  local_mocked_bindings(
+    wfs_read_bbox_query = mock_wfs_bbox_query,
+    wfs_read_stored_query = mock_wfs_stored_query
+  )
+
+  bbox <- catr_wfs_get_address_bbox(
+    c(760926, 4019259, 761155, 4019366),
+    srs = 25829,
+    verbose = TRUE
+  )
+  expect_equal(bbox$path, "INSPIRE/wfsAD.aspx")
+  expect_equal(bbox$typenames, "AD.ADDRESS")
+  expect_equal(bbox$limit_km2, 4)
+  expect_true(bbox$verbose)
+
+  codvia <- catr_wfs_get_address_codvia("1", 11, 39, srs = 4326)
+  expect_equal(codvia$path, "INSPIRE/wfsAD.aspx")
+  expect_equal(codvia$srs, 4326)
+  expect_equal(codvia$query$StoredQuerie_id, "getadbycodvia")
+  expect_equal(codvia$query$codvia, "1")
+  expect_equal(codvia$query$del, 11)
+  expect_equal(codvia$query$mun, 39)
+
+  rc <- catr_wfs_get_address_rc("3662303TF3136B")
+  expect_equal(rc$query$StoredQuerie_id, "GetadByRefcat")
+  expect_equal(rc$query$REFCAT, "3662303TF3136B")
+
+  postal <- catr_wfs_get_address_postalcode("11009")
+  expect_equal(postal$query$StoredQuerie_id, "getadbypostalcode")
+  expect_equal(postal$query$postalcode, "11009")
+})
+
 test_that("BBOX Check", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   expect_snapshot(
     fend <- catr_wfs_get_address_bbox(c(-20, -20, -19, -20), srs = 4326)
@@ -29,6 +63,7 @@ test_that("BBOX Check", {
 test_that("AD CODVIA", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   obj <- catr_wfs_get_address_codvia("1", 11, 39)
   expect_s3_class(obj, "sf")
@@ -49,6 +84,7 @@ test_that("AD CODVIA", {
 test_that("AD RC", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   obj <- catr_wfs_get_address_rc("3662303TF3136B")
   expect_s3_class(obj, "sf")
@@ -69,6 +105,7 @@ test_that("AD RC", {
 test_that("AD Postal Code", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   obj <- catr_wfs_get_address_postalcode("11009")
   expect_gt(nrow(obj), 1)

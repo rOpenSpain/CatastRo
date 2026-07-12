@@ -1,3 +1,35 @@
+test_that("parcel ATOM requests can be mocked", {
+  local_mocked_bindings(
+    catr_atom_get_parcels_db_all = mock_atom_all,
+    catr_atom_get_parcels_db_to = mock_atom_to,
+    download_url = mock_atom_download,
+    read_geo_file_sf = mock_atom_read_geo
+  )
+
+  parcel <- catr_atom_get_parcels("Melque", to = "Segovia")
+  expect_equal(parcel$file, "mock-atom.zip")
+  expect_equal(parcel$hint, "parcel")
+
+  zoning <- catr_atom_get_parcels("Melque", to = "Segovia", what = "zoning")
+  expect_equal(zoning$hint, "zoning")
+})
+
+test_that("parcel ATOM returns NULL when mocked dependencies fail", {
+  local_mocked_bindings(catr_atom_get_parcels_db_all = function(...) NULL)
+  expect_null(catr_atom_get_parcels("Melque"))
+
+  local_mocked_bindings(catr_atom_get_parcels_db_all = mock_atom_all)
+  expect_snapshot(result <- catr_atom_get_parcels("No match"))
+  expect_null(result)
+
+  local_mocked_bindings(
+    catr_atom_get_parcels_db_all = mock_atom_all,
+    catr_atom_get_parcels_db_to = mock_atom_to,
+    download_url = mock_atom_download_null
+  )
+  expect_null(catr_atom_get_parcels("Melque"))
+})
+
 test_that("Test offline", {
   skip_on_cran()
   skip_if_offline()
@@ -19,6 +51,7 @@ test_that("Test offline", {
 test_that("Test 404 all", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2")
 
@@ -44,6 +77,7 @@ test_that("Test 404 all", {
 test_that("ATOM parcels", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "test_cp")
   expect_snapshot(catr_atom_get_parcels("xyxghx", cache_dir = cdir))
@@ -98,6 +132,7 @@ test_that("ATOM parcels", {
 test_that("ATOM Encoding issue", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "test_cp2")
 
@@ -109,6 +144,7 @@ test_that("ATOM Encoding issue", {
 test_that("Test 404 single", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2to2bu")
 

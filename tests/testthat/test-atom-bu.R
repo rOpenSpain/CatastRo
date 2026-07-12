@@ -1,3 +1,42 @@
+test_that("building ATOM requests can be mocked", {
+  local_mocked_bindings(
+    catr_atom_get_buildings_db_all = mock_atom_all,
+    catr_atom_get_buildings_db_to = mock_atom_to,
+    download_url = mock_atom_download,
+    read_geo_file_sf = mock_atom_read_geo
+  )
+
+  building <- catr_atom_get_buildings("Melque", to = "Segovia")
+  expect_equal(building$file, "mock-atom.zip")
+  expect_equal(building$hint, "building.gml")
+
+  part <- catr_atom_get_buildings(
+    "Melque",
+    to = "Segovia",
+    what = "buildingpart"
+  )
+  expect_equal(part$hint, "buildingpart.gml")
+
+  other <- catr_atom_get_buildings("Melque", to = "Segovia", what = "other")
+  expect_equal(other$hint, "other")
+})
+
+test_that("building ATOM returns NULL when mocked dependencies fail", {
+  local_mocked_bindings(catr_atom_get_buildings_db_all = function(...) NULL)
+  expect_null(catr_atom_get_buildings("Melque"))
+
+  local_mocked_bindings(catr_atom_get_buildings_db_all = mock_atom_all)
+  expect_snapshot(result <- catr_atom_get_buildings("No match"))
+  expect_null(result)
+
+  local_mocked_bindings(
+    catr_atom_get_buildings_db_all = mock_atom_all,
+    catr_atom_get_buildings_db_to = mock_atom_to,
+    download_url = mock_atom_download_null
+  )
+  expect_null(catr_atom_get_buildings("Melque"))
+})
+
 test_that("Test offline", {
   skip_on_cran()
   skip_if_offline()
@@ -19,6 +58,7 @@ test_that("Test offline", {
 test_that("Test 404 all", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2")
 
@@ -44,6 +84,7 @@ test_that("Test 404 all", {
 test_that("ATOM Buildings", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "test_bu")
   expect_snapshot(catr_atom_get_buildings("xyxghx", cache_dir = cdir))
@@ -107,6 +148,7 @@ test_that("ATOM Buildings", {
 test_that("ATOM Encoding issue", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "test_bu2")
 
@@ -118,6 +160,7 @@ test_that("ATOM Encoding issue", {
 test_that("Test 404 single", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2to2bu")
 

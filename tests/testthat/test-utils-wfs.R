@@ -24,6 +24,110 @@ test_that("wfs_get_bbox", {
 
   expect_false(any(another == merc))
 })
+
+test_that("inspire_wfs_get validates and normalizes mocked queries", {
+  gml_file <- withr::local_tempfile(fileext = ".gml")
+  writeLines("<FeatureCollection />", gml_file)
+
+  local_mocked_bindings(download_url = function(url, filename, ...) {
+    expect_match(url, "srsname=EPSG:25829", fixed = TRUE)
+    expect_match(url, "request=getfeature", fixed = TRUE)
+    expect_match(filename, "[.]gml$")
+    gml_file
+  })
+
+  expect_snapshot(
+    result <- inspire_wfs_get(
+      path = "INSPIRE/wfsBU.aspx",
+      query = list(
+        request = "getfeature",
+        Typenames = "BU.BUILDING",
+        SRSname = 25829,
+        bbox = "",
+        empty = NULL,
+        NA
+      )
+    )
+  )
+  expect_equal(result, gml_file)
+})
+
+test_that("inspire_wfs_get handles mocked WFS exceptions", {
+  exception_file <- withr::local_tempfile(fileext = ".gml")
+  writeLines(
+    paste0(
+      "<ExceptionReport>",
+      "<Exception>",
+      "<ExceptionText>Mocked WFS error</ExceptionText>",
+      "</Exception>",
+      "</ExceptionReport>"
+    ),
+    exception_file
+  )
+
+  local_mocked_bindings(download_url = function(...) {
+    exception_file
+  })
+
+  expect_snapshot(
+    result <- inspire_wfs_get(
+      path = "INSPIRE/wfsBU.aspx",
+      query = list(request = "getfeature")
+    )
+  )
+  expect_null(result)
+})
+
+test_that("WFS readers use mocked downloads and spatial readers", {
+  gml_file <- withr::local_tempfile(fileext = ".gml")
+  writeLines("<FeatureCollection />", gml_file)
+  mock_sf <- sf::st_sf(
+    id = 1,
+    geometry = sf::st_sfc(sf::st_point(c(0, 0)), crs = 25830)
+  )
+
+  local_mocked_bindings(
+    inspire_wfs_get = function(...) {
+      gml_file
+    },
+    read_geo_file_sf = function(...) {
+      mock_sf
+    }
+  )
+
+  stored <- wfs_read_stored_query(
+    path = "INSPIRE/wfsBU.aspx",
+    query = list(request = "getfeature"),
+    srs = 25830
+  )
+  expect_s3_class(stored, "sf")
+
+  bbox <- wfs_read_bbox_query(
+    x = c(760926, 4019259, 761155, 4019366),
+    srs = 25829,
+    path = "INSPIRE/wfsBU.aspx",
+    typenames = "BU.BUILDING",
+    limit_km2 = 4
+  )
+  expect_s3_class(bbox, "sf")
+  expect_equal(sf::st_crs(bbox)$epsg, 25829)
+})
+
+test_that("WFS readers return NULL when mocked downloads fail", {
+  local_mocked_bindings(inspire_wfs_get = function(...) {
+    NULL
+  })
+
+  expect_null(wfs_read_stored_query("INSPIRE/wfsBU.aspx", list()))
+  expect_null(wfs_read_bbox_query(
+    x = c(760926, 4019259, 761155, 4019366),
+    srs = 25829,
+    path = "INSPIRE/wfsBU.aspx",
+    typenames = "BU.BUILDING",
+    limit_km2 = 4
+  ))
+})
+
 test_that("Test offline", {
   skip_on_cran()
   skip_if_offline()
@@ -57,6 +161,7 @@ test_that("Test offline", {
 test_that("Test 404", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- file.path(tempdir(), "wfs_inspire_cache")
   if (dir.exists(cdir)) {
@@ -111,6 +216,7 @@ test_that("Test 404", {
 test_that("Error on call", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- file.path(tempdir(), "wfs_inspire_cache")
   if (dir.exists(cdir)) {
@@ -139,6 +245,7 @@ test_that("Error on call", {
 test_that("Bad query", {
   skip_on_cran()
   skip_if_offline()
+  skip_on_ci()
 
   cdir <- file.path(tempdir(), "wfs_inspire_cache")
   if (dir.exists(cdir)) {
