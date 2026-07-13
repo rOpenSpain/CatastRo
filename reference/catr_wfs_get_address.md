@@ -130,12 +130,6 @@ ad <- catr_wfs_get_address_bbox(
   ),
   srs = 25830
 )
-#> ✖ The download request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the download failed.
 
 library(ggplot2)
 
