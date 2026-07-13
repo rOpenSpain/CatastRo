@@ -187,7 +187,10 @@ test_that("Download transport failures return NULL", {
   )
   cdir <- withr::local_tempdir(pattern = "testthat_transport")
   fail <- function() {
-    rlang::abort("Mock transport failure.", class = "httr2_failure")
+    stop(structure(
+      list(message = "Mock transport failure.", call = NULL),
+      class = c("httr2_failure", "error", "condition")
+    ))
   }
 
   local_mocked_bindings(
@@ -257,7 +260,10 @@ test_that("Body transport failures return NULL", {
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
     catr_req_perform = function(...) {
-      rlang::abort("Mock transport failure.", class = "httr2_failure")
+      stop(structure(
+        list(message = "Mock transport failure.", call = NULL),
+        class = c("httr2_failure", "error", "condition")
+      ))
     }
   )
   url <- paste0(

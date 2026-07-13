@@ -234,3 +234,22 @@ test_that("Bad query", {
   expect_s3_class(sfobj1, "sf")
   expect_equal(sf::st_crs(sfobj1)$epsg, 25829)
 })
+
+test_that("inspire_wfs_get can call the real API", {
+  skip_on_cran()
+  skip_if_offline()
+  skip_on_ci()
+
+  file_local <- inspire_wfs_get(
+    path = "INSPIRE/wfsBU.aspx",
+    query = list(
+      request = "getfeature",
+      typenames = "BU.BUILDING",
+      bbox = "760926,4019259,761155,4019366",
+      SRSNAME = 25829
+    )
+  )
+  expect_type(file_local, "character")
+  expect_true(file.exists(file_local))
+  unlink(file_local)
+})
