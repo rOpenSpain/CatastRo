@@ -3,9 +3,93 @@ test_that("SSL verifier (#40)", {
 
   expect_equal(getOption("catastro_ssl_verify", 1L), 0)
   expect_equal(getOption("catastro_timeout", 300), 600)
+  expect_equal(catr_ssl_verify(), 0)
+  expect_equal(catr_timeout(), 600)
 
   withr::local_options(list(catastro_ssl_verify = 1L))
   expect_equal(getOption("catastro_ssl_verify", 1L), 1L)
+  expect_equal(catr_ssl_verify(), 1L)
+})
+
+test_that("HTTP settings can be controlled with environment variables", {
+  withr::local_options(list(
+    catastro_ssl_verify = NULL,
+    catastro_timeout = NULL
+  ))
+  withr::local_envvar(c(
+    CATASTRO_SSL_VERIFY = "0",
+    CATASTRO_TIMEOUT = "600"
+  ))
+
+  expect_equal(catr_ssl_verify(), 0)
+  expect_equal(catr_timeout(), 600)
+
+  withr::local_envvar(c(
+    CATASTRO_SSL_VERIFY = NA,
+    CATASTRO_TIMEOUT = NA
+  ))
+  expect_equal(catr_ssl_verify(), 1L)
+  expect_equal(catr_timeout(), 300)
+
+  withr::local_envvar(c(
+    CATASTRO_SSL_VERIFY = "invalid",
+    CATASTRO_TIMEOUT = "invalid"
+  ))
+  expect_equal(catr_ssl_verify(), 1L)
+  expect_equal(catr_timeout(), 300)
+})
+
+test_that("HTTP options take precedence over environment variables", {
+  withr::local_options(list(
+    catastro_ssl_verify = 1L,
+    catastro_timeout = 30
+  ))
+  withr::local_envvar(c(
+    CATASTRO_SSL_VERIFY = "0",
+    CATASTRO_TIMEOUT = "600"
+  ))
+
+  expect_equal(catr_ssl_verify(), 1L)
+  expect_equal(catr_timeout(), 30)
+})
+
+test_that("HTTP setting environment variables are used in requests", {
+  withr::local_options(list(
+    catastro_ssl_verify = NULL,
+    catastro_timeout = NULL
+  ))
+  withr::local_envvar(c(
+    CATASTRO_SSL_VERIFY = "0",
+    CATASTRO_TIMEOUT = "600"
+  ))
+
+  seen <- list()
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(req, path = NULL, ...) {
+      seen[[length(seen) + 1]] <<- req$options
+      if (is.null(path)) {
+        return(httr2::response(
+          status_code = 200,
+          headers = list("content-length" = "2")
+        ))
+      }
+
+      writeLines("ok", path)
+      httr2::response(status_code = 200)
+    }
+  )
+
+  cdir <- withr::local_tempdir(pattern = "testthat_envvar")
+  out <- download_url(
+    "https://example.com/envvar.txt",
+    cache_dir = cdir,
+    verbose = FALSE
+  )
+
+  expect_type(out, "character")
+  expect_equal(seen[[1]]$ssl_verifypeer, 0)
+  expect_equal(seen[[1]]$timeout_ms, 600000)
 })
 
 test_that("Test offline", {

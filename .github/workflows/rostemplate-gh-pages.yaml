@@ -27,6 +27,8 @@ jobs:
       github.event.workflow_run.conclusion == 'success'
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      CATASTRO_SSL_VERIFY: "0"
+      CATASTRO_TIMEOUT: "600"
 
     steps:
     - uses: actions/checkout@v7

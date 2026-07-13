@@ -1,3 +1,7 @@
+# CatastRo (development version)
+
+- Catastro HTTP timeout and SSL verification can now be configured with the `CATASTRO_TIMEOUT` and `CATASTRO_SSL_VERIFY` environment variables. The existing `catastro_timeout` and `catastro_ssl_verify` options still take precedence (#82).
+
 # CatastRo 1.0.2
 
 - Improve internal maintenance, **cli** messages, **roxygen2** metadata and package documentation.
