@@ -131,8 +131,7 @@ catr_wms_get_layer <- function(
 
   what <- match_arg_pretty(what)
 
-  layer <- switch(
-    what,
+  layer <- switch(what,
     "building" = "Catastro.Building",
     "buildingpart" = "Catastro.BuildingPart",
     "parcel" = "Catastro.CadastralParcel",

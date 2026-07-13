@@ -15,8 +15,7 @@ test_that("BBOX Check", {
     if (is.null(crs)) {
       crs <- sf::st_crs(x)$epsg
     }
-    n <- switch(
-      typenames,
+    n <- switch(typenames,
       "BU.BUILDING" = 2,
       "BU.BUILDINGPART" = 3,
       "BU.OTHERCONSTRUCTION" = 1
