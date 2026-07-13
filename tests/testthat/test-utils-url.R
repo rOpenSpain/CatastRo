@@ -23,6 +23,20 @@ test_that("HTTP settings can be controlled with environment variables", {
 
   expect_equal(catr_ssl_verify(), 0)
   expect_equal(catr_timeout(), 600)
+
+  withr::local_envvar(c(
+    CATASTRO_SSL_VERIFY = NA,
+    CATASTRO_TIMEOUT = NA
+  ))
+  expect_equal(catr_ssl_verify(), 1L)
+  expect_equal(catr_timeout(), 300)
+
+  withr::local_envvar(c(
+    CATASTRO_SSL_VERIFY = "invalid",
+    CATASTRO_TIMEOUT = "invalid"
+  ))
+  expect_equal(catr_ssl_verify(), 1L)
+  expect_equal(catr_timeout(), 300)
 })
 
 test_that("HTTP options take precedence over environment variables", {
