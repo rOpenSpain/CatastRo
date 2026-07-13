@@ -83,7 +83,6 @@ Work with cadastral references:
 ## Examples
 
 ``` r
-if (FALSE) { # run_example()
 # \donttest{
 
 # Using all arguments
@@ -92,9 +91,16 @@ catr_ovc_get_cpmrc("13077A01800039",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
 )
+#> # A tibble: 1 × 10
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
+#> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4562… 38.6196… EPSG:4… DS D…
 
 # Only the cadastral reference
 catr_ovc_get_cpmrc("9872023VH5797S")
+#> # A tibble: 1 × 10
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
+#> 1  -3.46   38.6 9872023VH… CL GLO… 98720… VH579… -3.4632… 38.6401… EPSG:4… CL G…
 # }
-}
 ```

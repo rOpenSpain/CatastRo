@@ -89,7 +89,6 @@ Work with cadastral buildings:
 ## Examples
 
 ``` r
-if (FALSE) { # run_example()
 # \donttest{
 s <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 
@@ -104,6 +103,6 @@ ggplot(s) +
     title = "Buildings",
     subtitle = "Nava de la Asuncion, Segovia"
   )
+
 # }
-}
 ```

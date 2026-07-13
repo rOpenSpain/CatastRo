@@ -87,7 +87,6 @@ Work with cadastral parcels:
 ## Examples
 
 ``` r
-if (FALSE) { # run_example()
 # \donttest{
 s <- catr_atom_get_parcels("Melque", to = "Segovia", what = "parcel")
 
@@ -99,6 +98,6 @@ ggplot(s) +
     title = "Cadastral parcels",
     subtitle = "Melque de Cercos, Segovia"
   )
+
 # }
-}
 ```

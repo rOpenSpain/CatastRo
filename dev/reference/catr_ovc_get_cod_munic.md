@@ -75,18 +75,30 @@ Search for cadastral identifiers:
 ## Examples
 
 ``` r
-if (FALSE) { # run_example()
 # \donttest{
 # Get municipality by cadastral code
 ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
+#> ✖ The request could not be completed.
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
+#> → Returning "NULL" because the request failed.
 
 ab
+#> NULL
 
 # Same query using the INE code
 
 ab2 <- catr_ovc_get_cod_munic(cpro = 2, cmun_ine = 3)
+#> ✖ The request could not be completed.
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
+#> → Returning "NULL" because the request failed.
 
 ab2
+#> NULL
 # }
-}
 ```

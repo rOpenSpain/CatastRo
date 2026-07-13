@@ -59,7 +59,6 @@ Query data from WFS INSPIRE services:
 ## Examples
 
 ``` r
-if (FALSE) { # run_example()
 # Access the Cadastre of Navarra
 # Try also https://ropenspain.github.io/CatastRoNav/
 
@@ -81,6 +80,5 @@ if (!is.null(file_local)) {
   library(ggplot2)
   ggplot(pamp) +
     geom_sf()
-}
 }
 ```

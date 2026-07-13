@@ -44,8 +44,7 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="catastro-development-version">CatastRo (development version)<a class="anchor" aria-label="anchor" href="#catastro-development-version"></a></h2>
-<ul><li>
-<code><a href="../reference/run_example.html">run_example()</a></code> now skips examples on CI, preventing live Cadastre API calls from failing package checks when the service blocks CI runners (<a href="https://github.com/rOpenSpain/CatastRo/issues/78" class="external-link">#78</a>).</li>
+<ul><li>Catastro HTTP timeout and SSL verification can now be configured with the <code>CATASTRO_TIMEOUT</code> and <code>CATASTRO_SSL_VERIFY</code> environment variables. The existing <code>catastro_timeout</code> and <code>catastro_ssl_verify</code> options still take precedence (<a href="https://github.com/rOpenSpain/CatastRo/issues/82" class="external-link">#82</a>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.2" id="catastro-102">CatastRo 1.0.2<a class="anchor" aria-label="anchor" href="#catastro-102"></a></h2><p class="text-muted">CRAN release: 2026-06-03</p>

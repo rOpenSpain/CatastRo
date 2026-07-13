@@ -113,7 +113,6 @@ Work with cadastral buildings:
 ## Examples
 
 ``` r
-if (FALSE) { # run_example()
 # \donttest{
 # Using a bounding box
 building <- catr_wfs_get_buildings_bbox(
@@ -125,17 +124,30 @@ building <- catr_wfs_get_buildings_bbox(
   ),
   srs = 25830
 )
+#> ✖ The download request could not be completed.
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
+#> → Returning "NULL" because the download failed.
 library(ggplot2)
 ggplot(building) +
   geom_sf() +
   labs(title = "Search using a bounding box")
 
+
 # Using a cadastral reference
 rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
+#> ✖ The download request could not be completed.
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
+#> → Returning "NULL" because the download failed.
 library(ggplot2)
 ggplot(rc) +
   geom_sf() +
   labs(title = "Search using rc")
+
 # }
-}
 ```

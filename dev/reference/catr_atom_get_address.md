@@ -79,7 +79,6 @@ Work with cadastral addresses:
 ## Examples
 
 ``` r
-if (FALSE) { # run_example()
 # \donttest{
 s <- catr_atom_get_address("Melque", to = "Segovia")
 
@@ -95,6 +94,6 @@ ggplot(s) +
     title = "Addresses",
     subtitle = "Melque de Cercos, Segovia"
   )
+
 # }
-}
 ```

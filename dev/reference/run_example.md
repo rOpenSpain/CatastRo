@@ -15,11 +15,11 @@ Logical. `TRUE` if examples should run, `FALSE` otherwise.
 
 ## Details
 
-Returns `FALSE` on CRAN, CI, macOS or when offline.
+Returns `FALSE` on CRAN, macOS or when offline.
 
 ## Examples
 
 ``` r
 run_example()
-#> [1] FALSE
+#> [1] TRUE
 ```

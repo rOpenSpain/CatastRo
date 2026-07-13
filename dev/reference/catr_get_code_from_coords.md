@@ -126,14 +126,26 @@ Search for cadastral identifiers:
 ## Examples
 
 ``` r
-if (FALSE) { # run_example()
 # \donttest{
 # Use with coordinates
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
+#> ✖ The request could not be completed.
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
+#> → Returning "NULL" because the request failed.
+#> NULL
 
 # Use with an sf object
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
+#> ✖ The request could not be completed.
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
+#> → Returning "NULL" because the request failed.
+#> NULL
 # }
-}
 ```
