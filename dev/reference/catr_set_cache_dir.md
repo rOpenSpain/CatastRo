@@ -112,29 +112,29 @@ Manage the local cache:
 # Caution! This modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpKjzFJD/CatastRo
+#> ℹ /tmp/Rtmp0mxcoX/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 catr_set_cache_dir(ex)
-#> ℹ CatastRo cache directory is /tmp/RtmpKjzFJD/example/cachenew.
+#> ℹ CatastRo cache directory is /tmp/Rtmp0mxcoX/example/cachenew.
 #> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 
 catr_detect_cache_dir()
-#> ℹ /tmp/RtmpKjzFJD/example/cachenew
-#> [1] "/tmp/RtmpKjzFJD/example/cachenew"
+#> ℹ /tmp/Rtmp0mxcoX/example/cachenew
+#> [1] "/tmp/Rtmp0mxcoX/example/cachenew"
 
 # Restore initial cache
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache directory is /tmp/RtmpKjzFJD/CatastRo.
+#> ℹ CatastRo cache directory is /tmp/Rtmp0mxcoX/CatastRo.
 #> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpKjzFJD/CatastRo
+#> ℹ /tmp/Rtmp0mxcoX/CatastRo
 #> [1] TRUE
 # }
 
 
 catr_detect_cache_dir()
-#> ℹ /tmp/RtmpKjzFJD/CatastRo
-#> [1] "/tmp/RtmpKjzFJD/CatastRo"
+#> ℹ /tmp/Rtmp0mxcoX/CatastRo
+#> [1] "/tmp/Rtmp0mxcoX/CatastRo"
 ```

@@ -133,14 +133,10 @@ Base"><a href="https://knowledge-base.inspire.ec.europa.eu/overview_en" class="e
 <span><span class="co"># Extract cadastral parcels using a spatial object as the query input.</span></span>
 <span></span>
 <span><span class="va">stadium_parcel</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_wfs_get_parcels.html">catr_wfs_get_parcels_bbox</a></span><span class="op">(</span><span class="va">stadium</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in `validate_vector_with_srs()` at CatastRo/R/utils-wfs.R:238:5:</span></span>
-<span><span class="co">#&gt; ! `x` must have length 4, not 0.</span></span>
 <span></span>
 <span><span class="co"># Transform to the tile CRS.</span></span>
 <span></span>
 <span><span class="va">stadium_parcel_pr</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">stadium_parcel</span>, <span class="fl">25830</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error:</span></span>
-<span><span class="co">#&gt; ! object 'stadium_parcel' not found</span></span>
 <span></span>
 <span><span class="co"># Extract parcel label imagery.</span></span>
 <span></span>
@@ -150,8 +146,6 @@ Base"><a href="https://knowledge-base.inspire.ec.europa.eu/overview_en" class="e
 <span>  styles <span class="op">=</span> <span class="st">"BoundariesOnly"</span>,</span>
 <span>  srs <span class="op">=</span> <span class="fl">25830</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error:</span></span>
-<span><span class="co">#&gt; ! object 'stadium_parcel_pr' not found</span></span>
 <span></span>
 <span><span class="co"># Plot.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -164,10 +158,12 @@ Base"><a href="https://knowledge-base.inspire.ec.europa.eu/overview_en" class="e
 <span>    fill <span class="op">=</span> <span class="cn">NA</span>, col <span class="op">=</span> <span class="st">"red"</span>, linewidth <span class="op">=</span> <span class="fl">2</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium</span>, fill <span class="op">=</span> <span class="st">"red"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in `geom_spatraster_rgb()`:</span></span>
-<span><span class="co">#&gt; ! `tidyterra::geom_spatraster_rgb()` only works with &lt;SpatRaster&gt;</span></span>
-<span><span class="co">#&gt;   objects, not &lt;function&gt;. See `?terra::rast()`.</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="./santbernabeu-1.png" alt="Figure 1: Santiago Bernabéu example" width="100%"><p class="caption">
+Figure 1: Santiago Bernabéu example
+</p>
+</div>
 </section><section class="level3"><h3 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
 </h3>
 <p>We can also create thematic maps from attributes in the spatial objects. This example visualizes the urban growth of Granada with <strong>CatastRo</strong>, reproducing a map by <a href="https://dominicroye.github.io" class="external-link">Dominic Royé</a> <span class="citation" data-cites="roye19">(<a href="#ref-roye19" role="doc-biblioref">Royé 2019</a>)</span> with the ATOM service.</p>

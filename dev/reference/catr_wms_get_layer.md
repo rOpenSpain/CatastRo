@@ -209,14 +209,11 @@ parcels_img <- catr_wms_get_layer(parcels,
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )
-#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
 
 ggplot() +
   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
   geom_spatraster_rgb(data = parcels_img)
-#> Error: object 'parcels_img' not found
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
+
 # }
 ```
