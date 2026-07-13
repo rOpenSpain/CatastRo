@@ -26,14 +26,14 @@
 # Test atom bu
 
     Code
-      no_res <- catr_atom_get_buildings_db_to(to = "aaaana", cache_dir = tempdir())
+      no_res <- catr_atom_get_buildings_db_to(to = "aaaana", cache_dir = cdir)
     Message
       ! No territorial office matched pattern "aaaana".
 
 ---
 
     Code
-      several <- catr_atom_get_buildings_db_to(to = "lencia", cache_dir = tempdir())
+      several <- catr_atom_get_buildings_db_to(to = "lencia", cache_dir = cdir)
     Message
       i Found 2 territorial offices matching "lencia".
       v Using closest match "Territorial office 34 Palencia".

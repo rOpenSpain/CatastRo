@@ -68,7 +68,7 @@ catr_get_code_from_coords <- function(
   # Get municipality.
   cache_dir <- create_cache_dir(cache_dir)
 
-  mun <- mapSpain::esp_get_munic_siane(
+  mun <- catr_esp_get_munic_siane(
     cache_dir = cache_dir,
     verbose = verbose,
     moveCAN = FALSE,
@@ -90,4 +90,8 @@ catr_get_code_from_coords <- function(
   getcode <- mun[as.vector(aa), ]
 
   catr_ovc_get_cod_munic(getcode$cpro, cmun_ine = getcode$cmun)
+}
+
+catr_esp_get_munic_siane <- function(...) {
+  mapSpain::esp_get_munic_siane(...)
 }

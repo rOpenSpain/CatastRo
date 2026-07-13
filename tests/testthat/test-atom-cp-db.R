@@ -98,35 +98,36 @@ test_that("Test atom cp", {
   skip_on_cran()
   skip_if_offline()
 
+  cdir <- withr::local_tempdir(pattern = "testthat_atom_cp")
   expect_message(catr_atom_get_parcels_db_all(
     verbose = TRUE,
-    cache_dir = tempdir()
+    cache_dir = cdir
   ))
   expect_snapshot(
-    no_res <- catr_atom_get_parcels_db_to(to = "aaaana", cache_dir = tempdir())
+    no_res <- catr_atom_get_parcels_db_to(to = "aaaana", cache_dir = cdir)
   )
   expect_null(no_res)
 
   expect_silent(
-    nmel <- catr_atom_get_parcels_db_to(to = "Melilla", cache_dir = tempdir())
+    nmel <- catr_atom_get_parcels_db_to(to = "Melilla", cache_dir = cdir)
   )
   expect_s3_class(nmel, "tbl")
   expect_shape(nmel, dim = c(1, 3))
 
   # Several patterns
   expect_snapshot(
-    several <- catr_atom_get_parcels_db_to(to = "lencia", cache_dir = tempdir())
+    several <- catr_atom_get_parcels_db_to(to = "lencia", cache_dir = cdir)
   )
 
   expect_silent(
-    pal <- catr_atom_get_parcels_db_to(to = "Palencia", cache_dir = tempdir())
+    pal <- catr_atom_get_parcels_db_to(to = "Palencia", cache_dir = cdir)
   )
 
   expect_identical(several, pal)
 
   # full name
   expect_silent(
-    val <- catr_atom_get_parcels_db_to(to = "valencia", cache_dir = tempdir())
+    val <- catr_atom_get_parcels_db_to(to = "valencia", cache_dir = cdir)
   )
   expect_false(pal$munic[1] == val$munic[1])
 })

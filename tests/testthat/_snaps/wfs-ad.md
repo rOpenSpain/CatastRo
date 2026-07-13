@@ -3,7 +3,7 @@
     Code
       fend <- catr_wfs_get_address_bbox(c(-20, -20, -19, -20), srs = 4326)
     Message
-      x The WFS query returned an exception for <https://ovc.catastro.meh.es/INSPIRE/wfsAD.aspx?service=wfs&version=2.0.0&request=getfeature&typenames=AD.ADDRESS&bbox=-1298652.47788616,-2304672.72126797,-1190638.18200508,-2293724.13416048&srsname=EPSG:25830>:
+      x The WFS query returned an exception for a mocked response:
       Area de la extensión fuera de los límites
 
 # AD CODVIA
@@ -11,9 +11,8 @@
     Code
       obj <- catr_wfs_get_address_codvia("1", 110, 390)
     Message
-      x HTTP error 404 (Not Found): <https://ovc.catastro.meh.es/INSPIRE/wfsAD.aspx?service=wfs&version=2.0.0&request=getfeature&storedquerie_id=getadbycodvia&codvia=1&del=110&mun=390>.
-      ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the download failed.
+      x The WFS query returned an exception for a mocked response:
+      No records found for mocked address query
 
 ---
 
@@ -28,7 +27,7 @@
     Code
       obj <- catr_wfs_get_address_rc("3662303TF")
     Message
-      x The WFS query returned an exception for <https://ovc.catastro.meh.es/INSPIRE/wfsAD.aspx?service=wfs&version=2.0.0&request=getfeature&storedquerie_id=GetadByRefcat&refcat=3662303TF>:
+      x The WFS query returned an exception for a mocked response:
       Invalid length of REFCAT parameter
 
 ---
@@ -44,9 +43,8 @@
     Code
       obj <- catr_wfs_get_address_postalcode("XXXXX")
     Message
-      x HTTP error 404 (Not Found): <https://ovc.catastro.meh.es/INSPIRE/wfsAD.aspx?service=wfs&version=2.0.0&request=getfeature&storedquerie_id=getadbypostalcode&postalcode=XXXXX>.
-      ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the download failed.
+      x The WFS query returned an exception for a mocked response:
+      No records found for mocked address query
 
 ---
 

@@ -1,7 +1,8 @@
 test_that("SSL verifier (#40)", {
-  skip_on_cran()
-  skip_if_offline()
   skip_if_not_installed("withr")
+
+  expect_equal(getOption("catastro_ssl_verify", 1L), 0)
+  expect_equal(getOption("catastro_timeout", 300), 600)
 
   withr::local_options(list(catastro_ssl_verify = 1L))
   expect_equal(getOption("catastro_ssl_verify", 1L), 1L)
@@ -67,6 +68,17 @@ test_that("Test 404", {
     FALSE
   })
 
+  local_mocked_bindings(catr_req_perform = function(req, path = NULL, ...) {
+    if (is.null(path)) {
+      return(httr2::response(
+        status_code = 200,
+        headers = list("content-length" = "2")
+      ))
+    }
+    writeLines("ok", path)
+    httr2::response(status_code = 200)
+  })
+
   # Otherwise work
   expect_silent(
     s <- download_url(
@@ -82,11 +94,28 @@ test_that("Test 404", {
 
 test_that("Caching tests", {
   skip_on_cran()
-  skip_if_offline()
 
   url <- paste0(
-    "https://www.catastro.hacienda.gob.es/INSPIRE/",
-    "Addresses/ES.SDGC.AD.atom.xml"
+    "https://example.com/",
+    "mocked-cache.txt"
+  )
+
+  req_perform_calls <- 0
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(req, path = NULL, ...) {
+      req_perform_calls <<- req_perform_calls + 1
+
+      if (is.null(path)) {
+        return(httr2::response(
+          status_code = 200,
+          headers = list("content-length" = "2")
+        ))
+      }
+
+      writeLines(paste0("ok-", req_perform_calls), path)
+      httr2::response(status_code = 200)
+    }
   )
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex4")
@@ -124,14 +153,19 @@ test_that("Caching tests", {
     ),
     "Refreshing cached file"
   )
+  expect_equal(req_perform_calls, 4)
 })
 
 test_that("Caching errors", {
   skip_on_cran()
-  skip_if_offline()
 
-  url <- "http://ropenspain.github.io/CatastRo/noexist-this-file.txt"
+  url <- "https://example.com/noexist-this-file.txt"
   cdir <- withr::local_tempdir(pattern = "testthat_ex5")
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
+
   expect_message(
     fend <- download_url(
       url,
@@ -145,8 +179,22 @@ test_that("Caching errors", {
 
   expect_null(fend)
 
-  # Warn if size of download is huge
+  local_mocked_bindings(is_404 = function(...) FALSE)
 
+  req_perform_calls <- 0
+  local_mocked_bindings(catr_req_perform = function(req, path = NULL, ...) {
+    req_perform_calls <<- req_perform_calls + 1
+
+    if (req_perform_calls == 1) {
+      return(httr2::response(
+        status_code = 200,
+        headers = list("content-length" = as.character(21 * 1024^2))
+      ))
+    }
+
+    writeLines("ok", path)
+    httr2::response(status_code = 200)
+  })
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/Buildings/46",
     "/46900-VALENCIA/A.ES.SDGC.BU.46900.zip"
@@ -162,6 +210,43 @@ test_that("Caching errors", {
     ),
     "Download size is"
   )
+  expect_equal(req_perform_calls, 2)
+})
+
+test_that("Download transport failures return NULL", {
+  skip_on_cran()
+
+  url <- paste0(
+    "https://www.catastro.hacienda.gob.es/INSPIRE/Buildings/46",
+    "/46900-VALENCIA/A.ES.SDGC.BU.46900.zip"
+  )
+  cdir <- withr::local_tempdir(pattern = "testthat_transport")
+  fail <- function() {
+    stop(structure(
+      list(message = "Mock transport failure.", call = NULL),
+      class = c("httr2_failure", "error", "condition")
+    ))
+  }
+
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(...) fail()
+  )
+  expect_snapshot(fend <- download_url(url, cache_dir = cdir, verbose = FALSE))
+  expect_null(fend)
+
+  local_mocked_bindings(
+    catr_req_perform = function(req, path = NULL, ...) {
+      if (is.null(path)) {
+        return(httr2::response(status_code = 200))
+      }
+      writeLines("partial", path)
+      fail()
+    }
+  )
+  expect_snapshot(fend <- download_url(url, cache_dir = cdir, verbose = FALSE))
+  expect_null(fend)
+  expect_false(file.exists(file.path(cdir, "fixme", basename(url))))
 })
 
 test_that("No connection body", {
@@ -204,23 +289,84 @@ test_that("Error body", {
   })
 })
 
-
-test_that("Tests body", {
+test_that("Body transport failures return NULL", {
   skip_on_cran()
-  skip_if_offline()
 
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(...) {
+      stop(structure(
+        list(message = "Mock transport failure.", call = NULL),
+        class = c("httr2_failure", "error", "condition")
+      ))
+    }
+  )
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
     "Addresses/ES.SDGC.AD.atom.xml"
+  )
+
+  expect_snapshot(fend <- get_request_body(url, verbose = FALSE))
+  expect_null(fend)
+})
+
+
+test_that("Tests body", {
+  skip_on_cran()
+
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(...) httr2::response(status_code = 200)
+  )
+
+  url <- paste0(
+    "https://example.com/",
+    "mocked-body.txt"
   )
 
   expect_message(fend <- get_request_body(url, verbose = TRUE), "Requesting")
 
   expect_s3_class(fend, "httr2_response")
 
-  url <- "http://ropenspain.github.io/CatastRo/noexist-this-file.txt"
+  local_mocked_bindings(
+    catr_req_perform = function(...) httr2::response(status_code = 404)
+  )
+
+  url <- "https://example.com/noexist-this-file.txt"
 
   expect_message(fend <- get_request_body(url, verbose = TRUE), "Requesting")
 
   expect_null(fend)
+})
+
+test_that("download_url can perform a real HTTP request", {
+  skip_on_cran()
+  skip_if_offline()
+  skip_on_ci()
+
+  url <- "https://ropenspain.github.io/CatastRo/index.html"
+  cdir <- withr::local_tempdir(pattern = "testthat_download_smoke")
+
+  file_local <- download_url(
+    url,
+    cache_dir = cdir,
+    subdir = "smoke",
+    verbose = FALSE
+  )
+
+  expect_type(file_local, "character")
+  expect_true(file.exists(file_local))
+})
+
+test_that("get_request_body can perform a real HTTP request", {
+  skip_on_cran()
+  skip_if_offline()
+  skip_on_ci()
+
+  resp <- get_request_body(
+    "https://ropenspain.github.io/CatastRo/index.html",
+    verbose = FALSE
+  )
+
+  expect_s3_class(resp, "httr2_response")
 })
