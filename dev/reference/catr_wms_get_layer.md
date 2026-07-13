@@ -200,12 +200,6 @@ ggplot() +
 # With a spatial object
 
 parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
-#> ✖ The download request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the download failed.
 
 # Use styles
 
@@ -215,7 +209,10 @@ parcels_img <- catr_wms_get_layer(parcels,
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )
-#> Error in get_sf_from_bbox(x, srs): `bbox` must have length 4, not 0.
+#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
 
 ggplot() +
   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +

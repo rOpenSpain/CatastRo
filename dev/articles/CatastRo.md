@@ -83,10 +83,14 @@ stadium <- catr_wfs_get_buildings_bbox(
 # Extract cadastral parcels using a spatial object as the query input.
 
 stadium_parcel <- catr_wfs_get_parcels_bbox(stadium)
+#> Error in `validate_vector_with_srs()` at CatastRo/R/utils-wfs.R:238:5:
+#> ! `x` must have length 4, not 0.
 
 # Transform to the tile CRS.
 
 stadium_parcel_pr <- sf::st_transform(stadium_parcel, 25830)
+#> Error:
+#> ! object 'stadium_parcel' not found
 
 # Extract parcel label imagery.
 
@@ -96,6 +100,8 @@ labs <- catr_wms_get_layer(
   styles = "BoundariesOnly",
   srs = 25830
 )
+#> Error:
+#> ! object 'stadium_parcel_pr' not found
 
 # Plot.
 library(ggplot2)
@@ -109,11 +115,10 @@ ggplot() +
   ) +
   geom_sf(data = stadium, fill = "red", alpha = .5) +
   coord_sf(crs = 25830)
+#> Error in `geom_spatraster_rgb()`:
+#> ! `tidyterra::geom_spatraster_rgb()` only works with <SpatRaster>
+#>   objects, not <function>. See `?terra::rast()`.
 ```
-
-![Figure 1: Santiago Bernabéu example](./santbernabeu-1.png)
-
-Figure 1: Santiago Bernabéu example
 
 ### Thematic maps
 
