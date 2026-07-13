@@ -49,9 +49,7 @@ download_url <- function(
   make_msg("info", verbose, msg)
 
   req <- httr2::request(url)
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
+  req <- httr2::req_error(req, is_error = catr_never_error)
 
   req <- httr2::req_options(
     req,
@@ -142,9 +140,7 @@ get_request_body <- function(url, verbose = TRUE) {
   make_msg("info", verbose, msg)
 
   req <- httr2::request(url)
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
+  req <- httr2::req_error(req, is_error = catr_never_error)
 
   req <- httr2::req_options(
     req,
@@ -204,8 +200,16 @@ is_online_fun <- function(...) {
 
 #' Wrap `httr2::req_perform()` for testing
 #' @noRd
+# nocov start
 catr_req_perform <- function(...) {
   httr2::req_perform(...)
+}
+# nocov end
+
+#' Return FALSE for every request error predicate
+#' @noRd
+catr_never_error <- function(...) {
+  FALSE
 }
 
 #' Report a simulated HTTP 404 response for testing

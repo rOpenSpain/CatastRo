@@ -213,6 +213,46 @@ test_that("Caching errors", {
   expect_equal(req_perform_calls, 2)
 })
 
+test_that("Download HTTP errors return NULL", {
+  skip_on_cran()
+
+  url <- "https://example.com/http-error.txt"
+  cdir <- withr::local_tempdir(pattern = "testthat_http_error")
+  req_perform_calls <- 0
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(req, path = NULL, ...) {
+      req_perform_calls <<- req_perform_calls + 1
+
+      if (is.null(path)) {
+        return(httr2::response(
+          status_code = 200,
+          headers = list("content-length" = "2")
+        ))
+      }
+
+      writeLines("not found", path)
+      httr2::response(status_code = 404)
+    }
+  )
+
+  expect_snapshot(
+    fend <- download_url(
+      url,
+      cache_dir = cdir,
+      verbose = FALSE
+    )
+  )
+  expect_null(fend)
+  expect_equal(req_perform_calls, 2)
+  expect_false(file.exists(file.path(cdir, "fixme", basename(url))))
+})
+
+test_that("catr_never_error always returns FALSE", {
+  expect_false(catr_never_error())
+  expect_false(catr_never_error("anything"))
+})
+
 test_that("Download transport failures return NULL", {
   skip_on_cran()
 

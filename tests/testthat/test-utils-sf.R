@@ -106,6 +106,20 @@ test_that("Read shp address", {
   expect_s3_class(tb, c("tbl_df", "tbl", "data.frame"), exact = TRUE)
 })
 
+test_that("read_geo_file_sf warns for large local files", {
+  fake_local <- withr::local_tempfile(fileext = ".gpkg")
+  sfobj <- sf::st_sf(
+    id = 1,
+    geometry = sf::st_sfc(sf::st_point(c(0, 0)), crs = 4326)
+  )
+  sf::st_write(sfobj, fake_local, quiet = TRUE)
+
+  local_mocked_bindings(catr_file_size = function(...) 21 * 1024^2)
+
+  expect_snapshot(out <- read_geo_file_sf(fake_local))
+  expect_s3_class(out, "sf")
+})
+
 test_that("get_sf_from_bbox", {
   a <- get_sf_from_bbox(c(1, 2, 3, 4), srs = 3857)
   b <- get_sf_from_bbox(a)

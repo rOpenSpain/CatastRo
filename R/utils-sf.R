@@ -18,7 +18,7 @@ read_geo_file_sf <- function(
   # Warn if the file is large and no query is available.
 
   if (all(!grepl("^http", file_local), file.exists(file_local))) {
-    fsize <- file.size(file_local)
+    fsize <- catr_file_size(file_local)
     fsize_unit <- fsize
     class(fsize_unit) <- class(object.size("a"))
     thr <- 20 * (1024^2)
@@ -52,6 +52,14 @@ read_geo_file_sf <- function(
 
   data_sf
 }
+
+#' Wrap `file.size()` for testing
+#' @noRd
+# nocov start
+catr_file_size <- function(...) {
+  file.size(...)
+}
+# nocov end
 
 #' Convert an `sf` object to UTF-8
 #'
