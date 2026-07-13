@@ -53,10 +53,10 @@ download_url <- function(
 
   req <- httr2::req_options(
     req,
-    ssl_verifypeer = getOption("catastro_ssl_verify", 1L)
+    ssl_verifypeer = catr_ssl_verify()
   )
 
-  req <- httr2::req_timeout(req, getOption("catastro_timeout", 300))
+  req <- httr2::req_timeout(req, catr_timeout())
   req <- httr2::req_retry(req, max_tries = 3)
   if (verbose) {
     req <- httr2::req_progress(req)
@@ -144,10 +144,10 @@ get_request_body <- function(url, verbose = TRUE) {
 
   req <- httr2::req_options(
     req,
-    ssl_verifypeer = getOption("catastro_ssl_verify", 1L)
+    ssl_verifypeer = catr_ssl_verify()
   )
 
-  req <- httr2::req_timeout(req, getOption("catastro_timeout", 300))
+  req <- httr2::req_timeout(req, catr_timeout())
   req <- httr2::req_retry(req, max_tries = 3)
   if (verbose) {
     req <- httr2::req_progress(req)
@@ -210,6 +210,39 @@ catr_req_perform <- function(...) {
 #' @noRd
 catr_never_error <- function(...) {
   FALSE
+}
+
+#' Get an HTTP configuration value from options or environment variables
+#' @noRd
+catr_http_config <- function(option, envvar, default) {
+  opt <- getOption(option, NULL)
+  if (!is.null(opt)) {
+    return(opt)
+  }
+
+  env <- Sys.getenv(envvar, unset = NA_character_)
+  if (is.na(env) || identical(env, "")) {
+    return(default)
+  }
+
+  env_num <- suppressWarnings(as.numeric(env))
+  if (is.na(env_num)) {
+    return(default)
+  }
+
+  env_num
+}
+
+#' Get the SSL verification setting for CatastRo HTTP requests
+#' @noRd
+catr_ssl_verify <- function() {
+  catr_http_config("catastro_ssl_verify", "CATASTRO_SSL_VERIFY", 1L)
+}
+
+#' Get the timeout setting for CatastRo HTTP requests
+#' @noRd
+catr_timeout <- function() {
+  catr_http_config("catastro_timeout", "CATASTRO_TIMEOUT", 300)
 }
 
 #' Report a simulated HTTP 404 response for testing
