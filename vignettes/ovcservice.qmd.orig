@@ -2,8 +2,10 @@
 title: "OVCCoordenadas service"
 description: Geocode cadastral references and reverse geocode coordinates.
 author:
-  - Ángel Delgado Panadero
-  - Diego Hernangómez
+  - name: Ángel Delgado Panadero
+    orcid: 0000-0002-8189-9251
+  - name: Diego Hernangómez
+    orcid: 0000-0001-8457-4658
 tbl-cap-location: bottom
 vignette: >
   %\VignetteIndexEntry{OVCCoordenadas service}

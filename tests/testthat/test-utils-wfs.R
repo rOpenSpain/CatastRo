@@ -24,6 +24,79 @@ test_that("wfs_get_bbox", {
 
   expect_false(any(another == merc))
 })
+
+test_that("wfs_read_stored_query reads local WFS results", {
+  cdir <- withr::local_tempdir(pattern = "wfs_stored_query")
+  local_mocked_bindings(inspire_wfs_get = function(...) {
+    out <- file.path(cdir, "stored.gpkg")
+    sfobj <- sf::st_sf(
+      id = 1,
+      geometry = sf::st_sfc(sf::st_point(c(1, 1)), crs = 25829)
+    )
+    sf::st_write(sfobj, out, quiet = TRUE)
+    out
+  })
+
+  out <- wfs_read_stored_query(
+    path = "INSPIRE/wfsBU.aspx",
+    query = list(request = "getfeature"),
+    srs = 25829
+  )
+
+  expect_s3_class(out, "sf")
+  expect_equal(sf::st_crs(out)$epsg, 25829)
+})
+
+test_that("wfs_read_stored_query returns NULL when download fails", {
+  local_mocked_bindings(inspire_wfs_get = function(...) NULL)
+
+  expect_null(wfs_read_stored_query(
+    path = "INSPIRE/wfsBU.aspx",
+    query = list(request = "getfeature")
+  ))
+})
+
+test_that("wfs_read_bbox_query reads and transforms local WFS results", {
+  cdir <- withr::local_tempdir(pattern = "wfs_bbox_query")
+  local_mocked_bindings(inspire_wfs_get = function(...) {
+    out <- file.path(cdir, "bbox.gpkg")
+    sfobj <- sf::st_sf(
+      id = 1,
+      geometry = sf::st_sfc(sf::st_point(c(760926, 4019259)), crs = 25830)
+    )
+    sf::st_write(sfobj, out, quiet = TRUE)
+    out
+  })
+
+  bbox <- c(760926, 4019259, 761155, 4019366)
+  class(bbox) <- "bbox"
+  bbox <- bbox |>
+    sf::st_as_sfc() |>
+    sf::st_set_crs(25829)
+
+  out <- wfs_read_bbox_query(
+    x = bbox,
+    path = "INSPIRE/wfsBU.aspx",
+    typenames = "BU.BUILDING",
+    limit_km2 = 1
+  )
+
+  expect_s3_class(out, "sf")
+  expect_equal(sf::st_crs(out)$epsg, 25829)
+})
+
+test_that("wfs_read_bbox_query returns NULL when download fails", {
+  local_mocked_bindings(inspire_wfs_get = function(...) NULL)
+
+  expect_null(wfs_read_bbox_query(
+    x = c(760926, 4019259, 761155, 4019366),
+    srs = 25829,
+    path = "INSPIRE/wfsBU.aspx",
+    typenames = "BU.BUILDING",
+    limit_km2 = 1
+  ))
+})
+
 test_that("Test offline", {
   skip_on_cran()
   skip_if_offline()
