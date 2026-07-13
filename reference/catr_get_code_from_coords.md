@@ -129,23 +129,19 @@ Search for cadastral identifiers:
 # \donttest{
 # Use with coordinates
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
-#> NULL
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 SANTA… 38      900        38900    38    038   38038   SANT… 38    900   38   
+#> # ℹ 1 more variable: cm <chr>
 
 # Use with an sf object
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
-#> NULL
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 MONROY 10      128        10128    10    125   10125   MONR… 10    128   10   
+#> # ℹ 1 more variable: cm <chr>
 # }
 ```

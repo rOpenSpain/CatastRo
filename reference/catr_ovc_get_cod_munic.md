@@ -78,27 +78,23 @@ Search for cadastral identifiers:
 # \donttest{
 # Get municipality by cadastral code
 ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
 
 ab
-#> NULL
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
+#> # ℹ 1 more variable: cm <chr>
 
 # Same query using the INE code
 
 ab2 <- catr_ovc_get_cod_munic(cpro = 2, cmun_ine = 3)
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
 
 ab2
-#> NULL
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
+#> # ℹ 1 more variable: cm <chr>
 # }
 ```

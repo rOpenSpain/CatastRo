@@ -40,12 +40,19 @@ Search for cadastral identifiers:
 ``` r
 # \donttest{
 catr_ovc_get_cod_provinces()
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
-#> NULL
+#> # A tibble: 48 × 2
+#>    cpine np       
+#>    <chr> <chr>    
+#>  1 15    A CORUÑA 
+#>  2 03    ALACANT  
+#>  3 02    ALBACETE 
+#>  4 04    ALMERIA  
+#>  5 33    ASTURIAS 
+#>  6 05    AVILA    
+#>  7 06    BADAJOZ  
+#>  8 08    BARCELONA
+#>  9 09    BURGOS   
+#> 10 10    CACERES  
+#> # ℹ 38 more rows
 # }
 ```
