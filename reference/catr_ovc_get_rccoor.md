@@ -78,9 +78,12 @@ catr_ovc_get_rccoor(
   lon = -3.45624183836806,
   srs = 4326
 )
-#> # A tibble: 1 × 8
-#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
-#> 1 13077A01800011 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
+#> ✖ The request could not be completed.
+#> ! Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
+#> → Returning "NULL" because the request failed.
+#> NULL
 # }
 ```
