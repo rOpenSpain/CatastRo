@@ -179,10 +179,6 @@ pict <- catr_wms_get_layer(
   srs = 25830,
   what = "parcel"
 )
-#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
 
 library(mapSpain)
 library(ggplot2)
@@ -195,7 +191,8 @@ library(tidyterra)
 
 ggplot() +
   geom_spatraster_rgb(data = pict)
-#> Error: object 'pict' not found
+#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
+
 
 # With a spatial object
 
