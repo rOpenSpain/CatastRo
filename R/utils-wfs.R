@@ -45,9 +45,11 @@
 #' if (!is.null(file_local)) {
 #'   pamp <- sf::read_sf(file_local)
 #'
-#'   library(ggplot2)
-#'   ggplot(pamp) +
-#'     geom_sf()
+#'   if (requireNamespace("ggplot2", quietly = TRUE)) {
+#'     library(ggplot2)
+#'     ggplot(pamp) +
+#'       geom_sf()
+#'   }
 #' }
 inspire_wfs_get <- function(
   scheme = "https",
