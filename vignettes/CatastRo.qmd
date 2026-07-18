@@ -170,13 +170,11 @@ municipality code, then download its buildings with
 city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#> NULL
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
+#> Error in `grep()`:
+#> ! invalid 'pattern' argument
 ```
 
 Next, we limit the analysis to a circle with a radius of 1.5 km around the city
@@ -189,18 +187,19 @@ buff <- city |>
   st_transform(st_crs(city_bu)) |>
   # Buffer.
   st_buffer(1500)
+#> Error:
+#> ! object 'city_bu' not found
 
 # Cut buildings.
 dataviz <- st_intersection(city_bu, buff)
+#> Error:
+#> ! object 'city_bu' not found
 
 ggplot(dataviz) +
   geom_sf()
+#> Error:
+#> ! object 'dataviz' not found
 ```
-
-<div class="figure">
-<img src="./minimal-1.png" alt="Figure 2: Minimal cadastral map of Granada" width="100%" />
-<p class="caption">Figure 2: Minimal cadastral map of Granada</p>
-</div>
 
 Next, we extract the construction year from the `beginning` column:
 
@@ -208,16 +207,24 @@ Next, we extract the construction year from the `beginning` column:
 ``` r
 # Extract the first four positions.
 year <- substr(dataviz$beginning, 1, 4)
+#> Error:
+#> ! object 'dataviz' not found
 
 # Replace entries that do not look like years with 0000.
 year[!(year %in% 0:2500)] <- "0000"
+#> Error:
+#> ! object 'year' not found
 
 # Convert to numeric.
 year <- as.integer(year)
+#> Error:
+#> ! object 'year' not found
 
 # Add a new column.
 dataviz <- dataviz |>
   mutate(year = year)
+#> Error:
+#> ! object 'dataviz' not found
 ```
 
 Finally, we group the data by construction year and create the visualization.
@@ -229,6 +236,8 @@ dataviz <- dataviz |>
   mutate(
     year_cat = cut(year, breaks = c(0, seq(1900, 2030, by = 10)), dig.lab = 4)
   )
+#> Error:
+#> ! object 'dataviz' not found
 
 ggplot(dataviz) +
   geom_sf(aes(fill = year_cat), color = NA, na.rm = TRUE) +
@@ -259,11 +268,8 @@ ggplot(dataviz) +
     ),
     plot.margin = margin(r = 40, l = 40)
   )
+#> Error:
+#> ! object 'dataviz' not found
 ```
-
-<div class="figure">
-<img src="./dviz-1.png" alt="Figure 3: Granada - Urban growth" width="100%" />
-<p class="caption">Figure 3: Granada - Urban growth</p>
-</div>
 
 ## References
