@@ -24,7 +24,7 @@ vignette (see
 > This European Spatial Data Infrastructure enables the sharing of
 > environmental spatial information among public sector organizations,
 > facilitates public access to spatial information across Europe and
-> assist in policy-making across boundaries.
+> assists in policy-making across boundaries.
 
 Source: [INSPIRE Knowledge
 Base](https://knowledge-base.inspire.ec.europa.eu/overview_en)

@@ -62,7 +62,7 @@ options(catastro_ssl_verify = 0)
 ## Package API
 
 The functions of **CatastRo** are organized by source service. The
-package naming convention is `catr_*service*_*description*`.
+package naming convention is `catr_<service>_<description>`.
 
 ### OVC services
 
@@ -175,7 +175,7 @@ ggplot(bu) +
   labs(title = "Nava de la Asunción, Segovia")
 ```
 
-![Extract buildings in Nava de la Asuncion with the ATOM
+![Extract buildings in Nava de la Asunción with the ATOM
 service](reference/figures/README-atom-1.png)
 
 ### Extract geometries using the WFS service
