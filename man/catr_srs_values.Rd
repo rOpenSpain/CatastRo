@@ -31,7 +31,7 @@ Table: Content of \link{catr_srs_values}\tabular{llll}{
    \code{3857} \tab \verb{Web Mercator} \tab \code{FALSE} \tab \code{TRUE} \cr
    \code{4230} \tab \verb{Geográficas en ED 50} \tab \code{TRUE} \tab \code{FALSE} \cr
    \code{4258} \tab \verb{Geográficas en ETRS89} \tab \code{TRUE} \tab \code{TRUE} \cr
-   \code{4326} \tab \verb{Geográficas en WGS 80} \tab \code{TRUE} \tab \code{TRUE} \cr
+   \code{4326} \tab \verb{Geográficas en WGS 84} \tab \code{TRUE} \tab \code{TRUE} \cr
    \code{23029} \tab \verb{UTM huso 29N en ED50} \tab \code{TRUE} \tab \code{FALSE} \cr
    \code{23030} \tab \verb{UTM huso 30N en ED50} \tab \code{TRUE} \tab \code{FALSE} \cr
    \code{23031} \tab \verb{UTM huso 31N en ED50} \tab \code{TRUE} \tab \code{FALSE} \cr

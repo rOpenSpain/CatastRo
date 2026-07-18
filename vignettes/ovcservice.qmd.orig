@@ -119,7 +119,8 @@ catr_ovc_get_cpmrc(
   knitr::kable()
 ```
 
-The following query narrows the search with `municipality`:
+The following query shows that `municipality` alone is not enough to narrow the
+search:
 
 ```{r}
 #| message: true

@@ -87,7 +87,7 @@ pak::pak("rOpenSpain/CatastRo")
 ## Package API
 
 The functions of **CatastRo** are organized by source service. The
-package naming convention is `catr_*service*_*description*`.
+package naming convention is `catr_<service>_<description>`.
 
 ### OVC services
 
@@ -198,7 +198,7 @@ ggplot(bu) +
 ```
 
 <img src="man/figures/README-atom-1.png" style="width:100.0%"
-alt="Extract buildings in Nava de la Asuncion with the ATOM service" />
+alt="Extract buildings in Nava de la Asunción with the ATOM service" />
 
 ### Extract geometries using the WFS service
 
