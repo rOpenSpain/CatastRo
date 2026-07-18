@@ -95,7 +95,7 @@ catr_srs_values |>
 |-----:|:----------------------|
 |  4230|Geográficas en ED 50   |
 |  4258|Geográficas en ETRS89  |
-|  4326|Geográficas en WGS 80  |
+|  4326|Geográficas en WGS 84  |
 | 23029|UTM huso 29N en ED50   |
 | 23030|UTM huso 30N en ED50   |
 | 23031|UTM huso 31N en ED50   |
