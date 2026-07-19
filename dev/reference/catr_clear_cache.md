@@ -58,7 +58,7 @@ Manage the local cache:
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpLTmhnF/CatastRo
+#> ℹ /tmp/RtmpWG5oY0/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -66,13 +66,13 @@ catr_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 catr_clear_cache(verbose = TRUE)
-#> ! CatastRo cached data deleted: /tmp/RtmpLTmhnF/example/cache (0 bytes).
+#> ! CatastRo cached data deleted: /tmp/RtmpWG5oY0/example/cache (0 bytes).
 
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache directory is /tmp/RtmpLTmhnF/CatastRo.
+#> ℹ CatastRo cache directory is /tmp/RtmpWG5oY0/CatastRo.
 #> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpLTmhnF/CatastRo
+#> ℹ /tmp/RtmpWG5oY0/CatastRo
 #> [1] TRUE
 # }
 ```
