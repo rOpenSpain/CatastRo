@@ -34,8 +34,10 @@ export(catr_wms_get_layer)
 export(inspire_wfs_get)
 export(run_example)
 importFrom(lifecycle,deprecated)
-importFrom(utils,URLencode)
-importFrom(utils,adist)
-importFrom(utils,modifyList)
-importFrom(utils,object.size)
-importFrom(utils,unzip)
+importFrom(utils,
+  URLencode,
+  adist,
+  modifyList,
+  object.size,
+  unzip
+)
