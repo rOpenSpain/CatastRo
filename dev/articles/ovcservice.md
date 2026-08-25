@@ -1,7 +1,7 @@
 # OVCCoordenadas service
 
-**CatastRo** provides an R interface to the OVCCoordenadas service from
-the [Sede electrónica del
+**CatastRo** provides an **R** interface to the OVCCoordenadas service
+from the [Sede electrónica del
 Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
 This service retrieves coordinates for a cadastral reference. The
@@ -139,7 +139,7 @@ catr_ovc_get_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) |>
   knitr::kable()
-#> ✖ OVC service error "11": LA PROVINCIA ES OBLIGATORIA
+#> ✖ OVC service error 11: LA PROVINCIA ES OBLIGATORIA
 ```
 
 | refcat         | geo.srs   |

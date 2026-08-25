@@ -1,4 +1,4 @@
-# OVCCoordenadas: reverse geocode coordinates
+# OVCCoordenadas: Reverse geocode coordinates
 
 Query the OVCCoordenadas [Consulta
 RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
@@ -60,10 +60,6 @@ row per cadastral reference, including the following columns:
 RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR).
 
 ## See also
-
-Convert coordinates and cadastral references:
-[`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),
-[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
 
 Work with cadastral references:
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),

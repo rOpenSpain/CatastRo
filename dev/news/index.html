@@ -61,13 +61,13 @@
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
 </blockquote>
 <p>Persistent cache directories now use <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> instead of <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code>. If you already have a cache directory, <strong>CatastRo</strong> displays a one-time migration message.</p>
-<p>The package now requires <strong>R ≥ 4.1.0</strong> and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
+<p>The package now requires <strong>R</strong> ≥ 4.1.0 and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
 <div class="section level3">
 <h3 id="major-changes-1-0-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-1-0-0"></a></h3>
-<ul><li>Minimum required <strong>R</strong> version is now <strong>4.1.0</strong>.</li>
+<ul><li>Minimum required <strong>R</strong> version is now 4.1.0.</li>
 <li>Refactor the code and test suite for improved stability.</li>
 <li>Switch API requests to <strong>httr2</strong>.</li>
-<li>New options (especially for macOS and Linux users):
+<li>New options (especially for <strong>macOS</strong> and <strong>Linux</strong> users):
 <ul><li>On SSL errors, use <code>options(catastro_ssl_verify = 0)</code> to disable SSL verification.</li>
 <li>Query timeout can be controlled with <code>options(catastro_timeout = 300)</code> (default value). Check <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code> for details.</li>
 </ul></li>
@@ -77,13 +77,13 @@
 </blockquote>
 <div class="section level4">
 <h4 id="compatibility-and-performance-1-0-0">Compatibility and performance<a class="anchor" aria-label="anchor" href="#compatibility-and-performance-1-0-0"></a></h4>
-<ul><li>Require <strong>R ≥ 4.1.0</strong>.</li>
+<ul><li>Require <strong>R</strong> ≥ 4.1.0.</li>
 <li>Update dependencies:
 <ul><li>Add: <strong>cli</strong>, <strong>lifecycle</strong>, <strong>withr</strong>.</li>
 <li>Remove: <strong>png</strong>, <strong>slippymath</strong>.</li>
 </ul></li>
 <li>Return tidy objects consistently.</li>
-<li>Migrate the vignette engine to Quarto.</li>
+<li>Migrate the vignette engine to <strong>Quarto</strong>.</li>
 </ul></div>
 </div>
 <div class="section level3">

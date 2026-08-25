@@ -1,4 +1,4 @@
-# OVCCoordenadas: find cadastral references near coordinates
+# OVCCoordenadas: Find cadastral references near coordinates
 
 Query the OVCCoordenadas [Consulta RCCOOR
 Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia)
@@ -53,7 +53,7 @@ row per cadastral reference, including the following columns:
 
 - `address`: Address as recorded in the Spanish Cadastre.
 
-- `cmun_ine`: Municipality code as registered on the INE (National
+- `cmun_ine`: Municipality code as registered by the INE (National
   Statistics Institute).
 
 - Remaining fields: See the API documentation.
@@ -64,10 +64,6 @@ row per cadastral reference, including the following columns:
 Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
 
 ## See also
-
-Convert coordinates and cadastral references:
-[`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),
-[`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md)
 
 Work with cadastral references:
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),

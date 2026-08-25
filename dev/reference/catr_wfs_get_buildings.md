@@ -1,4 +1,4 @@
-# WFS INSPIRE: download buildings
+# WFS INSPIRE: Download buildings
 
 Retrieve spatial building data through two types of WFS queries:
 
@@ -100,11 +100,6 @@ documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspir
 cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
-
-Query data from WFS INSPIRE services:
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
-[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
 Work with cadastral buildings:
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),

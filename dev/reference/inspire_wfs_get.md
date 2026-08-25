@@ -45,16 +45,9 @@ if the request fails.
 
 ## Details
 
-The function constructs a request URL from its components, downloads the
-result to a temporary cache and reports WFS exceptions. See
+This function constructs a request URL from its components, downloads
+the result to a temporary cache and reports WFS exceptions. See
 **Examples**.
-
-## See also
-
-Query data from WFS INSPIRE services:
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
 
 ## Examples
 

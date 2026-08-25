@@ -1,4 +1,4 @@
-# WFS INSPIRE: download addresses
+# WFS INSPIRE: Download addresses
 
 Retrieve spatial address data through several types of WFS queries:
 
@@ -111,11 +111,6 @@ cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-Query data from WFS INSPIRE services:
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md),
-[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
-[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
-
 Work with cadastral addresses:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md)
@@ -130,12 +125,6 @@ ad <- catr_wfs_get_address_bbox(
   ),
   srs = 25830
 )
-#> ✖ The download request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the download failed.
 
 library(ggplot2)
 

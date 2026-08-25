@@ -92,7 +92,7 @@
 
 <div class="pkgdown-devel">
 <p>Check the documentation for the development version at <a href="https://ropenspain.github.io/CatastRo/dev/" class="uri">https://ropenspain.github.io/CatastRo/dev/</a>.</p>
-<p>You can install the development version of <strong>CatastRo</strong> from <a href="https://ropenspain.r-universe.dev/CatastRo" class="external-link">r-universe</a>:</p>
+<p>You can install the development version of <strong>CatastRo</strong> from <a href="https://ropenspain.r-universe.dev/CatastRo" class="external-link"><strong>r-universe</strong></a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install CatastRo in R.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span></span>
@@ -116,8 +116,8 @@ SSL issues
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The SSL certificate of the Spanish Cadastre may cause errors when using <strong>CatastRo</strong> (especially on macOS, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>).</p>
-<p>In <strong>CatastRo &gt;= 1.0.0</strong>, you can work around these errors by running this code after loading the package:</p>
+<p>The SSL certificate of the Spanish Cadastre may cause errors when using <strong>CatastRo</strong> (especially on <strong>macOS</strong>, see issue <a href="https://github.com/rOpenSpain/CatastRo/issues/40" class="external-link">#40</a>).</p>
+<p>In <strong>CatastRo</strong> &gt;= 1.0.0, you can work around these errors by running this code after loading the package:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Disable SSL verification</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>catastro_ssl_verify <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
@@ -185,7 +185,10 @@ SSL issues
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/CatastRo/">CatastRo</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 1 × 10</span></span>
+<span><span class="co">#&gt;   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="reverse-geocode-coordinates-to-a-cadastral-reference">Reverse geocode coordinates to a cadastral reference<a class="anchor" aria-label="anchor" href="#reverse-geocode-coordinates-to-a-cadastral-reference"></a>
@@ -196,7 +199,10 @@ SSL issues
 <span>  lon <span class="op">=</span> <span class="op">-</span><span class="fl">3.45624183836806</span>,</span>
 <span>  srs <span class="op">=</span> <span class="st">"4230"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 1 × 8</span></span>
+<span><span class="co">#&gt;   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="extract-geometries-using-the-atom-service">Extract geometries using the ATOM service<a class="anchor" aria-label="anchor" href="#extract-geometries-using-the-atom-service"></a>
@@ -262,7 +268,7 @@ Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API S
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h2>
-<p>See the <a href="https://github.com/ropenspain/CatastRo/" class="external-link">source code and issue tracker</a> on GitHub.</p>
+<p>See the <a href="https://github.com/ropenspain/CatastRo/" class="external-link">source code and issue tracker</a> on <strong>GitHub</strong>.</p>
 </div>
 </div>
 

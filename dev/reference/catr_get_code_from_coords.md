@@ -1,4 +1,4 @@
-# Get the cadastral municipality code from coordinates
+# Get a cadastral municipality code from coordinates
 
 Retrieve the municipality code associated with an
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or a
@@ -118,11 +118,6 @@ row including the following columns:
 - [`sf::st_centroid()`](https://r-spatial.github.io/sf/reference/geos_unary.html)
   computes geometry centroids.
 
-Search for cadastral identifiers:
-[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md),
-[`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_munic.md),
-[`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_provinces.md)
-
 ## Examples
 
 ``` r
@@ -130,11 +125,8 @@ Search for cadastral identifiers:
 # Use with coordinates
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 #> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
+#> ! "Failed to perform HTTP request. \033[1mCaused by error in `curl::curl_fetch_memory()`:\033[22m \033[33m!\033[39m Failure when receiving data from the peer [ovc.catastro.meh.es]: Recv failure: Connection reset by peer"
+#> Returning "NULL" because the request failed.
 #> NULL
 
 # Use with an sf object

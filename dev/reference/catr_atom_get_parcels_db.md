@@ -1,4 +1,4 @@
-# ATOM INSPIRE: list cadastral parcel download URLs
+# ATOM INSPIRE: List cadastral parcel download URLs
 
 Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE
 service for downloading cadastral parcels.
@@ -73,14 +73,6 @@ requested information in the following columns:
   is updated twice a year.
 
 ## See also
-
-Download data from ATOM INSPIRE services:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
-[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
-[`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings_db.md),
-[`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels.md),
-[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md)
 
 Work with cadastral parcels:
 [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels.md),

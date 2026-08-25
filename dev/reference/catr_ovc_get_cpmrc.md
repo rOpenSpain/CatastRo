@@ -1,4 +1,4 @@
-# OVCCoordenadas: geocode a cadastral reference
+# OVCCoordenadas: Geocode a cadastral reference
 
 Query the OVCCoordenadas [Consulta
 CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
@@ -20,7 +20,7 @@ catr_ovc_get_cpmrc(
 
 - rc:
 
-  The cadastral reference to be geocoded.
+  Cadastral reference to geocode.
 
 - srs:
 
@@ -71,10 +71,6 @@ CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas
 
 - [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/dev/articles/ovcservice.md)
   describes the OVC services.
-
-Convert coordinates and cadastral references:
-[`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md),
-[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
 
 Work with cadastral references:
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md),

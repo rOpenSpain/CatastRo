@@ -11,7 +11,7 @@ Check the documentation for the development version at
 <https://ropenspain.github.io/CatastRo/dev/>.
 
 You can install the development version of **CatastRo** from
-[r-universe](https://ropenspain.r-universe.dev/CatastRo):
+[**r-universe**](https://ropenspain.r-universe.dev/CatastRo):
 
 ``` r
 
@@ -36,10 +36,10 @@ pak::pak("rOpenSpain/CatastRo")
 SSL issues
 
 The SSL certificate of the Spanish Cadastre may cause errors when using
-**CatastRo** (especially on macOS, see issue
+**CatastRo** (especially on **macOS**, see issue
 [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)).
 
-In **CatastRo \>= 1.0.0**, you can work around these errors by running
+In **CatastRo** \>= 1.0.0, you can work around these errors by running
 this code after loading the package:
 
 ``` r
@@ -134,7 +134,10 @@ These examples highlight some features of **CatastRo**:
 library(CatastRo)
 
 catr_ovc_get_cpmrc(rc = "13077A01800039")
-#> NULL
+#> # A tibble: 1 × 10
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
+#> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4575… 38.6184… EPSG:4… DS D…
 ```
 
 ### Reverse geocode coordinates to a cadastral reference
@@ -146,7 +149,10 @@ catr_ovc_get_rccoor(
   lon = -3.45624183836806,
   srs = "4230"
 )
-#> NULL
+#> # A tibble: 1 × 8
+#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
+#> 1 13077A01800039 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
 ```
 
 ### Extract geometries using the ATOM service
@@ -227,7 +233,7 @@ A BibTeX entry for LaTeX users is:
 ## Contributing
 
 See the [source code and issue
-tracker](https://github.com/ropenspain/CatastRo/) on GitHub.
+tracker](https://github.com/ropenspain/CatastRo/) on **GitHub**.
 
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)

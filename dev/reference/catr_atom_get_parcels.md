@@ -1,4 +1,4 @@
-# ATOM INSPIRE: download all cadastral parcels for a municipality
+# ATOM INSPIRE: Download all cadastral parcels for a municipality
 
 Retrieve spatial data for all cadastral parcels in a municipality using
 the ATOM INSPIRE service.
@@ -71,14 +71,6 @@ documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspir
 cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
-
-Download data from ATOM INSPIRE services:
-[`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),
-[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md),
-[`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
-[`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings_db.md),
-[`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels_db.md),
-[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md)
 
 Work with cadastral parcels:
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels_db.md),
