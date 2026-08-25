@@ -1,4 +1,4 @@
-# BBOX Check errors
+# parcel WFS bounding boxes reject invalid coordinates
 
     Code
       catr_wfs_get_parcels_bbox(x = "1234", what = "xxx")
@@ -46,7 +46,7 @@
       x The WFS query returned an exception for a mocked response:
       No records founded for BBOX and SRS provided
 
-# CP Zone
+# parcel WFS zoning queries retrieve spatial data
 
     Code
       obj <- catr_wfs_get_parcels_zoning("41624TF3146SZZ", srs = 3857)

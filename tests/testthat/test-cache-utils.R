@@ -1,4 +1,4 @@
-test_that("Test cache", {
+test_that("cache directories can be configured, cleared and restored", {
   skip_on_cran()
   # Get current cache dir
   expect_message(current <- catr_detect_cache_dir())
@@ -52,11 +52,7 @@ test_that("catr_set_cache_dir installs and overwrites mocked config", {
   cache_config <- file.path(config_dir, "CATASTROESP_CACHE_DIR")
 
   expect_silent(
-    installed <- catr_set_cache_dir(
-      cache_dir,
-      install = TRUE,
-      verbose = FALSE
-    )
+    installed <- catr_set_cache_dir(cache_dir, install = TRUE, verbose = FALSE)
   )
 
   expect_identical(installed, cache_dir)

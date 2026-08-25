@@ -9,7 +9,7 @@
 #'
 #' @noRd
 catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
-  # Retry without encoding when the parser fails.
+  # Try the requested encoding first.
   feed <- try(
     xml2::as_list(xml2::read_xml(
       file,
@@ -19,16 +19,16 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
     silent = TRUE
   )
 
-  # Try without encoding on error.
+  # Retry without an explicit encoding if parsing fails.
   if (inherits(feed, "try-error")) {
     feed <- xml2::as_list(xml2::read_xml(file, options = "NOCDATA"))
   }
 
-  # Extract feed entries.
+  # Keep only feed entries.
   feed <- feed$feed
   feed <- feed[names(feed) == "entry"]
 
-  # Convert feed entries to rows.
+  # Convert feed entries into rows.
   if (top) {
     tbl_all <- lapply(feed, function(x) {
       title <- unlist(x$title)
@@ -36,7 +36,7 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
       date <- as.POSIXct(unlist(feed[1]$entry$updated))
       value <- unlist(x$content$div$div)
 
-      # Clean values.
+      # Remove whitespace and keep numeric values.
       value <- trimws(gsub("\\n|\\t", "", value))
       value <- value[grepl("^[0-9]", value)]
 
@@ -115,7 +115,7 @@ catr_atom_read_db_to <- function(
 
   alldist <- unique(all[, c("territorial_office", "url")])
 
-  # Escape parentheses in territorial office names for matching.
+  # Remove parentheses before matching territorial office names.
   to <- gsub("\\(|\\)", "", to)
   allto <- gsub("\\(|\\)", "", alldist$territorial_office)
 
@@ -125,7 +125,7 @@ catr_atom_read_db_to <- function(
     return(NULL)
   }
 
-  # Compute string distances for territorial office matching.
+  # Rank territorial offices by string distance.
   with_d <- data.frame(
     to = alldist$territorial_office,
     dist = as.vector(adist(to, alldist$territorial_office))
@@ -189,7 +189,7 @@ catr_atom_select_munic <- function(
   if (!is.null(to)) {
     linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
 
-    # Filter by territorial office if matches are found.
+    # Filter by territorial office when multiple matches are found.
     if (length(linesto) > 1) {
       all <- all[linesto, ]
     } else {
@@ -215,7 +215,7 @@ catr_atom_select_munic <- function(
     return(NULL)
   }
 
-  # Compute string distances for municipality matching.
+  # Rank municipalities by string distance.
   with_d <- data.frame(
     munic = all$munic,
     territorial_office = all$territorial_office,

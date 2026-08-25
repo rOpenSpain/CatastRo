@@ -1,4 +1,4 @@
-# Messages
+# message helper dispatches messages by type
 
     Code
       make_msg("generic", TRUE, "Hi", "I am a generic.", "See {.var avar}.")
@@ -33,7 +33,7 @@
     Message
       v Hooray! 5/5 ,)
 
-# Pretty match
+# argument matching reports the closest valid choice
 
     Code
       my_fun("error here")
@@ -91,7 +91,7 @@
       Error:
       ! `year` must be "20", not "1" or "2".
 
-# Not empty
+# non-empty arguments are accepted
 
     Code
       a_fun()

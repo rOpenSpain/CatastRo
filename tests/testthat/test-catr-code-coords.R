@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("coordinate lookup returns NULL when offline", {
   skip_on_cran()
   skip_if_offline()
   skip_if_not_installed("mapSpain")
@@ -31,7 +31,7 @@ test_that("Test offline", {
   expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test 404 all", {
+test_that("coordinate lookup returns NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
   skip_if_not_installed("mapSpain")
@@ -64,19 +64,17 @@ test_that("Test 404 all", {
   })
 })
 
-test_that("Test 404 mapSpain", {
+test_that("coordinate lookup returns NULL when the mapSpain request fails", {
   skip_on_cran()
   skip_if_offline()
   skip_if_not_installed("mapSpain")
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
 
-  local_mocked_bindings(
-    catr_esp_get_munic_siane = function(...) {
-      cli::cli_alert_info("Mocking mapSpain")
-      NULL
-    }
-  )
+  local_mocked_bindings(catr_esp_get_munic_siane = function(...) {
+    cli::cli_alert_info("Mocking mapSpain")
+    NULL
+  })
 
   expect_snapshot(
     fend <- catr_get_code_from_coords(
@@ -87,24 +85,13 @@ test_that("Test 404 mapSpain", {
   )
   expect_null(fend)
 })
-test_that("Check", {
+test_that("coordinate lookup returns the municipality code for a location", {
   skip_on_cran()
   skip_if_offline()
   cdir <- withr::local_tempdir(pattern = "testthat_excoord")
   polygon <- function(xmin, ymin, xmax, ymax) {
     sf::st_polygon(list(matrix(
-      c(
-        xmin,
-        ymin,
-        xmin,
-        ymax,
-        xmax,
-        ymax,
-        xmax,
-        ymin,
-        xmin,
-        ymin
-      ),
+      c(xmin, ymin, xmin, ymax, xmax, ymax, xmax, ymin, xmin, ymin),
       ncol = 2,
       byrow = TRUE
     )))

@@ -1,4 +1,4 @@
-# wfs_get_bbox
+# WFS bounding boxes are converted to spatial features
 
     Code
       wfs_get_bbox(c(1, 2))
@@ -25,16 +25,16 @@
        xmin  ymin  xmax  ymax 
           0     0 10000 10000 
 
-# Test offline
+# WFS downloads return NULL when offline
 
     Code
       fend <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", query = list(request = "getfeature",
         Typenames = "BU.BUILDING", SRSname = 25829, bbox = "742438,4046840,742613,4046970"))
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
-# Bad query
+# WFS requests reject invalid query lists
 
     Code
       s <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", query = 20)

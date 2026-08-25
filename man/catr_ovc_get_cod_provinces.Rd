@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_cod_provinces}
 \alias{catr_ovc_get_cod_provinces}
-\title{OVCCallejero: get province codes}
+\title{OVCCallejero: Get province codes}
 \usage{
 catr_ovc_get_cod_provinces(verbose = FALSE)
 }
@@ -28,15 +28,6 @@ catr_ovc_get_cod_provinces()
 }
 \references{
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
-}
-\seealso{
-Query OVC province and municipality codes:
-\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}
-
-Search for cadastral identifiers:
-\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
-\code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
-\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}
 }
 \concept{ovc_street_directory}
 \concept{search}

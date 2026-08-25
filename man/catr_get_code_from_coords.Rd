@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_get_code_from_coords}
 \alias{catr_get_code_from_coords}
-\title{Get the cadastral municipality code from coordinates}
+\title{Get a cadastral municipality code from coordinates}
 \usage{
 catr_get_code_from_coords(
   x,
@@ -92,10 +92,5 @@ catr_get_code_from_coords(prov)
 \item \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}} retrieves municipality codes.
 \item \code{\link[sf:st_centroid]{sf::st_centroid()}} computes geometry centroids.
 }
-
-Search for cadastral identifiers:
-\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
-\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
-\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 }
 \concept{search}

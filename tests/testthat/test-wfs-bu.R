@@ -1,4 +1,4 @@
-test_that("BBOX Check", {
+test_that("building WFS bounding boxes validate their coordinates", {
   skip_on_cran()
   skip_if_offline()
 
@@ -65,7 +65,7 @@ test_that("BBOX Check", {
   expect_gt(nrow(obj2), nrow(ot))
 })
 
-test_that("Check error on bad rc", {
+test_that("building WFS queries reject invalid cadastral references", {
   skip_on_cran()
   skip_if_offline()
 
@@ -95,7 +95,7 @@ test_that("Check error on bad rc", {
   expect_null(f)
 })
 
-test_that("BU Check srs", {
+test_that("building WFS queries validate the requested SRS", {
   skip_on_cran()
   skip_if_offline()
 
@@ -117,7 +117,7 @@ test_that("BU Check srs", {
   expect_equal(sf::st_crs(obj), sf::st_crs(3857))
 })
 
-test_that("BU Part Check", {
+test_that("building-part WFS queries retrieve spatial data", {
   skip_on_cran()
   skip_if_offline()
 
@@ -141,7 +141,7 @@ test_that("BU Part Check", {
   expect_s3_class(obj, "sf")
 })
 
-test_that("BU Other Check", {
+test_that("other-building WFS queries retrieve spatial data", {
   skip_on_cran()
   skip_if_offline()
 

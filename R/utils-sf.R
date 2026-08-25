@@ -29,14 +29,14 @@ read_geo_file_sf <- function(
     }
   }
 
-  # Create and read the 'vsizip' construct for shp.zip.
+  # Create and read the `vsizip` path for the ZIP archive.
   if (grepl(".zip$", file_local, ignore.case = TRUE)) {
     shp_zip <- unzip(file_local, list = TRUE)
     shp_zip <- shp_zip$Name
     shp_zip <- shp_zip[grepl(hint, shp_zip)]
     shp_end <- shp_zip[1]
 
-    # Read with vsizip.
+    # Read the selected layer through `vsizip`.
     file_local <- file.path("/vsizip/", file_local, shp_end)
     file_local <- gsub("//", "/", file_local, fixed = TRUE)
   }
@@ -71,7 +71,8 @@ catr_file_size <- function(...) {
 #'
 #' @noRd
 sanitize_sf <- function(data_sf) {
-  # From sf/read.R - https://github.com/r-spatial/sf/blob/master/R/read.R
+  # Adapted from sf/read.R:
+  # https://github.com/r-spatial/sf/blob/master/R/read.R
   set_utf8 <- function(x) {
     n <- names(x)
     Encoding(n) <- "UTF-8"
@@ -83,7 +84,7 @@ sanitize_sf <- function(data_sf) {
     }
     structure(lapply(x, to_utf8), names = n)
   }
-  # End code adapted from sf.
+  # End of code adapted from sf.
 
   # Convert to UTF-8.
   names <- names(data_sf)
@@ -106,7 +107,7 @@ sanitize_sf <- function(data_sf) {
     return(data_utf8)
   }
 
-  # Regenerate with the correct encoding.
+  # Recreate the object with the corrected encoding.
   data_sf <- sf::st_as_sf(data_utf8, g)
 
   # Restore the geometry column name.
@@ -115,7 +116,7 @@ sanitize_sf <- function(data_sf) {
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  # Normalize CRS definitions with the EPSG number.
+  # Normalize the CRS definition using its EPSG number.
 
   epsg_num <- sf::st_crs(data_sf)$epsg
   if (!identical(sf::st_crs(data_sf), sf::st_crs(epsg_num))) {

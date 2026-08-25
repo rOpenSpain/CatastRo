@@ -1,4 +1,4 @@
-#' WFS INSPIRE: download cadastral parcels
+#' WFS INSPIRE: Download cadastral parcels
 #'
 #' @description
 #' Retrieve spatial cadastral parcel and zoning data through several types of
@@ -18,8 +18,8 @@
 #' - `"parcel"`: Bounding box of 1 km2 and a maximum of 5,000 elements.
 #' - `"zoning"`: Bounding box of 25 km2 and a maximum of 5,000 elements.
 #'
-#' @family wfs
 #' @family parcels
+#' @concept wfs
 #' @rdname catr_wfs_get_parcels
 #'
 #' @encoding UTF-8

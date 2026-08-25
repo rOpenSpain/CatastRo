@@ -1,29 +1,29 @@
-# Test offline db_all
+# address database listing returns NULL when offline
 
     Code
       fend <- catr_atom_get_address_db_all(cache_dir = cdir)
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
-# Test offline db_to
+# address database office lookup returns NULL when offline
 
     Code
       fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
-# Test 404 all
+# address database listing returns NULL after an HTTP 404
 
     Code
       fend <- catr_atom_get_address_db_all(cache_dir = cdir)
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the download failed.
+      Returning "NULL" because the download failed.
 
-# Test atom ad
+# address database lookups match and rank territorial offices
 
     Code
       no_res <- catr_atom_get_address_db_to(to = "aaaana", cache_dir = cdir)
@@ -40,7 +40,7 @@
       i Other matches:
         "Territorial office 46 Valencia"
 
-# Deprecations
+# deprecated address database cache arguments emit warnings
 
     Code
       fend <- catr_atom_get_address_db_to(to = "Madrid", cache = FALSE, cache_dir = cdir)
@@ -58,12 +58,12 @@
       The `cache` argument of `catr_atom_get_address_db_all()` is deprecated as of CatastRo 1.0.0.
       i Results are always cached.
 
-# Test 404 to bis
+# address database office lookup handles a failed cached request
 
     Code
       fend <- catr_atom_get_address_db_to("Madrid", cache_dir = cdir)
     Message
       x HTTP error 404 (Not Found): <http://www.catastro.hacienda.gob.es/INSPIRE/addresses/28/ES.SDGC.ad.atom_28.xml>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the download failed.
+      Returning "NULL" because the download failed.
 

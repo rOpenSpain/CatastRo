@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_cpmrc}
 \alias{catr_ovc_get_cpmrc}
-\title{OVCCoordenadas: geocode a cadastral reference}
+\title{OVCCoordenadas: Geocode a cadastral reference}
 \usage{
 catr_ovc_get_cpmrc(
   rc,
@@ -14,7 +14,7 @@ catr_ovc_get_cpmrc(
 )
 }
 \arguments{
-\item{rc}{The cadastral reference to be geocoded.}
+\item{rc}{Cadastral reference to geocode.}
 
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
@@ -70,10 +70,6 @@ catr_ovc_get_cpmrc("9872023VH5797S")
 \item \link{catr_srs_values} lists supported SRS values.
 \item \code{vignette("ovcservice", package = "CatastRo")} describes the OVC services.
 }
-
-Convert coordinates and cadastral references:
-\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
-\code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
 
 Work with cadastral references:
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},

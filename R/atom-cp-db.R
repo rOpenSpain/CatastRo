@@ -1,4 +1,4 @@
-#' ATOM INSPIRE: list cadastral parcel download URLs
+#' ATOM INSPIRE: List cadastral parcel download URLs
 #'
 #' @description
 #' Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
@@ -19,8 +19,8 @@
 #'      )
 #' ```
 #'
-#' @family atom
 #' @family parcels
+#' @concept atom
 #' @rdname catr_atom_get_parcels_db
 #'
 #' @encoding UTF-8

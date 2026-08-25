@@ -1,4 +1,4 @@
-#' OVCCoordenadas: reverse geocode coordinates
+#' OVCCoordenadas: Reverse geocode coordinates
 #'
 #' @description
 #' Query the OVCCoordenadas
@@ -24,8 +24,9 @@
 #' @references
 #' [Consulta RCCOOR](`r ovcurl("RCCOOR")`).
 #'
-#' @family ovc_coordinates
 #' @family cadastral_references
+#' @concept ovc_coordinates
+#'
 #' @encoding UTF-8
 #' @export
 #' @examplesIf run_example()

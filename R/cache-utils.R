@@ -316,9 +316,7 @@ detect_cache_dir_muted <- function() {
 
       # Use the default path when the configured path is invalid.
       if (
-        length(cached_path) != 1L ||
-          is.na(cached_path) ||
-          !nzchar(cached_path)
+        length(cached_path) != 1L || is.na(cached_path) || !nzchar(cached_path)
       ) {
         cache_dir <- catr_set_cache_dir(overwrite = TRUE, verbose = FALSE)
         return(cache_dir)

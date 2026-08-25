@@ -1,4 +1,4 @@
-#' OVCCoordenadas: geocode a cadastral reference
+#' OVCCoordenadas: Geocode a cadastral reference
 #'
 #' @description
 #' Query the OVCCoordenadas
@@ -16,7 +16,7 @@
 #' - `address`: Address as recorded in the Spanish Cadastre.
 #' - Remaining fields: See the API documentation.
 #'
-#' @param rc The cadastral reference to be geocoded.
+#' @param rc Cadastral reference to geocode.
 #' @param province,municipality Optional character strings used to narrow the
 #'   search.
 #' @param srs SRS/CRS to use in the query. To see allowed values, use
@@ -33,8 +33,8 @@
 #' - [catr_srs_values] lists supported SRS values.
 #' - `vignette("ovcservice", package = "CatastRo")` describes the OVC services.
 #'
-#' @family ovc_coordinates
 #' @family cadastral_references
+#' @concept ovc_coordinates
 #' @encoding UTF-8
 #' @export
 #'

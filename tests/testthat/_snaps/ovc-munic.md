@@ -1,21 +1,21 @@
-# Test offline
+# municipality code lookup returns NULL when offline
 
     Code
       fend <- catr_ovc_get_cod_munic(4, 5)
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
-# Test 404 all
+# municipality code lookup returns NULL after an HTTP 404
 
     Code
       fend <- catr_ovc_get_cod_munic(4, 5)
     Message
       x HTTP error 404 (Not Found): <http://ovc.catastro.meh.es/ovcservweb//ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaMunicipioCodigos?%2FCodigoProvincia=&CodigoProvincia=4&CodigoMunicipio=5&CodigoMunicipioIne=>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the request failed.
+      Returning "NULL" because the request failed.
 
-# Callejero munic
+# municipality code lookup returns matching municipality codes
 
     Code
       df <- catr_ovc_get_cod_munic(2)
@@ -28,5 +28,5 @@
     Code
       df <- catr_ovc_get_cod_munic(5, 1304)
     Message
-      x OVC service error "24": EL CÓDIGO DE MUNICIPIO DEBE SER UNA SECUENCIA DE HASTA 3 DÍGITOS.
+      x OVC service error 24: EL CÓDIGO DE MUNICIPIO DEBE SER UNA SECUENCIA DE HASTA 3 DÍGITOS.
 

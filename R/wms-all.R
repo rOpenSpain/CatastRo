@@ -1,4 +1,4 @@
-#' WMS INSPIRE: download georeferenced map images
+#' WMS INSPIRE: Download georeferenced map images
 #'
 #' @description
 #' Retrieve georeferenced map images from the Spanish Cadastre WMS service.
@@ -64,7 +64,8 @@
 #' - [terra::RGB()] identifies RGB channels.
 #' - [terra::plotRGB()] and [tidyterra::geom_spatraster_rgb()] plot RGB rasters.
 #'
-#' @family wms
+#' @concept wms
+#'
 #' @encoding UTF-8
 #' @export
 #'

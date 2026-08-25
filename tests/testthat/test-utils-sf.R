@@ -1,4 +1,4 @@
-test_that("Read shp", {
+test_that("geospatial files are read from local sources", {
   skip_on_cran()
   skip_if_offline()
 
@@ -47,7 +47,7 @@ test_that("Read shp", {
   expect_true(file.exists(fake_local))
 })
 
-test_that("Read shp address", {
+test_that("address geospatial files are read with expected fields", {
   skip_on_cran()
   skip_if_offline()
 
@@ -120,7 +120,7 @@ test_that("read_geo_file_sf warns for large local files", {
   expect_s3_class(out, "sf")
 })
 
-test_that("get_sf_from_bbox", {
+test_that("bounding boxes are converted to spatial features", {
   a <- get_sf_from_bbox(c(1, 2, 3, 4), srs = 3857)
   b <- get_sf_from_bbox(a)
 

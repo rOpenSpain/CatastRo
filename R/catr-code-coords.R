@@ -1,4 +1,4 @@
-#' Get the cadastral municipality code from coordinates
+#' Get a cadastral municipality code from coordinates
 #'
 #' @description
 #' Retrieve the municipality code associated with an [`sf`][sf::st_sf] object
@@ -23,7 +23,9 @@
 #' - [catr_ovc_get_cod_munic()] retrieves municipality codes.
 #' - [sf::st_centroid()] computes geometry centroids.
 #'
-#' @family search
+#'
+#' @concept search
+#'
 #' @encoding UTF-8
 #' @export
 #' @examplesIf run_example()

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_atom_search_munic}
 \alias{catr_atom_search_munic}
-\title{ATOM INSPIRE: search for municipality codes}
+\title{ATOM INSPIRE: Search for municipality codes}
 \usage{
 catr_atom_search_munic(
   munic,
@@ -47,20 +47,6 @@ Cadastre municipality codes.
 catr_atom_search_munic("Mad")
 }
 \dontshow{\}) # examplesIf}
-}
-\seealso{
-Download data from ATOM INSPIRE services:
-\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
-\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
-\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
-\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
-\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
-\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}}
-
-Search for cadastral identifiers:
-\code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
-\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
-\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 }
 \concept{atom}
 \concept{search}

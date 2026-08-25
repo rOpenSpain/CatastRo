@@ -23,7 +23,7 @@ download_url <- function(
   cache_dir <- create_cache_dir(cache_dir)
   cache_dir <- create_cache_dir(file.path(cache_dir, subdir))
 
-  # Create and clean destination file.
+  # Create and normalize the destination file path.
   file_local <- file.path(cache_dir, name)
   file_local <- gsub("//", "/", file_local, fixed = TRUE)
 
@@ -33,7 +33,7 @@ download_url <- function(
   # Check whether the file already exists.
   fileoncache <- file.exists(file_local)
 
-  # Return cached files unless a refresh is requested.
+  # Return the cached file unless a refresh is requested.
   if (isFALSE(update_cache) && fileoncache) {
     msg <- paste0("Using cached file {.file ", file_local, "}.")
     make_msg("success", verbose, msg)
@@ -51,10 +51,7 @@ download_url <- function(
   req <- httr2::request(url)
   req <- httr2::req_error(req, is_error = catr_never_error)
 
-  req <- httr2::req_options(
-    req,
-    ssl_verifypeer = catr_ssl_verify()
-  )
+  req <- httr2::req_options(req, ssl_verifypeer = catr_ssl_verify())
 
   req <- httr2::req_timeout(req, catr_timeout())
   req <- httr2::req_retry(req, max_tries = 3)
@@ -64,19 +61,19 @@ download_url <- function(
 
   if (!is_online_fun()) {
     cli::cli_alert_danger("No internet connection detected.")
-    cli::cli_alert("Returning {.val NULL} because the request cannot run.")
+    cli::cli_inform("Returning {.val NULL} because the request cannot run.")
     return(NULL)
   }
 
-  # Simulate an HTTP failure when requested by tests.
+  # Simulate an HTTP failure when requested by the tests.
   test_offline <- is_404()
   if (test_offline) {
     report_http_error(url)
-    cli::cli_alert("Returning {.val NULL} because the download failed.")
+    cli::cli_inform("Returning {.val NULL} because the download failed.")
     return(NULL)
   }
 
-  # Use HEAD to check whether the download size should be reported.
+  # Use HEAD to determine whether to report the download size.
   get_header <- httr2::req_method(req, "HEAD")
   getsize <- tryCatch(
     catr_req_perform(get_header),
@@ -117,7 +114,7 @@ download_url <- function(
       httr2::resp_status(resp),
       httr2::resp_status_desc(resp)
     )
-    cli::cli_alert("Returning {.val NULL} because the download failed.")
+    cli::cli_inform("Returning {.val NULL} because the download failed.")
     return(NULL)
   }
   msg <- paste0("Downloaded file to {.file ", file_local, "}.")
@@ -142,10 +139,7 @@ get_request_body <- function(url, verbose = TRUE) {
   req <- httr2::request(url)
   req <- httr2::req_error(req, is_error = catr_never_error)
 
-  req <- httr2::req_options(
-    req,
-    ssl_verifypeer = catr_ssl_verify()
-  )
+  req <- httr2::req_options(req, ssl_verifypeer = catr_ssl_verify())
 
   req <- httr2::req_timeout(req, catr_timeout())
   req <- httr2::req_retry(req, max_tries = 3)
@@ -155,25 +149,22 @@ get_request_body <- function(url, verbose = TRUE) {
 
   if (!is_online_fun()) {
     cli::cli_alert_danger("No internet connection detected.")
-    cli::cli_alert("Returning {.val NULL} because the request cannot run.")
+    cli::cli_inform("Returning {.val NULL} because the request cannot run.")
     return(NULL)
   }
 
-  # Simulate an HTTP failure when requested by tests.
+  # Simulate an HTTP failure when requested by the tests.
   test_offline <- is_404()
   if (test_offline) {
     report_http_error(url)
-    cli::cli_alert("Returning {.val NULL} because the request failed.")
+    cli::cli_inform("Returning {.val NULL} because the request failed.")
     return(NULL)
   }
 
-  resp <- tryCatch(
-    catr_req_perform(req),
-    httr2_failure = function(cnd) {
-      report_request_failure(cnd, "request")
-      NULL
-    }
-  )
+  resp <- tryCatch(catr_req_perform(req), httr2_failure = function(cnd) {
+    report_request_failure(cnd, "request")
+    NULL
+  })
   if (is.null(resp)) {
     return(NULL)
   }
@@ -184,7 +175,7 @@ get_request_body <- function(url, verbose = TRUE) {
       httr2::resp_status(resp),
       httr2::resp_status_desc(resp)
     )
-    cli::cli_alert("Returning {.val NULL} because the request failed.")
+    cli::cli_inform("Returning {.val NULL} because the request failed.")
     return(NULL)
   }
 
@@ -277,8 +268,6 @@ report_request_failure <- function(cnd, type) {
     request_type,
     " could not be completed."
   ))
-  cli::cli_alert_warning(conditionMessage(cnd))
-  cli::cli_alert(
-    "Returning {.val NULL} because the {type} failed."
-  )
+  cli::cli_alert_warning("{.val {conditionMessage(cnd)}}")
+  cli::cli_inform("Returning {.val NULL} because the {type} failed.")
 }

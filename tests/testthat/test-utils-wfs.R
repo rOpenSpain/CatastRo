@@ -1,4 +1,4 @@
-test_that("wfs_get_bbox", {
+test_that("WFS bounding boxes are converted to spatial features", {
   expect_snapshot(error = TRUE, wfs_get_bbox(c(1, 2)))
   expect_snapshot(error = TRUE, wfs_get_bbox(c(1, 2, 3, 4)))
   expect_silent(ok <- wfs_get_bbox(c(1, 1, 1, 1), srs = 4326))
@@ -97,7 +97,7 @@ test_that("wfs_read_bbox_query returns NULL when download fails", {
   ))
 })
 
-test_that("Test offline", {
+test_that("WFS downloads return NULL when offline", {
   skip_on_cran()
   skip_if_offline()
   local_mocked_bindings(is_online_fun = function(...) {
@@ -125,7 +125,7 @@ test_that("Test offline", {
   expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test 404", {
+test_that("WFS downloads return NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
@@ -188,7 +188,7 @@ test_that("Test 404", {
   expect_s3_class(tosf, "sf")
 })
 
-test_that("Error on call", {
+test_that("WFS requests report service exceptions", {
   skip_on_cran()
   skip_if_offline()
 
@@ -232,7 +232,7 @@ test_that("Error on call", {
   expect_null(s)
 })
 
-test_that("Bad query", {
+test_that("WFS requests reject invalid query lists", {
   skip_on_cran()
   skip_if_offline()
 

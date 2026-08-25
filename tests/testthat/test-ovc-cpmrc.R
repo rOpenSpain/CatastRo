@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("cadastral reference lookup returns NULL when offline", {
   skip_on_cran()
   skip_if_offline()
 
@@ -15,7 +15,7 @@ test_that("Test offline", {
   expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test 404 all", {
+test_that("cadastral reference lookup returns NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
@@ -31,7 +31,7 @@ test_that("Test 404 all", {
   })
 })
 
-test_that("Expect error on bad SRS", {
+test_that("cadastral reference lookup rejects an unsupported SRS", {
   skip_on_cran()
   skip_if_offline()
   expect_snapshot(
@@ -40,7 +40,7 @@ test_that("Expect error on bad SRS", {
   )
 })
 
-test_that("giving all the arguments", {
+test_that("cadastral reference lookup accepts all supported arguments", {
   skip_on_cran()
   skip_if_offline()
   local_mocked_bindings(ovc_get_xml = function(...) {
@@ -70,7 +70,7 @@ test_that("giving all the arguments", {
   )
 })
 
-test_that("giving cadastral reference and SRS", {
+test_that("cadastral reference lookup accepts a reference and SRS", {
   skip_on_cran()
   skip_if_offline()
   local_mocked_bindings(ovc_get_xml = function(...) {
@@ -92,7 +92,7 @@ test_that("giving cadastral reference and SRS", {
   expect_type(result$ycoord, "double")
 })
 
-test_that("giving only the cadastral reference", {
+test_that("cadastral reference lookup accepts only a reference", {
   skip_on_cran()
   skip_if_offline()
   local_mocked_bindings(ovc_get_xml = function(url, verbose = FALSE) {
@@ -120,7 +120,7 @@ test_that("giving only the cadastral reference", {
 })
 
 
-test_that("given Municipio, Provincia is needed", {
+test_that("cadastral reference lookup requires a province and municipality", {
   skip_on_cran()
   skip_if_offline()
   local_mocked_bindings(ovc_get_xml = function(...) {

@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("municipality search returns NULL when offline", {
   skip_on_cran()
   skip_if_offline()
 
@@ -16,7 +16,7 @@ test_that("Test offline", {
   expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test 404 all", {
+test_that("municipality search returns NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
@@ -42,7 +42,7 @@ test_that("Test 404 all", {
   expect_shape(fend, dim = c(1, 3))
 })
 
-test_that("Test search", {
+test_that("municipality search ranks matching municipalities", {
   skip_on_cran()
   skip_if_offline()
   cdir <- withr::local_tempdir(pattern = "testthat_ex2")
@@ -80,7 +80,7 @@ test_that("Test search", {
   expect_null(ff)
 })
 
-test_that("Deprecations", {
+test_that("deprecated municipality search arguments emit warnings", {
   skip_on_cran()
   skip_if_offline()
   cdir <- withr::local_tempdir(pattern = "testthat_ex2")

@@ -1,4 +1,4 @@
-#' OVCCallejero: get province codes
+#' OVCCallejero: Get province codes
 #'
 #' @description
 #' Query the OVCCallejero
@@ -12,8 +12,9 @@
 #' @references
 #' [ConsultaProvincia](`r ovcurl("prov")`).
 #'
-#' @family ovc_street_directory
-#' @family search
+#' @concept ovc_street_directory
+#' @concept search
+#'
 #' @encoding UTF-8
 #' @export
 #'

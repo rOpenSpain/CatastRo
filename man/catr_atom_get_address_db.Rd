@@ -4,7 +4,7 @@
 \name{catr_atom_get_address_db_all}
 \alias{catr_atom_get_address_db_all}
 \alias{catr_atom_get_address_db_to}
-\title{ATOM INSPIRE: list address download URLs}
+\title{ATOM INSPIRE: List address download URLs}
 \source{
 \url{https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml}
 }
@@ -37,7 +37,8 @@ function stores cached files in a temporary directory. See
 
 \item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
 
-\item{to}{Character string. Territorial office to match using \code{\link[base:grep]{base::grep()}}.}
+\item{to}{Character string. Territorial office to match using
+\code{\link[base:grep]{base::grep()}}.}
 }
 \value{
 A \link[dplyr:tbl_df]{tibble} with the requested information in the following
@@ -68,14 +69,6 @@ catr_atom_get_address_db_all()
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Download data from ATOM INSPIRE services:
-\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
-\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
-\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
-\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
-\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
-\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}}
-
 Work with cadastral addresses:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}}

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_wms_get_layer}
 \alias{catr_wms_get_layer}
-\title{WMS INSPIRE: download georeferenced map images}
+\title{WMS INSPIRE: Download georeferenced map images}
 \usage{
 catr_wms_get_layer(
   x,

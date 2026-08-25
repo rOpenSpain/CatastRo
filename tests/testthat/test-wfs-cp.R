@@ -1,4 +1,4 @@
-test_that("BBOX Check errors", {
+test_that("parcel WFS bounding boxes reject invalid coordinates", {
   skip_on_cran()
   skip_if_offline()
 
@@ -25,7 +25,7 @@ test_that("BBOX Check errors", {
   expect_null(s)
 })
 
-test_that("BBOX Check projections", {
+test_that("parcel WFS bounding boxes support different projections", {
   skip_on_cran()
   skip_if_offline()
   local_mocked_bindings(wfs_read_bbox_query = function(x, srs, typenames, ...) {
@@ -59,7 +59,7 @@ test_that("BBOX Check projections", {
   expect_gt(nrow(obj2), nrow(obj3))
 })
 
-test_that("CP Zone", {
+test_that("parcel WFS zoning queries retrieve spatial data", {
   skip_on_cran()
   skip_if_offline()
   local_mocked_bindings(wfs_read_stored_query = function(
@@ -99,7 +99,7 @@ test_that("CP Zone", {
   expect_null(obj)
 })
 
-test_that("CP Parcels", {
+test_that("parcel WFS queries retrieve cadastral parcels", {
   skip_on_cran()
   skip_if_offline()
   local_mocked_bindings(wfs_read_stored_query = function(

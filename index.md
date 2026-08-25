@@ -44,7 +44,7 @@ Check the documentation for the development version at
 <https://ropenspain.github.io/CatastRo/dev/>.
 
 You can install the development version of **CatastRo** from
-[r-universe](https://ropenspain.r-universe.dev/CatastRo):
+[**r-universe**](https://ropenspain.r-universe.dev/CatastRo):
 
 ``` r
 # Install CatastRo in R.
@@ -73,10 +73,10 @@ pak::pak("rOpenSpain/CatastRo")
 <div class="callout-body-container callout-body">
 
 The SSL certificate of the Spanish Cadastre may cause errors when using
-**CatastRo** (especially on macOS, see issue
+**CatastRo** (especially on **macOS**, see issue
 [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)).
 
-In **CatastRo \>= 1.0.0**, you can work around these errors by running
+In **CatastRo** \>= 1.0.0, you can work around these errors by running
 this code after loading the package:
 
 ``` r
@@ -275,7 +275,7 @@ A BibTeX entry for LaTeX users is:
 ## Contributing
 
 See the [source code and issue
-tracker](https://github.com/ropenspain/CatastRo/) on GitHub.
+tracker](https://github.com/ropenspain/CatastRo/) on **GitHub**.
 
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)

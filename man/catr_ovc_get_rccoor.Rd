@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_rccoor}
 \alias{catr_ovc_get_rccoor}
-\title{OVCCoordenadas: reverse geocode coordinates}
+\title{OVCCoordenadas: Reverse geocode coordinates}
 \usage{
 catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 }
@@ -56,10 +56,6 @@ catr_ovc_get_rccoor(
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta RCCOOR}.
 }
 \seealso{
-Convert coordinates and cadastral references:
-\code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
-\code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
-
 Work with cadastral references:
 \code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
 \code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}

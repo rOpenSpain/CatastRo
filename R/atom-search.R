@@ -1,4 +1,4 @@
-#' ATOM INSPIRE: search for municipality codes
+#' ATOM INSPIRE: Search for municipality codes
 #'
 #' @description
 #' Search for a municipality by name or code and return matching Spanish
@@ -9,8 +9,8 @@
 #' @return A [tibble][dplyr::tbl_df] with the territorial office,
 #'   municipality name and cadastral code. Returns `NULL` if no match is found.
 #'
-#' @family atom
-#' @family search
+#' @concept atom
+#' @concept search
 #'
 #' @encoding UTF-8
 #' @export

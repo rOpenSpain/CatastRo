@@ -1,4 +1,4 @@
-#' WFS INSPIRE: download buildings
+#' WFS INSPIRE: Download buildings
 #'
 #' @description
 #' Retrieve spatial building data through two types of WFS queries:
@@ -11,8 +11,8 @@
 #' @inherit catr_wfs_get_address_bbox return references
 #' @inheritSection catr_wfs_get_address_bbox API limits
 #' @inheritSection catr_wfs_get_address_bbox Bounding box
-#' @family wfs
 #' @family buildings
+#' @concept wfs
 #' @rdname catr_wfs_get_buildings
 #'
 #' @encoding UTF-8

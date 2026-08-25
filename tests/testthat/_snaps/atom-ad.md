@@ -1,21 +1,21 @@
-# Test offline
+# address download returns NULL when offline
 
     Code
       fend <- catr_atom_get_address("Madrid", cache_dir = cdir)
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
-# Test 404 all
+# address download returns NULL after an HTTP 404
 
     Code
       fend <- catr_atom_get_address("MELQUE", to = "Segovia", cache_dir = cdir)
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the download failed.
+      Returning "NULL" because the download failed.
 
-# ATOM Addresses
+# address download returns spatial data and handles office matches
 
     Code
       catr_atom_get_address("xyxghx", cache_dir = cdir)
@@ -34,12 +34,12 @@
       The `cache` argument of `catr_atom_get_address()` is deprecated as of CatastRo 1.0.0.
       i Results are always cached.
 
-# Test 404 single
+# single address download returns NULL after an HTTP 404
 
     Code
       fend <- catr_atom_get_address("Melque", to = "Segovia", cache_dir = cdir)
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/40/40146-MELQUE%20DE%20CERCOS/A.ES.SDGC.AD.40146.zip>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the download failed.
+      Returning "NULL" because the download failed.
 

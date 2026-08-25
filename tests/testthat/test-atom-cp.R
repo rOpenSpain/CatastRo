@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("parcel download returns NULL when offline", {
   skip_on_cran()
   skip_if_offline()
 
@@ -16,7 +16,7 @@ test_that("Test offline", {
   expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test 404 all", {
+test_that("parcel download returns NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
@@ -41,7 +41,7 @@ test_that("Test 404 all", {
   )
   expect_gt(nrow(fend), 20)
 })
-test_that("ATOM parcels", {
+test_that("parcel download returns spatial data for a municipality", {
   skip_on_cran()
   skip_if_offline()
 
@@ -95,7 +95,7 @@ test_that("ATOM parcels", {
   expect_gt(nrow(me_cp), nrow(me_cpzone))
 })
 
-test_that("ATOM Encoding issue", {
+test_that("parcel download preserves fields with accented characters", {
   skip_on_cran()
   skip_if_offline()
 
@@ -106,7 +106,7 @@ test_that("ATOM Encoding issue", {
   expect_silent(catr_atom_get_parcels("23051", cache_dir = cdir))
 })
 
-test_that("Test 404 single", {
+test_that("single parcel download returns NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 

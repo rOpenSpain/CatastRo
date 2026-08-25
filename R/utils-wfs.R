@@ -6,7 +6,7 @@
 #' resources.
 #'
 #' @details
-#' The function constructs a request URL from its components, downloads the
+#' This function constructs a request URL from its components, downloads the
 #' result to a temporary cache and reports WFS exceptions. See **Examples**.
 #'
 #' @param scheme Character string specifying the protocol used to access the
@@ -21,7 +21,7 @@
 #' A character string containing the downloaded file path. Returns `NULL` if
 #' the request fails.
 #'
-#' @family wfs
+#' @concept wfs
 #' @rdname inspire_wfs_get
 #'
 #' @encoding UTF-8
@@ -91,13 +91,13 @@ inspire_wfs_get <- function(
     query$srsname <- ifelse(grepl("^EPS", srs), srs, paste0("EPSG:", srs))
   }
 
-  # Avoid httr2 because it masks some required values (`::`, `,`).
+  # Avoid httr2 because it masks required values such as `::` and `,`.
   q <- paste0(names(query), "=", query, collapse = "&")
 
   # Build URL.
   url <- paste0(trimws(hostname), "/", trimws(path), "?", q)
 
-  # Clean double slashes and repeated question marks.
+  # Remove duplicate slashes and question marks.
   url <- gsub("//", "/", url, fixed = TRUE)
   url <- gsub("??", "?", url, fixed = TRUE)
 
@@ -133,11 +133,11 @@ inspire_wfs_get <- function(
   file.copy(file_local, xml_file)
 
   err <- xml2::read_xml(xml_file, encoding = "UTF-8")
-  msg <- unlist(xml2::as_list(err)["ExceptionReport"], use.names = FALSE)
+  msg <- unlist(xml2::as_list(err)["ExceptionReport"], use.names = FALSE) # nolint
 
   cli::cli_alert_danger(c(
-    "The WFS query returned an exception for {.url {url}}:\n",
-    msg
+    "The WFS query returned an exception for {.url {url}}:",
+    "{.val {msg}}"
   ))
 
   # Clean temporary files.
@@ -260,12 +260,10 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
   area <- round(as.double(area) / 1000000, 1)
 
   if (area > limit_km2) {
-    cli::cli_alert_warning(
-      paste0(
-        "WFS service limit is {.val {limit_km2}} km2. ",
-        "Your query covers {.val {area}} km2."
-      )
-    )
+    cli::cli_alert_warning(paste0(
+      "WFS service limit is {.val {limit_km2}} km2. ",
+      "Your query covers {.val {area}} km2."
+    ))
     cli::cli_alert_info(paste0(
       "The request may fail. Check the results or use a ",
       "smaller area in {.arg x}."

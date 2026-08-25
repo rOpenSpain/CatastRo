@@ -1,4 +1,4 @@
-test_that("NULL result", {
+test_that("address database lookup returns NULL when no data is available", {
   skip_on_cran()
   skip_if_offline()
 
@@ -9,7 +9,7 @@ test_that("NULL result", {
   expect_null(catr_atom_get_address_db_to("Madrid"))
 })
 
-test_that("Test offline db_all", {
+test_that("address database listing returns NULL when offline", {
   skip_on_cran()
   skip_if_offline()
 
@@ -27,7 +27,7 @@ test_that("Test offline db_all", {
   expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test offline db_to", {
+test_that("address database office lookup returns NULL when offline", {
   skip_on_cran()
   skip_if_offline()
 
@@ -47,7 +47,7 @@ test_that("Test offline db_to", {
   expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test 404 all", {
+test_that("address database listing returns NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
@@ -69,7 +69,7 @@ test_that("Test 404 all", {
   expect_gt(nrow(fend), 20)
 })
 
-test_that("Test 404 to", {
+test_that("address database office lookup returns NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
@@ -92,15 +92,12 @@ test_that("Test 404 to", {
   expect_gt(nrow(fend), 100)
 })
 
-test_that("Test atom ad", {
+test_that("address database lookups match and rank territorial offices", {
   skip_on_cran()
   skip_if_offline()
 
   cdir <- withr::local_tempdir(pattern = "testthat_atom_ad")
-  expect_message(catr_atom_get_address_db_all(
-    verbose = TRUE,
-    cache_dir = cdir
-  ))
+  expect_message(catr_atom_get_address_db_all(verbose = TRUE, cache_dir = cdir))
   expect_snapshot(
     no_res <- catr_atom_get_address_db_to(to = "aaaana", cache_dir = cdir)
   )
@@ -130,7 +127,7 @@ test_that("Test atom ad", {
   expect_false(pal$munic[1] == val$munic[1])
 })
 
-test_that("Deprecations", {
+test_that("deprecated address database cache arguments emit warnings", {
   skip_on_cran()
   skip_if_offline()
 
@@ -149,7 +146,7 @@ test_that("Deprecations", {
   )
 })
 
-test_that("Test 404 to bis", {
+test_that("address database office lookup handles a failed cached request", {
   skip_on_cran()
   skip_if_offline()
 

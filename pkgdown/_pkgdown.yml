@@ -44,7 +44,7 @@ reference:
     identifier.
 - contents:
   - has_concept("wfs")
-  - -has_keyword("datasets")
+
 - subtitle: WMS maps
   desc: >
     Download georeferenced cadastral map images.
@@ -60,7 +60,7 @@ reference:
     Convert between cadastral references and spatial coordinates.
 - contents:
   - has_concept("ovc_coordinates")
-  - -has_keyword("datasets")
+
 - subtitle: Province and municipality codes
   desc: >
     Query province and municipality codes used by the Spanish Cadastre.

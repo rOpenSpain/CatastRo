@@ -17,7 +17,7 @@ vignette: >
 
 
 
-**CatastRo** provides an R interface to the OVCCoordenadas service from
+**CatastRo** provides an **R** interface to the OVCCoordenadas service from
 the [Sede electrónica del Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
 This service retrieves coordinates for a cadastral reference. The cadastral
@@ -68,6 +68,9 @@ knitr::kable(result)
 
 
 
+|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |  geo.xcen| geo.ycen|geo.srs   |ldt                                                                                                  |
+|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|---------:|--------:|:---------|:----------------------------------------------------------------------------------------------------|
+|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 | -3.456242| 38.61966|EPSG:4230 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
 
 
@@ -123,6 +126,10 @@ catr_ovc_get_rccoor_distancia(
 
 
 
+|  geo.xcen| geo.ycen|geo.srs   |refcat         |address                                         |cmun_ine |pc.pc1  |pc.pc2  |dt.loine.cp |dt.loine.cm |dt.lourb.dir.cv |dt.lourb.dir.pnp |ldt                                             |dis   |
+|---------:|--------:|:---------|:--------------|:-----------------------------------------------|:--------|:-------|:-------|:-----------|:-----------|:---------------|:----------------|:-----------------------------------------------|:-----|
+| -5.663408| 40.96002|EPSG:4230 |5877501TL7357F |AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      |37274    |5877501 |TL7357F |37          |274         |643             |1                |AV REYES DE ESPAÑA 1 SALAMANCA (SALAMANCA)      |21.81 |
+| -5.663408| 40.96002|EPSG:4230 |5778706TL7357H |AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) |37274    |5778706 |TL7357H |37          |274         |643             |2                |AV REYES DE ESPAÑA 2 N2-4 SALAMANCA (SALAMANCA) |23.18 |
 
 
 
@@ -146,6 +153,9 @@ catr_ovc_get_cpmrc(
 
 
 
+|    xcoord|   ycoord|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |geo.xcen          |geo.ycen         |geo.srs   |ldt                                                                                                  |
+|---------:|--------:|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|:-----------------|:----------------|:---------|:----------------------------------------------------------------------------------------------------|
+| -3.456242| 38.61966|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 |-3.45624183836806 |38.6196566583596 |EPSG:4230 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
 
 
@@ -159,16 +169,14 @@ catr_ovc_get_cpmrc(
   municipality = "SANTA CRUZ DE MUDELA"
 ) |>
   knitr::kable()
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection was reset
-#> → Returning "NULL" because the request failed.
+#> ✖ OVC service error 11: LA PROVINCIA ES OBLIGATORIA
 ```
 
 
 
+|refcat         |geo.srs   |
+|:--------------|:---------|
+|13077A01800039 |EPSG:4326 |
 
 
 
@@ -183,5 +191,8 @@ catr_ovc_get_cpmrc(rc = "13077A01800039") |>
 
 
 
+|    xcoord|   ycoord|refcat         |address                                                                                              |pc.pc1  |pc.pc2  |geo.xcen          |geo.ycen         |geo.srs   |ldt                                                                                                  |
+|---------:|--------:|:--------------|:----------------------------------------------------------------------------------------------------|:-------|:-------|:-----------------|:----------------|:---------|:----------------------------------------------------------------------------------------------------|
+| -3.457532| 38.61843|13077A01800039 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |13077A0 |1800039 |-3.45753233627867 |38.6184314024661 |EPSG:4326 |DS DISEMINADO  Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
 

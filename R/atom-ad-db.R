@@ -1,4 +1,4 @@
-#' ATOM INSPIRE: list address download URLs
+#' ATOM INSPIRE: List address download URLs
 #'
 #' @description
 #' Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
@@ -13,7 +13,8 @@
 #'   supported because results are always cached.
 #' @param update_cache Logical. Whether to refresh the cached file. Defaults to
 #'   `FALSE`.
-#' @param to Character string. Territorial office to match using [base::grep()].
+#' @param to Character string. Territorial office to match using
+#'   [base::grep()].
 #'
 #' @inheritParams catr_set_cache_dir
 #' @return
@@ -29,8 +30,8 @@
 #' @source
 #' <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>
 #'
-#' @family atom
 #' @family addresses
+#' @concept atom
 #' @rdname catr_atom_get_address_db
 #'
 #' @encoding UTF-8

@@ -1,4 +1,4 @@
-#' WFS INSPIRE: download addresses
+#' WFS INSPIRE: Download addresses
 #'
 #' @description
 #' Retrieve spatial address data through several types of WFS queries:
@@ -49,8 +49,8 @@
 #'
 #' ```
 #'
-#' @family wfs
 #' @family addresses
+#' @concept wfs
 #' @rdname catr_wfs_get_address
 #' @encoding UTF-8
 #' @export

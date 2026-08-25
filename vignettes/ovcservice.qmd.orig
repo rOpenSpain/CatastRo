@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-**CatastRo** provides an R interface to the OVCCoordenadas service from
+**CatastRo** provides an **R** interface to the OVCCoordenadas service from
 the [Sede electrónica del Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
 This service retrieves coordinates for a cadastral reference. The cadastral

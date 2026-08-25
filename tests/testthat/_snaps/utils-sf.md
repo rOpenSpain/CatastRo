@@ -6,7 +6,7 @@
       ! Reading a large file (21 Mb).
       > This may take a while.
 
-# get_sf_from_bbox
+# bounding boxes are converted to spatial features
 
     Code
       get_sf_from_bbox(c(1, 2))

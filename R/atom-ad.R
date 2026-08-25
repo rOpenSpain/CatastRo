@@ -1,8 +1,8 @@
-#' ATOM INSPIRE: download all addresses for a municipality
+#' ATOM INSPIRE: Download all addresses for a municipality
 #'
 #' @description
 #' Retrieve spatial data for all addresses in a municipality using the ATOM
-#' INSPIRE service. The result also contains corresponding
+#' INSPIRE service. The result also contains the corresponding
 #' street information in fields prefixed with `tfname_*`.
 #'
 #' @param munic Municipality name, partial name or cadastral code. Use
@@ -26,8 +26,8 @@
 #'
 #' ```
 #'
-#' @family atom
 #' @family addresses
+#' @concept atom
 #' @encoding UTF-8
 #' @export
 #'

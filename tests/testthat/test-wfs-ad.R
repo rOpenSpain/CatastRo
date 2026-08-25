@@ -1,4 +1,4 @@
-test_that("BBOX Check", {
+test_that("address WFS bounding boxes validate their coordinates", {
   skip_on_cran()
   skip_if_offline()
 
@@ -46,7 +46,7 @@ test_that("BBOX Check", {
   expect_equal(sf::st_crs(obj2), sf::st_crs(25829))
 })
 
-test_that("AD CODVIA", {
+test_that("address WFS queries retrieve data by street code", {
   skip_on_cran()
   skip_if_offline()
 
@@ -88,7 +88,7 @@ test_that("AD CODVIA", {
   )
 })
 
-test_that("AD RC", {
+test_that("address WFS queries retrieve data by cadastral reference", {
   skip_on_cran()
   skip_if_offline()
 
@@ -130,7 +130,7 @@ test_that("AD RC", {
   )
 })
 
-test_that("AD Postal Code", {
+test_that("address WFS queries retrieve data by postal code", {
   skip_on_cran()
   skip_if_offline()
 
@@ -142,8 +142,7 @@ test_that("AD Postal Code", {
     wfs_validate_srs(srs)
 
     if (
-      identical(query$postalcode, "XXXXX") ||
-        identical(query$REFCAT, "XXXXX")
+      identical(query$postalcode, "XXXXX") || identical(query$REFCAT, "XXXXX")
     ) {
       cli::cli_alert_danger(c(
         "The WFS query returned an exception for a mocked response:\n",

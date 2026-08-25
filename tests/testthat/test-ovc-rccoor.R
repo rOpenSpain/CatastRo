@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("reverse geocoding returns NULL when offline", {
   skip_on_cran()
   skip_if_offline()
 
@@ -17,7 +17,7 @@ test_that("Test offline", {
   expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test 404 all", {
+test_that("reverse geocoding returns NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
@@ -35,7 +35,7 @@ test_that("Test 404 all", {
   })
 })
 
-test_that("Expect error on bad SRS", {
+test_that("reverse geocoding rejects an unsupported SRS", {
   skip_on_cran()
   skip_if_offline()
 
@@ -45,7 +45,7 @@ test_that("Expect error on bad SRS", {
   )
 })
 
-test_that("return data.frame given SRS", {
+test_that("reverse geocoding returns a tibble with an explicit SRS", {
   skip_on_cran()
   skip_if_offline()
 
@@ -77,7 +77,7 @@ test_that("return data.frame given SRS", {
   expect_type(result$geo.ycen, "double")
 })
 
-test_that("return data.frame without SRS", {
+test_that("reverse geocoding returns a tibble without an explicit SRS", {
   skip_on_cran()
   skip_if_offline()
 
@@ -103,7 +103,7 @@ test_that("return data.frame without SRS", {
   expect_s3_class(result, "tbl")
 })
 
-test_that("check fields without SRS", {
+test_that("reverse geocoding returns standard fields without an SRS", {
   skip_on_cran()
   skip_if_offline()
 
@@ -130,7 +130,7 @@ test_that("check fields without SRS", {
   expect_type(result$refcat, "character")
 })
 
-test_that("check fields given SRS", {
+test_that("reverse geocoding returns standard fields with an SRS", {
   skip_on_cran()
   skip_if_offline()
 
@@ -161,7 +161,7 @@ test_that("check fields given SRS", {
   expect_type(result$refcat, "character")
 })
 
-test_that("if data is know return NA", {
+test_that("reverse geocoding returns three columns without a reference", {
   skip_on_cran()
   skip_if_offline()
 
@@ -180,7 +180,7 @@ test_that("if data is know return NA", {
   expect_equal(ncol(result), 3)
 })
 
-test_that("unprecised coordinates", {
+test_that("reverse geocoding returns three columns for imprecise coordinates", {
   skip_on_cran()
   skip_if_offline()
 
@@ -199,7 +199,7 @@ test_that("unprecised coordinates", {
   expect_equal(ncol(result), 3)
 })
 
-test_that("Verbose", {
+test_that("reverse geocoding reports requests when verbose", {
   skip_on_cran()
   skip_if_offline()
 
@@ -234,9 +234,6 @@ test_that("RCCOOR can call the real API", {
   skip_if_offline()
   skip_on_ci()
 
-  result <- catr_ovc_get_rccoor(
-    lat = 38.6196566583596,
-    lon = -3.45624183836806
-  )
+  result <- catr_ovc_get_rccoor(lat = 38.6196566583596, lon = -3.45624183836806)
   expect_s3_class(result, "tbl")
 })

@@ -1,4 +1,4 @@
-#' ATOM INSPIRE: list building download URLs
+#' ATOM INSPIRE: List building download URLs
 #'
 #' @description
 #' Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
@@ -14,8 +14,8 @@
 #' @source
 #' <https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml>
 #'
-#' @family atom
 #' @family buildings
+#' @concept atom
 #' @rdname catr_atom_get_buildings_db
 #'
 #' @encoding UTF-8

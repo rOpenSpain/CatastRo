@@ -1,11 +1,11 @@
-# Test offline
+# file downloads return NULL when offline
 
     Code
       fend <- download_url(url, cache_dir = cdir, subdir = "fixme", update_cache = FALSE,
         verbose = FALSE)
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
 # Download HTTP errors return NULL
 
@@ -14,7 +14,7 @@
     Message
       x HTTP error 404 (Not Found): <https://example.com/http-error.txt>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the download failed.
+      Returning "NULL" because the download failed.
 
 # Download transport failures return NULL
 
@@ -22,8 +22,8 @@
       fend <- download_url(url, cache_dir = cdir, verbose = FALSE)
     Message
       x The download request could not be completed.
-      ! Mock transport failure.
-      > Returning "NULL" because the download failed.
+      ! "Mock transport failure."
+      Returning "NULL" because the download failed.
 
 ---
 
@@ -31,25 +31,25 @@
       fend <- download_url(url, cache_dir = cdir, verbose = FALSE)
     Message
       x The download request could not be completed.
-      ! Mock transport failure.
-      > Returning "NULL" because the download failed.
+      ! "Mock transport failure."
+      Returning "NULL" because the download failed.
 
-# No connection body
+# request bodies return NULL when offline
 
     Code
       fend <- get_request_body(url, verbose = FALSE)
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
-# Error body
+# request bodies return NULL after an HTTP 404
 
     Code
       fend <- get_request_body(url, verbose = FALSE)
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the request failed.
+      Returning "NULL" because the request failed.
 
 # Body transport failures return NULL
 
@@ -57,6 +57,6 @@
       fend <- get_request_body(url, verbose = FALSE)
     Message
       x The request could not be completed.
-      ! Mock transport failure.
-      > Returning "NULL" because the request failed.
+      ! "Mock transport failure."
+      Returning "NULL" because the request failed.
 

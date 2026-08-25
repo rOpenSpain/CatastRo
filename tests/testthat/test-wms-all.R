@@ -1,4 +1,4 @@
-test_that("Check error", {
+test_that("WMS layer requests reject invalid layer types", {
   expect_snapshot(
     error = TRUE,
     catr_wms_get_layer(
@@ -9,7 +9,7 @@ test_that("Check error", {
   )
 })
 
-test_that("Check tiles", {
+test_that("WMS layer requests return map tiles", {
   calls <- list()
   local_mocked_bindings(catr_esp_get_tiles = function(x, type, options, ...) {
     calls[[length(calls) + 1]] <<- list(type = type, options = options)

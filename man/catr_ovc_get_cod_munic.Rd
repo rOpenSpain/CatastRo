@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_cod_munic}
 \alias{catr_ovc_get_cod_munic}
-\title{OVCCallejero: get municipality codes}
+\title{OVCCallejero: Get municipality codes}
 \usage{
 catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 }
@@ -63,14 +63,6 @@ ab2
 \seealso{
 \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}} to get shapes of municipalities, including
 the INE code.
-
-Query OVC province and municipality codes:
-\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
-
-Search for cadastral identifiers:
-\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
-\code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
-\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 }
 \concept{ovc_street_directory}
 \concept{search}

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_ovc_get_rccoor_distancia}
 \alias{catr_ovc_get_rccoor_distancia}
-\title{OVCCoordenadas: find cadastral references near coordinates}
+\title{OVCCoordenadas: Find cadastral references near coordinates}
 \usage{
 catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 }
@@ -39,7 +39,7 @@ one row per cadastral reference, including the following columns:
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input arguments of the query.
 \item \code{refcat}: Cadastral reference.
 \item \code{address}: Address as recorded in the Spanish Cadastre.
-\item \code{cmun_ine}: Municipality code as registered on the INE (National
+\item \code{cmun_ine}: Municipality code as registered by the INE (National
 Statistics Institute).
 \item Remaining fields: See the API documentation.
 }
@@ -59,10 +59,6 @@ catr_ovc_get_rccoor_distancia(
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
 }
 \seealso{
-Convert coordinates and cadastral references:
-\code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
-\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}}
-
 Work with cadastral references:
 \code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}}

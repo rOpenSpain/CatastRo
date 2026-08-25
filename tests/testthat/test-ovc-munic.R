@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("municipality code lookup returns NULL when offline", {
   skip_on_cran()
   skip_if_offline()
 
@@ -15,7 +15,7 @@ test_that("Test offline", {
   expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test 404 all", {
+test_that("municipality code lookup returns NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
@@ -31,7 +31,7 @@ test_that("Test 404 all", {
   })
 })
 
-test_that("Callejero munic", {
+test_that("municipality code lookup returns matching municipality codes", {
   skip_on_cran()
   skip_if_offline()
   local_mocked_bindings(ovc_get_xml = function(url, ...) {

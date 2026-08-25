@@ -4,7 +4,7 @@
 \name{catr_wfs_get_buildings_bbox}
 \alias{catr_wfs_get_buildings_bbox}
 \alias{catr_wfs_get_buildings_rc}
-\title{WFS INSPIRE: download buildings}
+\title{WFS INSPIRE: Download buildings}
 \usage{
 catr_wfs_get_buildings_bbox(
   x,
@@ -113,11 +113,6 @@ ggplot(rc) +
 \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE services for cadastral cartography}.
 }
 \seealso{
-Query data from WFS INSPIRE services:
-\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
-\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}},
-\code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
-
 Work with cadastral buildings:
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
 \code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}}

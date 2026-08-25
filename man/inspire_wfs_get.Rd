@@ -35,7 +35,7 @@ functions and is also available for querying other cadastral or INSPIRE
 resources.
 }
 \details{
-The function constructs a request URL from its components, downloads the
+This function constructs a request URL from its components, downloads the
 result to a temporary cache and reports WFS exceptions. See \strong{Examples}.
 }
 \examples{
@@ -65,11 +65,5 @@ if (!is.null(file_local)) {
   }
 }
 \dontshow{\}) # examplesIf}
-}
-\seealso{
-Query data from WFS INSPIRE services:
-\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
-\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
-\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}}
 }
 \concept{wfs}

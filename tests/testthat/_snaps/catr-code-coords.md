@@ -1,11 +1,11 @@
-# Test offline
+# coordinate lookup returns NULL when offline
 
     Code
       fend <- catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326,
       cache_dir = cdir)
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
 ---
 
@@ -14,9 +14,9 @@
       cache_dir = cdir)
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
-# Test 404 all
+# coordinate lookup returns NULL after an HTTP 404
 
     Code
       fend <- catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326,
@@ -24,7 +24,7 @@
     Message
       x HTTP error 404 (Not Found): <http://ovc.catastro.meh.es/ovcservweb//ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaMunicipioCodigos?%2FCodigoProvincia=&CodigoProvincia=38&CodigoMunicipio=&CodigoMunicipioIne=038>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the request failed.
+      Returning "NULL" because the request failed.
 
 ---
 
@@ -34,9 +34,9 @@
     Message
       x HTTP error 404 (Not Found): <http://ovc.catastro.meh.es/ovcservweb//ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaMunicipioCodigos?%2FCodigoProvincia=&CodigoProvincia=10&CodigoMunicipio=&CodigoMunicipioIne=125>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the request failed.
+      Returning "NULL" because the request failed.
 
-# Test 404 mapSpain
+# coordinate lookup returns NULL when the mapSpain request fails
 
     Code
       fend <- catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326,
@@ -44,7 +44,7 @@
     Message
       i Mocking mapSpain
 
-# Check
+# coordinate lookup returns the municipality code for a location
 
     Code
       df <- catr_get_code_from_coords(c(0, 0))

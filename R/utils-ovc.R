@@ -47,10 +47,10 @@ ovc_as_tibble_rows <- function(x) {
 #'
 #' @noRd
 ovc_report_error <- function(err) {
-  df <- ovc_as_tibble_row(err["lerr"])
+  df <- ovc_as_tibble_row(err["lerr"]) # nolint
 
   cli::cli_alert_danger(
-    paste0("OVC service error {.val ", df[1, 1], "}: ", df[1, 2])
+    "OVC service error {.val {df[1, 1]}}: {.val {df[1, 2]}}"
   )
 }
 

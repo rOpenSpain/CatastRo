@@ -1,4 +1,4 @@
-#' OVCCoordenadas: find cadastral references near coordinates
+#' OVCCoordenadas: Find cadastral references near coordinates
 #'
 #' @description
 #' Query the OVCCoordenadas
@@ -15,8 +15,8 @@
 #' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 #' - `refcat`: Cadastral reference.
 #' - `address`: Address as recorded in the Spanish Cadastre.
-#' - `cmun_ine`: Municipality code as registered on the INE (National
-#'    Statistics Institute).
+#' - `cmun_ine`: Municipality code as registered by the INE (National
+#'   Statistics Institute).
 #' - Remaining fields: See the API documentation.
 #'
 #' @param lat Latitude for the query, expressed in the SRS/CRS defined by
@@ -30,8 +30,9 @@
 #' @references
 #' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
 #'
-#' @family ovc_coordinates
 #' @family cadastral_references
+#' @concept ovc_coordinates
+#'
 #' @encoding UTF-8
 #' @export
 #' @examplesIf run_example()

@@ -1,4 +1,4 @@
-# Check error
+# WMS layer requests reject invalid layer types
 
     Code
       catr_wms_get_layer(c(760926, 4019259, 761155, 4019366), srs = 25829, what = "aa")

@@ -24,16 +24,16 @@ Persistent cache directories now use `tools::R_user_dir()` instead of
 `rappdirs::user_config_dir()`. If you already have a cache directory,
 **CatastRo** displays a one-time migration message.
 
-The package now requires **R ≥ 4.1.0** and dependency updates improve both
+The package now requires **R** ≥ 4.1.0 and dependency updates improve both
 performance and maintainability. All functions return tidy objects (tibbles or
 `sf` objects with tibble data).
 
 ## Major changes
 
-- Minimum required **R** version is now **4.1.0**.
+- Minimum required **R** version is now 4.1.0.
 - Refactor the code and test suite for improved stability.
 - Switch API requests to **httr2**.
-- New options (especially for macOS and Linux users):
+- New options (especially for **macOS** and **Linux** users):
   - On SSL errors, use `options(catastro_ssl_verify = 0)` to disable SSL
     verification.
   - Query timeout can be controlled with `options(catastro_timeout = 300)`
@@ -44,12 +44,12 @@ performance and maintainability. All functions return tidy objects (tibbles or
 
 ### Compatibility and performance
 
-- Require **R ≥ 4.1.0**.
+- Require **R** ≥ 4.1.0.
 - Update dependencies:
   - Add: **cli**, **lifecycle**, **withr**.
   - Remove: **png**, **slippymath**.
 - Return tidy objects consistently.
-- Migrate the vignette engine to Quarto.
+- Migrate the vignette engine to **Quarto**.
 
 ## Deprecations
 

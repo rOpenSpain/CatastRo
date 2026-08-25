@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{catr_atom_get_buildings}
 \alias{catr_atom_get_buildings}
-\title{ATOM INSPIRE: download all buildings for a municipality}
+\title{ATOM INSPIRE: Download all buildings for a municipality}
 \usage{
 catr_atom_get_buildings(
   munic,
@@ -74,14 +74,6 @@ ggplot(s) +
 \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE services for cadastral cartography}.
 }
 \seealso{
-Download data from ATOM INSPIRE services:
-\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
-\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
-\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
-\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
-\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
-\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}}
-
 Work with cadastral buildings:
 \code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
 \code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}}

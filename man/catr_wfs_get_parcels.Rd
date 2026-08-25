@@ -7,7 +7,7 @@
 \alias{catr_wfs_get_parcels_parcel}
 \alias{catr_wfs_get_parcels_neigh_parcel}
 \alias{catr_wfs_get_parcels_parcel_zoning}
-\title{WFS INSPIRE: download cadastral parcels}
+\title{WFS INSPIRE: Download cadastral parcels}
 \usage{
 catr_wfs_get_parcels_bbox(
   x,
@@ -127,11 +127,6 @@ ggplot(cp) +
 \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE services for cadastral cartography}.
 }
 \seealso{
-Query data from WFS INSPIRE services:
-\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
-\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
-\code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
-
 Work with cadastral parcels:
 \code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
 \code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}}

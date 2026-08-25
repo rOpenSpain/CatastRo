@@ -1,4 +1,4 @@
-test_that("On mac", {
+test_that("example runner skips unsupported macOS environments", {
   skip_on_cran()
   skip_if_offline()
   skip_on_os("mac")
@@ -13,7 +13,7 @@ test_that("On mac", {
 })
 
 
-test_that("Offline", {
+test_that("example runner skips when offline", {
   skip_on_cran()
   skip_on_os("mac")
 
@@ -23,7 +23,7 @@ test_that("Offline", {
 })
 
 
-test_that("Online", {
+test_that("example runner executes when online", {
   skip_on_cran()
   skip_on_os("mac")
 
@@ -36,7 +36,7 @@ test_that("Online", {
 })
 
 
-test_that("On CRAN", {
+test_that("example runner skips on CRAN", {
   skip_on_cran()
   skip_if_offline()
   skip_on_os("mac")
@@ -59,7 +59,7 @@ test_that("NOT_CRAN empty falls back to interactive()", {
 })
 
 
-test_that("Not on CRAN", {
+test_that("example runner executes outside CRAN when interactive", {
   skip_on_os("mac")
 
   withr::local_envvar(c(NOT_CRAN = "true"))

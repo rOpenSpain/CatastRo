@@ -1,21 +1,21 @@
-# Test offline
+# municipality search returns NULL when offline
 
     Code
       fend <- catr_atom_search_munic("LABAJOS", cache_dir = cdir)
     Message
       x No internet connection detected.
-      > Returning "NULL" because the request cannot run.
+      Returning "NULL" because the request cannot run.
 
-# Test 404 all
+# municipality search returns NULL after an HTTP 404
 
     Code
       fend <- catr_atom_search_munic("MELQUE", to = "Segovia", cache_dir = cdir)
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      > Returning "NULL" because the download failed.
+      Returning "NULL" because the download failed.
 
-# Test search
+# municipality search ranks matching municipalities
 
     Code
       c <- catr_atom_search_munic("XXX", cache_dir = cdir)
@@ -36,7 +36,7 @@
     Message
       ! No municipality matched pattern "Melilla" in "Burgos".
 
-# Deprecations
+# deprecated municipality search arguments emit warnings
 
     Code
       a <- catr_atom_search_munic("Mad", cache_dir = cdir, cache = TRUE)

@@ -1,4 +1,4 @@
-#' OVCCallejero: get municipality codes
+#' OVCCallejero: Get municipality codes
 #'
 #' @description
 #' Query the OVCCallejero
@@ -35,8 +35,9 @@
 #' [mapSpain::esp_get_munic_siane()] to get shapes of municipalities, including
 #' the INE code.
 #'
-#' @family ovc_street_directory
-#' @family search
+#' @concept ovc_street_directory
+#' @concept search
+#'
 #' @encoding UTF-8
 #' @export
 #' @examplesIf run_example()

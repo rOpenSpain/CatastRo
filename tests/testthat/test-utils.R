@@ -1,4 +1,4 @@
-test_that("Messages", {
+test_that("message helper dispatches messages by type", {
   skip_on_cran()
   expect_silent(make_msg(verbose = FALSE))
   expect_snapshot(make_msg(
@@ -25,7 +25,7 @@ test_that("Messages", {
   expect_null(no_msg)
 })
 
-test_that("Pretty match", {
+test_that("argument matching reports the closest valid choice", {
   skip_on_cran()
   my_fun <- function(arg_one = c(10, 1000, 3000, 5000)) {
     match_arg_pretty(arg_one)
@@ -65,7 +65,7 @@ test_that("Pretty match", {
   expect_snapshot(my_fun2(c(1, 2)), error = TRUE)
 })
 
-test_that("Ensure NULL", {
+test_that("empty values are converted to NULL", {
   expect_null(ensure_null(NULL))
   expect_null(ensure_null(c(NULL, NA)))
   expect_null(ensure_null(c(NULL, NA, "")))
@@ -74,7 +74,7 @@ test_that("Ensure NULL", {
   expect_identical(letters, letters)
 })
 
-test_that("Not empty", {
+test_that("non-empty arguments are accepted", {
   a_fun <- function(a, b) {
     a <- validate_non_empty_arg(a)
     b <- validate_non_empty_arg(b)
