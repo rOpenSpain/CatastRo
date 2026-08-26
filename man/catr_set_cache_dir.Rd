@@ -20,13 +20,13 @@ catr_detect_cache_dir()
 function stores cached files in a temporary directory. See
 \code{\link[base:tempdir]{base::tempdir()}}.}
 
-\item{overwrite}{Logical. If \code{TRUE}, overwrites an existing
+\item{overwrite}{Logical. Whether to overwrite an existing
 \code{CATASTROESP_CACHE_DIR} value already present on your machine.}
 
-\item{install}{Logical. If \code{TRUE}, stores the path locally for use in future
+\item{install}{Logical. Whether to store the path locally for use in future
 sessions. Defaults to \code{FALSE}.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
 \code{catr_set_cache_dir()} invisibly returns a character string containing the
@@ -42,20 +42,18 @@ the current path.
 }
 \details{
 By default, when no \code{cache_dir} is set, \CRANpkg{CatastRo} uses a directory
-inside
-\code{\link[base:tempdir]{base::tempdir()}} (so files are temporary and are removed when the \R
-session ends). To persist a cache across \R sessions, use
-\code{catr_set_cache_dir(cache_dir, install = TRUE)} which writes the chosen
-path to a small configuration file under
+inside \code{\link[base:tempdir]{base::tempdir()}}, so files are temporary and are removed when the \R
+session ends. To persist a cache across \R sessions, use
+\code{catr_set_cache_dir(cache_dir, install = TRUE)}, which writes the chosen path
+to a small configuration file under
 \code{tools::R_user_dir("CatastRo", "config")}.
 }
 \note{
 In \CRANpkg{CatastRo} >= 1.0.0 the location of the configuration file has
 moved from \code{rappdirs::user_config_dir("CatastRo", "R")} to
-\code{tools::R_user_dir("CatastRo", "config")}. We have implemented a
-function that migrates previous configuration files from one location to
-another with a message. This message appears only once to inform you of the
-migration.
+\code{tools::R_user_dir("CatastRo", "config")}. A migration function moves
+previous configuration files to the new location and displays a message.
+This message appears only once.
 }
 \section{Caching strategies}{
 
@@ -63,8 +61,8 @@ migration.
 Source files are cached after download. \CRANpkg{CatastRo} implements the
 following caching options:
 \itemize{
-\item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no
-install).
+\item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache without
+installing it.
 \item Modify the cache for a single session by setting
 \code{catr_set_cache_dir(cache_dir = "a/path/here")}.
 \item For reproducible workflows, install a persistent cache with

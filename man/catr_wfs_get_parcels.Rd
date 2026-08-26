@@ -42,7 +42,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
 \strong{Bounding box}.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 
 \item{cod_zona}{Cadastral zone code.}
 
@@ -91,12 +91,12 @@ The API service is limited to the following constraints:
 
 \section{Bounding box}{
 
-When \code{x} is a numeric vector, make sure that the \code{srs} matches the
+When \code{x} is a numeric vector, make sure that \code{srs} matches the
 coordinate values. Additionally, the function queries the bounding box on
 \href{https://epsg.io/25830}{EPSG:25830}, ETRS89 / UTM zone 30N, to work around a
 potential API issue.
 
-When \code{x} is a \code{\link[sf:st_sf]{sf}} object, the value \code{srs} is ignored. In
+When \code{x} is a \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is ignored. In
 this case, the bounding box of the \code{\link[sf:st_sf]{sf}} object is
 used for the query (see \code{\link[sf:st_bbox]{sf::st_bbox()}}).
 
@@ -130,6 +130,11 @@ ggplot(cp) +
 Work with cadastral parcels:
 \code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
 \code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}}
+
+Query WFS INSPIRE services:
+\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
+\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
+\code{\link[=inspire_wfs_get]{inspire_wfs_get()}}
 }
 \concept{parcels}
-\concept{wfs}
+\concept{wfs_services}

@@ -17,7 +17,7 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
 A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
@@ -33,14 +33,15 @@ the API searches within 50 square meters of the requested coordinates.
 If the API returns no results, this function returns a
 \link[dplyr:tbl_df]{tibble} containing only query information.
 
-On a successful query, this function returns a \link[dplyr:tbl_df]{tibble} with
+On a successful query, this function returns a
+\link[dplyr:tbl_df]{tibble} with
 one row per cadastral reference, including the following columns:
 \itemize{
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input arguments of the query.
 \item \code{refcat}: Cadastral reference.
 \item \code{address}: Address as recorded in the Spanish Cadastre.
-\item \code{cmun_ine}: Municipality code as registered by the INE (National
-Statistics Institute).
+\item \code{cmun_ine}: Municipality code as registered by the INE
+(National Statistics Institute).
 \item Remaining fields: See the API documentation.
 }
 }
@@ -62,6 +63,12 @@ catr_ovc_get_rccoor_distancia(
 Work with cadastral references:
 \code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}}
+
+Query OVC web services:
+\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
+\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}},
+\code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
+\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}}
 }
 \concept{cadastral_references}
-\concept{ovc_coordinates}
+\concept{ovc_services}

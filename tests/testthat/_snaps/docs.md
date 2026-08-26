@@ -1,4 +1,4 @@
-# OVC documentation URLs differ by service identifier
+# ovcurl() returns distinct URLs for distinct service identifiers
 
     Code
       ovcurl("another")

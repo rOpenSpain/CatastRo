@@ -1,6 +1,4 @@
-test_that("coordinate lookup returns NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_get_code_from_coords() returns NULL when offline", {
   skip_if_not_installed("mapSpain")
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
@@ -24,23 +22,17 @@ test_that("coordinate lookup returns NULL when offline", {
     )
   )
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("coordinate lookup returns NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_get_code_from_coords() returns NULL after an HTTP 404", {
   skip_if_not_installed("mapSpain")
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   expect_snapshot(
     fend <- catr_get_code_from_coords(
@@ -64,9 +56,7 @@ test_that("coordinate lookup returns NULL after an HTTP 404", {
   })
 })
 
-test_that("coordinate lookup returns NULL when the mapSpain request fails", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_get_code_from_coords() handles mapSpain request failures", {
   skip_if_not_installed("mapSpain")
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
@@ -85,9 +75,7 @@ test_that("coordinate lookup returns NULL when the mapSpain request fails", {
   )
   expect_null(fend)
 })
-test_that("coordinate lookup returns the municipality code for a location", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_get_code_from_coords() returns municipality codes", {
   cdir <- withr::local_tempdir(pattern = "testthat_excoord")
   polygon <- function(xmin, ymin, xmax, ymax) {
     sf::st_polygon(list(matrix(
@@ -160,7 +148,7 @@ test_that("coordinate lookup returns the municipality code for a location", {
   expect_s3_class(s4, "tbl")
 })
 
-test_that("coordinate lookup can call the real APIs", {
+test_that("catr_get_code_from_coords() can call the real APIs", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()

@@ -25,12 +25,12 @@
 #' elements.
 #'
 #' @section Bounding box:
-#' When `x` is a numeric vector, make sure that the `srs` matches the
+#' When `x` is a numeric vector, make sure that `srs` matches the
 #' coordinate values. Additionally, the function queries the bounding box on
 #' [EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work around a
 #' potential API issue.
 #'
-#' When `x` is a [`sf`][sf::st_sf] object, the value `srs` is ignored. In
+#' When `x` is a [`sf`][sf::st_sf] object, the `srs` value is ignored. In
 #' this case, the bounding box of the [`sf`][sf::st_sf] object is
 #' used for the query (see [sf::st_bbox()]).
 #'
@@ -50,10 +50,10 @@
 #' ```
 #'
 #' @family addresses
-#' @concept wfs
+#' @family wfs_services
 #' @rdname catr_wfs_get_address
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #'
 catr_wfs_get_address_bbox <- function(x, srs = NULL, verbose = FALSE) {
   # Validate arguments.

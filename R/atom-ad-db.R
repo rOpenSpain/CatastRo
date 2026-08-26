@@ -4,10 +4,7 @@
 #' Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
 #' for downloading addresses.
 #'
-#' `catr_atom_get_address_db_all()` provides a summary table with all
-#' territorial offices, except the Basque Country and Navarre and the
-#' municipalities included in each office. `catr_atom_get_address_db_to()`
-#' provides a table for one territorial office and its municipalities.
+#' `r atom_db_details("address")`
 #'
 #' @param cache `r lifecycle::badge("deprecated")` This argument is no longer
 #'   supported because results are always cached.
@@ -31,11 +28,11 @@
 #' <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>
 #'
 #' @family addresses
-#' @concept atom
+#' @family atom_services
 #' @rdname catr_atom_get_address_db
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf run_example()
 #' \donttest{

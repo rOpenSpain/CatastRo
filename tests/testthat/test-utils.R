@@ -1,5 +1,4 @@
-test_that("message helper dispatches messages by type", {
-  skip_on_cran()
+test_that("make_msg() dispatches supported message types", {
   expect_silent(make_msg(verbose = FALSE))
   expect_snapshot(make_msg(
     "generic",
@@ -9,6 +8,14 @@ test_that("message helper dispatches messages by type", {
     "See {.var avar}."
   ))
   expect_snapshot(make_msg("info", TRUE, "Info here.", "See {.pkg igoR}."))
+
+  caller_env <- list2env(list(caller_value = "caller value"))
+  expect_snapshot(make_msg(
+    "info",
+    TRUE,
+    "Value: {.val {caller_value}}.",
+    .envir = caller_env
+  ))
 
   expect_snapshot(make_msg(
     "warning",
@@ -25,8 +32,7 @@ test_that("message helper dispatches messages by type", {
   expect_null(no_msg)
 })
 
-test_that("argument matching reports the closest valid choice", {
-  skip_on_cran()
+test_that("match_arg_pretty() reports the closest valid choice", {
   my_fun <- function(arg_one = c(10, 1000, 3000, 5000)) {
     match_arg_pretty(arg_one)
   }
@@ -61,20 +67,18 @@ test_that("argument matching reports the closest valid choice", {
   }
   expect_identical(my_fun3(), "20")
   expect_snapshot(my_fun3("3"), error = TRUE)
-  # Pass more options than expected
-  expect_snapshot(my_fun2(c(1, 2)), error = TRUE)
 })
 
-test_that("empty values are converted to NULL", {
+test_that("ensure_null() converts empty values and preserves nonempty values", {
   expect_null(ensure_null(NULL))
   expect_null(ensure_null(c(NULL, NA)))
   expect_null(ensure_null(c(NULL, NA, "")))
   expect_null(ensure_null(c("", character(0))))
   expect_identical(ensure_null(c(1, 2)), c(1, 2))
-  expect_identical(letters, letters)
+  expect_identical(ensure_null(letters), letters)
 })
 
-test_that("non-empty arguments are accepted", {
+test_that("validate_non_empty_arg() rejects missing arguments", {
   a_fun <- function(a, b) {
     a <- validate_non_empty_arg(a)
     b <- validate_non_empty_arg(b)
@@ -85,7 +89,7 @@ test_that("non-empty arguments are accepted", {
   expect_snapshot(error = TRUE, a_fun(a = 1))
   expect_identical(a_fun(a = 1, b = 1), c(1, 1))
 })
-test_that("cli_abort_if_not validates conditions", {
+test_that("cli_abort_if_not() validates scalar conditions and caller context", {
   expect_silent(cli_abort_if_not("Condition fails." = TRUE))
 
   expect_snapshot(

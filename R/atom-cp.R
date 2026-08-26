@@ -12,9 +12,9 @@
 #' @inherit catr_atom_get_address references return
 #'
 #' @family parcels
-#' @concept atom
-#' @encoding UTF-8
+#' @family atom_services
 #' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf run_example()
 #' \donttest{

@@ -1,4 +1,4 @@
-# parcel database listing returns NULL when offline
+# catr_atom_get_parcels_db_all() returns NULL when offline
 
     Code
       fend <- catr_atom_get_parcels_db_all(cache_dir = cdir)
@@ -6,7 +6,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# parcel database office lookup returns NULL when offline
+# catr_atom_get_parcels_db_to() returns NULL when offline
 
     Code
       fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)
@@ -14,7 +14,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# parcel database listing returns NULL after an HTTP 404
+# catr_atom_get_parcels_db_all() returns NULL after an HTTP 404
 
     Code
       fend <- catr_atom_get_parcels_db_all(cache_dir = cdir)
@@ -23,7 +23,7 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the download failed.
 
-# parcel database lookups match and rank territorial offices
+# catr_atom_get_parcels_db_to() ranks office matches
 
     Code
       no_res <- catr_atom_get_parcels_db_to(to = "aaaana", cache_dir = cdir)
@@ -36,11 +36,11 @@
       several <- catr_atom_get_parcels_db_to(to = "lencia", cache_dir = cdir)
     Message
       i Found 2 territorial offices matching "lencia".
-      v Using closest match "Territorial office 34 Palencia".
+      v Using the closest match "Territorial office 34 Palencia".
       i Other matches:
         "Territorial office 46 Valencia"
 
-# deprecated parcel database cache arguments emit warnings
+# parcel database functions warn about deprecated cache arguments
 
     Code
       fend <- catr_atom_get_parcels_db_to(to = "Madrid", cache = FALSE, cache_dir = cdir)
@@ -58,7 +58,7 @@
       The `cache` argument of `catr_atom_get_parcels_db_all()` is deprecated as of CatastRo 1.0.0.
       i Results are always cached.
 
-# parcel database office lookup handles a failed cached request
+# catr_atom_get_parcels_db_to() handles a failed cached request
 
     Code
       fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)

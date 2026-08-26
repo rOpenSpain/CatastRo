@@ -1,6 +1,4 @@
-test_that("example runner skips unsupported macOS environments", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("run_example() returns FALSE on macOS", {
   skip_on_os("mac")
 
   expect_false(on_mac())
@@ -13,8 +11,7 @@ test_that("example runner skips unsupported macOS environments", {
 })
 
 
-test_that("example runner skips when offline", {
-  skip_on_cran()
+test_that("run_example() returns FALSE when offline", {
   skip_on_os("mac")
 
   local_mocked_bindings(is_online_fun = function(...) FALSE)
@@ -23,8 +20,7 @@ test_that("example runner skips when offline", {
 })
 
 
-test_that("example runner executes when online", {
-  skip_on_cran()
+test_that("run_example() returns TRUE when all requirements are met", {
   skip_on_os("mac")
 
   local_mocked_bindings(
@@ -36,9 +32,7 @@ test_that("example runner executes when online", {
 })
 
 
-test_that("example runner skips on CRAN", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("run_example() returns FALSE on CRAN", {
   skip_on_os("mac")
 
   withr::local_envvar(c(NOT_CRAN = "false"))
@@ -48,9 +42,7 @@ test_that("example runner skips on CRAN", {
 })
 
 
-test_that("NOT_CRAN empty falls back to interactive()", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("on_cran() falls back to interactive() when NOT_CRAN is empty", {
   skip_on_os("mac")
 
   withr::local_envvar(c(NOT_CRAN = ""))
@@ -59,7 +51,7 @@ test_that("NOT_CRAN empty falls back to interactive()", {
 })
 
 
-test_that("example runner executes outside CRAN when interactive", {
+test_that("run_example() returns TRUE outside CRAN in interactive sessions", {
   skip_on_os("mac")
 
   withr::local_envvar(c(NOT_CRAN = "true"))

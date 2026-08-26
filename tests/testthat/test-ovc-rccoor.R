@@ -1,7 +1,4 @@
-test_that("reverse geocoding returns NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor() returns NULL when offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -10,20 +7,13 @@ test_that("reverse geocoding returns NULL when offline", {
     fend <- catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, srs = 4326)
   )
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("reverse geocoding returns NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
-
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+test_that("catr_ovc_get_rccoor() returns NULL after an HTTP 404", {
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   expect_snapshot(
     fend <- catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, srs = 4326)
@@ -35,20 +25,14 @@ test_that("reverse geocoding returns NULL after an HTTP 404", {
   })
 })
 
-test_that("reverse geocoding rejects an unsupported SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor() rejects an unsupported SRS", {
   expect_snapshot(
     error = TRUE,
     df <- catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, "abcd")
   )
 })
 
-test_that("reverse geocoding returns a tibble with an explicit SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor() returns a tibble with an explicit SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas = list(
@@ -77,10 +61,7 @@ test_that("reverse geocoding returns a tibble with an explicit SRS", {
   expect_type(result$geo.ycen, "double")
 })
 
-test_that("reverse geocoding returns a tibble without an explicit SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor() returns a tibble without an explicit SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas = list(
@@ -103,10 +84,7 @@ test_that("reverse geocoding returns a tibble without an explicit SRS", {
   expect_s3_class(result, "tbl")
 })
 
-test_that("reverse geocoding returns standard fields without an SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor() returns standard fields without an SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas = list(
@@ -130,10 +108,7 @@ test_that("reverse geocoding returns standard fields without an SRS", {
   expect_type(result$refcat, "character")
 })
 
-test_that("reverse geocoding returns standard fields with an SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor() returns standard fields with an SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas = list(
@@ -161,10 +136,7 @@ test_that("reverse geocoding returns standard fields with an SRS", {
   expect_type(result$refcat, "character")
 })
 
-test_that("reverse geocoding returns three columns without a reference", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor() returns three columns without a reference", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas = list(
@@ -180,10 +152,7 @@ test_that("reverse geocoding returns three columns without a reference", {
   expect_equal(ncol(result), 3)
 })
 
-test_that("reverse geocoding returns three columns for imprecise coordinates", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor() handles imprecise coordinates", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas = list(
@@ -199,10 +168,7 @@ test_that("reverse geocoding returns three columns for imprecise coordinates", {
   expect_equal(ncol(result), 3)
 })
 
-test_that("reverse geocoding reports requests when verbose", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor() reports requests when verbose", {
   local_mocked_bindings(ovc_get_xml = function(url, verbose = FALSE) {
     if (verbose) {
       cli::cli_alert_info("Requesting {.url {url}}.")
@@ -229,7 +195,7 @@ test_that("reverse geocoding reports requests when verbose", {
   )
 })
 
-test_that("RCCOOR can call the real API", {
+test_that("catr_ovc_get_rccoor() can call the real API", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()

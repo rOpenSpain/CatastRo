@@ -92,9 +92,9 @@ package naming convention is `catr_<service>_<description>`.
 ### OVC services
 
 OVC services use
-[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-for geocoding and reverse geocoding and OVCCallejero for province and
-municipality code lookup.
+[**OVCCoordenadas**](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
+for geocoding and reverse geocoding, and **OVCCallejero** for province
+and municipality code lookup.
 
 These functions use the `catr_ovc_get_*()` prefix and return tibbles
 from the **tibble** package. See
@@ -108,9 +108,9 @@ INSPIRE
 services](https://www.catastro.hacienda.gob.es/webinspire/index.html)
 using the **sf** or **terra** packages.
 
-Note that these services cover 95% of the Spanish territory, excluding
-the Basque Country and Navarre[^1], which have their own independent
-cadastral offices.
+These services cover 95% of the Spanish territory, excluding the Basque
+Country and Navarre[^1], which have their own independent cadastral
+offices.
 
 There are three INSPIRE services:
 
@@ -140,12 +140,11 @@ the
 [**terra**](https://rspatial.github.io/terra/reference/terra-package.html)
 package.
 
-There is a single function for querying this service:
-`catr_wms_get_layer()`.
+A single function queries this service: `catr_wms_get_layer()`.
 
 #### Terms and conditions of use
 
-Please check the service [terms of
+Review the service [terms of
 use](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf).
 
 ## Examples
@@ -239,7 +238,7 @@ API Sede Electrónica Del Catastro</em>.
 <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
 </p>
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
     @Manual{R-CatastRo,
       title = {{CatastRo}: Interface to the {API} Sede Electrónica Del Catastro},

@@ -19,11 +19,11 @@
 #' - `"zoning"`: Bounding box of 25 km2 and a maximum of 5,000 elements.
 #'
 #' @family parcels
-#' @concept wfs
+#' @family wfs_services
 #' @rdname catr_wfs_get_parcels
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #'
 catr_wfs_get_parcels_bbox <- function(
   x,

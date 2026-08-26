@@ -16,7 +16,6 @@ read_geo_file_sf <- function(
   ...
 ) {
   # Warn if the file is large and no query is available.
-
   if (all(!grepl("^http", file_local), file.exists(file_local))) {
     fsize <- catr_file_size(file_local)
     fsize_unit <- fsize
@@ -117,7 +116,6 @@ sanitize_sf <- function(data_sf) {
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
   # Normalize the CRS definition using its EPSG number.
-
   epsg_num <- sf::st_crs(data_sf)$epsg
   if (!identical(sf::st_crs(data_sf), sf::st_crs(epsg_num))) {
     sf::st_crs(data_sf) <- sf::st_crs(epsg_num)
@@ -128,7 +126,7 @@ sanitize_sf <- function(data_sf) {
   data_sf
 }
 
-get_sf_from_bbox <- function(bbox, srs = NULL) {
+get_sf_from_bbox <- function(bbox, srs = NULL, call = parent.frame()) {
   if (inherits(bbox, "sf") || inherits(bbox, "sfc")) {
     return(bbox)
   }
@@ -136,13 +134,17 @@ get_sf_from_bbox <- function(bbox, srs = NULL) {
   # Validate arguments.
   if (!(is.numeric(bbox) && length(bbox) == 4)) {
     cli::cli_abort(
-      "{.arg bbox} must have length {.val {4L}}, not {.val {length(bbox)}}."
+      "{.arg bbox} must have length {.val {4L}}, not {.val {length(bbox)}}.",
+      call = call
     )
   }
 
   srs <- ensure_null(srs)
   if (is.null(srs)) {
-    cli::cli_abort("Provide a valid non-empty value for {.arg srs}.")
+    cli::cli_abort(
+      "Provide a valid non-empty value for {.arg srs}.",
+      call = call
+    )
   }
 
   # Create a template for a spatial bounding box.

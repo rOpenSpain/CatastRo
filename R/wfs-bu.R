@@ -12,11 +12,11 @@
 #' @inheritSection catr_wfs_get_address_bbox API limits
 #' @inheritSection catr_wfs_get_address_bbox Bounding box
 #' @family buildings
-#' @concept wfs
+#' @family wfs_services
 #' @rdname catr_wfs_get_buildings
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #'
 catr_wfs_get_buildings_bbox <- function(
   x,

@@ -1,4 +1,4 @@
-# building download returns NULL when offline
+# catr_atom_get_buildings() returns NULL when offline
 
     Code
       fend <- catr_atom_get_buildings("LABAJOS", cache_dir = cdir)
@@ -6,7 +6,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# building download returns NULL after an HTTP 404
+# catr_atom_get_buildings() handles a database HTTP 404
 
     Code
       fend <- catr_atom_get_buildings("MELQUE", to = "Segovia", cache_dir = cdir)
@@ -15,7 +15,7 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the download failed.
 
-# building download returns spatial data for a municipality
+# catr_atom_get_buildings() returns spatial data for a municipality
 
     Code
       catr_atom_get_buildings("xyxghx", cache_dir = cdir)
@@ -35,7 +35,7 @@
       The `cache` argument of `catr_atom_get_buildings()` is deprecated as of CatastRo 1.0.0.
       i Results are always cached.
 
-# single building download returns NULL after an HTTP 404
+# catr_atom_get_buildings() handles a download HTTP 404
 
     Code
       fend <- catr_atom_get_buildings("Melque", to = "Segovia", cache_dir = cdir)

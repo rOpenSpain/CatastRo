@@ -8,7 +8,7 @@
 catr_ovc_get_cod_provinces(verbose = FALSE)
 }
 \arguments{
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
 A \link[dplyr:tbl_df]{tibble} with province names and codes. Returns
@@ -29,5 +29,17 @@ catr_ovc_get_cod_provinces()
 \references{
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
 }
-\concept{ovc_street_directory}
-\concept{search}
+\seealso{
+Search for cadastral identifiers:
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
+\code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
+\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}}
+
+Query OVC web services:
+\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
+\code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
+\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
+\code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
+}
+\concept{ovc_services}
+\concept{search_tools}

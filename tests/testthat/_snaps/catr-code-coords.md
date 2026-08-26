@@ -1,4 +1,4 @@
-# coordinate lookup returns NULL when offline
+# catr_get_code_from_coords() returns NULL when offline
 
     Code
       fend <- catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326,
@@ -16,7 +16,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# coordinate lookup returns NULL after an HTTP 404
+# catr_get_code_from_coords() returns NULL after an HTTP 404
 
     Code
       fend <- catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326,
@@ -36,7 +36,7 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the request failed.
 
-# coordinate lookup returns NULL when the mapSpain request fails
+# catr_get_code_from_coords() handles mapSpain request failures
 
     Code
       fend <- catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326,
@@ -44,12 +44,12 @@
     Message
       i Mocking mapSpain
 
-# coordinate lookup returns the municipality code for a location
+# catr_get_code_from_coords() returns municipality codes
 
     Code
       df <- catr_get_code_from_coords(c(0, 0))
     Condition
-      Error in `validate_vector_with_srs()`:
+      Error in `catr_get_code_from_coords()`:
       ! You must also provide `srs` when `x` is a double vector.
 
 ---
@@ -57,7 +57,7 @@
     Code
       df <- catr_get_code_from_coords(c(0, 0, 0))
     Condition
-      Error in `validate_vector_with_srs()`:
+      Error in `catr_get_code_from_coords()`:
       ! `x` must have length 2, not 3.
 
 ---

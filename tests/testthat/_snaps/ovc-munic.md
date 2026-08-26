@@ -1,4 +1,4 @@
-# municipality code lookup returns NULL when offline
+# catr_ovc_get_cod_munic() returns NULL when offline
 
     Code
       fend <- catr_ovc_get_cod_munic(4, 5)
@@ -6,7 +6,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# municipality code lookup returns NULL after an HTTP 404
+# catr_ovc_get_cod_munic() returns NULL after an HTTP 404
 
     Code
       fend <- catr_ovc_get_cod_munic(4, 5)
@@ -15,7 +15,7 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the request failed.
 
-# municipality code lookup returns matching municipality codes
+# catr_ovc_get_cod_munic() returns matching municipality codes
 
     Code
       df <- catr_ovc_get_cod_munic(2)

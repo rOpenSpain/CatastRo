@@ -1,7 +1,4 @@
-test_that("parcel download returns NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_atom_get_parcels() returns NULL when offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -9,39 +6,22 @@ test_that("parcel download returns NULL when offline", {
   cdir <- withr::local_tempdir(pattern = "testthat_ex1")
   expect_snapshot(fend <- catr_atom_get_parcels("LABAJOS", cache_dir = cdir))
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("parcel download returns NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_atom_get_parcels() handles a database HTTP 404", {
   cdir <- withr::local_tempdir(pattern = "testthat_ex2")
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   expect_snapshot(
     fend <- catr_atom_get_parcels("MELQUE", to = "Segovia", cache_dir = cdir)
   )
   expect_null(fend)
-
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
-  unlink(cdir, recursive = TRUE, force = TRUE)
-  # Otherwise work
-  expect_silent(
-    fend <- catr_atom_get_parcels("MELQUE", to = "Segovia", cache_dir = cdir)
-  )
-  expect_gt(nrow(fend), 20)
 })
-test_that("parcel download returns spatial data for a municipality", {
+test_that("catr_atom_get_parcels() returns spatial data for a municipality", {
   skip_on_cran()
   skip_if_offline()
 
@@ -68,6 +48,8 @@ test_that("parcel download returns spatial data for a municipality", {
   )
 
   expect_s3_class(s, "sf")
+  expect_false(is.na(sf::st_crs(s)))
+  expect_false(any(sf::st_is_empty(s)))
   expect_message(
     catr_atom_get_parcels(
       "Melque",
@@ -95,7 +77,7 @@ test_that("parcel download returns spatial data for a municipality", {
   expect_gt(nrow(me_cp), nrow(me_cpzone))
 })
 
-test_that("parcel download preserves fields with accented characters", {
+test_that("catr_atom_get_parcels() preserves fields with accented characters", {
   skip_on_cran()
   skip_if_offline()
 
@@ -106,7 +88,7 @@ test_that("parcel download preserves fields with accented characters", {
   expect_silent(catr_atom_get_parcels("23051", cache_dir = cdir))
 })
 
-test_that("single parcel download returns NULL after an HTTP 404", {
+test_that("catr_atom_get_parcels() handles a download HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
@@ -115,9 +97,10 @@ test_that("single parcel download returns NULL after an HTTP 404", {
   invisible(catr_atom_get_parcels_db_all(cache_dir = cdir))
   invisible(catr_atom_get_parcels_db_to("Segovia", cache_dir = cdir))
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   expect_snapshot(
     fend <- catr_atom_get_parcels("Melque", to = "Segovia", cache_dir = cdir)

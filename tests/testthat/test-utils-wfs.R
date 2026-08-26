@@ -1,4 +1,4 @@
-test_that("WFS bounding boxes are converted to spatial features", {
+test_that("wfs_get_bbox() converts bounding boxes to spatial features", {
   expect_snapshot(error = TRUE, wfs_get_bbox(c(1, 2)))
   expect_snapshot(error = TRUE, wfs_get_bbox(c(1, 2, 3, 4)))
   expect_silent(ok <- wfs_get_bbox(c(1, 1, 1, 1), srs = 4326))
@@ -25,7 +25,7 @@ test_that("WFS bounding boxes are converted to spatial features", {
   expect_false(any(another == merc))
 })
 
-test_that("wfs_read_stored_query reads local WFS results", {
+test_that("wfs_read_stored_query() reads local WFS results", {
   cdir <- withr::local_tempdir(pattern = "wfs_stored_query")
   local_mocked_bindings(inspire_wfs_get = function(...) {
     out <- file.path(cdir, "stored.gpkg")
@@ -47,7 +47,7 @@ test_that("wfs_read_stored_query reads local WFS results", {
   expect_equal(sf::st_crs(out)$epsg, 25829)
 })
 
-test_that("wfs_read_stored_query returns NULL when download fails", {
+test_that("wfs_read_stored_query() returns NULL when downloads fail", {
   local_mocked_bindings(inspire_wfs_get = function(...) NULL)
 
   expect_null(wfs_read_stored_query(
@@ -56,7 +56,7 @@ test_that("wfs_read_stored_query returns NULL when download fails", {
   ))
 })
 
-test_that("wfs_read_bbox_query reads and transforms local WFS results", {
+test_that("wfs_read_bbox_query() reads and transforms local WFS results", {
   cdir <- withr::local_tempdir(pattern = "wfs_bbox_query")
   local_mocked_bindings(inspire_wfs_get = function(...) {
     out <- file.path(cdir, "bbox.gpkg")
@@ -85,7 +85,7 @@ test_that("wfs_read_bbox_query reads and transforms local WFS results", {
   expect_equal(sf::st_crs(out)$epsg, 25829)
 })
 
-test_that("wfs_read_bbox_query returns NULL when download fails", {
+test_that("wfs_read_bbox_query() returns NULL when downloads fail", {
   local_mocked_bindings(inspire_wfs_get = function(...) NULL)
 
   expect_null(wfs_read_bbox_query(
@@ -97,9 +97,7 @@ test_that("wfs_read_bbox_query returns NULL when download fails", {
   ))
 })
 
-test_that("WFS downloads return NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("inspire_wfs_get() returns NULL when offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -118,22 +116,15 @@ test_that("WFS downloads return NULL when offline", {
   )
   expect_null(fend)
   expect_length(list.files(cdir, recursive = TRUE), 0)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("WFS downloads return NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("inspire_wfs_get() returns NULL after an HTTP 404", {
   withr::local_tempdir(pattern = "wfs_inspire_cache")
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   expect_message(
     s <- inspire_wfs_get(
@@ -188,10 +179,7 @@ test_that("WFS downloads return NULL after an HTTP 404", {
   expect_s3_class(tosf, "sf")
 })
 
-test_that("WFS requests report service exceptions", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("inspire_wfs_get() reports WFS service exceptions", {
   local_mocked_bindings(download_url = function(
     url,
     name,
@@ -230,10 +218,7 @@ test_that("WFS requests report service exceptions", {
   expect_null(s)
 })
 
-test_that("WFS requests reject invalid query lists", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("inspire_wfs_get() rejects invalid query lists", {
   expect_snapshot(
     error = TRUE,
     s <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", query = 20)
@@ -304,7 +289,7 @@ test_that("WFS requests reject invalid query lists", {
   expect_equal(sf::st_crs(sfobj1)$epsg, 25829)
 })
 
-test_that("inspire_wfs_get can call the real API", {
+test_that("inspire_wfs_get() can call the real API", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()

@@ -1,7 +1,4 @@
-test_that("parcel WFS bounding boxes reject invalid coordinates", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_parcels_bbox() rejects invalid coordinates", {
   expect_snapshot(
     error = TRUE,
     catr_wfs_get_parcels_bbox(x = "1234", what = "xxx")
@@ -25,9 +22,7 @@ test_that("parcel WFS bounding boxes reject invalid coordinates", {
   expect_null(s)
 })
 
-test_that("parcel WFS bounding boxes support different projections", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_wfs_get_parcels_bbox() preserves requested projections", {
   local_mocked_bindings(wfs_read_bbox_query = function(x, srs, typenames, ...) {
     crs <- srs
     if (is.null(crs)) {
@@ -59,9 +54,7 @@ test_that("parcel WFS bounding boxes support different projections", {
   expect_gt(nrow(obj2), nrow(obj3))
 })
 
-test_that("parcel WFS zoning queries retrieve spatial data", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("parcel zoning WFS functions retrieve spatial data", {
   local_mocked_bindings(wfs_read_stored_query = function(
     query,
     srs = NULL,
@@ -99,9 +92,7 @@ test_that("parcel WFS zoning queries retrieve spatial data", {
   expect_null(obj)
 })
 
-test_that("parcel WFS queries retrieve cadastral parcels", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("parcel reference WFS functions retrieve cadastral parcels", {
   local_mocked_bindings(wfs_read_stored_query = function(
     query,
     srs = NULL,
@@ -129,7 +120,7 @@ test_that("parcel WFS queries retrieve cadastral parcels", {
   expect_null(catr_wfs_get_parcels_parcel("3662303TFXXXXX", srs = 3857))
 })
 
-test_that("CP WFS functions can call the real API", {
+test_that("parcel WFS functions can call the real API", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()

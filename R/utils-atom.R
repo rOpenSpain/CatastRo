@@ -140,7 +140,7 @@ catr_atom_read_db_to <- function(
       "Found {length(tb)} territorial offices matching {.str {to}}."
     )
 
-    cli::cli_alert_success("Using closest match {.str {tb[1]}}.")
+    cli::cli_alert_success("Using the closest match {.str {tb[1]}}.")
     cli::cli_alert_info("Other matches:")
     bullets <- tb[-1]
     bullets <- paste0("{.str ", bullets, "}")
@@ -229,7 +229,7 @@ catr_atom_select_munic <- function(
       "Found {nrow(tb)} municipalities matching {.str {munic}}."
     )
 
-    cli::cli_alert_success("Using closest match {.str {tb[1,]$munic}}.")
+    cli::cli_alert_success("Using the closest match {.str {tb[1,]$munic}}.")
     cli::cli_alert_info("Other matches:")
     bullets <- tb[-1, ]$munic
     bullets <- paste0("{.str ", bullets, "}")

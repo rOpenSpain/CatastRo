@@ -21,11 +21,11 @@
 #' A character string containing the downloaded file path. Returns `NULL` if
 #' the request fails.
 #'
-#' @concept wfs
+#' @family wfs_services
 #' @rdname inspire_wfs_get
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #' @examplesIf run_example()
 #' # Access the Cadastre of Navarra
 #' # Try also https://ropenspain.github.io/CatastRoNav/
@@ -94,7 +94,7 @@ inspire_wfs_get <- function(
   # Avoid httr2 because it masks required values such as `::` and `,`.
   q <- paste0(names(query), "=", query, collapse = "&")
 
-  # Build URL.
+  # Build the URL.
   url <- paste0(trimws(hostname), "/", trimws(path), "?", q)
 
   # Remove duplicate slashes and question marks.
@@ -121,7 +121,7 @@ inspire_wfs_get <- function(
     return(NULL)
   }
 
-  # Check results.
+  # Check the results.
   top20lines <- readLines(file_local, n = 20, warn = FALSE)
 
   if (!any(grepl("<Exception", top20lines, fixed = TRUE))) {

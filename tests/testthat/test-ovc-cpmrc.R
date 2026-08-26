@@ -1,27 +1,17 @@
-test_that("cadastral reference lookup returns NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_cpmrc() returns NULL when offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
 
   expect_snapshot(fend <- catr_ovc_get_cpmrc("9872023VH5797S"))
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("cadastral reference lookup returns NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
-
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+test_that("catr_ovc_get_cpmrc() returns NULL after an HTTP 404", {
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   expect_snapshot(fend <- catr_ovc_get_cpmrc("9872023VH5797S"))
   expect_null(fend)
@@ -31,18 +21,14 @@ test_that("cadastral reference lookup returns NULL after an HTTP 404", {
   })
 })
 
-test_that("cadastral reference lookup rejects an unsupported SRS", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_ovc_get_cpmrc() rejects an unsupported SRS", {
   expect_snapshot(
     error = TRUE,
     df <- catr_ovc_get_cpmrc(rc = "s", srs = "abcd")
   )
 })
 
-test_that("cadastral reference lookup accepts all supported arguments", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_ovc_get_cpmrc() accepts all supported arguments", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas = list(
@@ -70,9 +56,7 @@ test_that("cadastral reference lookup accepts all supported arguments", {
   )
 })
 
-test_that("cadastral reference lookup accepts a reference and SRS", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_ovc_get_cpmrc() accepts a reference and SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas = list(
@@ -92,9 +76,7 @@ test_that("cadastral reference lookup accepts a reference and SRS", {
   expect_type(result$ycoord, "double")
 })
 
-test_that("cadastral reference lookup accepts only a reference", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_ovc_get_cpmrc() accepts only a reference", {
   local_mocked_bindings(ovc_get_xml = function(url, verbose = FALSE) {
     if (verbose) {
       cli::cli_alert_info("Requesting {.url {url}}.")
@@ -120,9 +102,7 @@ test_that("cadastral reference lookup accepts only a reference", {
 })
 
 
-test_that("cadastral reference lookup requires a province and municipality", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_ovc_get_cpmrc() requires a province and municipality", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas = list(
@@ -142,7 +122,7 @@ test_that("cadastral reference lookup requires a province and municipality", {
   expect_equal(ncol(nnn), 2)
 })
 
-test_that("CPMRC can call the real API", {
+test_that("catr_ovc_get_cpmrc() can call the real API", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()

@@ -1,4 +1,4 @@
-test_that("WMS layer requests reject invalid layer types", {
+test_that("catr_wms_get_layer() rejects invalid layer types", {
   expect_snapshot(
     error = TRUE,
     catr_wms_get_layer(
@@ -9,7 +9,7 @@ test_that("WMS layer requests reject invalid layer types", {
   )
 })
 
-test_that("WMS layer requests return map tiles", {
+test_that("catr_wms_get_layer() returns map tiles for supported layers", {
   calls <- list()
   local_mocked_bindings(catr_esp_get_tiles = function(x, type, options, ...) {
     calls[[length(calls) + 1]] <<- list(type = type, options = options)
@@ -75,7 +75,7 @@ test_that("WMS layer requests return map tiles", {
   expect_null(calls[[4]]$options$srs)
 })
 
-test_that("WMS layer can call the real API", {
+test_that("catr_wms_get_layer() can call the real API", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()

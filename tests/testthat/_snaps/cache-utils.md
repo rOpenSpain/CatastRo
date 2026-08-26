@@ -1,21 +1,21 @@
-# catr_set_cache_dir installs and overwrites mocked config
+# catr_set_cache_dir() installs and overwrites configuration
 
     Code
       catr_set_cache_dir(next_cache_dir, install = TRUE, verbose = FALSE)
     Condition
       Error in `catr_set_cache_dir()`:
       ! A `cache_dir` value is already configured.
-      Set `overwrite` to `TRUE` to replace it.
+      i Set `overwrite` to `TRUE` to replace it.
 
-# migrate_cache moves old mocked config
+# migrate_cache() moves legacy configuration
 
     Code
       migrate_cache(old = old, new = new)
     Message
-      v CatastRo cache configuration migrated for version "1.0.0" or later. See the Note section in `?CatastRo::catr_set_cache_dir()`.
+      v CatastRo cache configuration migrated for version "1.0.0" or later. See the Note section (`?CatastRo::catr_set_cache_dir()`).
       i This one-time message will not be shown again.
 
-# catr_set_cache_dir validates arguments
+# catr_set_cache_dir() rejects invalid arguments
 
     Code
       catr_set_cache_dir(cache_dir = 1, verbose = FALSE)

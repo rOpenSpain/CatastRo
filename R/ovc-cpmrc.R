@@ -34,9 +34,9 @@
 #' - `vignette("ovcservice", package = "CatastRo")` describes the OVC services.
 #'
 #' @family cadastral_references
-#' @concept ovc_coordinates
-#' @encoding UTF-8
+#' @family ovc_services
 #' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -114,7 +114,6 @@ catr_ovc_get_cpmrc <- function(
   )
 
   # Join helper fields and the raw API response.
-
   out <- dplyr::bind_cols(rc_help, overall)
 
   out

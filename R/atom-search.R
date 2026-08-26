@@ -9,11 +9,11 @@
 #' @return A [tibble][dplyr::tbl_df] with the territorial office,
 #'   municipality name and cadastral code. Returns `NULL` if no match is found.
 #'
-#' @concept atom
-#' @concept search
+#' @family search_tools
+#' @family atom_services
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -83,7 +83,6 @@ catr_atom_search_munic <- function(
   res <- with_d[, c("territorial_office", "munic")]
 
   # Split municipality labels to get the code.
-
   res$catrcode <- vapply(
     res$munic,
     function(x) {

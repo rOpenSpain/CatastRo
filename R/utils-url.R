@@ -268,6 +268,6 @@ report_request_failure <- function(cnd, type) {
     request_type,
     " could not be completed."
   ))
-  cli::cli_alert_warning("{.val {conditionMessage(cnd)}}")
+  cli::cli_alert_warning("{conditionMessage(cnd)}")
   cli::cli_inform("Returning {.val NULL} because the {type} failed.")
 }

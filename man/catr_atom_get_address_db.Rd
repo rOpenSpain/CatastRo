@@ -35,7 +35,7 @@ supported because results are always cached.}
 function stores cached files in a temporary directory. See
 \code{\link[base:tempdir]{base::tempdir()}}.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 
 \item{to}{Character string. Territorial office to match using
 \code{\link[base:grep]{base::grep()}}.}
@@ -56,9 +56,9 @@ updated twice a year.
 Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
 for downloading addresses.
 
-\code{catr_atom_get_address_db_all()} provides a summary table with all
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}} provides a summary table with all
 territorial offices, except the Basque Country and Navarre and the
-municipalities included in each office. \code{catr_atom_get_address_db_to()}
+municipalities included in each office. \code{\link[=catr_atom_get_address_db_to]{catr_atom_get_address_db_to()}}
 provides a table for one territorial office and its municipalities.
 }
 \examples{
@@ -72,6 +72,14 @@ catr_atom_get_address_db_all()
 Work with cadastral addresses:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}}
+
+Query ATOM INSPIRE services:
+\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
+\code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
+\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
+\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}}
 }
 \concept{addresses}
-\concept{atom}
+\concept{atom_services}

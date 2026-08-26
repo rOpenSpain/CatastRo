@@ -1,9 +1,9 @@
-# parcel WFS bounding boxes reject invalid coordinates
+# catr_wfs_get_parcels_bbox() rejects invalid coordinates
 
     Code
       catr_wfs_get_parcels_bbox(x = "1234", what = "xxx")
     Condition
-      Error:
+      Error in `catr_wfs_get_parcels_bbox()`:
       ! `what` must be one of "parcel" or "zoning", not "xxx".
 
 ---
@@ -11,7 +11,7 @@
     Code
       catr_wfs_get_parcels_bbox(x = "1234")
     Condition
-      Error in `validate_vector_with_srs()`:
+      Error in `wfs_get_bbox()`:
       ! `x` must have length 4, not 1.
 
 ---
@@ -19,7 +19,7 @@
     Code
       catr_wfs_get_parcels_bbox(x = c("1234", "a", "3", "4"))
     Condition
-      Error in `validate_vector_with_srs()`:
+      Error in `wfs_get_bbox()`:
       ! You must also provide `srs` when `x` is a character vector.
 
 ---
@@ -27,7 +27,7 @@
     Code
       catr_wfs_get_parcels_bbox(x = c(1, 2, 3))
     Condition
-      Error in `validate_vector_with_srs()`:
+      Error in `wfs_get_bbox()`:
       ! `x` must have length 4, not 3.
 
 ---
@@ -35,7 +35,7 @@
     Code
       catr_wfs_get_parcels_bbox(x = c(1, 2, 3, 4))
     Condition
-      Error in `validate_vector_with_srs()`:
+      Error in `wfs_get_bbox()`:
       ! You must also provide `srs` when `x` is a double vector.
 
 ---
@@ -46,7 +46,7 @@
       x The WFS query returned an exception for a mocked response:
       No records founded for BBOX and SRS provided
 
-# parcel WFS zoning queries retrieve spatial data
+# parcel zoning WFS functions retrieve spatial data
 
     Code
       obj <- catr_wfs_get_parcels_zoning("41624TF3146SZZ", srs = 3857)

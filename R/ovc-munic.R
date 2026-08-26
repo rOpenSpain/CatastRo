@@ -7,8 +7,8 @@
 #' Statistics Institute (INE).
 #'
 #' @details
-#' On a successful query, this function returns a [tibble][dplyr::tbl_df]
-#' with one row including the following columns:
+#' On a successful query, this function returns a one-row
+#' [tibble][dplyr::tbl_df] with the following columns:
 #'
 #' - `munic`: Municipality name used by the Spanish Cadastre.
 #' - `catr_to`: Cadastral territorial office code.
@@ -22,8 +22,8 @@
 #' @param cpro Province code returned by
 #'   [catr_ovc_get_cod_provinces()].
 #' @param cmun,cmun_ine Municipality code as recorded by the Spanish
-#'   Cadastre (`cmun`) or the National Statistics Institute. Either `cmun` or
-#'   `cmun_ine` must be provided.
+#'   Cadastre (`cmun`) or the National Statistics Institute (`cmun_ine`). Either
+#'   `cmun` or `cmun_ine` must be provided.
 #'
 #' @inheritParams catr_ovc_get_cpmrc
 #' @inherit catr_ovc_get_cpmrc return
@@ -35,11 +35,11 @@
 #' [mapSpain::esp_get_munic_siane()] to get shapes of municipalities, including
 #' the INE code.
 #'
-#' @concept ovc_street_directory
-#' @concept search
+#' @family search_tools
+#' @family ovc_services
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #' @examplesIf run_example()
 #' \donttest{
 #' # Get municipality by cadastral code

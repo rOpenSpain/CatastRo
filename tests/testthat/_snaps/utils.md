@@ -1,4 +1,4 @@
-# message helper dispatches messages by type
+# make_msg() dispatches supported message types
 
     Code
       make_msg("generic", TRUE, "Hi", "I am a generic.", "See {.var avar}.")
@@ -11,6 +11,13 @@
       make_msg("info", TRUE, "Info here.", "See {.pkg igoR}.")
     Message
       i Info here. See igoR.
+
+---
+
+    Code
+      make_msg("info", TRUE, "Value: {.val {caller_value}}.", .envir = caller_env)
+    Message
+      i Value: "caller value".
 
 ---
 
@@ -33,12 +40,12 @@
     Message
       v Hooray! 5/5 ,)
 
-# argument matching reports the closest valid choice
+# match_arg_pretty() reports the closest valid choice
 
     Code
       my_fun("error here")
     Condition
-      Error:
+      Error in `my_fun()`:
       ! `arg_one` must be one of "10", "1000", "3000" or "5000", not "error here".
 
 ---
@@ -46,7 +53,7 @@
     Code
       my_fun(c("an", "error"))
     Condition
-      Error:
+      Error in `my_fun()`:
       ! `arg_one` must be one of "10", "1000", "3000" or "5000", not "an" or "error".
 
 ---
@@ -54,7 +61,7 @@
     Code
       my_fun("5")
     Condition
-      Error:
+      Error in `my_fun()`:
       ! `arg_one` must be one of "10", "1000", "3000" or "5000", not "5".
       i Did you mean "5000"?
 
@@ -63,7 +70,7 @@
     Code
       my_fun("00")
     Condition
-      Error:
+      Error in `my_fun()`:
       ! `arg_one` must be one of "10", "1000", "3000" or "5000", not "00".
 
 ---
@@ -71,7 +78,7 @@
     Code
       my_fun2(c(1, 2))
     Condition
-      Error:
+      Error in `my_fun2()`:
       ! `year` must be "20", not "1" or "2".
 
 ---
@@ -79,19 +86,11 @@
     Code
       my_fun3("3")
     Condition
-      Error:
+      Error in `my_fun3()`:
       ! `an_arg` must be one of "30" or "20", not "3".
       i Did you mean "30"?
 
----
-
-    Code
-      my_fun2(c(1, 2))
-    Condition
-      Error:
-      ! `year` must be "20", not "1" or "2".
-
-# non-empty arguments are accepted
+# validate_non_empty_arg() rejects missing arguments
 
     Code
       a_fun()
@@ -107,7 +106,7 @@
       Error in `a_fun()`:
       ! `b` cannot be missing.
 
-# cli_abort_if_not validates conditions
+# cli_abort_if_not() validates scalar conditions and caller context
 
     Code
       cli_abort_if_not(`Message supports {.cls inline} {.str markup}.` = is.logical(1))

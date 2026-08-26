@@ -22,7 +22,7 @@ catr_ovc_get_cpmrc(
 \item{province, municipality}{Optional character strings used to narrow the
 search.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
 A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
@@ -74,6 +74,12 @@ catr_ovc_get_cpmrc("9872023VH5797S")
 Work with cadastral references:
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
 \code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
+
+Query OVC web services:
+\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
+\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}},
+\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
+\code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
 }
 \concept{cadastral_references}
-\concept{ovc_coordinates}
+\concept{ovc_services}

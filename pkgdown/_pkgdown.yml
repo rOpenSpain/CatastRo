@@ -29,72 +29,72 @@ authors:
     href: "https://www.enchufa2.es/"
 
 reference:
-- title: INSPIRE services
+- title: Retrieve cadastral data
   desc: >
-    Retrieve cadastral addresses, buildings, parcels and georeferenced map
-    images through Spanish Cadastre INSPIRE services.
-- subtitle: ATOM downloads
+    Download complete municipal datasets, query individual cadastral features
+    and retrieve georeferenced map images.
+- subtitle: Complete municipal datasets
   desc: >
-    Download complete municipal cadastral datasets and query their metadata.
+    Discover and download complete address, building and cadastral parcel
+    datasets through ATOM INSPIRE services.
 - contents:
-  - has_concept("atom")
-- subtitle: WFS queries
+  - has_concept("atom_services")
+  - -catr_atom_search_munic
+- subtitle: Features by area or identifier
   desc: >
-    Retrieve cadastral features for a selected bounding box or cadastral
-    identifier.
+    Query address, building and cadastral parcel features through WFS INSPIRE
+    services.
 - contents:
-  - has_concept("wfs")
+  - has_concept("wfs_services")
 
-- subtitle: WMS maps
+- subtitle: Georeferenced map images
   desc: >
-    Download georeferenced cadastral map images.
+    Download cadastral map layers through the WMS INSPIRE service.
 - contents:
-  - has_concept("wms")
+  - catr_wms_get_layer
 
-- title: OVC services
+- title: Find cadastral identifiers
   desc: >
-    Geocode cadastral references, reverse geocode coordinates and query Spanish
-    Cadastre province and municipality codes.
-- subtitle: Coordinates and cadastral references
+    Convert between cadastral references and coordinates, or look up province
+    and municipality codes.
+- subtitle: References and coordinates
   desc: >
-    Convert between cadastral references and spatial coordinates.
+    Geocode cadastral references and reverse geocode spatial coordinates.
 - contents:
-  - has_concept("ovc_coordinates")
+  - has_concept("cadastral_references")
 
-- subtitle: Province and municipality codes
+- subtitle: Province and municipality lookup
   desc: >
-    Query province and municipality codes used by the Spanish Cadastre.
+    Find Spanish Cadastre province and municipality identifiers by name, code
+    or coordinates.
 - contents:
-  - has_concept("ovc_street_directory")
+  - has_concept("search_tools")
 
-- title: Utilities and reference data
+- title: Configure and inspect CatastRo
   desc: >
-    Search Spanish Cadastre identifiers, manage downloaded files and inspect
-    package reference data.
-- subtitle: Search
-  desc: >
-    Find cadastral municipality codes and related reference information.
-- contents:
-  - has_concept("search")
+    Manage downloaded files, inspect supported coordinate systems and access
+    package-level documentation.
 - subtitle: Cache management
   desc: >
     Configure, detect and clear the local cache used by **CatastRo**.
 - contents:
   - has_concept("cache_utilities")
-- subtitle: Reference data
+- subtitle: Coordinate reference systems
   desc: >
-    Inspect the SRS reference dataset used by the package services.
+    Inspect the SRS codes supported by the package services.
 - contents:
   - has_keyword("datasets")
 
-- title: Package metadata
+- subtitle: Package overview
   desc: >
-    Read package-level documentation.
+    Read package-level documentation and discover useful links.
 - contents:
   - CatastRo-package
 
 articles:
-- title: Service guide
+- title: Detailed service guide
+  desc: >
+    Explore service-specific workflows and query patterns.
   navbar: ~
   contents:
   - ovcservice

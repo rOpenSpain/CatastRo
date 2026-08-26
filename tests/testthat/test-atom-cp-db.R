@@ -1,6 +1,4 @@
-test_that("parcel database lookup returns NULL when no data is available", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("catr_atom_get_parcels_db_to() returns NULL without data", {
   local_mocked_bindings(catr_atom_get_parcels_db_all = function(...) {
     NULL
   })
@@ -8,10 +6,7 @@ test_that("parcel database lookup returns NULL when no data is available", {
   expect_null(catr_atom_get_parcels_db_to("Madrid"))
 })
 
-test_that("parcel database listing returns NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_atom_get_parcels_db_all() returns NULL when offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -19,17 +14,9 @@ test_that("parcel database listing returns NULL when offline", {
   cdir <- withr::local_tempdir(pattern = "testthat_ex1")
   expect_snapshot(fend <- catr_atom_get_parcels_db_all(cache_dir = cdir))
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("parcel database office lookup returns NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_atom_get_parcels_db_to() returns NULL when offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -39,62 +26,34 @@ test_that("parcel database office lookup returns NULL when offline", {
     fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)
   )
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("parcel database listing returns NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_atom_get_parcels_db_all() returns NULL after an HTTP 404", {
   cdir <- withr::local_tempdir(pattern = "testthat_ex2")
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   expect_snapshot(fend <- catr_atom_get_parcels_db_all(cache_dir = cdir))
   expect_null(fend)
-
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
-  unlink(cdir, recursive = TRUE, force = TRUE)
-  # Otherwise work
-  expect_silent(fend <- catr_atom_get_parcels_db_all(cache_dir = cdir))
-  expect_gt(nrow(fend), 20)
 })
 
-test_that("parcel database office lookup returns NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_atom_get_parcels_db_to() returns NULL after an HTTP 404", {
   cdir <- withr::local_tempdir(pattern = "testthat_ex2to")
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)
 
   expect_null(fend)
-
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
-
-  # Now it should throw another
-
-  unlink(cdir, recursive = TRUE, force = TRUE)
-  # Otherwise work
-  expect_silent(fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir))
-  expect_gt(nrow(fend), 100)
 })
 
-test_that("parcel database lookups match and rank territorial offices", {
+test_that("catr_atom_get_parcels_db_to() ranks office matches", {
   skip_on_cran()
   skip_if_offline()
 
@@ -110,6 +69,8 @@ test_that("parcel database lookups match and rank territorial offices", {
   )
   expect_s3_class(nmel, "tbl")
   expect_shape(nmel, dim = c(1, 3))
+  expect_named(nmel, c("munic", "url", "date"))
+  expect_match(nmel$url, "^https://")
 
   # Several patterns
   expect_snapshot(
@@ -129,11 +90,12 @@ test_that("parcel database lookups match and rank territorial offices", {
   expect_false(pal$munic[1] == val$munic[1])
 })
 
-test_that("deprecated parcel database cache arguments emit warnings", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("parcel database functions warn about deprecated cache arguments", {
   cdir <- withr::local_tempdir(pattern = "testthat_ex2to")
+  local_mocked_bindings(
+    catr_atom_read_db_all = function(...) NULL,
+    catr_atom_read_db_to = function(...) NULL
+  )
 
   expect_snapshot(
     fend <- catr_atom_get_parcels_db_to(
@@ -148,7 +110,7 @@ test_that("deprecated parcel database cache arguments emit warnings", {
   )
 })
 
-test_that("parcel database office lookup handles a failed cached request", {
+test_that("catr_atom_get_parcels_db_to() handles a failed cached request", {
   skip_on_cran()
   skip_if_offline()
 
@@ -156,9 +118,10 @@ test_that("parcel database office lookup handles a failed cached request", {
 
   invisible(catr_atom_get_parcels_db_all(cache_dir = cdir))
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   expect_snapshot(
     fend <- catr_atom_get_parcels_db_to("Madrid", cache_dir = cdir)

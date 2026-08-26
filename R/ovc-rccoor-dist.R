@@ -7,17 +7,7 @@
 #' the API searches within 50 square meters of the requested coordinates.
 #'
 #' @details
-#' If the API returns no results, this function returns a
-#' [tibble][dplyr::tbl_df] containing only query information.
-#'
-#' On a successful query, this function returns a [tibble][dplyr::tbl_df] with
-#' one row per cadastral reference, including the following columns:
-#' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
-#' - `refcat`: Cadastral reference.
-#' - `address`: Address as recorded in the Spanish Cadastre.
-#' - `cmun_ine`: Municipality code as registered by the INE (National
-#'   Statistics Institute).
-#' - Remaining fields: See the API documentation.
+#' `r ovc_coordinate_details(include_ine = TRUE)`
 #'
 #' @param lat Latitude for the query, expressed in the SRS/CRS defined by
 #'   `srs`.
@@ -31,10 +21,10 @@
 #' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
 #'
 #' @family cadastral_references
-#' @concept ovc_coordinates
+#' @family ovc_services
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #' @examplesIf run_example()
 #' \donttest{
 #' catr_ovc_get_rccoor_distancia(
@@ -101,7 +91,6 @@ catr_ovc_get_rccoor_distancia <- function(
   )
 
   # Join helper fields and the raw API response.
-
   out <- dplyr::bind_cols(overall, rc_help, rc_all)
 
   ovc_numeric_coords(out)

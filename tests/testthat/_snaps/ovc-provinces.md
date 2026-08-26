@@ -1,4 +1,4 @@
-# province code lookup returns NULL when offline
+# catr_ovc_get_cod_provinces() returns NULL when offline
 
     Code
       fend <- catr_ovc_get_cod_provinces()
@@ -6,7 +6,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# province code lookup returns NULL after an HTTP 404
+# catr_ovc_get_cod_provinces() returns NULL after an HTTP 404
 
     Code
       fend <- catr_ovc_get_cod_provinces()
@@ -15,7 +15,7 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the request failed.
 
-# province code lookup returns matching province codes
+# catr_ovc_get_cod_provinces() returns matching province codes
 
     Code
       df <- catr_ovc_get_cod_provinces(verbose = TRUE)

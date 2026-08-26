@@ -12,11 +12,11 @@
 #' @references
 #' [ConsultaProvincia](`r ovcurl("prov")`).
 #'
-#' @concept ovc_street_directory
-#' @concept search
+#' @family search_tools
+#' @family ovc_services
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf run_example()
 #' \donttest{

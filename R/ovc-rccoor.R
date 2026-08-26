@@ -6,15 +6,7 @@
 #' reference associated with a pair of coordinates.
 #'
 #' @details
-#' If the API returns no results, this function returns a
-#' [tibble][dplyr::tbl_df] containing only query information.
-#'
-#' On a successful query, this function returns a [tibble][dplyr::tbl_df] with
-#' one row per cadastral reference, including the following columns:
-#' - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
-#' - `refcat`: Cadastral reference.
-#' - `address`: Address as recorded in the Spanish Cadastre.
-#' - Remaining fields: See the API documentation.
+#' `r ovc_coordinate_details()`
 #'
 #' @inheritParams catr_ovc_get_rccoor_distancia
 #'
@@ -25,10 +17,10 @@
 #' [Consulta RCCOOR](`r ovcurl("RCCOOR")`).
 #'
 #' @family cadastral_references
-#' @concept ovc_coordinates
+#' @family ovc_services
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #' @examplesIf run_example()
 #' \donttest{
 #' catr_ovc_get_rccoor(
@@ -83,7 +75,6 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
   rc_help <- ovc_ref_address(overall)
 
   # Join helper fields and the raw API response.
-
   out <- dplyr::bind_cols(rc_help, overall)
 
   ovc_numeric_coords(out)

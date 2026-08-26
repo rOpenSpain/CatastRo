@@ -18,9 +18,8 @@
 #' [terra::RGB()].
 #'
 #' @section Bounding box:
-#' When `x` is a numeric vector, make sure that the `srs` matches the
-#' coordinate values. When `x` is a [`sf`][sf::st_sf] object, the value
-#' `srs` is ignored.
+#' When `x` is a numeric vector, make sure that `srs` matches the coordinate
+#' values. When `x` is a [`sf`][sf::st_sf] object, the `srs` value is ignored.
 #'
 #' The query uses [EPSG:3857](https://epsg.io/3857) (Web Mercator), then
 #' transforms the tile back to the SRS of `x`. If the tile appears distorted,
@@ -64,10 +63,8 @@
 #' - [terra::RGB()] identifies RGB channels.
 #' - [terra::plotRGB()] and [tidyterra::geom_spatraster_rgb()] plot RGB rasters.
 #'
-#' @concept wms
-#'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf run_example()
 #' \donttest{
@@ -129,7 +126,6 @@ catr_wms_get_layer <- function(
   cache_dir <- create_cache_dir(cache_dir)
 
   # Map the requested value to a WMS layer name.
-
   what <- match_arg_pretty(what)
 
   layer <- switch(what,
@@ -159,14 +155,12 @@ catr_wms_get_layer <- function(
   }
 
   # Use the CRS parameter name required by WMS 1.3.0.
-
   if (finalopts$version >= "1.3.0") {
     newnames <- gsub("srs", "crs", names(finalopts), fixed = TRUE)
     names(finalopts) <- newnames
   }
 
   # Query the WMS service.
-
   out <- catr_esp_get_tiles(
     x = bbox_res,
     type = layer,

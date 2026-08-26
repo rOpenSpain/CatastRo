@@ -1,4 +1,4 @@
-# address download returns NULL when offline
+# catr_atom_get_address() returns NULL when offline
 
     Code
       fend <- catr_atom_get_address("Madrid", cache_dir = cdir)
@@ -6,7 +6,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# address download returns NULL after an HTTP 404
+# catr_atom_get_address() handles a database HTTP 404
 
     Code
       fend <- catr_atom_get_address("MELQUE", to = "Segovia", cache_dir = cdir)
@@ -15,7 +15,7 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the download failed.
 
-# address download returns spatial data and handles office matches
+# catr_atom_get_address() returns spatial address data
 
     Code
       catr_atom_get_address("xyxghx", cache_dir = cdir)
@@ -34,7 +34,7 @@
       The `cache` argument of `catr_atom_get_address()` is deprecated as of CatastRo 1.0.0.
       i Results are always cached.
 
-# single address download returns NULL after an HTTP 404
+# catr_atom_get_address() handles a download HTTP 404
 
     Code
       fend <- catr_atom_get_address("Melque", to = "Segovia", cache_dir = cdir)

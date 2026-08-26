@@ -1,7 +1,4 @@
-test_that("geospatial files are read from local sources", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("read_geo_file_sf() reads local geospatial archives", {
   local_mocked_bindings(download_url = function(
     url,
     name,
@@ -47,10 +44,7 @@ test_that("geospatial files are read from local sources", {
   expect_true(file.exists(fake_local))
 })
 
-test_that("address geospatial files are read with expected fields", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("read_geo_file_sf() preserves expected address fields", {
   local_mocked_bindings(download_url = function(
     url,
     name,
@@ -106,7 +100,7 @@ test_that("address geospatial files are read with expected fields", {
   expect_s3_class(tb, c("tbl_df", "tbl", "data.frame"), exact = TRUE)
 })
 
-test_that("read_geo_file_sf warns for large local files", {
+test_that("read_geo_file_sf() warns before reading large files", {
   fake_local <- withr::local_tempfile(fileext = ".gpkg")
   sfobj <- sf::st_sf(
     id = 1,
@@ -120,7 +114,7 @@ test_that("read_geo_file_sf warns for large local files", {
   expect_s3_class(out, "sf")
 })
 
-test_that("bounding boxes are converted to spatial features", {
+test_that("sf_bbox_to_sf() converts bounding boxes to spatial features", {
   a <- get_sf_from_bbox(c(1, 2, 3, 4), srs = 3857)
   b <- get_sf_from_bbox(a)
 

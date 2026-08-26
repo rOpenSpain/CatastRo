@@ -1,4 +1,4 @@
-# distance lookup returns NULL when offline
+# catr_ovc_get_rccoor_distancia() returns NULL when offline
 
     Code
       fend <- catr_ovc_get_rccoor_distancia(lat = 40.9632, lon = -5.67142, srs = 4326)
@@ -6,7 +6,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# distance lookup returns NULL after an HTTP 404
+# catr_ovc_get_rccoor_distancia() returns NULL after an HTTP 404
 
     Code
       fend <- catr_ovc_get_rccoor_distancia(lat = 40.9632, lon = -5.67142, srs = 4326)
@@ -15,22 +15,22 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the request failed.
 
-# distance lookup rejects an unsupported SRS
+# catr_ovc_get_rccoor_distancia() rejects an unsupported SRS
 
     Code
       df <- catr_ovc_get_rccoor_distancia(lat = 40.9632, lon = -5.67142, "abcd")
     Condition
-      Error:
+      Error in `ovc_validate_srs()`:
       ! `srs` must be one of "4230", "4258", "4326", "23029", "23030", "23031", "25829", "25830", "25831", "32627", "32628", "32629", "32630" or "32631", not "abcd".
 
-# distance lookup returns three columns for known data
+# catr_ovc_get_rccoor_distancia() returns three columns
 
     Code
       df <- catr_ovc_get_rccoor_distancia(lat = 99999999, lon = -999999999)
     Message
       ! The query returned no cadastral references.
 
-# distance lookup reports the closest matching references
+# catr_ovc_get_rccoor_distancia() ranks matching references
 
     Code
       df <- catr_ovc_get_rccoor_distancia(lat = 40.9632, lon = -5.67142, verbose = TRUE)

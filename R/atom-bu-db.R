@@ -4,10 +4,7 @@
 #' Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
 #' for downloading buildings.
 #'
-#' `catr_atom_get_buildings_db_all()` provides a summary table with all
-#' territorial offices, except the Basque Country and Navarre and the
-#' municipalities included in each office. `catr_atom_get_buildings_db_to()`
-#' provides a table for one territorial office and its municipalities.
+#' `r atom_db_details("buildings")`
 #'
 #' @inheritParams catr_atom_get_address_db_all
 #' @inherit catr_atom_get_address_db_all return
@@ -15,11 +12,11 @@
 #' <https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml>
 #'
 #' @family buildings
-#' @concept atom
+#' @family atom_services
 #' @rdname catr_atom_get_buildings_db
 #'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #'
 #' @examplesIf run_example()
 #' \donttest{

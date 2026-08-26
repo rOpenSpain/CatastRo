@@ -1,6 +1,4 @@
-test_that("OVC URL and SRS helpers work", {
-  skip_on_cran()
-
+test_that("ovcurl() and wfs_validate_srs() build valid OVC requests", {
   expect_identical(
     ovc_base_url("OVCCallejero/ConsultaProvincia"),
     "http://ovc.catastro.meh.es/ovcservweb/OVCCallejero/ConsultaProvincia"
@@ -8,9 +6,7 @@ test_that("OVC URL and SRS helpers work", {
   expect_identical(ovc_validate_srs(4326), "EPSG:4326")
 })
 
-test_that("OVC XML responses are parsed", {
-  skip_on_cran()
-
+test_that("ovc_get_xml() parses OVC XML responses", {
   local_mocked_bindings(get_request_body = function(url, verbose = FALSE) {
     expect_identical(url, "http://example.test/ovc.xml")
     expect_true(verbose)
@@ -26,9 +22,7 @@ test_that("OVC XML responses are parsed", {
   expect_identical(parsed$root$item$x[[1]], "1")
 })
 
-test_that("OVC XML response failures return NULL", {
-  skip_on_cran()
-
+test_that("ovc_get_xml() returns NULL when XML requests fail", {
   local_mocked_bindings(get_request_body = function(url, verbose = FALSE) {
     expect_identical(url, "http://example.test/empty.xml")
     expect_false(verbose)
@@ -38,9 +32,7 @@ test_that("OVC XML response failures return NULL", {
   expect_null(ovc_get_xml("http://example.test/empty.xml"))
 })
 
-test_that("OVC XML nodes are converted to tibbles", {
-  skip_on_cran()
-
+test_that("ovc_get_tbl() converts XML nodes to tibbles", {
   expect_equal(
     ovc_as_tibble_row(list(a = "one", b = list(c = "two"))),
     tibble::tibble(a = "one", b.c = "two")
@@ -56,8 +48,6 @@ test_that("OVC XML nodes are converted to tibbles", {
 })
 
 test_that("OVC error helpers detect and report API errors", {
-  skip_on_cran()
-
   err <- list(lerr = list(code = "1", message = "Bad request"))
 
   expect_true(ovc_has_error(err))
@@ -65,9 +55,7 @@ test_that("OVC error helpers detect and report API errors", {
   expect_snapshot(ovc_report_error(err))
 })
 
-test_that("OVC response fields are normalized", {
-  skip_on_cran()
-
+test_that("clean_ovc_names() normalizes OVC response fields", {
   expect_equal(
     ovc_ref_address(tibble::tibble(
       pc.pc1 = "1234567",

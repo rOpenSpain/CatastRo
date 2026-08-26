@@ -1,7 +1,4 @@
-test_that("building WFS bounding boxes validate their coordinates", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_buildings_bbox() validates coordinates and types", {
   local_mocked_bindings(wfs_read_bbox_query = function(x, srs, typenames, ...) {
     if (is.numeric(x) && x[[1]] < 0) {
       cli::cli_alert_danger(c(
@@ -65,10 +62,7 @@ test_that("building WFS bounding boxes validate their coordinates", {
   expect_gt(nrow(obj2), nrow(ot))
 })
 
-test_that("building WFS queries reject invalid cadastral references", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_buildings_rc() handles invalid cadastral references", {
   local_mocked_bindings(wfs_read_stored_query = function(
     query,
     srs = NULL,
@@ -95,10 +89,7 @@ test_that("building WFS queries reject invalid cadastral references", {
   expect_null(f)
 })
 
-test_that("building WFS queries validate the requested SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_buildings_rc() preserves the requested SRS", {
   local_mocked_bindings(wfs_read_stored_query = function(
     query,
     srs = NULL,
@@ -117,10 +108,7 @@ test_that("building WFS queries validate the requested SRS", {
   expect_equal(sf::st_crs(obj), sf::st_crs(3857))
 })
 
-test_that("building-part WFS queries retrieve spatial data", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_buildings_rc() retrieves building parts", {
   local_mocked_bindings(wfs_read_stored_query = function(
     query,
     srs = NULL,
@@ -141,10 +129,7 @@ test_that("building-part WFS queries retrieve spatial data", {
   expect_s3_class(obj, "sf")
 })
 
-test_that("other-building WFS queries retrieve spatial data", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_buildings_rc() retrieves other constructions", {
   local_mocked_bindings(wfs_read_stored_query = function(
     query,
     srs = NULL,
@@ -163,7 +148,7 @@ test_that("other-building WFS queries retrieve spatial data", {
   expect_s3_class(obj, "sf")
 })
 
-test_that("BU WFS functions can call the real API", {
+test_that("building WFS functions can call the real API", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()

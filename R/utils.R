@@ -36,7 +36,7 @@ make_msg <- function(type = "generic", verbose, ..., .envir = parent.frame()) {
   if (is.null(alert)) {
     return(invisible())
   }
-  alert(msg)
+  alert(msg, .envir = .envir)
   invisible()
 }
 
@@ -49,7 +49,7 @@ make_msg <- function(type = "generic", verbose, ..., .envir = parent.frame()) {
 #' The matched argument.
 #'
 #' @noRd
-match_arg_pretty <- function(arg, choices) {
+match_arg_pretty <- function(arg, choices, call = parent.frame()) {
   arg_name <- as.character(substitute(arg)) # nolint
 
   if (missing(choices)) {
@@ -77,14 +77,14 @@ match_arg_pretty <- function(arg, choices) {
   aproxmatch <- pmatch(arg, choices)[1]
 
   if (length(arg) > 1 || is.na(lmatch)) {
-    # Create error message.
+    # Create the error message.
     if (length(choices) == 1) {
       msg <- paste0("{.str ", choices, "}")
     } else {
       l_choices <- length(choices)
       msg <- paste0("{.str ", choices[-l_choices], "}", collapse = ", ")
       msg <- paste0(msg, " or {.str ", choices[l_choices], "}")
-      # Add "one of" at the beginning.
+      # Add "one of" to the beginning.
       msg <- paste0("one of ", msg)
     }
 
@@ -102,7 +102,7 @@ match_arg_pretty <- function(arg, choices) {
 
     cli::cli_abort(
       c(paste0("{.arg {arg_name}} must be ", msg), "i" = reg_msg),
-      call = NULL
+      call = call
     )
   }
 
@@ -143,18 +143,29 @@ warn_deprecated_cache <- function(cache, what) {
   }
 }
 
-validate_vector_with_srs <- function(x, srs, expected_length) {
+validate_vector_with_srs <- function(
+  x,
+  srs,
+  expected_length,
+  call = parent.frame()
+) {
   if (length(x) != expected_length) {
-    cli::cli_abort(paste0(
-      "{.arg x} must have length {.val {expected_length}}, not ",
-      "{.val {length(x)}}."
-    ))
+    cli::cli_abort(
+      paste0(
+        "{.arg x} must have length {.val {expected_length}}, not ",
+        "{.val {length(x)}}."
+      ),
+      call = call
+    )
   }
   if (is.null(srs)) {
-    cli::cli_abort(paste0(
-      "You must also provide {.arg srs} when {.arg x} is ",
-      "{.obj_type_friendly {x}}."
-    ))
+    cli::cli_abort(
+      paste0(
+        "You must also provide {.arg srs} when {.arg x} is ",
+        "{.obj_type_friendly {x}}."
+      ),
+      call = call
+    )
   }
 
   invisible()

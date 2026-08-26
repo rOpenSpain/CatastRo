@@ -1,4 +1,4 @@
-test_that("SSL verification and timeout options use configured values", {
+test_that("catr_ssl_verify() and catr_timeout() use configured options", {
   skip_if_not_installed("withr")
 
   expect_equal(getOption("catastro_ssl_verify", 1L), 0)
@@ -11,7 +11,7 @@ test_that("SSL verification and timeout options use configured values", {
   expect_equal(catr_ssl_verify(), 1L)
 })
 
-test_that("HTTP settings can be controlled with environment variables", {
+test_that("catr_http_config() reads environment variables", {
   withr::local_options(list(
     catastro_ssl_verify = NULL,
     catastro_timeout = NULL
@@ -33,7 +33,7 @@ test_that("HTTP settings can be controlled with environment variables", {
   expect_equal(catr_timeout(), 300)
 })
 
-test_that("HTTP options take precedence over environment variables", {
+test_that("catr_http_config() gives options precedence over envvars", {
   withr::local_options(list(catastro_ssl_verify = 1L, catastro_timeout = 30))
   withr::local_envvar(c(CATASTRO_SSL_VERIFY = "0", CATASTRO_TIMEOUT = "600"))
 
@@ -41,7 +41,7 @@ test_that("HTTP options take precedence over environment variables", {
   expect_equal(catr_timeout(), 30)
 })
 
-test_that("HTTP setting environment variables are used in requests", {
+test_that("download_url() applies HTTP environment settings to requests", {
   withr::local_options(list(
     catastro_ssl_verify = NULL,
     catastro_timeout = NULL
@@ -77,9 +77,7 @@ test_that("HTTP setting environment variables are used in requests", {
   expect_equal(seen[[1]]$timeout_ms, 600000)
 })
 
-test_that("file downloads return NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
+test_that("download_url() returns NULL when offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -100,22 +98,15 @@ test_that("file downloads return NULL when offline", {
   )
   expect_null(fend)
   expect_length(list.files(cdir, recursive = TRUE), 0)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("file downloads return NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("download_url() handles simulated HTTP 404 and successful retries", {
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
 
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
@@ -161,9 +152,7 @@ test_that("file downloads return NULL after an HTTP 404", {
   expect_type(s, "character")
 })
 
-test_that("file downloads reuse or refresh cached files", {
-  skip_on_cran()
-
+test_that("download_url() reuses and refreshes cached files", {
   url <- paste0("https://example.com/", "mocked-cache.txt")
 
   req_perform_calls <- 0
@@ -222,9 +211,7 @@ test_that("file downloads reuse or refresh cached files", {
   expect_equal(req_perform_calls, 4)
 })
 
-test_that("file downloads report cache retrieval errors", {
-  skip_on_cran()
-
+test_that("download_url() reports cache retrieval errors and retries", {
   url <- "https://example.com/noexist-this-file.txt"
   cdir <- withr::local_tempdir(pattern = "testthat_ex5")
   local_mocked_bindings(
@@ -279,9 +266,7 @@ test_that("file downloads report cache retrieval errors", {
   expect_equal(req_perform_calls, 2)
 })
 
-test_that("Download HTTP errors return NULL", {
-  skip_on_cran()
-
+test_that("download_url() removes partial files after HTTP errors", {
   url <- "https://example.com/http-error.txt"
   cdir <- withr::local_tempdir(pattern = "testthat_http_error")
   req_perform_calls <- 0
@@ -308,26 +293,22 @@ test_that("Download HTTP errors return NULL", {
   expect_false(file.exists(file.path(cdir, "fixme", basename(url))))
 })
 
-test_that("catr_never_error always returns FALSE", {
+test_that("catr_never_error() always returns FALSE", {
   expect_false(catr_never_error())
   expect_false(catr_never_error("anything"))
 })
 
-test_that("Download transport failures return NULL", {
-  skip_on_cran()
-
+test_that("download_url() removes partial files after transport failures", {
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/Buildings/46",
     "/46900-VALENCIA/A.ES.SDGC.BU.46900.zip"
   )
   cdir <- withr::local_tempdir(pattern = "testthat_transport")
   fail <- function() {
-    stop(
-      structure(
-        list(message = "Mock transport failure.", call = NULL),
-        class = c("httr2_failure", "error", "condition")
-      ),
-      call. = FALSE
+    cli::cli_abort(
+      "Mock transport failure.",
+      class = "httr2_failure",
+      call = NULL
     )
   }
 
@@ -350,10 +331,7 @@ test_that("Download transport failures return NULL", {
   expect_false(file.exists(file.path(cdir, "fixme", basename(url))))
 })
 
-test_that("request bodies return NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("get_request_body() returns NULL when offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -365,19 +343,13 @@ test_that("request bodies return NULL when offline", {
 
   expect_snapshot(fend <- get_request_body(url, verbose = FALSE))
   expect_null(fend)
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("request bodies return NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
-
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+test_that("get_request_body() returns NULL after a simulated HTTP 404", {
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
   url <- paste0(
     "https://www.catastro.hacienda.gob.es/INSPIRE/",
     "Addresses/ES.SDGC.AD.atom.xml"
@@ -390,18 +362,14 @@ test_that("request bodies return NULL after an HTTP 404", {
   })
 })
 
-test_that("Body transport failures return NULL", {
-  skip_on_cran()
-
+test_that("get_request_body() returns NULL after transport failures", {
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
     catr_req_perform = function(...) {
-      stop(
-        structure(
-          list(message = "Mock transport failure.", call = NULL),
-          class = c("httr2_failure", "error", "condition")
-        ),
-        call. = FALSE
+      cli::cli_abort(
+        "Mock transport failure.",
+        class = "httr2_failure",
+        call = NULL
       )
     }
   )
@@ -415,9 +383,7 @@ test_that("Body transport failures return NULL", {
 })
 
 
-test_that("request bodies return responses and handle HTTP errors", {
-  skip_on_cran()
-
+test_that("get_request_body() returns responses and handles HTTP errors", {
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
     catr_req_perform = function(...) httr2::response(status_code = 200)
@@ -440,7 +406,7 @@ test_that("request bodies return responses and handle HTTP errors", {
   expect_null(fend)
 })
 
-test_that("download_url can perform a real HTTP request", {
+test_that("download_url() can perform a real HTTP request", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()
@@ -459,7 +425,7 @@ test_that("download_url can perform a real HTTP request", {
   expect_true(file.exists(file_local))
 })
 
-test_that("get_request_body can perform a real HTTP request", {
+test_that("get_request_body() can perform a real HTTP request", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()

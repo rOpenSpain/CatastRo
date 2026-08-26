@@ -10,8 +10,8 @@
 #' @return Logical. `TRUE` if examples should run, `FALSE` otherwise.
 #'
 #' @keywords internal
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #' @examples
 #' run_example()
 #'

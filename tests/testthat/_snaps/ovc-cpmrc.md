@@ -1,4 +1,4 @@
-# cadastral reference lookup returns NULL when offline
+# catr_ovc_get_cpmrc() returns NULL when offline
 
     Code
       fend <- catr_ovc_get_cpmrc("9872023VH5797S")
@@ -6,7 +6,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# cadastral reference lookup returns NULL after an HTTP 404
+# catr_ovc_get_cpmrc() returns NULL after an HTTP 404
 
     Code
       fend <- catr_ovc_get_cpmrc("9872023VH5797S")
@@ -15,15 +15,15 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the request failed.
 
-# cadastral reference lookup rejects an unsupported SRS
+# catr_ovc_get_cpmrc() rejects an unsupported SRS
 
     Code
       df <- catr_ovc_get_cpmrc(rc = "s", srs = "abcd")
     Condition
-      Error:
+      Error in `ovc_validate_srs()`:
       ! `srs` must be one of "4230", "4258", "4326", "23029", "23030", "23031", "25829", "25830", "25831", "32627", "32628", "32629", "32630" or "32631", not "abcd".
 
-# cadastral reference lookup accepts only a reference
+# catr_ovc_get_cpmrc() accepts only a reference
 
     Code
       df <- catr_ovc_get_cpmrc("9872023VH5797S", verbose = TRUE)
@@ -31,7 +31,7 @@
       i Requesting <http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?RC=9872023VH5797S&SRS=EPSG%3A4326&Provincia=&Municipio=>.
       v Request succeeded.
 
-# cadastral reference lookup requires a province and municipality
+# catr_ovc_get_cpmrc() requires a province and municipality
 
     Code
       nnn <- catr_ovc_get_cpmrc(rc = "13077A01800039", srs = "4230", municipality = "SANTA CRUZ DE MUDELA")

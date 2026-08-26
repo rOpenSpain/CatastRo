@@ -1,4 +1,4 @@
-# address WFS bounding boxes validate their coordinates
+# catr_wfs_get_address_bbox() validates bounding-box coordinates
 
     Code
       fend <- catr_wfs_get_address_bbox(c(-20, -20, -19, -20), srs = 4326)
@@ -6,7 +6,7 @@
       x The WFS query returned an exception for a mocked response:
       Area de la extensión fuera de los límites
 
-# address WFS queries retrieve data by street code
+# catr_wfs_get_address_codvia() retrieves addresses by street code
 
     Code
       obj <- catr_wfs_get_address_codvia("1", 110, 390)
@@ -19,10 +19,10 @@
     Code
       obj <- catr_wfs_get_address_codvia("1", 110, 390, srs = 9999)
     Condition
-      Error:
+      Error in `wfs_get_bbox()`:
       ! `srs` must be one of "3785", "3857", "4258", "4326", "25829", "25830" or "25831", not "9999".
 
-# address WFS queries retrieve data by cadastral reference
+# catr_wfs_get_address_rc() retrieves by cadastral reference
 
     Code
       obj <- catr_wfs_get_address_rc("3662303TF")
@@ -35,10 +35,10 @@
     Code
       obj <- catr_wfs_get_address_rc("3662303TF", srs = 9999)
     Condition
-      Error:
+      Error in `wfs_get_bbox()`:
       ! `srs` must be one of "3785", "3857", "4258", "4326", "25829", "25830" or "25831", not "9999".
 
-# address WFS queries retrieve data by postal code
+# catr_wfs_get_address_postalcode() retrieves by postal code
 
     Code
       obj <- catr_wfs_get_address_postalcode("XXXXX")
@@ -51,6 +51,6 @@
     Code
       obj <- catr_wfs_get_address_rc("XXXXX", srs = 9999)
     Condition
-      Error:
+      Error in `wfs_get_bbox()`:
       ! `srs` must be one of "3785", "3857", "4258", "4326", "25829", "25830" or "25831", not "9999".
 

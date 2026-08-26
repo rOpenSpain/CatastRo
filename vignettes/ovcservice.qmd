@@ -17,7 +17,7 @@ vignette: >
 
 
 
-**CatastRo** provides an **R** interface to the OVCCoordenadas service from
+**CatastRo** provides an **R** interface to the **OVCCoordenadas** service from
 the [Sede electrónica del Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
 This service retrieves coordinates for a cadastral reference. The cadastral
@@ -31,7 +31,7 @@ express the coordinates.
 If no exact match is found, the distance query returns cadastral references
 within 50 square meters of the requested coordinates.
 
-See the [OVCCoordenadas service
+See the [**OVCCoordenadas** service
 documentation](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 for endpoint details.
 
@@ -40,7 +40,7 @@ These functions use the `catr_ovc_get_*()` prefix and return tibbles from the
 
 ## CatastRo API
 
-The OVCCoordenadas service is available through the following functions:
+The **OVCCoordenadas** service is available through the following functions:
 
 - `catr_ovc_get_rccoor()`.
 - `catr_ovc_get_rccoor_distancia()`.
@@ -135,7 +135,7 @@ catr_ovc_get_rccoor_distancia(
 
 ## Geocoding a cadastral reference
 
-For the opposite query, `catr_ovc_get_cpmrc()` accepts a cadastral reference
+For the reverse query, `catr_ovc_get_cpmrc()` accepts a cadastral reference
 (`rc`) and returns `xcoord` and `ycoord` in the specified `srs`, together with
 the address. Optional `province` and `municipality` values can narrow the
 search.
@@ -159,8 +159,8 @@ catr_ovc_get_cpmrc(
 
 
 
-The following query shows that `municipality` alone is not enough to narrow the
-search:
+The following query shows that `municipality` alone is not sufficient to narrow
+the search:
 
 
 ``` r
@@ -180,7 +180,7 @@ catr_ovc_get_cpmrc(
 
 
 
-You can also query with only `rc`:
+You can also query by providing only `rc`:
 
 
 ``` r

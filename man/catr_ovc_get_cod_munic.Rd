@@ -12,10 +12,10 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 \code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}.}
 
 \item{cmun, cmun_ine}{Municipality code as recorded by the Spanish
-Cadastre (\code{cmun}) or the National Statistics Institute. Either \code{cmun} or
-\code{cmun_ine} must be provided.}
+Cadastre (\code{cmun}) or the National Statistics Institute (\code{cmun_ine}). Either
+\code{cmun} or \code{cmun_ine} must be provided.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
 A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
@@ -28,8 +28,8 @@ municipality names and codes from the Spanish Cadastre and the National
 Statistics Institute (INE).
 }
 \details{
-On a successful query, this function returns a \link[dplyr:tbl_df]{tibble}
-with one row including the following columns:
+On a successful query, this function returns a one-row
+\link[dplyr:tbl_df]{tibble} with the following columns:
 \itemize{
 \item \code{munic}: Municipality name used by the Spanish Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
@@ -63,6 +63,17 @@ ab2
 \seealso{
 \code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}} to get shapes of municipalities, including
 the INE code.
+
+Search for cadastral identifiers:
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
+\code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
+\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
+
+Query OVC web services:
+\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}},
+\code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
+\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}},
+\code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
 }
-\concept{ovc_street_directory}
-\concept{search}
+\concept{ovc_services}
+\concept{search_tools}

@@ -23,11 +23,10 @@
 #' - [catr_ovc_get_cod_munic()] retrieves municipality codes.
 #' - [sf::st_centroid()] computes geometry centroids.
 #'
+#' @family search_tools
 #'
-#' @concept search
-#'
-#' @encoding UTF-8
 #' @export
+#' @encoding UTF-8
 #' @examplesIf run_example()
 #' \donttest{
 #' # Use with coordinates
@@ -52,7 +51,7 @@ catr_get_code_from_coords <- function(
     x <- sf::st_point(x)
     x <- sf::st_sfc(x)
 
-    # Set CRS.
+    # Set the CRS.
     sf::st_crs(x) <- sf::st_crs(srs)
   }
 
@@ -67,7 +66,7 @@ catr_get_code_from_coords <- function(
   x <- sf::st_transform(x[1], 3857)
   x <- sf::st_centroid(x, of_largest_polygon = TRUE)
 
-  # Get municipality.
+  # Find the municipality.
   cache_dir <- create_cache_dir(cache_dir)
 
   mun <- catr_esp_get_munic_siane(

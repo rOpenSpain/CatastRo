@@ -26,7 +26,7 @@ the first geometry is used. This function extracts coordinates using
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 
 \item{cache_dir}{Path to a cache directory. If \code{NULL} or \code{FALSE}, the
 function stores cached files in a temporary directory. See
@@ -61,8 +61,8 @@ Retrieve the municipality code associated with an \code{\link[sf:st_sf]{sf}} obj
 or a coordinate pair.
 }
 \details{
-On a successful query, this function returns a \link[dplyr:tbl_df]{tibble}
-with one row including the following columns:
+On a successful query, this function returns a one-row
+\link[dplyr:tbl_df]{tibble} with the following columns:
 \itemize{
 \item \code{munic}: Municipality name used by the Spanish Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
@@ -92,5 +92,10 @@ catr_get_code_from_coords(prov)
 \item \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}} retrieves municipality codes.
 \item \code{\link[sf:st_centroid]{sf::st_centroid()}} computes geometry centroids.
 }
+
+Search for cadastral identifiers:
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
+\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
+\code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 }
-\concept{search}
+\concept{search_tools}

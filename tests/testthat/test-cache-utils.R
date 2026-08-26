@@ -1,43 +1,32 @@
-test_that("cache directories can be configured, cleared and restored", {
-  skip_on_cran()
-  # Get current cache dir
-  expect_message(current <- catr_detect_cache_dir())
+test_that("catr_set_cache_dir() and catr_clear_cache() isolate session state", {
+  withr::local_envvar(CATASTROESP_CACHE_DIR = NA)
 
-  # Set a temp cache dir
-  expect_message(catr_set_cache_dir(verbose = TRUE))
-  testdir <- expect_silent(catr_set_cache_dir(
-    file.path(current, "testthat"),
-    verbose = FALSE
-  ))
+  root <- withr::local_tempdir(pattern = "catr-session")
+  cache_dir <- file.path(root, "cache")
+  config_dir <- file.path(root, "config")
 
-  expect_identical(catr_detect_cache_dir(), testdir)
+  local_mocked_bindings(
+    catr_r_user_dir = function(...) config_dir,
+    migrate_cache = function(...) invisible()
+  )
 
-  # Clean
-  expect_silent(catr_clear_cache(config = FALSE, verbose = FALSE))
-  # Cache dir should be deleted now
-  expect_false(dir.exists(testdir))
+  expect_message(configured <- catr_set_cache_dir(cache_dir, verbose = TRUE))
+  expect_identical(configured, cache_dir)
+  expect_message(detected <- catr_detect_cache_dir())
+  expect_identical(detected, cache_dir)
+  expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), cache_dir)
+  expect_true(dir.exists(cache_dir))
 
-  # Reset just for testing all cases
-  testdir <- file.path(tempdir(), "catastro", "testthat")
-  expect_message(catr_set_cache_dir(testdir))
+  expect_message(
+    catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = TRUE),
+    "cached data deleted"
+  )
 
-  expect_true(dir.exists(testdir))
-
-  expect_message(catr_clear_cache(config = FALSE, verbose = TRUE))
-
-  # Cache dir should be deleted now
-  expect_false(dir.exists(testdir))
-
-  # Restore cache
-  expect_message(catr_set_cache_dir(current, verbose = TRUE))
-  expect_silent(catr_set_cache_dir(current, verbose = FALSE))
-  expect_equal(current, Sys.getenv("CATASTROESP_CACHE_DIR"))
-  expect_true(dir.exists(current))
+  expect_false(dir.exists(cache_dir))
+  expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), "")
 })
 
-test_that("catr_set_cache_dir installs and overwrites mocked config", {
-  skip_on_cran()
-
+test_that("catr_set_cache_dir() installs and overwrites configuration", {
   withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
   config_dir <- file.path(tempdir(), "catr-config-missing")
@@ -77,9 +66,7 @@ test_that("catr_set_cache_dir installs and overwrites mocked config", {
   expect_identical(readLines(cache_config, warn = FALSE), next_cache_dir)
 })
 
-test_that("catr_clear_cache removes mocked config", {
-  skip_on_cran()
-
+test_that("catr_clear_cache() preserves data when removing configuration", {
   config_dir <- withr::local_tempdir(pattern = "catr-config")
   data_dir <- withr::local_tempdir(pattern = "catr-cache")
 
@@ -98,9 +85,7 @@ test_that("catr_clear_cache removes mocked config", {
   expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), "")
 })
 
-test_that("detect_cache_dir_muted uses mocked config", {
-  skip_on_cran()
-
+test_that("detect_cache_dir_muted() reads configured cache paths", {
   withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
   config_dir <- withr::local_tempdir(pattern = "catr-config")
@@ -116,9 +101,7 @@ test_that("detect_cache_dir_muted uses mocked config", {
   expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), cache_dir)
 })
 
-test_that("detect_cache_dir_muted replaces invalid mocked config", {
-  skip_on_cran()
-
+test_that("detect_cache_dir_muted() replaces invalid configured paths", {
   withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
   config_dir <- withr::local_tempdir(pattern = "catr-config")
@@ -133,9 +116,7 @@ test_that("detect_cache_dir_muted replaces invalid mocked config", {
   expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), detected)
 })
 
-test_that("detect_cache_dir_muted uses default cache with no mocked config", {
-  skip_on_cran()
-
+test_that("detect_cache_dir_muted() defaults when configuration is absent", {
   withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
   config_dir <- withr::local_tempdir(pattern = "catr-config")
@@ -148,9 +129,7 @@ test_that("detect_cache_dir_muted uses default cache with no mocked config", {
   expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), detected)
 })
 
-test_that("create_cache_dir detects missing cache_dir", {
-  skip_on_cran()
-
+test_that("create_cache_dir() creates the cache when no path is supplied", {
   withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
   config_dir <- withr::local_tempdir(pattern = "catr-config")
@@ -163,9 +142,7 @@ test_that("create_cache_dir detects missing cache_dir", {
   expect_true(dir.exists(created))
 })
 
-test_that("migrate_cache moves old mocked config", {
-  skip_on_cran()
-
+test_that("migrate_cache() moves legacy configuration", {
   withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
   old <- withr::local_tempdir(pattern = "catr-config-old")
@@ -185,7 +162,7 @@ test_that("migrate_cache moves old mocked config", {
   )
 })
 
-test_that("cache_dir = FALSE uses a nonpersistent temporary cache", {
+test_that("catr_set_cache_dir() treats FALSE as a temporary cache request", {
   withr::local_envvar(CATASTROESP_CACHE_DIR = NA)
 
   expect_message(
@@ -201,7 +178,7 @@ test_that("cache_dir = FALSE uses a nonpersistent temporary cache", {
   expect_identical(Sys.getenv("CATASTROESP_CACHE_DIR"), cache_dir)
 })
 
-test_that("catr_set_cache_dir validates arguments", {
+test_that("catr_set_cache_dir() rejects invalid arguments", {
   expect_snapshot(
     error = TRUE,
     catr_set_cache_dir(cache_dir = 1, verbose = FALSE)

@@ -1,9 +1,9 @@
-# WFS bounding boxes are converted to spatial features
+# wfs_get_bbox() converts bounding boxes to spatial features
 
     Code
       wfs_get_bbox(c(1, 2))
     Condition
-      Error in `validate_vector_with_srs()`:
+      Error in `wfs_get_bbox()`:
       ! `x` must have length 4, not 2.
 
 ---
@@ -11,7 +11,7 @@
     Code
       wfs_get_bbox(c(1, 2, 3, 4))
     Condition
-      Error in `validate_vector_with_srs()`:
+      Error in `wfs_get_bbox()`:
       ! You must also provide `srs` when `x` is a double vector.
 
 ---
@@ -25,7 +25,7 @@
        xmin  ymin  xmax  ymax 
           0     0 10000 10000 
 
-# WFS downloads return NULL when offline
+# inspire_wfs_get() returns NULL when offline
 
     Code
       fend <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", query = list(request = "getfeature",
@@ -34,7 +34,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# WFS requests reject invalid query lists
+# inspire_wfs_get() rejects invalid query lists
 
     Code
       s <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", query = 20)

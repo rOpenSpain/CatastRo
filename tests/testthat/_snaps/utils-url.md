@@ -1,4 +1,4 @@
-# file downloads return NULL when offline
+# download_url() returns NULL when offline
 
     Code
       fend <- download_url(url, cache_dir = cdir, subdir = "fixme", update_cache = FALSE,
@@ -7,7 +7,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# Download HTTP errors return NULL
+# download_url() removes partial files after HTTP errors
 
     Code
       fend <- download_url(url, cache_dir = cdir, verbose = FALSE)
@@ -16,31 +16,25 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the download failed.
 
-# Download transport failures return NULL
+# download_url() removes partial files after transport failures
 
     Code
       fend <- download_url(url, cache_dir = cdir, verbose = FALSE)
-    Condition
-      Warning in `stop()`:
-      additional arguments ignored in stop()
     Message
       x The download request could not be completed.
-      ! "Mock transport failure."
+      ! Mock transport failure.
       Returning "NULL" because the download failed.
 
 ---
 
     Code
       fend <- download_url(url, cache_dir = cdir, verbose = FALSE)
-    Condition
-      Warning in `stop()`:
-      additional arguments ignored in stop()
     Message
       x The download request could not be completed.
-      ! "Mock transport failure."
+      ! Mock transport failure.
       Returning "NULL" because the download failed.
 
-# request bodies return NULL when offline
+# get_request_body() returns NULL when offline
 
     Code
       fend <- get_request_body(url, verbose = FALSE)
@@ -48,7 +42,7 @@
       x No internet connection detected.
       Returning "NULL" because the request cannot run.
 
-# request bodies return NULL after an HTTP 404
+# get_request_body() returns NULL after a simulated HTTP 404
 
     Code
       fend <- get_request_body(url, verbose = FALSE)
@@ -57,15 +51,12 @@
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
       Returning "NULL" because the request failed.
 
-# Body transport failures return NULL
+# get_request_body() returns NULL after transport failures
 
     Code
       fend <- get_request_body(url, verbose = FALSE)
-    Condition
-      Warning in `stop()`:
-      additional arguments ignored in stop()
     Message
       x The request could not be completed.
-      ! "Mock transport failure."
+      ! Mock transport failure.
       Returning "NULL" because the request failed.
 

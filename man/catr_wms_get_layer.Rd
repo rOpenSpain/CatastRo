@@ -43,7 +43,7 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 function stores cached files in a temporary directory. See
 \code{\link[base:tempdir]{base::tempdir()}}.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 
 \item{crop}{Logical. If \code{TRUE}, crop results to the specified \code{x} extent. If
 \code{x} is an \code{\link[sf:st_sf]{sf}} object with one \code{POINT}, \code{crop} is set to
@@ -73,9 +73,8 @@ This function wraps \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles(
 }
 \section{Bounding box}{
 
-When \code{x} is a numeric vector, make sure that the \code{srs} matches the
-coordinate values. When \code{x} is a \code{\link[sf:st_sf]{sf}} object, the value
-\code{srs} is ignored.
+When \code{x} is a numeric vector, make sure that \code{srs} matches the coordinate
+values. When \code{x} is a \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is ignored.
 
 The query uses \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator), then
 transforms the tile back to the SRS of \code{x}. If the tile appears distorted,
@@ -162,4 +161,3 @@ ggplot() +
 \item \code{\link[terra:plotRGB]{terra::plotRGB()}} and \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}} plot RGB rasters.
 }
 }
-\concept{wms}

@@ -39,7 +39,7 @@ supported because results are always cached.}
 function stores cached files in a temporary directory. See
 \code{\link[base:tempdir]{base::tempdir()}}.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
 An \code{\link[sf:st_sf]{sf}} object. Returns \code{NULL} if the data cannot be
@@ -77,6 +77,14 @@ ggplot(s) +
 Work with cadastral buildings:
 \code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
 \code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}}
+
+Query ATOM INSPIRE services:
+\code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
+\code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}},
+\code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}},
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}},
+\code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}},
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}}
 }
-\concept{atom}
+\concept{atom_services}
 \concept{buildings}

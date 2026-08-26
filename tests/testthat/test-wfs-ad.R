@@ -1,7 +1,4 @@
-test_that("address WFS bounding boxes validate their coordinates", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_address_bbox() validates bounding-box coordinates", {
   local_mocked_bindings(wfs_read_bbox_query = function(x, srs, ...) {
     if (is.numeric(x) && x[[1]] < 0) {
       cli::cli_alert_danger(c(
@@ -46,10 +43,7 @@ test_that("address WFS bounding boxes validate their coordinates", {
   expect_equal(sf::st_crs(obj2), sf::st_crs(25829))
 })
 
-test_that("address WFS queries retrieve data by street code", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_address_codvia() retrieves addresses by street code", {
   local_mocked_bindings(wfs_read_stored_query = function(
     query,
     srs = NULL,
@@ -88,10 +82,7 @@ test_that("address WFS queries retrieve data by street code", {
   )
 })
 
-test_that("address WFS queries retrieve data by cadastral reference", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_address_rc() retrieves by cadastral reference", {
   local_mocked_bindings(wfs_read_stored_query = function(
     query,
     srs = NULL,
@@ -130,10 +121,7 @@ test_that("address WFS queries retrieve data by cadastral reference", {
   )
 })
 
-test_that("address WFS queries retrieve data by postal code", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_wfs_get_address_postalcode() retrieves by postal code", {
   local_mocked_bindings(wfs_read_stored_query = function(
     query,
     srs = NULL,
@@ -175,7 +163,7 @@ test_that("address WFS queries retrieve data by postal code", {
   )
 })
 
-test_that("AD WFS functions can call the real API", {
+test_that("address WFS functions can call the real API", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()

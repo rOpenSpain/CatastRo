@@ -23,7 +23,7 @@ resource.}
 
 \item{query}{Named list of query parameters and their values.}
 
-\item{verbose}{Logical. If \code{TRUE}, displays informational messages.}
+\item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
 A character string containing the downloaded file path. Returns \code{NULL} if
@@ -66,4 +66,10 @@ if (!is.null(file_local)) {
 }
 \dontshow{\}) # examplesIf}
 }
-\concept{wfs}
+\seealso{
+Query WFS INSPIRE services:
+\code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}},
+\code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}},
+\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}}
+}
+\concept{wfs_services}

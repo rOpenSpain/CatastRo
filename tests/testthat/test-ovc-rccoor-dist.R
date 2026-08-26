@@ -1,7 +1,4 @@
-test_that("distance lookup returns NULL when offline", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor_distancia() returns NULL when offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
@@ -14,20 +11,13 @@ test_that("distance lookup returns NULL when offline", {
     )
   )
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("distance lookup returns NULL after an HTTP 404", {
-  skip_on_cran()
-  skip_if_offline()
-
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+test_that("catr_ovc_get_rccoor_distancia() returns NULL after an HTTP 404", {
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    is_404 = function(...) TRUE
+  )
 
   expect_snapshot(
     fend <- catr_ovc_get_rccoor_distancia(
@@ -43,10 +33,7 @@ test_that("distance lookup returns NULL after an HTTP 404", {
   })
 })
 
-test_that("distance lookup rejects an unsupported SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor_distancia() rejects an unsupported SRS", {
   expect_snapshot(
     error = TRUE,
     df <- catr_ovc_get_rccoor_distancia(
@@ -57,10 +44,7 @@ test_that("distance lookup rejects an unsupported SRS", {
   )
 })
 
-test_that("distance lookup returns a tibble with an explicit SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor_distancia() returns data with an SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas_distancias = list(
@@ -92,10 +76,7 @@ test_that("distance lookup returns a tibble with an explicit SRS", {
   expect_type(result$geo.ycen, "double")
 })
 
-test_that("distance lookup returns a tibble without an explicit SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor_distancia() returns data without an SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas_distancias = list(
@@ -121,10 +102,7 @@ test_that("distance lookup returns a tibble without an explicit SRS", {
   expect_s3_class(result, "tbl")
 })
 
-test_that("distance lookup returns standard fields without an SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor_distancia() normalizes fields without SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas_distancias = list(
@@ -153,10 +131,7 @@ test_that("distance lookup returns standard fields without an SRS", {
   expect_type(result$cmun_ine, "character")
 })
 
-test_that("distance lookup returns standard fields with an SRS", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor_distancia() normalizes fields with SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas_distancias = list(
@@ -188,10 +163,7 @@ test_that("distance lookup returns standard fields with an SRS", {
   expect_type(result$cmun_ine, "character")
 })
 
-test_that("distance lookup returns three columns for known data", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor_distancia() returns three columns", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(
       consulta_coordenadas_distancias = list(
@@ -215,10 +187,7 @@ test_that("distance lookup returns three columns for known data", {
   expect_equal(ncol(result), 3)
 })
 
-test_that("distance lookup reports the closest matching references", {
-  skip_on_cran()
-  skip_if_offline()
-
+test_that("catr_ovc_get_rccoor_distancia() ranks matching references", {
   local_mocked_bindings(ovc_get_xml = function(url, verbose = FALSE) {
     if (verbose) {
       cli::cli_alert_info("Requesting {.url {url}}.")
@@ -254,7 +223,7 @@ test_that("distance lookup reports the closest matching references", {
   )
 })
 
-test_that("RCCOOR distance can call the real API", {
+test_that("catr_ovc_get_rccoor_distancia() can call the real API", {
   skip_on_cran()
   skip_if_offline()
   skip_on_ci()
