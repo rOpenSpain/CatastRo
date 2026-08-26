@@ -58,7 +58,7 @@ catr_wfs_get_buildings_rc(
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 - rc:
 
@@ -76,13 +76,13 @@ The API service is limited to a bounding box of 4 km2 and a maximum of
 
 ## Bounding box
 
-When `x` is a numeric vector, make sure that the `srs` matches the
+When `x` is a numeric vector, make sure that `srs` matches the
 coordinate values. Additionally, the function queries the bounding box
 on [EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work
 around a potential API issue.
 
 When `x` is a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-object, the value `srs` is ignored. In this case, the bounding box of
+object, the `srs` value is ignored. In this case, the bounding box of
 the [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
 used for the query (see
 [`sf::st_bbox()`](https://r-spatial.github.io/sf/reference/st_bbox.html)).
@@ -104,6 +104,11 @@ cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 Work with cadastral buildings:
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md),
 [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings_db.md)
+
+Query WFS INSPIRE services:
+[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
+[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md),
+[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
 
 ## Examples
 

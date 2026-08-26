@@ -1,7 +1,7 @@
 # OVCCoordenadas service
 
-**CatastRo** provides an **R** interface to the OVCCoordenadas service
-from the [Sede electrónica del
+**CatastRo** provides an **R** interface to the **OVCCoordenadas**
+service from the [Sede electrónica del
 Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
 This service retrieves coordinates for a cadastral reference. The
@@ -15,7 +15,7 @@ as CRS) used to express the coordinates.
 If no exact match is found, the distance query returns cadastral
 references within 50 square meters of the requested coordinates.
 
-See the [OVCCoordenadas service
+See the [**OVCCoordenadas** service
 documentation](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
 for endpoint details.
 
@@ -24,7 +24,8 @@ from the **tibble** package.
 
 ## CatastRo API
 
-The OVCCoordenadas service is available through the following functions:
+The **OVCCoordenadas** service is available through the following
+functions:
 
 - [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md).
 - [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md).
@@ -108,7 +109,7 @@ catr_ovc_get_rccoor_distancia(
 
 ## Geocoding a cadastral reference
 
-For the opposite query,
+For the reverse query,
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md)
 accepts a cadastral reference (`rc`) and returns `xcoord` and `ycoord`
 in the specified `srs`, together with the address. Optional `province`
@@ -129,7 +130,7 @@ catr_ovc_get_cpmrc(
 |---:|---:|:---|:---|:---|:---|:---|:---|:---|:---|
 | -3.456242 | 38.61966 | 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.45624183836806 | 38.6196566583596 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
 
-The following query shows that `municipality` alone is not enough to
+The following query shows that `municipality` alone is not sufficient to
 narrow the search:
 
 ``` r
@@ -146,7 +147,7 @@ catr_ovc_get_cpmrc(
 |:---------------|:----------|
 | 13077A01800039 | EPSG:4326 |
 
-You can also query with only `rc`:
+You can also query by providing only `rc`:
 
 ``` r
 

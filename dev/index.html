@@ -140,14 +140,14 @@ SSL issues
 <div class="section level3">
 <h3 id="ovc-services">OVC services<a class="anchor" aria-label="anchor" href="#ovc-services"></a>
 </h3>
-<p>OVC services use <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> for geocoding and reverse geocoding and OVCCallejero for province and municipality code lookup.</p>
+<p>OVC services use <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link"><strong>OVCCoordenadas</strong></a> for geocoding and reverse geocoding, and <strong>OVCCallejero</strong> for province and municipality code lookup.</p>
 <p>These functions use the <code>catr_ovc_get_*()</code> prefix and return tibbles from the <strong>tibble</strong> package. See <code><a href="articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code> for a detailed description of these functions.</p>
 </div>
 <div class="section level3">
 <h3 id="inspire-services">INSPIRE services<a class="anchor" aria-label="anchor" href="#inspire-services"></a>
 </h3>
 <p>INSPIRE functions retrieve spatial objects from the <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Spanish Cadastre INSPIRE services</a> using the <strong>sf</strong> or <strong>terra</strong> packages.</p>
-<p>Note that these services cover 95% of the Spanish territory, excluding the Basque Country and Navarre<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The package &lt;a href="https://ropenspain.github.io/CatastRoNav/"&gt;&lt;strong&gt;CatastRoNav&lt;/strong&gt;&lt;/a&gt; provides access to the Cadastre of Navarre, with similar functionality to &lt;strong&gt;CatastRo&lt;/strong&gt;.&lt;/p&gt;'><sup>1</sup></a>, which have their own independent cadastral offices.</p>
+<p>These services cover 95% of the Spanish territory, excluding the Basque Country and Navarre<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The package &lt;a href="https://ropenspain.github.io/CatastRoNav/"&gt;&lt;strong&gt;CatastRoNav&lt;/strong&gt;&lt;/a&gt; provides access to the Cadastre of Navarre, with similar functionality to &lt;strong&gt;CatastRo&lt;/strong&gt;.&lt;/p&gt;'><sup>1</sup></a>, which have their own independent cadastral offices.</p>
 <p>There are three INSPIRE services:</p>
 <div class="section level4">
 <h4 id="atom-service">ATOM service<a class="anchor" aria-label="anchor" href="#atom-service"></a>
@@ -165,12 +165,12 @@ SSL issues
 <h4 id="wms-service">WMS service<a class="anchor" aria-label="anchor" href="#wms-service"></a>
 </h4>
 <p>The WMS service downloads georeferenced map images for different cadastral elements. Results are returned as <code>SpatRaster</code> objects from the <a href="https://rspatial.github.io/terra/reference/terra-package.html" class="external-link"><strong>terra</strong></a> package.</p>
-<p>There is a single function for querying this service: <code><a href="reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</p>
+<p>A single function queries this service: <code><a href="reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code>.</p>
 </div>
 <div class="section level4">
 <h4 id="terms-and-conditions-of-use">Terms and conditions of use<a class="anchor" aria-label="anchor" href="#terms-and-conditions-of-use"></a>
 </h4>
-<p>Please check the service <a href="https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf" class="external-link">terms of use</a>.</p>
+<p>Review the service <a href="https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf" class="external-link">terms of use</a>.</p>
 </div>
 </div>
 </div>
@@ -254,7 +254,7 @@ SSL issues
 <p>
 Delgado Panadero Á, Hernangómez D (2026). <em>CatastRo: Interface to the API Sede Electrónica Del Catastro</em>. <a href="https://doi.org/10.32614/CRAN.package.CatastRo" class="external-link">doi:10.32614/CRAN.package.CatastRo</a>. <a href="https://ropenspain.github.io/CatastRo/">https://ropenspain.github.io/CatastRo/</a>.
 </p>
-<p>A BibTeX entry for LaTeX users is:</p>
+<p>A <strong>BibTeX</strong> entry for <strong>LaTeX</strong> users is:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>CatastRo,</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  title <span class="ot">=</span> {{CatastRo}<span class="sc">:</span> Interface to the {API} Sede Electrónica Del Catastro},</span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  author <span class="ot">=</span> {Ángel {Delgado Panadero} and Diego Hernangómez},</span>

@@ -80,7 +80,7 @@ the first geometry is used. This function extracts coordinates using
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, displays informational messages.</p></dd>
+<dd><p>Logical. Whether to display informational messages.</p></dd>
 
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
@@ -122,8 +122,8 @@ municipalities.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>On a successful query, this function returns a <a href="https://dplyr.tidyverse.org/reference/defunct.html" class="external-link">tibble</a>
-with one row including the following columns:</p><ul><li><p><code>munic</code>: Municipality name used by the Spanish Cadastre.</p></li>
+    <p>On a successful query, this function returns a one-row
+<a href="https://dplyr.tidyverse.org/reference/defunct.html" class="external-link">tibble</a> with the following columns:</p><ul><li><p><code>munic</code>: Municipality name used by the Spanish Cadastre.</p></li>
 <li><p><code>catr_to</code>: Cadastral territorial office code.</p></li>
 <li><p><code>catr_munic</code>: Municipality code as recorded by the Cadastre.</p></li>
 <li><p><code>catrcode</code>: Full cadastral code for the municipality.</p></li>
@@ -138,7 +138,10 @@ with one row including the following columns:</p><ul><li><p><code>munic</code>: 
 <ul><li><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html" class="external-link">mapSpain::esp_get_munic_siane()</a></code> retrieves municipality geometries.</p></li>
 <li><p><code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code> retrieves municipality codes.</p></li>
 <li><p><code><a href="https://r-spatial.github.io/sf/reference/geos_unary.html" class="external-link">sf::st_centroid()</a></code> computes geometry centroids.</p></li>
-</ul></div>
+</ul><p>Search for cadastral identifiers:
+<code><a href="catr_atom_search_munic.html">catr_atom_search_munic()</a></code>,
+<code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>,
+<code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code></p></div>
     </div>
 
     <div class="section level2">

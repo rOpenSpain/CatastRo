@@ -60,7 +60,7 @@ catr_wms_get_layer(
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 - crop:
 
@@ -104,10 +104,10 @@ with three RGB or four RGBA layers. See
 
 ## Bounding box
 
-When `x` is a numeric vector, make sure that the `srs` matches the
+When `x` is a numeric vector, make sure that `srs` matches the
 coordinate values. When `x` is a
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object, the
-value `srs` is ignored.
+`srs` value is ignored.
 
 The query uses [EPSG:3857](https://epsg.io/3857) (Web Mercator), then
 transforms the tile back to the SRS of `x`. If the tile appears
@@ -179,7 +179,10 @@ pict <- catr_wms_get_layer(
   srs = 25830,
   what = "parcel"
 )
-#> Warning: [rast] unknown extent
+#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
 
 library(mapSpain)
 library(ggplot2)
@@ -192,7 +195,7 @@ library(tidyterra)
 
 ggplot() +
   geom_spatraster_rgb(data = pict)
-
+#> Error: object 'pict' not found
 
 # With a spatial object
 
@@ -206,11 +209,14 @@ parcels_img <- catr_wms_get_layer(parcels,
   bbox_expand = 0.3,
   styles = "ELFCadastre"
 )
-#> Warning: [rast] unknown extent
+#> Error in httr2::req_perform(get_header): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
 
 ggplot() +
   geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
   geom_spatraster_rgb(data = parcels_img)
-
+#> Error: object 'parcels_img' not found
 # }
 ```

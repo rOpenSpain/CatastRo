@@ -21,12 +21,12 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 - cmun, cmun_ine:
 
   Municipality code as recorded by the Spanish Cadastre (`cmun`) or the
-  National Statistics Institute. Either `cmun` or `cmun_ine` must be
-  provided.
+  National Statistics Institute (`cmun_ine`). Either `cmun` or
+  `cmun_ine` must be provided.
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 ## Value
 
@@ -35,9 +35,9 @@ described in **Details**. Returns `NULL` if the request fails.
 
 ## Details
 
-On a successful query, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
-row including the following columns:
+On a successful query, this function returns a one-row
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with the
+following columns:
 
 - `munic`: Municipality name used by the Spanish Cadastre.
 
@@ -63,6 +63,17 @@ row including the following columns:
 
 [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
 to get shapes of municipalities, including the INE code.
+
+Search for cadastral identifiers:
+[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md),
+[`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_get_code_from_coords.md),
+[`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_provinces.md)
+
+Query OVC web services:
+[`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_provinces.md),
+[`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),
+[`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md),
+[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
 
 ## Examples
 

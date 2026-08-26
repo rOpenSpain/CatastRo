@@ -2,8 +2,8 @@
 
 ## CatastRo (development version)
 
-- Catastro HTTP timeout and SSL verification can now be configured with
-  the `CATASTRO_TIMEOUT` and `CATASTRO_SSL_VERIFY` environment
+- **CatastRo** users can now configure HTTP timeout and SSL verification
+  with the `CATASTRO_TIMEOUT` and `CATASTRO_SSL_VERIFY` environment
   variables. The existing `catastro_timeout` and `catastro_ssl_verify`
   options still take precedence
   ([\#82](https://github.com/rOpenSpain/CatastRo/issues/82)).
@@ -46,16 +46,16 @@ both performance and maintainability. All functions return tidy objects
 ### Major changes
 
 - Minimum required **R** version is now 4.1.0.
-- Refactor the code and test suite for improved stability.
+- Refactor the code and test suite to improve stability.
 - Switch API requests to **httr2**.
-- New options (especially for **macOS** and **Linux** users):
+- Add new options, especially for **macOS** and **Linux** users:
   - On SSL errors, use `options(catastro_ssl_verify = 0)` to disable SSL
     verification.
   - Query timeout can be controlled with
     `options(catastro_timeout = 300)` (default value). Check
     [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
     for details.
-- Reorganize the cache into topic-based subfolders.
+- Reorganize the cache into topic-based subdirectories.
 
 > **Note:** Previous caches must be recreated.
 

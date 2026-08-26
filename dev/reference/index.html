@@ -42,14 +42,14 @@
     </div>
 
     <div class="section level2">
-      <h2 id="inspire-services">INSPIRE services<a class="anchor" aria-label="anchor" href="#inspire-services"></a></h2>
+      <h2 id="retrieve-cadastral-data">Retrieve cadastral data<a class="anchor" aria-label="anchor" href="#retrieve-cadastral-data"></a></h2>
 
-      <div class="section-desc"><p>Retrieve cadastral addresses, buildings, parcels and georeferenced map images through Spanish Cadastre INSPIRE services.</p></div>
+      <div class="section-desc"><p>Download complete municipal datasets, query individual cadastral features and retrieve georeferenced map images.</p></div>
 
       <dl></dl></div><div class="section level2">
 
-      <h3 id="atom-downloads">ATOM downloads<a class="anchor" aria-label="anchor" href="#atom-downloads"></a></h3>
-      <div class="section-desc"><p>Download complete municipal cadastral datasets and query their metadata.</p></div>
+      <h3 id="complete-municipal-datasets">Complete municipal datasets<a class="anchor" aria-label="anchor" href="#complete-municipal-datasets"></a></h3>
+      <div class="section-desc"><p>Discover and download complete address, building and cadastral parcel datasets through ATOM INSPIRE services.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -97,17 +97,10 @@
 
         </dt>
         <dd>ATOM INSPIRE: List cadastral parcel download URLs</dd>
-
-        <dt>
-
-          <code><a href="catr_atom_search_munic.html">catr_atom_search_munic()</a></code>
-
-        </dt>
-        <dd>ATOM INSPIRE: Search for municipality codes</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="wfs-queries">WFS queries<a class="anchor" aria-label="anchor" href="#wfs-queries"></a></h3>
-      <div class="section-desc"><p>Retrieve cadastral features for a selected bounding box or cadastral identifier.</p></div>
+      <h3 id="features-by-area-or-identifier">Features by area or identifier<a class="anchor" aria-label="anchor" href="#features-by-area-or-identifier"></a></h3>
+      <div class="section-desc"><p>Query address, building and cadastral parcel features through WFS INSPIRE services.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -143,8 +136,8 @@
         <dd>Query WFS INSPIRE services</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="wms-maps">WMS maps<a class="anchor" aria-label="anchor" href="#wms-maps"></a></h3>
-      <div class="section-desc"><p>Download georeferenced cadastral map images.</p></div>
+      <h3 id="georeferenced-map-images">Georeferenced map images<a class="anchor" aria-label="anchor" href="#georeferenced-map-images"></a></h3>
+      <div class="section-desc"><p>Download cadastral map layers through the WMS INSPIRE service.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -158,14 +151,14 @@
         </dt>
         <dd>WMS INSPIRE: Download georeferenced map images</dd>
       </dl></div><div class="section level2">
-      <h2 id="ovc-services">OVC services<a class="anchor" aria-label="anchor" href="#ovc-services"></a></h2>
+      <h2 id="find-cadastral-identifiers">Find cadastral identifiers<a class="anchor" aria-label="anchor" href="#find-cadastral-identifiers"></a></h2>
 
-      <div class="section-desc"><p>Geocode cadastral references, reverse geocode coordinates and query Spanish Cadastre province and municipality codes.</p></div>
+      <div class="section-desc"><p>Convert between cadastral references and coordinates, or look up province and municipality codes.</p></div>
 
       <dl></dl></div><div class="section level2">
 
-      <h3 id="coordinates-and-cadastral-references">Coordinates and cadastral references<a class="anchor" aria-label="anchor" href="#coordinates-and-cadastral-references"></a></h3>
-      <div class="section-desc"><p>Convert between cadastral references and spatial coordinates.</p></div>
+      <h3 id="references-and-coordinates">References and coordinates<a class="anchor" aria-label="anchor" href="#references-and-coordinates"></a></h3>
+      <div class="section-desc"><p>Geocode cadastral references and reverse geocode spatial coordinates.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -194,36 +187,8 @@
         <dd>OVCCoordenadas: Find cadastral references near coordinates</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="province-and-municipality-codes">Province and municipality codes<a class="anchor" aria-label="anchor" href="#province-and-municipality-codes"></a></h3>
-      <div class="section-desc"><p>Query province and municipality codes used by the Spanish Cadastre.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>
-
-        </dt>
-        <dd>OVCCallejero: Get municipality codes</dd>
-
-        <dt>
-
-          <code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code>
-
-        </dt>
-        <dd>OVCCallejero: Get province codes</dd>
-      </dl></div><div class="section level2">
-      <h2 id="utilities-and-reference-data">Utilities and reference data<a class="anchor" aria-label="anchor" href="#utilities-and-reference-data"></a></h2>
-
-      <div class="section-desc"><p>Search Spanish Cadastre identifiers, manage downloaded files and inspect package reference data.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-      <h3 id="search">Search<a class="anchor" aria-label="anchor" href="#search"></a></h3>
-      <div class="section-desc"><p>Find cadastral municipality codes and related reference information.</p></div>
+      <h3 id="province-and-municipality-lookup">Province and municipality lookup<a class="anchor" aria-label="anchor" href="#province-and-municipality-lookup"></a></h3>
+      <div class="section-desc"><p>Find Spanish Cadastre province and municipality identifiers by name, code or coordinates.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -258,6 +223,11 @@
         </dt>
         <dd>OVCCallejero: Get province codes</dd>
       </dl></div><div class="section level2">
+      <h2 id="configure-and-inspect-catastro">Configure and inspect CatastRo<a class="anchor" aria-label="anchor" href="#configure-and-inspect-catastro"></a></h2>
+
+      <div class="section-desc"><p>Manage downloaded files, inspect supported coordinate systems and access package-level documentation.</p></div>
+
+      <dl></dl></div><div class="section level2">
 
       <h3 id="cache-management">Cache management<a class="anchor" aria-label="anchor" href="#cache-management"></a></h3>
       <div class="section-desc"><p>Configure, detect and clear the local cache used by <strong>CatastRo</strong>.</p></div>
@@ -282,8 +252,8 @@
         <dd>Set your <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> cache directory</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="reference-data">Reference data<a class="anchor" aria-label="anchor" href="#reference-data"></a></h3>
-      <div class="section-desc"><p>Inspect the SRS reference dataset used by the package services.</p></div>
+      <h3 id="coordinate-reference-systems">Coordinate reference systems<a class="anchor" aria-label="anchor" href="#coordinate-reference-systems"></a></h3>
+      <div class="section-desc"><p>Inspect the SRS codes supported by the package services.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -297,9 +267,9 @@
         </dt>
         <dd>Reference SRS codes for <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> services</dd>
       </dl></div><div class="section level2">
-      <h2 id="package-metadata">Package metadata<a class="anchor" aria-label="anchor" href="#package-metadata"></a></h2>
 
-      <div class="section-desc"><p>Read package-level documentation.</p></div>
+      <h3 id="package-overview">Package overview<a class="anchor" aria-label="anchor" href="#package-overview"></a></h3>
+      <div class="section-desc"><p>Read package-level documentation and discover useful links.</p></div>
 
       <dl></dl></div><div class="section level2">
 

@@ -8,7 +8,7 @@ images.
 ## OVCCoordenadas service
 
 The
-[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
+[**OVCCoordenadas**](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
 service retrieves the coordinates of a known cadastral reference
 (geocoding). It can also retrieve cadastral references near a pair of
 coordinates (reverse geocoding). **CatastRo** returns the results as
@@ -29,7 +29,7 @@ vignette (see
 Source: [INSPIRE Knowledge
 Base](https://knowledge-base.inspire.ec.europa.eu/overview_en)
 
-The Spanish Cadastre implementation of the INSPIRE directive (see
+The Spanish Cadastre implementation of the INSPIRE Directive (see
 [Spanish Cadastre INSPIRE
 services](https://www.catastro.hacienda.gob.es/webinspire/index.html))
 provides access to spatial objects from the cadastral database:
@@ -41,9 +41,9 @@ provides access to spatial objects from the cadastral database:
   vector objects. **CatastRo** returns these objects as `SpatRaster`
   objects, using the **terra** package.
 
-Note that these services cover 95% of the Spanish territory, excluding
-the Basque Country and Navarre[^1], which have their own independent
-cadastral offices.
+These services cover 95% of the Spanish territory, excluding the Basque
+Country and Navarre[^1], which have their own independent cadastral
+offices.
 
 There are three INSPIRE services:
 

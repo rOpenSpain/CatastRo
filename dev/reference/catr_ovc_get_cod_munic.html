@@ -72,12 +72,12 @@ Statistics Institute (INE).</p>
 
 <dt id="arg-cmun-cmun-ine">cmun, cmun_ine<a class="anchor" aria-label="anchor" href="#arg-cmun-cmun-ine"></a></dt>
 <dd><p>Municipality code as recorded by the Spanish
-Cadastre (<code>cmun</code>) or the National Statistics Institute. Either <code>cmun</code> or
-<code>cmun_ine</code> must be provided.</p></dd>
+Cadastre (<code>cmun</code>) or the National Statistics Institute (<code>cmun_ine</code>). Either
+<code>cmun</code> or <code>cmun_ine</code> must be provided.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
-<dd><p>Logical. If <code>TRUE</code>, displays informational messages.</p></dd>
+<dd><p>Logical. Whether to display informational messages.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -87,8 +87,8 @@ Cadastre (<code>cmun</code>) or the National Statistics Institute. Either <code>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>On a successful query, this function returns a <a href="https://dplyr.tidyverse.org/reference/defunct.html" class="external-link">tibble</a>
-with one row including the following columns:</p><ul><li><p><code>munic</code>: Municipality name used by the Spanish Cadastre.</p></li>
+    <p>On a successful query, this function returns a one-row
+<a href="https://dplyr.tidyverse.org/reference/defunct.html" class="external-link">tibble</a> with the following columns:</p><ul><li><p><code>munic</code>: Municipality name used by the Spanish Cadastre.</p></li>
 <li><p><code>catr_to</code>: Cadastral territorial office code.</p></li>
 <li><p><code>catr_munic</code>: Municipality code as recorded by the Cadastre.</p></li>
 <li><p><code>catrcode</code>: Full cadastral code for the municipality.</p></li>
@@ -104,7 +104,16 @@ with one row including the following columns:</p><ul><li><p><code>munic</code>: 
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html" class="external-link">mapSpain::esp_get_munic_siane()</a></code> to get shapes of municipalities, including
-the INE code.</p></div>
+the INE code.</p>
+<p>Search for cadastral identifiers:
+<code><a href="catr_atom_search_munic.html">catr_atom_search_munic()</a></code>,
+<code><a href="catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code>,
+<code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code></p>
+<p>Query OVC web services:
+<code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code>,
+<code><a href="catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code>,
+<code><a href="catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code>,
+<code><a href="catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code></p></div>
     </div>
 
     <div class="section level2">

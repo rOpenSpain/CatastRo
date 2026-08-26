@@ -38,7 +38,7 @@ catr_get_code_from_coords(
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 - cache_dir:
 
@@ -87,9 +87,9 @@ described in **Details**. Returns `NULL` if the request fails.
 
 ## Details
 
-On a successful query, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
-row including the following columns:
+On a successful query, this function returns a one-row
+[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with the
+following columns:
 
 - `munic`: Municipality name used by the Spanish Cadastre.
 
@@ -117,6 +117,11 @@ row including the following columns:
 
 - [`sf::st_centroid()`](https://r-spatial.github.io/sf/reference/geos_unary.html)
   computes geometry centroids.
+
+Search for cadastral identifiers:
+[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md),
+[`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_munic.md),
+[`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cod_provinces.md)
 
 ## Examples
 

@@ -31,7 +31,7 @@ catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 ## Value
 
@@ -58,7 +58,7 @@ Manage the local cache:
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpERG5zj/CatastRo
+#> ℹ /tmp/RtmpbGR4HQ/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -66,13 +66,13 @@ catr_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 catr_clear_cache(verbose = TRUE)
-#> ! CatastRo cached data deleted: /tmp/RtmpERG5zj/example/cache (0 bytes).
+#> ✔ CatastRo cached data deleted: /tmp/RtmpbGR4HQ/example/cache (0 bytes).
 
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache directory is /tmp/RtmpERG5zj/CatastRo.
+#> ℹ CatastRo cache directory is /tmp/RtmpbGR4HQ/CatastRo.
 #> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpERG5zj/CatastRo
+#> ℹ /tmp/RtmpbGR4HQ/CatastRo
 #> [1] TRUE
 # }
 ```
