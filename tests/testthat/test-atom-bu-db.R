@@ -157,7 +157,7 @@ test_that("building database office lookup handles a failed cached request", {
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2to2")
 
-  all <- catr_atom_get_buildings_db_all(cache_dir = cdir)
+  invisible(catr_atom_get_buildings_db_all(cache_dir = cdir))
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE

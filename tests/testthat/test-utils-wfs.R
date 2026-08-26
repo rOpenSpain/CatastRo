@@ -129,7 +129,7 @@ test_that("WFS downloads return NULL after an HTTP 404", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
+  withr::local_tempdir(pattern = "wfs_inspire_cache")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -192,8 +192,6 @@ test_that("WFS requests report service exceptions", {
   skip_on_cran()
   skip_if_offline()
 
-  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
-
   local_mocked_bindings(download_url = function(
     url,
     name,
@@ -235,8 +233,6 @@ test_that("WFS requests report service exceptions", {
 test_that("WFS requests reject invalid query lists", {
   skip_on_cran()
   skip_if_offline()
-
-  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
 
   expect_snapshot(
     error = TRUE,

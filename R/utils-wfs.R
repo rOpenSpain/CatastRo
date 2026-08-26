@@ -236,7 +236,9 @@ wfs_read_bbox_query <- function(
 #'
 #' @noRd
 wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
-  if (!(inherits(x, "sf") || inherits(x, "sfc"))) {
+  if ((inherits(x, "sf") || inherits(x, "sfc"))) {
+    sfobj <- sf::st_as_sfc(sf::st_bbox(x))
+  } else {
     validate_vector_with_srs(x, srs, 4L)
 
     srs_db <- CatastRo::catr_srs_values
@@ -247,8 +249,6 @@ wfs_get_bbox <- function(x, srs = NULL, srs_dest = 3857, limit_km2 = Inf) {
     class(sfobj) <- "bbox"
     sfobj <- sf::st_as_sfc(sfobj)
     sfobj <- sf::st_set_crs(sfobj, srs)
-  } else {
-    sfobj <- sf::st_as_sfc(sf::st_bbox(x))
   }
 
   sfobj <- sf::st_transform(sfobj, srs_dest)

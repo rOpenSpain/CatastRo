@@ -58,7 +58,7 @@ test_that("building WFS bounding boxes validate their coordinates", {
   expect_gt(nrow(parts), nrow(obj2))
 
   # Another types
-  ot <- parts <- catr_wfs_get_buildings_bbox(bbox, what = "other")
+  ot <- catr_wfs_get_buildings_bbox(bbox, what = "other")
 
   expect_s3_class(ot, "sf")
 

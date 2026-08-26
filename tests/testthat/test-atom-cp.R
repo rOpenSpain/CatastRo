@@ -112,8 +112,8 @@ test_that("single parcel download returns NULL after an HTTP 404", {
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex2to2bu")
 
-  all <- catr_atom_get_parcels_db_all(cache_dir = cdir)
-  all <- catr_atom_get_parcels_db_to("Segovia", cache_dir = cdir)
+  invisible(catr_atom_get_parcels_db_all(cache_dir = cdir))
+  invisible(catr_atom_get_parcels_db_to("Segovia", cache_dir = cdir))
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE

@@ -20,6 +20,9 @@
 
     Code
       fend <- download_url(url, cache_dir = cdir, verbose = FALSE)
+    Condition
+      Warning in `stop()`:
+      additional arguments ignored in stop()
     Message
       x The download request could not be completed.
       ! "Mock transport failure."
@@ -29,6 +32,9 @@
 
     Code
       fend <- download_url(url, cache_dir = cdir, verbose = FALSE)
+    Condition
+      Warning in `stop()`:
+      additional arguments ignored in stop()
     Message
       x The download request could not be completed.
       ! "Mock transport failure."
@@ -55,6 +61,9 @@
 
     Code
       fend <- get_request_body(url, verbose = FALSE)
+    Condition
+      Warning in `stop()`:
+      additional arguments ignored in stop()
     Message
       x The request could not be completed.
       ! "Mock transport failure."
