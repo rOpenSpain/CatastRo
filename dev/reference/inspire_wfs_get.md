@@ -12,6 +12,7 @@ inspire_wfs_get(
   hostname = "ovc.catastro.meh.es",
   path = "INSPIRE/wfsCP.aspx",
   query = list(),
+  cache_dir = NULL,
   verbose = FALSE
 )
 ```
@@ -33,6 +34,12 @@ inspire_wfs_get(
 - query:
 
   Named list of query parameters and their values.
+
+- cache_dir:
+
+  Path to a cache directory. If `NULL` or `FALSE`, the function stores
+  cached files in a temporary directory. See
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html).
 
 - verbose:
 
