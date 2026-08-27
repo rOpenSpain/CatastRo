@@ -38,27 +38,3 @@
       Error in `wfs_get_bbox()`:
       ! You must also provide `srs` when `x` is a double vector.
 
----
-
-    Code
-      s <- catr_wfs_get_parcels_bbox(x = c(1, 2, 3, 4), srs = 3857)
-    Message
-      x The WFS query returned an exception for a mocked response:
-      No records founded for BBOX and SRS provided
-
-# parcel zoning WFS functions retrieve spatial data
-
-    Code
-      obj <- catr_wfs_get_parcels_zoning("41624TF3146SZZ", srs = 3857)
-    Message
-      x The WFS query returned an exception for a mocked response:
-      Invalid length of COD_ZONA parameter
-
----
-
-    Code
-      obj <- catr_wfs_get_parcels_parcel_zoning("41624TF3146SZZ", srs = 3857)
-    Message
-      x The WFS query returned an exception for a mocked response:
-      Invalid length of COD_ZONA parameter
-

@@ -28,8 +28,10 @@ test_that("catr_ovc_get_cpmrc() rejects an unsupported SRS", {
   )
 })
 
-test_that("catr_ovc_get_cpmrc() accepts all supported arguments", {
-  local_mocked_bindings(ovc_get_xml = function(...) {
+test_that("catr_ovc_get_cpmrc() encodes all supported arguments", {
+  seen <- NULL
+  local_mocked_bindings(ovc_get_xml = function(url, ...) {
+    seen <<- url
     list(
       consulta_coordenadas = list(
         coordenadas = list(
@@ -54,6 +56,12 @@ test_that("catr_ovc_get_cpmrc() accepts all supported arguments", {
     intersect(c("geo.xcen", "geo.ycen"), names(result)),
     c("geo.xcen", "geo.ycen")
   )
+
+  query <- httr2::url_parse(seen)$query
+  expect_identical(query$RC, "13077A01800039")
+  expect_identical(query$SRS, "EPSG:4230")
+  expect_identical(query$Provincia, "CIUDAD REAL")
+  expect_identical(query$Municipio, "SANTA CRUZ DE MUDELA")
 })
 
 test_that("catr_ovc_get_cpmrc() accepts a reference and SRS", {

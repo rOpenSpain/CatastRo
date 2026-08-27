@@ -86,15 +86,18 @@ test_that("catr_atom_get_buildings() returns spatial data for a municipality", {
   expect_gt(nrow(me_bu), nrow(me_other))
 })
 
-test_that("catr_atom_get_buildings() preserves accented fields", {
+test_that("catr_atom_get_buildings() reads accented source data", {
   skip_on_cran()
   skip_if_offline()
 
   cdir <- withr::local_tempdir(pattern = "test_bu2")
 
-  expect_silent(catr_atom_get_buildings("23078", cache_dir = cdir))
-  expect_silent(catr_atom_get_buildings("03050", cache_dir = cdir))
-  expect_silent(catr_atom_get_buildings("23051", cache_dir = cdir))
+  expect_silent(s1 <- catr_atom_get_buildings("23078", cache_dir = cdir))
+  expect_silent(s2 <- catr_atom_get_buildings("03050", cache_dir = cdir))
+  expect_silent(s3 <- catr_atom_get_buildings("23051", cache_dir = cdir))
+  expect_s3_class(s1, "sf")
+  expect_s3_class(s2, "sf")
+  expect_s3_class(s3, "sf")
 })
 
 test_that("catr_atom_get_buildings() handles a download HTTP 404", {

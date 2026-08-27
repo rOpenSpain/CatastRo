@@ -106,6 +106,7 @@ test_that("inspire_wfs_get() returns NULL when offline", {
   expect_snapshot(
     fend <- inspire_wfs_get(
       path = "INSPIRE/wfsBU.aspx",
+      cache_dir = cdir,
       query = list(
         request = "getfeature",
         Typenames = "BU.BUILDING",
@@ -119,7 +120,7 @@ test_that("inspire_wfs_get() returns NULL when offline", {
 })
 
 test_that("inspire_wfs_get() returns NULL after an HTTP 404", {
-  withr::local_tempdir(pattern = "wfs_inspire_cache")
+  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
 
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
@@ -129,6 +130,7 @@ test_that("inspire_wfs_get() returns NULL after an HTTP 404", {
   expect_message(
     s <- inspire_wfs_get(
       path = "INSPIRE/wfsBU.aspx",
+      cache_dir = cdir,
       query = list(
         request = "getfeature",
         Typenames = "BU.BUILDING",
@@ -164,6 +166,7 @@ test_that("inspire_wfs_get() returns NULL after an HTTP 404", {
   expect_silent(
     s <- inspire_wfs_get(
       path = "INSPIRE/wfsBU.aspx",
+      cache_dir = cdir,
       query = list(
         request = "getfeature",
         Typenames = "BU.BUILDING",
@@ -180,6 +183,8 @@ test_that("inspire_wfs_get() returns NULL after an HTTP 404", {
 })
 
 test_that("inspire_wfs_get() reports WFS service exceptions", {
+  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
+
   local_mocked_bindings(download_url = function(
     url,
     name,
@@ -206,6 +211,7 @@ test_that("inspire_wfs_get() reports WFS service exceptions", {
   expect_message(
     s <- inspire_wfs_get(
       path = "INSPIRE/wfsBU.aspx",
+      cache_dir = cdir,
       query = list(
         request = "getfeatureaa",
         Typenames = "BU.BUILDING",
@@ -231,6 +237,11 @@ test_that("inspire_wfs_get() rejects invalid query lists", {
       query = list(20, NA, NULL)
     )
   )
+})
+
+test_that("inspire_wfs_get() normalizes query names and SRS values", {
+  cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
+  seen <- character()
 
   local_mocked_bindings(download_url = function(
     url,
@@ -239,6 +250,7 @@ test_that("inspire_wfs_get() rejects invalid query lists", {
     subdir,
     ...
   ) {
+    seen <<- c(seen, url)
     out <- file.path(cache_dir, subdir, name)
     dir.create(dirname(out), recursive = TRUE, showWarnings = FALSE)
     sfobj <- sf::st_sf(
@@ -252,6 +264,7 @@ test_that("inspire_wfs_get() rejects invalid query lists", {
   expect_message(
     s <- inspire_wfs_get(
       path = "INSPIRE/wfsBU.aspx",
+      cache_dir = cdir,
       query = list(
         request = "getfeature",
         STOREDQUERIE_ID = "GETOTHERBUILDINGBYPARCEL",
@@ -266,27 +279,25 @@ test_that("inspire_wfs_get() rejects invalid query lists", {
     "Removed 3 empty or unnamed elements"
   )
 
-  sfobj1 <- read_geo_file_sf(s)
+  expect_type(s, "character")
 
-  unlink(s)
-
-  # What about my EPSG?
-  sfobj2 <- inspire_wfs_get(
-    path = "INSPIRE/wfsBU.aspx",
-    query = list(
-      request = "getfeature",
-      STOREDQUERIE_ID = "GETOTHERBUILDINGBYPARCEL",
-      refcat = "9398516VK3799G",
-      srsname = 25829
+  expect_silent(
+    s2 <- inspire_wfs_get(
+      path = "INSPIRE/wfsBU.aspx",
+      cache_dir = cdir,
+      query = list(
+        request = "getfeature",
+        STOREDQUERIE_ID = "GETOTHERBUILDINGBYPARCEL",
+        refcat = "9398516VK3799G",
+        srsname = 25829
+      )
     )
-  ) |>
-    read_geo_file_sf()
+  )
 
-  sfobj1$gml_id <- NULL
-  sfobj2$gml_id <- NULL
-  expect_identical(sfobj1, sfobj2)
-  expect_s3_class(sfobj1, "sf")
-  expect_equal(sf::st_crs(sfobj1)$epsg, 25829)
+  expect_type(s2, "character")
+  expect_length(seen, 2)
+  expect_match(seen[[1]], "srsname=EPSG::25829", fixed = TRUE)
+  expect_match(seen[[2]], "srsname=EPSG:25829", fixed = TRUE)
 })
 
 test_that("inspire_wfs_get() can call the real API", {

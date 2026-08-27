@@ -67,16 +67,3 @@
     Message
       ! No municipality found for these coordinates.
 
----
-
-    Code
-      catr_get_code_from_coords(m, cache_dir = cdir)
-    Message
-      i Using the first geometry because 2 were provided.
-    Output
-      # A tibble: 1 x 12
-        munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-        <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-      1 SANTO~ 33      064        33064    33    064   33064   SANT~ 33    64    33   
-      # i 1 more variable: cm <chr>
-

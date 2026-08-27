@@ -1,4 +1,4 @@
-test_that("ovcurl() and wfs_validate_srs() build valid OVC requests", {
+test_that("ovc_base_url() and ovc_validate_srs() build valid requests", {
   expect_identical(
     ovc_base_url("OVCCallejero/ConsultaProvincia"),
     "http://ovc.catastro.meh.es/ovcservweb/OVCCallejero/ConsultaProvincia"
@@ -7,9 +7,9 @@ test_that("ovcurl() and wfs_validate_srs() build valid OVC requests", {
 })
 
 test_that("ovc_get_xml() parses OVC XML responses", {
+  seen <- NULL
   local_mocked_bindings(get_request_body = function(url, verbose = FALSE) {
-    expect_identical(url, "http://example.test/ovc.xml")
-    expect_true(verbose)
+    seen <<- list(url = url, verbose = verbose)
 
     httr2::response(
       status_code = 200,
@@ -19,17 +19,21 @@ test_that("ovc_get_xml() parses OVC XML responses", {
   })
 
   parsed <- ovc_get_xml("http://example.test/ovc.xml", verbose = TRUE)
+  expect_identical(seen$url, "http://example.test/ovc.xml")
+  expect_true(seen$verbose)
   expect_identical(parsed$root$item$x[[1]], "1")
 })
 
 test_that("ovc_get_xml() returns NULL when XML requests fail", {
+  seen <- NULL
   local_mocked_bindings(get_request_body = function(url, verbose = FALSE) {
-    expect_identical(url, "http://example.test/empty.xml")
-    expect_false(verbose)
+    seen <<- list(url = url, verbose = verbose)
     NULL
   })
 
   expect_null(ovc_get_xml("http://example.test/empty.xml"))
+  expect_identical(seen$url, "http://example.test/empty.xml")
+  expect_false(seen$verbose)
 })
 
 test_that("ovc_get_tbl() converts XML nodes to tibbles", {
@@ -55,7 +59,7 @@ test_that("OVC error helpers detect and report API errors", {
   expect_snapshot(ovc_report_error(err))
 })
 
-test_that("clean_ovc_names() normalizes OVC response fields", {
+test_that("OVC field helpers normalize response values", {
   expect_equal(
     ovc_ref_address(tibble::tibble(
       pc.pc1 = "1234567",

@@ -35,7 +35,7 @@ Suggests:
     ggplot2,
     knitr,
     quarto,
-    testthat (>= 3.0.0),
+    testthat (>= 3.0.3),
     tibble,
     tidyterra,
     withr

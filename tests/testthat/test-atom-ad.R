@@ -66,7 +66,7 @@ test_that("catr_atom_get_address() returns spatial address data", {
   expect_s3_class(s, "sf")
 })
 
-test_that("catr_atom_get_address() preserves fields with accented characters", {
+test_that("catr_atom_get_address() reads accented source data", {
   skip_on_cran()
   skip_if_offline()
 
@@ -76,8 +76,10 @@ test_that("catr_atom_get_address() preserves fields with accented characters", {
 
   expect_setequal(intersect("tfname_text", names(s)), "tfname_text")
 
-  expect_silent(catr_atom_get_address("03050", cache_dir = cdir))
-  expect_silent(catr_atom_get_address("23051", cache_dir = cdir))
+  expect_silent(s2 <- catr_atom_get_address("03050", cache_dir = cdir))
+  expect_silent(s3 <- catr_atom_get_address("23051", cache_dir = cdir))
+  expect_s3_class(s2, "sf")
+  expect_s3_class(s3, "sf")
 })
 
 test_that("catr_atom_get_address() handles a download HTTP 404", {

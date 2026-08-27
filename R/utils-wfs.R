@@ -56,6 +56,7 @@ inspire_wfs_get <- function(
   hostname = "ovc.catastro.meh.es",
   path = "INSPIRE/wfsCP.aspx",
   query = list(),
+  cache_dir = NULL,
   verbose = FALSE
 ) {
   # Validate query.
@@ -112,7 +113,7 @@ inspire_wfs_get <- function(
   file_local <- download_url(
     url,
     file_gml,
-    cache_dir = tempdir(),
+    cache_dir = cache_dir,
     subdir = "wfs_inspire_cache",
     verbose = verbose
   )

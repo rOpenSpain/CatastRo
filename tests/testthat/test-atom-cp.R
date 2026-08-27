@@ -77,15 +77,18 @@ test_that("catr_atom_get_parcels() returns spatial data for a municipality", {
   expect_gt(nrow(me_cp), nrow(me_cpzone))
 })
 
-test_that("catr_atom_get_parcels() preserves fields with accented characters", {
+test_that("catr_atom_get_parcels() reads accented source data", {
   skip_on_cran()
   skip_if_offline()
 
   cdir <- withr::local_tempdir(pattern = "test_cp2")
 
-  expect_silent(catr_atom_get_parcels("23078", cache_dir = cdir))
-  expect_silent(catr_atom_get_parcels("03050", cache_dir = cdir))
-  expect_silent(catr_atom_get_parcels("23051", cache_dir = cdir))
+  expect_silent(s1 <- catr_atom_get_parcels("23078", cache_dir = cdir))
+  expect_silent(s2 <- catr_atom_get_parcels("03050", cache_dir = cdir))
+  expect_silent(s3 <- catr_atom_get_parcels("23051", cache_dir = cdir))
+  expect_s3_class(s1, "sf")
+  expect_s3_class(s2, "sf")
+  expect_s3_class(s3, "sf")
 })
 
 test_that("catr_atom_get_parcels() handles a download HTTP 404", {

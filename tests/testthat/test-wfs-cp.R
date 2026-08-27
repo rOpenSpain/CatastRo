@@ -12,13 +12,9 @@ test_that("catr_wfs_get_parcels_bbox() rejects invalid coordinates", {
   expect_snapshot(error = TRUE, catr_wfs_get_parcels_bbox(x = c(1, 2, 3, 4)))
 
   local_mocked_bindings(wfs_read_bbox_query = function(...) {
-    cli::cli_alert_danger(c(
-      "The WFS query returned an exception for a mocked response:\n",
-      "No records founded for BBOX and SRS provided"
-    ))
     NULL
   })
-  expect_snapshot(s <- catr_wfs_get_parcels_bbox(x = c(1, 2, 3, 4), srs = 3857))
+  s <- catr_wfs_get_parcels_bbox(x = c(1, 2, 3, 4), srs = 3857)
   expect_null(s)
 })
 
@@ -61,10 +57,6 @@ test_that("parcel zoning WFS functions retrieve spatial data", {
     ...
   ) {
     if (grepl("ZZ", query$cod_zona, fixed = TRUE)) {
-      cli::cli_alert_danger(c(
-        "The WFS query returned an exception for a mocked response:\n",
-        "Invalid length of COD_ZONA parameter"
-      ))
       return(NULL)
     }
 
@@ -82,13 +74,9 @@ test_that("parcel zoning WFS functions retrieve spatial data", {
   expect_s3_class(obj2, "sf")
   expect_gt(nrow(obj2), nrow(obj))
 
-  expect_snapshot(
-    obj <- catr_wfs_get_parcels_zoning("41624TF3146SZZ", srs = 3857)
-  )
+  obj <- catr_wfs_get_parcels_zoning("41624TF3146SZZ", srs = 3857)
   expect_null(obj)
-  expect_snapshot(
-    obj <- catr_wfs_get_parcels_parcel_zoning("41624TF3146SZZ", srs = 3857)
-  )
+  obj <- catr_wfs_get_parcels_parcel_zoning("41624TF3146SZZ", srs = 3857)
   expect_null(obj)
 })
 

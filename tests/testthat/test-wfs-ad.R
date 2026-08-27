@@ -1,10 +1,6 @@
 test_that("catr_wfs_get_address_bbox() validates bounding-box coordinates", {
   local_mocked_bindings(wfs_read_bbox_query = function(x, srs, ...) {
     if (is.numeric(x) && x[[1]] < 0) {
-      cli::cli_alert_danger(c(
-        "The WFS query returned an exception for a mocked response:\n",
-        "Area de la extensión fuera de los límites"
-      ))
       return(NULL)
     }
 
@@ -19,9 +15,7 @@ test_that("catr_wfs_get_address_bbox() validates bounding-box coordinates", {
     sf::st_sf(id = seq_len(2), geometry = geometry)
   })
 
-  expect_snapshot(
-    fend <- catr_wfs_get_address_bbox(c(-20, -20, -19, -20), srs = 4326)
-  )
+  fend <- catr_wfs_get_address_bbox(c(-20, -20, -19, -20), srs = 4326)
   expect_null(fend)
 
   obj <- catr_wfs_get_address_bbox(
@@ -52,10 +46,6 @@ test_that("catr_wfs_get_address_codvia() retrieves addresses by street code", {
     wfs_validate_srs(srs)
 
     if (query$del == 110 || query$mun == 390) {
-      cli::cli_alert_danger(c(
-        "The WFS query returned an exception for a mocked response:\n",
-        "No records found for mocked address query"
-      ))
       return(NULL)
     }
 
@@ -74,7 +64,7 @@ test_that("catr_wfs_get_address_codvia() retrieves addresses by street code", {
   expect_s3_class(obj, "sf")
   expect_equal(sf::st_crs(obj)$epsg, 4326)
 
-  expect_snapshot(obj <- catr_wfs_get_address_codvia("1", 110, 390))
+  obj <- catr_wfs_get_address_codvia("1", 110, 390)
   expect_null(obj)
   expect_snapshot(
     error = TRUE,
@@ -91,10 +81,6 @@ test_that("catr_wfs_get_address_rc() retrieves by cadastral reference", {
     wfs_validate_srs(srs)
 
     if (nchar(query$REFCAT) < 14) {
-      cli::cli_alert_danger(c(
-        "The WFS query returned an exception for a mocked response:\n",
-        "Invalid length of REFCAT parameter"
-      ))
       return(NULL)
     }
 
@@ -113,7 +99,7 @@ test_that("catr_wfs_get_address_rc() retrieves by cadastral reference", {
   expect_s3_class(obj, "sf")
   expect_equal(sf::st_crs(obj)$epsg, 4326)
 
-  expect_snapshot(obj <- catr_wfs_get_address_rc("3662303TF"))
+  obj <- catr_wfs_get_address_rc("3662303TF")
   expect_null(obj)
   expect_snapshot(
     error = TRUE,
@@ -132,10 +118,6 @@ test_that("catr_wfs_get_address_postalcode() retrieves by postal code", {
     if (
       identical(query$postalcode, "XXXXX") || identical(query$REFCAT, "XXXXX")
     ) {
-      cli::cli_alert_danger(c(
-        "The WFS query returned an exception for a mocked response:\n",
-        "No records found for mocked address query"
-      ))
       return(NULL)
     }
 
@@ -155,11 +137,11 @@ test_that("catr_wfs_get_address_postalcode() retrieves by postal code", {
   expect_s3_class(obj, "sf")
   expect_equal(sf::st_crs(obj)$epsg, 4326)
 
-  expect_snapshot(obj <- catr_wfs_get_address_postalcode("XXXXX"))
+  obj <- catr_wfs_get_address_postalcode("XXXXX")
   expect_null(obj)
   expect_snapshot(
     error = TRUE,
-    obj <- catr_wfs_get_address_rc("XXXXX", srs = 9999)
+    obj <- catr_wfs_get_address_postalcode("XXXXX", srs = 9999)
   )
 })
 

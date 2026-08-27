@@ -1,5 +1,6 @@
 test_that("catr_get_code_from_coords() returns NULL when offline", {
   skip_if_not_installed("mapSpain")
+  skip_if_offline()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
   local_mocked_bindings(is_online_fun = function(...) {
@@ -26,6 +27,7 @@ test_that("catr_get_code_from_coords() returns NULL when offline", {
 
 test_that("catr_get_code_from_coords() returns NULL after an HTTP 404", {
   skip_if_not_installed("mapSpain")
+  skip_if_offline()
 
   cdir <- withr::local_tempdir(pattern = "testthat_ex")
 
@@ -131,7 +133,29 @@ test_that("catr_get_code_from_coords() returns municipality codes", {
   # Try with sf
   m <- mun[2:3, ]
 
-  expect_snapshot(catr_get_code_from_coords(m, cache_dir = cdir))
+  expect_message(
+    first <- catr_get_code_from_coords(m, cache_dir = cdir),
+    "Using the first geometry"
+  )
+  expect_named(
+    first,
+    c(
+      "munic",
+      "catr_to",
+      "catr_munic",
+      "catrcode",
+      "cpro",
+      "cmun",
+      "inecode",
+      "nm",
+      "cd",
+      "cmc",
+      "cp",
+      "cm"
+    )
+  )
+  expect_identical(first$munic, "SANTO DOMINGO")
+  expect_identical(first$catrcode, "33064")
   expect_silent(catr_get_code_from_coords(m[1, ]))
 
   # Try polis

@@ -10,6 +10,7 @@ inspire_wfs_get(
   hostname = "ovc.catastro.meh.es",
   path = "INSPIRE/wfsCP.aspx",
   query = list(),
+  cache_dir = NULL,
   verbose = FALSE
 )
 }
@@ -22,6 +23,10 @@ resource.}
 \item{path}{Character string specifying the resource path on the host.}
 
 \item{query}{Named list of query parameters and their values.}
+
+\item{cache_dir}{Path to a cache directory. If \code{NULL} or \code{FALSE}, the
+function stores cached files in a temporary directory. See
+\code{\link[base:tempdir]{base::tempdir()}}.}
 
 \item{verbose}{Logical. Whether to display informational messages.}
 }

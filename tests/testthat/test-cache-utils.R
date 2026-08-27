@@ -29,9 +29,8 @@ test_that("catr_set_cache_dir() and catr_clear_cache() isolate session state", {
 test_that("catr_set_cache_dir() installs and overwrites configuration", {
   withr::local_envvar(c(CATASTROESP_CACHE_DIR = NA))
 
-  config_dir <- file.path(tempdir(), "catr-config-missing")
-  unlink(config_dir, recursive = TRUE, force = TRUE)
-  withr::defer(unlink(config_dir, recursive = TRUE, force = TRUE))
+  root <- withr::local_tempdir(pattern = "catr-config-root")
+  config_dir <- file.path(root, "missing")
 
   cache_dir <- withr::local_tempdir(pattern = "catr-cache")
   next_cache_dir <- withr::local_tempdir(pattern = "catr-cache-next")

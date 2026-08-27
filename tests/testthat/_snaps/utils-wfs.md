@@ -28,8 +28,8 @@
 # inspire_wfs_get() returns NULL when offline
 
     Code
-      fend <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", query = list(request = "getfeature",
-        Typenames = "BU.BUILDING", SRSname = 25829, bbox = "742438,4046840,742613,4046970"))
+      fend <- inspire_wfs_get(path = "INSPIRE/wfsBU.aspx", cache_dir = cdir, query = list(
+        request = "getfeature", Typenames = "BU.BUILDING", SRSname = 25829, bbox = "742438,4046840,742613,4046970"))
     Message
       x No internet connection detected.
       Returning "NULL" because the request cannot run.

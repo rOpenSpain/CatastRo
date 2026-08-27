@@ -45,6 +45,9 @@ test_that("read_geo_file_sf() reads local geospatial archives", {
 })
 
 test_that("read_geo_file_sf() preserves expected address fields", {
+  expected_address <- "Calle Mu\u00f1\u00f3, \u00c1vila"
+  expected_name <- "Pe\u00f1a"
+
   local_mocked_bindings(download_url = function(
     url,
     name,
@@ -58,11 +61,12 @@ test_that("read_geo_file_sf() preserves expected address fields", {
     gpkg <- withr::local_tempfile(fileext = ".gpkg")
     sfobj <- sf::st_sf(
       id = 1,
+      address = expected_address,
       geometry = sf::st_sfc(sf::st_point(c(0, 0)), crs = 4326)
     )
     sf::st_write(sfobj, gpkg, layer = "address", quiet = TRUE)
     sf::st_write(
-      data.frame(id = 1, name = "fare"),
+      data.frame(id = 1, name = expected_name),
       gpkg,
       layer = "fare",
       quiet = TRUE
@@ -94,10 +98,12 @@ test_that("read_geo_file_sf() preserves expected address fields", {
   expect_s3_class(s, "sf")
   expect_s3_class(s, "tbl_df")
   expect_true(file.exists(fake_local))
+  expect_identical(s$address, expected_address)
 
   # But
   tb <- read_geo_file_sf(fake_local, hint = "gpkg", "fare")
   expect_s3_class(tb, c("tbl_df", "tbl", "data.frame"), exact = TRUE)
+  expect_identical(tb$name, expected_name)
 })
 
 test_that("read_geo_file_sf() warns before reading large files", {

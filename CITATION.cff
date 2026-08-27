@@ -341,7 +341,7 @@ references:
     email: hadley@posit.co
   year: '2026'
   doi: 10.32614/CRAN.package.testthat
-  version: '>= 3.0.0'
+  version: '>= 3.0.3'
 - type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'

@@ -1,10 +1,6 @@
 test_that("catr_wfs_get_buildings_bbox() validates coordinates and types", {
   local_mocked_bindings(wfs_read_bbox_query = function(x, srs, typenames, ...) {
     if (is.numeric(x) && x[[1]] < 0) {
-      cli::cli_alert_danger(c(
-        "The WFS query returned an exception for a mocked response:\n",
-        "Area of extension out of limits"
-      ))
       return(NULL)
     }
 
@@ -24,9 +20,7 @@ test_that("catr_wfs_get_buildings_bbox() validates coordinates and types", {
     sf::st_sf(id = seq_len(n), geometry = geometry)
   })
 
-  expect_snapshot(
-    fend <- catr_wfs_get_buildings_bbox(c(-20, -20, -19, -20), srs = 4326)
-  )
+  fend <- catr_wfs_get_buildings_bbox(c(-20, -20, -19, -20), srs = 4326)
   expect_null(fend)
 
   obj <- catr_wfs_get_buildings_bbox(
@@ -71,10 +65,6 @@ test_that("catr_wfs_get_buildings_rc() handles invalid cadastral references", {
     wfs_validate_srs(srs)
 
     if (nchar(query$REFCAT) < 14) {
-      cli::cli_alert_danger(c(
-        "The WFS query returned an exception for a mocked response:\n",
-        "Invalid length of REFCAT parameter"
-      ))
       return(NULL)
     }
 
@@ -85,7 +75,7 @@ test_that("catr_wfs_get_buildings_rc() handles invalid cadastral references", {
     sf::st_sf(id = 1, geometry = geometry)
   })
 
-  expect_snapshot(f <- catr_wfs_get_buildings_rc(rc = "1234"))
+  f <- catr_wfs_get_buildings_rc(rc = "1234")
   expect_null(f)
 })
 
