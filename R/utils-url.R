@@ -128,7 +128,7 @@ download_url <- function(
 #' Replace a cached file while preserving the previous version on failure
 #' @noRd
 replace_cached_file <- function(download, target) {
-  if (suppressWarnings(file.rename(download, target))) {
+  if (suppressWarnings(catr_file_rename(download, target))) {
     return(invisible(target))
   }
 
@@ -137,7 +137,7 @@ replace_cached_file <- function(download, target) {
   }
 
   backup <- tempfile(pattern = "cache-backup-", tmpdir = dirname(target))
-  if (!file.rename(target, backup)) {
+  if (!catr_file_rename(target, backup)) {
     cli::cli_abort("Could not preserve the cached file {.file {target}}.")
   }
 
@@ -145,13 +145,13 @@ replace_cached_file <- function(download, target) {
   on.exit(
     {
       if (restore_backup && file.exists(backup)) {
-        file.rename(backup, target)
+        catr_file_rename(backup, target)
       }
     },
     add = TRUE
   )
 
-  if (!file.rename(download, target)) {
+  if (!catr_file_rename(download, target)) {
     cli::cli_abort("Could not install the downloaded file {.file {target}}.")
   }
 
@@ -159,6 +159,14 @@ replace_cached_file <- function(download, target) {
   unlink(backup, force = TRUE)
   invisible(target)
 }
+
+#' Wrap `file.rename()` for testing
+#' @noRd
+# nocov start
+catr_file_rename <- function(...) {
+  file.rename(...)
+}
+# nocov end
 
 #' Get a response body from a URL
 #'

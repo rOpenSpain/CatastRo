@@ -273,6 +273,68 @@ test_that("download_url() preserves cached files after HTTP errors", {
   expect_identical(readLines(target), "cached")
 })
 
+test_that("replace_cached_file() installs and replaces downloads", {
+  cache_dir <- withr::local_tempdir(pattern = "testthat_replace_cache")
+  download <- withr::local_tempfile(lines = "new")
+  target <- file.path(cache_dir, "cached.txt")
+
+  out <- replace_cached_file(download, target)
+  expect_identical(out, target)
+  expect_identical(readLines(target), "new")
+
+  replacement <- withr::local_tempfile(lines = "replacement")
+  calls <- 0L
+  local_mocked_bindings(catr_file_rename = function(from, to) {
+    calls <<- calls + 1L
+    if (calls == 1L) {
+      return(FALSE)
+    }
+    file.rename(from, to)
+  })
+
+  out <- replace_cached_file(replacement, target)
+  expect_identical(out, target)
+  expect_identical(readLines(target), "replacement")
+  expect_identical(calls, 3L)
+})
+
+test_that("replace_cached_file() reports installation and backup failures", {
+  cache_dir <- withr::local_tempdir(pattern = "testthat_replace_failure")
+  download <- withr::local_tempfile(lines = "new")
+  missing_target <- file.path(cache_dir, "missing.txt")
+
+  local_mocked_bindings(catr_file_rename = function(...) FALSE)
+  expect_error(
+    replace_cached_file(download, missing_target),
+    class = "rlang_error"
+  )
+
+  target <- file.path(cache_dir, "cached.txt")
+  writeLines("cached", target)
+  expect_error(replace_cached_file(download, target), class = "rlang_error")
+  expect_identical(readLines(target), "cached")
+})
+
+test_that("replace_cached_file() restores the cache after install failures", {
+  cache_dir <- withr::local_tempdir(pattern = "testthat_restore_cache")
+  download <- withr::local_tempfile(lines = "new")
+  target <- file.path(cache_dir, "cached.txt")
+  writeLines("cached", target)
+
+  calls <- 0L
+  local_mocked_bindings(catr_file_rename = function(from, to) {
+    calls <<- calls + 1L
+    if (calls %in% c(1L, 3L)) {
+      return(FALSE)
+    }
+    file.rename(from, to)
+  })
+
+  expect_error(replace_cached_file(download, target), class = "rlang_error")
+  expect_identical(readLines(target), "cached")
+  expect_identical(calls, 4L)
+})
+
 test_that("download_url() reports cache retrieval errors and retries", {
   url <- "https://example.com/noexist-this-file.txt"
   cdir <- withr::local_tempdir(pattern = "testthat_ex5")
