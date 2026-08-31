@@ -7,6 +7,13 @@
   variables. The existing `catastro_timeout` and `catastro_ssl_verify`
   options still take precedence
   ([\#82](https://github.com/rOpenSpain/CatastRo/issues/82)).
+- **CatastRo** now preserves existing cached files when a refresh fails
+  and validates required query values before making a request.
+- `catr_atom_get_*()` functions now respect exact territorial office
+  matches, propagate cache refresh options and preserve the update date
+  of each ATOM entry.
+- [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md)
+  now filters results when `to` matches exactly one territorial office.
 
 ## CatastRo 1.0.2
 
