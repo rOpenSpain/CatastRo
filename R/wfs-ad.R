@@ -86,9 +86,9 @@ catr_wfs_get_address_codvia <- function(
   srs = NULL,
   verbose = FALSE
 ) {
-  codvia <- validate_non_empty_arg(codvia)
-  del <- validate_non_empty_arg(del)
-  mun <- validate_non_empty_arg(mun)
+  codvia <- validate_scalar_arg(codvia)
+  del <- validate_scalar_arg(del)
+  mun <- validate_scalar_arg(mun)
   srs <- ensure_null(srs)
 
   q <- list(
@@ -116,7 +116,7 @@ catr_wfs_get_address_codvia <- function(
 #' @rdname catr_wfs_get_address
 #' @export
 catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
-  rc <- validate_non_empty_arg(rc)
+  rc <- validate_scalar_arg(rc)
   srs <- ensure_null(srs)
 
   q <- list(
@@ -161,7 +161,7 @@ catr_wfs_get_address_postalcode <- function(
   srs = NULL,
   verbose = FALSE
 ) {
-  postalcode <- validate_non_empty_arg(postalcode)
+  postalcode <- validate_scalar_arg(postalcode)
   srs <- ensure_null(srs)
 
   q <- list(

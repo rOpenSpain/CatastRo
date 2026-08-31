@@ -122,11 +122,50 @@ ensure_null <- function(x) {
   x_init
 }
 
-validate_non_empty_arg <- function(arg, call = parent.frame(1)) {
-  arg_name <- as.character(substitute(arg)) # nolint
-
+validate_non_empty_arg <- function(
+  arg,
+  call = parent.frame(1),
+  arg_name = as.character(substitute(arg))
+) {
   if (missing(arg)) {
     cli::cli_abort("{.arg {arg_name}} cannot be missing.", call = call)
+  }
+
+  is_empty <- is.null(arg) ||
+    length(arg) == 0L ||
+    (is.atomic(arg) && anyNA(arg)) ||
+    (is.character(arg) && !all(nzchar(trimws(arg))))
+
+  if (is_empty) {
+    cli::cli_abort("{.arg {arg_name}} cannot be empty.", call = call)
+  }
+
+  arg
+}
+
+validate_scalar_arg <- function(arg, call = parent.frame(1)) {
+  arg_name <- as.character(substitute(arg)) # nolint
+  arg <- validate_non_empty_arg(arg, call = call, arg_name = arg_name)
+
+  if (!((is.character(arg) || is.numeric(arg)) && length(arg) == 1L)) {
+    cli::cli_abort(
+      "{.arg {arg_name}} must be a single string or number.",
+      call = call
+    )
+  }
+
+  arg
+}
+
+validate_coordinate_arg <- function(arg, call = parent.frame(1)) {
+  arg_name <- as.character(substitute(arg)) # nolint
+  arg <- validate_non_empty_arg(arg, call = call, arg_name = arg_name)
+
+  if (!(is.numeric(arg) && length(arg) == 1L && is.finite(arg))) {
+    cli::cli_abort(
+      "{.arg {arg_name}} must be a single finite number.",
+      call = call
+    )
   }
 
   arg
@@ -149,11 +188,11 @@ validate_vector_with_srs <- function(
   expected_length,
   call = parent.frame()
 ) {
-  if (length(x) != expected_length) {
+  if (!is.numeric(x) || length(x) != expected_length || !all(is.finite(x))) {
     cli::cli_abort(
       paste0(
-        "{.arg x} must have length {.val {expected_length}}, not ",
-        "{.val {length(x)}}."
+        "{.arg x} must be a finite numeric vector of length ",
+        "{.val {expected_length}}."
       ),
       call = call
     )

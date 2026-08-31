@@ -58,7 +58,7 @@
       df <- catr_get_code_from_coords(c(0, 0, 0))
     Condition
       Error in `catr_get_code_from_coords()`:
-      ! `x` must have length 2, not 3.
+      ! `x` must be a finite numeric vector of length 2.
 
 ---
 

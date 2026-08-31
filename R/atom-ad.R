@@ -59,8 +59,11 @@ catr_atom_get_address <- function(
 ) {
   warn_deprecated_cache(cache, "CatastRo::catr_atom_get_address(cache)")
 
-  munic <- validate_non_empty_arg(munic)
+  munic <- validate_scalar_arg(munic)
   to <- ensure_null(to)
+  if (!is.null(to)) {
+    to <- validate_scalar_arg(to)
+  }
 
   all <- catr_atom_get_address_db_all(
     update_cache = update_cache,

@@ -60,7 +60,7 @@ catr_ovc_get_cpmrc <- function(
   verbose = FALSE
 ) {
   # Validate arguments.
-  rc <- validate_non_empty_arg(rc)
+  rc <- validate_scalar_arg(rc)
 
   srs <- ovc_validate_srs(srs)
 
@@ -73,6 +73,12 @@ catr_ovc_get_cpmrc <- function(
   # Normalize missing optional parameters.
   province <- ensure_null(province)
   municipality <- ensure_null(municipality)
+  if (!is.null(province)) {
+    province <- validate_scalar_arg(province)
+  }
+  if (!is.null(municipality)) {
+    municipality <- validate_scalar_arg(municipality)
+  }
 
   api_entry <- httr2::url_modify_query(
     api_entry,

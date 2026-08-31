@@ -43,8 +43,11 @@ catr_atom_get_parcels <- function(
 
   # Validate arguments.
   what <- match_arg_pretty(what)
-  munic <- validate_non_empty_arg(munic)
+  munic <- validate_scalar_arg(munic)
   to <- ensure_null(to)
+  if (!is.null(to)) {
+    to <- validate_scalar_arg(to)
+  }
 
   all <- catr_atom_get_parcels_db_all(
     update_cache = update_cache,

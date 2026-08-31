@@ -33,7 +33,7 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
     tbl_all <- lapply(feed, function(x) {
       title <- unlist(x$title)
       url <- unlist(attr(x$link, "href"))
-      date <- as.POSIXct(unlist(feed[1]$entry$updated))
+      date <- as.POSIXct(unlist(x$updated), tz = "UTC")
       value <- unlist(x$content$div$div)
 
       # Remove whitespace and keep numeric values.
@@ -53,7 +53,7 @@ catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {
     tbl_all <- lapply(feed, function(x) {
       title <- unlist(x$title)
       url <- unlist(attr(x$link, "href"))
-      date <- as.POSIXct(unlist(feed[1]$entry$updated))
+      date <- as.POSIXct(unlist(x$updated), tz = "UTC")
 
       tbl <- dplyr::tibble(
         title = trimws(title),
@@ -107,7 +107,11 @@ catr_atom_read_db_to <- function(
   cache_dir = NULL,
   verbose = FALSE
 ) {
-  all <- all_fn(cache_dir = cache_dir)
+  all <- all_fn(
+    update_cache = update_cache,
+    cache_dir = cache_dir,
+    verbose = verbose
+  )
 
   if (is.null(all)) {
     return(NULL)
@@ -189,8 +193,8 @@ catr_atom_select_munic <- function(
   if (!is.null(to)) {
     linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
 
-    # Filter by territorial office when multiple matches are found.
-    if (length(linesto) > 1) {
+    # Filter by territorial office when matches are found.
+    if (length(linesto) > 0L) {
       all <- all[linesto, ]
     } else {
       if (verbose) {

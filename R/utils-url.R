@@ -95,10 +95,12 @@ download_url <- function(
     req <- httr2::req_progress(req)
   }
 
+  file_download <- tempfile(pattern = "download-", tmpdir = cache_dir)
+  on.exit(unlink(file_download, force = TRUE), add = TRUE)
+
   resp <- tryCatch(
-    catr_req_perform(req, path = file_local),
+    catr_req_perform(req, path = file_download),
     httr2_failure = function(cnd) {
-      unlink(file_local, force = TRUE)
       report_request_failure(cnd, "download")
       NULL
     }
@@ -108,7 +110,6 @@ download_url <- function(
   }
 
   if (httr2::resp_is_error(resp)) {
-    unlink(file_local, force = TRUE)
     report_http_error(
       url,
       httr2::resp_status(resp),
@@ -117,10 +118,46 @@ download_url <- function(
     cli::cli_inform("Returning {.val NULL} because the download failed.")
     return(NULL)
   }
+  replace_cached_file(file_download, file_local)
   msg <- paste0("Downloaded file to {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
 
   file_local
+}
+
+#' Replace a cached file while preserving the previous version on failure
+#' @noRd
+replace_cached_file <- function(download, target) {
+  if (suppressWarnings(file.rename(download, target))) {
+    return(invisible(target))
+  }
+
+  if (!file.exists(target)) {
+    cli::cli_abort("Could not install the downloaded file {.file {target}}.")
+  }
+
+  backup <- tempfile(pattern = "cache-backup-", tmpdir = dirname(target))
+  if (!file.rename(target, backup)) {
+    cli::cli_abort("Could not preserve the cached file {.file {target}}.")
+  }
+
+  restore_backup <- TRUE
+  on.exit(
+    {
+      if (restore_backup && file.exists(backup)) {
+        file.rename(backup, target)
+      }
+    },
+    add = TRUE
+  )
+
+  if (!file.rename(download, target)) {
+    cli::cli_abort("Could not install the downloaded file {.file {target}}.")
+  }
+
+  restore_backup <- FALSE
+  unlink(backup, force = TRUE)
+  invisible(target)
 }
 
 #' Get a response body from a URL

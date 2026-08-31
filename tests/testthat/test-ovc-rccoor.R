@@ -32,6 +32,17 @@ test_that("catr_ovc_get_rccoor() rejects an unsupported SRS", {
   )
 })
 
+test_that("catr_ovc_get_rccoor() rejects malformed coordinates", {
+  expect_error(
+    catr_ovc_get_rccoor(lat = c(1, 2), lon = 1),
+    class = "rlang_error"
+  )
+  expect_error(
+    catr_ovc_get_rccoor(lat = 1, lon = Inf),
+    class = "rlang_error"
+  )
+})
+
 test_that("catr_ovc_get_rccoor() returns a tibble with an explicit SRS", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(

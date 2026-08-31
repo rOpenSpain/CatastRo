@@ -40,8 +40,8 @@ catr_ovc_get_rccoor_distancia <- function(
   verbose = FALSE
 ) {
   # Validate arguments.
-  lat <- validate_non_empty_arg(lat)
-  lon <- validate_non_empty_arg(lon)
+  lat <- validate_coordinate_arg(lat)
+  lon <- validate_coordinate_arg(lon)
 
   srs <- ovc_validate_srs(srs)
 

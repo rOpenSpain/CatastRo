@@ -29,8 +29,11 @@ catr_atom_search_munic <- function(
 ) {
   warn_deprecated_cache(cache, "CatastRo::catr_atom_search_munic(cache)")
 
-  munic <- validate_non_empty_arg(munic)
+  munic <- validate_scalar_arg(munic)
   to <- ensure_null(to)
+  if (!is.null(to)) {
+    to <- validate_scalar_arg(to)
+  }
 
   all <- catr_atom_get_address_db_all(
     update_cache = update_cache,
@@ -45,7 +48,7 @@ catr_atom_search_munic <- function(
     linesto <- grep(to, all$territorial_office, ignore.case = TRUE)
 
     # Filter by territorial office if matches are found.
-    if (length(linesto) > 1) {
+    if (length(linesto) > 0L) {
       all <- all[linesto, ]
     } else {
       if (verbose) {

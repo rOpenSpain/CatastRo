@@ -69,3 +69,29 @@ test_that("catr_atom_search_munic() warns about deprecated arguments", {
     a <- catr_atom_search_munic("Mad", cache_dir = cdir, cache = TRUE)
   )
 })
+
+test_that("catr_atom_search_munic() filters one exact office match", {
+  local_mocked_bindings(catr_atom_get_address_db_all = function(...) {
+    dplyr::tibble(
+      territorial_office = c("Segovia", "Madrid"),
+      munic = c("40146-MELQUE", "28079-MADRID")
+    )
+  })
+
+  expect_message(
+    out <- catr_atom_search_munic("MADRID", to = "Segovia"),
+    "No municipality matched"
+  )
+  expect_null(out)
+})
+
+test_that("catr_atom_search_munic() rejects nonscalar search values", {
+  expect_error(
+    catr_atom_search_munic(c("Madrid", "Segovia")),
+    class = "rlang_error"
+  )
+  expect_error(
+    catr_atom_search_munic("Madrid", to = TRUE),
+    class = "rlang_error"
+  )
+})

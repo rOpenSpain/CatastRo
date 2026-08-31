@@ -209,6 +209,68 @@ test_that("download_url() reuses and refreshes cached files", {
     "Refreshing cached file"
   )
   expect_equal(req_perform_calls, 4)
+  expect_identical(readLines(fend), "ok-4")
+})
+
+test_that("download_url() preserves cached files after transport failures", {
+  url <- "https://example.com/cached.txt"
+  cdir <- withr::local_tempdir(pattern = "testthat_preserve_cache")
+  target_dir <- file.path(cdir, "fixme")
+  dir.create(target_dir)
+  target <- file.path(target_dir, basename(url))
+  writeLines("cached", target)
+
+  fail <- function() {
+    cli::cli_abort(
+      "Mock transport failure.",
+      class = "httr2_failure",
+      call = NULL
+    )
+  }
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(req, path = NULL, ...) {
+      if (is.null(path)) {
+        return(httr2::response(status_code = 200))
+      }
+      writeLines("partial", path)
+      fail()
+    }
+  )
+
+  expect_message(
+    out <- download_url(url, cache_dir = cdir, update_cache = TRUE),
+    "could not be completed"
+  )
+  expect_null(out)
+  expect_identical(readLines(target), "cached")
+})
+
+test_that("download_url() preserves cached files after HTTP errors", {
+  url <- "https://example.com/cached.txt"
+  cdir <- withr::local_tempdir(pattern = "testthat_preserve_cache")
+  target_dir <- file.path(cdir, "fixme")
+  dir.create(target_dir)
+  target <- file.path(target_dir, basename(url))
+  writeLines("cached", target)
+
+  local_mocked_bindings(
+    is_online_fun = function(...) TRUE,
+    catr_req_perform = function(req, path = NULL, ...) {
+      if (is.null(path)) {
+        return(httr2::response(status_code = 200))
+      }
+      writeLines("not found", path)
+      httr2::response(status_code = 404)
+    }
+  )
+
+  expect_message(
+    out <- download_url(url, cache_dir = cdir, update_cache = TRUE),
+    "HTTP error"
+  )
+  expect_null(out)
+  expect_identical(readLines(target), "cached")
 })
 
 test_that("download_url() reports cache retrieval errors and retries", {

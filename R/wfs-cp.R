@@ -66,7 +66,7 @@ catr_wfs_get_parcels_bbox <- function(
 #' @export
 catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
   # Validate arguments.
-  cod_zona <- validate_non_empty_arg(cod_zona)
+  cod_zona <- validate_scalar_arg(cod_zona)
   srs <- ensure_null(srs)
 
   q <- list(
@@ -92,7 +92,7 @@ catr_wfs_get_parcels_zoning <- function(cod_zona, srs = NULL, verbose = FALSE) {
 #' @export
 catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
   # Validate arguments.
-  rc <- validate_non_empty_arg(rc)
+  rc <- validate_scalar_arg(rc)
   srs <- ensure_null(srs)
 
   q <- list(
@@ -118,7 +118,7 @@ catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #' @export
 catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
   # Validate arguments.
-  rc <- validate_non_empty_arg(rc)
+  rc <- validate_scalar_arg(rc)
   srs <- ensure_null(srs)
 
   q <- list(
@@ -162,7 +162,7 @@ catr_wfs_get_parcels_parcel_zoning <- function(
   verbose = FALSE
 ) {
   # Validate arguments.
-  cod_zona <- validate_non_empty_arg(cod_zona)
+  cod_zona <- validate_scalar_arg(cod_zona)
   srs <- ensure_null(srs)
 
   q <- list(

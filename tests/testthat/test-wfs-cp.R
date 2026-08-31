@@ -18,6 +18,17 @@ test_that("catr_wfs_get_parcels_bbox() rejects invalid coordinates", {
   expect_null(s)
 })
 
+test_that("parcel stored queries reject nonscalar identifiers", {
+  expect_error(
+    catr_wfs_get_parcels_parcel(c("one", "two")),
+    class = "rlang_error"
+  )
+  expect_error(
+    catr_wfs_get_parcels_zoning(TRUE),
+    class = "rlang_error"
+  )
+})
+
 test_that("catr_wfs_get_parcels_bbox() preserves requested projections", {
   local_mocked_bindings(wfs_read_bbox_query = function(x, srs, typenames, ...) {
     crs <- srs

@@ -4,7 +4,7 @@
       wfs_get_bbox(c(1, 2))
     Condition
       Error in `wfs_get_bbox()`:
-      ! `x` must have length 4, not 2.
+      ! `x` must be a finite numeric vector of length 4.
 
 ---
 

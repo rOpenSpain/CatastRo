@@ -60,9 +60,15 @@ catr_ovc_get_cod_munic <- function(
   cmun_ine = NULL,
   verbose = FALSE
 ) {
-  cpro <- validate_non_empty_arg(cpro)
+  cpro <- validate_scalar_arg(cpro)
   cmun <- ensure_null(cmun)
   cmun_ine <- ensure_null(cmun_ine)
+  if (!is.null(cmun)) {
+    cmun <- validate_scalar_arg(cmun)
+  }
+  if (!is.null(cmun_ine)) {
+    cmun_ine <- validate_scalar_arg(cmun_ine)
+  }
 
   munis <- c(cmun, cmun_ine)
 

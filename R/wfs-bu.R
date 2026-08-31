@@ -84,7 +84,7 @@ catr_wfs_get_buildings_rc <- function(
   verbose = FALSE
 ) {
   # Validate arguments.
-  rc <- validate_non_empty_arg(rc)
+  rc <- validate_scalar_arg(rc)
   srs <- ensure_null(srs)
   what <- match_arg_pretty(what)
 

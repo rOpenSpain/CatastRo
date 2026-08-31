@@ -88,6 +88,33 @@ test_that("validate_non_empty_arg() rejects missing arguments", {
   expect_snapshot(error = TRUE, a_fun())
   expect_snapshot(error = TRUE, a_fun(a = 1))
   expect_identical(a_fun(a = 1, b = 1), c(1, 1))
+
+  expect_error(validate_non_empty_arg(NULL), class = "rlang_error")
+  expect_error(validate_non_empty_arg(NA), class = "rlang_error")
+  expect_error(validate_non_empty_arg("  "), class = "rlang_error")
+})
+
+test_that("scalar and coordinate validators reject malformed values", {
+  expect_identical(validate_scalar_arg("abc"), "abc")
+  expect_identical(validate_scalar_arg(123), 123)
+  expect_identical(validate_coordinate_arg(1.5), 1.5)
+
+  expect_error(validate_scalar_arg(c("a", "b")), class = "rlang_error")
+  expect_error(validate_scalar_arg(TRUE), class = "rlang_error")
+  expect_error(validate_coordinate_arg("1.5"), class = "rlang_error")
+  expect_error(validate_coordinate_arg(Inf), class = "rlang_error")
+})
+
+test_that("validate_vector_with_srs() requires finite numeric coordinates", {
+  expect_silent(validate_vector_with_srs(c(1, 2), 4326, 2L))
+  expect_error(
+    validate_vector_with_srs(c("1", "2"), 4326, 2L),
+    class = "rlang_error"
+  )
+  expect_error(
+    validate_vector_with_srs(c(1, Inf), 4326, 2L),
+    class = "rlang_error"
+  )
 })
 test_that("cli_abort_if_not() validates scalar conditions and caller context", {
   expect_silent(cli_abort_if_not("Condition fails." = TRUE))
