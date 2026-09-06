@@ -32,7 +32,7 @@
         request = "getfeature", Typenames = "BU.BUILDING", SRSname = 25829, bbox = "742438,4046840,742613,4046970"))
     Message
       x No internet connection detected.
-      Returning "NULL" because the request cannot run.
+      Returning `NULL` because the request cannot run.
 
 # inspire_wfs_get() rejects invalid query lists
 

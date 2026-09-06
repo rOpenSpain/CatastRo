@@ -25,7 +25,7 @@ test_that("catr_wfs_get_address_bbox() validates bounding-box coordinates", {
 
   expect_equal(sf::st_crs(obj)$epsg, 25829)
 
-  # Convert to spatial object
+  # Convert to a spatial object.
   bbox <- c(760926, 4019259, 761155, 4019366)
   class(bbox) <- "bbox"
   bbox <- bbox |>

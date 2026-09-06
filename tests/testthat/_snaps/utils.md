@@ -177,3 +177,28 @@
       Error in `test_msg()`:
       ! `verbose` must be `TRUE` or `FALSE`.
 
+# match_arg_pretty() treats braces in values as literal text
+
+    Code
+      match_arg_pretty("{missing}", c("a", "b"))
+    Condition
+      Error:
+      ! `{missing}` must be one of "a" or "b", not "{missing}".
+
+---
+
+    Code
+      match_arg_pretty("x", c("{one}", "{two}"))
+    Condition
+      Error:
+      ! `x` must be one of "{one}" or "{two}", not "x".
+
+---
+
+    Code
+      match_arg_pretty("{on", c("{one}", "{two}"))
+    Condition
+      Error:
+      ! `{on` must be one of "{one}" or "{two}", not "{on".
+      i Did you mean "{one}"?
+

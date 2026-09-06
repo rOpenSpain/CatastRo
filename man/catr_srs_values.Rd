@@ -75,6 +75,9 @@ catr_srs_values |>
 }
 }
 \seealso{
-\code{\link[sf:st_crs]{sf::st_crs()}}.
+\code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}} and \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}} accept SRS codes
+listed in the \code{ovc_service} column. \code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}} accepts
+codes listed in the \code{wfs_service} column. \code{\link[sf:st_crs]{sf::st_crs()}} inspects the
+corresponding coordinate reference system.
 }
 \keyword{datasets}

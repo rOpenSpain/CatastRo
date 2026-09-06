@@ -51,7 +51,7 @@ test_that("catr_wfs_get_parcels_bbox() preserves requested projections", {
 
   expect_equal(sf::st_crs(obj)$epsg, 25829)
 
-  # Convert to spatial object
+  # Convert to a spatial object.
   obj2 <- sf::st_transform(obj, 4326)
   obj2 <- catr_wfs_get_parcels_bbox(obj2)
   expect_equal(sf::st_crs(obj2)$epsg, 4326)

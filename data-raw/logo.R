@@ -2,15 +2,15 @@ library(CatastRo)
 library(sf)
 library(dplyr)
 
-# Use Segovia
+# Use Segovia for the logo.
 
-# Coord Plaza del Azoguejo: To Point
+# Convert the coordinates of Plaza del Azoguejo to a point.
 
 top <- st_point(c(-4.118115, 40.9478688)) |>
   st_sfc(crs = 4326) |>
   st_transform(st_crs(25830))
 
-# Create spatial hexagon
+# Create a spatial hexagon.
 hex <- function(x, center, size) {
   angle_deg <- 60 * x - 30
   angle_rad <- pi / 180 * angle_deg
@@ -22,10 +22,10 @@ hex <- function(x, center, size) {
 hex_pol <- lapply(
   1:7,
   hex,
-  center = st_coordinates(top), # Center coords
-  size = 500 # Side lenght (meters)
+  center = st_coordinates(top), # Center coordinates
+  size = 500 # Side length (meters)
 ) |>
-  # Convert to spatial polygon
+  # Convert to a spatial polygon.
   unlist() |>
   matrix(ncol = 2, byrow = TRUE) |>
   list() |>
@@ -33,7 +33,7 @@ hex_pol <- lapply(
   st_sfc() |>
   st_set_crs(st_crs(top))
 
-# Get Segovia
+# Get buildings in Segovia.
 segovia <- catr_atom_get_buildings("40900")
 
 finalpols <- st_intersection(segovia, hex_pol)

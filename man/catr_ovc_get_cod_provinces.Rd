@@ -30,6 +30,9 @@ catr_ovc_get_cod_provinces()
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia}.
 }
 \seealso{
+\code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}} uses a province code as \code{cpro} to look up
+municipality codes.
+
 Search for cadastral identifiers:
 \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},
 \code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},

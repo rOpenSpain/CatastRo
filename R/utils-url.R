@@ -9,9 +9,9 @@
 #'
 #' @return A character string containing the downloaded file path. Returns
 #'   `NULL` if the download fails.
-#' @encoding UTF-8
 #'
 #' @noRd
+#' @encoding UTF-8
 download_url <- function(
   url = NULL,
   name = basename(url),
@@ -27,7 +27,7 @@ download_url <- function(
   file_local <- file.path(cache_dir, name)
   file_local <- gsub("//", "/", file_local, fixed = TRUE)
 
-  msg <- paste0("Using cache directory {.path ", cache_dir, "}.")
+  msg <- "Using cache directory {.path {cache_dir}}."
   make_msg("info", verbose, msg)
 
   # Check whether the file already exists.
@@ -35,7 +35,7 @@ download_url <- function(
 
   # Return the cached file unless a refresh is requested.
   if (isFALSE(update_cache) && fileoncache) {
-    msg <- paste0("Using cached file {.file ", file_local, "}.")
+    msg <- "Using cached file {.file {file_local}}."
     make_msg("success", verbose, msg)
 
     return(file_local)
@@ -45,7 +45,7 @@ download_url <- function(
     make_msg("warning", verbose, "Refreshing cached file.")
   }
 
-  msg <- paste0("Downloading {.url ", url, "}.")
+  msg <- "Downloading {.url {url}}."
   make_msg("info", verbose, msg)
 
   req <- httr2::request(url)
@@ -61,7 +61,7 @@ download_url <- function(
 
   if (!is_online_fun()) {
     cli::cli_alert_danger("No internet connection detected.")
-    cli::cli_inform("Returning {.val NULL} because the request cannot run.")
+    cli::cli_inform("Returning {.code NULL} because the request cannot run.")
     return(NULL)
   }
 
@@ -69,7 +69,7 @@ download_url <- function(
   test_offline <- is_404()
   if (test_offline) {
     report_http_error(url)
-    cli::cli_inform("Returning {.val NULL} because the download failed.")
+    cli::cli_inform("Returning {.code NULL} because the download failed.")
     return(NULL)
   }
 
@@ -115,11 +115,11 @@ download_url <- function(
       httr2::resp_status(resp),
       httr2::resp_status_desc(resp)
     )
-    cli::cli_inform("Returning {.val NULL} because the download failed.")
+    cli::cli_inform("Returning {.code NULL} because the download failed.")
     return(NULL)
   }
   replace_cached_file(file_download, file_local)
-  msg <- paste0("Downloaded file to {.file ", file_local, "}.")
+  msg <- "Downloaded file to {.file {file_local}}."
   make_msg("success", verbose, msg)
 
   file_local
@@ -178,7 +178,7 @@ catr_file_rename <- function(...) {
 #'
 #' @noRd
 get_request_body <- function(url, verbose = TRUE) {
-  msg <- paste0("Requesting {.url ", url, "}.")
+  msg <- "Requesting {.url {url}}."
   make_msg("info", verbose, msg)
 
   req <- httr2::request(url)
@@ -194,7 +194,7 @@ get_request_body <- function(url, verbose = TRUE) {
 
   if (!is_online_fun()) {
     cli::cli_alert_danger("No internet connection detected.")
-    cli::cli_inform("Returning {.val NULL} because the request cannot run.")
+    cli::cli_inform("Returning {.code NULL} because the request cannot run.")
     return(NULL)
   }
 
@@ -202,7 +202,7 @@ get_request_body <- function(url, verbose = TRUE) {
   test_offline <- is_404()
   if (test_offline) {
     report_http_error(url)
-    cli::cli_inform("Returning {.val NULL} because the request failed.")
+    cli::cli_inform("Returning {.code NULL} because the request failed.")
     return(NULL)
   }
 
@@ -220,7 +220,7 @@ get_request_body <- function(url, verbose = TRUE) {
       httr2::resp_status(resp),
       httr2::resp_status_desc(resp)
     )
-    cli::cli_inform("Returning {.val NULL} because the request failed.")
+    cli::cli_inform("Returning {.code NULL} because the request failed.")
     return(NULL)
   }
 
@@ -314,5 +314,5 @@ report_request_failure <- function(cnd, type) {
     " could not be completed."
   ))
   cli::cli_alert_warning("{conditionMessage(cnd)}")
-  cli::cli_inform("Returning {.val NULL} because the {type} failed.")
+  cli::cli_inform("Returning {.code NULL} because the {type} failed.")
 }

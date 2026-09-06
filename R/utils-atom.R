@@ -147,9 +147,9 @@ catr_atom_read_db_to <- function(
     cli::cli_alert_success("Using the closest match {.str {tb[1]}}.")
     cli::cli_alert_info("Other matches:")
     bullets <- tb[-1]
-    bullets <- paste0("{.str ", bullets, "}")
-    names(bullets) <- rep(" ", length(bullets))
-    cli::cli_bullets(bullets)
+    bullet_text <- paste0("{.str {bullets[", seq_along(bullets), "]}}")
+    names(bullet_text) <- rep(" ", length(bullet_text))
+    cli::cli_bullets(bullet_text)
 
     tb <- tb[1]
   }
@@ -157,7 +157,7 @@ catr_atom_read_db_to <- function(
   make_msg(
     "info",
     verbose,
-    paste0("Retrieving information for {.str ", tb, "}.")
+    "Retrieving information for {.str {tb}}."
   )
 
   api_entry <- as.character(alldist[alldist$territorial_office == tb, "url"])
@@ -236,9 +236,9 @@ catr_atom_select_munic <- function(
     cli::cli_alert_success("Using the closest match {.str {tb[1,]$munic}}.")
     cli::cli_alert_info("Other matches:")
     bullets <- tb[-1, ]$munic
-    bullets <- paste0("{.str ", bullets, "}")
-    names(bullets) <- rep(" ", length(bullets))
-    cli::cli_bullets(bullets)
+    bullet_text <- paste0("{.str {bullets[", seq_along(bullets), "]}}")
+    names(bullet_text) <- rep(" ", length(bullet_text))
+    cli::cli_bullets(bullet_text)
 
     tb <- tb[1, ]
   }
@@ -246,7 +246,7 @@ catr_atom_select_munic <- function(
   make_msg(
     "info",
     verbose,
-    paste0("Retrieving information for {.str ", tb$munic, "}.")
+    "Retrieving information for {.str {tb$munic}}."
   )
 
   tb

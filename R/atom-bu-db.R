@@ -7,14 +7,15 @@
 #' `r atom_db_details("buildings")`
 #'
 #' @inheritParams catr_atom_get_address_db_all
+#'
 #' @inherit catr_atom_get_address_db_all return
+#'
 #' @source
 #' <https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml>
 #'
 #' @family buildings
 #' @family atom_services
 #' @rdname catr_atom_get_buildings_db
-#'
 #' @export
 #' @encoding UTF-8
 #'

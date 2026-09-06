@@ -43,7 +43,7 @@ INSPIRE service. The result also contains the corresponding
 street information in fields prefixed with \verb{tfname_*}.
 }
 \examples{
-\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example() && requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 \donttest{
 s <- catr_atom_get_address("Melque", to = "Segovia")
 

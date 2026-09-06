@@ -4,7 +4,7 @@
       fend <- catr_ovc_get_cod_munic(4, 5)
     Message
       x No internet connection detected.
-      Returning "NULL" because the request cannot run.
+      Returning `NULL` because the request cannot run.
 
 # catr_ovc_get_cod_munic() returns NULL after an HTTP 404
 
@@ -13,7 +13,7 @@
     Message
       x HTTP error 404 (Not Found): <http://ovc.catastro.meh.es/ovcservweb//ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaMunicipioCodigos?%2FCodigoProvincia=&CodigoProvincia=4&CodigoMunicipio=5&CodigoMunicipioIne=>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      Returning "NULL" because the request failed.
+      Returning `NULL` because the request failed.
 
 # catr_ovc_get_cod_munic() returns matching municipality codes
 
@@ -21,7 +21,7 @@
       df <- catr_ovc_get_cod_munic(2)
     Condition
       Error in `catr_ovc_get_cod_munic()`:
-      ! Provide a non-"NULL" value for either `cmun` or `cmun_ine`.
+      ! Provide a non-`NULL` value for either `cmun` or `cmun_ine`.
 
 ---
 

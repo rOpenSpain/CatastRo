@@ -5,7 +5,7 @@
         verbose = FALSE)
     Message
       x No internet connection detected.
-      Returning "NULL" because the request cannot run.
+      Returning `NULL` because the request cannot run.
 
 # download_url() removes partial files after HTTP errors
 
@@ -14,7 +14,7 @@
     Message
       x HTTP error 404 (Not Found): <https://example.com/http-error.txt>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      Returning "NULL" because the download failed.
+      Returning `NULL` because the download failed.
 
 # download_url() removes partial files after transport failures
 
@@ -23,7 +23,7 @@
     Message
       x The download request could not be completed.
       ! Mock transport failure.
-      Returning "NULL" because the download failed.
+      Returning `NULL` because the download failed.
 
 ---
 
@@ -32,7 +32,7 @@
     Message
       x The download request could not be completed.
       ! Mock transport failure.
-      Returning "NULL" because the download failed.
+      Returning `NULL` because the download failed.
 
 # get_request_body() returns NULL when offline
 
@@ -40,7 +40,7 @@
       fend <- get_request_body(url, verbose = FALSE)
     Message
       x No internet connection detected.
-      Returning "NULL" because the request cannot run.
+      Returning `NULL` because the request cannot run.
 
 # get_request_body() returns NULL after a simulated HTTP 404
 
@@ -49,7 +49,7 @@
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      Returning "NULL" because the request failed.
+      Returning `NULL` because the request failed.
 
 # get_request_body() returns NULL after transport failures
 
@@ -58,5 +58,14 @@
     Message
       x The request could not be completed.
       ! Mock transport failure.
-      Returning "NULL" because the request failed.
+      Returning `NULL` because the request failed.
+
+# get_request_body() reports literal braces in URLs
+
+    Code
+      out <- get_request_body("https://example.com/{resource}", verbose = TRUE)
+    Message
+      i Requesting <https://example.com/{resource}>.
+      x No internet connection detected.
+      Returning `NULL` because the request cannot run.
 

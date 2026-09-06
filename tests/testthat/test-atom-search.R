@@ -29,7 +29,7 @@ test_that("catr_atom_search_munic() ranks matching municipalities", {
   a <- catr_atom_search_munic("Mad", cache_dir = cdir)
   expect_gt(nrow(a), 1)
 
-  # Try with to
+  # Try with `to`.
   b <- catr_atom_search_munic("Mad", to = 3, cache_dir = cdir)
 
   expect_s3_class(a, "tbl_df")
@@ -37,7 +37,7 @@ test_that("catr_atom_search_munic() ranks matching municipalities", {
   expect_match(a$catrcode, "^[0-9]{5}$")
   expect_gt(nrow(a), nrow(b))
 
-  # Try with no result
+  # Try a query with no results.
 
   expect_snapshot(c <- catr_atom_search_munic("XXX", cache_dir = cdir))
   expect_null(c)

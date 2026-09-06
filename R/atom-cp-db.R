@@ -7,7 +7,9 @@
 #' `r atom_db_details("parcels")`
 #'
 #' @inheritParams catr_atom_get_address_db_all
+#'
 #' @inherit catr_atom_get_address_db_all return
+#'
 #' @source
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(
@@ -19,7 +21,6 @@
 #' @family parcels
 #' @family atom_services
 #' @rdname catr_atom_get_parcels_db
-#'
 #' @export
 #' @encoding UTF-8
 #'

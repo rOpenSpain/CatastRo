@@ -4,7 +4,8 @@
 #' Query the OVCCoordenadas
 #' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`) service to retrieve
 #' cadastral references near a pair of coordinates. If no exact match is found,
-#' the API searches within 50 square meters of the requested coordinates.
+#' the API searches a square with sides of 50 meters, centered on the requested
+#' coordinates.
 #'
 #' @details
 #' `r ovc_coordinate_details(include_ine = TRUE)`
@@ -13,18 +14,26 @@
 #'   `srs`.
 #' @param lon Longitude for the query, expressed in the SRS/CRS defined by
 #'   `srs`.
-#'
 #' @inheritParams catr_ovc_get_cpmrc
-#' @inherit catr_ovc_get_cpmrc return seealso
+#'
+#' @inherit catr_ovc_get_cpmrc return
 #'
 #' @references
 #' [Consulta RCCOOR Distancia](`r ovcurl("RCCOORD")`).
 #'
+#' @inherit catr_ovc_get_cpmrc seealso
+#'
+#' @seealso
+#' [catr_ovc_get_rccoor()] looks up the cadastral reference at the exact
+#' coordinates.
+#' [catr_wfs_get_parcels_parcel()] retrieves parcel geometries using the
+#' returned cadastral references.
+#'
 #' @family cadastral_references
 #' @family ovc_services
-#'
 #' @export
 #' @encoding UTF-8
+#'
 #' @examplesIf run_example()
 #' \donttest{
 #' catr_ovc_get_rccoor_distancia(

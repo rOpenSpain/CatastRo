@@ -97,9 +97,7 @@ catr_set_cache_dir(my_cache)
 identical(my_cache, catr_detect_cache_dir())
 }
 
-
 catr_detect_cache_dir()
-
 }
 \seealso{
 \code{\link[tools:R_user_dir]{tools::R_user_dir()}} defines platform-specific user directories.

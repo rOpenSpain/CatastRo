@@ -18,7 +18,7 @@ catr_get_code_from_coords(
 \itemize{
 \item A pair of coordinates \code{c(x, y)}. In this case the \code{srs} of the
 coordinates must be provided.
-\item A \code{\link[sf:st_sf]{sf}} object. If the object has several geometries, only
+\item An \code{\link[sf:st_sf]{sf}} object. If the object has several geometries, only
 the first geometry is used. This function extracts coordinates using
 \code{sf::st_centroid(x, of_largest_polygon = TRUE)}.
 }}

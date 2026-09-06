@@ -85,3 +85,39 @@ test_that("catr_atom_select_munic() respects one exact office match", {
   expect_identical(out$territorial_office, "Segovia")
   expect_identical(out$munic, "40146-MELQUE")
 })
+
+test_that("catr_atom_select_munic() reports literal braces in matches", {
+  all <- dplyr::tibble(
+    territorial_office = c("Office", "Office"),
+    munic = c("Town {one}", "Town {two}")
+  )
+
+  expect_snapshot(
+    out <- catr_atom_select_munic(
+      all,
+      munic = "Town",
+      db_all_call = "catr_atom_get_address_db_all",
+      verbose = TRUE
+    )
+  )
+  expect_identical(out$munic, "Town {one}")
+})
+
+test_that("catr_atom_read_db_to() reports literal braces in office names", {
+  all_fn <- function(...) {
+    dplyr::tibble(
+      territorial_office = c("Office {one}", "Office {two}"),
+      url = c("https://example.com/one", "https://example.com/two")
+    )
+  }
+  local_mocked_bindings(download_url = function(...) NULL)
+
+  expect_snapshot(
+    out <- catr_atom_read_db_to(
+      "Office",
+      all_fn,
+      verbose = TRUE
+    )
+  )
+  expect_null(out)
+})

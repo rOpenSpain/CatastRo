@@ -49,6 +49,10 @@ catr_atom_search_munic("Mad")
 \dontshow{\}) # examplesIf}
 }
 \seealso{
+\code{\link[=catr_atom_get_address]{catr_atom_get_address()}}, \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}} and
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}} accept the returned cadastral municipality code
+as \code{munic}. \code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}} finds that code from coordinates.
+
 Search for cadastral identifiers:
 \code{\link[=catr_get_code_from_coords]{catr_get_code_from_coords()}},
 \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},

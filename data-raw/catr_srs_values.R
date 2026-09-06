@@ -1,4 +1,4 @@
-## code to prepare `catr_srs_values` dataset goes here
+## Prepare the `catr_srs_values` dataset.
 library(tibble)
 library(dplyr)
 
@@ -26,7 +26,7 @@ catr_srs_values <- tribble(
 
 catr_srs_values <- catr_srs_values |> arrange((SRS))
 
-# Add column for OVC services
+# Add a column for OVC services.
 
 ovc_codes <- c(
   4230,
@@ -47,7 +47,7 @@ ovc_codes <- c(
 
 catr_srs_values <- catr_srs_values |> mutate(ovc_service = SRS %in% ovc_codes)
 
-# Add column for WFS services
+# Add a column for WFS services.
 wfs_codes <- c(4326, 4258, 25829, 25830, 25831, 3785, 3857)
 
 catr_srs_values <- catr_srs_values |> mutate(wfs_service = SRS %in% wfs_codes)

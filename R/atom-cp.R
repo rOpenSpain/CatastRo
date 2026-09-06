@@ -4,19 +4,20 @@
 #' Retrieve spatial data for all cadastral parcels in a municipality using the
 #' ATOM INSPIRE service.
 #'
-#' @param what Information to load. Options are:
-#' - `"parcel"` for cadastral parcels.
-#' - `"zoning"` for cadastral zoning.
-#'
+#' @param what Information to load, either `"parcel"` for cadastral parcels
+#'   or `"zoning"` for cadastral zoning.
 #' @inheritParams catr_atom_get_address
-#' @inherit catr_atom_get_address references return
+#'
+#' @inherit catr_atom_get_address return
+#'
+#' @inherit catr_atom_get_address references
 #'
 #' @family parcels
 #' @family atom_services
 #' @export
 #' @encoding UTF-8
 #'
-#' @examplesIf run_example()
+#' @examplesIf run_example() && requireNamespace("ggplot2", quietly = TRUE)
 #' \donttest{
 #' s <- catr_atom_get_parcels("Melque", to = "Segovia", what = "parcel")
 #'
@@ -29,7 +30,6 @@
 #'     subtitle = "Melque de Cercos, Segovia"
 #'   )
 #' }
-#'
 catr_atom_get_parcels <- function(
   munic,
   to = NULL,

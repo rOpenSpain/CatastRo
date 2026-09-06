@@ -12,8 +12,8 @@
 #'   `FALSE`.
 #' @param to Character string. Territorial office to match using
 #'   [base::grep()].
-#'
 #' @inheritParams catr_set_cache_dir
+#'
 #' @return
 #' A [tibble][dplyr::tbl_df] with the requested information in the following
 #' columns:
@@ -30,7 +30,6 @@
 #' @family addresses
 #' @family atom_services
 #' @rdname catr_atom_get_address_db
-#'
 #' @export
 #' @encoding UTF-8
 #'

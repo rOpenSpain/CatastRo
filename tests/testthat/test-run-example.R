@@ -11,7 +11,6 @@ test_that("run_example() returns FALSE on macOS", {
   expect_false(run_example())
 })
 
-
 test_that("run_example() returns FALSE when offline", {
   skip_on_os("mac")
 
@@ -23,7 +22,6 @@ test_that("run_example() returns FALSE when offline", {
 
   expect_false(run_example())
 })
-
 
 test_that("run_example() returns TRUE when all requirements are met", {
   skip_on_os("mac")
@@ -37,7 +35,6 @@ test_that("run_example() returns TRUE when all requirements are met", {
   expect_true(run_example())
 })
 
-
 test_that("run_example() returns FALSE on CRAN", {
   skip_on_os("mac")
 
@@ -50,7 +47,6 @@ test_that("run_example() returns FALSE on CRAN", {
   expect_false(run_example())
 })
 
-
 test_that("on_cran() falls back to interactive() when NOT_CRAN is empty", {
   skip_on_os("mac")
 
@@ -58,7 +54,6 @@ test_that("on_cran() falls back to interactive() when NOT_CRAN is empty", {
 
   expect_identical(on_cran(), !interactive())
 })
-
 
 test_that("run_example() returns TRUE outside CRAN in interactive sessions", {
   skip_on_os("mac")

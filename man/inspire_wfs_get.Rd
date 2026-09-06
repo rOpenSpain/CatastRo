@@ -45,8 +45,8 @@ result to a temporary cache and reports WFS exceptions. See \strong{Examples}.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
-# Access the Cadastre of Navarra
-# Try also https://ropenspain.github.io/CatastRoNav/
+# Access the Cadastre of Navarre.
+# See also https://ropenspain.github.io/CatastRoNav/
 
 file_local <- inspire_wfs_get(
   hostname = "inspire.navarra.es",

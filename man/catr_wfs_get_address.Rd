@@ -75,11 +75,11 @@ elements.
 \section{Bounding box}{
 
 When \code{x} is a numeric vector, make sure that \code{srs} matches the
-coordinate values. Additionally, the function queries the bounding box on
+coordinate values. This function queries the bounding box in
 \href{https://epsg.io/25830}{EPSG:25830}, ETRS89 / UTM zone 30N, to work around a
 potential API issue.
 
-When \code{x} is a \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is ignored. In
+When \code{x} is an \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is ignored. In
 this case, the bounding box of the \code{\link[sf:st_sf]{sf}} object is
 used for the query (see \code{\link[sf:st_bbox]{sf::st_bbox()}}).
 
@@ -88,7 +88,7 @@ provided as input.
 }
 
 \examples{
-\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example() && requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 \donttest{
 ad <- catr_wfs_get_address_bbox(
   c(
@@ -110,6 +110,9 @@ ggplot(ad) +
 \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE services for cadastral cartography}.
 }
 \seealso{
+\code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}} downloads a map image using the returned spatial
+object as its extent (\code{x}).
+
 Work with cadastral addresses:
 \code{\link[=catr_atom_get_address]{catr_atom_get_address()}},
 \code{\link[=catr_atom_get_address_db_all]{catr_atom_get_address_db_all()}}

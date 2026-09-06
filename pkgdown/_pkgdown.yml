@@ -35,21 +35,36 @@ reference:
     and retrieve georeferenced map images.
 - subtitle: Complete municipal datasets
   desc: >
-    Discover and download complete address, building and cadastral parcel
-    datasets through ATOM INSPIRE services.
+    Download all addresses, buildings or cadastral parcels for a municipality
+    through ATOM INSPIRE services. Use `catr_atom_search_munic()` to find
+    municipality codes.
+- contents:
+  - catr_atom_get_address
+  - catr_atom_get_buildings
+  - catr_atom_get_parcels
+
+- subtitle: ATOM download catalogs
+  desc: >
+    Inspect download URLs and available municipalities by territorial office
+    before retrieving complete datasets.
 - contents:
   - has_concept("atom_services")
   - -catr_atom_search_munic
+  - -catr_atom_get_address
+  - -catr_atom_get_buildings
+  - -catr_atom_get_parcels
 - subtitle: Features by area or identifier
   desc: >
     Query address, building and cadastral parcel features through WFS INSPIRE
     services.
 - contents:
   - has_concept("wfs_services")
+  - -inspire_wfs_get
 
 - subtitle: Georeferenced map images
   desc: >
-    Download cadastral map layers through the WMS INSPIRE service.
+    Download cadastral map images through WMS INSPIRE. Use the spatial
+    objects returned by WFS queries to define the map extent.
 - contents:
   - catr_wms_get_layer
 
@@ -59,9 +74,12 @@ reference:
     and municipality codes.
 - subtitle: References and coordinates
   desc: >
-    Geocode cadastral references and reverse geocode spatial coordinates.
+    Convert a cadastral reference to coordinates, find the reference at a
+    coordinate pair or search nearby when no exact match exists.
 - contents:
-  - has_concept("cadastral_references")
+  - catr_ovc_get_cpmrc
+  - catr_ovc_get_rccoor
+  - catr_ovc_get_rccoor_distancia
 
 - subtitle: Province and municipality lookup
   desc: >
@@ -73,7 +91,7 @@ reference:
 - title: Configure and inspect CatastRo
   desc: >
     Manage downloaded files, inspect supported coordinate systems and access
-    package-level documentation.
+    package-level documentation or construct custom WFS queries.
 - subtitle: Cache management
   desc: >
     Configure, detect and clear the local cache used by **CatastRo**.
@@ -85,6 +103,13 @@ reference:
 - contents:
   - has_keyword("datasets")
 
+- subtitle: Custom WFS queries
+  desc: >
+    Query an INSPIRE WFS endpoint directly when the service-specific functions
+    do not cover the required request.
+- contents:
+  - inspire_wfs_get
+
 - subtitle: Package overview
   desc: >
     Read package-level documentation and discover useful links.
@@ -92,9 +117,17 @@ reference:
   - CatastRo-package
 
 articles:
-- title: Detailed service guide
+- title: Get started
   desc: >
-    Explore service-specific workflows and query patterns.
+    Learn which services **CatastRo** supports and work through introductory
+    examples.
+  contents:
+  - CatastRo
+
+- title: Geocoding and reverse geocoding
+  desc: >
+    Convert between cadastral references and coordinates with OVCCoordenadas,
+    including searches near a coordinate pair.
   navbar: ~
   contents:
   - ovcservice

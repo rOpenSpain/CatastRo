@@ -2,14 +2,13 @@
 #'
 #' @param type Character string specifying the message type. Accepted values are
 #'   `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
-#'
 #' @param verbose Logical. Whether to display the message.
 #' @param ... Character strings to combine into the message.
 #'
 #' @return Invisibly returns `NULL`.
-#' @encoding UTF-8
 #'
 #' @noRd
+#' @encoding UTF-8
 make_msg <- function(type = "generic", verbose, ..., .envir = parent.frame()) {
   cli_abort_if_not(
     "{.arg verbose} must be {.code TRUE} or {.code FALSE}." = is.logical(
@@ -79,25 +78,21 @@ match_arg_pretty <- function(arg, choices, call = parent.frame()) {
   if (length(arg) > 1 || is.na(lmatch)) {
     # Create the error message.
     if (length(choices) == 1) {
-      msg <- paste0("{.str ", choices, "}")
+      msg <- "{.str {choices}}"
     } else {
+      choice_text <- paste0("{.str {choices[", seq_along(choices), "]}}")
       l_choices <- length(choices)
-      msg <- paste0("{.str ", choices[-l_choices], "}", collapse = ", ")
-      msg <- paste0(msg, " or {.str ", choices[l_choices], "}")
-      # Add "one of" to the beginning.
-      msg <- paste0("one of ", msg)
+      msg <- paste0(choice_text[-l_choices], collapse = ", ")
+      msg <- paste0("one of ", msg, " or ", choice_text[l_choices])
     }
 
-    msg <- paste0(msg, ", not ")
-    bad_arg <- paste0("{.str ", arg, "}", collapse = " or ")
-    msg <- paste0(msg, bad_arg, ".")
+    bad_arg <- paste0("{.str {arg[", seq_along(arg), "]}}", collapse = " or ")
+    msg <- paste0(msg, ", not ", bad_arg, ".")
 
     # Suggest an approximate match.
     reg_msg <- NULL
     if (!is.na(aproxmatch)) {
-      aprox <- choices[aproxmatch]
-      aprox_val <- paste0("{.str ", aprox, "}", collapse = " or ")
-      reg_msg <- paste0("Did you mean ", aprox_val, "?")
+      reg_msg <- "Did you mean {.str {choices[aproxmatch]}}?"
     }
 
     cli::cli_abort(

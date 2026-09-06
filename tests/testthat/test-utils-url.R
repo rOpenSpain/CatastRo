@@ -139,7 +139,7 @@ test_that("download_url() handles simulated HTTP 404 and successful retries", {
     httr2::response(status_code = 200)
   })
 
-  # Otherwise work
+  # Check that the request succeeds otherwise.
   expect_silent(
     s <- download_url(
       url,
@@ -506,7 +506,6 @@ test_that("get_request_body() returns NULL after transport failures", {
   expect_null(fend)
 })
 
-
 test_that("get_request_body() returns responses and handles HTTP errors", {
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
@@ -560,4 +559,37 @@ test_that("get_request_body() can perform a real HTTP request", {
   )
 
   expect_s3_class(resp, "httr2_response")
+})
+
+test_that("download_url() reports cached paths containing literal braces", {
+  root <- withr::local_tempdir()
+  cache <- file.path(root, "{cache}")
+  dir.create(cache)
+  target <- file.path(cache, "{file}.txt")
+  writeLines("cached", target)
+
+  expect_message(
+    out <- download_url(
+      "https://example.com/file.txt",
+      name = "{file}.txt",
+      cache_dir = root,
+      subdir = "{cache}",
+      verbose = TRUE
+    ),
+    "{cache}",
+    fixed = TRUE
+  )
+  expect_identical(out, target)
+})
+
+test_that("get_request_body() reports literal braces in URLs", {
+  local_mocked_bindings(is_online_fun = function(...) FALSE)
+
+  expect_snapshot(
+    out <- get_request_body(
+      "https://example.com/{resource}",
+      verbose = TRUE
+    )
+  )
+  expect_null(out)
 })

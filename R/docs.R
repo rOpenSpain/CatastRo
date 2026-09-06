@@ -5,9 +5,9 @@ atom_db_details <- function(resource) {
 
   paste(
     paste0("[", all, "()] provides a summary table with all"),
-    "territorial offices, except the Basque Country and Navarre and the",
+    "territorial offices and their municipalities, excluding",
     paste0(
-      "municipalities included in each office. [",
+      "the Basque Country and Navarre. [",
       territorial_office,
       "()]"
     ),
@@ -64,4 +64,16 @@ ovcurl <- function(x) {
   )
 
   paste0(c(base, app), collapse = "/")
+}
+
+wfs_map_seealso <- function() {
+  paste(
+    "[catr_wms_get_layer()] downloads a map image using the returned spatial",
+    "object as its extent (`x`).",
+    sep = "\n"
+  )
+}
+
+cache_directory_seealso <- function() {
+  "[tools::R_user_dir()] defines platform-specific user directories."
 }

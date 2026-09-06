@@ -4,20 +4,21 @@
 #' Retrieve spatial data for all buildings in a municipality using the ATOM
 #' INSPIRE service.
 #'
-#' @param what Information to load. Options are:
-#' - `"building"` for buildings.
-#' - `"buildingpart"` for parts of a building.
-#' - `"other"` for other elements such as swimming pools.
-#'
+#' @param what Information to load, either `"building"` for buildings,
+#'   `"buildingpart"` for parts of a building or `"other"` for other elements
+#'   such as swimming pools.
 #' @inheritParams catr_atom_get_address
-#' @inherit catr_atom_get_address references return
+#'
+#' @inherit catr_atom_get_address return
+#'
+#' @inherit catr_atom_get_address references
 #'
 #' @family buildings
 #' @family atom_services
 #' @export
 #' @encoding UTF-8
 #'
-#' @examplesIf run_example()
+#' @examplesIf run_example() && requireNamespace("ggplot2", quietly = TRUE)
 #' \donttest{
 #' s <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 #'
@@ -33,7 +34,6 @@
 #'     subtitle = "Nava de la Asuncion, Segovia"
 #'   )
 #' }
-#'
 catr_atom_get_buildings <- function(
   munic,
   to = NULL,

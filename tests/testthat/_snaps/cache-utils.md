@@ -39,3 +39,19 @@
       Error in `catr_set_cache_dir()`:
       ! `install` must be `TRUE` or `FALSE`.
 
+# catr_clear_cache() reports failed configuration deletion
+
+    Code
+      catr_clear_cache(config = TRUE, cached_data = FALSE, verbose = TRUE)
+    Message
+      ! Could not completely delete cache configuration at '<config>'.
+      i Check file permissions and close programs using these files.
+
+# catr_clear_cache() reports data left after apparent deletion
+
+    Code
+      catr_clear_cache(verbose = TRUE)
+    Message
+      ! Could not completely delete cached data at '<cache>'.
+      i Check file permissions and close programs using these files.
+

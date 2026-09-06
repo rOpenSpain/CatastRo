@@ -83,7 +83,7 @@ test_that("catr_atom_get_address_db_to() ranks office matches", {
 
   expect_identical(several, pal)
 
-  # full name
+  # Full name
   expect_silent(
     val <- catr_atom_get_address_db_to(to = "valencia", cache_dir = cdir)
   )

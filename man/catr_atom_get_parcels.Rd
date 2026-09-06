@@ -22,11 +22,8 @@ catr_atom_get_parcels(
 \item{to}{Optional territorial office containing \code{munic}. Use this argument
 to narrow the search.}
 
-\item{what}{Information to load. Options are:
-\itemize{
-\item \code{"parcel"} for cadastral parcels.
-\item \code{"zoning"} for cadastral zoning.
-}}
+\item{what}{Information to load, either \code{"parcel"} for cadastral parcels
+or \code{"zoning"} for cadastral zoning.}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} This argument is no longer
 supported because results are always cached.}
@@ -49,7 +46,7 @@ Retrieve spatial data for all cadastral parcels in a municipality using the
 ATOM INSPIRE service.
 }
 \examples{
-\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example() && requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 \donttest{
 s <- catr_atom_get_parcels("Melque", to = "Segovia", what = "parcel")
 

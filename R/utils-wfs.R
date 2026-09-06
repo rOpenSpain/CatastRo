@@ -14,7 +14,6 @@
 #' @param hostname Character string specifying the resource host.
 #' @param path Character string specifying the resource path on the host.
 #' @param query Named list of query parameters and their values.
-#'
 #' @inheritParams catr_set_cache_dir
 #'
 #' @return
@@ -23,12 +22,12 @@
 #'
 #' @family wfs_services
 #' @rdname inspire_wfs_get
-#'
 #' @export
 #' @encoding UTF-8
+#'
 #' @examplesIf run_example()
-#' # Access the Cadastre of Navarra
-#' # Try also https://ropenspain.github.io/CatastRoNav/
+#' # Access the Cadastre of Navarre.
+#' # See also https://ropenspain.github.io/CatastRoNav/
 #'
 #' file_local <- inspire_wfs_get(
 #'   hostname = "inspire.navarra.es",
@@ -92,7 +91,7 @@ inspire_wfs_get <- function(
     query$srsname <- ifelse(grepl("^EPS", srs), srs, paste0("EPSG:", srs))
   }
 
-  # Avoid httr2 because it masks required values such as `::` and `,`.
+  # Preserve required query characters such as `::` and `,`.
   q <- paste0(names(query), "=", query, collapse = "&")
 
   # Build the URL.

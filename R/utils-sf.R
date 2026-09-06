@@ -6,16 +6,16 @@
 #' @param ... Additional arguments passed to `sf::read_sf()`.
 #'
 #' @return An `sf` object containing the geospatial data.
-#' @encoding UTF-8
 #'
 #' @noRd
+#' @encoding UTF-8
 read_geo_file_sf <- function(
   file_local,
   hint = basename(file_local),
   layer_hint = NULL,
   ...
 ) {
-  # Warn if the file is large and no query is available.
+  # Warn before reading a large local file.
   if (all(!grepl("^http", file_local), file.exists(file_local))) {
     fsize <- catr_file_size(file_local)
     fsize_unit <- fsize
@@ -134,7 +134,7 @@ get_sf_from_bbox <- function(bbox, srs = NULL, call = parent.frame()) {
   # Validate arguments.
   if (!(is.numeric(bbox) && length(bbox) == 4)) {
     cli::cli_abort(
-      "{.arg bbox} must have length {.val {4L}}, not {.val {length(bbox)}}.",
+      "{.arg bbox} must be a numeric vector of length {.val {4L}}.",
       call = call
     )
   }

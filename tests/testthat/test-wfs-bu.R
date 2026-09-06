@@ -30,7 +30,7 @@ test_that("catr_wfs_get_buildings_bbox() validates coordinates and types", {
 
   expect_equal(sf::st_crs(obj)$epsg, 25829)
 
-  # Convert to spatial object
+  # Convert to a spatial object.
   bbox <- c(760926, 4019259, 761155, 4019366)
   class(bbox) <- "bbox"
   bbox <- bbox |>
@@ -41,14 +41,14 @@ test_that("catr_wfs_get_buildings_bbox() validates coordinates and types", {
   obj2 <- catr_wfs_get_buildings_bbox(bbox)
   expect_equal(sf::st_crs(obj2), sf::st_crs(25829))
 
-  # Another types
+  # Other types
   parts <- catr_wfs_get_buildings_bbox(bbox, what = "buildingpart")
 
   expect_s3_class(parts, "sf")
 
   expect_gt(nrow(parts), nrow(obj2))
 
-  # Another types
+  # Other types
   ot <- catr_wfs_get_buildings_bbox(bbox, what = "other")
 
   expect_s3_class(ot, "sf")

@@ -19,6 +19,5 @@ Returns \code{FALSE} on CRAN, macOS or when offline.
 }
 \examples{
 run_example()
-
 }
 \keyword{internal}

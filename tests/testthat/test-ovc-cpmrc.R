@@ -109,7 +109,6 @@ test_that("catr_ovc_get_cpmrc() accepts only a reference", {
   expect_s3_class(result, "tbl")
 })
 
-
 test_that("catr_ovc_get_cpmrc() requires a province and municipality", {
   local_mocked_bindings(ovc_get_xml = function(...) {
     list(

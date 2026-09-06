@@ -9,22 +9,27 @@
 #'
 #' @inheritParams catr_wfs_get_address_bbox
 #' @inheritParams catr_atom_get_parcels
-#' @inherit catr_wfs_get_address_bbox return references
-#' @inheritSection catr_wfs_get_address_bbox Bounding box
+#'
+#' @inherit catr_wfs_get_address_bbox return
 #'
 #' @section API limits:
-#' The API service is limited to the following constraints:
+#' The API service has the following limits:
 #'
 #' - `"parcel"`: Bounding box of 1 km2 and a maximum of 5,000 elements.
 #' - `"zoning"`: Bounding box of 25 km2 and a maximum of 5,000 elements.
 #'
+#' @inheritSection catr_wfs_get_address_bbox Bounding box
+#'
+#' @inherit catr_wfs_get_address_bbox references
+#'
+#' @seealso
+#' `r wfs_map_seealso()`
+#'
 #' @family parcels
 #' @family wfs_services
 #' @rdname catr_wfs_get_parcels
-#'
 #' @export
 #' @encoding UTF-8
-#'
 catr_wfs_get_parcels_bbox <- function(
   x,
   what = c("parcel", "zoning"),
@@ -37,15 +42,13 @@ catr_wfs_get_parcels_bbox <- function(
   what <- match_arg_pretty(what)
 
   # Switch to stored queries.
-  stored_query <- switch(what,
+  stored_query <- switch(
+    what,
     "parcel" = "CP.CADASTRALPARCEL",
     "zoning" = "CP.CADASTRALZONING"
   )
 
-  limit <- switch(what,
-    "parcel" = 1,
-    "zoning" = 25
-  )
+  limit <- switch(what, "parcel" = 1, "zoning" = 25)
 
   wfs_read_bbox_query(
     x = x,
@@ -142,7 +145,8 @@ catr_wfs_get_parcels_neigh_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export
-#' @examplesIf run_example()
+#'
+#' @examplesIf run_example() && requireNamespace("ggplot2", quietly = TRUE)
 #' \donttest{
 #' cp <- catr_wfs_get_parcels_bbox(
 #'   c(

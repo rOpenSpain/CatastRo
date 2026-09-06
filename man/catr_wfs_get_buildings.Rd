@@ -28,12 +28,9 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 \item An \code{sf} or \code{sfc} object from \CRANpkg{sf}.
 }}
 
-\item{what}{Information to load. Options are:
-\itemize{
-\item \code{"building"} for buildings.
-\item \code{"buildingpart"} for parts of a building.
-\item \code{"other"} for other elements such as swimming pools.
-}}
+\item{what}{Information to load, either \code{"building"} for buildings,
+\code{"buildingpart"} for parts of a building or \code{"other"} for other elements
+such as swimming pools.}
 
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{wfs_service} column. See
@@ -68,11 +65,11 @@ elements.
 \section{Bounding box}{
 
 When \code{x} is a numeric vector, make sure that \code{srs} matches the
-coordinate values. Additionally, the function queries the bounding box on
+coordinate values. This function queries the bounding box in
 \href{https://epsg.io/25830}{EPSG:25830}, ETRS89 / UTM zone 30N, to work around a
 potential API issue.
 
-When \code{x} is a \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is ignored. In
+When \code{x} is an \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is ignored. In
 this case, the bounding box of the \code{\link[sf:st_sf]{sf}} object is
 used for the query (see \code{\link[sf:st_bbox]{sf::st_bbox()}}).
 
@@ -81,7 +78,7 @@ provided as input.
 }
 
 \examples{
-\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example() && requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 \donttest{
 # Using a bounding box
 building <- catr_wfs_get_buildings_bbox(
@@ -113,6 +110,9 @@ ggplot(rc) +
 \href{https://www.catastro.hacienda.gob.es/webinspire/index.html}{INSPIRE services for cadastral cartography}.
 }
 \seealso{
+\code{\link[=catr_wms_get_layer]{catr_wms_get_layer()}} downloads a map image using the returned spatial
+object as its extent (\code{x}).
+
 Work with cadastral buildings:
 \code{\link[=catr_atom_get_buildings]{catr_atom_get_buildings()}},
 \code{\link[=catr_atom_get_buildings_db_all]{catr_atom_get_buildings_db_all()}}

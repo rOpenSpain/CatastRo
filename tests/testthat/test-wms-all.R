@@ -38,7 +38,7 @@ test_that("catr_wms_get_layer() returns map tiles for supported layers", {
 
   expect_s4_class(obj, "SpatRaster")
 
-  # test crop
+  # Test cropping.
   objcrop <- catr_wms_get_layer(
     c(760926, 4019259, 761155, 4019366),
     srs = 25829,
@@ -48,7 +48,7 @@ test_that("catr_wms_get_layer() returns map tiles for supported layers", {
 
   expect_gt(terra::nrow(obj), terra::nrow(objcrop))
 
-  # Convert to spatial object
+  # Convert to a spatial object.
   bbox <- get_sf_from_bbox(c(760926, 4019259, 761155, 4019366), 25829)
   expect_s3_class(bbox, "sfc")
 

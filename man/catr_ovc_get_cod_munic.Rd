@@ -61,8 +61,10 @@ ab2
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos}{ConsultaMunicipioCodigos}.
 }
 \seealso{
-\code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}} to get shapes of municipalities, including
-the INE code.
+\code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}} searches municipality codes by name.
+\code{\link[=catr_atom_get_parcels]{catr_atom_get_parcels()}} accepts the returned \code{catrcode} as \code{munic}.
+\code{\link[mapSpain:esp_get_munic_siane]{mapSpain::esp_get_munic_siane()}} retrieves municipality geometries,
+including the INE code.
 
 Search for cadastral identifiers:
 \code{\link[=catr_atom_search_munic]{catr_atom_search_munic()}},

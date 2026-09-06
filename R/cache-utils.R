@@ -4,6 +4,7 @@
 #' Configure the cache directory used by \CRANpkg{CatastRo}. Use
 #' `Sys.getenv("CATASTROESP_CACHE_DIR")` or [catr_detect_cache_dir()] to inspect
 #' the current path.
+#'
 #' @details
 #' By default, when no `cache_dir` is set, \CRANpkg{CatastRo} uses a directory
 #' inside [base::tempdir()], so files are temporary and are removed when the \R
@@ -55,13 +56,14 @@
 #' previous configuration files to the new location and displays a message.
 #' This message appears only once.
 #'
-#' @seealso [tools::R_user_dir()] defines platform-specific user directories.
+#' @seealso
+#' `r cache_directory_seealso()`
 #'
 #' @family cache_utilities
 #' @rdname catr_set_cache_dir
-#'
 #' @export
 #' @encoding UTF-8
+#'
 #' @examples
 #'
 #' # Caution! This modifies your current state
@@ -78,7 +80,6 @@
 #' catr_set_cache_dir(my_cache)
 #' identical(my_cache, catr_detect_cache_dir())
 #' }
-#'
 catr_set_cache_dir <- function(
   cache_dir = NULL,
   overwrite = FALSE,
@@ -138,7 +139,7 @@ catr_set_cache_dir <- function(
 
   # Create and expand the cache path.
   cache_dir <- create_cache_dir(cache_dir)
-  msg <- paste0("{.pkg CatastRo} cache directory is {.path ", cache_dir, "}.")
+  msg <- "{.pkg CatastRo} cache directory is {.path {cache_dir}}."
   make_msg("info", verbose, msg)
 
   if (install) {
@@ -178,10 +179,10 @@ catr_set_cache_dir <- function(
 #'
 #' @rdname catr_set_cache_dir
 #' @export
+#'
 #' @examples
 #'
 #' catr_detect_cache_dir()
-#'
 catr_detect_cache_dir <- function() {
   cd <- detect_cache_dir_muted()
   cli::cli_alert_info("{.path {cd}}")
@@ -212,12 +213,14 @@ catr_detect_cache_dir <- function() {
 #' @return Invisibly returns `NULL`. This function is called for its side
 #'   effects.
 #'
-#' @seealso [tools::R_user_dir()] defines platform-specific user directories.
+#' @seealso
+#' `r cache_directory_seealso()`
 #'
 #' @family cache_utilities
 #' @rdname catr_clear_cache
 #' @export
 #' @encoding UTF-8
+#'
 #' @examples
 #'
 #' # Don't run this! It modifies your current state
@@ -263,9 +266,17 @@ catr_clear_cache <- function(
   data_dir <- detect_cache_dir_muted()
 
   if (config && dir.exists(config_dir)) {
-    unlink(config_dir, recursive = TRUE, force = TRUE)
+    status <- catr_unlink(config_dir, recursive = TRUE, force = TRUE)
 
-    if (verbose) {
+    if (status != 0L || dir.exists(config_dir)) {
+      cli::cli_inform(c(
+        "!" = paste0(
+          "Could not completely delete cache configuration at ",
+          "{.path {config_dir}}."
+        ),
+        "i" = "Check file permissions and close programs using these files."
+      ))
+    } else if (verbose) {
       cli::cli_alert_success("{.pkg CatastRo} cache configuration deleted.")
     }
   }
@@ -276,8 +287,13 @@ catr_clear_cache <- function(
 
     siz <- format(siz, unit = "auto")
 
-    unlink(data_dir, recursive = TRUE, force = TRUE)
-    if (verbose) {
+    status <- catr_unlink(data_dir, recursive = TRUE, force = TRUE)
+    if (status != 0L || dir.exists(data_dir)) {
+      cli::cli_inform(c(
+        "!" = "Could not completely delete cached data at {.path {data_dir}}.",
+        "i" = "Check file permissions and close programs using these files."
+      ))
+    } else if (verbose) {
       cli::cli_alert_success(
         "{.pkg CatastRo} cached data deleted: {.path {data_dir}} ({siz})."
       )
@@ -295,6 +311,7 @@ catr_clear_cache <- function(
 #' Detect the cache directory silently
 #'
 #' @return Path to the cache directory.
+#'
 #' @noRd
 detect_cache_dir_muted <- function() {
   migrate_cache()
@@ -336,6 +353,7 @@ detect_cache_dir_muted <- function() {
 #' Create `cache_dir` if it does not exist
 #'
 #' @param cache_dir Path to the cache directory.
+#'
 #' @return Path to the cache directory.
 #'
 #' @noRd
@@ -403,4 +421,8 @@ migrate_cache <- function(
 #' @noRd
 catr_r_user_dir <- function(...) {
   tools::R_user_dir(...)
+}
+
+catr_unlink <- function(...) {
+  unlink(...)
 }

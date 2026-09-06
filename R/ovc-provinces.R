@@ -6,15 +6,19 @@
 #' their Spanish Cadastre codes.
 #'
 #' @inheritParams catr_ovc_get_cpmrc
+#'
 #' @return A [tibble][dplyr::tbl_df] with province names and codes. Returns
 #'   `NULL` if the request fails.
 #'
 #' @references
 #' [ConsultaProvincia](`r ovcurl("prov")`).
 #'
+#' @seealso
+#' [catr_ovc_get_cod_munic()] uses a province code as `cpro` to look up
+#' municipality codes.
+#'
 #' @family search_tools
 #' @family ovc_services
-#'
 #' @export
 #' @encoding UTF-8
 #'
@@ -22,7 +26,6 @@
 #' \donttest{
 #' catr_ovc_get_cod_provinces()
 #' }
-#'
 catr_ovc_get_cod_provinces <- function(verbose = FALSE) {
   # Build the query URL.
   api_entry <- ovc_base_url(

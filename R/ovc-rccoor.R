@@ -10,17 +10,24 @@
 #'
 #' @inheritParams catr_ovc_get_rccoor_distancia
 #'
-#' @inherit catr_ovc_get_rccoor_distancia return
-#' @inherit catr_ovc_get_cpmrc seealso
+#' @inherit catr_ovc_get_cpmrc return
 #'
 #' @references
 #' [Consulta RCCOOR](`r ovcurl("RCCOOR")`).
 #'
+#' @inherit catr_ovc_get_cpmrc seealso
+#'
+#' @seealso
+#' [catr_ovc_get_rccoor_distancia()] also searches a nearby area when no
+#' exact match is found.
+#' [catr_wfs_get_parcels_parcel()] retrieves parcel geometries using the
+#' returned cadastral references.
+#'
 #' @family cadastral_references
 #' @family ovc_services
-#'
 #' @export
 #' @encoding UTF-8
+#'
 #' @examplesIf run_example()
 #' \donttest{
 #' catr_ovc_get_rccoor(

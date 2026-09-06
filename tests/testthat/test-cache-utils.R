@@ -195,3 +195,53 @@ test_that("catr_set_cache_dir() rejects invalid arguments", {
     )
   )
 })
+
+test_that("catr_set_cache_dir() reports literal braces in paths", {
+  withr::local_envvar(CATASTROESP_CACHE_DIR = NA)
+  cache <- file.path(withr::local_tempdir(), "{cache}")
+
+  expect_message(
+    out <- catr_set_cache_dir(cache, verbose = TRUE),
+    "{cache}",
+    fixed = TRUE
+  )
+  expect_identical(out, cache)
+})
+
+test_that("catr_clear_cache() reports failed configuration deletion", {
+  config_dir <- withr::local_tempdir()
+  data_dir <- withr::local_tempdir()
+  withr::local_envvar(CATASTROESP_CACHE_DIR = data_dir)
+  local_mocked_bindings(
+    catr_r_user_dir = function(...) config_dir,
+    migrate_cache = function(...) invisible(),
+    catr_unlink = function(...) 1L
+  )
+  writeLines(data_dir, file.path(config_dir, "CATASTROESP_CACHE_DIR"))
+
+  expect_snapshot(
+    catr_clear_cache(config = TRUE, cached_data = FALSE, verbose = TRUE),
+    transform = \(x) gsub(config_dir, "<config>", x, fixed = TRUE)
+  )
+  expect_all_true(dir.exists(c(config_dir, data_dir)))
+})
+
+test_that("catr_clear_cache() reports data left after apparent deletion", {
+  data_dir <- withr::local_tempdir()
+  config_dir <- withr::local_tempdir()
+  withr::local_envvar(CATASTROESP_CACHE_DIR = data_dir)
+  local_mocked_bindings(
+    catr_r_user_dir = function(...) config_dir,
+    migrate_cache = function(...) invisible(),
+    catr_unlink = function(...) 0L
+  )
+  cached_file <- file.path(data_dir, "cached.txt")
+  writeLines("cached", cached_file)
+
+  expect_snapshot(
+    catr_clear_cache(verbose = TRUE),
+    transform = \(x) gsub(data_dir, "<cache>", x, fixed = TRUE)
+  )
+  expect_equal(readLines(cached_file), "cached")
+  expect_all_true(dir.exists(config_dir))
+})

@@ -57,8 +57,8 @@ Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service
 for downloading cadastral parcels.
 
 \code{\link[=catr_atom_get_parcels_db_all]{catr_atom_get_parcels_db_all()}} provides a summary table with all
-territorial offices, except the Basque Country and Navarre and the
-municipalities included in each office. \code{\link[=catr_atom_get_parcels_db_to]{catr_atom_get_parcels_db_to()}}
+territorial offices and their municipalities, excluding
+the Basque Country and Navarre. \code{\link[=catr_atom_get_parcels_db_to]{catr_atom_get_parcels_db_to()}}
 provides a table for one territorial office and its municipalities.
 }
 \examples{

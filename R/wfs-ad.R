@@ -14,7 +14,6 @@
 #'   [catr_srs_values], specifically the `wfs_service` column. See
 #'   **Bounding box**.
 #' @param rc Cadastral reference to retrieve.
-#'
 #' @inheritParams catr_set_cache_dir
 #'
 #' @return An [`sf`][sf::st_sf] object. Returns `NULL` if the data cannot be
@@ -23,14 +22,13 @@
 #' @section API limits:
 #' The API service is limited to a bounding box of 4 km2 and a maximum of 5,000
 #' elements.
-#'
 #' @section Bounding box:
 #' When `x` is a numeric vector, make sure that `srs` matches the
-#' coordinate values. Additionally, the function queries the bounding box on
+#' coordinate values. This function queries the bounding box in
 #' [EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work around a
 #' potential API issue.
 #'
-#' When `x` is a [`sf`][sf::st_sf] object, the `srs` value is ignored. In
+#' When `x` is an [`sf`][sf::st_sf] object, the `srs` value is ignored. In
 #' this case, the bounding box of the [`sf`][sf::st_sf] object is
 #' used for the query (see [sf::st_bbox()]).
 #'
@@ -49,12 +47,14 @@
 #'
 #' ```
 #'
+#' @seealso
+#' `r wfs_map_seealso()`
+#'
 #' @family addresses
 #' @family wfs_services
 #' @rdname catr_wfs_get_address
 #' @export
 #' @encoding UTF-8
-#'
 catr_wfs_get_address_bbox <- function(x, srs = NULL, verbose = FALSE) {
   # Validate arguments.
   x <- validate_non_empty_arg(x)
@@ -142,7 +142,8 @@ catr_wfs_get_address_rc <- function(rc, srs = NULL, verbose = FALSE) {
 #'
 #' @rdname catr_wfs_get_address
 #' @export
-#' @examplesIf run_example()
+#'
+#' @examplesIf run_example() && requireNamespace("ggplot2", quietly = TRUE)
 #' \donttest{
 #' ad <- catr_wfs_get_address_bbox(
 #'   c(

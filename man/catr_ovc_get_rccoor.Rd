@@ -57,6 +57,11 @@ catr_ovc_get_rccoor(
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR}{Consulta RCCOOR}.
 }
 \seealso{
+\code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}} also searches a nearby area when no
+exact match is found.
+\code{\link[=catr_wfs_get_parcels_parcel]{catr_wfs_get_parcels_parcel()}} retrieves parcel geometries using the
+returned cadastral references.
+
 Work with cadastral references:
 \code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
 \code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}

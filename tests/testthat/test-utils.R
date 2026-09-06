@@ -37,21 +37,21 @@ test_that("match_arg_pretty() reports the closest valid choice", {
     match_arg_pretty(arg_one)
   }
 
-  # OK, returns character
+  # Check that valid inputs return character values.
   expect_identical(my_fun(1000), "1000")
   expect_identical(my_fun("1000"), "1000")
   expect_identical(my_fun(NULL), "10")
   expect_identical(my_fun(), "10")
   # Some errors here
-  # Single value no match
+  # Check a single unmatched value.
   expect_snapshot(my_fun("error here"), error = TRUE)
 
-  # Several values no match
+  # Check several unmatched values.
   expect_snapshot(my_fun(c("an", "error")), error = TRUE)
 
-  # One value regex
+  # Check a partial match to one value.
   expect_snapshot(my_fun("5"), error = TRUE)
-  # Several value regex
+  # Check a partial match to several values.
   expect_snapshot(my_fun("00"), error = TRUE)
 
   my_fun2 <- function(year = 20) {
@@ -157,4 +157,10 @@ test_that("cli_abort_if_not() validates scalar conditions and caller context", {
     error = TRUE,
     test_msg("Testing vector verbose.", verbose = c(TRUE, FALSE))
   )
+})
+
+test_that("match_arg_pretty() treats braces in values as literal text", {
+  expect_snapshot(error = TRUE, match_arg_pretty("{missing}", c("a", "b")))
+  expect_snapshot(error = TRUE, match_arg_pretty("x", c("{one}", "{two}")))
+  expect_snapshot(error = TRUE, match_arg_pretty("{on", c("{one}", "{two}")))
 })

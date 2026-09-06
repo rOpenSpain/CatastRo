@@ -100,7 +100,7 @@ test_that("read_geo_file_sf() preserves expected address fields", {
   expect_true(file.exists(fake_local))
   expect_identical(s$address, expected_address)
 
-  # But
+  # Read the nonspatial layer as a tibble.
   tb <- read_geo_file_sf(fake_local, hint = "gpkg", "fare")
   expect_s3_class(tb, c("tbl_df", "tbl", "data.frame"), exact = TRUE)
   expect_identical(tb$name, expected_name)
@@ -131,5 +131,6 @@ test_that("sf_bbox_to_sf() converts bounding boxes to spatial features", {
   expect_identical(c, cc)
 
   expect_snapshot(error = TRUE, get_sf_from_bbox(c(1, 2)))
+  expect_snapshot(error = TRUE, get_sf_from_bbox(rep("x", 4), srs = 4326))
   expect_snapshot(error = TRUE, get_sf_from_bbox(c(1, 2, 1, 2)))
 })

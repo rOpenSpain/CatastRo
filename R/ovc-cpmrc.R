@@ -21,8 +21,8 @@
 #'   search.
 #' @param srs SRS/CRS to use in the query. To see allowed values, use
 #'   [catr_srs_values], specifically the `ovc_service` column.
-#'
 #' @inheritParams catr_set_cache_dir
+#'
 #' @return A [tibble][dplyr::tbl_df] as described in **Details**. Returns
 #'   `NULL` if the request fails.
 #'
@@ -51,7 +51,6 @@
 #' # Only the cadastral reference
 #' catr_ovc_get_cpmrc("9872023VH5797S")
 #' }
-#'
 catr_ovc_get_cpmrc <- function(
   rc,
   srs = 4326,

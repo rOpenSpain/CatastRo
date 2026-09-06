@@ -12,9 +12,9 @@
 #' @keywords internal
 #' @export
 #' @encoding UTF-8
+#'
 #' @examples
 #' run_example()
-#'
 run_example <- function() {
   if (on_mac()) {
     return(FALSE)

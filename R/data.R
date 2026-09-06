@@ -29,6 +29,7 @@
 #'   \item{wfs_service}{Logical. Whether this code is valid for WFS INSPIRE
 #'     services.}
 #' }
+#'
 #' @references
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0("- [OVCCoordenadas](https://ovc.catastro.meh.es/",
@@ -39,13 +40,17 @@
 #' - [WFS INSPIRE
 #' service](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 #'
-#' @seealso [sf::st_crs()].
+#' @seealso
+#' [catr_ovc_get_cpmrc()] and [catr_ovc_get_rccoor()] accept SRS codes
+#' listed in the `ovc_service` column. [catr_wfs_get_parcels_bbox()] accepts
+#' codes listed in the `wfs_service` column. [sf::st_crs()] inspects the
+#' corresponding coordinate reference system.
 #'
 #' @docType data
 #' @name catr_srs_values
 #' @keywords datasets
-#'
 #' @encoding UTF-8
+#'
 #' @examples
 #' data("catr_srs_values")
 #'

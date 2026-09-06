@@ -9,8 +9,8 @@
 #'   [catr_atom_search_munic()] to find cadastral codes.
 #' @param to Optional territorial office containing `munic`. Use this argument
 #'   to narrow the search.
-#'
 #' @inheritParams catr_atom_get_address_db_all
+#'
 #' @return An [`sf`][sf::st_sf] object. Returns `NULL` if the data cannot be
 #'   retrieved.
 #'
@@ -31,7 +31,7 @@
 #' @export
 #' @encoding UTF-8
 #'
-#' @examplesIf run_example()
+#' @examplesIf run_example() && requireNamespace("ggplot2", quietly = TRUE)
 #' \donttest{
 #' s <- catr_atom_get_address("Melque", to = "Segovia")
 #'
@@ -48,7 +48,6 @@
 #'     subtitle = "Melque de Cercos, Segovia"
 #'   )
 #' }
-#'
 catr_atom_get_address <- function(
   munic,
   to = NULL,

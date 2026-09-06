@@ -4,7 +4,7 @@
       fend <- catr_atom_get_address("Madrid", cache_dir = cdir)
     Message
       x No internet connection detected.
-      Returning "NULL" because the request cannot run.
+      Returning `NULL` because the request cannot run.
 
 # catr_atom_get_address() handles a database HTTP 404
 
@@ -13,7 +13,7 @@
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      Returning "NULL" because the download failed.
+      Returning `NULL` because the download failed.
 
 # catr_atom_get_address() returns spatial address data
 
@@ -41,5 +41,5 @@
     Message
       x HTTP error 404 (Not Found): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/40/40146-MELQUE%20DE%20CERCOS/A.ES.SDGC.AD.40146.zip>.
       ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
-      Returning "NULL" because the download failed.
+      Returning `NULL` because the download failed.
 

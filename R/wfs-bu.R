@@ -8,16 +8,22 @@
 #'
 #' @inheritParams catr_wfs_get_address_bbox
 #' @inheritParams catr_atom_get_buildings
-#' @inherit catr_wfs_get_address_bbox return references
+#'
+#' @inherit catr_wfs_get_address_bbox return
+#'
 #' @inheritSection catr_wfs_get_address_bbox API limits
 #' @inheritSection catr_wfs_get_address_bbox Bounding box
+#'
+#' @inherit catr_wfs_get_address_bbox references
+#'
+#' @seealso
+#' `r wfs_map_seealso()`
+#'
 #' @family buildings
 #' @family wfs_services
 #' @rdname catr_wfs_get_buildings
-#'
 #' @export
 #' @encoding UTF-8
-#'
 catr_wfs_get_buildings_bbox <- function(
   x,
   what = c("building", "buildingpart", "other"),
@@ -51,9 +57,9 @@ catr_wfs_get_buildings_bbox <- function(
 #'   specific cadastral references.
 #'
 #' @rdname catr_wfs_get_buildings
-#'
 #' @export
-#' @examplesIf run_example()
+#'
+#' @examplesIf run_example() && requireNamespace("ggplot2", quietly = TRUE)
 #' \donttest{
 #' # Using a bounding box
 #' building <- catr_wfs_get_buildings_bbox(

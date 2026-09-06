@@ -9,9 +9,13 @@
 #' @return A [tibble][dplyr::tbl_df] with the territorial office,
 #'   municipality name and cadastral code. Returns `NULL` if no match is found.
 #'
+#' @seealso
+#' [catr_atom_get_address()], [catr_atom_get_buildings()] and
+#' [catr_atom_get_parcels()] accept the returned cadastral municipality code
+#' as `munic`. [catr_get_code_from_coords()] finds that code from coordinates.
+#'
 #' @family search_tools
 #' @family atom_services
-#'
 #' @export
 #' @encoding UTF-8
 #'

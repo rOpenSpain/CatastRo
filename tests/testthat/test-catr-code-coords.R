@@ -120,7 +120,7 @@ test_that("catr_get_code_from_coords() returns municipality codes", {
     }
   )
 
-  # Try with coords
+  # Try with coordinates.
 
   expect_snapshot(error = TRUE, df <- catr_get_code_from_coords(c(0, 0)))
   expect_snapshot(error = TRUE, df <- catr_get_code_from_coords(c(0, 0, 0)))
@@ -130,7 +130,7 @@ test_that("catr_get_code_from_coords() returns municipality codes", {
     "tbl"
   )
 
-  # Try with sf
+  # Try with an `sf` object.
   m <- mun[2:3, ]
 
   expect_message(
@@ -158,13 +158,13 @@ test_that("catr_get_code_from_coords() returns municipality codes", {
   expect_identical(first$catrcode, "33064")
   expect_silent(catr_get_code_from_coords(m[1, ]))
 
-  # Try polis
+  # Try with a single polygon.
   m2 <- mun[3, ]
   s3 <- catr_get_code_from_coords(m2, cache_dir = cdir)
 
   expect_s3_class(s3, "tbl")
 
-  # Try with sfc
+  # Try with an `sfc` object.
   sfc <- sf::st_geometry(m2)
 
   expect_s3_class(sfc, "sfc")

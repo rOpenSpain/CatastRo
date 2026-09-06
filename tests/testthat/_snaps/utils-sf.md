@@ -12,7 +12,15 @@
       get_sf_from_bbox(c(1, 2))
     Condition
       Error:
-      ! `bbox` must have length 4, not 2.
+      ! `bbox` must be a numeric vector of length 4.
+
+---
+
+    Code
+      get_sf_from_bbox(rep("x", 4), srs = 4326)
+    Condition
+      Error:
+      ! `bbox` must be a numeric vector of length 4.
 
 ---
 

@@ -4,29 +4,31 @@
 #' Retrieve the municipality code associated with an [`sf`][sf::st_sf] object
 #' or a coordinate pair.
 #'
+#' @inherit catr_ovc_get_cod_munic details
+#'
 #' @param x Coordinate input. It can be:
 #' - A pair of coordinates `c(x, y)`. In this case the `srs` of the
 #'   coordinates must be provided.
-#' - A [`sf`][sf::st_sf] object. If the object has several geometries, only
+#' - An [`sf`][sf::st_sf] object. If the object has several geometries, only
 #'   the first geometry is used. This function extracts coordinates using
 #'   `sf::st_centroid(x, of_largest_polygon = TRUE)`.
-#'
 #' @inheritParams catr_ovc_get_cod_munic
 #' @inheritParams catr_ovc_get_cpmrc
 #' @inheritParams catr_set_cache_dir
 #' @inheritDotParams mapSpain::esp_get_munic_siane year resolution region munic
-#' @inherit catr_ovc_get_cod_munic return details
-#' @inherit catr_ovc_get_cpmrc seealso
 #'
+#' @inherit catr_ovc_get_cod_munic return
+#'
+#' @inherit catr_ovc_get_cpmrc seealso
 #' @seealso
 #' - [mapSpain::esp_get_munic_siane()] retrieves municipality geometries.
 #' - [catr_ovc_get_cod_munic()] retrieves municipality codes.
 #' - [sf::st_centroid()] computes geometry centroids.
 #'
 #' @family search_tools
-#'
 #' @export
 #' @encoding UTF-8
+#'
 #' @examplesIf run_example()
 #' \donttest{
 #' # Use with coordinates

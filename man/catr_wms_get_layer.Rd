@@ -74,7 +74,8 @@ This function wraps \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles(
 \section{Bounding box}{
 
 When \code{x} is a numeric vector, make sure that \code{srs} matches the coordinate
-values. When \code{x} is a \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is ignored.
+values. When \code{x} is an \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is
+ignored.
 
 The query uses \href{https://epsg.io/3857}{EPSG:3857} (Web Mercator), then
 transforms the tile back to the SRS of \code{x}. If the tile appears distorted,
@@ -117,45 +118,49 @@ for complete layer and style information.
 }
 
 \examples{
-\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example() && requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 \donttest{
+if (requireNamespace("tidyterra", quietly = TRUE)) {
+  # With a bounding box
 
-# With a bounding box
+  pict <- catr_wms_get_layer(
+    c(222500, 4019500, 223700, 4020700),
+    srs = 25830,
+    what = "parcel"
+  )
 
-pict <- catr_wms_get_layer(
-  c(222500, 4019500, 223700, 4020700),
-  srs = 25830,
-  what = "parcel"
-)
+  library(mapSpain)
+  library(ggplot2)
+  library(tidyterra)
 
-library(mapSpain)
-library(ggplot2)
-library(tidyterra)
+  ggplot() +
+    geom_spatraster_rgb(data = pict)
 
-ggplot() +
-  geom_spatraster_rgb(data = pict)
+  # With a spatial object
 
-# With a spatial object
+  parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
 
-parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
+  # Use styles
 
-# Use styles
+  parcels_img <- catr_wms_get_layer(parcels,
+    what = "buildingpart",
+    srs = 25830, # Same as the parcels object
+    bbox_expand = 0.3,
+    styles = "ELFCadastre"
+  )
 
-parcels_img <- catr_wms_get_layer(parcels,
-  what = "buildingpart",
-  srs = 25830, # Same as the parcels object
-  bbox_expand = 0.3,
-  styles = "ELFCadastre"
-)
-
-ggplot() +
-  geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
-  geom_spatraster_rgb(data = parcels_img)
+  ggplot() +
+    geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
+    geom_spatraster_rgb(data = parcels_img)
+}
 }
 \dontshow{\}) # examplesIf}
 }
 \seealso{
 \itemize{
+\item \code{\link[=catr_wfs_get_address_bbox]{catr_wfs_get_address_bbox()}}, \code{\link[=catr_wfs_get_buildings_bbox]{catr_wfs_get_buildings_bbox()}} and
+\code{\link[=catr_wfs_get_parcels_bbox]{catr_wfs_get_parcels_bbox()}} retrieve vector geometries that can define
+the map extent through \code{x}.
 \item \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles()}} downloads map tiles.
 \item \code{\link[terra:RGB]{terra::RGB()}} identifies RGB channels.
 \item \code{\link[terra:plotRGB]{terra::plotRGB()}} and \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}} plot RGB rasters.

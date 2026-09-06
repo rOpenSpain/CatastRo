@@ -17,7 +17,7 @@ test_that("wfs_get_bbox() converts bounding boxes to spatial features", {
   buf <- sf::st_set_crs(buf, 3857)
   expect_snapshot(wfs_get_bbox(buf, limit_km2 = 1))
 
-  # Check transformation to another srs
+  # Check transformation to another SRS.
   geobox <- c(1, 1, 2, 1)
   another <- wfs_get_bbox(geobox, srs = 4326, srs_dest = 25830)
   merc <- wfs_get_bbox(geobox, srs = 4326, srs_dest = 3857)

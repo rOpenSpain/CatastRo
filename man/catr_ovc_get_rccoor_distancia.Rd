@@ -27,7 +27,8 @@ A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
 Query the OVCCoordenadas
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia} service to retrieve
 cadastral references near a pair of coordinates. If no exact match is found,
-the API searches within 50 square meters of the requested coordinates.
+the API searches a square with sides of 50 meters, centered on the requested
+coordinates.
 }
 \details{
 If the API returns no results, this function returns a
@@ -60,6 +61,11 @@ catr_ovc_get_rccoor_distancia(
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia}{Consulta RCCOOR Distancia}.
 }
 \seealso{
+\code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}} looks up the cadastral reference at the exact
+coordinates.
+\code{\link[=catr_wfs_get_parcels_parcel]{catr_wfs_get_parcels_parcel()}} retrieves parcel geometries using the
+returned cadastral references.
+
 Work with cadastral references:
 \code{\link[=catr_ovc_get_cpmrc]{catr_ovc_get_cpmrc()}},
 \code{\link[=catr_ovc_get_rccoor]{catr_ovc_get_rccoor()}}

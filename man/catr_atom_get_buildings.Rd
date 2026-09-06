@@ -22,12 +22,9 @@ catr_atom_get_buildings(
 \item{to}{Optional territorial office containing \code{munic}. Use this argument
 to narrow the search.}
 
-\item{what}{Information to load. Options are:
-\itemize{
-\item \code{"building"} for buildings.
-\item \code{"buildingpart"} for parts of a building.
-\item \code{"other"} for other elements such as swimming pools.
-}}
+\item{what}{Information to load, either \code{"building"} for buildings,
+\code{"buildingpart"} for parts of a building or \code{"other"} for other elements
+such as swimming pools.}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} This argument is no longer
 supported because results are always cached.}
@@ -50,7 +47,7 @@ Retrieve spatial data for all buildings in a municipality using the ATOM
 INSPIRE service.
 }
 \examples{
-\dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
+\dontshow{if (run_example() && requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 \donttest{
 s <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
 

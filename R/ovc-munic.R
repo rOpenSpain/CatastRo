@@ -24,22 +24,24 @@
 #' @param cmun,cmun_ine Municipality code as recorded by the Spanish
 #'   Cadastre (`cmun`) or the National Statistics Institute (`cmun_ine`). Either
 #'   `cmun` or `cmun_ine` must be provided.
-#'
 #' @inheritParams catr_ovc_get_cpmrc
+#'
 #' @inherit catr_ovc_get_cpmrc return
 #'
 #' @references
 #' [ConsultaMunicipioCodigos](`r ovcurl("mun")`).
 #'
 #' @seealso
-#' [mapSpain::esp_get_munic_siane()] to get shapes of municipalities, including
-#' the INE code.
+#' [catr_atom_search_munic()] searches municipality codes by name.
+#' [catr_atom_get_parcels()] accepts the returned `catrcode` as `munic`.
+#' [mapSpain::esp_get_munic_siane()] retrieves municipality geometries,
+#' including the INE code.
 #'
 #' @family search_tools
 #' @family ovc_services
-#'
 #' @export
 #' @encoding UTF-8
+#'
 #' @examplesIf run_example()
 #' \donttest{
 #' # Get municipality by cadastral code
@@ -53,7 +55,6 @@
 #'
 #' ab2
 #' }
-#'
 catr_ovc_get_cod_munic <- function(
   cpro,
   cmun = NULL,
@@ -75,7 +76,7 @@ catr_ovc_get_cod_munic <- function(
   if (is.null(munis)) {
     my_arg <- c("cmun", "cmun_ine") # nolint
     cli::cli_abort(
-      "Provide a non-{.val NULL} value for either {.or {.arg {my_arg}}}."
+      "Provide a non-{.code NULL} value for either {.or {.arg {my_arg}}}."
     )
   }
 
