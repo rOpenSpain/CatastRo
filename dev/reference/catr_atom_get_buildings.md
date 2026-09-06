@@ -87,9 +87,6 @@ Query ATOM INSPIRE services:
 ``` r
 # \donttest{
 s <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
-#> ✖ The download request could not be completed.
-#> ! Failed to perform HTTP request. Caused by error in `curl::curl_fetch_memory()`: ! Timeout was reached [www.catastro.hacienda.gob.es]: Failed to connect to www.catastro.hacienda.gob.es port 443 after 133027 ms: Couldn't connect to server
-#> Returning `NULL` because the download failed.
 
 library(ggplot2)
 ggplot(s) +

@@ -81,10 +81,6 @@ Query ATOM INSPIRE services:
 ``` r
 # \donttest{
 s <- catr_atom_get_address("Melque", to = "Segovia")
-#> ✖ The download request could not be completed.
-#> ! Failed to perform HTTP request. Caused by error in `curl::curl_fetch_disk()`: ! Timeout was reached [www.catastro.hacienda.gob.es]: Failed to connect to www.catastro.hacienda.gob.es port 443 after 133111 ms: Couldn't connect to server
-#> Returning `NULL` because the download failed.
-#> Error in if (isFALSE(update_cache) && fileoncache) {    msg <- "Using cached file {.file {file_local}}."    make_msg("success", verbose, msg)    return(file_local)}: missing value where TRUE/FALSE needed
 
 library(ggplot2)
 
@@ -98,6 +94,6 @@ ggplot(s) +
     title = "Addresses",
     subtitle = "Melque de Cercos, Segovia"
   )
-#> Error: object 's' not found
+
 # }
 ```
