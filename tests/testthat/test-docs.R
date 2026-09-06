@@ -44,3 +44,9 @@ test_that("ovcurl() maps service identifiers to stable URLs", {
     paste0(base, "/ovccoordenadas.asmx?op=Consulta_RCCOOR")
   )
 })
+test_that("wfs_map_seealso() produce urls", {
+  expect_snapshot(wfs_map_seealso())
+})
+test_that("cache_directory_seealso () produce urls", {
+  expect_snapshot(cache_directory_seealso())
+})

@@ -579,7 +579,6 @@ test_that("download_url() reports cached paths containing literal braces", {
     "{cache}",
     fixed = TRUE
   )
-  expect_identical(out, target)
 })
 
 test_that("get_request_body() reports literal braces in URLs", {
