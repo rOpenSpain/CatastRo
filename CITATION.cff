@@ -13,10 +13,10 @@ doi: 10.32614/CRAN.package.CatastRo
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.CatastRo
-abstract: Access public spatial data from the Spanish Cadastre through its Infrastructure
+abstract: Access public spatial data from the Spanish 'Catastro' through its Infrastructure
   for Spatial Information in Europe ('INSPIRE') and related web services. Retrieve
-  cadastral parcel, building, address and georeferenced map image data and convert
-  between cadastral references and coordinates.
+  parcel, building, address and map image data and convert between property reference
+  codes and coordinates.
 authors:
 - family-names: Delgado Panadero
   given-names: Ángel
@@ -42,10 +42,10 @@ preferred-citation:
   year: '2026'
   version: 1.0.2.9000
   url: https://ropenspain.github.io/CatastRo/
-  abstract: Access public spatial data from the Spanish Cadastre through its Infrastructure
+  abstract: Access public spatial data from the Spanish Catastro through its Infrastructure
     for Spatial Information in Europe (INSPIRE) and related web services. Retrieve
-    cadastral parcel, building, address and georeferenced map image data and convert
-    between cadastral references and coordinates.
+    parcel, building, address and map image data and convert between property reference
+    codes and coordinates.
 repository: https://CRAN.R-project.org/package=CatastRo
 repository-code: https://github.com/rOpenSpain/CatastRo
 url: https://ropenspain.github.io/CatastRo/

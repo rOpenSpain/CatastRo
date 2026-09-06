@@ -42,13 +42,15 @@ catr_wfs_get_parcels_bbox <- function(
   what <- match_arg_pretty(what)
 
   # Switch to stored queries.
-  stored_query <- switch(
-    what,
+  stored_query <- switch(what,
     "parcel" = "CP.CADASTRALPARCEL",
     "zoning" = "CP.CADASTRALZONING"
   )
 
-  limit <- switch(what, "parcel" = 1, "zoning" = 25)
+  limit <- switch(what,
+    "parcel" = 1,
+    "zoning" = 25
+  )
 
   wfs_read_bbox_query(
     x = x,

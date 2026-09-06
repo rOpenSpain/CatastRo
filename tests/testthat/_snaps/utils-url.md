@@ -60,6 +60,15 @@
       ! Mock transport failure.
       Returning `NULL` because the request failed.
 
+# download_url() reports cached paths containing literal braces
+
+    Code
+      out <- download_url("https://example.com/file.txt", name = "{file}.txt",
+        cache_dir = root, subdir = "{cache}", verbose = TRUE)
+    Message
+      i Using cache directory '<temp>/{cache}'.
+      v Using cached file '<temp>/{cache}/{file}.txt'.
+
 # get_request_body() reports literal braces in URLs
 
     Code

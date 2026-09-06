@@ -562,13 +562,13 @@ test_that("get_request_body() can perform a real HTTP request", {
 })
 
 test_that("download_url() reports cached paths containing literal braces", {
-  root <- withr::local_tempdir()
+  root <- normalizePath(withr::local_tempdir(), winslash = "/")
   cache <- file.path(root, "{cache}")
   dir.create(cache)
   target <- file.path(cache, "{file}.txt")
   writeLines("cached", target)
 
-  expect_message(
+  expect_snapshot(
     out <- download_url(
       "https://example.com/file.txt",
       name = "{file}.txt",
@@ -576,8 +576,14 @@ test_that("download_url() reports cached paths containing literal braces", {
       subdir = "{cache}",
       verbose = TRUE
     ),
-    "{cache}",
-    fixed = TRUE
+    transform = function(x) {
+      x <- gsub("\\", "/", x, fixed = TRUE)
+      gsub(root, "<temp>", x, fixed = TRUE)
+    }
+  )
+  expect_identical(
+    normalizePath(out, winslash = "/"),
+    normalizePath(target, winslash = "/")
   )
 })
 
