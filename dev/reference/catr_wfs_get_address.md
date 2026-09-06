@@ -134,6 +134,9 @@ ad <- catr_wfs_get_address_bbox(
   ),
   srs = 25830
 )
+#> ✖ The download request could not be completed.
+#> ! Failed to perform HTTP request. Caused by error in `curl::curl_fetch_memory()`: ! Timeout was reached [ovc.catastro.meh.es]: Failed to connect to ovc.catastro.meh.es port 443 after 133092 ms: Couldn't connect to server
+#> Returning `NULL` because the download failed.
 
 library(ggplot2)
 

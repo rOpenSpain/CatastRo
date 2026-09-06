@@ -124,6 +124,9 @@ building <- catr_wfs_get_buildings_bbox(
   ),
   srs = 25830
 )
+#> ✖ The download request could not be completed.
+#> ! Failed to perform HTTP request. Caused by error in `curl::curl_fetch_memory()`: ! Timeout was reached [ovc.catastro.meh.es]: Failed to connect to ovc.catastro.meh.es port 443 after 134241 ms: Couldn't connect to server
+#> Returning `NULL` because the download failed.
 library(ggplot2)
 ggplot(building) +
   geom_sf() +
@@ -132,6 +135,9 @@ ggplot(building) +
 
 # Using a cadastral reference
 rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
+#> ✖ The download request could not be completed.
+#> ! Failed to perform HTTP request. Caused by error in `curl::curl_fetch_memory()`: ! Timeout was reached [ovc.catastro.meh.es]: Failed to connect to ovc.catastro.meh.es port 443 after 135053 ms: Couldn't connect to server
+#> Returning `NULL` because the download failed.
 library(ggplot2)
 ggplot(rc) +
   geom_sf() +

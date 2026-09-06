@@ -210,11 +210,9 @@ if (requireNamespace("tidyterra", quietly = TRUE)) {
     geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
     geom_spatraster_rgb(data = parcels_img)
 }
-#> 
-#> Attaching package: ‘tidyterra’
-#> The following object is masked from ‘package:stats’:
-#> 
-#>     filter
-
+#> Error in httr2::req_perform(...): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Timeout was reached [ovc.catastro.meh.es]:
+#> Failed to connect to ovc.catastro.meh.es port 443 after 135559 ms: Couldn't connect to server
 # }
 ```
