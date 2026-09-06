@@ -32,13 +32,9 @@ catr_atom_get_buildings(
 
 - what:
 
-  Information to load. Options are:
-
-  - `"building"` for buildings.
-
-  - `"buildingpart"` for parts of a building.
-
-  - `"other"` for other elements such as swimming pools.
+  Information to load, either `"building"` for buildings,
+  `"buildingpart"` for parts of a building or `"other"` for other
+  elements such as swimming pools.
 
 - cache:
 

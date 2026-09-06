@@ -61,6 +61,11 @@ RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenada
 
 ## See also
 
+[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
+also searches a nearby area when no exact match is found.
+[`catr_wfs_get_parcels_parcel()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
+retrieves parcel geometries using the returned cadastral references.
+
 Work with cadastral references:
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)

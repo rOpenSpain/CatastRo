@@ -61,8 +61,12 @@ following columns:
 
 ## See also
 
+[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md)
+searches municipality codes by name.
+[`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels.md)
+accepts the returned `catrcode` as `munic`.
 [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
-to get shapes of municipalities, including the INE code.
+retrieves municipality geometries, including the INE code.
 
 Search for cadastral identifiers:
 [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md),

@@ -7,21 +7,29 @@ features and retrieve georeferenced map images.
 
 ### Complete municipal datasets
 
-Discover and download complete address, building and cadastral parcel
-datasets through ATOM INSPIRE services.
+Download all addresses, buildings or cadastral parcels for a
+municipality through ATOM INSPIRE services. Use
+[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md)
+to find municipality codes.
 
 - [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md)
   : ATOM INSPIRE: Download all addresses for a municipality
+- [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md)
+  : ATOM INSPIRE: Download all buildings for a municipality
+- [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels.md)
+  : ATOM INSPIRE: Download all cadastral parcels for a municipality
+
+### ATOM download catalogs
+
+Inspect download URLs and available municipalities by territorial office
+before retrieving complete datasets.
+
 - [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md)
   [`catr_atom_get_address_db_to()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md)
   : ATOM INSPIRE: List address download URLs
-- [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings.md)
-  : ATOM INSPIRE: Download all buildings for a municipality
 - [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings_db.md)
   [`catr_atom_get_buildings_db_to()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_buildings_db.md)
   : ATOM INSPIRE: List building download URLs
-- [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels.md)
-  : ATOM INSPIRE: Download all cadastral parcels for a municipality
 - [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels_db.md)
   [`catr_atom_get_parcels_db_to()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels_db.md)
   : ATOM INSPIRE: List cadastral parcel download URLs
@@ -45,12 +53,11 @@ INSPIRE services.
   [`catr_wfs_get_parcels_neigh_parcel()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
   [`catr_wfs_get_parcels_parcel_zoning()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
   : WFS INSPIRE: Download cadastral parcels
-- [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
-  : Query WFS INSPIRE services
 
 ### Georeferenced map images
 
-Download cadastral map layers through the WMS INSPIRE service.
+Download cadastral map images through WMS INSPIRE. Use the spatial
+objects returned by WFS queries to define the map extent.
 
 - [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
   : WMS INSPIRE: Download georeferenced map images
@@ -62,7 +69,8 @@ province and municipality codes.
 
 ### References and coordinates
 
-Geocode cadastral references and reverse geocode spatial coordinates.
+Convert a cadastral reference to coordinates, find the reference at a
+coordinate pair or search nearby when no exact match exists.
 
 - [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md)
   : OVCCoordenadas: Geocode a cadastral reference
@@ -88,7 +96,7 @@ code or coordinates.
 ## Configure and inspect CatastRo
 
 Manage downloaded files, inspect supported coordinate systems and access
-package-level documentation.
+package-level documentation or construct custom WFS queries.
 
 ### Cache management
 
@@ -116,6 +124,14 @@ Inspect the SRS codes supported by the package services.
 
   Reference SRS codes for
   [CatastRo](https://CRAN.R-project.org/package=CatastRo) services
+
+### Custom WFS queries
+
+Query an INSPIRE WFS endpoint directly when the service-specific
+functions do not cover the required request.
+
+- [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/dev/reference/inspire_wfs_get.md)
+  : Query WFS INSPIRE services
 
 ### Package overview
 

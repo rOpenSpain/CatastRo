@@ -20,6 +20,8 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -44,7 +46,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="catastro-development-version">CatastRo (development version)<a class="anchor" aria-label="anchor" href="#catastro-development-version"></a></h2>
-<ul><li>
+<ul><li>CLI messages now display braces in paths, URLs and argument values literally.</li>
+<li>
 <strong>CatastRo</strong> users can now configure HTTP timeout and SSL verification with the <code>CATASTRO_TIMEOUT</code> and <code>CATASTRO_SSL_VERIFY</code> environment variables. The existing <code>catastro_timeout</code> and <code>catastro_ssl_verify</code> options still take precedence (<a href="https://github.com/rOpenSpain/CatastRo/issues/82" class="external-link">#82</a>).</li>
 <li>
 <strong>CatastRo</strong> now preserves existing cached files when a refresh fails and validates required query values before making a request.</li>
@@ -52,6 +55,8 @@
 <code>catr_atom_get_*()</code> functions now respect exact territorial office matches, propagate cache refresh options and preserve the update date of each ATOM entry.</li>
 <li>
 <code><a href="../reference/catr_atom_search_munic.html">catr_atom_search_munic()</a></code> now filters results when <code>to</code> matches exactly one territorial office.</li>
+<li>
+<code><a href="../reference/catr_clear_cache.html">catr_clear_cache()</a></code> now reports incomplete deletions instead of announcing success when files remain.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.2" id="catastro-102">CatastRo 1.0.2<a class="anchor" aria-label="anchor" href="#catastro-102"></a></h2><p class="text-muted">CRAN release: 2026-06-03</p>
@@ -131,7 +136,8 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="catastro-023">CatastRo 0.2.3<a class="anchor" aria-label="anchor" href="#catastro-023"></a></h2><p class="text-muted">CRAN release: 2023-01-08</p>
 <ul><li>Update documentation and package maintenance files.</li>
-<li>Adapt <code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code> to <strong>mapSpain</strong> (&gt;= 0.7.0).</li>
+<li>
+<code><a href="../reference/catr_wms_get_layer.html">catr_wms_get_layer()</a></code> is now compatible with <strong>mapSpain</strong> (&gt;= 0.7.0).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.2" id="catastro-022">CatastRo 0.2.2<a class="anchor" aria-label="anchor" href="#catastro-022"></a></h2><p class="text-muted">CRAN release: 2022-05-27</p>
@@ -139,7 +145,7 @@
 <li>
 <code><a href="../reference/catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> now handles <code>sfc</code> objects (<a href="https://github.com/rOpenSpain/CatastRo/issues/26" class="external-link">#26</a>).</li>
 <li>
-<code><a href="../reference/catr_clear_cache.html">catr_clear_cache()</a></code> now has <code>config = FALSE</code> as default argument.</li>
+<code><a href="../reference/catr_clear_cache.html">catr_clear_cache()</a></code> now has <code>config = FALSE</code> as the default.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="catastro-021">CatastRo 0.2.1<a class="anchor" aria-label="anchor" href="#catastro-021"></a></h2><p class="text-muted">CRAN release: 2022-03-08</p>

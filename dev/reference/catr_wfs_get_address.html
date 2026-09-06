@@ -58,6 +58,8 @@ specific postal codes.
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -161,10 +163,10 @@ elements.</p>
 
 
 <p>When <code>x</code> is a numeric vector, make sure that <code>srs</code> matches the
-coordinate values. Additionally, the function queries the bounding box on
+coordinate values. This function queries the bounding box in
 <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a>, ETRS89 / UTM zone 30N, to work around a
 potential API issue.</p>
-<p>When <code>x</code> is a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object, the <code>srs</code> value is ignored. In
+<p>When <code>x</code> is an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object, the <code>srs</code> value is ignored. In
 this case, the bounding box of the <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object is
 used for the query (see <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>).</p>
 <p>The result is always provided in the SRS of the <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object
@@ -177,7 +179,9 @@ provided as input.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Work with cadastral addresses:
+    <div class="dont-index"><p><code><a href="catr_wms_get_layer.html">catr_wms_get_layer()</a></code> downloads a map image using the returned spatial
+object as its extent (<code>x</code>).</p>
+<p>Work with cadastral addresses:
 <code><a href="catr_atom_get_address.html">catr_atom_get_address()</a></code>,
 <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code></p>
 <p>Query WFS INSPIRE services:

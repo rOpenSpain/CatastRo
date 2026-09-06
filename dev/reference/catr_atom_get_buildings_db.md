@@ -4,10 +4,9 @@ Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE
 service for downloading buildings.
 
 `catr_atom_get_buildings_db_all()` provides a summary table with all
-territorial offices, except the Basque Country and Navarre and the
-municipalities included in each office.
-`catr_atom_get_buildings_db_to()` provides a table for one territorial
-office and its municipalities.
+territorial offices and their municipalities, excluding the Basque
+Country and Navarre. `catr_atom_get_buildings_db_to()` provides a table
+for one territorial office and its municipalities.
 
 ## Usage
 

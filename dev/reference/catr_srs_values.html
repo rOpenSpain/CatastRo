@@ -24,6 +24,8 @@ EPSG codes."><meta property="og:image" content="https://ropenspain.github.io/Cat
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -86,7 +88,10 @@ services.</p></dd>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs()</a></code>.</p></div>
+    <div class="dont-index"><p><code><a href="catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> and <code><a href="catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> accept SRS codes
+listed in the <code>ovc_service</code> column. <code><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_bbox()</a></code> accepts
+codes listed in the <code>wfs_service</code> column. <code><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">sf::st_crs()</a></code> inspects the
+corresponding coordinate reference system.</p></div>
     </div>
 
     <div class="section level2">

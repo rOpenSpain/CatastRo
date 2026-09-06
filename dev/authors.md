@@ -28,5 +28,5 @@ API Sede Electrónica Del Catastro*.
       year = {2026},
       version = {1.0.2.9000},
       url = {https://ropenspain.github.io/CatastRo/},
-      abstract = {Access public spatial data from the Spanish Cadastre through its INSPIRE and related web services. Retrieve cadastral parcel, building, address and georeferenced map image data and convert between cadastral references and coordinates.},
+      abstract = {Access public spatial data from the Spanish Cadastre through its Infrastructure for Spatial Information in Europe (INSPIRE) and related web services. Retrieve cadastral parcel, building, address and georeferenced map image data and convert between cadastral references and coordinates.},
     }

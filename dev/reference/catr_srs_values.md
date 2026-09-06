@@ -62,7 +62,14 @@ Table: Content of catr_srs_values
 
 ## See also
 
-[`sf::st_crs()`](https://r-spatial.github.io/sf/reference/st_crs.html).
+[`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md)
+and
+[`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md)
+accept SRS codes listed in the `ovc_service` column.
+[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
+accepts codes listed in the `wfs_service` column.
+[`sf::st_crs()`](https://r-spatial.github.io/sf/reference/st_crs.html)
+inspects the corresponding coordinate reference system.
 
 ## Examples
 

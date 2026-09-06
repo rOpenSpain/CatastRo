@@ -3,8 +3,8 @@
 Query the OVCCoordenadas [Consulta RCCOOR
 Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia)
 service to retrieve cadastral references near a pair of coordinates. If
-no exact match is found, the API searches within 50 square meters of the
-requested coordinates.
+no exact match is found, the API searches a square with sides of 50
+meters, centered on the requested coordinates.
 
 ## Usage
 
@@ -64,6 +64,11 @@ row per cadastral reference, including the following columns:
 Distancia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR_Distancia).
 
 ## See also
+
+[`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md)
+looks up the cadastral reference at the exact coordinates.
+[`catr_wfs_get_parcels_parcel()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
+retrieves parcel geometries using the returned cadastral references.
 
 Work with cadastral references:
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md),

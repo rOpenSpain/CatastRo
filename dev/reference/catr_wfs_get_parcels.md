@@ -60,11 +60,8 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
 - what:
 
-  Information to load. Options are:
-
-  - `"parcel"` for cadastral parcels.
-
-  - `"zoning"` for cadastral zoning.
+  Information to load, either `"parcel"` for cadastral parcels or
+  `"zoning"` for cadastral zoning.
 
 - srs:
 
@@ -91,7 +88,7 @@ Returns `NULL` if the data cannot be retrieved.
 
 ## API limits
 
-The API service is limited to the following constraints:
+The API service has the following limits:
 
 - `"parcel"`: Bounding box of 1 km2 and a maximum of 5,000 elements.
 
@@ -100,11 +97,11 @@ The API service is limited to the following constraints:
 ## Bounding box
 
 When `x` is a numeric vector, make sure that `srs` matches the
-coordinate values. Additionally, the function queries the bounding box
-on [EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work
+coordinate values. This function queries the bounding box in
+[EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work
 around a potential API issue.
 
-When `x` is a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+When `x` is an [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 object, the `srs` value is ignored. In this case, the bounding box of
 the [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
 used for the query (see
@@ -123,6 +120,10 @@ documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspir
 cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
+
+[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
+downloads a map image using the returned spatial object as its extent
+(`x`).
 
 Work with cadastral parcels:
 [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_parcels.md),

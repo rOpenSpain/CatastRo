@@ -20,6 +20,8 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -49,7 +51,7 @@
       <dl></dl></div><div class="section level2">
 
       <h3 id="complete-municipal-datasets">Complete municipal datasets<a class="anchor" aria-label="anchor" href="#complete-municipal-datasets"></a></h3>
-      <div class="section-desc"><p>Discover and download complete address, building and cadastral parcel datasets through ATOM INSPIRE services.</p></div>
+      <div class="section-desc"><p>Download all addresses, buildings or cadastral parcels for a municipality through ATOM INSPIRE services. Use <code><a href="../reference/catr_atom_search_munic.html">catr_atom_search_munic()</a></code> to find municipality codes.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -65,13 +67,6 @@
 
         <dt>
 
-          <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code> <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_to()</a></code>
-
-        </dt>
-        <dd>ATOM INSPIRE: List address download URLs</dd>
-
-        <dt>
-
           <code><a href="catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code>
 
         </dt>
@@ -79,17 +74,33 @@
 
         <dt>
 
-          <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all()</a></code> <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_to()</a></code>
-
-        </dt>
-        <dd>ATOM INSPIRE: List building download URLs</dd>
-
-        <dt>
-
           <code><a href="catr_atom_get_parcels.html">catr_atom_get_parcels()</a></code>
 
         </dt>
         <dd>ATOM INSPIRE: Download all cadastral parcels for a municipality</dd>
+      </dl></div><div class="section level2">
+
+      <h3 id="atom-download-catalogs">ATOM download catalogs<a class="anchor" aria-label="anchor" href="#atom-download-catalogs"></a></h3>
+      <div class="section-desc"><p>Inspect download URLs and available municipalities by territorial office before retrieving complete datasets.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code> <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_to()</a></code>
+
+        </dt>
+        <dd>ATOM INSPIRE: List address download URLs</dd>
+
+        <dt>
+
+          <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all()</a></code> <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_to()</a></code>
+
+        </dt>
+        <dd>ATOM INSPIRE: List building download URLs</dd>
 
         <dt>
 
@@ -127,17 +138,10 @@
 
         </dt>
         <dd>WFS INSPIRE: Download cadastral parcels</dd>
-
-        <dt>
-
-          <code><a href="inspire_wfs_get.html">inspire_wfs_get()</a></code>
-
-        </dt>
-        <dd>Query WFS INSPIRE services</dd>
       </dl></div><div class="section level2">
 
       <h3 id="georeferenced-map-images">Georeferenced map images<a class="anchor" aria-label="anchor" href="#georeferenced-map-images"></a></h3>
-      <div class="section-desc"><p>Download cadastral map layers through the WMS INSPIRE service.</p></div>
+      <div class="section-desc"><p>Download cadastral map images through WMS INSPIRE. Use the spatial objects returned by WFS queries to define the map extent.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -158,7 +162,7 @@
       <dl></dl></div><div class="section level2">
 
       <h3 id="references-and-coordinates">References and coordinates<a class="anchor" aria-label="anchor" href="#references-and-coordinates"></a></h3>
-      <div class="section-desc"><p>Geocode cadastral references and reverse geocode spatial coordinates.</p></div>
+      <div class="section-desc"><p>Convert a cadastral reference to coordinates, find the reference at a coordinate pair or search nearby when no exact match exists.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -225,7 +229,7 @@
       </dl></div><div class="section level2">
       <h2 id="configure-and-inspect-catastro">Configure and inspect CatastRo<a class="anchor" aria-label="anchor" href="#configure-and-inspect-catastro"></a></h2>
 
-      <div class="section-desc"><p>Manage downloaded files, inspect supported coordinate systems and access package-level documentation.</p></div>
+      <div class="section-desc"><p>Manage downloaded files, inspect supported coordinate systems and access package-level documentation or construct custom WFS queries.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -266,6 +270,22 @@
 
         </dt>
         <dd>Reference SRS codes for <a href="https://CRAN.R-project.org/package=CatastRo" class="external-link"><span class="pkg">CatastRo</span></a> services</dd>
+      </dl></div><div class="section level2">
+
+      <h3 id="custom-wfs-queries">Custom WFS queries<a class="anchor" aria-label="anchor" href="#custom-wfs-queries"></a></h3>
+      <div class="section-desc"><p>Query an INSPIRE WFS endpoint directly when the service-specific functions do not cover the required request.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="inspire_wfs_get.html">inspire_wfs_get()</a></code>
+
+        </dt>
+        <dd>Query WFS INSPIRE services</dd>
       </dl></div><div class="section level2">
 
       <h3 id="package-overview">Package overview<a class="anchor" aria-label="anchor" href="#package-overview"></a></h3>

@@ -25,7 +25,7 @@ catr_get_code_from_coords(
   - A pair of coordinates `c(x, y)`. In this case the `srs` of the
     coordinates must be provided.
 
-  - A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+  - An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
     If the object has several geometries, only the first geometry is
     used. This function extracts coordinates using
     `sf::st_centroid(x, of_largest_polygon = TRUE)`.

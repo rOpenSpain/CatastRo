@@ -22,6 +22,8 @@ This function wraps mapSpain::esp_get_tiles()."><meta property="og:image" conten
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -148,7 +150,8 @@ supported.</p></dd>
 
 
 <p>When <code>x</code> is a numeric vector, make sure that <code>srs</code> matches the coordinate
-values. When <code>x</code> is a <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object, the <code>srs</code> value is ignored.</p>
+values. When <code>x</code> is an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object, the <code>srs</code> value is
+ignored.</p>
 <p>The query uses <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a> (Web Mercator), then
 transforms the tile back to the SRS of <code>x</code>. If the tile appears distorted,
 provide a spatial object as <code>x</code> or set <code>srs</code> to the SRS of the requested
@@ -190,7 +193,10 @@ for complete layer and style information.</p>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
-<ul><li><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html" class="external-link">mapSpain::esp_get_tiles()</a></code> downloads map tiles.</p></li>
+<ul><li><p><code><a href="catr_wfs_get_address.html">catr_wfs_get_address_bbox()</a></code>, <code><a href="catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox()</a></code> and
+<code><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_bbox()</a></code> retrieve vector geometries that can define
+the map extent through <code>x</code>.</p></li>
+<li><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html" class="external-link">mapSpain::esp_get_tiles()</a></code> downloads map tiles.</p></li>
 <li><p><code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::RGB()</a></code> identifies RGB channels.</p></li>
 <li><p><code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">terra::plotRGB()</a></code> and <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">tidyterra::geom_spatraster_rgb()</a></code> plot RGB rasters.</p></li>
 </ul></div>
@@ -199,47 +205,45 @@ for complete layer and style information.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"tidyterra"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># With a bounding box</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># With a bounding box</span></span></span>
+<span class="r-in"><span>  <span class="va">pict</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">222500</span>, <span class="fl">4019500</span>, <span class="fl">223700</span>, <span class="fl">4020700</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    srs <span class="op">=</span> <span class="fl">25830</span>,</span></span>
+<span class="r-in"><span>    what <span class="op">=</span> <span class="st">"parcel"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">pict</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">222500</span>, <span class="fl">4019500</span>, <span class="fl">223700</span>, <span class="fl">4020700</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">25830</span>,</span></span>
-<span class="r-in"><span>  what <span class="op">=</span> <span class="st">"parcel"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>[rast] unknown extent</span>
+<span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/tidyterra/" class="external-link">tidyterra</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pict</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># With a spatial object</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span>, srs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># Use styles</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">parcels_img</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span><span class="va">parcels</span>,</span></span>
+<span class="r-in"><span>    what <span class="op">=</span> <span class="st">"buildingpart"</span>,</span></span>
+<span class="r-in"><span>    srs <span class="op">=</span> <span class="fl">25830</span>, <span class="co"># Same as the parcels object</span></span></span>
+<span class="r-in"><span>    bbox_expand <span class="op">=</span> <span class="fl">0.3</span>,</span></span>
+<span class="r-in"><span>    styles <span class="op">=</span> <span class="st">"ELFCadastre"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels_img</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘tidyterra’</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:stats’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     filter</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">pict</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="catr_wms_get_layer-1.png" alt="" width="2188" height="1352"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># With a spatial object</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">parcels</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel</a></span><span class="op">(</span><span class="st">"3662303TF3136B"</span>, srs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Use styles</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">parcels_img</span> <span class="op">&lt;-</span> <span class="fu">catr_wms_get_layer</span><span class="op">(</span><span class="va">parcels</span>,</span></span>
-<span class="r-in"><span>  what <span class="op">=</span> <span class="st">"buildingpart"</span>,</span></span>
-<span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">25830</span>, <span class="co"># Same as the parcels object</span></span></span>
-<span class="r-in"><span>  bbox_expand <span class="op">=</span> <span class="fl">0.3</span>,</span></span>
-<span class="r-in"><span>  styles <span class="op">=</span> <span class="st">"ELFCadastre"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>[rast] unknown extent</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels_img</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="catr_wms_get_layer-2.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

@@ -22,6 +22,8 @@ Cadastre municipality codes."><meta property="og:image" content="https://ropensp
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -103,7 +105,10 @@ municipality name and cadastral code. Returns <code>NULL</code> if no match is f
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Search for cadastral identifiers:
+    <div class="dont-index"><p><code><a href="catr_atom_get_address.html">catr_atom_get_address()</a></code>, <code><a href="catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code> and
+<code><a href="catr_atom_get_parcels.html">catr_atom_get_parcels()</a></code> accept the returned cadastral municipality code
+as <code>munic</code>. <code><a href="catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code> finds that code from coordinates.</p>
+<p>Search for cadastral identifiers:
 <code><a href="catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code>,
 <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>,
 <code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code></p>

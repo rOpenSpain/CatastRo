@@ -2,6 +2,8 @@
 
 ## CatastRo (development version)
 
+- CLI messages now display braces in paths, URLs and argument values
+  literally.
 - **CatastRo** users can now configure HTTP timeout and SSL verification
   with the `CATASTRO_TIMEOUT` and `CATASTRO_SSL_VERIFY` environment
   variables. The existing `catastro_timeout` and `catastro_ssl_verify`
@@ -14,6 +16,9 @@
   of each ATOM entry.
 - [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_search_munic.md)
   now filters results when `to` matches exactly one territorial office.
+- [`catr_clear_cache()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_clear_cache.md)
+  now reports incomplete deletions instead of announcing success when
+  files remain.
 
 ## CatastRo 1.0.2
 
@@ -131,9 +136,8 @@ CRAN release: 2024-01-18
 CRAN release: 2023-01-08
 
 - Update documentation and package maintenance files.
-- Adapt
-  [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
-  to **mapSpain** (\>= 0.7.0).
+- [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
+  is now compatible with **mapSpain** (\>= 0.7.0).
 
 ## CatastRo 0.2.2
 
@@ -144,7 +148,7 @@ CRAN release: 2022-05-27
   now handles `sfc` objects
   ([\#26](https://github.com/rOpenSpain/CatastRo/issues/26)).
 - [`catr_clear_cache()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_clear_cache.md)
-  now has `config = FALSE` as default argument.
+  now has `config = FALSE` as the default.
 
 ## CatastRo 0.2.1
 

@@ -24,6 +24,8 @@ resources."><meta property="og:image" content="https://ropenspain.github.io/Cata
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -116,8 +118,8 @@ result to a temporary cache and reports WFS exceptions. See <strong>Examples</st
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Access the Cadastre of Navarra</span></span></span>
-<span class="r-in"><span><span class="co"># Try also https://ropenspain.github.io/CatastRoNav/</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Access the Cadastre of Navarre.</span></span></span>
+<span class="r-in"><span><span class="co"># See also https://ropenspain.github.io/CatastRoNav/</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">file_local</span> <span class="op">&lt;-</span> <span class="fu">inspire_wfs_get</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  hostname <span class="op">=</span> <span class="st">"inspire.navarra.es"</span>,</span></span>
@@ -130,9 +132,6 @@ result to a temporary cache and reports WFS exceptions. See <strong>Examples</st
 <span class="r-in"><span>    SRSNAME <span class="op">=</span> <span class="st">"EPSG:25830"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> HTTP error <span style="color: #0000BB;">400</span> (Bad Request): <span style="color: #0000BB; font-style: italic;">&lt;https://inspire.navarra.es/services/BU/wfs?service=WFS&amp;request=getfeature&amp;typenames=BU:Building&amp;bbox=609800,4740100,611000,4741300&amp;srsname=EPSG:25830&gt;</span>.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> If this looks like a package bug, open an issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/ropenspain/CatastRo/issues&gt;</span>.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning <span style="color: #0000BB;">"NULL"</span> because the download failed.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">file_local</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">pamp</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="va">file_local</span><span class="op">)</span></span></span>
@@ -143,6 +142,7 @@ result to a temporary cache and reports WFS exceptions. See <strong>Examples</st
 <span class="r-in"><span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-plt img"><img src="inspire_wfs_get-1.png" alt="" width="2188" height="1352"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

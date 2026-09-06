@@ -50,6 +50,8 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -92,7 +94,7 @@
     <!-- ovcservice.qmd is generated from ovcservice.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> provides an <strong>R</strong> interface to the <strong>OVCCoordenadas</strong> service from the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a>.</p>
 <p>This service retrieves coordinates for a cadastral reference. The cadastral reference is the only required value, although optional province and municipality values can narrow the search.</p>
 <p>The service can also retrieve cadastral references from longitude and latitude. You can choose the spatial reference system (SRS, also known as CRS) used to express the coordinates.</p>
-<p>If no exact match is found, the distance query returns cadastral references within 50 square meters of the requested coordinates.</p>
+<p>If no exact match is found, the distance query returns cadastral references within a square with sides of 50 meters, centered on the requested coordinates.</p>
 <p>See the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link"><strong>OVCCoordenadas</strong> service documentation</a> for endpoint details.</p>
 <p>These functions use the <code>catr_ovc_get_*()</code> prefix and return tibbles from the <strong>tibble</strong> package.</p>
 <section class="level2"><h2 id="catastro-api">CatastRo API<a class="anchor" aria-label="anchor" href="#catastro-api"></a>
@@ -225,7 +227,7 @@
 </tr>
 </tbody>
 </table>
-<p>You can retrieve cadastral references within 50 square meters of <code>lat</code> and <code>lon</code> with <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code>.</p>
+<p>If no exact match is found, <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code> retrieves cadastral references within a square with sides of 50 meters, centered on <code>lat</code> and <code>lon</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia</a></span><span class="op">(</span></span>
 <span>  lat <span class="op">=</span> <span class="fl">40.96002</span>,</span>
@@ -302,7 +304,7 @@
 </tbody>
 </table></section><section class="level2"><h2 id="geocoding-a-cadastral-reference">Geocoding a cadastral reference<a class="anchor" aria-label="anchor" href="#geocoding-a-cadastral-reference"></a>
 </h2>
-<p>For the reverse query, <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> accepts a cadastral reference (<code>rc</code>) and returns <code>xcoord</code> and <code>ycoord</code> in the specified <code>srs</code>, together with the address. Optional <code>province</code> and <code>municipality</code> values can narrow the search.</p>
+<p>For geocoding, <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> accepts a cadastral reference (<code>rc</code>) and returns <code>xcoord</code> and <code>ycoord</code> in the specified <code>srs</code>, together with the address. Optional <code>province</code> and <code>municipality</code> values can narrow the search.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
 <span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>

@@ -105,7 +105,7 @@ with three RGB or four RGBA layers. See
 ## Bounding box
 
 When `x` is a numeric vector, make sure that `srs` matches the
-coordinate values. When `x` is a
+coordinate values. When `x` is an
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object, the
 `srs` value is ignored.
 
@@ -156,6 +156,12 @@ for complete layer and style information.
 
 ## See also
 
+- [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_address.md),
+  [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_buildings.md)
+  and
+  [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wfs_get_parcels.md)
+  retrieve vector geometries that can define the map extent through `x`.
+
 - [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
   downloads map tiles.
 
@@ -171,46 +177,44 @@ for complete layer and style information.
 
 ``` r
 # \donttest{
+if (requireNamespace("tidyterra", quietly = TRUE)) {
+  # With a bounding box
 
-# With a bounding box
+  pict <- catr_wms_get_layer(
+    c(222500, 4019500, 223700, 4020700),
+    srs = 25830,
+    what = "parcel"
+  )
 
-pict <- catr_wms_get_layer(
-  c(222500, 4019500, 223700, 4020700),
-  srs = 25830,
-  what = "parcel"
-)
-#> Warning: [rast] unknown extent
+  library(mapSpain)
+  library(ggplot2)
+  library(tidyterra)
 
-library(mapSpain)
-library(ggplot2)
-library(tidyterra)
+  ggplot() +
+    geom_spatraster_rgb(data = pict)
+
+  # With a spatial object
+
+  parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
+
+  # Use styles
+
+  parcels_img <- catr_wms_get_layer(parcels,
+    what = "buildingpart",
+    srs = 25830, # Same as the parcels object
+    bbox_expand = 0.3,
+    styles = "ELFCadastre"
+  )
+
+  ggplot() +
+    geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
+    geom_spatraster_rgb(data = parcels_img)
+}
 #> 
 #> Attaching package: ‘tidyterra’
 #> The following object is masked from ‘package:stats’:
 #> 
 #>     filter
-
-ggplot() +
-  geom_spatraster_rgb(data = pict)
-
-
-# With a spatial object
-
-parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
-
-# Use styles
-
-parcels_img <- catr_wms_get_layer(parcels,
-  what = "buildingpart",
-  srs = 25830, # Same as the parcels object
-  bbox_expand = 0.3,
-  styles = "ELFCadastre"
-)
-#> Warning: [rast] unknown extent
-
-ggplot() +
-  geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
-  geom_spatraster_rgb(data = parcels_img)
 
 # }
 ```

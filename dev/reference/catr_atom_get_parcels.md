@@ -32,11 +32,8 @@ catr_atom_get_parcels(
 
 - what:
 
-  Information to load. Options are:
-
-  - `"parcel"` for cadastral parcels.
-
-  - `"zoning"` for cadastral zoning.
+  Information to load, either `"parcel"` for cadastral parcels or
+  `"zoning"` for cadastral zoning.
 
 - cache:
 

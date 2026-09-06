@@ -87,11 +87,11 @@ The API service is limited to a bounding box of 4 km2 and a maximum of
 ## Bounding box
 
 When `x` is a numeric vector, make sure that `srs` matches the
-coordinate values. Additionally, the function queries the bounding box
-on [EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work
+coordinate values. This function queries the bounding box in
+[EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work
 around a potential API issue.
 
-When `x` is a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+When `x` is an [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 object, the `srs` value is ignored. In this case, the bounding box of
 the [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
 used for the query (see
@@ -110,6 +110,10 @@ documentation](https://www.catastro.hacienda.gob.es/webinspire/documentos/inspir
 cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
+
+[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_wms_get_layer.md)
+downloads a map image using the returned spatial object as its extent
+(`x`).
 
 Work with cadastral addresses:
 [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address.md),

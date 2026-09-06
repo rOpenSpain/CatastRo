@@ -13,7 +13,8 @@ latitude. You can choose the spatial reference system (SRS, also known
 as CRS) used to express the coordinates.
 
 If no exact match is found, the distance query returns cadastral
-references within 50 square meters of the requested coordinates.
+references within a square with sides of 50 meters, centered on the
+requested coordinates.
 
 See the [**OVCCoordenadas** service
 documentation](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx)
@@ -88,9 +89,10 @@ catr_srs_values |>
 | 32630 | UTM huso 30N en WGS 84 |
 | 32631 | UTM huso 31N en WGS 84 |
 
-You can retrieve cadastral references within 50 square meters of `lat`
-and `lon` with
-[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md).
+If no exact match is found,
+[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
+retrieves cadastral references within a square with sides of 50 meters,
+centered on `lat` and `lon`.
 
 ``` r
 
@@ -109,7 +111,7 @@ catr_ovc_get_rccoor_distancia(
 
 ## Geocoding a cadastral reference
 
-For the reverse query,
+For geocoding,
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md)
 accepts a cadastral reference (`rc`) and returns `xcoord` and `ycoord`
 in the specified `srs`, together with the address. Optional `province`
