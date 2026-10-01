@@ -1,5 +1,6 @@
 Bernabéu
 CIUDAD
+CLI
 CMD
 CPMRC
 Cadastral
@@ -55,7 +56,6 @@ dt
 electrónica
 geo
 geocode
-geocoded
 geocoding
 georeferenced
 geospatial
@@ -68,6 +68,7 @@ loine
 lourb
 mapSpain
 ovc
+pak
 pc
 pkgdown
 png
@@ -77,14 +78,12 @@ refcat
 roxygen
 slippymath
 srs
-subfolders
 terra
 tibble
 tibbles
 tidyterra
 wfs
 withr
-wms
 xcen
 xcoord
 ycen

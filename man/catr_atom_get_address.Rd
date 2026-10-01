@@ -34,7 +34,8 @@ function stores cached files in a temporary directory. See
 \item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object. Returns \code{NULL} if the data cannot be
+An \code{\link[sf:st_sf]{sf}} object. Returns \code{\link[base:NULL]{NULL}} if the
+data cannot be
 retrieved.
 }
 \description{

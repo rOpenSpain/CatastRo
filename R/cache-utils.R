@@ -22,9 +22,10 @@
 #'   `CATASTROESP_CACHE_DIR` value already present on your machine.
 #' @param verbose Logical. Whether to display informational messages.
 #'
-#' @return
-#' `catr_set_cache_dir()` invisibly returns a character string containing the
-#' cache path. It is primarily called for its side effect.
+#' @returns
+#' `catr_set_cache_dir()` returns a [character][base::character] string
+#'   containing the cache
+#' directory path, invisibly. This function is called for its side effects.
 #'
 #' @section Caching strategies:
 #'
@@ -50,7 +51,7 @@
 #'
 #' @note
 #'
-#' In \CRANpkg{CatastRo} >= 1.0.0 the location of the configuration file has
+#' In \CRANpkg{CatastRo} >= 1.0.0, the location of the configuration file has
 #' moved from `rappdirs::user_config_dir("CatastRo", "R")` to
 #' `tools::R_user_dir("CatastRo", "config")`. A migration function moves
 #' previous configuration files to the new location and displays a message.
@@ -173,9 +174,10 @@ catr_set_cache_dir <- function(
   invisible(cache_dir)
 }
 
-#' @return
-#' `catr_detect_cache_dir()` returns the path to the `cache_dir` used in this
-#' session.
+#' @returns
+#' `catr_detect_cache_dir()` returns a [character][base::character] string
+#'   containing the cache
+#' directory path used in this session.
 #'
 #' @rdname catr_set_cache_dir
 #' @export
@@ -210,8 +212,8 @@ catr_detect_cache_dir <- function() {
 #' @param cached_data If `TRUE`, deletes your `cache_dir` and all its contents.
 #' @inheritParams catr_set_cache_dir
 #'
-#' @return Invisibly returns `NULL`. This function is called for its side
-#'   effects.
+#' @returns [`NULL`][base::NULL], invisibly. This function is called for its
+#'   side effects.
 #'
 #' @seealso
 #' `r cache_directory_seealso()`
@@ -310,7 +312,8 @@ catr_clear_cache <- function(
 
 #' Detect the cache directory silently
 #'
-#' @return Path to the cache directory.
+#' @returns A [character][base::character] string containing the cache directory
+#'   path.
 #'
 #' @noRd
 detect_cache_dir_muted <- function() {
@@ -354,7 +357,8 @@ detect_cache_dir_muted <- function() {
 #'
 #' @param cache_dir Path to the cache directory.
 #'
-#' @return Path to the cache directory.
+#' @returns A [character][base::character] string containing the cache directory
+#'   path.
 #'
 #' @noRd
 create_cache_dir <- function(cache_dir = NULL) {

@@ -11,7 +11,8 @@
 #'   to narrow the search.
 #' @inheritParams catr_atom_get_address_db_all
 #'
-#' @return An [`sf`][sf::st_sf] object. Returns `NULL` if the data cannot be
+#' @returns An [`sf`][sf::st_sf] object. Returns [`NULL`][base::NULL] if the
+#'   data cannot be
 #'   retrieved.
 #'
 #' @references
@@ -112,7 +113,7 @@ catr_atom_get_address <- function(
     layer_hint = "Thorough"
   )
 
-  # Rename and prepare for left join.
+  # Rename columns to prepare for the left join.
   names(str_names) <- paste0("tfname_", names(str_names))
 
   sfobj$tfname_gml_id <- vapply(

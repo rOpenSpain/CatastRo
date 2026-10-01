@@ -1,11 +1,14 @@
 # CatastRo (development version)
 
+- The reference index now groups functions by Spanish Cadastre service, alongside the existing task-based sections.
 - CLI messages now display braces in paths, URLs and argument values literally.
 - **CatastRo** users can now configure HTTP timeout and SSL verification with the `CATASTRO_TIMEOUT` and `CATASTRO_SSL_VERIFY` environment variables. The existing `catastro_timeout` and `catastro_ssl_verify` options still take precedence (#82).
 - **CatastRo** now preserves existing cached files when a refresh fails and validates required query values before making a request.
 - `catr_atom_get_*()` functions now respect exact territorial office matches, propagate cache refresh options and preserve the update date of each ATOM entry.
 - `catr_atom_search_munic()` now filters results when `to` matches exactly one territorial office.
 - `catr_clear_cache()` now reports incomplete deletions instead of announcing success when files remain.
+- `catr_ovc_get_rccoor()` now preserves the correct X and Y coordinates when the API returns an error.
+- `catr_ovc_get_rccoor_distancia()` now reports API errors and returns the queried coordinates and SRS.
 
 # CatastRo 1.0.2
 
@@ -29,8 +32,8 @@ Persistent cache directories now use `tools::R_user_dir()` instead of
 **CatastRo** displays a one-time migration message.
 
 The package now requires **R** ≥ 4.1.0 and dependency updates improve both
-performance and maintainability. All functions return tidy objects (tibbles or
-`sf` objects with tibble data).
+performance and maintainability. Data retrieval functions return tidy objects
+(tibbles, `sf` objects with tibble data or `SpatRaster` objects).
 
 ## Major changes
 
@@ -48,8 +51,8 @@ performance and maintainability. All functions return tidy objects (tibbles or
 
 - Require **R** ≥ 4.1.0.
 - Update dependencies:
-  - Add: **cli**, **lifecycle**, **withr**.
-  - Remove: **png**, **slippymath**.
+  - Add: **cli**, **lifecycle** and **withr**.
+  - Remove: **png** and **slippymath**.
 - Return tidy objects consistently.
 - Migrate the vignette engine to **Quarto**.
 

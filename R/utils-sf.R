@@ -1,11 +1,11 @@
-#' Read a geospatial file into an `sf` object
+#' Read a geospatial file into an [`sf`][sf::st_sf] object
 #'
 #' @param file_local Character string containing a local file path or URL.
 #' @param hint Character string used to identify files in ZIP archives.
 #' @param layer_hint Optional character string used to identify layer names.
 #' @param ... Additional arguments passed to `sf::read_sf()`.
 #'
-#' @return An `sf` object containing the geospatial data.
+#' @returns An [`sf`][sf::st_sf] object containing the geospatial data.
 #'
 #' @noRd
 #' @encoding UTF-8
@@ -60,11 +60,11 @@ catr_file_size <- function(...) {
 }
 # nocov end
 
-#' Convert an `sf` object to UTF-8
+#' Convert an [`sf`][sf::st_sf] object to UTF-8
 #'
-#' @param data_sf An `sf` object to encode as UTF-8.
+#' @param data_sf An [`sf`][sf::st_sf] object to encode as UTF-8.
 #'
-#' @return An `sf` object encoded as UTF-8.
+#' @returns An [`sf`][sf::st_sf] object encoded as UTF-8.
 #'
 #' @source Adapted from \CRANpkg{sf}.
 #'

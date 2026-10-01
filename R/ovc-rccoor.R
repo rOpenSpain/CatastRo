@@ -25,6 +25,7 @@
 #'
 #' @family cadastral_references
 #' @family ovc_services
+#' @concept ovccoordenadas_services
 #' @export
 #' @encoding UTF-8
 #'
@@ -67,7 +68,7 @@ catr_ovc_get_rccoor <- function(lat, lon, srs = 4326, verbose = FALSE) {
 
   if (ovc_has_error(err)) {
     ovc_report_error(err)
-    empty <- dplyr::tibble(a = lat, b = lon, srs = srs)
+    empty <- dplyr::tibble(a = lon, b = lat, srs = srs)
 
     names(empty) <- c("geo.xcen", "geo.ycen", "geo.srs")
     return(empty)

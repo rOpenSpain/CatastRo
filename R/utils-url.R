@@ -7,8 +7,9 @@
 #' @param update_cache Logical. Whether to refresh the cached file.
 #' @param verbose Logical. Whether to display informational messages.
 #'
-#' @return A character string containing the downloaded file path. Returns
-#'   `NULL` if the download fails.
+#' @returns A [character][base::character] string containing the downloaded file
+#'   path. Returns
+#'   [`NULL`][base::NULL] if the download fails.
 #'
 #' @noRd
 #' @encoding UTF-8
@@ -173,8 +174,9 @@ catr_file_rename <- function(...) {
 #' @param url Character string containing the URL to request.
 #' @param verbose Logical. Whether to display informational messages.
 #'
-#' @return A response object from \CRANpkg{httr2}. Returns `NULL` if the request
-#'   fails.
+#' @returns A [response][httr2::response] object from \CRANpkg{httr2}. Returns
+#'   [`NULL`][base::NULL] if the
+#'   request fails.
 #'
 #' @noRd
 get_request_body <- function(url, verbose = TRUE) {
@@ -242,7 +244,7 @@ catr_req_perform <- function(...) {
 }
 # nocov end
 
-#' Return FALSE for every request error predicate
+#' Return `FALSE` for every request error predicate
 #' @noRd
 catr_never_error <- function(...) {
   FALSE
@@ -269,13 +271,13 @@ catr_http_config <- function(option, envvar, default) {
   env_num
 }
 
-#' Get the SSL verification setting for CatastRo HTTP requests
+#' Get the SSL verification setting for \CRANpkg{CatastRo} HTTP requests
 #' @noRd
 catr_ssl_verify <- function() {
   catr_http_config("catastro_ssl_verify", "CATASTRO_SSL_VERIFY", 1L)
 }
 
-#' Get the timeout setting for CatastRo HTTP requests
+#' Get the timeout setting for \CRANpkg{CatastRo} HTTP requests
 #' @noRd
 catr_timeout <- function() {
   catr_http_config("catastro_timeout", "CATASTRO_TIMEOUT", 300)

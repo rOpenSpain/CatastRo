@@ -24,7 +24,7 @@ catr_wms_get_layer(
 \itemize{
 \item A numeric vector of length 4 with the coordinates that define
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
-\item An \code{sf} or \code{sfc} object from \CRANpkg{sf}.
+\item An \code{\link[sf:st_sf]{sf}} or \code{\link[sf:st_sfc]{sfc}} object from \CRANpkg{sf}.
 }}
 
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
@@ -163,6 +163,8 @@ if (requireNamespace("tidyterra", quietly = TRUE)) {
 the map extent through \code{x}.
 \item \code{\link[mapSpain:esp_get_tiles]{mapSpain::esp_get_tiles()}} downloads map tiles.
 \item \code{\link[terra:RGB]{terra::RGB()}} identifies RGB channels.
-\item \code{\link[terra:plotRGB]{terra::plotRGB()}} and \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}} plot RGB rasters.
+\item \code{\link[terra:plotRGB]{terra::plotRGB()}} and \code{\link[tidyterra:geom_spatraster_rgb]{tidyterra::geom_spatraster_rgb()}} plot RGB
+rasters.
 }
 }
+\concept{wms_services}

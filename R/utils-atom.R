@@ -5,7 +5,7 @@
 #' @param encoding Character string specifying the file encoding. Defaults to
 #'   `"UTF-8"`.
 #'
-#' @return A [tibble][dplyr::tbl_df] containing ATOM feed entries.
+#' @returns A [tibble][tibble::tbl_df] containing ATOM feed entries.
 #'
 #' @noRd
 catr_read_atom <- function(file, top = TRUE, encoding = "UTF-8") {

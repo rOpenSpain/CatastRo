@@ -29,11 +29,13 @@ sessions. Defaults to \code{FALSE}.}
 \item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
-\code{catr_set_cache_dir()} invisibly returns a character string containing the
-cache path. It is primarily called for its side effect.
+\code{catr_set_cache_dir()} returns a \link[base:character]{character} string
+containing the cache
+directory path, invisibly. This function is called for its side effects.
 
-\code{catr_detect_cache_dir()} returns the path to the \code{cache_dir} used in this
-session.
+\code{catr_detect_cache_dir()} returns a \link[base:character]{character} string
+containing the cache
+directory path used in this session.
 }
 \description{
 Configure the cache directory used by \CRANpkg{CatastRo}. Use
@@ -49,7 +51,7 @@ to a small configuration file under
 \code{tools::R_user_dir("CatastRo", "config")}.
 }
 \note{
-In \CRANpkg{CatastRo} >= 1.0.0 the location of the configuration file has
+In \CRANpkg{CatastRo} >= 1.0.0, the location of the configuration file has
 moved from \code{rappdirs::user_config_dir("CatastRo", "R")} to
 \code{tools::R_user_dir("CatastRo", "config")}. A migration function moves
 previous configuration files to the new location and displays a message.

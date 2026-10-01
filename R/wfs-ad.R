@@ -9,14 +9,15 @@
 #' @param x Input defining the query area. See **Bounding box**. It can be:
 #' - A numeric vector of length 4 with the coordinates that define
 #'   the bounding box: `c(xmin, ymin, xmax, ymax)`.
-#' - An `sf` or `sfc` object from \CRANpkg{sf}.
+#' - An [`sf`][sf::st_sf] or [`sfc`][sf::st_sfc] object from \CRANpkg{sf}.
 #' @param srs SRS/CRS to use in the query. To see allowed values, use
 #'   [catr_srs_values], specifically the `wfs_service` column. See
 #'   **Bounding box**.
 #' @param rc Cadastral reference to retrieve.
 #' @inheritParams catr_set_cache_dir
 #'
-#' @return An [`sf`][sf::st_sf] object. Returns `NULL` if the data cannot be
+#' @returns An [`sf`][sf::st_sf] object. Returns [`NULL`][base::NULL] if the
+#'   data cannot be
 #'   retrieved.
 #'
 #' @section API limits:
@@ -29,11 +30,11 @@
 #' potential API issue.
 #'
 #' When `x` is an [`sf`][sf::st_sf] object, the `srs` value is ignored. In
-#' this case, the bounding box of the [`sf`][sf::st_sf] object is
+#' this case, the bounding box of the `sf` object is
 #' used for the query (see [sf::st_bbox()]).
 #'
-#' The result is always provided in the SRS of the [`sf`][sf::st_sf] object
-#' provided as input.
+#' The result uses the SRS of the input spatial object or the `srs` value
+#' provided with a numeric vector.
 #'
 #' @references
 #' ```{r, echo=FALSE, comment="", results="asis"}

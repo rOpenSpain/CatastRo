@@ -6,8 +6,10 @@
 #'
 #' @inheritParams catr_atom_get_parcels
 #'
-#' @return A [tibble][dplyr::tbl_df] with the territorial office,
-#'   municipality name and cadastral code. Returns `NULL` if no match is found.
+#' @returns A [tibble][tibble::tbl_df] with the territorial office,
+#'   municipality name and cadastral code. Returns [`NULL`][base::NULL] if the
+#'   data cannot
+#'   be retrieved or no match is found.
 #'
 #' @seealso
 #' [catr_atom_get_address()], [catr_atom_get_buildings()] and

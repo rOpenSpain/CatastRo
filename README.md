@@ -2,7 +2,7 @@
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
-# CatastRo <a href="https://ropenspain.github.io/CatastRo/"><img src="man/figures/logo.png" alt="CatastRo website" align="right" height="139"/></a>
+# CatastRo <a href="https://ropenspain.github.io/CatastRo/"><img src="man/figures/logo.png" alt="CatastRo hexagonal logo with a map of building footprints" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -52,7 +52,7 @@ install.packages(
 ```
 
 Alternatively, you can install the development version of **CatastRo**
-with:
+with **pak**:
 
 ``` r
 pak::pak("rOpenSpain/CatastRo")
@@ -70,7 +70,7 @@ pak::pak("rOpenSpain/CatastRo")
 > this code after loading the package:
 >
 > ``` r
-> # Disable SSL verification
+> # Disable SSL verification.
 > options(catastro_ssl_verify = 0)
 > ```
 >
@@ -78,7 +78,7 @@ pak::pak("rOpenSpain/CatastRo")
 > [`.Rprofile`](https://docs.posit.co/ide/user/ide/guide/environments/r/managing-r.html):
 >
 > ``` r
-> # ... other options...
+> # ... other options ...
 > options(catastro_ssl_verify = 0)
 > ```
 >
@@ -93,7 +93,7 @@ package naming convention is `catr_<service>_<description>`.
 
 OVC services use
 [**OVCCoordenadas**](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-for geocoding and reverse geocoding, and **OVCCallejero** for province
+for geocoding and reverse geocoding and **OVCCallejero** for province
 and municipality code lookup.
 
 These functions use the `catr_ovc_get_*()` prefix and return tibbles
@@ -197,6 +197,7 @@ ggplot(bu) +
 ```
 
 <img src="man/figures/README-atom-1.png" style="width:100.0%"
+data-fig-alt="Map of building footprints in Nava de la Asunción, with longitude on the horizontal axis and latitude on the vertical axis. Colors distinguish residential, agricultural, industrial, office, retail and public service uses, and gray marks missing use data. Residential buildings dominate the town center."
 alt="Extract buildings in Nava de la Asunción with the ATOM service" />
 
 ### Extract geometries using the WFS service
@@ -214,6 +215,7 @@ ggplot(wfs_get_buildings) +
 ```
 
 <img src="man/figures/README-wfs-1.png" style="width:100.0%"
+data-fig-alt="Map of the Alcázar of Segovia building footprint, with longitude on the horizontal axis and latitude on the vertical axis. The elongated main building runs from northwest to southeast, with several unfilled interior areas and separate footprints nearby."
 alt="Extract Alcázar of Segovia with the WFS service" />
 
 ## Cache management

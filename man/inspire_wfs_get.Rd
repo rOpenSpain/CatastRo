@@ -31,7 +31,8 @@ function stores cached files in a temporary directory. See
 \item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
-A character string containing the downloaded file path. Returns \code{NULL} if
+A \link[base:character]{character} string containing the downloaded file path.
+Returns \code{\link[base:NULL]{NULL}} if
 the request fails.
 }
 \description{
@@ -41,7 +42,7 @@ resources.
 }
 \details{
 This function constructs a request URL from its components, downloads the
-result to a temporary cache and reports WFS exceptions. See \strong{Examples}.
+result to the cache directory and reports WFS exceptions. See \strong{Examples}.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}

@@ -25,7 +25,7 @@ catr_wfs_get_buildings_rc(
 \itemize{
 \item A numeric vector of length 4 with the coordinates that define
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
-\item An \code{sf} or \code{sfc} object from \CRANpkg{sf}.
+\item An \code{\link[sf:st_sf]{sf}} or \code{\link[sf:st_sfc]{sfc}} object from \CRANpkg{sf}.
 }}
 
 \item{what}{Information to load, either \code{"building"} for buildings,
@@ -41,19 +41,20 @@ such as swimming pools.}
 \item{rc}{Cadastral reference to retrieve.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object. Returns \code{NULL} if the data cannot be
+An \code{\link[sf:st_sf]{sf}} object. Returns \code{\link[base:NULL]{NULL}} if the
+data cannot be
 retrieved.
 }
 \description{
 Retrieve spatial building data through two types of WFS queries:
 \itemize{
-\item By bounding box: \code{catr_wfs_get_buildings_bbox()} retrieves objects included
-in the provided bounding box. See \strong{Bounding box}.
+\item By bounding box: \code{catr_wfs_get_buildings_bbox()} retrieves objects
+included in the provided bounding box. See \strong{Bounding box}.
 }
 
 \itemize{
-\item By cadastral reference: \code{catr_wfs_get_buildings_rc()} retrieves objects for
-specific cadastral references.
+\item By cadastral reference: \code{catr_wfs_get_buildings_rc()} retrieves objects
+for specific cadastral references.
 }
 }
 \section{API limits}{
@@ -70,11 +71,11 @@ coordinate values. This function queries the bounding box in
 potential API issue.
 
 When \code{x} is an \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is ignored. In
-this case, the bounding box of the \code{\link[sf:st_sf]{sf}} object is
+this case, the bounding box of the \code{sf} object is
 used for the query (see \code{\link[sf:st_bbox]{sf::st_bbox()}}).
 
-The result is always provided in the SRS of the \code{\link[sf:st_sf]{sf}} object
-provided as input.
+The result uses the SRS of the input spatial object or the \code{srs} value
+provided with a numeric vector.
 }
 
 \examples{

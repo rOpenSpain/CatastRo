@@ -21,7 +21,7 @@ catr_wfs_get_address_postalcode(postalcode, srs = NULL, verbose = FALSE)
 \itemize{
 \item A numeric vector of length 4 with the coordinates that define
 the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
-\item An \code{sf} or \code{sfc} object from \CRANpkg{sf}.
+\item An \code{\link[sf:st_sf]{sf}} or \code{\link[sf:st_sfc]{sfc}} object from \CRANpkg{sf}.
 }}
 
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
@@ -41,7 +41,8 @@ the bounding box: \code{c(xmin, ymin, xmax, ymax)}.
 \item{postalcode}{Postal code.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object. Returns \code{NULL} if the data cannot be
+An \code{\link[sf:st_sf]{sf}} object. Returns \code{\link[base:NULL]{NULL}} if the
+data cannot be
 retrieved.
 }
 \description{
@@ -80,11 +81,11 @@ coordinate values. This function queries the bounding box in
 potential API issue.
 
 When \code{x} is an \code{\link[sf:st_sf]{sf}} object, the \code{srs} value is ignored. In
-this case, the bounding box of the \code{\link[sf:st_sf]{sf}} object is
+this case, the bounding box of the \code{sf} object is
 used for the query (see \code{\link[sf:st_bbox]{sf::st_bbox()}}).
 
-The result is always provided in the SRS of the \code{\link[sf:st_sf]{sf}} object
-provided as input.
+The result uses the SRS of the input spatial object or the \code{srs} value
+provided with a numeric vector.
 }
 
 \examples{

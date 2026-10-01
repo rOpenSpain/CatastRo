@@ -14,31 +14,31 @@ catr_ovc_get_cpmrc(
 )
 }
 \arguments{
-\item{rc}{Cadastral reference to geocode.}
+\item{rc}{A 14-character cadastral parcel reference to geocode.}
 
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
 
 \item{province, municipality}{Optional character strings used to narrow the
-search.}
+search. \code{province} is required when \code{municipality} is provided.}
 
 \item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
-A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
-\code{NULL} if the request fails.
+A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+\code{\link[base:NULL]{NULL}} if the request fails.
 }
 \description{
 Query the OVCCoordenadas
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC}{Consulta CPMRC} service to retrieve coordinates for a
-cadastral reference.
+parcel reference. The returned coordinates locate the parcel centroid.
 }
 \details{
-If the API returns no results, this function returns a
-\link[dplyr:tbl_df]{tibble} containing only query information.
+If the API returns no results or reports an error, the result is a
+\link[tibble:tbl_df]{tibble} containing only query information.
 
-On a successful query, this function returns a \link[dplyr:tbl_df]{tibble}
-with one row per cadastral reference, including the following columns:
+On a successful query, this function returns a tibble with one row per
+cadastral reference, including the following columns:
 \itemize{
 \item \code{xcoord}, \code{ycoord}: X and Y coordinates in the specified SRS.
 \item \code{refcat}: Cadastral reference.
@@ -83,3 +83,4 @@ Query OVC web services:
 }
 \concept{cadastral_references}
 \concept{ovc_services}
+\concept{ovccoordenadas_services}

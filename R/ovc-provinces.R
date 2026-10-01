@@ -3,12 +3,13 @@
 #' @description
 #' Query the OVCCallejero
 #' [ConsultaProvincia](`r ovcurl("prov")`) service to retrieve provinces and
-#' their Spanish Cadastre codes.
+#' their INE codes. Only provinces within the jurisdiction of the Directorate
+#' General for Cadastre are included.
 #'
 #' @inheritParams catr_ovc_get_cpmrc
 #'
-#' @return A [tibble][dplyr::tbl_df] with province names and codes. Returns
-#'   `NULL` if the request fails.
+#' @returns A [tibble][tibble::tbl_df] with province names and codes. Returns
+#'   [`NULL`][base::NULL] if the request fails.
 #'
 #' @references
 #' [ConsultaProvincia](`r ovcurl("prov")`).
@@ -19,6 +20,7 @@
 #'
 #' @family search_tools
 #' @family ovc_services
+#' @concept ovccallejero_services
 #' @export
 #' @encoding UTF-8
 #'

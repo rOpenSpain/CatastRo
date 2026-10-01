@@ -7,7 +7,8 @@
 #' @details
 #' Returns `FALSE` on CRAN, macOS or when offline.
 #'
-#' @return Logical. `TRUE` if examples should run, `FALSE` otherwise.
+#' @returns A [logical][base::logical] value, `TRUE` if examples should run,
+#'   `FALSE` otherwise.
 #'
 #' @keywords internal
 #' @export
@@ -31,7 +32,8 @@ run_example <- function() {
 
 #' Check whether code is running on CRAN
 #'
-#' @return Logical. `TRUE` if running on CRAN, `FALSE` otherwise.
+#' @returns A [logical][base::logical] value, `TRUE` if running on CRAN, `FALSE`
+#'   otherwise.
 #'
 #' @noRd
 on_cran <- function() {
@@ -45,7 +47,8 @@ on_cran <- function() {
 
 #' Check whether code is running on macOS
 #'
-#' @return Logical. `TRUE` if running on macOS, `FALSE` otherwise.
+#' @returns A [logical][base::logical] value, `TRUE` if running on macOS,
+#'   `FALSE` otherwise.
 #'
 #' @noRd
 on_mac <- function() {

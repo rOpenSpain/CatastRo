@@ -53,8 +53,8 @@ municipalities.}
   }}
 }
 \value{
-A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
-\code{NULL} if the request fails.
+A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+\code{\link[base:NULL]{NULL}} if the request fails.
 }
 \description{
 Retrieve the municipality code associated with an \code{\link[sf:st_sf]{sf}} object
@@ -62,7 +62,7 @@ or a coordinate pair.
 }
 \details{
 On a successful query, this function returns a one-row
-\link[dplyr:tbl_df]{tibble} with the following columns:
+\link[tibble:tbl_df]{tibble} with the following columns:
 \itemize{
 \item \code{munic}: Municipality name used by the Spanish Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
@@ -80,7 +80,7 @@ On a successful query, this function returns a one-row
 # Use with coordinates
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 
-# Use with an sf object
+# Use with an `sf` object.
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
 }
@@ -98,4 +98,5 @@ Search for cadastral identifiers:
 \code{\link[=catr_ovc_get_cod_munic]{catr_ovc_get_cod_munic()}},
 \code{\link[=catr_ovc_get_cod_provinces]{catr_ovc_get_cod_provinces()}}
 }
+\concept{ovccallejero_services}
 \concept{search_tools}

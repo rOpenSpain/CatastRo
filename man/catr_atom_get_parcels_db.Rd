@@ -41,8 +41,11 @@ function stores cached files in a temporary directory. See
 \code{\link[base:grep]{base::grep()}}.}
 }
 \value{
-A \link[dplyr:tbl_df]{tibble} with the requested information in the following
-columns:
+A \link[tibble:tbl_df]{tibble} with the requested information. Returns
+\code{\link[base:NULL]{NULL}} if
+the data cannot be retrieved or no territorial office matches \code{to}.
+
+\code{catr_atom_get_address_db_all()} returns the following columns:
 \itemize{
 \item \code{territorial_office}: Territorial office, corresponding to each province
 of Spain except the Basque Country and Navarre.
@@ -51,6 +54,9 @@ of Spain except the Basque Country and Navarre.
 \item \code{date}: Reference date of the data. The information from this service is
 updated twice a year.
 }
+
+\code{catr_atom_get_address_db_to()} returns \code{munic}, \code{url} and \code{date} for the
+selected territorial office.
 }
 \description{
 Create a table of URLs provided by the Spanish Cadastre ATOM INSPIRE service

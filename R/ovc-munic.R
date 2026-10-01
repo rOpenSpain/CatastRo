@@ -8,7 +8,7 @@
 #'
 #' @details
 #' On a successful query, this function returns a one-row
-#' [tibble][dplyr::tbl_df] with the following columns:
+#' [tibble][tibble::tbl_df] with the following columns:
 #'
 #' - `munic`: Municipality name used by the Spanish Cadastre.
 #' - `catr_to`: Cadastral territorial office code.
@@ -39,6 +39,7 @@
 #'
 #' @family search_tools
 #' @family ovc_services
+#' @concept ovccallejero_services
 #' @export
 #' @encoding UTF-8
 #'

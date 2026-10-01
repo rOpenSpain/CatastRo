@@ -62,8 +62,8 @@ catr_wfs_get_parcels_bbox <- function(
   )
 }
 #' @description
-#' - By zoning: `catr_wfs_get_parcels_zoning()` retrieves objects for a specific
-#'   cadastral zone.
+#' - By zoning: `catr_wfs_get_parcels_zoning()` retrieves objects for a
+#'   specific cadastral zone.
 #'
 #' @param cod_zona Cadastral zone code.
 #'
@@ -117,7 +117,8 @@ catr_wfs_get_parcels_parcel <- function(rc, srs = NULL, verbose = FALSE) {
 }
 #' @description
 #' - Neighbor cadastral parcels: `catr_wfs_get_parcels_neigh_parcel()`
-#'   retrieves neighboring cadastral parcels for a specific cadastral reference.
+#'   retrieves neighboring cadastral parcels for a specific cadastral
+#'   reference.
 #'
 #' @rdname catr_wfs_get_parcels
 #' @export

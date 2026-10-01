@@ -116,6 +116,43 @@ reference:
 - contents:
   - CatastRo-package
 
+- title: Functions by service
+  desc: >
+    Browse functions by the Spanish Cadastre service they use.
+- subtitle: ATOM INSPIRE
+  desc: >
+    Download municipal datasets, inspect download catalogs and find
+    municipality codes.
+- contents:
+  - has_concept("atom_services")
+
+- subtitle: WFS INSPIRE
+  desc: >
+    Retrieve cadastral features by area or identifier, or construct custom
+    WFS queries.
+- contents:
+  - has_concept("wfs_services")
+
+- subtitle: WMS INSPIRE
+  desc: >
+    Download georeferenced cadastral map images.
+- contents:
+  - has_concept("wms_services")
+
+- subtitle: OVCCoordenadas
+  desc: >
+    Convert between cadastral parcel references and coordinates, including
+    searches near a coordinate pair.
+- contents:
+  - has_concept("ovccoordenadas_services")
+
+- subtitle: OVCCallejero
+  desc: >
+    Look up province and municipality codes, directly or through the
+    municipality lookup from coordinates.
+- contents:
+  - has_concept("ovccallejero_services")
+
 articles:
 - title: Get started
   desc: >

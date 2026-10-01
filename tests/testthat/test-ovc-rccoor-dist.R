@@ -223,6 +223,33 @@ test_that("catr_ovc_get_rccoor_distancia() ranks matching references", {
   )
 })
 
+test_that("catr_ovc_get_rccoor_distancia() reports API errors", {
+  local_mocked_bindings(ovc_get_xml = function(...) {
+    list(
+      consulta_coordenadas_distancias = list(
+        lerr = list(
+          err = list(cod = "16", des = "NO REFERENCES AVAILABLE")
+        )
+      )
+    )
+  })
+
+  expect_snapshot(
+    result <- catr_ovc_get_rccoor_distancia(
+      lat = 40.963200,
+      lon = -5.671420
+    )
+  )
+  expect_equal(
+    result,
+    tibble::tibble(
+      geo.xcen = -5.671420,
+      geo.ycen = 40.963200,
+      geo.srs = "EPSG:4326"
+    )
+  )
+})
+
 test_that("catr_ovc_get_rccoor_distancia() can call the real API", {
   skip_on_cran()
   skip_if_offline()

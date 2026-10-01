@@ -26,6 +26,7 @@
 #' - [sf::st_centroid()] computes geometry centroids.
 #'
 #' @family search_tools
+#' @concept ovccallejero_services
 #' @export
 #' @encoding UTF-8
 #'
@@ -34,7 +35,7 @@
 #' # Use with coordinates
 #' catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 #'
-#' # Use with an sf object
+#' # Use with an `sf` object.
 #' prov <- mapSpain::esp_get_prov("Caceres")
 #' catr_get_code_from_coords(prov)
 #' }

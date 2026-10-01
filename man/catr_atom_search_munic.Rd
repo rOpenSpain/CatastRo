@@ -34,8 +34,10 @@ function stores cached files in a temporary directory. See
 \item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
-A \link[dplyr:tbl_df]{tibble} with the territorial office,
-municipality name and cadastral code. Returns \code{NULL} if no match is found.
+A \link[tibble:tbl_df]{tibble} with the territorial office,
+municipality name and cadastral code. Returns \code{\link[base:NULL]{NULL}} if the
+data cannot
+be retrieved or no match is found.
 }
 \description{
 Search for a municipality by name or code and return matching Spanish

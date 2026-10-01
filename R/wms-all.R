@@ -12,7 +12,7 @@
 #' @inheritParams mapSpain::esp_get_tiles
 #' @inheritDotParams mapSpain::esp_get_tiles res:mask
 #'
-#' @return
+#' @returns
 #' A [`SpatRaster`][terra::rast] with three RGB or four RGBA layers. See
 #' [terra::RGB()].
 #'
@@ -63,8 +63,10 @@
 #'   the map extent through `x`.
 #' - [mapSpain::esp_get_tiles()] downloads map tiles.
 #' - [terra::RGB()] identifies RGB channels.
-#' - [terra::plotRGB()] and [tidyterra::geom_spatraster_rgb()] plot RGB rasters.
+#' - [terra::plotRGB()] and [tidyterra::geom_spatraster_rgb()] plot RGB
+#'   rasters.
 #'
+#' @concept wms_services
 #' @export
 #' @encoding UTF-8
 #'

@@ -3,8 +3,8 @@
 #' @description
 #' Retrieve spatial building data through two types of WFS queries:
 #'
-#' - By bounding box: `catr_wfs_get_buildings_bbox()` retrieves objects included
-#'   in the provided bounding box. See **Bounding box**.
+#' - By bounding box: `catr_wfs_get_buildings_bbox()` retrieves objects
+#'   included in the provided bounding box. See **Bounding box**.
 #'
 #' @inheritParams catr_wfs_get_address_bbox
 #' @inheritParams catr_atom_get_buildings
@@ -53,8 +53,8 @@ catr_wfs_get_buildings_bbox <- function(
 }
 
 #' @description
-#' - By cadastral reference: `catr_wfs_get_buildings_rc()` retrieves objects for
-#'   specific cadastral references.
+#' - By cadastral reference: `catr_wfs_get_buildings_rc()` retrieves objects
+#'   for specific cadastral references.
 #'
 #' @rdname catr_wfs_get_buildings
 #' @export

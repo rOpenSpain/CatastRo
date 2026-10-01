@@ -29,14 +29,14 @@ ovc_get_xml <- function(url, verbose = FALSE) {
   xml2::as_list(httr2::resp_body_xml(resp))
 }
 
-#' Convert an OVC XML node to a one-row tibble
+#' Convert an OVC XML node to a one-row [tibble][tibble::tbl_df]
 #'
 #' @noRd
 ovc_as_tibble_row <- function(x) {
   dplyr::bind_cols(as.list(unlist(x)))
 }
 
-#' Convert OVC XML nodes to a tibble
+#' Convert OVC XML nodes to a [tibble][tibble::tbl_df]
 #'
 #' @noRd
 ovc_as_tibble_rows <- function(x) {

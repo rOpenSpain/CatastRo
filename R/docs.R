@@ -27,22 +27,23 @@ ovc_coordinate_details <- function(include_ine = FALSE) {
     columns <- c(
       columns,
       paste(
-        "- `cmun_ine`: Municipality code as registered by the INE",
-        "  (National Statistics Institute).",
+        "- `cmun_ine`: Full five-digit INE municipality code, combining the",
+        "  province and municipality codes (National Statistics Institute).",
         sep = "\n"
-      )
+      ),
+      "- `dis`: Distance from the cadastral reference to the queried point."
     )
   }
 
   columns <- c(columns, "- Remaining fields: See the API documentation.")
 
   paste(
-    "If the API returns no results, this function returns a",
-    "[tibble][dplyr::tbl_df] containing only query information.",
+    "If the API returns no results or reports an error, the result is a",
+    "[tibble][tibble::tbl_df] containing only query information.",
     "",
     paste(
       "On a successful query, this function returns a",
-      "[tibble][dplyr::tbl_df] with",
+      "tibble with",
       sep = "\n"
     ),
     "one row per cadastral reference, including the following columns:",

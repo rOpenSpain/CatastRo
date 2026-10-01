@@ -16,8 +16,8 @@ catr_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 \item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
-Invisibly returns \code{NULL}. This function is called for its side
-effects.
+\code{\link[base:NULL]{NULL}}, invisibly. This function is called for its
+side effects.
 }
 \description{
 Use this function with caution. Depending on its arguments, this function:

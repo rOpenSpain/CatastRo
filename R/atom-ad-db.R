@@ -14,15 +14,21 @@
 #'   [base::grep()].
 #' @inheritParams catr_set_cache_dir
 #'
-#' @return
-#' A [tibble][dplyr::tbl_df] with the requested information in the following
-#' columns:
+#' @returns
+#' A [tibble][tibble::tbl_df] with the requested information. Returns
+#'   [`NULL`][base::NULL] if
+#' the data cannot be retrieved or no territorial office matches `to`.
+#'
+#' `catr_atom_get_address_db_all()` returns the following columns:
 #' - `territorial_office`: Territorial office, corresponding to each province
 #'   of Spain except the Basque Country and Navarre.
 #' - `url`: ATOM URL for the corresponding territorial office.
 #' - `munic`: Name of the municipality.
 #' - `date`: Reference date of the data. The information from this service is
 #'   updated twice a year.
+#'
+#' `catr_atom_get_address_db_to()` returns `munic`, `url` and `date` for the
+#' selected territorial office.
 #'
 #' @source
 #' <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>

@@ -18,8 +18,8 @@ Cadastre (\code{cmun}) or the National Statistics Institute (\code{cmun_ine}). E
 \item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
-A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
-\code{NULL} if the request fails.
+A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+\code{\link[base:NULL]{NULL}} if the request fails.
 }
 \description{
 Query the OVCCallejero
@@ -29,7 +29,7 @@ Statistics Institute (INE).
 }
 \details{
 On a successful query, this function returns a one-row
-\link[dplyr:tbl_df]{tibble} with the following columns:
+\link[tibble:tbl_df]{tibble} with the following columns:
 \itemize{
 \item \code{munic}: Municipality name used by the Spanish Cadastre.
 \item \code{catr_to}: Cadastral territorial office code.
@@ -78,4 +78,5 @@ Query OVC web services:
 \code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
 }
 \concept{ovc_services}
+\concept{ovccallejero_services}
 \concept{search_tools}

@@ -10,10 +10,10 @@
 #' @details
 #' `r ovc_coordinate_details(include_ine = TRUE)`
 #'
-#' @param lat Latitude for the query, expressed in the SRS/CRS defined by
-#'   `srs`.
-#' @param lon Longitude for the query, expressed in the SRS/CRS defined by
-#'   `srs`.
+#' @param lat Y coordinate for the query, expressed in the SRS/CRS defined by
+#'   `srs`. For geographic coordinates, this is the latitude.
+#' @param lon X coordinate for the query, expressed in the SRS/CRS defined by
+#'   `srs`. For geographic coordinates, this is the longitude.
 #' @inheritParams catr_ovc_get_cpmrc
 #'
 #' @inherit catr_ovc_get_cpmrc return
@@ -31,6 +31,7 @@
 #'
 #' @family cadastral_references
 #' @family ovc_services
+#' @concept ovccoordenadas_services
 #' @export
 #' @encoding UTF-8
 #'
@@ -71,6 +72,17 @@ catr_ovc_get_rccoor_distancia <- function(
   content_list <- ovc_get_xml(api_entry, verbose = verbose)
   if (is.null(content_list)) {
     return(NULL)
+  }
+
+  # Check for API-level errors.
+  err <- content_list[["consulta_coordenadas_distancias"]]
+  if (ovc_has_error(err)) {
+    ovc_report_error(err)
+    return(dplyr::tibble(
+      geo.xcen = lon,
+      geo.ycen = lat,
+      geo.srs = srs
+    ))
   }
 
   # nolint start

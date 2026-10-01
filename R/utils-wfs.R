@@ -7,7 +7,7 @@
 #'
 #' @details
 #' This function constructs a request URL from its components, downloads the
-#' result to a temporary cache and reports WFS exceptions. See **Examples**.
+#' result to the cache directory and reports WFS exceptions. See **Examples**.
 #'
 #' @param scheme Character string specifying the protocol used to access the
 #'   resource.
@@ -16,8 +16,9 @@
 #' @param query Named list of query parameters and their values.
 #' @inheritParams catr_set_cache_dir
 #'
-#' @return
-#' A character string containing the downloaded file path. Returns `NULL` if
+#' @returns
+#' A [character][base::character] string containing the downloaded file path.
+#'   Returns [`NULL`][base::NULL] if
 #' the request fails.
 #'
 #' @family wfs_services
@@ -229,8 +230,9 @@ wfs_read_bbox_query <- function(
 #' fails with some other projections. Warns if the area exceeds the service
 #' limit.
 #'
-#' @param x An `sf` object or a double vector of length 4.
-#' @param srs SRS of the bounding box. Not needed if `x` is an `sf` object.
+#' @param x An [`sf`][sf::st_sf] object or a double vector of length 4.
+#' @param srs SRS of the bounding box. Not needed if `x` is an
+#'   [`sf`][sf::st_sf] object.
 #' @param srs_dest Destination SRS.
 #' @param limit_km2 Maximum query area in square kilometers.
 #'

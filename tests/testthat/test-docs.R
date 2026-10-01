@@ -14,6 +14,9 @@ test_that("ovc_coordinate_details() documents optional INE fields", {
   expect_no_match(without_ine, "`cmun_ine`", fixed = TRUE)
   expect_match(with_ine, "`cmun_ine`", fixed = TRUE)
   expect_match(with_ine, "National Statistics Institute", fixed = TRUE)
+  expect_match(with_ine, "Full five-digit INE municipality code", fixed = TRUE)
+  expect_match(with_ine, "- `dis`: Distance", fixed = TRUE)
+  expect_no_match(without_ine, "- `dis`", fixed = TRUE)
 })
 
 test_that("ovcurl() maps service identifiers to stable URLs", {

@@ -1,11 +1,11 @@
 #' Display a message by type
 #'
-#' @param type Character string specifying the message type. Accepted values are
-#'   `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
+#' @param type Character string specifying the message type. Accepted values
+#'   are `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #' @param verbose Logical. Whether to display the message.
 #' @param ... Character strings to combine into the message.
 #'
-#' @return Invisibly returns `NULL`.
+#' @returns [`NULL`][base::NULL], invisibly.
 #'
 #' @noRd
 #' @encoding UTF-8
@@ -44,8 +44,8 @@ make_msg <- function(type = "generic", verbose, ..., .envir = parent.frame()) {
 #' @param arg Argument to match.
 #' @param choices Possible values for `arg`.
 #'
-#' @return
-#' The matched argument.
+#' @returns A [character][base::character] string containing the matched
+#'   argument.
 #'
 #' @noRd
 match_arg_pretty <- function(arg, choices, call = parent.frame()) {

@@ -8,11 +8,11 @@
 catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 }
 \arguments{
-\item{lat}{Latitude for the query, expressed in the SRS/CRS defined by
-\code{srs}.}
+\item{lat}{Y coordinate for the query, expressed in the SRS/CRS defined by
+\code{srs}. For geographic coordinates, this is the latitude.}
 
-\item{lon}{Longitude for the query, expressed in the SRS/CRS defined by
-\code{srs}.}
+\item{lon}{X coordinate for the query, expressed in the SRS/CRS defined by
+\code{srs}. For geographic coordinates, this is the longitude.}
 
 \item{srs}{SRS/CRS to use in the query. To see allowed values, use
 \link{catr_srs_values}, specifically the \code{ovc_service} column.}
@@ -20,8 +20,8 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 \item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
-A \link[dplyr:tbl_df]{tibble} as described in \strong{Details}. Returns
-\code{NULL} if the request fails.
+A \link[tibble:tbl_df]{tibble} as described in \strong{Details}. Returns
+\code{\link[base:NULL]{NULL}} if the request fails.
 }
 \description{
 Query the OVCCoordenadas
@@ -31,18 +31,19 @@ the API searches a square with sides of 50 meters, centered on the requested
 coordinates.
 }
 \details{
-If the API returns no results, this function returns a
-\link[dplyr:tbl_df]{tibble} containing only query information.
+If the API returns no results or reports an error, the result is a
+\link[tibble:tbl_df]{tibble} containing only query information.
 
 On a successful query, this function returns a
-\link[dplyr:tbl_df]{tibble} with
+tibble with
 one row per cadastral reference, including the following columns:
 \itemize{
 \item \code{geo.xcen}, \code{geo.ycen}, \code{geo.srs}: Input arguments of the query.
 \item \code{refcat}: Cadastral reference.
 \item \code{address}: Address as recorded in the Spanish Cadastre.
-\item \code{cmun_ine}: Municipality code as registered by the INE
-(National Statistics Institute).
+\item \code{cmun_ine}: Full five-digit INE municipality code, combining the
+province and municipality codes (National Statistics Institute).
+\item \code{dis}: Distance from the cadastral reference to the queried point.
 \item Remaining fields: See the API documentation.
 }
 }
@@ -78,3 +79,4 @@ Query OVC web services:
 }
 \concept{cadastral_references}
 \concept{ovc_services}
+\concept{ovccoordenadas_services}

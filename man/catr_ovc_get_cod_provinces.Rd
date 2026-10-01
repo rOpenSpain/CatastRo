@@ -11,13 +11,14 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 \item{verbose}{Logical. Whether to display informational messages.}
 }
 \value{
-A \link[dplyr:tbl_df]{tibble} with province names and codes. Returns
-\code{NULL} if the request fails.
+A \link[tibble:tbl_df]{tibble} with province names and codes. Returns
+\code{\link[base:NULL]{NULL}} if the request fails.
 }
 \description{
 Query the OVCCallejero
 \href{https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia}{ConsultaProvincia} service to retrieve provinces and
-their Spanish Cadastre codes.
+their INE codes. Only provinces within the jurisdiction of the Directorate
+General for Cadastre are included.
 }
 \examples{
 \dontshow{if (run_example()) withAutoprint(\{ # examplesIf}
@@ -45,4 +46,5 @@ Query OVC web services:
 \code{\link[=catr_ovc_get_rccoor_distancia]{catr_ovc_get_rccoor_distancia()}}
 }
 \concept{ovc_services}
+\concept{ovccallejero_services}
 \concept{search_tools}

@@ -176,7 +176,14 @@ test_that("catr_ovc_get_rccoor() handles imprecise coordinates", {
   })
 
   result <- catr_ovc_get_rccoor(lat = 40.963200, lon = -5.671420, srs = "4326")
-  expect_equal(ncol(result), 3)
+  expect_equal(
+    result,
+    tibble::tibble(
+      geo.xcen = -5.671420,
+      geo.ycen = 40.963200,
+      geo.srs = "EPSG:4326"
+    )
+  )
 })
 
 test_that("catr_ovc_get_rccoor() reports requests when verbose", {

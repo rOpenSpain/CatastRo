@@ -3,28 +3,28 @@
 #' @description
 #' Query the OVCCoordenadas
 #' [Consulta CPMRC](`r ovcurl("CPMRC")`) service to retrieve coordinates for a
-#' cadastral reference.
+#' parcel reference. The returned coordinates locate the parcel centroid.
 #'
 #' @details
-#' If the API returns no results, this function returns a
-#' [tibble][dplyr::tbl_df] containing only query information.
+#' If the API returns no results or reports an error, the result is a
+#' [tibble][tibble::tbl_df] containing only query information.
 #'
-#' On a successful query, this function returns a [tibble][dplyr::tbl_df]
-#' with one row per cadastral reference, including the following columns:
+#' On a successful query, this function returns a tibble with one row per
+#' cadastral reference, including the following columns:
 #' - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 #' - `refcat`: Cadastral reference.
 #' - `address`: Address as recorded in the Spanish Cadastre.
 #' - Remaining fields: See the API documentation.
 #'
-#' @param rc Cadastral reference to geocode.
+#' @param rc A 14-character cadastral parcel reference to geocode.
 #' @param province,municipality Optional character strings used to narrow the
-#'   search.
+#'   search. `province` is required when `municipality` is provided.
 #' @param srs SRS/CRS to use in the query. To see allowed values, use
 #'   [catr_srs_values], specifically the `ovc_service` column.
 #' @inheritParams catr_set_cache_dir
 #'
-#' @return A [tibble][dplyr::tbl_df] as described in **Details**. Returns
-#'   `NULL` if the request fails.
+#' @returns A [tibble][tibble::tbl_df] as described in **Details**. Returns
+#'   [`NULL`][base::NULL] if the request fails.
 #'
 #' @references
 #' [Consulta CPMRC](`r ovcurl("CPMRC")`).
@@ -35,6 +35,7 @@
 #'
 #' @family cadastral_references
 #' @family ovc_services
+#' @concept ovccoordenadas_services
 #' @export
 #' @encoding UTF-8
 #'

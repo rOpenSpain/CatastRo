@@ -38,3 +38,10 @@
       i Requesting <http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR_Distancia?SRS=EPSG%3A4326&Coordenada_X=-5.67142&Coordenada_Y=40.9632>.
       v Request succeeded.
 
+# catr_ovc_get_rccoor_distancia() reports API errors
+
+    Code
+      result <- catr_ovc_get_rccoor_distancia(lat = 40.9632, lon = -5.67142)
+    Message
+      x OVC service error 16: NO REFERENCES AVAILABLE
+

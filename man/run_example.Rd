@@ -8,7 +8,8 @@
 run_example()
 }
 \value{
-Logical. \code{TRUE} if examples should run, \code{FALSE} otherwise.
+A \link[base:logical]{logical} value, \code{TRUE} if examples should run,
+\code{FALSE} otherwise.
 }
 \description{
 Determine whether an example should run based on the current platform and
