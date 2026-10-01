@@ -46,7 +46,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="catastro-development-version">CatastRo (development version)<a class="anchor" aria-label="anchor" href="#catastro-development-version"></a></h2>
-<ul><li>CLI messages now display braces in paths, URLs and argument values literally.</li>
+<ul><li>The reference index now groups functions by Spanish Cadastre service, alongside the existing task-based sections.</li>
+<li>CLI messages now display braces in paths, URLs and argument values literally.</li>
 <li>
 <strong>CatastRo</strong> users can now configure HTTP timeout and SSL verification with the <code>CATASTRO_TIMEOUT</code> and <code>CATASTRO_SSL_VERIFY</code> environment variables. The existing <code>catastro_timeout</code> and <code>catastro_ssl_verify</code> options still take precedence (<a href="https://github.com/rOpenSpain/CatastRo/issues/82" class="external-link">#82</a>).</li>
 <li>
@@ -57,6 +58,10 @@
 <code><a href="../reference/catr_atom_search_munic.html">catr_atom_search_munic()</a></code> now filters results when <code>to</code> matches exactly one territorial office.</li>
 <li>
 <code><a href="../reference/catr_clear_cache.html">catr_clear_cache()</a></code> now reports incomplete deletions instead of announcing success when files remain.</li>
+<li>
+<code><a href="../reference/catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code> now preserves the correct X and Y coordinates when the API returns an error.</li>
+<li>
+<code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code> now reports API errors and returns the queried coordinates and SRS.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.2" id="catastro-102">CatastRo 1.0.2<a class="anchor" aria-label="anchor" href="#catastro-102"></a></h2><p class="text-muted">CRAN release: 2026-06-03</p>
@@ -73,7 +78,7 @@
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
 </blockquote>
 <p>Persistent cache directories now use <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> instead of <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code>. If you already have a cache directory, <strong>CatastRo</strong> displays a one-time migration message.</p>
-<p>The package now requires <strong>R</strong> ≥ 4.1.0 and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
+<p>The package now requires <strong>R</strong> ≥ 4.1.0 and dependency updates improve both performance and maintainability. Data retrieval functions return tidy objects (tibbles, <code>sf</code> objects with tibble data or <code>SpatRaster</code> objects).</p>
 <div class="section level3">
 <h3 id="major-changes-1-0-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-1-0-0"></a></h3>
 <ul><li>Minimum required <strong>R</strong> version is now 4.1.0.</li>
@@ -91,8 +96,8 @@
 <h4 id="compatibility-and-performance-1-0-0">Compatibility and performance<a class="anchor" aria-label="anchor" href="#compatibility-and-performance-1-0-0"></a></h4>
 <ul><li>Require <strong>R</strong> ≥ 4.1.0.</li>
 <li>Update dependencies:
-<ul><li>Add: <strong>cli</strong>, <strong>lifecycle</strong>, <strong>withr</strong>.</li>
-<li>Remove: <strong>png</strong>, <strong>slippymath</strong>.</li>
+<ul><li>Add: <strong>cli</strong>, <strong>lifecycle</strong> and <strong>withr</strong>.</li>
+<li>Remove: <strong>png</strong> and <strong>slippymath</strong>.</li>
 </ul></li>
 <li>Return tidy objects consistently.</li>
 <li>Migrate the vignette engine to <strong>Quarto</strong>.</li>

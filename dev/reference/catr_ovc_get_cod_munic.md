@@ -30,14 +30,15 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
-described in **Details**. Returns `NULL` if the request fails.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+described in **Details**. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
 On a successful query, this function returns a one-row
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with the
-following columns:
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+the following columns:
 
 - `munic`: Municipality name used by the Spanish Cadastre.
 

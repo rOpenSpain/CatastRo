@@ -112,7 +112,7 @@ specific postal codes.</p></li>
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>Input defining the query area. See <strong>Bounding box</strong>. It can be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that define
 the bounding box: <code>c(xmin, ymin, xmax, ymax)</code>.</p></li>
-<li><p>An <code>sf</code> or <code>sfc</code> object from <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a>.</p></li>
+<li><p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> or <code><a href="https://r-spatial.github.io/sf/reference/sfc.html" class="external-link">sfc</a></code> object from <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a>.</p></li>
 </ul></dd>
 
 
@@ -148,7 +148,8 @@ the bounding box: <code>c(xmin, ymin, xmax, ymax)</code>.</p></li>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object. Returns <code>NULL</code> if the data cannot be
+    <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object. Returns <code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code> if the
+data cannot be
 retrieved.</p>
     </div>
     <div class="section level2">
@@ -167,10 +168,10 @@ coordinate values. This function queries the bounding box in
 <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a>, ETRS89 / UTM zone 30N, to work around a
 potential API issue.</p>
 <p>When <code>x</code> is an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object, the <code>srs</code> value is ignored. In
-this case, the bounding box of the <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object is
+this case, the bounding box of the <code>sf</code> object is
 used for the query (see <code><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">sf::st_bbox()</a></code>).</p>
-<p>The result is always provided in the SRS of the <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object
-provided as input.</p>
+<p>The result uses the SRS of the input spatial object or the <code>srs</code> value
+provided with a numeric vector.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -199,6 +200,9 @@ object as its extent (<code>x</code>).</p>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  srs <span class="op">=</span> <span class="fl">25830</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> The download request could not be completed.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failed to perform HTTP request. <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [ovc.catastro.meh.es]: Recv failure: Connection reset by peer</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning `NULL` because the download failed.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>

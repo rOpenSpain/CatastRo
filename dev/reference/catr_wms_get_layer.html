@@ -76,7 +76,7 @@ This function wraps <code><a href="https://ropenspain.github.io/mapSpain/referen
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>Input defining the query area. See <strong>Bounding box</strong>. It can be:</p><ul><li><p>A numeric vector of length 4 with the coordinates that define
 the bounding box: <code>c(xmin, ymin, xmax, ymax)</code>.</p></li>
-<li><p>An <code>sf</code> or <code>sfc</code> object from <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a>.</p></li>
+<li><p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> or <code><a href="https://r-spatial.github.io/sf/reference/sfc.html" class="external-link">sfc</a></code> object from <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a>.</p></li>
 </ul></dd>
 
 
@@ -198,7 +198,8 @@ for complete layer and style information.</p>
 the map extent through <code>x</code>.</p></li>
 <li><p><code><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html" class="external-link">mapSpain::esp_get_tiles()</a></code> downloads map tiles.</p></li>
 <li><p><code><a href="https://rspatial.github.io/terra/reference/RGB.html" class="external-link">terra::RGB()</a></code> identifies RGB channels.</p></li>
-<li><p><code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">terra::plotRGB()</a></code> and <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">tidyterra::geom_spatraster_rgb()</a></code> plot RGB rasters.</p></li>
+<li><p><code><a href="https://rspatial.github.io/terra/reference/plotRGB.html" class="external-link">terra::plotRGB()</a></code> and <code><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">tidyterra::geom_spatraster_rgb()</a></code> plot RGB
+rasters.</p></li>
 </ul></div>
     </div>
 
@@ -238,12 +239,10 @@ the map extent through <code>x</code>.</p></li>
 <span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster_rgb.html" class="external-link">geom_spatraster_rgb</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">parcels_img</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘tidyterra’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:stats’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     filter</span>
-<span class="r-plt img"><img src="catr_wms_get_layer-1.png" alt="" width="2188" height="1352"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(...):</span> Failed to perform HTTP request.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error in `curl::curl_fetch_memory()`:</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Failure when receiving data from the peer [ovc.catastro.meh.es]:</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> Recv failure: Connection reset by peer</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

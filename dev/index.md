@@ -26,7 +26,7 @@ install.packages(
 ```
 
 Alternatively, you can install the development version of **CatastRo**
-with:
+with **pak**:
 
 ``` r
 
@@ -44,7 +44,7 @@ this code after loading the package:
 
 ``` r
 
-# Disable SSL verification
+# Disable SSL verification.
 options(catastro_ssl_verify = 0)
 ```
 
@@ -55,7 +55,7 @@ To make this setting persistent, add the same code to your
 
 ``` r
 
-# ... other options...
+# ... other options ...
 options(catastro_ssl_verify = 0)
 ```
 
@@ -68,7 +68,7 @@ package naming convention is `catr_<service>_<description>`.
 
 OVC services use
 [**OVCCoordenadas**](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-for geocoding and reverse geocoding, and **OVCCallejero** for province
+for geocoding and reverse geocoding and **OVCCallejero** for province
 and municipality code lookup.
 
 These functions use the `catr_ovc_get_*()` prefix and return tibbles

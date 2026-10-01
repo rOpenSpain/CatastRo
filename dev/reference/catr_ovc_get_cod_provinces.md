@@ -2,7 +2,8 @@
 
 Query the OVCCallejero
 [ConsultaProvincia](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaProvincia)
-service to retrieve provinces and their Spanish Cadastre codes.
+service to retrieve provinces and their INE codes. Only provinces within
+the jurisdiction of the Directorate General for Cadastre are included.
 
 ## Usage
 
@@ -18,8 +19,9 @@ catr_ovc_get_cod_provinces(verbose = FALSE)
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) with
-province names and codes. Returns `NULL` if the request fails.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with province names and codes. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## References
 

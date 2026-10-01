@@ -82,14 +82,15 @@ catr_get_code_from_coords(
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
-described in **Details**. Returns `NULL` if the request fails.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+described in **Details**. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
 On a successful query, this function returns a one-row
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with the
-following columns:
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+the following columns:
 
 - `munic`: Municipality name used by the Spanish Cadastre.
 
@@ -135,7 +136,7 @@ catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 #> 1 SANTA… 38      900        38900    38    038   38038   SANT… 38    900   38   
 #> # ℹ 1 more variable: cm <chr>
 
-# Use with an sf object
+# Use with an `sf` object.
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
 #> # A tibble: 1 × 12

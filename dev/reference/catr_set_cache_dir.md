@@ -42,11 +42,14 @@ catr_detect_cache_dir()
 
 ## Value
 
-`catr_set_cache_dir()` invisibly returns a character string containing
-the cache path. It is primarily called for its side effect.
+`catr_set_cache_dir()` returns a
+[character](https://rdrr.io/r/base/character.html) string containing the
+cache directory path, invisibly. This function is called for its side
+effects.
 
-`catr_detect_cache_dir()` returns the path to the `cache_dir` used in
-this session.
+`catr_detect_cache_dir()` returns a
+[character](https://rdrr.io/r/base/character.html) string containing the
+cache directory path used in this session.
 
 ## Details
 
@@ -61,8 +64,8 @@ path to a small configuration file under
 
 ## Note
 
-In [CatastRo](https://CRAN.R-project.org/package=CatastRo) \>= 1.0.0 the
-location of the configuration file has moved from
+In [CatastRo](https://CRAN.R-project.org/package=CatastRo) \>= 1.0.0,
+the location of the configuration file has moved from
 `rappdirs::user_config_dir("CatastRo", "R")` to
 `tools::R_user_dir("CatastRo", "config")`. A migration function moves
 previous configuration files to the new location and displays a message.
@@ -111,28 +114,28 @@ Manage the local cache:
 # Caution! This modifies your current state
 # \dontrun{
 my_cache <- catr_detect_cache_dir()
-#> ℹ /tmp/RtmpDpciLB/CatastRo
+#> ℹ /tmp/RtmpPu8ewa/CatastRo
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 catr_set_cache_dir(ex)
-#> ℹ CatastRo cache directory is /tmp/RtmpDpciLB/example/cachenew.
+#> ℹ CatastRo cache directory is /tmp/RtmpPu8ewa/example/cachenew.
 #> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 
 catr_detect_cache_dir()
-#> ℹ /tmp/RtmpDpciLB/example/cachenew
-#> [1] "/tmp/RtmpDpciLB/example/cachenew"
+#> ℹ /tmp/RtmpPu8ewa/example/cachenew
+#> [1] "/tmp/RtmpPu8ewa/example/cachenew"
 
 # Restore initial cache
 catr_set_cache_dir(my_cache)
-#> ℹ CatastRo cache directory is /tmp/RtmpDpciLB/CatastRo.
+#> ℹ CatastRo cache directory is /tmp/RtmpPu8ewa/CatastRo.
 #> ℹ To reuse this cache directory in future sessions, set `install` to `TRUE`.
 identical(my_cache, catr_detect_cache_dir())
-#> ℹ /tmp/RtmpDpciLB/CatastRo
+#> ℹ /tmp/RtmpPu8ewa/CatastRo
 #> [1] TRUE
 # }
 
 catr_detect_cache_dir()
-#> ℹ /tmp/RtmpDpciLB/CatastRo
-#> [1] "/tmp/RtmpDpciLB/CatastRo"
+#> ℹ /tmp/RtmpPu8ewa/CatastRo
+#> [1] "/tmp/RtmpPu8ewa/CatastRo"
 ```

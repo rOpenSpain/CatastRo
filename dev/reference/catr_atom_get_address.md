@@ -52,7 +52,8 @@ catr_atom_get_address(
 ## Value
 
 An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
-Returns `NULL` if the data cannot be retrieved.
+Returns [`NULL`](https://rdrr.io/r/base/NULL.html) if the data cannot be
+retrieved.
 
 ## References
 

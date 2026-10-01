@@ -59,8 +59,13 @@ catr_atom_get_parcels_db_to(
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) with the
-requested information in the following columns:
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with the requested information. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the data cannot be
+retrieved or no territorial office matches `to`.
+
+[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md)
+returns the following columns:
 
 - `territorial_office`: Territorial office, corresponding to each
   province of Spain except the Basque Country and Navarre.
@@ -71,6 +76,9 @@ requested information in the following columns:
 
 - `date`: Reference date of the data. The information from this service
   is updated twice a year.
+
+[`catr_atom_get_address_db_to()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_atom_get_address_db.md)
+returns `munic`, `url` and `date` for the selected territorial office.
 
 ## See also
 

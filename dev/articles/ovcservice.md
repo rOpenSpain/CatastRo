@@ -4,13 +4,15 @@
 service from the [Sede electrónica del
 Catastro](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx).
 
-This service retrieves coordinates for a cadastral reference. The
-cadastral reference is the only required value, although optional
-province and municipality values can narrow the search.
+This service retrieves the parcel centroid coordinates for a
+14-character cadastral parcel reference. Optional province and
+municipality values can narrow the search. Province is required when
+municipality is provided.
 
 The service can also retrieve cadastral references from longitude and
 latitude. You can choose the spatial reference system (SRS, also known
-as CRS) used to express the coordinates.
+as a coordinate reference system or CRS) used to express the
+coordinates.
 
 If no exact match is found, the distance query returns cadastral
 references within a square with sides of 50 meters, centered on the
@@ -63,7 +65,7 @@ This function accepts the following values for the `srs` argument:
 
 data(catr_srs_values)
 
-# OVC valid codes.
+# Valid OVC SRS codes.
 library(dplyr)
 
 catr_srs_values |>
@@ -92,7 +94,9 @@ catr_srs_values |>
 If no exact match is found,
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
 retrieves cadastral references within a square with sides of 50 meters,
-centered on `lat` and `lon`.
+centered on `lat` and `lon`. The `dis` column gives the distance to the
+queried point, and `cmun_ine` combines the INE province and municipality
+codes into a five-digit code.
 
 ``` r
 
@@ -113,9 +117,11 @@ catr_ovc_get_rccoor_distancia(
 
 For geocoding,
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_cpmrc.md)
-accepts a cadastral reference (`rc`) and returns `xcoord` and `ycoord`
-in the specified `srs`, together with the address. Optional `province`
-and `municipality` values can narrow the search.
+accepts a 14-character cadastral parcel reference (`rc`) and returns its
+centroid coordinates as `xcoord` and `ycoord` in the specified `srs`,
+together with the address. Optional `province` and `municipality` values
+can narrow the search. `province` is required when `municipality` is
+provided.
 
 ``` r
 
@@ -153,7 +159,7 @@ You can also query by providing only `rc`:
 
 ``` r
 
-# Get the result without a warning.
+# Query using only the cadastral reference.
 catr_ovc_get_cpmrc(rc = "13077A01800039") |>
   knitr::kable()
 ```

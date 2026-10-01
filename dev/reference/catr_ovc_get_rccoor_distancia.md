@@ -16,11 +16,13 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude for the query, expressed in the SRS/CRS defined by `srs`.
+  Y coordinate for the query, expressed in the SRS/CRS defined by `srs`.
+  For geographic coordinates, this is the latitude.
 
 - lon:
 
-  Longitude for the query, expressed in the SRS/CRS defined by `srs`.
+  X coordinate for the query, expressed in the SRS/CRS defined by `srs`.
+  For geographic coordinates, this is the longitude.
 
 - srs:
 
@@ -34,18 +36,18 @@ catr_ovc_get_rccoor_distancia(lat, lon, srs = 4326, verbose = FALSE)
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
-described in **Details**. Returns `NULL` if the request fails.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+described in **Details**. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
-If the API returns no results, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) containing
-only query information.
+If the API returns no results or reports an error, the result is a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+containing only query information.
 
-On a successful query, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
-row per cadastral reference, including the following columns:
+On a successful query, this function returns a tibble with one row per
+cadastral reference, including the following columns:
 
 - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 
@@ -53,8 +55,10 @@ row per cadastral reference, including the following columns:
 
 - `address`: Address as recorded in the Spanish Cadastre.
 
-- `cmun_ine`: Municipality code as registered by the INE (National
-  Statistics Institute).
+- `cmun_ine`: Full five-digit INE municipality code, combining the
+  province and municipality codes (National Statistics Institute).
+
+- `dis`: Distance from the cadastral reference to the queried point.
 
 - Remaining fields: See the API documentation.
 

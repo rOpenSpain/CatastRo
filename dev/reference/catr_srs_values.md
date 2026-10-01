@@ -1,14 +1,14 @@
 # Reference SRS codes for [CatastRo](https://CRAN.R-project.org/package=CatastRo) services
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html)
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 containing valid SRS values, also known as CRS values, for each API
 service. Values are represented as [EPSG
 codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 
 ## Format
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) with 16
-rows and columns:
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with 16 rows and columns:
 
 - SRS:
 

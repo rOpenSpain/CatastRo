@@ -100,13 +100,14 @@ function stores cached files in a temporary directory. See
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A character string containing the downloaded file path. Returns <code>NULL</code> if
+    <p>A <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a> string containing the downloaded file path.
+Returns <code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code> if
 the request fails.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function constructs a request URL from its components, downloads the
-result to a temporary cache and reports WFS exceptions. See <strong>Examples</strong>.</p>
+result to the cache directory and reports WFS exceptions. See <strong>Examples</strong>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

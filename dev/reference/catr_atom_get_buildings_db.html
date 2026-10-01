@@ -117,14 +117,18 @@ function stores cached files in a temporary directory. See
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="https://dplyr.tidyverse.org/reference/defunct.html" class="external-link">tibble</a> with the requested information in the following
-columns:</p><ul><li><p><code>territorial_office</code>: Territorial office, corresponding to each province
+    <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> with the requested information. Returns
+<code><a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a></code> if
+the data cannot be retrieved or no territorial office matches <code>to</code>.</p>
+<p><code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code> returns the following columns:</p><ul><li><p><code>territorial_office</code>: Territorial office, corresponding to each province
 of Spain except the Basque Country and Navarre.</p></li>
 <li><p><code>url</code>: ATOM URL for the corresponding territorial office.</p></li>
 <li><p><code>munic</code>: Name of the municipality.</p></li>
 <li><p><code>date</code>: Reference date of the data. The information from this service is
 updated twice a year.</p></li>
-</ul></div>
+</ul><p><code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_to()</a></code> returns <code>munic</code>, <code>url</code> and <code>date</code> for the
+selected territorial office.</p>
+    </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Work with cadastral buildings:

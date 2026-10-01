@@ -47,13 +47,14 @@ inspire_wfs_get(
 
 ## Value
 
-A character string containing the downloaded file path. Returns `NULL`
-if the request fails.
+A [character](https://rdrr.io/r/base/character.html) string containing
+the downloaded file path. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
 This function constructs a request URL from its components, downloads
-the result to a temporary cache and reports WFS exceptions. See
+the result to the cache directory and reports WFS exceptions. See
 **Examples**.
 
 ## See also

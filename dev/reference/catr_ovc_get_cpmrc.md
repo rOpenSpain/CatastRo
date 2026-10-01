@@ -2,7 +2,8 @@
 
 Query the OVCCoordenadas [Consulta
 CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
-service to retrieve coordinates for a cadastral reference.
+service to retrieve coordinates for a parcel reference. The returned
+coordinates locate the parcel centroid.
 
 ## Usage
 
@@ -20,7 +21,7 @@ catr_ovc_get_cpmrc(
 
 - rc:
 
-  Cadastral reference to geocode.
+  A 14-character cadastral parcel reference to geocode.
 
 - srs:
 
@@ -30,7 +31,8 @@ catr_ovc_get_cpmrc(
 
 - province, municipality:
 
-  Optional character strings used to narrow the search.
+  Optional character strings used to narrow the search. `province` is
+  required when `municipality` is provided.
 
 - verbose:
 
@@ -38,18 +40,18 @@ catr_ovc_get_cpmrc(
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
-described in **Details**. Returns `NULL` if the request fails.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+described in **Details**. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
-If the API returns no results, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) containing
-only query information.
+If the API returns no results or reports an error, the result is a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+containing only query information.
 
-On a successful query, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
-row per cadastral reference, including the following columns:
+On a successful query, this function returns a tibble with one row per
+cadastral reference, including the following columns:
 
 - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 

@@ -31,8 +31,9 @@ catr_wms_get_layer(
   - A numeric vector of length 4 with the coordinates that define the
     bounding box: `c(xmin, ymin, xmax, ymax)`.
 
-  - An `sf` or `sfc` object from
-    [sf](https://CRAN.R-project.org/package=sf).
+  - An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) or
+    [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html) object
+    from [sf](https://CRAN.R-project.org/package=sf).
 
 - srs:
 
@@ -210,11 +211,9 @@ if (requireNamespace("tidyterra", quietly = TRUE)) {
     geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
     geom_spatraster_rgb(data = parcels_img)
 }
-#> 
-#> Attaching package: ‘tidyterra’
-#> The following object is masked from ‘package:stats’:
-#> 
-#>     filter
-
+#> Error in httr2::req_perform(...): Failed to perform HTTP request.
+#> Caused by error in `curl::curl_fetch_memory()`:
+#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
+#> Recv failure: Connection reset by peer
 # }
 ```

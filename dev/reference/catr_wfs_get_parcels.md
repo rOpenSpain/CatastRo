@@ -55,8 +55,9 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
   - A numeric vector of length 4 with the coordinates that define the
     bounding box: `c(xmin, ymin, xmax, ymax)`.
 
-  - An `sf` or `sfc` object from
-    [sf](https://CRAN.R-project.org/package=sf).
+  - An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) or
+    [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html) object
+    from [sf](https://CRAN.R-project.org/package=sf).
 
 - what:
 
@@ -84,7 +85,8 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 ## Value
 
 An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
-Returns `NULL` if the data cannot be retrieved.
+Returns [`NULL`](https://rdrr.io/r/base/NULL.html) if the data cannot be
+retrieved.
 
 ## API limits
 
@@ -103,13 +105,11 @@ around a potential API issue.
 
 When `x` is an [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 object, the `srs` value is ignored. In this case, the bounding box of
-the [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
-used for the query (see
+the `sf` object is used for the query (see
 [`sf::st_bbox()`](https://r-spatial.github.io/sf/reference/st_bbox.html)).
 
-The result is always provided in the SRS of the
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object provided
-as input.
+The result uses the SRS of the input spatial object or the `srs` value
+provided with a numeric vector.
 
 ## References
 
@@ -144,6 +144,9 @@ cp <- catr_wfs_get_parcels_bbox(
   ),
   srs = 25830
 )
+#> ✖ The download request could not be completed.
+#> ! Failed to perform HTTP request. Caused by error in `curl::curl_fetch_memory()`: ! Failure when receiving data from the peer [ovc.catastro.meh.es]: Recv failure: Connection reset by peer
+#> Returning `NULL` because the download failed.
 
 library(ggplot2)
 

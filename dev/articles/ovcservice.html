@@ -92,8 +92,8 @@
 
 
     <!-- ovcservice.qmd is generated from ovcservice.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> provides an <strong>R</strong> interface to the <strong>OVCCoordenadas</strong> service from the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link">Sede electrónica del Catastro</a>.</p>
-<p>This service retrieves coordinates for a cadastral reference. The cadastral reference is the only required value, although optional province and municipality values can narrow the search.</p>
-<p>The service can also retrieve cadastral references from longitude and latitude. You can choose the spatial reference system (SRS, also known as CRS) used to express the coordinates.</p>
+<p>This service retrieves the parcel centroid coordinates for a 14-character cadastral parcel reference. Optional province and municipality values can narrow the search. Province is required when municipality is provided.</p>
+<p>The service can also retrieve cadastral references from longitude and latitude. You can choose the spatial reference system (SRS, also known as a coordinate reference system or CRS) used to express the coordinates.</p>
 <p>If no exact match is found, the distance query returns cadastral references within a square with sides of 50 meters, centered on the requested coordinates.</p>
 <p>See the <a href="https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx" class="external-link"><strong>OVCCoordenadas</strong> service documentation</a> for endpoint details.</p>
 <p>These functions use the <code>catr_ovc_get_*()</code> prefix and return tibbles from the <strong>tibble</strong> package.</p>
@@ -156,7 +156,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">catr_srs_values</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># OVC valid codes.</span></span>
+<span><span class="co"># Valid OVC SRS codes.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">catr_srs_values</span> <span class="op">|&gt;</span></span>
@@ -227,7 +227,7 @@
 </tr>
 </tbody>
 </table>
-<p>If no exact match is found, <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code> retrieves cadastral references within a square with sides of 50 meters, centered on <code>lat</code> and <code>lon</code>.</p>
+<p>If no exact match is found, <code><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code> retrieves cadastral references within a square with sides of 50 meters, centered on <code>lat</code> and <code>lon</code>. The <code>dis</code> column gives the distance to the queried point, and <code>cmun_ine</code> combines the INE province and municipality codes into a five-digit code.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia</a></span><span class="op">(</span></span>
 <span>  lat <span class="op">=</span> <span class="fl">40.96002</span>,</span>
@@ -304,7 +304,7 @@
 </tbody>
 </table></section><section class="level2"><h2 id="geocoding-a-cadastral-reference">Geocoding a cadastral reference<a class="anchor" aria-label="anchor" href="#geocoding-a-cadastral-reference"></a>
 </h2>
-<p>For geocoding, <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> accepts a cadastral reference (<code>rc</code>) and returns <code>xcoord</code> and <code>ycoord</code> in the specified <code>srs</code>, together with the address. Optional <code>province</code> and <code>municipality</code> values can narrow the search.</p>
+<p>For geocoding, <code><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code> accepts a 14-character cadastral parcel reference (<code>rc</code>) and returns its centroid coordinates as <code>xcoord</code> and <code>ycoord</code> in the specified <code>srs</code>, together with the address. Optional <code>province</code> and <code>municipality</code> values can narrow the search. <code>province</code> is required when <code>municipality</code> is provided.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span></span>
 <span>  rc <span class="op">=</span> <span class="st">"13077A01800039"</span>,</span>
@@ -371,7 +371,7 @@
 </table>
 <p>You can also query by providing only <code>rc</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get the result without a warning.</span></span>
+<code class="sourceCode R"><span><span class="co"># Query using only the cadastral reference.</span></span>
 <span><span class="fu"><a href="../reference/catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc</a></span><span class="op">(</span>rc <span class="op">=</span> <span class="st">"13077A01800039"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table style="width:100%;" class="table">

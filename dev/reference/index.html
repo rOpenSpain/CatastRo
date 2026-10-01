@@ -302,6 +302,182 @@
 
         </dt>
         <dd>CatastRo: Interface to the Spanish 'Catastro' Web Services</dd>
+      </dl></div><div class="section level2">
+      <h2 id="functions-by-service">Functions by service<a class="anchor" aria-label="anchor" href="#functions-by-service"></a></h2>
+
+      <div class="section-desc"><p>Browse functions by the Spanish Cadastre service they use.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+      <h3 id="atom-inspire">ATOM INSPIRE<a class="anchor" aria-label="anchor" href="#atom-inspire"></a></h3>
+      <div class="section-desc"><p>Download municipal datasets, inspect download catalogs and find municipality codes.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="catr_atom_get_address.html">catr_atom_get_address()</a></code>
+
+        </dt>
+        <dd>ATOM INSPIRE: Download all addresses for a municipality</dd>
+
+        <dt>
+
+          <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_all()</a></code> <code><a href="catr_atom_get_address_db.html">catr_atom_get_address_db_to()</a></code>
+
+        </dt>
+        <dd>ATOM INSPIRE: List address download URLs</dd>
+
+        <dt>
+
+          <code><a href="catr_atom_get_buildings.html">catr_atom_get_buildings()</a></code>
+
+        </dt>
+        <dd>ATOM INSPIRE: Download all buildings for a municipality</dd>
+
+        <dt>
+
+          <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_all()</a></code> <code><a href="catr_atom_get_buildings_db.html">catr_atom_get_buildings_db_to()</a></code>
+
+        </dt>
+        <dd>ATOM INSPIRE: List building download URLs</dd>
+
+        <dt>
+
+          <code><a href="catr_atom_get_parcels.html">catr_atom_get_parcels()</a></code>
+
+        </dt>
+        <dd>ATOM INSPIRE: Download all cadastral parcels for a municipality</dd>
+
+        <dt>
+
+          <code><a href="catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_all()</a></code> <code><a href="catr_atom_get_parcels_db.html">catr_atom_get_parcels_db_to()</a></code>
+
+        </dt>
+        <dd>ATOM INSPIRE: List cadastral parcel download URLs</dd>
+
+        <dt>
+
+          <code><a href="catr_atom_search_munic.html">catr_atom_search_munic()</a></code>
+
+        </dt>
+        <dd>ATOM INSPIRE: Search for municipality codes</dd>
+      </dl></div><div class="section level2">
+
+      <h3 id="wfs-inspire">WFS INSPIRE<a class="anchor" aria-label="anchor" href="#wfs-inspire"></a></h3>
+      <div class="section-desc"><p>Retrieve cadastral features by area or identifier, or construct custom WFS queries.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_bbox()</a></code> <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_codvia()</a></code> <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_rc()</a></code> <code><a href="catr_wfs_get_address.html">catr_wfs_get_address_postalcode()</a></code>
+
+        </dt>
+        <dd>WFS INSPIRE: Download addresses</dd>
+
+        <dt>
+
+          <code><a href="catr_wfs_get_buildings.html">catr_wfs_get_buildings_bbox()</a></code> <code><a href="catr_wfs_get_buildings.html">catr_wfs_get_buildings_rc()</a></code>
+
+        </dt>
+        <dd>WFS INSPIRE: Download buildings</dd>
+
+        <dt>
+
+          <code><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_bbox()</a></code> <code><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_zoning()</a></code> <code><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_parcel()</a></code> <code><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_neigh_parcel()</a></code> <code><a href="catr_wfs_get_parcels.html">catr_wfs_get_parcels_parcel_zoning()</a></code>
+
+        </dt>
+        <dd>WFS INSPIRE: Download cadastral parcels</dd>
+
+        <dt>
+
+          <code><a href="inspire_wfs_get.html">inspire_wfs_get()</a></code>
+
+        </dt>
+        <dd>Query WFS INSPIRE services</dd>
+      </dl></div><div class="section level2">
+
+      <h3 id="wms-inspire">WMS INSPIRE<a class="anchor" aria-label="anchor" href="#wms-inspire"></a></h3>
+      <div class="section-desc"><p>Download georeferenced cadastral map images.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="catr_wms_get_layer.html">catr_wms_get_layer()</a></code>
+
+        </dt>
+        <dd>WMS INSPIRE: Download georeferenced map images</dd>
+      </dl></div><div class="section level2">
+
+      <h3 id="ovccoordenadas">OVCCoordenadas<a class="anchor" aria-label="anchor" href="#ovccoordenadas"></a></h3>
+      <div class="section-desc"><p>Convert between cadastral parcel references and coordinates, including searches near a coordinate pair.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="catr_ovc_get_cpmrc.html">catr_ovc_get_cpmrc()</a></code>
+
+        </dt>
+        <dd>OVCCoordenadas: Geocode a cadastral reference</dd>
+
+        <dt>
+
+          <code><a href="catr_ovc_get_rccoor.html">catr_ovc_get_rccoor()</a></code>
+
+        </dt>
+        <dd>OVCCoordenadas: Reverse geocode coordinates</dd>
+
+        <dt>
+
+          <code><a href="catr_ovc_get_rccoor_distancia.html">catr_ovc_get_rccoor_distancia()</a></code>
+
+        </dt>
+        <dd>OVCCoordenadas: Find cadastral references near coordinates</dd>
+      </dl></div><div class="section level2">
+
+      <h3 id="ovccallejero">OVCCallejero<a class="anchor" aria-label="anchor" href="#ovccallejero"></a></h3>
+      <div class="section-desc"><p>Look up province and municipality codes, directly or through the municipality lookup from coordinates.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="catr_get_code_from_coords.html">catr_get_code_from_coords()</a></code>
+
+        </dt>
+        <dd>Get a cadastral municipality code from coordinates</dd>
+
+        <dt>
+
+          <code><a href="catr_ovc_get_cod_munic.html">catr_ovc_get_cod_munic()</a></code>
+
+        </dt>
+        <dd>OVCCallejero: Get municipality codes</dd>
+
+        <dt>
+
+          <code><a href="catr_ovc_get_cod_provinces.html">catr_ovc_get_cod_provinces()</a></code>
+
+        </dt>
+        <dd>OVCCallejero: Get province codes</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

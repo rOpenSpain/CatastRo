@@ -2,6 +2,8 @@
 
 ## CatastRo (development version)
 
+- The reference index now groups functions by Spanish Cadastre service,
+  alongside the existing task-based sections.
 - CLI messages now display braces in paths, URLs and argument values
   literally.
 - **CatastRo** users can now configure HTTP timeout and SSL verification
@@ -19,6 +21,11 @@
 - [`catr_clear_cache()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_clear_cache.md)
   now reports incomplete deletions instead of announcing success when
   files remain.
+- [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor.md)
+  now preserves the correct X and Y coordinates when the API returns an
+  error.
+- [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/dev/reference/catr_ovc_get_rccoor_distancia.md)
+  now reports API errors and returns the queried coordinates and SRS.
 
 ## CatastRo 1.0.2
 
@@ -52,8 +59,9 @@ If you already have a cache directory, **CatastRo** displays a one-time
 migration message.
 
 The package now requires **R** ≥ 4.1.0 and dependency updates improve
-both performance and maintainability. All functions return tidy objects
-(tibbles or `sf` objects with tibble data).
+both performance and maintainability. Data retrieval functions return
+tidy objects (tibbles, `sf` objects with tibble data or `SpatRaster`
+objects).
 
 ### Major changes
 
@@ -75,8 +83,8 @@ both performance and maintainability. All functions return tidy objects
 
 - Require **R** ≥ 4.1.0.
 - Update dependencies:
-  - Add: **cli**, **lifecycle**, **withr**.
-  - Remove: **png**, **slippymath**.
+  - Add: **cli**, **lifecycle** and **withr**.
+  - Remove: **png** and **slippymath**.
 - Return tidy objects consistently.
 - Migrate the vignette engine to **Quarto**.
 
