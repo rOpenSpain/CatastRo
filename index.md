@@ -268,7 +268,7 @@ A **BibTeX** entry for **LaTeX** users is:
       author = {Ángel {Delgado Panadero} and Diego Hernangómez},
       doi = {10.32614/CRAN.package.CatastRo},
       year = {2026},
-      version = {1.0.2.9000},
+      version = {1.1.0},
       url = {https://ropenspain.github.io/CatastRo/},
       abstract = {Access public spatial data from the Spanish Catastro through its Infrastructure for Spatial Information in Europe (INSPIRE) and related web services. Retrieve parcel, building, address and map image data and convert between property reference codes and coordinates.},
     }

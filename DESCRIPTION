@@ -1,13 +1,15 @@
 Package: CatastRo
 Title: Interface to the Spanish 'Catastro' Web Services
-Version: 1.0.2.9000
+Version: 1.1.0
 Authors@R: c(
     person("Ángel", "Delgado Panadero", , "delgadopanadero@gmail.com", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-8189-9251")),
     person("Iñaki", "Ucar", role = "ctb",
            comment = c(ORCID = "0000-0001-6403-5550")),
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-8457-4658"))
+           comment = c(ORCID = "0000-0001-8457-4658")),
+    person("Dirección General del Catastro", role = "dtc",
+           comment = "Provider of cadastral data and web services")
   )
 Description: Access public spatial data from the Spanish 'Catastro'
     through its Infrastructure for Spatial Information in Europe
@@ -48,7 +50,8 @@ Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true
-Copyright: © Dirección General del Catastro <https://www.catastro.meh.es/>
+Copyright: Cadastral data © Dirección General del Catastro.  See
+    inst/COPYRIGHTS for data access and use conditions.
 Encoding: UTF-8
 LazyData: true
 X-schema.org-isPartOf: https://ropenspain.es/

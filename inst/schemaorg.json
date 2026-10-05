@@ -16,12 +16,18 @@
         }
       ],
       "codeRepository": "https://github.com/rOpenSpain/CatastRo",
-      "contributor": {
-        "id": "https://orcid.org/0000-0001-6403-5550",
-        "type": "Person",
-        "familyName": "Ucar",
-        "givenName": "Iñaki"
-      },
+      "contributor": [
+        {
+          "id": "https://orcid.org/0000-0001-6403-5550",
+          "type": "Person",
+          "familyName": "Ucar",
+          "givenName": "Iñaki"
+        },
+        {
+          "type": "Organization",
+          "name": "Dirección General del Catastro"
+        }
+      ],
       "copyrightHolder": {
         "id": "https://orcid.org/0000-0002-8189-9251",
         "type": "Person",
@@ -44,7 +50,7 @@
         "url": "https://cran.r-project.org"
       },
       "runtimePlatform": "R version 4.6.1 (2026-06-24 ucrt)",
-      "version": "1.0.2.9000"
+      "version": "1.1.0"
     },
     {
       "id": "https://doi.org/10.32614/CRAN.package.CatastRo",

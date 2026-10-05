@@ -1,4 +1,4 @@
-# CatastRo (development version)
+# CatastRo 1.1.0
 
 - The reference index now groups functions by Spanish Cadastre service, alongside the existing task-based sections.
 - CLI messages now display braces in paths, URLs and argument values literally.

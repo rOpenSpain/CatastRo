@@ -32,6 +32,7 @@ Authors:
 Other contributors:
 \itemize{
   \item Iñaki Ucar (\href{https://orcid.org/0000-0001-6403-5550}{ORCID}) [contributor]
+  \item Dirección General del Catastro (Provider of cadastral data and web services) [data contributor]
 }
 
 }

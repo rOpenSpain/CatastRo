@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenSpain/CatastRo",
   "issueTracker": "https://github.com/rOpenSpain/CatastRo/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
-  "version": "1.0.2.9000",
+  "version": "1.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -43,6 +43,10 @@
       "givenName": "Iñaki",
       "familyName": "Ucar",
       "@id": "https://orcid.org/0000-0001-6403-5550"
+    },
+    {
+      "@type": "Organization",
+      "name": "Dirección General del Catastro"
     }
   ],
   "copyrightHolder": [
@@ -283,7 +287,7 @@
   },
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["catastro", "cran", "cran-r", "gis", "maps", "r", "r-package", "ropenspain", "rstats", "spain", "spatial", "static-tiles"],
-  "fileSize": "1513.698KB",
+  "fileSize": "1229.806KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
