@@ -1,4 +1,4 @@
-# WFS INSPIRE: download cadastral parcels
+# WFS INSPIRE: Download cadastral parcels
 
 Retrieve spatial cadastral parcel and zoning data through several types
 of WFS queries:
@@ -55,16 +55,14 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
   - A numeric vector of length 4 with the coordinates that define the
     bounding box: `c(xmin, ymin, xmax, ymax)`.
 
-  - An `sf` or `sfc` object from
-    [sf](https://CRAN.R-project.org/package=sf).
+  - An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) or
+    [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html) object
+    from [sf](https://CRAN.R-project.org/package=sf).
 
 - what:
 
-  Information to load. Options are:
-
-  - `"parcel"` for cadastral parcels.
-
-  - `"zoning"` for cadastral zoning.
+  Information to load, either `"parcel"` for cadastral parcels or
+  `"zoning"` for cadastral zoning.
 
 - srs:
 
@@ -74,7 +72,7 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 - cod_zona:
 
@@ -87,11 +85,12 @@ catr_wfs_get_parcels_parcel_zoning(cod_zona, srs = NULL, verbose = FALSE)
 ## Value
 
 An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
-Returns `NULL` if the data cannot be retrieved.
+Returns [`NULL`](https://rdrr.io/r/base/NULL.html) if the data cannot be
+retrieved.
 
 ## API limits
 
-The API service is limited to the following constraints:
+The API service has the following limits:
 
 - `"parcel"`: Bounding box of 1 km2 and a maximum of 5,000 elements.
 
@@ -99,20 +98,18 @@ The API service is limited to the following constraints:
 
 ## Bounding box
 
-When `x` is a numeric vector, make sure that the `srs` matches the
-coordinate values. Additionally, the function queries the bounding box
-on [EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work
+When `x` is a numeric vector, make sure that `srs` matches the
+coordinate values. This function queries the bounding box in
+[EPSG:25830](https://epsg.io/25830), ETRS89 / UTM zone 30N, to work
 around a potential API issue.
 
-When `x` is a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-object, the value `srs` is ignored. In this case, the bounding box of
-the [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
-used for the query (see
+When `x` is an [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+object, the `srs` value is ignored. In this case, the bounding box of
+the `sf` object is used for the query (see
 [`sf::st_bbox()`](https://r-spatial.github.io/sf/reference/st_bbox.html)).
 
-The result is always provided in the SRS of the
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object provided
-as input.
+The result uses the SRS of the input spatial object or the `srs` value
+provided with a numeric vector.
 
 ## References
 
@@ -124,14 +121,18 @@ cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-Query data from WFS INSPIRE services:
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
-[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
-[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
+[`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
+downloads a map image using the returned spatial object as its extent
+(`x`).
 
 Work with cadastral parcels:
 [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md),
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
+
+Query WFS INSPIRE services:
+[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
+[`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
+[`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
 
 ## Examples
 

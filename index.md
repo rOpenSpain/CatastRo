@@ -18,15 +18,15 @@ install.packages("CatastRo")
 SSL issues
 
 The SSL certificate of the Spanish Cadastre may cause errors when using
-**CatastRo** (especially on macOS, see issue
+**CatastRo** (especially on **macOS**, see issue
 [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)).
 
-In **CatastRo \>= 1.0.0**, you can work around these errors by running
+In **CatastRo** \>= 1.0.0, you can work around these errors by running
 this code after loading the package:
 
 ``` r
 
-# Disable SSL verification
+# Disable SSL verification.
 options(catastro_ssl_verify = 0)
 ```
 
@@ -37,21 +37,21 @@ To make this setting persistent, add the same code to your
 
 ``` r
 
-# ... other options...
+# ... other options ...
 options(catastro_ssl_verify = 0)
 ```
 
 ## Package API
 
 The functions of **CatastRo** are organized by source service. The
-package naming convention is `catr_*service*_*description*`.
+package naming convention is `catr_<service>_<description>`.
 
 ### OVC services
 
 OVC services use
-[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-for geocoding and reverse geocoding and OVCCallejero for province and
-municipality code lookup.
+[**OVCCoordenadas**](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
+for geocoding and reverse geocoding and **OVCCallejero** for province
+and municipality code lookup.
 
 These functions use the `catr_ovc_get_*()` prefix and return tibbles
 from the **tibble** package. See
@@ -65,9 +65,9 @@ INSPIRE
 services](https://www.catastro.hacienda.gob.es/webinspire/index.html)
 using the **sf** or **terra** packages.
 
-Note that these services cover 95% of the Spanish territory, excluding
-the Basque Country and Navarre[^1], which have their own independent
-cadastral offices.
+These services cover 95% of the Spanish territory, excluding the Basque
+Country and Navarre[^1], which have their own independent cadastral
+offices.
 
 There are three INSPIRE services:
 
@@ -97,12 +97,12 @@ the
 [**terra**](https://rspatial.github.io/terra/reference/terra-package.html)
 package.
 
-There is a single function for querying this service:
+A single function queries this service:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md).
 
 #### Terms and conditions of use
 
-Please check the service [terms of
+Review the service [terms of
 use](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf).
 
 ## Examples
@@ -157,7 +157,7 @@ ggplot(bu) +
   labs(title = "Nava de la Asunción, Segovia")
 ```
 
-![Extract buildings in Nava de la Asuncion with the ATOM
+![Extract buildings in Nava de la Asunción with the ATOM
 service](reference/figures/README-atom-1.png)
 
 ### Extract geometries using the WFS service
@@ -198,7 +198,7 @@ API Sede Electrónica Del Catastro*.
 [doi:10.32614/CRAN.package.CatastRo](https://doi.org/10.32614/CRAN.package.CatastRo).
 <https://ropenspain.github.io/CatastRo/>.
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ``` R
 @Manual{R-CatastRo,
@@ -206,16 +206,16 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {1.0.2},
+  version = {1.1.0},
   url = {https://ropenspain.github.io/CatastRo/},
-  abstract = {Access public spatial data from the Spanish Cadastre through its INSPIRE and related web services. Retrieve cadastral parcel, building, address and georeferenced map image data and convert between cadastral references and coordinates.},
+  abstract = {Access public spatial data from the Spanish Catastro through its Infrastructure for Spatial Information in Europe (INSPIRE) and related web services. Retrieve parcel, building, address and map image data and convert between property reference codes and coordinates.},
 }
 ```
 
 ## Contributing
 
 See the [source code and issue
-tracker](https://github.com/ropenspain/CatastRo/) on GitHub.
+tracker](https://github.com/ropenspain/CatastRo/) on **GitHub**.
 
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)

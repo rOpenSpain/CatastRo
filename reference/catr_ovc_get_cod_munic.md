@@ -1,4 +1,4 @@
-# OVCCallejero: get municipality codes
+# OVCCallejero: Get municipality codes
 
 Query the OVCCallejero
 [ConsultaMunicipioCodigos](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccallejerocodigos.asmx?op=ConsultaMunicipioCodigos)
@@ -21,23 +21,24 @@ catr_ovc_get_cod_munic(cpro, cmun = NULL, cmun_ine = NULL, verbose = FALSE)
 - cmun, cmun_ine:
 
   Municipality code as recorded by the Spanish Cadastre (`cmun`) or the
-  National Statistics Institute. Either `cmun` or `cmun_ine` must be
-  provided.
+  National Statistics Institute (`cmun_ine`). Either `cmun` or
+  `cmun_ine` must be provided.
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
-described in **Details**. Returns `NULL` if the request fails.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+described in **Details**. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
-On a successful query, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
-row including the following columns:
+On a successful query, this function returns a one-row
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+the following columns:
 
 - `munic`: Municipality name used by the Spanish Cadastre.
 
@@ -61,16 +62,23 @@ row including the following columns:
 
 ## See also
 
+[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
+searches municipality codes by name.
+[`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md)
+accepts the returned `catrcode` as `munic`.
 [`mapSpain::esp_get_munic_siane()`](https://ropenspain.github.io/mapSpain/reference/esp_get_munic_siane.html)
-to get shapes of municipalities, including the INE code.
-
-Query OVC province and municipality codes:
-[`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md)
+retrieves municipality geometries, including the INE code.
 
 Search for cadastral identifiers:
 [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md),
 [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.md),
 [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md)
+
+Query OVC web services:
+[`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md),
+[`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md),
+[`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md),
+[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
 
 ## Examples
 
@@ -78,27 +86,23 @@ Search for cadastral identifiers:
 # \donttest{
 # Get municipality by cadastral code
 ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
 
 ab
-#> NULL
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
+#> # ℹ 1 more variable: cm <chr>
 
 # Same query using the INE code
 
 ab2 <- catr_ovc_get_cod_munic(cpro = 2, cmun_ine = 3)
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
 
 ab2
-#> NULL
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
+#> # ℹ 1 more variable: cm <chr>
 # }
 ```

@@ -1,5 +1,32 @@
 # Changelog
 
+## CatastRo 1.1.0
+
+- The reference index now groups functions by Spanish Cadastre service,
+  alongside the existing task-based sections.
+- CLI messages now display braces in paths, URLs and argument values
+  literally.
+- **CatastRo** users can now configure HTTP timeout and SSL verification
+  with the `CATASTRO_TIMEOUT` and `CATASTRO_SSL_VERIFY` environment
+  variables. The existing `catastro_timeout` and `catastro_ssl_verify`
+  options still take precedence
+  ([\#82](https://github.com/rOpenSpain/CatastRo/issues/82)).
+- **CatastRo** now preserves existing cached files when a refresh fails
+  and validates required query values before making a request.
+- `catr_atom_get_*()` functions now respect exact territorial office
+  matches, propagate cache refresh options and preserve the update date
+  of each ATOM entry.
+- [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
+  now filters results when `to` matches exactly one territorial office.
+- [`catr_clear_cache()`](https://ropenspain.github.io/CatastRo/reference/catr_clear_cache.md)
+  now reports incomplete deletions instead of announcing success when
+  files remain.
+- [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
+  now preserves the correct X and Y coordinates when the API returns an
+  error.
+- [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
+  now reports API errors and returns the queried coordinates and SRS.
+
 ## CatastRo 1.0.2
 
 CRAN release: 2026-06-03
@@ -31,34 +58,35 @@ Persistent cache directories now use
 If you already have a cache directory, **CatastRo** displays a one-time
 migration message.
 
-The package now requires **R ≥ 4.1.0** and dependency updates improve
-both performance and maintainability. All functions return tidy objects
-(tibbles or `sf` objects with tibble data).
+The package now requires **R** ≥ 4.1.0 and dependency updates improve
+both performance and maintainability. Data retrieval functions return
+tidy objects (tibbles, `sf` objects with tibble data or `SpatRaster`
+objects).
 
 ### Major changes
 
-- Minimum required **R** version is now **4.1.0**.
-- Refactor the code and test suite for improved stability.
+- Minimum required **R** version is now 4.1.0.
+- Refactor the code and test suite to improve stability.
 - Switch API requests to **httr2**.
-- New options (especially for macOS and Linux users):
+- Add new options, especially for **macOS** and **Linux** users:
   - On SSL errors, use `options(catastro_ssl_verify = 0)` to disable SSL
     verification.
   - Query timeout can be controlled with
     `options(catastro_timeout = 300)` (default value). Check
     [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html)
     for details.
-- Reorganize the cache into topic-based subfolders.
+- Reorganize the cache into topic-based subdirectories.
 
 > **Note:** Previous caches must be recreated.
 
 #### Compatibility and performance
 
-- Require **R ≥ 4.1.0**.
+- Require **R** ≥ 4.1.0.
 - Update dependencies:
-  - Add: **cli**, **lifecycle**, **withr**.
-  - Remove: **png**, **slippymath**.
+  - Add: **cli**, **lifecycle** and **withr**.
+  - Remove: **png** and **slippymath**.
 - Return tidy objects consistently.
-- Migrate the vignette engine to Quarto.
+- Migrate the vignette engine to **Quarto**.
 
 ### Deprecations
 
@@ -116,9 +144,8 @@ CRAN release: 2024-01-18
 CRAN release: 2023-01-08
 
 - Update documentation and package maintenance files.
-- Adapt
-  [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
-  to **mapSpain** (\>= 0.7.0).
+- [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
+  is now compatible with **mapSpain** (\>= 0.7.0).
 
 ## CatastRo 0.2.2
 
@@ -129,7 +156,7 @@ CRAN release: 2022-05-27
   now handles `sfc` objects
   ([\#26](https://github.com/rOpenSpain/CatastRo/issues/26)).
 - [`catr_clear_cache()`](https://ropenspain.github.io/CatastRo/reference/catr_clear_cache.md)
-  now has `config = FALSE` as default argument.
+  now has `config = FALSE` as the default.
 
 ## CatastRo 0.2.1
 

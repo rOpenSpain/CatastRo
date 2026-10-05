@@ -8,7 +8,7 @@ images.
 ## OVCCoordenadas service
 
 The
-[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
+[**OVCCoordenadas**](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
 service retrieves the coordinates of a known cadastral reference
 (geocoding). It can also retrieve cadastral references near a pair of
 coordinates (reverse geocoding). **CatastRo** returns the results as
@@ -24,26 +24,26 @@ vignette (see
 > This European Spatial Data Infrastructure enables the sharing of
 > environmental spatial information among public sector organizations,
 > facilitates public access to spatial information across Europe and
-> assist in policy-making across boundaries.
+> assists in policy-making across boundaries.
 
 Source: [INSPIRE Knowledge
 Base](https://knowledge-base.inspire.ec.europa.eu/overview_en)
 
-The Spanish Cadastre implementation of the INSPIRE directive (see
+The Spanish Cadastre implementation of the INSPIRE Directive (see
 [Spanish Cadastre INSPIRE
 services](https://www.catastro.hacienda.gob.es/webinspire/index.html))
 provides access to spatial objects from the cadastral database:
 
 - **Vector objects:** Parcels, addresses, buildings, cadastral zones and
-  more. **CatastRo** returns these objects as `sf` objects, using the
-  **sf** package.
+  more. **CatastRo** returns these as `sf` objects from the **sf**
+  package.
 - **Imagery:** Image layers representing the same information as the
-  vector objects. **CatastRo** returns these objects as `SpatRaster`
-  objects, using the **terra** package.
+  vector objects. **CatastRo** returns these as `SpatRaster` objects
+  from the **terra** package.
 
-Note that these services cover 95% of the Spanish territory, excluding
-the Basque Country and Navarre[^1], which have their own independent
-cadastral offices.
+These services cover 95% of the Spanish territory, excluding the Basque
+Country and Navarre[^1], which have their own independent cadastral
+offices.
 
 There are three INSPIRE services:
 
@@ -111,7 +111,11 @@ ggplot() +
   coord_sf(crs = 25830)
 ```
 
-![Figure 1: Santiago Bernabéu example](./santbernabeu-1.png)
+![Cadastral map around Santiago Bernabéu Stadium in Madrid, with
+longitude on the horizontal axis and latitude on the vertical axis. Red
+shading marks the stadium building and thick red outlines mark the
+retrieved parcels over black cadastral boundaries. The stadium surrounds
+an unfilled rectangular central area.](./santbernabeu-1.png)
 
 Figure 1: Santiago Bernabéu example
 
@@ -148,10 +152,9 @@ city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
 #> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#>   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   
+#>   <chr>   <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr>   <chr> <chr> <chr> <chr>
+#> 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
 ```
@@ -174,7 +177,11 @@ ggplot(dataviz) +
   geom_sf()
 ```
 
-![Figure 2: Minimal cadastral map of Granada](./minimal-1.png)
+![Map of building footprints within 1.5 kilometers of central Granada,
+with longitude on the horizontal axis and latitude on the vertical axis.
+Small, tightly packed buildings form an irregular street pattern in the
+northeast, while larger rectangular blocks appear toward the west and
+south. ](./minimal-1.png)
 
 Figure 2: Minimal cadastral map of Granada
 
@@ -182,13 +189,13 @@ Next, we extract the construction year from the `beginning` column:
 
 ``` r
 
-# Extract the first four positions.
+# Extract the first four characters.
 year <- substr(dataviz$beginning, 1, 4)
 
 # Replace entries that do not look like years with 0000.
 year[!(year %in% 0:2500)] <- "0000"
 
-# Convert to numeric.
+# Convert to integers.
 year <- as.integer(year)
 
 # Add a new column.
@@ -238,9 +245,13 @@ ggplot(dataviz) +
   )
 ```
 
-![Figure 3: Granada - Urban growth](./dviz-1.png)
+![Thematic map of building construction periods within 1.5 kilometers of
+central Granada. Colors distinguish buildings constructed up to 1900 and
+subsequent decades through 2030, progressing from red through yellow and
+green to blue. Older buildings cluster in the northeast, while more
+recent buildings are common toward the west and south. ](./dviz-1.png)
 
-Figure 3: Granada - Urban growth
+Figure 3: Granada - urban growth
 
 ## References
 

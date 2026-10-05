@@ -1,4 +1,4 @@
-# WMS INSPIRE: download georeferenced map images
+# WMS INSPIRE: Download georeferenced map images
 
 Retrieve georeferenced map images from the Spanish Cadastre WMS service.
 This function wraps
@@ -31,8 +31,9 @@ catr_wms_get_layer(
   - A numeric vector of length 4 with the coordinates that define the
     bounding box: `c(xmin, ymin, xmax, ymax)`.
 
-  - An `sf` or `sfc` object from
-    [sf](https://CRAN.R-project.org/package=sf).
+  - An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) or
+    [`sfc`](https://r-spatial.github.io/sf/reference/sfc.html) object
+    from [sf](https://CRAN.R-project.org/package=sf).
 
 - srs:
 
@@ -60,7 +61,7 @@ catr_wms_get_layer(
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 - crop:
 
@@ -104,10 +105,10 @@ with three RGB or four RGBA layers. See
 
 ## Bounding box
 
-When `x` is a numeric vector, make sure that the `srs` matches the
-coordinate values. When `x` is a
+When `x` is a numeric vector, make sure that `srs` matches the
+coordinate values. When `x` is an
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object, the
-value `srs` is ignored.
+`srs` value is ignored.
 
 The query uses [EPSG:3857](https://epsg.io/3857) (Web Mercator), then
 transforms the tile back to the SRS of `x`. If the tile appears
@@ -156,6 +157,12 @@ for complete layer and style information.
 
 ## See also
 
+- [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
+  [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md)
+  and
+  [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
+  retrieve vector geometries that can define the map extent through `x`.
+
 - [`mapSpain::esp_get_tiles()`](https://ropenspain.github.io/mapSpain/reference/esp_get_tiles.html)
   downloads map tiles.
 
@@ -171,46 +178,44 @@ for complete layer and style information.
 
 ``` r
 # \donttest{
+if (requireNamespace("tidyterra", quietly = TRUE)) {
+  # With a bounding box
 
-# With a bounding box
+  pict <- catr_wms_get_layer(
+    c(222500, 4019500, 223700, 4020700),
+    srs = 25830,
+    what = "parcel"
+  )
 
-pict <- catr_wms_get_layer(
-  c(222500, 4019500, 223700, 4020700),
-  srs = 25830,
-  what = "parcel"
-)
+  library(mapSpain)
+  library(ggplot2)
+  library(tidyterra)
 
-library(mapSpain)
-library(ggplot2)
-library(tidyterra)
+  ggplot() +
+    geom_spatraster_rgb(data = pict)
+
+  # With a spatial object
+
+  parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
+
+  # Use styles
+
+  parcels_img <- catr_wms_get_layer(parcels,
+    what = "buildingpart",
+    srs = 25830, # Same as the parcels object
+    bbox_expand = 0.3,
+    styles = "ELFCadastre"
+  )
+
+  ggplot() +
+    geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
+    geom_spatraster_rgb(data = parcels_img)
+}
 #> 
 #> Attaching package: ‘tidyterra’
 #> The following object is masked from ‘package:stats’:
 #> 
 #>     filter
-
-ggplot() +
-  geom_spatraster_rgb(data = pict)
-#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
-
-
-# With a spatial object
-
-parcels <- catr_wfs_get_parcels_neigh_parcel("3662303TF3136B", srs = 25830)
-
-# Use styles
-
-parcels_img <- catr_wms_get_layer(parcels,
-  what = "buildingpart",
-  srs = 25830, # Same as the parcels object
-  bbox_expand = 0.3,
-  styles = "ELFCadastre"
-)
-
-ggplot() +
-  geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
-  geom_spatraster_rgb(data = parcels_img)
-#> ! `data` has 4 layers. Selecting layers 1, 2, and 3.
 
 # }
 ```

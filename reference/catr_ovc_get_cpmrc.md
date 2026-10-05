@@ -1,8 +1,9 @@
-# OVCCoordenadas: geocode a cadastral reference
+# OVCCoordenadas: Geocode a cadastral reference
 
 Query the OVCCoordenadas [Consulta
 CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_CPMRC)
-service to retrieve coordinates for a cadastral reference.
+service to retrieve coordinates for a parcel reference. The returned
+coordinates locate the parcel centroid.
 
 ## Usage
 
@@ -20,7 +21,7 @@ catr_ovc_get_cpmrc(
 
 - rc:
 
-  The cadastral reference to be geocoded.
+  A 14-character cadastral parcel reference to geocode.
 
 - srs:
 
@@ -30,26 +31,27 @@ catr_ovc_get_cpmrc(
 
 - province, municipality:
 
-  Optional character strings used to narrow the search.
+  Optional character strings used to narrow the search. `province` is
+  required when `municipality` is provided.
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
-described in **Details**. Returns `NULL` if the request fails.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+described in **Details**. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
-If the API returns no results, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) containing
-only query information.
+If the API returns no results or reports an error, the result is a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+containing only query information.
 
-On a successful query, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
-row per cadastral reference, including the following columns:
+On a successful query, this function returns a tibble with one row per
+cadastral reference, including the following columns:
 
 - `xcoord`, `ycoord`: X and Y coordinates in the specified SRS.
 
@@ -72,11 +74,13 @@ CPMRC](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas
 - [`vignette("ovcservice", package = "CatastRo")`](https://ropenspain.github.io/CatastRo/articles/ovcservice.md)
   describes the OVC services.
 
-Convert coordinates and cadastral references:
+Work with cadastral references:
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md),
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
 
-Work with cadastral references:
+Query OVC web services:
+[`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md),
+[`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md),
 [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md),
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
 
@@ -91,22 +95,16 @@ catr_ovc_get_cpmrc("13077A01800039",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
 )
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
-#> NULL
+#> # A tibble: 1 × 10
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
+#> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4562… 38.6196… EPSG:4… DS D…
 
 # Only the cadastral reference
 catr_ovc_get_cpmrc("9872023VH5797S")
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
-#> NULL
+#> # A tibble: 1 × 10
+#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
+#> 1  -3.46   38.6 9872023VH… CL GLO… 98720… VH579… -3.4632… 38.6401… EPSG:4… CL G…
 # }
 ```

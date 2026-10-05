@@ -1,14 +1,14 @@
 # Reference SRS codes for [CatastRo](https://CRAN.R-project.org/package=CatastRo) services
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html)
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
 containing valid SRS values, also known as CRS values, for each API
 service. Values are represented as [EPSG
 codes](https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset).
 
 ## Format
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) with 16
-rows and columns:
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with 16 rows and columns:
 
 - SRS:
 
@@ -40,7 +40,7 @@ Table: Content of catr_srs_values
 | `3857`  | `Web Mercator`           | `FALSE`         | `TRUE`          |
 | `4230`  | `Geográficas en ED 50`   | `TRUE`          | `FALSE`         |
 | `4258`  | `Geográficas en ETRS89`  | `TRUE`          | `TRUE`          |
-| `4326`  | `Geográficas en WGS 80`  | `TRUE`          | `TRUE`          |
+| `4326`  | `Geográficas en WGS 84`  | `TRUE`          | `TRUE`          |
 | `23029` | `UTM huso 29N en ED50`   | `TRUE`          | `FALSE`         |
 | `23030` | `UTM huso 30N en ED50`   | `TRUE`          | `FALSE`         |
 | `23031` | `UTM huso 31N en ED50`   | `TRUE`          | `FALSE`         |
@@ -62,7 +62,14 @@ Table: Content of catr_srs_values
 
 ## See also
 
-[`sf::st_crs()`](https://r-spatial.github.io/sf/reference/st_crs.html).
+[`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
+and
+[`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
+accept SRS codes listed in the `ovc_service` column.
+[`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
+accepts codes listed in the `wfs_service` column.
+[`sf::st_crs()`](https://r-spatial.github.io/sf/reference/st_crs.html)
+inspects the corresponding coordinate reference system.
 
 ## Examples
 
@@ -86,7 +93,7 @@ catr_srs_values |> filter(ovc_service)
 #>    <dbl> <chr>                  <lgl>       <lgl>      
 #>  1  4230 Geográficas en ED 50   TRUE        FALSE      
 #>  2  4258 Geográficas en ETRS89  TRUE        TRUE       
-#>  3  4326 Geográficas en WGS 80  TRUE        TRUE       
+#>  3  4326 Geográficas en WGS 84  TRUE        TRUE       
 #>  4 23029 UTM huso 29N en ED50   TRUE        FALSE      
 #>  5 23030 UTM huso 30N en ED50   TRUE        FALSE      
 #>  6 23031 UTM huso 31N en ED50   TRUE        FALSE      
@@ -108,7 +115,7 @@ catr_srs_values |> filter(wfs_service)
 #> 1  3785 Web Mercator           FALSE       TRUE       
 #> 2  3857 Web Mercator           FALSE       TRUE       
 #> 3  4258 Geográficas en ETRS89  TRUE        TRUE       
-#> 4  4326 Geográficas en WGS 80  TRUE        TRUE       
+#> 4  4326 Geográficas en WGS 84  TRUE        TRUE       
 #> 5 25829 UTM huso 29N en ETRS89 TRUE        TRUE       
 #> 6 25830 UTM huso 30N en ETRS89 TRUE        TRUE       
 #> 7 25831 UTM huso 31N en ETRS89 TRUE        TRUE       
@@ -127,7 +134,7 @@ catr_srs_values |>
 #>     SRS Description            ovc_service wfs_service
 #>   <dbl> <chr>                  <lgl>       <lgl>      
 #> 1  4258 Geográficas en ETRS89  TRUE        TRUE       
-#> 2  4326 Geográficas en WGS 80  TRUE        TRUE       
+#> 2  4326 Geográficas en WGS 84  TRUE        TRUE       
 #> 3 25829 UTM huso 29N en ETRS89 TRUE        TRUE       
 #> 4 25830 UTM huso 30N en ETRS89 TRUE        TRUE       
 #> 5 25831 UTM huso 31N en ETRS89 TRUE        TRUE       

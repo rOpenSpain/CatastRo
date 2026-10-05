@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@rOpenSpain">
 <meta name="twitter:site" content="@rOpenSpain">
-<!-- rogtemplate style sheet --><link href="../BS5/rostemplate.min.css" rel="stylesheet">
+<!-- rostemplate style sheet --><link href="../BS5/rostemplate.min.css" rel="stylesheet">
 </head>
 <body>
   <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../apple-touch-icon.png" alt="CatastRo logo" height="34" width="34" class="d-inline-block me-1">CatastRo</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,6 +49,8 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/ovcservice.html">OVCCoordenadas service</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="../articles/index.html">More articles...</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -91,23 +93,23 @@
     <!-- CatastRo.qmd is generated from CatastRo.qmd.orig. Please edit that file --><p><strong>CatastRo</strong> provides access to services from the <a href="https://www.sedecatastro.gob.es/" class="external-link">Spanish Cadastre</a>. With <strong>CatastRo</strong>, you can retrieve addresses, buildings, cadastral parcels and georeferenced map images.</p>
 <section class="level2"><h2 id="ovccoordenadas-service">OVCCoordenadas service<a class="anchor" aria-label="anchor" href="#ovccoordenadas-service"></a>
 </h2>
-<p>The <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link">OVCCoordenadas</a> service retrieves the coordinates of a known cadastral reference (geocoding). It can also retrieve cadastral references near a pair of coordinates (reverse geocoding). <strong>CatastRo</strong> returns the results as tibbles. These operations are described in detail in the corresponding vignette (see <code><a href="../articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code>).</p>
+<p>The <a href="https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx" class="external-link"><strong>OVCCoordenadas</strong></a> service retrieves the coordinates of a known cadastral reference (geocoding). It can also retrieve cadastral references near a pair of coordinates (reverse geocoding). <strong>CatastRo</strong> returns the results as tibbles. These operations are described in detail in the corresponding vignette (see <code><a href="../articles/ovcservice.html">vignette("ovcservice", package = "CatastRo")</a></code>).</p>
 </section><section class="level2"><h2 id="inspire-services">INSPIRE services<a class="anchor" aria-label="anchor" href="#inspire-services"></a>
 </h2>
 <figure><blockquote class="blockquote">
-<p>The INSPIRE Directive aims to create a European Union Spatial Data Infrastructure (SDI) for the purposes of EU environmental policies and policies or activities which may have an impact on the environment. This European Spatial Data Infrastructure enables the sharing of environmental spatial information among public sector organizations, facilitates public access to spatial information across Europe and assist in policy-making across boundaries.</p>
+<p>The INSPIRE Directive aims to create a European Union Spatial Data Infrastructure (SDI) for the purposes of EU environmental policies and policies or activities which may have an impact on the environment. This European Spatial Data Infrastructure enables the sharing of environmental spatial information among public sector organizations, facilitates public access to spatial information across Europe and assists in policy-making across boundaries.</p>
 </blockquote>
 <figcaption class="blockquote-footer">Source: <cite title="INSPIRE Knowledge
 Base"><a href="https://knowledge-base.inspire.ec.europa.eu/overview_en" class="external-link uri">INSPIRE Knowledge Base</a>
 </cite>
-</figcaption></figure><p>The Spanish Cadastre implementation of the INSPIRE directive (see <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Spanish Cadastre INSPIRE services</a>) provides access to spatial objects from the cadastral database:</p>
+</figcaption></figure><p>The Spanish Cadastre implementation of the INSPIRE Directive (see <a href="https://www.catastro.hacienda.gob.es/webinspire/index.html" class="external-link">Spanish Cadastre INSPIRE services</a>) provides access to spatial objects from the cadastral database:</p>
 <ul>
 <li>
-<strong>Vector objects:</strong> Parcels, addresses, buildings, cadastral zones and more. <strong>CatastRo</strong> returns these objects as <code>sf</code> objects, using the <strong>sf</strong> package.</li>
+<strong>Vector objects:</strong> Parcels, addresses, buildings, cadastral zones and more. <strong>CatastRo</strong> returns these as <code>sf</code> objects from the <strong>sf</strong> package.</li>
 <li>
-<strong>Imagery:</strong> Image layers representing the same information as the vector objects. <strong>CatastRo</strong> returns these objects as <code>SpatRaster</code> objects, using the <strong>terra</strong> package.</li>
+<strong>Imagery:</strong> Image layers representing the same information as the vector objects. <strong>CatastRo</strong> returns these as <code>SpatRaster</code> objects from the <strong>terra</strong> package.</li>
 </ul>
-<p>Note that these services cover 95% of the Spanish territory, excluding the Basque Country and Navarre<a class="footnote-ref" role="doc-noteref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The package &lt;a href="https://ropenspain.github.io/CatastRoNav/"&gt;&lt;strong&gt;CatastRoNav&lt;/strong&gt;&lt;/a&gt; provides access to the Cadastre of Navarre, with similar functionality to &lt;strong&gt;CatastRo&lt;/strong&gt;.&lt;/p&gt;'><sup>1</sup></a>, which have their own independent cadastral offices.</p>
+<p>These services cover 95% of the Spanish territory, excluding the Basque Country and Navarre<a class="footnote-ref" role="doc-noteref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The package &lt;a href="https://ropenspain.github.io/CatastRoNav/"&gt;&lt;strong&gt;CatastRoNav&lt;/strong&gt;&lt;/a&gt; provides access to the Cadastre of Navarre, with similar functionality to &lt;strong&gt;CatastRo&lt;/strong&gt;.&lt;/p&gt;'><sup>1</sup></a>, which have their own independent cadastral offices.</p>
 <p>There are three INSPIRE services:</p>
 <ol type="1">
 <li><p><strong>ATOM service:</strong> The ATOM service downloads complete municipal datasets for different cadastral elements.</p></li>
@@ -159,7 +161,7 @@ Base"><a href="https://knowledge-base.inspire.ec.europa.eu/overview_en" class="e
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stadium</span>, fill <span class="op">=</span> <span class="st">"red"</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">25830</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="./santbernabeu-1.png" alt="Figure 1: Santiago Bernabéu example" width="100%"><p class="caption">
+<img src="./santbernabeu-1.png" alt="Cadastral map around Santiago Bernabéu Stadium in Madrid, with longitude on the horizontal axis and latitude on the vertical axis. Red shading marks the stadium building and thick red outlines mark the retrieved parcels over black cadastral boundaries. The stadium surrounds an unfilled rectangular central area." width="100%"><p class="caption">
 Figure 1: Santiago Bernabéu example
 </p>
 </div>
@@ -181,10 +183,9 @@ Figure 1: Santiago Bernabéu example
 <span></span>
 <span><span class="va">city_catr_code</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 12</span></span>
-<span><span class="co">#&gt;   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   </span></span>
-<span><span class="co">#&gt; # ℹ 1 more variable: cm &lt;chr&gt;</span></span>
+<span><span class="co">#&gt;   munic   catr_to catr_munic catrcode cpro  cmun  inecode nm      cd    cmc   cp    cm   </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 GRANADA 18      900        18900    18    087   18087   GRANADA 18    900   18    87</span></span>
 <span></span>
 <span><span class="va">city_bu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/catr_atom_get_buildings.html">catr_atom_get_buildings</a></span><span class="op">(</span><span class="va">city_catr_code</span><span class="op">$</span><span class="va">catrcode</span><span class="op">)</span></span></code></pre></div>
 <p>Next, we limit the analysis to a circle with a radius of 1.5 km around the city center:</p>
@@ -201,19 +202,20 @@ Figure 1: Santiago Bernabéu example
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="./minimal-1.png" alt="Figure 2: Minimal cadastral map of Granada" width="100%"><p class="caption">
+<img src="./minimal-1.png" alt="Map of building footprints within 1.5 kilometers of central Granada, with longitude on the horizontal axis and latitude on the vertical axis. Small, tightly packed buildings form an irregular street pattern in the northeast, while larger rectangular blocks appear toward the west and south.
+" width="100%"><p class="caption">
 Figure 2: Minimal cadastral map of Granada
 </p>
 </div>
 <p>Next, we extract the construction year from the <code>beginning</code> column:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Extract the first four positions.</span></span>
+<code class="sourceCode R"><span><span class="co"># Extract the first four characters.</span></span>
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substr</a></span><span class="op">(</span><span class="va">dataviz</span><span class="op">$</span><span class="va">beginning</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Replace entries that do not look like years with 0000.</span></span>
 <span><span class="va">year</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fl">0</span><span class="op">:</span><span class="fl">2500</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"0000"</span></span>
 <span></span>
-<span><span class="co"># Convert to numeric.</span></span>
+<span><span class="co"># Convert to integers.</span></span>
 <span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Add a new column.</span></span>
@@ -256,8 +258,9 @@ Figure 2: Minimal cadastral map of Granada
 <span>    plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">40</span>, l <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="./dviz-1.png" alt="Figure 3: Granada - Urban growth" width="100%"><p class="caption">
-Figure 3: Granada - Urban growth
+<img src="./dviz-1.png" alt="Thematic map of building construction periods within 1.5 kilometers of central Granada. Colors distinguish buildings constructed up to 1900 and subsequent decades through 2030, progressing from red through yellow and green to blue. Older buildings cluster in the northeast, while more recent buildings are common toward the west and south.
+" width="100%"><p class="caption">
+Figure 3: Granada - urban growth
 </p>
 </div>
 </section></section><section class="level2 unnumbered"><h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
@@ -360,22 +363,20 @@ Royé, Dominic. 2019. <em>Visualize Urban Growth</em>. <a href="https://dominicr
 <footer id="footer"><div class="container">
     <div class="row">
       <div class="col-md">
-        <h4 data-toc-skip>About <img src="../logo.png" alt="CatastRo Logo" height="24" class="round-logo">
+        <h4 data-toc-skip>About <img src="../logo.png" alt="CatastRo logo" height="24" class="round-logo">
           CatastRo</h4>
         <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Ángel Delgado Panadero</a>, <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>. <br>Part of the <span class="ROS-light">rOpenSpain</span> project.
 </p>
         <hr class="d-md-none">
 </div>
       <div class="col-md offset-md-4">
-        <h4 data-toc-skip>About <img src="../ROS-logo.png" alt="ROpenSpain Logo" height="24" class="round-logo"><span class="ROS-light">
+        <h4 data-toc-skip>About <img src="../ROS-logo.png" alt="rOpenSpain logo" height="24" class="round-logo"><span class="ROS-light">
             rOpenSpain</span>
 </h4>
         <p><a href="https://ropenspain.es/" class="external-link"><span class="ROS-light">rOpenSpain</span></a> is a community of
-          enthusiasts
-          of <strong>R</strong>, open data, and reproducibility that comes
-          together and organizes itself to create <strong>R</strong> packages of
-          the highest quality for the analysis
-          and use of Spanish data of general interest.
+          <strong>R</strong>, open data and reproducibility enthusiasts that
+          works together to create high-quality <strong>R</strong> packages for
+          the analysis and use of Spanish data of general interest.
         </p>
         <p class="fst-italic text-md-end">"rOpenSci is our form, Spanish public
           data our matter"</p>

@@ -1,7 +1,7 @@
-# ATOM INSPIRE: download all addresses for a municipality
+# ATOM INSPIRE: Download all addresses for a municipality
 
 Retrieve spatial data for all addresses in a municipality using the ATOM
-INSPIRE service. The result also contains corresponding street
+INSPIRE service. The result also contains the corresponding street
 information in fields prefixed with `tfname_*`.
 
 ## Usage
@@ -47,12 +47,13 @@ catr_atom_get_address(
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 ## Value
 
 An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
-Returns `NULL` if the data cannot be retrieved.
+Returns [`NULL`](https://rdrr.io/r/base/NULL.html) if the data cannot be
+retrieved.
 
 ## References
 
@@ -64,17 +65,17 @@ cartography](https://www.catastro.hacienda.gob.es/webinspire/index.html).
 
 ## See also
 
-Download data from ATOM INSPIRE services:
+Work with cadastral addresses:
+[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
+[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
+
+Query ATOM INSPIRE services:
 [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
 [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md),
 [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md),
 [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md),
 [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md),
 [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
-
-Work with cadastral addresses:
-[`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md),
-[`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
 
 ## Examples
 

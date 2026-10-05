@@ -18,15 +18,15 @@ install.packages("CatastRo")
 SSL issues
 
 The SSL certificate of the Spanish Cadastre may cause errors when using
-**CatastRo** (especially on macOS, see issue
+**CatastRo** (especially on **macOS**, see issue
 [\#40](https://github.com/rOpenSpain/CatastRo/issues/40)).
 
-In **CatastRo \>= 1.0.0**, you can work around these errors by running
+In **CatastRo** \>= 1.0.0, you can work around these errors by running
 this code after loading the package:
 
 ``` r
 
-# Disable SSL verification
+# Disable SSL verification.
 options(catastro_ssl_verify = 0)
 ```
 
@@ -37,21 +37,21 @@ To make this setting persistent, add the same code to your
 
 ``` r
 
-# ... other options...
+# ... other options ...
 options(catastro_ssl_verify = 0)
 ```
 
 ## Package API
 
 The functions of **CatastRo** are organized by source service. The
-package naming convention is `catr_*service*_*description*`.
+package naming convention is `catr_<service>_<description>`.
 
 ### OVC services
 
 OVC services use
-[OVCCoordenadas](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
-for geocoding and reverse geocoding and OVCCallejero for province and
-municipality code lookup.
+[**OVCCoordenadas**](https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx)
+for geocoding and reverse geocoding and **OVCCallejero** for province
+and municipality code lookup.
 
 These functions use the `catr_ovc_get_*()` prefix and return tibbles
 from the **tibble** package. See
@@ -65,9 +65,9 @@ INSPIRE
 services](https://www.catastro.hacienda.gob.es/webinspire/index.html)
 using the **sf** or **terra** packages.
 
-Note that these services cover 95% of the Spanish territory, excluding
-the Basque Country and Navarre[^1], which have their own independent
-cadastral offices.
+These services cover 95% of the Spanish territory, excluding the Basque
+Country and Navarre[^1], which have their own independent cadastral
+offices.
 
 There are three INSPIRE services:
 
@@ -97,12 +97,12 @@ the
 [**terra**](https://rspatial.github.io/terra/reference/terra-package.html)
 package.
 
-There is a single function for querying this service:
+A single function queries this service:
 [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md).
 
 #### Terms and conditions of use
 
-Please check the service [terms of
+Review the service [terms of
 use](https://www.catastro.hacienda.gob.es/webinspire/documentos/Licencia.pdf).
 
 ## Examples
@@ -157,7 +157,7 @@ ggplot(bu) +
   labs(title = "Nava de la Asunción, Segovia")
 ```
 
-![Extract buildings in Nava de la Asuncion with the ATOM
+![Extract buildings in Nava de la Asunción with the ATOM
 service](reference/figures/README-atom-1.png)
 
 ### Extract geometries using the WFS service
@@ -198,7 +198,7 @@ API Sede Electrónica Del Catastro*.
 [doi:10.32614/CRAN.package.CatastRo](https://doi.org/10.32614/CRAN.package.CatastRo).
 <https://ropenspain.github.io/CatastRo/>.
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ``` R
 @Manual{R-CatastRo,
@@ -206,16 +206,16 @@ A BibTeX entry for LaTeX users is:
   author = {Ángel {Delgado Panadero} and Diego Hernangómez},
   doi = {10.32614/CRAN.package.CatastRo},
   year = {2026},
-  version = {1.0.2},
+  version = {1.1.0},
   url = {https://ropenspain.github.io/CatastRo/},
-  abstract = {Access public spatial data from the Spanish Cadastre through its INSPIRE and related web services. Retrieve cadastral parcel, building, address and georeferenced map image data and convert between cadastral references and coordinates.},
+  abstract = {Access public spatial data from the Spanish Catastro through its Infrastructure for Spatial Information in Europe (INSPIRE) and related web services. Retrieve parcel, building, address and map image data and convert between property reference codes and coordinates.},
 }
 ```
 
 ## Contributing
 
 See the [source code and issue
-tracker](https://github.com/ropenspain/CatastRo/) on GitHub.
+tracker](https://github.com/ropenspain/CatastRo/) on **GitHub**.
 
 [^1]: The package
     [**CatastRoNav**](https://ropenspain.github.io/CatastRoNav/)
@@ -224,104 +224,103 @@ tracker](https://github.com/ropenspain/CatastRo/) on GitHub.
 
 # Package index
 
-## INSPIRE services
+## Retrieve cadastral data
 
-Retrieve cadastral addresses, buildings, parcels and georeferenced map
-images through Spanish Cadastre INSPIRE services.
+Download complete municipal datasets, query individual cadastral
+features and retrieve georeferenced map images.
 
-### ATOM downloads
+### Complete municipal datasets
 
-Download complete municipal cadastral datasets and query their metadata.
+Download all addresses, buildings or cadastral parcels for a
+municipality through ATOM INSPIRE services. Use
+[`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
+to find municipality codes.
 
 - [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md)
-  : ATOM INSPIRE: download all addresses for a municipality
+  : ATOM INSPIRE: Download all addresses for a municipality
+- [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md)
+  : ATOM INSPIRE: Download all buildings for a municipality
+- [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md)
+  : ATOM INSPIRE: Download all cadastral parcels for a municipality
+
+### ATOM download catalogs
+
+Inspect download URLs and available municipalities by territorial office
+before retrieving complete datasets.
+
 - [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
   [`catr_atom_get_address_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
-  : ATOM INSPIRE: list address download URLs
-- [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md)
-  : ATOM INSPIRE: download all buildings for a municipality
+  : ATOM INSPIRE: List address download URLs
 - [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
   [`catr_atom_get_buildings_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
-  : ATOM INSPIRE: list building download URLs
-- [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md)
-  : ATOM INSPIRE: download all cadastral parcels for a municipality
+  : ATOM INSPIRE: List building download URLs
 - [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
   [`catr_atom_get_parcels_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
-  : ATOM INSPIRE: list cadastral parcel download URLs
-- [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
-  : ATOM INSPIRE: search for municipality codes
+  : ATOM INSPIRE: List cadastral parcel download URLs
 
-### WFS queries
+### Features by area or identifier
 
-Retrieve cadastral features for a selected bounding box or cadastral
-identifier.
+Query address, building and cadastral parcel features through WFS
+INSPIRE services.
 
 - [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
   [`catr_wfs_get_address_codvia()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
   [`catr_wfs_get_address_rc()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
   [`catr_wfs_get_address_postalcode()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
-  : WFS INSPIRE: download addresses
+  : WFS INSPIRE: Download addresses
 - [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md)
   [`catr_wfs_get_buildings_rc()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md)
-  : WFS INSPIRE: download buildings
+  : WFS INSPIRE: Download buildings
 - [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
   [`catr_wfs_get_parcels_zoning()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
   [`catr_wfs_get_parcels_parcel()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
   [`catr_wfs_get_parcels_neigh_parcel()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
   [`catr_wfs_get_parcels_parcel_zoning()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
-  : WFS INSPIRE: download cadastral parcels
-- [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
-  : Query WFS INSPIRE services
+  : WFS INSPIRE: Download cadastral parcels
 
-### WMS maps
+### Georeferenced map images
 
-Download georeferenced cadastral map images.
+Download cadastral map images through WMS INSPIRE. Use the spatial
+objects returned by WFS queries to define the map extent.
 
 - [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
-  : WMS INSPIRE: download georeferenced map images
+  : WMS INSPIRE: Download georeferenced map images
 
-## OVC services
+## Find cadastral identifiers
 
-Geocode cadastral references, reverse geocode coordinates and query
-Spanish Cadastre province and municipality codes.
+Convert between cadastral references and coordinates, or look up
+province and municipality codes.
 
-### Coordinates and cadastral references
+### References and coordinates
 
-Convert between cadastral references and spatial coordinates.
+Convert a cadastral reference to coordinates, find the reference at a
+coordinate pair or search nearby when no exact match exists.
 
 - [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
-  : OVCCoordenadas: geocode a cadastral reference
+  : OVCCoordenadas: Geocode a cadastral reference
 - [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
-  : OVCCoordenadas: reverse geocode coordinates
+  : OVCCoordenadas: Reverse geocode coordinates
 - [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
-  : OVCCoordenadas: find cadastral references near coordinates
+  : OVCCoordenadas: Find cadastral references near coordinates
 
-### Province and municipality codes
+### Province and municipality lookup
 
-Query province and municipality codes used by the Spanish Cadastre.
-
-- [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md)
-  : OVCCallejero: get municipality codes
-- [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md)
-  : OVCCallejero: get province codes
-
-## Utilities and reference data
-
-Search Spanish Cadastre identifiers, manage downloaded files and inspect
-package reference data.
-
-### Search
-
-Find cadastral municipality codes and related reference information.
+Find Spanish Cadastre province and municipality identifiers by name,
+code or coordinates.
 
 - [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
-  : ATOM INSPIRE: search for municipality codes
+  : ATOM INSPIRE: Search for municipality codes
 - [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.md)
-  : Get the cadastral municipality code from coordinates
+  : Get a cadastral municipality code from coordinates
 - [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md)
-  : OVCCallejero: get municipality codes
+  : OVCCallejero: Get municipality codes
 - [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md)
-  : OVCCallejero: get province codes
+  : OVCCallejero: Get province codes
+
+## Configure and inspect CatastRo
+
+Manage downloaded files, inspect supported coordinate systems and access
+package-level documentation or construct custom WFS queries.
 
 ### Cache management
 
@@ -340,9 +339,9 @@ Configure, detect and clear the local cache used by **CatastRo**.
   Set your [CatastRo](https://CRAN.R-project.org/package=CatastRo) cache
   directory
 
-### Reference data
+### Coordinate reference systems
 
-Inspect the SRS reference dataset used by the package services.
+Inspect the SRS codes supported by the package services.
 
 - [`catr_srs_values`](https://ropenspain.github.io/CatastRo/reference/catr_srs_values.md)
   :
@@ -350,17 +349,118 @@ Inspect the SRS reference dataset used by the package services.
   Reference SRS codes for
   [CatastRo](https://CRAN.R-project.org/package=CatastRo) services
 
-## Package metadata
+### Custom WFS queries
 
-Read package-level documentation.
+Query an INSPIRE WFS endpoint directly when the service-specific
+functions do not cover the required request.
+
+- [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
+  : Query WFS INSPIRE services
+
+### Package overview
+
+Read package-level documentation and discover useful links.
 
 - [`CatastRo`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
   [`CatastRo-package`](https://ropenspain.github.io/CatastRo/reference/CatastRo-package.md)
   : CatastRo: Interface to the Spanish 'Catastro' Web Services
 
+## Functions by service
+
+Browse functions by the Spanish Cadastre service they use.
+
+### ATOM INSPIRE
+
+Download municipal datasets, inspect download catalogs and find
+municipality codes.
+
+- [`catr_atom_get_address()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address.md)
+  : ATOM INSPIRE: Download all addresses for a municipality
+- [`catr_atom_get_address_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
+  [`catr_atom_get_address_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_address_db.md)
+  : ATOM INSPIRE: List address download URLs
+- [`catr_atom_get_buildings()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings.md)
+  : ATOM INSPIRE: Download all buildings for a municipality
+- [`catr_atom_get_buildings_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
+  [`catr_atom_get_buildings_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_buildings_db.md)
+  : ATOM INSPIRE: List building download URLs
+- [`catr_atom_get_parcels()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels.md)
+  : ATOM INSPIRE: Download all cadastral parcels for a municipality
+- [`catr_atom_get_parcels_db_all()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
+  [`catr_atom_get_parcels_db_to()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_get_parcels_db.md)
+  : ATOM INSPIRE: List cadastral parcel download URLs
+- [`catr_atom_search_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_atom_search_munic.md)
+  : ATOM INSPIRE: Search for municipality codes
+
+### WFS INSPIRE
+
+Retrieve cadastral features by area or identifier, or construct custom
+WFS queries.
+
+- [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
+  [`catr_wfs_get_address_codvia()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
+  [`catr_wfs_get_address_rc()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
+  [`catr_wfs_get_address_postalcode()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md)
+  : WFS INSPIRE: Download addresses
+- [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md)
+  [`catr_wfs_get_buildings_rc()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md)
+  : WFS INSPIRE: Download buildings
+- [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
+  [`catr_wfs_get_parcels_zoning()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
+  [`catr_wfs_get_parcels_parcel()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
+  [`catr_wfs_get_parcels_neigh_parcel()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
+  [`catr_wfs_get_parcels_parcel_zoning()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
+  : WFS INSPIRE: Download cadastral parcels
+- [`inspire_wfs_get()`](https://ropenspain.github.io/CatastRo/reference/inspire_wfs_get.md)
+  : Query WFS INSPIRE services
+
+### WMS INSPIRE
+
+Download georeferenced cadastral map images.
+
+- [`catr_wms_get_layer()`](https://ropenspain.github.io/CatastRo/reference/catr_wms_get_layer.md)
+  : WMS INSPIRE: Download georeferenced map images
+
+### OVCCoordenadas
+
+Convert between cadastral parcel references and coordinates, including
+searches near a coordinate pair.
+
+- [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md)
+  : OVCCoordenadas: Geocode a cadastral reference
+- [`catr_ovc_get_rccoor()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor.md)
+  : OVCCoordenadas: Reverse geocode coordinates
+- [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
+  : OVCCoordenadas: Find cadastral references near coordinates
+
+### OVCCallejero
+
+Look up province and municipality codes, directly or through the
+municipality lookup from coordinates.
+
+- [`catr_get_code_from_coords()`](https://ropenspain.github.io/CatastRo/reference/catr_get_code_from_coords.md)
+  : Get a cadastral municipality code from coordinates
+- [`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md)
+  : OVCCallejero: Get municipality codes
+- [`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md)
+  : OVCCallejero: Get province codes
+
 # Articles
 
-### Service guide
+### Get started
+
+Learn which services **CatastRo** supports and work through introductory
+examples.
+
+- [Get
+  started](https://ropenspain.github.io/CatastRo/articles/CatastRo.md):
+
+  Access Spanish Cadastre data with CatastRo.
+
+### Geocoding and reverse geocoding
+
+Convert between cadastral references and coordinates with
+OVCCoordenadas, including searches near a coordinate pair.
 
 - [OVCCoordenadas
   service](https://ropenspain.github.io/CatastRo/articles/ovcservice.md):

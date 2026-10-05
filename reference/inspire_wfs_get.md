@@ -12,6 +12,7 @@ inspire_wfs_get(
   hostname = "ovc.catastro.meh.es",
   path = "INSPIRE/wfsCP.aspx",
   query = list(),
+  cache_dir = NULL,
   verbose = FALSE
 )
 ```
@@ -34,24 +35,31 @@ inspire_wfs_get(
 
   Named list of query parameters and their values.
 
+- cache_dir:
+
+  Path to a cache directory. If `NULL` or `FALSE`, the function stores
+  cached files in a temporary directory. See
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html).
+
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 ## Value
 
-A character string containing the downloaded file path. Returns `NULL`
-if the request fails.
+A [character](https://rdrr.io/r/base/character.html) string containing
+the downloaded file path. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
-The function constructs a request URL from its components, downloads the
-result to a temporary cache and reports WFS exceptions. See
+This function constructs a request URL from its components, downloads
+the result to the cache directory and reports WFS exceptions. See
 **Examples**.
 
 ## See also
 
-Query data from WFS INSPIRE services:
+Query WFS INSPIRE services:
 [`catr_wfs_get_address_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_address.md),
 [`catr_wfs_get_buildings_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_buildings.md),
 [`catr_wfs_get_parcels_bbox()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
@@ -59,8 +67,8 @@ Query data from WFS INSPIRE services:
 ## Examples
 
 ``` r
-# Access the Cadastre of Navarra
-# Try also https://ropenspain.github.io/CatastRoNav/
+# Access the Cadastre of Navarre.
+# See also https://ropenspain.github.io/CatastRoNav/
 
 file_local <- inspire_wfs_get(
   hostname = "inspire.navarra.es",
@@ -77,8 +85,10 @@ file_local <- inspire_wfs_get(
 if (!is.null(file_local)) {
   pamp <- sf::read_sf(file_local)
 
-  library(ggplot2)
-  ggplot(pamp) +
-    geom_sf()
+  if (requireNamespace("ggplot2", quietly = TRUE)) {
+    library(ggplot2)
+    ggplot(pamp) +
+      geom_sf()
+  }
 }
 ```

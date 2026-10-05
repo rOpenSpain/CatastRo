@@ -1,4 +1,4 @@
-# OVCCoordenadas: reverse geocode coordinates
+# OVCCoordenadas: Reverse geocode coordinates
 
 Query the OVCCoordenadas [Consulta
 RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenadas.asmx?op=Consulta_RCCOOR)
@@ -15,11 +15,13 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - lat:
 
-  Latitude for the query, expressed in the SRS/CRS defined by `srs`.
+  Y coordinate for the query, expressed in the SRS/CRS defined by `srs`.
+  For geographic coordinates, this is the latitude.
 
 - lon:
 
-  Longitude for the query, expressed in the SRS/CRS defined by `srs`.
+  X coordinate for the query, expressed in the SRS/CRS defined by `srs`.
+  For geographic coordinates, this is the longitude.
 
 - srs:
 
@@ -29,22 +31,22 @@ catr_ovc_get_rccoor(lat, lon, srs = 4326, verbose = FALSE)
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
-described in **Details**. Returns `NULL` if the request fails.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+described in **Details**. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
-If the API returns no results, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) containing
-only query information.
+If the API returns no results or reports an error, the result is a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+containing only query information.
 
-On a successful query, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
-row per cadastral reference, including the following columns:
+On a successful query, this function returns a tibble with one row per
+cadastral reference, including the following columns:
 
 - `geo.xcen`, `geo.ycen`, `geo.srs`: Input arguments of the query.
 
@@ -61,11 +63,18 @@ RCCOOR](https://ovc.catastro.meh.es/ovcservweb/ovcswlocalizacionrc/ovccoordenada
 
 ## See also
 
-Convert coordinates and cadastral references:
+[`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
+also searches a nearby area when no exact match is found.
+[`catr_wfs_get_parcels_parcel()`](https://ropenspain.github.io/CatastRo/reference/catr_wfs_get_parcels.md)
+retrieves parcel geometries using the returned cadastral references.
+
+Work with cadastral references:
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md),
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
 
-Work with cadastral references:
+Query OVC web services:
+[`catr_ovc_get_cod_munic()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_munic.md),
+[`catr_ovc_get_cod_provinces()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cod_provinces.md),
 [`catr_ovc_get_cpmrc()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_cpmrc.md),
 [`catr_ovc_get_rccoor_distancia()`](https://ropenspain.github.io/CatastRo/reference/catr_ovc_get_rccoor_distancia.md)
 
@@ -78,12 +87,9 @@ catr_ovc_get_rccoor(
   lon = -3.45624183836806,
   srs = 4326
 )
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
-#> NULL
+#> # A tibble: 1 × 8
+#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
+#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
+#> 1 13077A01800011 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
 # }
 ```

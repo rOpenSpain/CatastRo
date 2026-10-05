@@ -1,4 +1,4 @@
-# Get the cadastral municipality code from coordinates
+# Get a cadastral municipality code from coordinates
 
 Retrieve the municipality code associated with an
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or a
@@ -25,7 +25,7 @@ catr_get_code_from_coords(
   - A pair of coordinates `c(x, y)`. In this case the `srs` of the
     coordinates must be provided.
 
-  - A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+  - An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
     If the object has several geometries, only the first geometry is
     used. This function extracts coordinates using
     `sf::st_centroid(x, of_largest_polygon = TRUE)`.
@@ -38,7 +38,7 @@ catr_get_code_from_coords(
 
 - verbose:
 
-  Logical. If `TRUE`, displays informational messages.
+  Logical. Whether to display informational messages.
 
 - cache_dir:
 
@@ -82,14 +82,15 @@ catr_get_code_from_coords(
 
 ## Value
 
-A [tibble](https://dplyr.tidyverse.org/reference/defunct.html) as
-described in **Details**. Returns `NULL` if the request fails.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) as
+described in **Details**. Returns
+[`NULL`](https://rdrr.io/r/base/NULL.html) if the request fails.
 
 ## Details
 
-On a successful query, this function returns a
-[tibble](https://dplyr.tidyverse.org/reference/defunct.html) with one
-row including the following columns:
+On a successful query, this function returns a one-row
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) with
+the following columns:
 
 - `munic`: Municipality name used by the Spanish Cadastre.
 
@@ -130,22 +131,17 @@ Search for cadastral identifiers:
 # Use with coordinates
 catr_get_code_from_coords(c(-16.25462, 28.46824), srs = 4326)
 #> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
+#> ! Failed to perform HTTP request. Caused by error in `curl::curl_fetch_memory()`: ! Failure when receiving data from the peer [ovc.catastro.meh.es]: Recv failure: Connection reset by peer
+#> Returning `NULL` because the request failed.
 #> NULL
 
-# Use with an sf object
+# Use with an `sf` object.
 prov <- mapSpain::esp_get_prov("Caceres")
 catr_get_code_from_coords(prov)
-#> ✖ The request could not be completed.
-#> ! Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
-#> → Returning "NULL" because the request failed.
-#> NULL
+#> # A tibble: 1 × 12
+#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
+#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
+#> 1 MONROY 10      128        10128    10    125   10125   MONR… 10    128   10   
+#> # ℹ 1 more variable: cm <chr>
 # }
 ```
