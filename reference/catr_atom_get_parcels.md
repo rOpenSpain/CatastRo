@@ -87,6 +87,9 @@ Query ATOM INSPIRE services:
 ``` r
 # \donttest{
 s <- catr_atom_get_parcels("Melque", to = "Segovia", what = "parcel")
+#> ✖ HTTP error 403 (Forbidden): <https://www.catastro.hacienda.gob.es/INSPIRE/CadastralParcels/ES.SDGC.CP.atom.xml>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the download failed.
 
 library(ggplot2)
 

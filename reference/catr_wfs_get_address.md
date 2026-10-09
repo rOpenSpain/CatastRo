@@ -134,6 +134,9 @@ ad <- catr_wfs_get_address_bbox(
   ),
   srs = 25830
 )
+#> ✖ HTTP error 403 (Forbidden): <https://ovc.catastro.meh.es/INSPIRE/wfsAD.aspx?service=wfs&version=2.0.0&request=getfeature&typenames=AD.ADDRESS&bbox=233673,4015968,233761,4016008&srsname=EPSG:25830>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the download failed.
 
 library(ggplot2)
 

@@ -48,19 +48,9 @@ Query OVC web services:
 ``` r
 # \donttest{
 catr_ovc_get_cod_provinces()
-#> # A tibble: 48 × 2
-#>    cpine np       
-#>    <chr> <chr>    
-#>  1 15    A CORUÑA 
-#>  2 03    ALACANT  
-#>  3 02    ALBACETE 
-#>  4 04    ALMERIA  
-#>  5 33    ASTURIAS 
-#>  6 05    AVILA    
-#>  7 06    BADAJOZ  
-#>  8 08    BARCELONA
-#>  9 09    BURGOS   
-#> 10 10    CACERES  
-#> # ℹ 38 more rows
+#> ✖ HTTP error 403 (Forbidden): <http://ovc.catastro.meh.es/ovcservweb//ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaProvincia?>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the request failed.
+#> NULL
 # }
 ```

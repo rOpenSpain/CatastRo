@@ -211,11 +211,15 @@ if (requireNamespace("tidyterra", quietly = TRUE)) {
     geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
     geom_spatraster_rgb(data = parcels_img)
 }
+#> ✖ HTTP error 403 (Forbidden) while requesting <https://ovc.catastro.meh.es/cartografia/INSPIRE/spadgcwms.aspx?service=WMS&version=1.1.0&request=GetMap&format=image/png&transparent=true&layers=CP.CadastralParcel&srs=EPSG:25830&width=512&height=512&bbox=222470,4019470,223730,4020730&styles=default>.
+#> ℹ If you think this is a bug, please consider opening an issue at <https://github.com/rOpenSpain/mapSpain/issues>.
+#> → Returning `NULL`.
 #> 
 #> Attaching package: ‘tidyterra’
 #> The following object is masked from ‘package:stats’:
 #> 
 #>     filter
-
+#> Error in geom_spatraster_rgb(data = pict): `tidyterra::geom_spatraster_rgb()` only works with <SpatRaster> objects,
+#> not <NULL>. See `?terra::rast()`.
 # }
 ```

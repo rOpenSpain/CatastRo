@@ -95,16 +95,16 @@ catr_ovc_get_cpmrc("13077A01800039",
   province = "CIUDAD REAL",
   municipality = "SANTA CRUZ DE MUDELA"
 )
-#> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
-#> 1  -3.46   38.6 13077A018… DS DIS… 13077… 18000… -3.4562… 38.6196… EPSG:4… DS D…
+#> ✖ HTTP error 403 (Forbidden): <http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?RC=13077A01800039&SRS=EPSG%3A4230&Provincia=CIUDAD%20REAL&Municipio=SANTA%20CRUZ%20DE%20MUDELA>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the request failed.
+#> NULL
 
 # Only the cadastral reference
 catr_ovc_get_cpmrc("9872023VH5797S")
-#> # A tibble: 1 × 10
-#>   xcoord ycoord refcat     address pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>    <dbl>  <dbl> <chr>      <chr>   <chr>  <chr>  <chr>    <chr>    <chr>   <chr>
-#> 1  -3.46   38.6 9872023VH… CL GLO… 98720… VH579… -3.4632… 38.6401… EPSG:4… CL G…
+#> ✖ HTTP error 403 (Forbidden): <http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC?RC=9872023VH5797S&SRS=EPSG%3A4326&Provincia=&Municipio=>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the request failed.
+#> NULL
 # }
 ```

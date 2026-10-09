@@ -124,6 +124,9 @@ building <- catr_wfs_get_buildings_bbox(
   ),
   srs = 25830
 )
+#> ✖ HTTP error 403 (Forbidden): <https://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?service=wfs&version=2.0.0&request=getfeature&typenames=BU.BUILDING&bbox=376550,4545424,376600,4545474&srsname=EPSG:25830>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the download failed.
 library(ggplot2)
 ggplot(building) +
   geom_sf() +
@@ -132,6 +135,9 @@ ggplot(building) +
 
 # Using a cadastral reference
 rc <- catr_wfs_get_buildings_rc("6656601UL7465N")
+#> ✖ HTTP error 403 (Forbidden): <https://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?service=wfs&version=2.0.0&request=getfeature&storedquerie_id=GetBuildingByParcel&refcat=6656601UL7465N>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the download failed.
 library(ggplot2)
 ggplot(rc) +
   geom_sf() +

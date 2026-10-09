@@ -2,6 +2,8 @@
 
 ## CatastRo 1.1.0
 
+CRAN release: 2026-10-05
+
 - The reference index now groups functions by Spanish Cadastre service,
   alongside the existing task-based sections.
 - CLI messages now display braces in paths, URLs and argument values

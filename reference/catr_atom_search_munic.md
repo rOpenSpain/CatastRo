@@ -82,19 +82,9 @@ Query ATOM INSPIRE services:
 ``` r
 # \donttest{
 catr_atom_search_munic("Mad")
-#> # A tibble: 40 × 3
-#>    territorial_office                munic           catrcode
-#>    <chr>                             <chr>           <chr>   
-#>  1 Territorial office 09 Burgos      09178-HUMADA    09178   
-#>  2 Territorial office 28 Madrid      28900-MADRID    28900   
-#>  3 Territorial office 09 Burgos      09287-QUEMADA   09287   
-#>  4 Territorial office 13 Ciudad Real 13011-ALMADEN   13011   
-#>  5 Territorial office 27 Lugo        27021-XERMADE   27021   
-#>  6 Territorial office 28 Madrid      28078-MADARCOS  28078   
-#>  7 Territorial office 37 Salamanca   37177-MADROÑAL  37177   
-#>  8 Territorial office 10 Cáceres     10116-MADROÑERA 10116   
-#>  9 Territorial office 40 Segovia     40134-MADERUELO 40134   
-#> 10 Territorial office 50 Zaragoza    50280-VALMADRID 50280   
-#> # ℹ 30 more rows
+#> ✖ HTTP error 403 (Forbidden): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the download failed.
+#> NULL
 # }
 ```

@@ -144,6 +144,9 @@ cp <- catr_wfs_get_parcels_bbox(
   ),
   srs = 25830
 )
+#> ✖ HTTP error 403 (Forbidden): <https://ovc.catastro.meh.es/INSPIRE/wfsCP.aspx?service=wfs&version=2.0.0&request=getfeature&typenames=CP.CADASTRALPARCEL&bbox=233673,4015968,233761,4016008&srsname=EPSG:25830>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the download failed.
 
 library(ggplot2)
 

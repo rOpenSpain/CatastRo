@@ -86,23 +86,21 @@ Query OVC web services:
 # \donttest{
 # Get municipality by cadastral code
 ab <- catr_ovc_get_cod_munic(cpro = 2, cmun = 900)
+#> ✖ HTTP error 403 (Forbidden): <http://ovc.catastro.meh.es/ovcservweb//ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaMunicipioCodigos?%2FCodigoProvincia=&CodigoProvincia=2&CodigoMunicipio=900&CodigoMunicipioIne=>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the request failed.
 
 ab
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
-#> # ℹ 1 more variable: cm <chr>
+#> NULL
 
 # Same query using the INE code
 
 ab2 <- catr_ovc_get_cod_munic(cpro = 2, cmun_ine = 3)
+#> ✖ HTTP error 403 (Forbidden): <http://ovc.catastro.meh.es/ovcservweb//ovcswlocalizacionrc/ovccallejerocodigos.asmx/ConsultaMunicipioCodigos?%2FCodigoProvincia=&CodigoProvincia=2&CodigoMunicipio=&CodigoMunicipioIne=3>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the request failed.
 
 ab2
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 ALBAC… 02      900        02900    02    003   02003   ALBA… 2     900   2    
-#> # ℹ 1 more variable: cm <chr>
+#> NULL
 # }
 ```

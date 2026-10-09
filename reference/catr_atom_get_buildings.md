@@ -88,6 +88,9 @@ Query ATOM INSPIRE services:
 ``` r
 # \donttest{
 s <- catr_atom_get_buildings("Nava de la Asuncion", to = "Segovia")
+#> ✖ HTTP error 403 (Forbidden): <https://www.catastro.hacienda.gob.es/INSPIRE/buildings/ES.SDGC.BU.atom.xml>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the download failed.
 
 library(ggplot2)
 ggplot(s) +

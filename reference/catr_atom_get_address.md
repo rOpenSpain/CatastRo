@@ -82,6 +82,9 @@ Query ATOM INSPIRE services:
 ``` r
 # \donttest{
 s <- catr_atom_get_address("Melque", to = "Segovia")
+#> ✖ HTTP error 403 (Forbidden): <https://www.catastro.hacienda.gob.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the download failed.
 
 library(ggplot2)
 
@@ -95,6 +98,9 @@ ggplot(s) +
     title = "Addresses",
     subtitle = "Melque de Cercos, Segovia"
   )
-
+#> Error in geom_sf(aes(color = specification)): Problem while computing aesthetics.
+#> ℹ Error occurred in the 1st layer.
+#> Caused by error:
+#> ! object 'specification' not found
 # }
 ```

@@ -87,9 +87,9 @@ catr_ovc_get_rccoor(
   lon = -3.45624183836806,
   srs = 4326
 )
-#> # A tibble: 1 × 8
-#>   refcat         address           pc.pc1 pc.pc2 geo.xcen geo.ycen geo.srs ldt  
-#>   <chr>          <chr>             <chr>  <chr>     <dbl>    <dbl> <chr>   <chr>
-#> 1 13077A01800011 DS DISEMINADO  P… 13077… 18000…    -3.46     38.6 EPSG:4… DS D…
+#> ✖ HTTP error 403 (Forbidden): <http://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_RCCOOR?SRS=EPSG%3A4326&Coordenada_X=-3.456242&Coordenada_Y=38.61966>.
+#> ! If this looks like a package bug, open an issue at <https://github.com/ropenspain/CatastRo/issues>.
+#> Returning `NULL` because the request failed.
+#> NULL
 # }
 ```
