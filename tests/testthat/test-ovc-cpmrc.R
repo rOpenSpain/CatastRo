@@ -29,9 +29,10 @@ test_that("catr_ovc_get_cpmrc() rejects an unsupported SRS", {
 })
 
 test_that("catr_ovc_get_cpmrc() encodes all supported arguments", {
-  seen <- NULL
+  state <- new.env(parent = emptyenv())
+  state$seen <- NULL
   local_mocked_bindings(ovc_get_xml = function(url, ...) {
-    seen <<- url
+    state$seen <- url
     list(
       consulta_coordenadas = list(
         coordenadas = list(
@@ -57,7 +58,7 @@ test_that("catr_ovc_get_cpmrc() encodes all supported arguments", {
     c("geo.xcen", "geo.ycen")
   )
 
-  query <- httr2::url_parse(seen)$query
+  query <- httr2::url_parse(state$seen)$query
   expect_identical(query$RC, "13077A01800039")
   expect_identical(query$SRS, "EPSG:4230")
   expect_identical(query$Provincia, "CIUDAD REAL")

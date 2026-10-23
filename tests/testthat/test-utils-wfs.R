@@ -240,8 +240,9 @@ test_that("inspire_wfs_get() rejects invalid query lists", {
 })
 
 test_that("inspire_wfs_get() normalizes query names and SRS values", {
+  state <- new.env(parent = emptyenv())
   cdir <- withr::local_tempdir(pattern = "wfs_inspire_cache")
-  seen <- character()
+  state$seen <- character()
 
   local_mocked_bindings(download_url = function(
     url,
@@ -250,7 +251,7 @@ test_that("inspire_wfs_get() normalizes query names and SRS values", {
     subdir,
     ...
   ) {
-    seen <<- c(seen, url)
+    state$seen <- c(state$seen, url)
     out <- file.path(cache_dir, subdir, name)
     dir.create(dirname(out), recursive = TRUE, showWarnings = FALSE)
     sfobj <- sf::st_sf(
@@ -295,9 +296,9 @@ test_that("inspire_wfs_get() normalizes query names and SRS values", {
   )
 
   expect_type(s2, "character")
-  expect_length(seen, 2)
-  expect_match(seen[[1]], "srsname=EPSG::25829", fixed = TRUE)
-  expect_match(seen[[2]], "srsname=EPSG:25829", fixed = TRUE)
+  expect_length(state$seen, 2)
+  expect_match(state$seen[[1]], "srsname=EPSG::25829", fixed = TRUE)
+  expect_match(state$seen[[2]], "srsname=EPSG:25829", fixed = TRUE)
 })
 
 test_that("inspire_wfs_get() can call the real API", {

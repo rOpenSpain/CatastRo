@@ -10,9 +10,13 @@ test_that("catr_wms_get_layer() rejects invalid layer types", {
 })
 
 test_that("catr_wms_get_layer() returns map tiles for supported layers", {
-  calls <- list()
+  state <- new.env(parent = emptyenv())
+  state$calls <- list()
   local_mocked_bindings(catr_esp_get_tiles = function(x, type, options, ...) {
-    calls[[length(calls) + 1]] <<- list(type = type, options = options)
+    state$calls[[length(state$calls) + 1]] <- list(
+      type = type,
+      options = options
+    )
 
     bbox <- sf::st_bbox(x)
     out <- terra::rast(
@@ -67,12 +71,12 @@ test_that("catr_wms_get_layer() returns map tiles for supported layers", {
   )
 
   expect_s4_class(obj3, "SpatRaster")
-  expect_equal(calls[[1]]$type, "Catastro.Building")
-  expect_equal(calls[[4]]$type, "Catastro.Building")
-  expect_equal(calls[[4]]$options$styles, "ELFCadastre")
-  expect_equal(calls[[4]]$options$version, "1.3.0")
-  expect_equal(calls[[4]]$options$crs, "EPSG:25830")
-  expect_null(calls[[4]]$options$srs)
+  expect_equal(state$calls[[1]]$type, "Catastro.Building")
+  expect_equal(state$calls[[4]]$type, "Catastro.Building")
+  expect_equal(state$calls[[4]]$options$styles, "ELFCadastre")
+  expect_equal(state$calls[[4]]$options$version, "1.3.0")
+  expect_equal(state$calls[[4]]$options$crs, "EPSG:25830")
+  expect_null(state$calls[[4]]$options$srs)
 })
 
 test_that("catr_wms_get_layer() can call the real API", {

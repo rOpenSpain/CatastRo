@@ -42,17 +42,18 @@ test_that("catr_http_config() gives options precedence over envvars", {
 })
 
 test_that("download_url() applies HTTP environment settings to requests", {
+  state <- new.env(parent = emptyenv())
   withr::local_options(list(
     catastro_ssl_verify = NULL,
     catastro_timeout = NULL
   ))
   withr::local_envvar(c(CATASTRO_SSL_VERIFY = "0", CATASTRO_TIMEOUT = "600"))
 
-  seen <- list()
+  state$seen <- list()
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
     catr_req_perform = function(req, path = NULL, ...) {
-      seen[[length(seen) + 1]] <<- req$options
+      state$seen[[length(state$seen) + 1]] <- req$options
       if (is.null(path)) {
         return(httr2::response(
           status_code = 200,
@@ -73,8 +74,8 @@ test_that("download_url() applies HTTP environment settings to requests", {
   )
 
   expect_type(out, "character")
-  expect_equal(seen[[1]]$ssl_verifypeer, 0)
-  expect_equal(seen[[1]]$timeout_ms, 600000)
+  expect_equal(state$seen[[1]]$ssl_verifypeer, 0)
+  expect_equal(state$seen[[1]]$timeout_ms, 600000)
 })
 
 test_that("download_url() returns NULL when offline", {
@@ -153,13 +154,14 @@ test_that("download_url() handles simulated HTTP 404 and successful retries", {
 })
 
 test_that("download_url() reuses and refreshes cached files", {
+  state <- new.env(parent = emptyenv())
   url <- paste0("https://example.com/", "mocked-cache.txt")
 
-  req_perform_calls <- 0
+  state$req_perform_calls <- 0
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
     catr_req_perform = function(req, path = NULL, ...) {
-      req_perform_calls <<- req_perform_calls + 1
+      state$req_perform_calls <- state$req_perform_calls + 1
 
       if (is.null(path)) {
         return(httr2::response(
@@ -168,7 +170,7 @@ test_that("download_url() reuses and refreshes cached files", {
         ))
       }
 
-      writeLines(paste0("ok-", req_perform_calls), path)
+      writeLines(paste0("ok-", state$req_perform_calls), path)
       httr2::response(status_code = 200)
     }
   )
@@ -208,7 +210,7 @@ test_that("download_url() reuses and refreshes cached files", {
     ),
     "Refreshing cached file"
   )
-  expect_equal(req_perform_calls, 4)
+  expect_equal(state$req_perform_calls, 4)
   expect_identical(readLines(fend), "ok-4")
 })
 
@@ -274,6 +276,7 @@ test_that("download_url() preserves cached files after HTTP errors", {
 })
 
 test_that("replace_cached_file() installs and replaces downloads", {
+  state <- new.env(parent = emptyenv())
   cache_dir <- withr::local_tempdir(pattern = "testthat_replace_cache")
   download <- withr::local_tempfile(lines = "new")
   target <- file.path(cache_dir, "cached.txt")
@@ -283,10 +286,10 @@ test_that("replace_cached_file() installs and replaces downloads", {
   expect_identical(readLines(target), "new")
 
   replacement <- withr::local_tempfile(lines = "replacement")
-  calls <- 0L
+  state$calls <- 0L
   local_mocked_bindings(catr_file_rename = function(from, to) {
-    calls <<- calls + 1L
-    if (calls == 1L) {
+    state$calls <- state$calls + 1L
+    if (state$calls == 1L) {
       return(FALSE)
     }
     file.rename(from, to)
@@ -295,7 +298,7 @@ test_that("replace_cached_file() installs and replaces downloads", {
   out <- replace_cached_file(replacement, target)
   expect_identical(out, target)
   expect_identical(readLines(target), "replacement")
-  expect_identical(calls, 3L)
+  expect_identical(state$calls, 3L)
 })
 
 test_that("replace_cached_file() reports installation and backup failures", {
@@ -316,15 +319,16 @@ test_that("replace_cached_file() reports installation and backup failures", {
 })
 
 test_that("replace_cached_file() restores the cache after install failures", {
+  state <- new.env(parent = emptyenv())
   cache_dir <- withr::local_tempdir(pattern = "testthat_restore_cache")
   download <- withr::local_tempfile(lines = "new")
   target <- file.path(cache_dir, "cached.txt")
   writeLines("cached", target)
 
-  calls <- 0L
+  state$calls <- 0L
   local_mocked_bindings(catr_file_rename = function(from, to) {
-    calls <<- calls + 1L
-    if (calls %in% c(1L, 3L)) {
+    state$calls <- state$calls + 1L
+    if (state$calls %in% c(1L, 3L)) {
       return(FALSE)
     }
     file.rename(from, to)
@@ -332,10 +336,11 @@ test_that("replace_cached_file() restores the cache after install failures", {
 
   expect_error(replace_cached_file(download, target), class = "rlang_error")
   expect_identical(readLines(target), "cached")
-  expect_identical(calls, 4L)
+  expect_identical(state$calls, 4L)
 })
 
 test_that("download_url() reports cache retrieval errors and retries", {
+  state <- new.env(parent = emptyenv())
   url <- "https://example.com/noexist-this-file.txt"
   cdir <- withr::local_tempdir(pattern = "testthat_ex5")
   local_mocked_bindings(
@@ -358,11 +363,11 @@ test_that("download_url() reports cache retrieval errors and retries", {
 
   local_mocked_bindings(is_404 = function(...) FALSE)
 
-  req_perform_calls <- 0
+  state$req_perform_calls <- 0
   local_mocked_bindings(catr_req_perform = function(req, path = NULL, ...) {
-    req_perform_calls <<- req_perform_calls + 1
+    state$req_perform_calls <- state$req_perform_calls + 1
 
-    if (req_perform_calls == 1) {
+    if (state$req_perform_calls == 1) {
       return(httr2::response(
         status_code = 200,
         headers = list("content-length" = as.character(21 * 1024^2))
@@ -387,17 +392,18 @@ test_that("download_url() reports cache retrieval errors and retries", {
     ),
     "Download size is"
   )
-  expect_equal(req_perform_calls, 2)
+  expect_equal(state$req_perform_calls, 2)
 })
 
 test_that("download_url() removes partial files after HTTP errors", {
+  state <- new.env(parent = emptyenv())
   url <- "https://example.com/http-error.txt"
   cdir <- withr::local_tempdir(pattern = "testthat_http_error")
-  req_perform_calls <- 0
+  state$req_perform_calls <- 0
   local_mocked_bindings(
     is_online_fun = function(...) TRUE,
     catr_req_perform = function(req, path = NULL, ...) {
-      req_perform_calls <<- req_perform_calls + 1
+      state$req_perform_calls <- state$req_perform_calls + 1
 
       if (is.null(path)) {
         return(httr2::response(
@@ -413,7 +419,7 @@ test_that("download_url() removes partial files after HTTP errors", {
 
   expect_snapshot(fend <- download_url(url, cache_dir = cdir, verbose = FALSE))
   expect_null(fend)
-  expect_equal(req_perform_calls, 2)
+  expect_equal(state$req_perform_calls, 2)
   expect_false(file.exists(file.path(cdir, "fixme", basename(url))))
 })
 

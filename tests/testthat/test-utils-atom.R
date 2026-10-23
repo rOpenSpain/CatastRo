@@ -30,9 +30,10 @@ test_that("catr_read_atom() preserves each entry update date", {
 })
 
 test_that("catr_atom_read_db_to() propagates request options", {
-  seen <- NULL
+  state <- new.env(parent = emptyenv())
+  state$seen <- NULL
   all_fn <- function(update_cache, cache_dir, verbose) {
-    seen <<- list(
+    state$seen <- list(
       update_cache = update_cache,
       cache_dir = cache_dir,
       verbose = verbose
@@ -63,7 +64,7 @@ test_that("catr_atom_read_db_to() propagates request options", {
   )
 
   expect_identical(
-    seen,
+    state$seen,
     list(update_cache = TRUE, cache_dir = "cache", verbose = TRUE)
   )
   expect_named(out, c("munic", "url", "date"))

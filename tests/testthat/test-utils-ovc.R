@@ -7,9 +7,10 @@ test_that("ovc_base_url() and ovc_validate_srs() build valid requests", {
 })
 
 test_that("ovc_get_xml() parses OVC XML responses", {
-  seen <- NULL
+  state <- new.env(parent = emptyenv())
+  state$seen <- NULL
   local_mocked_bindings(get_request_body = function(url, verbose = FALSE) {
-    seen <<- list(url = url, verbose = verbose)
+    state$seen <- list(url = url, verbose = verbose)
 
     httr2::response(
       status_code = 200,
@@ -19,21 +20,22 @@ test_that("ovc_get_xml() parses OVC XML responses", {
   })
 
   parsed <- ovc_get_xml("http://example.test/ovc.xml", verbose = TRUE)
-  expect_identical(seen$url, "http://example.test/ovc.xml")
-  expect_true(seen$verbose)
+  expect_identical(state$seen$url, "http://example.test/ovc.xml")
+  expect_true(state$seen$verbose)
   expect_identical(parsed$root$item$x[[1]], "1")
 })
 
 test_that("ovc_get_xml() returns NULL when XML requests fail", {
-  seen <- NULL
+  state <- new.env(parent = emptyenv())
+  state$seen <- NULL
   local_mocked_bindings(get_request_body = function(url, verbose = FALSE) {
-    seen <<- list(url = url, verbose = verbose)
+    state$seen <- list(url = url, verbose = verbose)
     NULL
   })
 
   expect_null(ovc_get_xml("http://example.test/empty.xml"))
-  expect_identical(seen$url, "http://example.test/empty.xml")
-  expect_false(seen$verbose)
+  expect_identical(state$seen$url, "http://example.test/empty.xml")
+  expect_false(state$seen$verbose)
 })
 
 test_that("ovc_get_tbl() converts XML nodes to tibbles", {
