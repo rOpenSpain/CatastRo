@@ -55,10 +55,6 @@ result <- catr_ovc_get_rccoor(
 knitr::kable(result)
 ```
 
-| refcat | address | pc.pc1 | pc.pc2 | geo.xcen | geo.ycen | geo.srs | ldt |
-|:---|:---|:---|:---|---:|---:|:---|:---|
-| 13077A01800039 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) | 13077A0 | 1800039 | -3.456242 | 38.61966 | EPSG:4230 | DS DISEMINADO Polígono 18 Parcela 39 000100200VH67C EL TIRADERO. SANTA CRUZ DE MUDELA (CIUDAD REAL) |
-
 This function accepts the following values for the `srs` argument:
 
 ``` r

@@ -151,13 +151,11 @@ buildings with
 city_catr_code <- catr_get_code_from_coords(city)
 
 city_catr_code
-#> # A tibble: 1 × 12
-#>   munic  catr_to catr_munic catrcode cpro  cmun  inecode nm    cd    cmc   cp   
-#>   <chr>  <chr>   <chr>      <chr>    <chr> <chr> <chr>   <chr> <chr> <chr> <chr>
-#> 1 GRANA… 18      900        18900    18    087   18087   GRAN… 18    900   18   
-#> # ℹ 1 more variable: cm <chr>
+#> NULL
 
 city_bu <- catr_atom_get_buildings(city_catr_code$catrcode)
+#> Error in `catr_atom_get_buildings()`:
+#> ! `munic` cannot be empty.
 ```
 
 Next, we limit the analysis to a circle with a radius of 1.5 km around
@@ -170,21 +168,19 @@ buff <- city |>
   st_transform(st_crs(city_bu)) |>
   # Buffer.
   st_buffer(1500)
+#> Error:
+#> ! object 'city_bu' not found
 
 # Cut buildings.
 dataviz <- st_intersection(city_bu, buff)
+#> Error:
+#> ! object 'city_bu' not found
 
 ggplot(dataviz) +
   geom_sf()
+#> Error:
+#> ! object 'dataviz' not found
 ```
-
-![Map of building footprints within 1.5 kilometers of central Granada,
-with longitude on the horizontal axis and latitude on the vertical axis.
-Small, tightly packed buildings form an irregular street pattern in the
-northeast, while larger rectangular blocks appear toward the west and
-south. ](./minimal-1.png)
-
-Figure 2: Minimal cadastral map of Granada
 
 Next, we extract the construction year from the `beginning` column:
 
@@ -192,16 +188,24 @@ Next, we extract the construction year from the `beginning` column:
 
 # Extract the first four characters.
 year <- substr(dataviz$beginning, 1, 4)
+#> Error:
+#> ! object 'dataviz' not found
 
 # Replace entries that do not look like years with 0000.
 year[!(year %in% 0:2500)] <- "0000"
+#> Error:
+#> ! object 'year' not found
 
 # Convert to integers.
 year <- as.integer(year)
+#> Error:
+#> ! object 'year' not found
 
 # Add a new column.
 dataviz <- dataviz |>
   mutate(year = year)
+#> Error:
+#> ! object 'dataviz' not found
 ```
 
 Finally, we group the data by construction year and create the
@@ -214,6 +218,8 @@ dataviz <- dataviz |>
   mutate(
     year_cat = cut(year, breaks = c(0, seq(1900, 2030, by = 10)), dig.lab = 4)
   )
+#> Error:
+#> ! object 'dataviz' not found
 
 ggplot(dataviz) +
   geom_sf(aes(fill = year_cat), color = NA, na.rm = TRUE) +
@@ -244,15 +250,9 @@ ggplot(dataviz) +
     ),
     plot.margin = margin(r = 40, l = 40)
   )
+#> Error:
+#> ! object 'dataviz' not found
 ```
-
-![Thematic map of building construction periods within 1.5 kilometers of
-central Granada. Colors distinguish buildings constructed up to 1900 and
-subsequent decades through 2030, progressing from red through yellow and
-green to blue. Older buildings cluster in the northeast, while more
-recent buildings are common toward the west and south. ](./dviz-1.png)
-
-Figure 3: Granada - urban growth
 
 ## References
 
