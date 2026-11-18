@@ -154,6 +154,7 @@ catr_srs_values |>
 #>         MEMBER["European Terrestrial Reference Frame 2000"],
 #>         MEMBER["European Terrestrial Reference Frame 2005"],
 #>         MEMBER["European Terrestrial Reference Frame 2014"],
+#>         MEMBER["European Terrestrial Reference Frame 2020"],
 #>         ELLIPSOID["GRS 1980",6378137,298.257222101,
 #>             LENGTHUNIT["metre",1]],
 #>         ENSEMBLEACCURACY[0.1]],
@@ -168,7 +169,7 @@ catr_srs_values |>
 #>             ANGLEUNIT["degree",0.0174532925199433]],
 #>     USAGE[
 #>         SCOPE["Spatial referencing."],
-#>         AREA["Europe - onshore and offshore: Albania; Andorra; Austria; Belgium; Bosnia and Herzegovina; Bulgaria; Croatia; Cyprus; Czechia; Denmark; Estonia; Faroe Islands; Finland; France; Germany; Gibraltar; Greece; Hungary; Ireland; Italy; Kosovo; Latvia; Liechtenstein; Lithuania; Luxembourg; Malta; Moldova; Monaco; Montenegro; Netherlands; North Macedonia; Norway including Svalbard and Jan Mayen; Poland; Portugal; Romania; San Marino; Serbia; Slovakia; Slovenia; Spain; Sweden; Switzerland; United Kingdom (UK) including Channel Islands and Isle of Man; Vatican City State."],
-#>         BBOX[32.88,-16.1,84.73,40.18]],
+#>         AREA["Europe - onshore and offshore: Albania; Andorra; Austria; Belgium; Bosnia and Herzegovina; Bulgaria; Croatia; Czechia; Denmark; Estonia; Faroe Islands; Finland; France; Germany; Gibraltar; Greece; Hungary; Ireland; Italy; Kosovo; Latvia; Liechtenstein; Lithuania; Luxembourg; Malta; Moldova; Monaco; Montenegro; Netherlands; North Macedonia; Norway including Svalbard and Jan Mayen; Poland; Portugal - mainland; Romania; San Marino; Serbia; Slovakia; Slovenia; Spain - mainland and Balearic islands; Sweden; Switzerland; United Kingdom (UK) including Channel Islands and Isle of Man; Vatican City State."],
+#>         BBOX[33.26,-16.1,84.73,38.01]],
 #>     ID["EPSG",4258]]
 ```

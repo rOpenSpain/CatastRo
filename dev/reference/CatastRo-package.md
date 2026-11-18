@@ -32,3 +32,6 @@ Other contributors:
 
 - Iñaki Ucar ([ORCID](https://orcid.org/0000-0001-6403-5550))
   \[contributor\]
+
+- Dirección General del Catastro (Provider of cadastral data and web
+  services) \[data contributor\]

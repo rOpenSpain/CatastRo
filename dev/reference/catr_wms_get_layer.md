@@ -211,9 +211,11 @@ if (requireNamespace("tidyterra", quietly = TRUE)) {
     geom_sf(data = parcels, fill = "blue", alpha = 0.5) +
     geom_spatraster_rgb(data = parcels_img)
 }
-#> Error in httr2::req_perform(...): Failed to perform HTTP request.
-#> Caused by error in `curl::curl_fetch_memory()`:
-#> ! Failure when receiving data from the peer [ovc.catastro.meh.es]:
-#> Recv failure: Connection reset by peer
+#> 
+#> Attaching package: ‘tidyterra’
+#> The following object is masked from ‘package:stats’:
+#> 
+#>     filter
+
 # }
 ```
