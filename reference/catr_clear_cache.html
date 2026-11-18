@@ -121,7 +121,7 @@ cache state as if you had never used <a href="https://CRAN.R-project.org/package
 <span class="r-in"><span><span class="co"># Don't run this! It modifies your current state</span></span></span>
 <span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">my_cache</span> <span class="op">&lt;-</span> <span class="fu"><a href="catr_set_cache_dir.html">catr_detect_cache_dir</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/Rtmp7Obgqi/CatastRo</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/RtmpYd3QZb/CatastRo</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Set an example cache</span></span></span>
 <span class="r-in"><span><span class="va">ex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"example"</span>, <span class="st">"cache"</span><span class="op">)</span></span></span>
@@ -129,13 +129,13 @@ cache state as if you had never used <a href="https://CRAN.R-project.org/package
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Restore initial cache</span></span></span>
 <span class="r-in"><span><span class="fu">catr_clear_cache</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">CatastRo</span> cached data deleted: <span style="color: #0000BB;">/tmp/Rtmp7Obgqi/example/cache</span> (0 bytes).</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">CatastRo</span> cached data deleted: <span style="color: #0000BB;">/tmp/RtmpYd3QZb/example/cache</span> (0 bytes).</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="catr_set_cache_dir.html">catr_set_cache_dir</a></span><span class="op">(</span><span class="va">my_cache</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">CatastRo</span> cache directory is <span style="color: #0000BB;">/tmp/Rtmp7Obgqi/CatastRo</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">CatastRo</span> cache directory is <span style="color: #0000BB;">/tmp/RtmpYd3QZb/CatastRo</span>.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> To reuse this cache directory in future sessions, set `install` to `TRUE`.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">my_cache</span>, <span class="fu"><a href="catr_set_cache_dir.html">catr_detect_cache_dir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/Rtmp7Obgqi/CatastRo</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/RtmpYd3QZb/CatastRo</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
@@ -151,7 +151,7 @@ cache state as if you had never used <a href="https://CRAN.R-project.org/package
       <div class="col-md">
         <h4 data-toc-skip>About <img src="../logo.png" alt="CatastRo logo" height="24" class="round-logo">
           CatastRo</h4>
-        <a href="https://github.com/DelgadoPanadero" class="external-link">Ángel Delgado Panadero</a><a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a><br><span class="ROS-light">rOpenSpain</span>
+        <p>Developed by <a href="https://github.com/DelgadoPanadero" class="external-link">Ángel Delgado Panadero</a>, <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>.</p>
         <hr class="d-md-none"></div>
       <div class="col-md offset-md-4">
         <h4 data-toc-skip>About <img src="../ROS-logo.png" alt="rOpenSpain logo" height="24" class="round-logo"><span class="ROS-light">
