@@ -8,7 +8,7 @@ message: 'To cite package "CatastRo" in publications use:'
 type: software
 license: GPL-2.0-only
 title: 'CatastRo: Interface to the Spanish ''Catastro'' Web Services'
-version: 1.1.0
+version: 1.1.0.9000
 doi: 10.32614/CRAN.package.CatastRo
 identifiers:
 - type: doi
@@ -40,7 +40,7 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
   doi: 10.32614/CRAN.package.CatastRo
   year: '2026'
-  version: 1.1.0
+  version: 1.1.0.9000
   url: https://ropenspain.github.io/CatastRo/
   abstract: Access public spatial data from the Spanish Catastro through its Infrastructure
     for Spatial Information in Europe (INSPIRE) and related web services. Retrieve
@@ -81,10 +81,9 @@ references:
     address: Vienna, Austria
   year: '2026'
   doi: 10.32614/R.manuals
-  version: '>= 4.1.0'
+  version: '>= 4.2.0'
 - type: software
-  title: cli
-  abstract: 'cli: Helpers for Developing Command Line Interfaces'
+  title: 'cli: Helpers for Developing Command Line Interfaces'
   notes: Imports
   url: https://cli.r-lib.org
   repository: https://CRAN.R-project.org/package=cli
@@ -95,8 +94,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.cli
 - type: software
-  title: dplyr
-  abstract: 'dplyr: A Grammar of Data Manipulation'
+  title: 'dplyr: A Grammar of Data Manipulation'
   notes: Imports
   url: https://dplyr.tidyverse.org
   repository: https://CRAN.R-project.org/package=dplyr
@@ -120,8 +118,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.dplyr
 - type: software
-  title: httr2
-  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
+  title: 'httr2: Perform HTTP Requests and Process the Responses'
   notes: Imports
   url: https://httr2.r-lib.org
   repository: https://CRAN.R-project.org/package=httr2
@@ -133,8 +130,7 @@ references:
   doi: 10.32614/CRAN.package.httr2
   version: '>= 1.0.0'
 - type: software
-  title: lifecycle
-  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
+  title: 'lifecycle: Manage the Life Cycle of your Package Functions'
   notes: Imports
   url: https://lifecycle.r-lib.org/
   repository: https://CRAN.R-project.org/package=lifecycle
@@ -149,8 +145,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.lifecycle
 - type: software
-  title: mapSpain
-  abstract: 'mapSpain: Administrative Boundaries and Static Map Tiles for Spain'
+  title: 'mapSpain: Administrative Boundaries and Static Map Tiles for Spain'
   notes: Imports
   url: https://ropenspain.github.io/mapSpain/
   repository: https://CRAN.R-project.org/package=mapSpain
@@ -163,8 +158,7 @@ references:
   doi: 10.32614/CRAN.package.mapSpain
   version: '>= 1.0.0'
 - type: software
-  title: rappdirs
-  abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
+  title: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
     and Logs'
   notes: Imports
   url: https://rappdirs.r-lib.org
@@ -181,8 +175,7 @@ references:
   doi: 10.32614/CRAN.package.rappdirs
   version: '>= 0.3.0'
 - type: software
-  title: sf
-  abstract: 'sf: Simple Features for R'
+  title: 'sf: Simple Features for R'
   notes: Imports
   url: https://r-spatial.github.io/sf/
   repository: https://CRAN.R-project.org/package=sf
@@ -195,8 +188,7 @@ references:
   doi: 10.32614/CRAN.package.sf
   version: '>= 1.0.0'
 - type: software
-  title: terra
-  abstract: 'terra: Spatial Data Analysis'
+  title: 'terra: Spatial Data Analysis'
   notes: Imports
   url: https://rspatial.org/
   repository: https://CRAN.R-project.org/package=terra
@@ -220,8 +212,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.terra
 - type: software
-  title: tools
-  abstract: 'R: A Language and Environment for Statistical Computing'
+  title: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
@@ -233,21 +224,7 @@ references:
   year: '2026'
   doi: 10.32614/R.manuals
 - type: software
-  title: utils
-  abstract: 'R: A Language and Environment for Statistical Computing'
-  notes: Imports
-  authors:
-  - name: R Core Team
-    website: https://ror.org/02zz1nj61
-  institution:
-    name: R Foundation for Statistical Computing
-    website: https://ror.org/05qewa988
-    address: Vienna, Austria
-  year: '2026'
-  doi: 10.32614/R.manuals
-- type: software
-  title: xml2
-  abstract: 'xml2: Parse XML'
+  title: 'xml2: Parse XML'
   notes: Imports
   url: https://xml2.r-lib.org
   repository: https://CRAN.R-project.org/package=xml2
@@ -262,8 +239,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.xml2
 - type: software
-  title: ggplot2
-  abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  title: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Suggests
   url: https://ggplot2.tidyverse.org
   repository: https://CRAN.R-project.org/package=ggplot2
@@ -302,8 +278,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.ggplot2
 - type: software
-  title: knitr
-  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  title: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
   url: https://yihui.org/knitr/
   repository: https://CRAN.R-project.org/package=knitr
@@ -315,8 +290,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.knitr
 - type: software
-  title: quarto
-  abstract: 'quarto: R Interface to ''Quarto'' Markdown Publishing System'
+  title: 'quarto: R Interface to ''Quarto'' Markdown Publishing System'
   notes: Suggests
   url: https://quarto-dev.github.io/quarto-r/
   repository: https://CRAN.R-project.org/package=quarto
@@ -332,8 +306,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.quarto
 - type: software
-  title: testthat
-  abstract: 'testthat: Unit Testing for R'
+  title: 'testthat: Unit Testing for R'
   notes: Suggests
   url: https://testthat.r-lib.org
   repository: https://CRAN.R-project.org/package=testthat
@@ -345,8 +318,7 @@ references:
   doi: 10.32614/CRAN.package.testthat
   version: '>= 3.3.0'
 - type: software
-  title: tibble
-  abstract: 'tibble: Simple Data Frames'
+  title: 'tibble: Simple Data Frames'
   notes: Suggests
   url: https://tibble.tidyverse.org/
   repository: https://CRAN.R-project.org/package=tibble
@@ -361,9 +333,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.tibble
 - type: software
-  title: tidyterra
-  abstract: 'tidyterra: ''tidyverse'' Methods and ''ggplot2'' Helpers for ''terra''
-    Objects'
+  title: 'tidyterra: ''tidyverse'' Methods and ''ggplot2'' Helpers for ''terra'' Objects'
   notes: Suggests
   url: https://dieghernan.github.io/tidyterra/
   repository: https://CRAN.R-project.org/package=tidyterra
@@ -375,8 +345,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.tidyterra
 - type: software
-  title: withr
-  abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'
+  title: 'withr: Run Code ''With'' Temporarily Modified Global State'
   notes: Suggests
   url: https://withr.r-lib.org
   repository: https://CRAN.R-project.org/package=withr

@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/rOpenSpain/CatastRo",
   "issueTracker": "https://github.com/rOpenSpain/CatastRo/issues",
   "license": "https://spdx.org/licenses/GPL-2.0",
-  "version": "1.1.0",
+  "version": "1.1.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.6.1 (2026-06-24 ucrt)",
+  "runtimePlatform": "R version 4.6.2 (2026-10-29 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -159,7 +159,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 4.1.0"
+      "version": ">= 4.2.0"
     },
     "2": {
       "@type": "SoftwareApplication",
@@ -287,7 +287,7 @@
   },
   "isPartOf": "https://ropenspain.es/",
   "keywords": ["catastro", "cran", "cran-r", "gis", "maps", "r", "r-package", "ropenspain", "rstats", "spain", "spatial", "static-tiles"],
-  "fileSize": "1229KB",
+  "fileSize": "1229.241KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

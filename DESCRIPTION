@@ -1,6 +1,6 @@
 Package: CatastRo
 Title: Interface to the Spanish 'Catastro' Web Services
-Version: 1.1.0
+Version: 1.1.0.9000
 Authors@R: c(
     person("Ángel", "Delgado Panadero", , "delgadopanadero@gmail.com", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0002-8189-9251")),
@@ -21,7 +21,7 @@ URL: https://ropenspain.github.io/CatastRo/,
     https://github.com/rOpenSpain/CatastRo
 BugReports: https://github.com/rOpenSpain/CatastRo/issues
 Depends: 
-    R (>= 4.1.0)
+    R (>= 4.2.0)
 Imports: 
     cli,
     dplyr,

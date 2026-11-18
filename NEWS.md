@@ -1,3 +1,7 @@
+# CatastRo (development version)
+
+- Minimum required **R** version is now 4.2.0.
+
 # CatastRo 1.1.0
 
 - The reference index now groups functions by Spanish Cadastre service, alongside the existing task-based sections.
